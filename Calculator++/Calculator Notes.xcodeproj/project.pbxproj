@@ -97,8 +97,8 @@
 		2E4A07A51C42F3F2007F415F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */,
 				2E4A07A81C42F40B007F415F /* ListNotesTableViewController.swift */,
+				C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */,
 				2E4A07AA1C42F497007F415F /* DisplayNoteViewController.swift */,
 			);
 			path = Controllers;
