@@ -65,7 +65,7 @@ class CalculatorViewController: UIViewController {
     @IBAction func equalsPressed(_ sender: UIButton) {
         if(runningNumber.count <= 6 && runningNumber.count >= 1 && captureKey == 1) {
             senha = String(runningNumber)
-            InstructionsLabel[0].text = "senha: \(senha).   Digite-a novamente e confirme com '='"
+            InstructionsLabel[0].text = "Key: \(senha).   Enter it again and confirm with '='"
             captureKey = 2
             UserDefaults.standard.set (senha, forKey: "Key")
             Clear()
