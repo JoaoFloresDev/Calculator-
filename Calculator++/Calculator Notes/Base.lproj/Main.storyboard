@@ -62,8 +62,8 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Notes" image="doc.text" catalog="system" selectedImage="doc.text.fill" id="Hnu-ya-o6r"/>
                     <navigationItem key="navigationItem" title="Notes" id="YfU-Wx-C2d">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="TCf-BE-uFw">
-                            <color key="tintColor" red="0.81579906089999998" green="0.04846784757" blue="0.05000817758" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <barButtonItem key="leftBarButtonItem" title="Edit" style="plain" id="TCf-BE-uFw">
+                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="7XQ-81-TSE" kind="unwind" unwindAction="unwindToListNotesViewControllerFor:" id="DfS-MS-kcE"/>
                             </connections>
@@ -160,25 +160,6 @@
             </objects>
             <point key="canvasLocation" x="1474" y="623"/>
         </scene>
-        <!--Gallery-->
-        <scene sceneID="OcQ-vg-G9A">
-            <objects>
-                <viewController modalPresentationStyle="fullScreen" id="hnO-zT-tgl" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="irM-gl-nC8"/>
-                        <viewControllerLayoutGuide type="bottom" id="Mjf-5I-a9j"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RDb-9W-wOh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Gallery" image="photo" catalog="system" selectedImage="photo.fill" id="rcV-hA-1jc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="epe-aP-BIG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1474" y="-92"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="o5V-VC-7Bp">
             <objects>
@@ -190,8 +171,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hnO-zT-tgl" kind="relationship" relationship="viewControllers" id="WSu-8h-9i1"/>
                         <segue destination="Zbh-kP-555" kind="relationship" relationship="viewControllers" id="v7S-lx-MK0"/>
+                        <segue destination="8SK-ae-oNh" kind="relationship" relationship="viewControllers" id="hbL-PQ-PDV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owk-kC-tB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -727,14 +708,108 @@
             </objects>
             <point key="canvasLocation" x="-379.71014492753625" y="266.51785714285711"/>
         </scene>
+        <!--Gallery-->
+        <scene sceneID="syh-3c-ow8">
+            <objects>
+                <collectionViewController modalPresentationStyle="fullScreen" id="5eu-Jl-WxT" customClass="CollectionViewController" customModule="IOSDeleteItemsCollectionViewTutorial" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Ahn-hE-bVH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="S0x-KA-jV5">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="493-Vi-Q4d" customClass="CollectionViewCell" customModule="IOSDeleteItemsCollectionViewTutorial" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auj-Md-Osp">
+                                            <rect key="frame" x="29" y="39.5" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daY-5h-OVc">
+                                            <rect key="frame" x="89" y="90" width="0.0" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Auj-Md-Osp" firstAttribute="centerY" secondItem="493-Vi-Q4d" secondAttribute="centerY" id="NiJ-OB-fK2"/>
+                                    <constraint firstItem="Auj-Md-Osp" firstAttribute="centerX" secondItem="493-Vi-Q4d" secondAttribute="centerX" id="PYa-PO-1dh"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="daY-5h-OVc" secondAttribute="bottom" constant="2" id="UMK-Rr-NNc"/>
+                                    <constraint firstItem="daY-5h-OVc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="493-Vi-Q4d" secondAttribute="leading" symbolic="YES" id="ZY0-Iw-UoH"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="daY-5h-OVc" secondAttribute="trailing" constant="3" id="rGh-Pk-V1a"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="checkmarkLabel" destination="daY-5h-OVc" id="lnI-yo-KS7"/>
+                                    <outlet property="titleLabel" destination="Auj-Md-Osp" id="39Z-Ze-OLJ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="5eu-Jl-WxT" id="dOt-7f-oBN"/>
+                            <outlet property="delegate" destination="5eu-Jl-WxT" id="la6-NF-OKq"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Gallery" id="EVZ-x3-7V8">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="vht-Ig-dfd">
+                                <connections>
+                                    <action selector="teste:" destination="5eu-Jl-WxT" id="LIx-4a-dhq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="trash" id="vCL-yL-I1z">
+                                <connections>
+                                    <action selector="deleteItem:" destination="5eu-Jl-WxT" id="8wH-rs-Q6c"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="deleteButton" destination="vCL-yL-I1z" id="mTL-Bs-Pre"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3f-Le-LIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2225" y="-149"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="J9D-JS-oXy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="8SK-ae-oNh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="qW6-9Y-Y1F"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VK1-K2-tPi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5eu-Jl-WxT" kind="relationship" relationship="rootViewController" id="3gN-jZ-fwD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iKe-S5-agq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1474" y="-149"/>
+        </scene>
     </scenes>
     <resources>
         <image name="close" width="512" height="512"/>
         <image name="doc.text" catalog="system" width="56" height="64"/>
         <image name="doc.text.fill" catalog="system" width="56" height="64"/>
         <image name="information" width="512" height="512"/>
-        <image name="photo" catalog="system" width="64" height="46"/>
-        <image name="photo.fill" catalog="system" width="64" height="46"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="C5l-XQ-PBj"/>
