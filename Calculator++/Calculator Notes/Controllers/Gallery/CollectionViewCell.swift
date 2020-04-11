@@ -1,16 +1,21 @@
 //
 //  CollectionViewCell.swift
-//  IOSDeleteItemsCollectionViewTutorial
+//  Calculator Notes
 //
-//  Created by Arthur Knopper on 25/04/2019.
-//  Copyright © 2019 Arthur Knopper. All rights reserved.
+//  Created by Joao Flores on 08/04/20.
+//  Copyright © 2020 Joao Flores. All rights reserved.
 //
 
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
+    
+    //MARK: - PROPERTIES
+    
     @IBOutlet weak var checkmarkLabel: UILabel!
+    @IBOutlet weak var viewPhoto: UIView!
+    
+    @IBOutlet weak var imageCell: UIImageView!
     
     var isInEditingMode: Bool = false {
         didSet {
@@ -26,4 +31,11 @@ class CollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func cropBounds(viewlayer: CALayer, cornerRadius: Float) {
+        
+        let imageLayer = viewlayer
+        imageLayer.cornerRadius = CGFloat(cornerRadius)
+        imageLayer.masksToBounds = true
+    }
 }
+
