@@ -8,4 +8,8 @@ target 'Calculator Notes' do
   # Pods for Calculator Notes
 pod 'AssetsPickerViewController', '~> 2.0'
 pod 'DTPhotoViewerController', '~> 1.2.5'
+pod 'ImageViewer'
+pod 'NYTPhotoViewer'
+
+
 end

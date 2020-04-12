@@ -11,56 +11,75 @@ import Photos
 import AssetsPickerViewController
 import DTPhotoViewerController
 import CoreData
+import NYTPhotoViewer
+import ImageViewer
 
 private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
     var modelData = ModelController().fetchImageObjectsInit()
     var image: UIImage!
     var modelController = ModelController()
     
-    @IBAction func deleteItem(_ sender: Any) {
+    //    MARK: - IBOutlet
+    @IBOutlet weak var selectAll: UIBarButtonItem!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    //    MARK: - IBAction
+    
+
+    @IBAction func saveItem(_ sender: Any) {
+        
         if let selectedCells = collectionView?.indexPathsForSelectedItems {
             let items = selectedCells.map { $0.item }.sorted().reversed()
+            
+            var vetImgs = [UIImage] ()
+            
             for item in items {
-                modelData.remove(at: item)
+                let image = modelData[item]
+                vetImgs.append(image)
             }
-            collectionView!.deleteItems(at: selectedCells)
-            deleteButton.isEnabled = false
+            
+            if(vetImgs != []) {
+                let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
+                self.present(activityVC, animated: true)
+            }
         }
     }
     
-    @IBAction func addPhoto(_ sender: Any) {
-        openGalery()
-        
+    @IBAction func deleteItem(_ sender: Any) {
+        ConfirmationReset()
     }
     
-    //    MARK: - Take Profile Image
-    func openGalery() {
-        
+    @IBAction func addPhoto(_ sender: Any) {
         let picker = AssetsPickerViewController()
         picker.pickerDelegate = self
         present(picker, animated: true, completion: nil)
     }
-    
     
     //    MARK: - Life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.backgroundColor = UIColor.black
-        
-        navigationItem.leftBarButtonItem = editButtonItem
-        
-//        populate()
+        navigationItem.leftBarButtonItem =  editButtonItem
     }
     
+    //    MARK: - Collection View
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        
+        if(editing) {
+            deleteButton.isEnabled = true
+            saveButton.isEnabled = true
+        } else {
+            deleteButton.isEnabled = false
+            saveButton.isEnabled = false
+        }
         
         collectionView!.allowsMultipleSelection = editing
         let indexPaths = collectionView!.indexPathsForVisibleItems
@@ -80,76 +99,73 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
         
-        //        cell.titleLabel.text = modelData[indexPath.row]
         cell.isInEditingMode = isEditing
         cell.cropBounds(viewlayer: cell.viewPhoto.layer, cornerRadius: 15)
-        cell.imageCell.image = modelData[indexPath[1]]
+        cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
-            deleteButton.isEnabled = false
-            
-            let imageView = UIImageView(image: modelData[indexPath[1]])
-            let viewController = DTPhotoViewerController(referencedView: imageView, image: modelData[indexPath[1]])
-            self.present(viewController, animated: true, completion: nil)
-        } else {
-            deleteButton.isEnabled = true
+            self.presentImageGallery(GalleryViewController(startIndex: indexPath[1], itemsDataSource: self))
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let selectedItems = collectionView.indexPathsForSelectedItems, selectedItems.count == 0 {
-            deleteButton.isEnabled = false
-        }
+//            if let selectedItems = collectionView.indexPathsForSelectedItems, selectedItems.count == 0 {
+//                deleteButton.isEnabled = false
+//                saveButton.isEnabled = false
+//            }
     }
     
+    func ConfirmationReset() {
+        let refreshAlert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: UIAlertController.Style.alert)
+        
+        refreshAlert.modalPresentationStyle = .popover
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action: UIAlertAction!) in
+            print("Cancel pressed")
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
+                let items = selectedCells.map { $0.item }.sorted().reversed()
+                for item in items {
+                    self.modelData.remove(at: item)
+                    self.modelController.deleteImageObject(imageIndex: item)
+                }
+                self.collectionView!.deleteItems(at: selectedCells)
+            }
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
 }
 
+//    MARK: - Extension CollectionView Input Image
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
-    
-    func assetsPickerCannotAccessPhotoLibrary(controller: AssetsPickerViewController) {}
-    
-    func assetsPickerDidCancel(controller: AssetsPickerViewController) {}
-    
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
         for asset in assets {
             
-            image = getAssetThumbnail(asset: asset, size: 200)
-            let imageView = UIImageView(image: image!)
+            image = getAssetThumbnail(asset: asset)
             modelData.append(image)
             
             let indexPath = IndexPath(row: modelData.count - 1, section: 0)
             collectionView!.insertItems(at: [indexPath])
-        
+            
             modelController.saveImageObject(image: image)
-            modelController.fetchImageObjects()
-            print(modelController.images.count)
         }
     }
     
-    func getAssetThumbnail(asset: PHAsset, size: CGFloat) -> UIImage {
-        let retinaScale = UIScreen.main.scale
-        let retinaSquare = CGSize(width: size * retinaScale, height: size * retinaScale)
-        let cropSizeLength = min(asset.pixelWidth, asset.pixelHeight)
-        let square = CGRect(x: 0, y: 0, width: CGFloat(cropSizeLength), height: CGFloat(cropSizeLength))
-        let cropRect = square.applying(CGAffineTransform(scaleX: 1.0/CGFloat(asset.pixelWidth), y: 1.0/CGFloat(asset.pixelHeight)))
-        
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.default()
-        let options = PHImageRequestOptions()
+        let option = PHImageRequestOptions()
         var thumbnail = UIImage()
-        
-        options.isSynchronous = true
-        options.deliveryMode = .highQualityFormat
-        options.resizeMode = .exact
-        options.normalizedCropRect = cropRect
-        
-        manager.requestImage(for: asset, targetSize: retinaSquare, contentMode: .aspectFit, options: options, resultHandler: {(result, info)->Void in
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
             thumbnail = result!
         })
         return thumbnail
@@ -165,7 +181,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         var cgwidth: CGFloat = CGFloat(width)
         var cgheight: CGFloat = CGFloat(height)
         
-        // See what size is longer and create the center off of that
         if contextSize.width > contextSize.height {
             posX = ((contextSize.width - contextSize.height) / 2)
             posY = 0
@@ -180,10 +195,8 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         
         let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
         
-        // Create bitmap image from context using the rect
         let imageRef: CGImage = cgimage.cropping(to: rect)!
         
-        // Create a new image based on the imageRef and rotate back to the original orientation
         let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
         
         return image
@@ -192,9 +205,22 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
-    func assetsPicker(controller: AssetsPickerViewController, didSelect asset: PHAsset, at indexPath: IndexPath) {}
+    
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
-    func assetsPicker(controller: AssetsPickerViewController, didDeselect asset: PHAsset, at indexPath: IndexPath) {}
+}
+
+//    MARK: - Extension Viewer Image
+extension CollectionViewController: GalleryItemsDataSource {
+    func itemCount() -> Int {
+        return modelData.count
+    }
+    
+    func provideGalleryItem(_ index: Int) -> GalleryItem {
+        let imageView = UIImageView(image: modelData[index])
+        let galleryItem = GalleryItem.image { $0(imageView.image) }
+        
+        return galleryItem
+    }
 }

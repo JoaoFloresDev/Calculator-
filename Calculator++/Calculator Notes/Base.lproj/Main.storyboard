@@ -65,7 +65,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Edit" style="plain" id="TCf-BE-uFw">
                             <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="7XQ-81-TSE" kind="unwind" unwindAction="unwindToListNotesViewControllerFor:" id="DfS-MS-kcE"/>
+                                <action selector="showDeleteButton:" destination="u2p-Xo-LIX" id="4EH-TN-O3L"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vMv-fy-cOh">
@@ -76,9 +76,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="buttonEdit" destination="TCf-BE-uFw" id="4yy-yX-hAd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dXi-TP-ue3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="7XQ-81-TSE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2412" y="623"/>
         </scene>
@@ -567,8 +569,8 @@
                                 <color key="textColor" red="0.54043549300000004" green="0.98502451179999995" blue="0.36062228680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvw-Qv-CIs">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvw-Qv-CIs">
+                                <rect key="frame" x="0.0" y="332.5" width="100" height="128.5"/>
                                 <connections>
                                     <action selector="numberPressed:" destination="wdA-gv-WKS" eventType="touchUpInside" id="vDZ-TX-1nx"/>
                                 </connections>
@@ -612,7 +614,7 @@
         <!--Gallery-->
         <scene sceneID="syh-3c-ow8">
             <objects>
-                <collectionViewController modalPresentationStyle="fullScreen" id="5eu-Jl-WxT" customClass="CollectionViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="CollectionViewController" modalPresentationStyle="fullScreen" id="5eu-Jl-WxT" customClass="CollectionViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" indicatorStyle="black" canCancelContentTouches="NO" dataMode="prototypes" id="Ahn-hE-bVH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -638,18 +640,26 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KVs-zC-Wg0">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rJ4-X6-VF1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="KVs-zC-Wg0" firstAttribute="centerY" secondItem="ThL-dX-pCk" secondAttribute="centerY" id="5G3-bm-qjh"/>
+                                                <constraint firstItem="rJ4-X6-VF1" firstAttribute="height" secondItem="ThL-dX-pCk" secondAttribute="height" id="DnM-Ou-KAR"/>
+                                                <constraint firstItem="rJ4-X6-VF1" firstAttribute="centerX" secondItem="ThL-dX-pCk" secondAttribute="centerX" id="KhU-qW-xgt"/>
+                                                <constraint firstItem="rJ4-X6-VF1" firstAttribute="centerY" secondItem="ThL-dX-pCk" secondAttribute="centerY" id="hdo-ry-SOg"/>
                                                 <constraint firstItem="KVs-zC-Wg0" firstAttribute="width" secondItem="ThL-dX-pCk" secondAttribute="width" id="iNZ-2E-2UA"/>
                                                 <constraint firstItem="KVs-zC-Wg0" firstAttribute="height" secondItem="ThL-dX-pCk" secondAttribute="height" id="mNY-4k-lyf"/>
                                                 <constraint firstItem="KVs-zC-Wg0" firstAttribute="centerX" secondItem="ThL-dX-pCk" secondAttribute="centerX" id="njx-su-h0n"/>
+                                                <constraint firstItem="rJ4-X6-VF1" firstAttribute="width" secondItem="ThL-dX-pCk" secondAttribute="width" id="twK-Jf-g03"/>
                                             </constraints>
                                         </view>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daY-5h-OVc">
                                             <rect key="frame" x="69" y="70" width="0.0" height="0.0"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -667,6 +677,7 @@
                                 <connections>
                                     <outlet property="checkmarkLabel" destination="daY-5h-OVc" id="lnI-yo-KS7"/>
                                     <outlet property="imageCell" destination="KVs-zC-Wg0" id="1K4-c0-4UW"/>
+                                    <outlet property="selectedItem" destination="rJ4-X6-VF1" id="aGk-aI-zj5"/>
                                     <outlet property="viewPhoto" destination="ThL-dX-pCk" id="jKl-ko-ohc"/>
                                 </connections>
                             </collectionViewCell>
@@ -678,6 +689,7 @@
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Gallery" image="photo" catalog="system" selectedImage="photo.fill" id="arq-lE-EM4"/>
                     <navigationItem key="navigationItem" title="Gallery" id="EVZ-x3-7V8">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="x3X-ar-gxL"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="vht-Ig-dfd">
                                 <connections>
@@ -689,16 +701,22 @@
                                     <action selector="deleteItem:" destination="5eu-Jl-WxT" id="8wH-rs-Q6c"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="action" id="Gah-X1-LeI">
+                                <connections>
+                                    <action selector="saveItem:" destination="5eu-Jl-WxT" id="9CJ-rk-5j6"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="deleteButton" destination="vCL-yL-I1z" id="mTL-Bs-Pre"/>
+                        <outlet property="saveButton" destination="Gah-X1-LeI" id="MzN-zA-Ddr"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M3f-Le-LIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="-149"/>
+            <point key="canvasLocation" x="2393" y="-160"/>
         </scene>
         <!--Item-->
         <scene sceneID="J9D-JS-oXy">

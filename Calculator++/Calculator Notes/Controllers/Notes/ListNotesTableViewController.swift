@@ -67,10 +67,21 @@ class ListNotesTableViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func unwindToListNotesViewController(_ segue: UIStoryboardSegue) {
+    
+    @IBOutlet weak var buttonEdit: UIBarButtonItem!
+    @IBAction func showDeleteButton(_ sender: Any) {
         
-        // for now, simply defining the method is sufficient.
-        // we'll add code later
+        if(self.isEditing) {
+            self.setEditing(false, animated: true)
+            buttonEdit.title = "Edit"
+        } else {
+            self.setEditing(true, animated: true)
+            buttonEdit.title = "Cancel"
+        }
+        
+    }
+    
+    @IBAction func unwindToListNotesViewController(_ segue: UIStoryboardSegue) {
         self.notes = CoreDataHelper.retrieveNote()
         
     }

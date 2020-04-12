@@ -12,6 +12,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     //MARK: - PROPERTIES
     
+    @IBOutlet weak var selectedItem: UIImageView!
     @IBOutlet weak var checkmarkLabel: UILabel!
     @IBOutlet weak var viewPhoto: UIView!
     
@@ -20,6 +21,7 @@ class CollectionViewCell: UICollectionViewCell {
     var isInEditingMode: Bool = false {
         didSet {
             checkmarkLabel.isHidden = !isInEditingMode
+            selectedItem.isHidden = !isInEditingMode
         }
     }
     
@@ -27,6 +29,7 @@ class CollectionViewCell: UICollectionViewCell {
         didSet {
             if isInEditingMode {
                 checkmarkLabel.text = isSelected ? "✓" : ""
+                selectedItem.alpha = isSelected ? 0.5 : 0
             }
         }
     }

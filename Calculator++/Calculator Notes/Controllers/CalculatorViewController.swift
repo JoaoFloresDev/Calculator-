@@ -18,9 +18,9 @@ enum Operation:String {
 
 class CalculatorViewController: UIViewController {
     
+    
     @IBOutlet var InstructionsLabel: [UILabel]!
     @IBOutlet weak var outputLbl: UILabel!
-    @IBOutlet weak var informationButton: UIButton!
     
     var captureKey = 0
     var runningNumber = ""
@@ -38,9 +38,9 @@ class CalculatorViewController: UIViewController {
         
         if(senha == "") {
             InstructionsLabel[0].alpha = 1
-            informationButton.alpha = 0
             captureKey = 1
         }
+        
     }
     
     func atualizeKey() {
@@ -74,7 +74,6 @@ class CalculatorViewController: UIViewController {
             
             InstructionsLabel[0].text = ""
             InstructionsLabel[0].alpha = 0
-            informationButton.alpha = 1
             
             captureKey = 0
         }
@@ -94,8 +93,6 @@ class CalculatorViewController: UIViewController {
         
         operation(operation: currentOperation)
     }
-    
-    @IBAction func unwindToListNotesViewController (for segue: UIStoryboardSegue) {}
     
     @IBAction func addPressed(_ sender: UIButton) {
         
@@ -158,6 +155,42 @@ class CalculatorViewController: UIViewController {
             runningNumber = ""
             currentOperation = operation
         }
+    }
+    
+    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
+        
+        let cgimage = image.cgImage!
+        let contextImage: UIImage = UIImage(cgImage: cgimage)
+        let contextSize: CGSize = contextImage.size
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        var cgwidth: CGFloat = CGFloat(width)
+        var cgheight: CGFloat = CGFloat(height)
+        
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - contextSize.height) / 2)
+            posY = 0
+            cgwidth = contextSize.height
+            cgheight = contextSize.height
+        } else {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+            cgwidth = contextSize.width
+            cgheight = contextSize.width
+        }
+        
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
+        
+        let imageRef: CGImage = cgimage.cropping(to: rect)!
+        
+        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        
+        return image
+    }
+    
+//    MARK: Style
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
