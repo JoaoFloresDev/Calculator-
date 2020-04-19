@@ -21,9 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillResignActive(_ application: UIApplication) {
 
-        
         if let rootViewController = window?.rootViewController as? CalculatorViewController,
-            let presentedViewController = rootViewController.presentedViewController as? UINavigationController{
+            let presentedViewController = rootViewController.presentedViewController{
             print("\(rootViewController)")
             presentedViewController.dismiss(animated: false, completion: nil)
         }

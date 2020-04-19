@@ -13,6 +13,7 @@ import DTPhotoViewerController
 import CoreData
 import NYTPhotoViewer
 import ImageViewer
+import StoreKit
 
 private let reuseIdentifier = "Cell"
 
@@ -25,13 +26,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     var modelController = ModelController()
     
     //    MARK: - IBOutlet
-    @IBOutlet weak var selectAll: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     //    MARK: - IBAction
-    
-
     @IBAction func saveItem(_ sender: Any) {
         
         if let selectedCells = collectionView?.indexPathsForSelectedItems {
@@ -67,8 +65,20 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         
         navigationController?.navigationBar.backgroundColor = UIColor.black
         navigationItem.leftBarButtonItem =  editButtonItem
+        
+        if(UserDefaults.standard.bool(forKey: "noFirstUse")) {
+            self.rateApp()
+        } else {
+            UserDefaults.standard.set (true, forKey: "noFirstUse")
+        }
     }
     
+    func rateApp() {
+        if #available(iOS 10.3, *) {
+
+            SKStoreReviewController.requestReview()
+        }
+    }
     //    MARK: - Collection View
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
@@ -78,7 +88,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             saveButton.isEnabled = true
         } else {
             deleteButton.isEnabled = false
-            saveButton.isEnabled = false
+            saveButton.isEnabled = false 
         }
         
         collectionView!.allowsMultipleSelection = editing
