@@ -14,16 +14,19 @@ import CoreData
 import NYTPhotoViewer
 import ImageViewer
 import StoreKit
+import GoogleMobileAds
 
 private let reuseIdentifier = "Cell"
 
-class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
     
     //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var modelData = ModelController().fetchImageObjectsInit()
     var image: UIImage!
     var modelController = ModelController()
+    
+    var bannerView: GADBannerView!
     
     //    MARK: - IBOutlet
     @IBOutlet weak var deleteButton: UIBarButtonItem!
@@ -66,11 +69,38 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         navigationController?.navigationBar.backgroundColor = UIColor.black
         navigationItem.leftBarButtonItem =  editButtonItem
         
-        if(UserDefaults.standard.bool(forKey: "noFirstUse")) {
-            self.rateApp()
-        } else {
-            UserDefaults.standard.set (true, forKey: "noFirstUse")
-        }
+//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
+                
+        bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+                addBannerViewToView(bannerView)
+                
+                bannerView.adUnitID = "ca-app-pub-8858389345934911/9257029729"
+        //        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+                bannerView.rootViewController = self
+                
+                bannerView.load(GADRequest())
+                bannerView.delegate = self
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+        ])
     }
     
     func rateApp() {
@@ -88,7 +118,8 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             saveButton.isEnabled = true
         } else {
             deleteButton.isEnabled = false
-            saveButton.isEnabled = false 
+            saveButton.isEnabled = false
+            self.rateApp()
         }
         
         collectionView!.allowsMultipleSelection = editing

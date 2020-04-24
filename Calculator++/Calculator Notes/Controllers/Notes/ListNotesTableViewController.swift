@@ -23,8 +23,10 @@
 
 import UIKit
 import CoreData
+import GoogleMobileAds
 
-class ListNotesTableViewController: UITableViewController {
+class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate {
+    var bannerView: GADBannerView!
     
     var notes = [Note]() {
         didSet {
@@ -37,6 +39,38 @@ class ListNotesTableViewController: UITableViewController {
         
         navigationController?.navigationBar.backgroundColor = UIColor.black
         notes = CoreDataHelper.retrieveNote()
+        
+//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
+        bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+        addBannerViewToView(bannerView)
+        
+        bannerView.adUnitID = "ca-app-pub-8858389345934911/9257029729"
+//        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+        ])
     }
     
     // 1
@@ -76,9 +110,16 @@ class ListNotesTableViewController: UITableViewController {
             buttonEdit.title = "Edit"
         } else {
             self.setEditing(true, animated: true)
-            buttonEdit.title = "Cancel"
+            buttonEdit.title = "Done"
+            self.rateApp()
         }
-        
+    }
+    
+    func rateApp() {
+        if #available(iOS 10.3, *) {
+
+            SKStoreReviewController.requestReview()
+        }
     }
     
     @IBAction func unwindToListNotesViewController(_ segue: UIStoryboardSegue) {

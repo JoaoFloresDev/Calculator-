@@ -164,23 +164,27 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AssetsPickerViewController/AssetsPickerViewController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DTPhotoViewerController/DTPhotoViewerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Device/Device.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/NYTPhotoViewer/NYTPhotoViewer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AssetsPickerViewController/AssetsPickerViewController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DTPhotoViewerController/DTPhotoViewerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Device/Device.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/NYTPhotoViewer/NYTPhotoViewer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
