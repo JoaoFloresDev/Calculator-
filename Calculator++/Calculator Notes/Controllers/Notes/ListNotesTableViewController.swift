@@ -108,10 +108,10 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         if(self.isEditing) {
             self.setEditing(false, animated: true)
             buttonEdit.title = "Edit"
+            self.rateApp()
         } else {
             self.setEditing(true, animated: true)
             buttonEdit.title = "Done"
-            self.rateApp()
         }
     }
     
