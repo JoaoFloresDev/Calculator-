@@ -15,7 +15,6 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
-
 private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
@@ -69,17 +68,18 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         navigationController?.navigationBar.backgroundColor = UIColor.black
         navigationItem.leftBarButtonItem =  editButtonItem
         
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
                 
         bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
                 addBannerViewToView(bannerView)
                 
-                bannerView.adUnitID = "ca-app-pub-8858389345934911/9257029729"
+                bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
         //        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
                 bannerView.rootViewController = self
                 
                 bannerView.load(GADRequest())
                 bannerView.delegate = self
+        
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -142,11 +142,23 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
         
+        
+        
+        
         cell.isInEditingMode = isEditing
-        cell.cropBounds(viewlayer: cell.viewPhoto.layer, cornerRadius: 15)
+        
         cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+        applyshadowWithCorner(containerView : cell)
         
         return cell
+    }
+    
+    func applyshadowWithCorner(containerView : UIView){
+        containerView.clipsToBounds = false
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 0.5
+        containerView.layer.shadowOffset = CGSize.zero
+        containerView.layer.shadowRadius = 3
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -11,6 +11,6 @@ pod 'DTPhotoViewerController', '~> 1.2.5'
 pod 'ImageViewer'
 pod 'NYTPhotoViewer'
 pod 'Google-Mobile-Ads-SDK'
-
+pod 'VegaScrollFlowLayout'
 
 end
