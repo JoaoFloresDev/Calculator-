@@ -21,7 +21,7 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet var InstructionsLabel: [UILabel]!
     @IBOutlet weak var outputLbl: UILabel!
-    
+    var keyTemp = ""
     var captureKey = 0
     var runningNumber = ""
     var leftValue = ""
@@ -63,10 +63,13 @@ class CalculatorViewController: UIViewController {
             senha = String(runningNumber)
             InstructionsLabel[0].text = "Key: \(senha).   Enter it again and confirm with '='"
             captureKey = 2
-            UserDefaults.standard.set (senha, forKey: "Key")
+            keyTemp = senha
+
             Clear()
             
-        } else if(captureKey == 2 && String(runningNumber) == senha && runningNumber.count <= 6 && runningNumber.count >= 1) {
+        } else if(captureKey == 2 && String(runningNumber) == keyTemp && runningNumber.count <= 6 && runningNumber.count >= 1) {
+            
+            UserDefaults.standard.set (senha, forKey: "Key")
             
             InstructionsLabel[0].text = ""
             InstructionsLabel[0].alpha = 0

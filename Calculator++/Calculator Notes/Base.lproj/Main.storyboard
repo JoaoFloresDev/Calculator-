@@ -287,7 +287,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="o5V-VC-7Bp">
             <objects>
-                <tabBarController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="8ez-Al-Xfm" sceneMemberID="viewController">
+                <tabBarController modalPresentationStyle="fullScreen" id="8ez-Al-Xfm" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cvh-nA-JKi"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M4W-bt-GPM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -307,7 +307,7 @@
         <!--Calculator View Controller-->
         <scene sceneID="4Uz-1B-S8t">
             <objects>
-                <viewController id="wdA-gv-WKS" customClass="CalculatorViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalcMode" modalPresentationStyle="fullScreen" id="wdA-gv-WKS" customClass="CalculatorViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ahB-78-uy6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -746,7 +746,7 @@
         <!--Password View Controller-->
         <scene sceneID="Wtx-Rg-EfN">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="JpR-h0-Vdp" customClass="PasswordViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BankMode" modalPresentationStyle="fullScreen" id="JpR-h0-Vdp" customClass="PasswordViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FpU-8o-hxb"/>
                         <viewControllerLayoutGuide type="bottom" id="8mY-ua-qnw"/>
@@ -1636,7 +1636,7 @@
                     <connections>
                         <outlet property="outputLbl" destination="Ulw-M1-gsg" id="ykg-ch-ADr"/>
                         <outletCollection property="InstructionsLabel" destination="oG7-5a-kh0" collectionClass="NSMutableArray" id="DMP-3S-4pO"/>
-                        <segue destination="8ez-Al-Xfm" kind="show" identifier="showNotes" id="SWl-jQ-Gul"/>
+                        <segue destination="8ez-Al-Xfm" kind="show" identifier="showNotes" animates="NO" id="SWl-jQ-Gul"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BL7-t4-hc7" sceneMemberID="firstResponder"/>
@@ -1962,7 +1962,7 @@
                         <outlet property="circle5" destination="Zaa-yg-ach" id="xLx-uS-nR9"/>
                         <outlet property="circle6" destination="HfL-Y0-KgZ" id="INJ-ib-39a"/>
                         <outlet property="instructionsLabel" destination="4d3-Fw-ub8" id="EVG-p0-8sG"/>
-                        <segue destination="8ez-Al-Xfm" kind="show" identifier="showNotes2" id="VHw-wb-ySU"/>
+                        <segue destination="8ez-Al-Xfm" kind="show" identifier="showNotes2" animates="NO" id="VHw-wb-ySU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbD-Cv-Ro2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1971,7 +1971,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SWl-jQ-Gul"/>
+        <segue reference="e4T-p1-AJP"/>
         <segue reference="dRW-s7-0oF"/>
     </inferredMetricsTieBreakers>
     <resources>

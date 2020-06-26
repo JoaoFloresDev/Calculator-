@@ -72,7 +72,7 @@ class ChangeCalculatorViewController: UIViewController {
                 currentOperation = .NULL
                 
                 outputLbl.text = "0"
-                
+                UserDefaults.standard.set(true, forKey: "Mode")
                 self.performSegue(withIdentifier: "showNotes", sender: nil)
             }
             

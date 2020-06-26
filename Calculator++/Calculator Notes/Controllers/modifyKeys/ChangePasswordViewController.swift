@@ -85,19 +85,7 @@ class ChangePasswordViewController: UIViewController {
     }
     
     @IBAction func Enter(_ sender: Any) {
-        var password = ""
-        for word in arrayPassword {
-            password += String(word)
-        }
-        if(KeyCurret == password && captureKey == 1) {
-            instructionsLabel.text = "Key: \(KeyCurret).   Enter to confirm change"
-            captureKey = 0
-            clearAll()
-        }
-        else if(KeyCurret == password) {
-            clearAll()
-            self.performSegue(withIdentifier: "showNotes2", sender: nil)
-        }
+        enterPassword()
     }
     
     // MARK: - PasswordUI
@@ -118,6 +106,25 @@ class ChangePasswordViewController: UIViewController {
         }
     }
     
+    func enterPassword() {
+        var password = ""
+        for word in arrayPassword {
+            password += String(word)
+        }
+        if(KeyCurret == password && captureKey == 1) {
+            instructionsLabel.text = "Key: \(KeyCurret).   Enter to confirm change"
+            captureKey = 0
+            clearAll()
+        }
+        else if(KeyCurret == password) {
+            clearAll()
+            UserDefaults.standard.set(false, forKey: "Mode")
+            
+            showAlert()
+//            self.performSegue(withIdentifier: "showNotes2", sender: nil)
+        }
+    }
+    
     //    MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,5 +137,16 @@ class ChangePasswordViewController: UIViewController {
         arrayCircles.append(circle6)
         
         captureKey = 1
+    }
+    
+    //    MARK: - Alert
+    func showAlert() {
+        let refreshAlert = UIAlertController(title: "Done", message: "Bank mode has been activated", preferredStyle: UIAlertControllerStyle.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+
+        present(refreshAlert, animated: true, completion: nil)
     }
 }

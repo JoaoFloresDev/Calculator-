@@ -18,11 +18,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        //        select root
+        if (UserDefaults.standard.bool(forKey: "Mode") == true) {
+            print("Modo calculadora")
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
+
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+        else {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
+
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
 
+        if (UserDefaults.standard.bool(forKey: "Mode") == true) {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
+
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+        else {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
+
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+        
         if let rootViewController = window?.rootViewController as? CalculatorViewController,
             let presentedViewController = rootViewController.presentedViewController{
             print("\(rootViewController)")
