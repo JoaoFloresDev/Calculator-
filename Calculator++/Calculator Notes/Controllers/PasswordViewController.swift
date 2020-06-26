@@ -71,13 +71,17 @@ class PasswordViewController: UIViewController {
         populate (number: 0)
     }
     
-    @IBAction func ClearPassword(_ sender: Any) {
+    func clearAll() {
         arrayPassword.removeAll()
         for x in 0...arrayCircles.count-1 {
             arrayCircles[x].image = UIImage(named: "keyEmpity")
         }
         
         arrayCircles[0].image = UIImage(named: "keyCurrent")
+    }
+    
+    @IBAction func ClearPassword(_ sender: Any) {
+        clearAll()
     }
     
     @IBAction func Enter(_ sender: Any) {
@@ -91,7 +95,7 @@ class PasswordViewController: UIViewController {
             instructionsLabel.text = "Key: \(KeyCurret).   Enter it again and confirm with 'Enter'"
             captureKey = 2
             UserDefaults.standard.set (KeyCurret, forKey: "Key")
-            ClearPassword("teste")
+             clearAll()
         }
         else if(KeyCurret == password) {
             self.performSegue(withIdentifier: "showNotes2", sender: nil)
@@ -117,6 +121,10 @@ class PasswordViewController: UIViewController {
     }
     
     //    MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        clearAll()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
