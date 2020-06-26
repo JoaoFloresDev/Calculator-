@@ -23,6 +23,9 @@
 		C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43CBCE1245E004E000B348E /* StyleClass.swift */; };
 		C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */; };
 		C46AD1012441708400EF0236 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46AD1002441708400EF0236 /* ModelController.swift */; };
+		C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E324A559AA003E2FA5 /* SettingsViewController.swift */; };
+		C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */; };
+		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
 		F6B0DEFAD8397A4646C29BEC /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F17912CE0F7D4FEAE3F3E1 /* Pods_Calculator_Notes.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +64,9 @@
 		C43CBCE1245E004E000B348E /* StyleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleClass.swift; sourceTree = "<group>"; };
 		C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdCoreDataImg.swift; sourceTree = "<group>"; };
 		C46AD1002441708400EF0236 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		C48108E324A559AA003E2FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		F2F17912CE0F7D4FEAE3F3E1 /* Pods_Calculator_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,6 +124,8 @@
 			children = (
 				C41F8483249F271F0015F134 /* PasswordViewController.swift */,
 				C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */,
+				C48108E524A57505003E2FA5 /* modifyKeys */,
+				C48108E224A55991003E2FA5 /* Settings */,
 				C435ED10243FEA6C00D5F708 /* Gallery */,
 				C435ED0F243FEA5D00D5F708 /* Notes */,
 			);
@@ -191,6 +199,23 @@
 				C46AD1002441708400EF0236 /* ModelController.swift */,
 			);
 			path = Gallery;
+			sourceTree = "<group>";
+		};
+		C48108E224A55991003E2FA5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		C48108E524A57505003E2FA5 /* modifyKeys */ = {
+			isa = PBXGroup;
+			children = (
+				C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */,
+				C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */,
+			);
+			path = modifyKeys;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,11 +363,14 @@
 				2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */,
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
+				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */,
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
+				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
+				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,

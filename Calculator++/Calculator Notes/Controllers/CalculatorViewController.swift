@@ -42,10 +42,6 @@ class CalculatorViewController: UIViewController {
         }
         
     }
-    
-    func atualizeKey() {
-        UserDefaults.standard.set(senha, forKey: "Key")
-    }
 
     @IBAction func numberPressed(_ sender: UIButton) {
         if runningNumber.count <= 9 {

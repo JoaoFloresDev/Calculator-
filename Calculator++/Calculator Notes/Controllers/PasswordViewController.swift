@@ -13,7 +13,8 @@ class PasswordViewController: UIViewController {
     // MARK: - Variables
     var arrayPassword = [Int]()
     var arrayCircles = [UIImageView]()
-    var senha = UserDefaults.standard.string(forKey: "Key") ?? ""
+    var captureKey = 0
+    var KeyCurret = UserDefaults.standard.string(forKey: "Key") ?? ""
     
     //    MARK: - IBOutlets
     
@@ -27,6 +28,7 @@ class PasswordViewController: UIViewController {
     @IBOutlet weak var circle4: UIImageView!
     @IBOutlet weak var circle5: UIImageView!
     @IBOutlet weak var circle6: UIImageView!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
     //    MARK: - IBAction
     @IBAction func button1(_ sender: Any) {
@@ -78,16 +80,20 @@ class PasswordViewController: UIViewController {
         arrayCircles[0].image = UIImage(named: "keyCurrent")
     }
     
-//    String(runningNumber) == senha
-    
     @IBAction func Enter(_ sender: Any) {
         var password = ""
         for word in arrayPassword {
             password += String(word)
         }
-        print(password)
-        if(senha == password) {
-            print("Certo!!!")
+        
+        if(password.count >= 1 && captureKey == 1) {
+            KeyCurret = String(password)
+            instructionsLabel.text = "Key: \(KeyCurret).   Enter it again and confirm with 'Enter'"
+            captureKey = 2
+            UserDefaults.standard.set (KeyCurret, forKey: "Key")
+            ClearPassword("teste")
+        }
+        else if(KeyCurret == password) {
             self.performSegue(withIdentifier: "showNotes2", sender: nil)
         }
     }
@@ -120,5 +126,10 @@ class PasswordViewController: UIViewController {
         arrayCircles.append(circle4)
         arrayCircles.append(circle5)
         arrayCircles.append(circle6)
+        
+        if(KeyCurret == "") {
+            instructionsLabel.text = "Create a password and click 'enter'"
+            captureKey = 1
+        }
     }
 }

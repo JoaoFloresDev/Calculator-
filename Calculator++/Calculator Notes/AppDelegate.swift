@@ -28,6 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("\(rootViewController)")
             presentedViewController.dismiss(animated: false, completion: nil)
         }
+        else  if let rootViewController = window?.rootViewController as? PasswordViewController,
+            let presentedViewController = rootViewController.presentedViewController{
+            print("\(rootViewController)")
+            presentedViewController.dismiss(animated: false, completion: nil)
+        }
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
