@@ -26,6 +26,11 @@
 		C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E324A559AA003E2FA5 /* SettingsViewController.swift */; };
 		C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */; };
 		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
+		C4A819F024A6C113005023C6 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EB24A6C111005023C6 /* Calculator.swift */; };
+		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
+		C4A819F224A6C113005023C6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819ED24A6C112005023C6 /* DetailViewController.swift */; };
+		C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EE24A6C112005023C6 /* ProductCell.swift */; };
+		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
 		F6B0DEFAD8397A4646C29BEC /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F17912CE0F7D4FEAE3F3E1 /* Pods_Calculator_Notes.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +72,11 @@
 		C48108E324A559AA003E2FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
+		C4A819EB24A6C111005023C6 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		C4A819ED24A6C112005023C6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C4A819EE24A6C112005023C6 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		F2F17912CE0F7D4FEAE3F3E1 /* Pods_Calculator_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
+				C4A819EA24A6C0FB005023C6 /* Purchase */,
 				2E4A07AC1C42F4EB007F415F /* Helpers */,
 				2E4A07AD1C42F4EB007F415F /* Extensions */,
 				2E4A07A51C42F3F2007F415F /* Controllers */,
@@ -216,6 +227,18 @@
 				C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */,
 			);
 			path = modifyKeys;
+			sourceTree = "<group>";
+		};
+		C4A819EA24A6C0FB005023C6 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				C4A819EB24A6C111005023C6 /* Calculator.swift */,
+				C4A819ED24A6C112005023C6 /* DetailViewController.swift */,
+				C4A819EC24A6C111005023C6 /* IAPHelper.swift */,
+				C4A819EE24A6C112005023C6 /* ProductCell.swift */,
+				C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */,
+			);
+			path = Purchase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,13 +388,18 @@
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
+				C4A819F024A6C113005023C6 /* Calculator.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
+				C4A819F224A6C113005023C6 /* DetailViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */,
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
+				C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */,
+				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */,
+				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
@@ -500,7 +528,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Calculator Notes/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 27;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
@@ -522,7 +550,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Calculator Notes/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 27;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
