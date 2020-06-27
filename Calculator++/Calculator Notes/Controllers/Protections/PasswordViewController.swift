@@ -139,4 +139,9 @@ class PasswordViewController: UIViewController {
             captureKey = 1
         }
     }
+    
+    //    MARK: Style
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

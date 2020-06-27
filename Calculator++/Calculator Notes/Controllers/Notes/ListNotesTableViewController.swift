@@ -34,22 +34,39 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         }
     }
     
+//    MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.backgroundColor = UIColor.black
         notes = CoreDataHelper.retrieveNote()
         
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
-        bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
-        addBannerViewToView(bannerView)
-        
-//        bannerView.adUnitID = "ca-app-pub-8858389345934911/9257029729"
-        bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
-        bannerView.rootViewController = self
-        
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
+        setupAds()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupAds()
+    }
+    
+//    MARK: - Ads
+    func setupAds() {
+        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+            if let banner = bannerView {
+                banner.removeFromSuperview()
+            }
+        }
+        else {
+            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
+            
+            bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+            addBannerViewToView(bannerView)
+            
+            bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
+            bannerView.rootViewController = self
+            
+            bannerView.load(GADRequest())
+            bannerView.delegate = self
+        }
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {

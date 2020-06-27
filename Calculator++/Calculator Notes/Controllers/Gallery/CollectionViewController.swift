@@ -68,18 +68,33 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         navigationController?.navigationBar.backgroundColor = UIColor.black
         navigationItem.leftBarButtonItem =  editButtonItem
         
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
-                
-        bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
-                addBannerViewToView(bannerView)
-                
-                bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
-        //        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-                bannerView.rootViewController = self
-                
-                bannerView.load(GADRequest())
-                bannerView.delegate = self
+        setupAds()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupAds()
+    }
+    
+    //    MARK: - Ads
+    func setupAds() {
+        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+            if let banner = bannerView {
+                banner.removeFromSuperview()
+            }
+        }
+        else {
+            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
+            
+            bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+            addBannerViewToView(bannerView)
+            
+            bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
+            bannerView.rootViewController = self
+            
+            bannerView.load(GADRequest())
+            bannerView.delegate = self
+        }
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -103,12 +118,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         ])
     }
     
-    func rateApp() {
-        if #available(iOS 10.3, *) {
-
-            SKStoreReviewController.requestReview()
-        }
-    }
     //    MARK: - Collection View
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
@@ -168,10 +177,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//            if let selectedItems = collectionView.indexPathsForSelectedItems, selectedItems.count == 0 {
-//                deleteButton.isEnabled = false
-//                saveButton.isEnabled = false
-//            }
+
     }
     
     func ConfirmationReset() {
@@ -195,6 +201,14 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         }))
         
         present(refreshAlert, animated: true, completion: nil)
+    }
+
+//    MARK: - StoreKit
+    func rateApp() {
+        if #available(iOS 10.3, *) {
+
+            SKStoreReviewController.requestReview()
+        }
     }
 }
 
@@ -262,6 +276,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
+    
 }
 
 //    MARK: - Extension Viewer Image

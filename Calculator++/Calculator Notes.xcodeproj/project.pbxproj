@@ -24,10 +24,12 @@
 		C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */; };
 		C46AD1012441708400EF0236 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46AD1002441708400EF0236 /* ModelController.swift */; };
 		C480A50224A770E500094FC8 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C480A50124A770E500094FC8 /* MasterViewController.swift */; };
+		C480A50424A7746B00094FC8 /* Notes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C480A50324A7746A00094FC8 /* Notes.storyboard */; };
+		C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C480A50524A7752F00094FC8 /* Gallery.storyboard */; };
+		C480A50824A7757600094FC8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C480A50724A7757600094FC8 /* Settings.storyboard */; };
 		C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E324A559AA003E2FA5 /* SettingsViewController.swift */; };
 		C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */; };
 		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
-		C4A819F024A6C113005023C6 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EB24A6C111005023C6 /* Calculator.swift */; };
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
 		C4A819F224A6C113005023C6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819ED24A6C112005023C6 /* DetailViewController.swift */; };
 		C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EE24A6C112005023C6 /* ProductCell.swift */; };
@@ -71,10 +73,12 @@
 		C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdCoreDataImg.swift; sourceTree = "<group>"; };
 		C46AD1002441708400EF0236 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		C480A50124A770E500094FC8 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		C480A50324A7746A00094FC8 /* Notes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notes.storyboard; sourceTree = "<group>"; };
+		C480A50524A7752F00094FC8 /* Gallery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gallery.storyboard; sourceTree = "<group>"; };
+		C480A50724A7757600094FC8 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		C48108E324A559AA003E2FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
-		C4A819EB24A6C111005023C6 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		C4A819ED24A6C112005023C6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C4A819EE24A6C112005023C6 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
@@ -125,6 +129,9 @@
 				2E4A07A71C42F3F2007F415F /* Models */,
 				848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */,
 				2E4A07971C42F3B0007F415F /* Main.storyboard */,
+				C480A50724A7757600094FC8 /* Settings.storyboard */,
+				C480A50324A7746A00094FC8 /* Notes.storyboard */,
+				C480A50524A7752F00094FC8 /* Gallery.storyboard */,
 				2E4A079A1C42F3B0007F415F /* Assets.xcassets */,
 				2E4A079C1C42F3B0007F415F /* LaunchScreen.storyboard */,
 				2E4A079F1C42F3B0007F415F /* Info.plist */,
@@ -135,9 +142,7 @@
 		2E4A07A51C42F3F2007F415F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C41F8483249F271F0015F134 /* PasswordViewController.swift */,
-				C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */,
-				C48108E524A57505003E2FA5 /* modifyKeys */,
+				C48108E524A57505003E2FA5 /* Protections */,
 				C48108E224A55991003E2FA5 /* Settings */,
 				C435ED10243FEA6C00D5F708 /* Gallery */,
 				C435ED0F243FEA5D00D5F708 /* Notes */,
@@ -217,25 +222,26 @@
 		C48108E224A55991003E2FA5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				C480A50124A770E500094FC8 /* MasterViewController.swift */,
 				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		C48108E524A57505003E2FA5 /* modifyKeys */ = {
+		C48108E524A57505003E2FA5 /* Protections */ = {
 			isa = PBXGroup;
 			children = (
+				C41F8483249F271F0015F134 /* PasswordViewController.swift */,
+				C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */,
 				C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */,
 				C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */,
 			);
-			path = modifyKeys;
+			path = Protections;
 			sourceTree = "<group>";
 		};
 		C4A819EA24A6C0FB005023C6 /* Purchase */ = {
 			isa = PBXGroup;
 			children = (
-				C480A50124A770E500094FC8 /* MasterViewController.swift */,
-				C4A819EB24A6C111005023C6 /* Calculator.swift */,
 				C4A819ED24A6C112005023C6 /* DetailViewController.swift */,
 				C4A819EC24A6C111005023C6 /* IAPHelper.swift */,
 				C4A819EE24A6C112005023C6 /* ProductCell.swift */,
@@ -308,7 +314,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C480A50424A7746B00094FC8 /* Notes.storyboard in Resources */,
+				C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */,
 				2E4A079E1C42F3B0007F415F /* LaunchScreen.storyboard in Resources */,
+				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
 				2E4A079B1C42F3B0007F415F /* Assets.xcassets in Resources */,
 				2E4A07991C42F3B0007F415F /* Main.storyboard in Resources */,
 			);
@@ -391,7 +400,6 @@
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
-				C4A819F024A6C113005023C6 /* Calculator.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4A819F224A6C113005023C6 /* DetailViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
