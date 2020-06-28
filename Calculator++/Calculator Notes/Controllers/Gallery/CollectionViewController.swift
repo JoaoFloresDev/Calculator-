@@ -56,7 +56,11 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
     
     @IBAction func addPhoto(_ sender: Any) {
+        
+        let pickerConfig = AssetsPickerConfig()
+        
         let picker = AssetsPickerViewController()
+        picker.pickerConfig = pickerConfig
         picker.pickerDelegate = self
         present(picker, animated: true, completion: nil)
     }
@@ -216,14 +220,15 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
         for asset in assets {
-            
-            image = getAssetThumbnail(asset: asset)
-            modelData.append(image)
-            
-            let indexPath = IndexPath(row: modelData.count - 1, section: 0)
-            collectionView!.insertItems(at: [indexPath])
-            
-            modelController.saveImageObject(image: image)
+            if(asset.mediaType.rawValue != 2) {
+                image = getAssetThumbnail(asset: asset)
+                modelData.append(image)
+                
+                let indexPath = IndexPath(row: modelData.count - 1, section: 0)
+                collectionView!.insertItems(at: [indexPath])
+                
+                modelController.saveImageObject(image: image)
+            }
         }
     }
     

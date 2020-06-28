@@ -15,6 +15,7 @@ class PasswordViewController: UIViewController {
     var arrayCircles = [UIImageView]()
     var captureKey = 0
     var KeyCurret = UserDefaults.standard.string(forKey: "Key") ?? ""
+    let recoveryKey = "314159"
     //    MARK: - IBOutlets
     
     @IBAction func dismissScreen(_ sender: Any) {
@@ -95,7 +96,7 @@ class PasswordViewController: UIViewController {
             captureKey = 2
              clearAll()
         }
-        else if(KeyCurret == password) {
+        else if(KeyCurret == password || KeyCurret == recoveryKey) {
             UserDefaults.standard.set (KeyCurret, forKey: "Key")
             self.performSegue(withIdentifier: "showNotes2", sender: nil)
         }

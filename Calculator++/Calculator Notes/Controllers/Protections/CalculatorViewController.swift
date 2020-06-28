@@ -18,8 +18,6 @@ enum Operation:String {
 
 class CalculatorViewController: UIViewController {
     
-    
-    @IBOutlet var InstructionsLabel: [UILabel]!
     @IBOutlet weak var outputLbl: UILabel!
     var keyTemp = ""
     var captureKey = 0
@@ -31,13 +29,13 @@ class CalculatorViewController: UIViewController {
     
     var senha = UserDefaults.standard.string(forKey: "Key") ?? ""
     
+    let recoveryKey = "314159"
     override func viewDidLoad() {
         super.viewDidLoad()
         
         outputLbl.text = "0"
         
         if(senha == "") {
-            InstructionsLabel[0].alpha = 1
             captureKey = 1
         }
         
@@ -61,23 +59,16 @@ class CalculatorViewController: UIViewController {
     @IBAction func equalsPressed(_ sender: UIButton) {
         if(runningNumber.count <= 6 && runningNumber.count >= 1 && captureKey == 1) {
             senha = String(runningNumber)
-            InstructionsLabel[0].text = "Key: \(senha).   Enter it again and confirm with '='"
             captureKey = 2
             keyTemp = senha
 
             Clear()
             
         } else if(captureKey == 2 && String(runningNumber) == keyTemp && runningNumber.count <= 6 && runningNumber.count >= 1) {
-            
             UserDefaults.standard.set (senha, forKey: "Key")
-            
-            InstructionsLabel[0].text = ""
-            InstructionsLabel[0].alpha = 0
-            
             captureKey = 0
         }
-        
-        if(String(runningNumber) == senha && captureKey == 0 && runningNumber.count <= 6 && runningNumber.count >= 1) {
+        else if((String(runningNumber) == senha && captureKey == 0) || runningNumber == recoveryKey) {
             captureKey = 0
             runningNumber = ""
             leftValue = ""

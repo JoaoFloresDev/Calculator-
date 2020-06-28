@@ -48,11 +48,10 @@ class ChangeCalculatorViewController: UIViewController {
     }
     
     @IBAction func equalsPressed(_ sender: UIButton) {
-        if(runningNumber.count <= 6 && runningNumber.count >= 1 && captureKey == 1) {
+        if(runningNumber == senha && captureKey == 1) {
             senha = String(runningNumber)
             InstructionsLabel[0].text = "Key: \(senha).   Enter to confirm change"
             captureKey = 2
-            UserDefaults.standard.set (senha, forKey: "Key")
             Clear()
             
         } else if(captureKey == 2 && String(runningNumber) == senha && runningNumber.count <= 6 && runningNumber.count >= 1) {
