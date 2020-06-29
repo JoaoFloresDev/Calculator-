@@ -15,17 +15,27 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
+
+import AVKit
+import MobileCoreServices
+import Photos
+import CoreData
+
 private let reuseIdentifier = "Cell"
 
 class VideoCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
     
     //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var modelData = ModelController().fetchImageObjectsInit()
+    var modelData = VideoModelController().fetchImageObjectsInit()
     var image: UIImage!
-    var modelController = ModelController()
-    
+    var modelController = VideoModelController()
     var bannerView: GADBannerView!
+    
+//    Video adaptation
+    var imagePickerController = UIImagePickerController()
+    var videoURL : NSURL?
+    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     //    MARK: - IBOutlet
     @IBOutlet weak var deleteButton: UIBarButtonItem!
@@ -56,13 +66,10 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     }
     
     @IBAction func addPhoto(_ sender: Any) {
-        
-        let pickerConfig = AssetsPickerConfig()
-        
-        let picker = AssetsPickerViewController()
-        picker.pickerConfig = pickerConfig
-        picker.pickerDelegate = self
-        present(picker, animated: true, completion: nil)
+        imagePickerController.sourceType = .savedPhotosAlbum
+        imagePickerController.delegate = self
+        imagePickerController.mediaTypes = [kUTTypeMovie as String]
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     //    MARK: - Life cicle
@@ -211,21 +218,74 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
             SKStoreReviewController.requestReview()
         }
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+            let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
+            let videoData = NSData(contentsOf: videoURL as URL)
+        
+            let path = try! FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+            let newPath = path.appendingPathComponent("/videoFileName.mp4")
+            do {
+                try videoData?.write(to: newPath)
+            } catch {
+                print(error)
+            }
+            self.dismiss(animated: true, completion: nil)
+        
+        let player = AVPlayer(url: newPath)
+        let playerController = AVPlayerViewController()
+        playerController.player = player
+        self.present(playerController, animated: true) {
+            player.play()
+        }
+        
+        self.getThumbnailImageFromVideoUrl(url: videoURL as URL) { (thumbImage) in
+            let image = thumbImage
+            
+            self.modelData.append(image!)
+            
+            let indexPath = IndexPath(row: self.modelData.count - 1, section: 0)
+            self.collectionView!.insertItems(at: [indexPath])
+            self.modelController.saveImageObject(image: image!, video: videoData!)
+        }
+    }
+    
+    func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
+        DispatchQueue.global().async { //1
+            let asset = AVAsset(url: url) //2
+            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset) //3
+            avAssetImageGenerator.appliesPreferredTrackTransform = true //4
+            let thumnailTime = CMTimeMake(2, 1) //5
+            do {
+                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil) //6
+                let thumbImage = UIImage(cgImage: cgThumbImage) //7
+                DispatchQueue.main.async { //8
+                    completion(thumbImage) //9
+                }
+            } catch {
+                print(error.localizedDescription) //10
+                DispatchQueue.main.async {
+                    completion(nil) //11
+                }
+            }
+        }
+    }
 }
 
 //    MARK: - Extension CollectionView Input Image
 extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
-        for asset in assets {
-            if(asset.mediaType.rawValue != 2) {
-                image = getAssetThumbnail(asset: asset)
-                modelData.append(image)
-                
-                let indexPath = IndexPath(row: modelData.count - 1, section: 0)
-                collectionView!.insertItems(at: [indexPath])
-                modelController.saveImageObject(image: image)
-            }
-        }
+//        for asset in assets {
+//            if(asset.mediaType.rawValue != 2) {
+//                image = getAssetThumbnail(asset: asset)
+//                modelData.append(image)
+//
+//                let indexPath = IndexPath(row: modelData.count - 1, section: 0)
+//                collectionView!.insertItems(at: [indexPath])
+//                modelController.saveImageObject(image: image)
+//            }
+//        }
     }
     
     
@@ -291,6 +351,7 @@ extension VideoCollectionViewController: GalleryItemsDataSource {
         let imageView = UIImageView(image: modelData[index])
         let galleryItem = GalleryItem.image { $0(imageView.image) }
         
+        print("vai mostrar agora ----")
         return galleryItem
     }
 }

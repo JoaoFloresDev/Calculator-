@@ -175,7 +175,7 @@
                             <outlet property="delegate" destination="ijo-gf-4Lh" id="8g9-Jf-6rl"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Gallery" image="photo" catalog="system" selectedImage="photo.fill" id="5j4-wf-cco"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" image="play.rectangle" catalog="system" selectedImage="play.rectangle.fill" id="5j4-wf-cco"/>
                     <navigationItem key="navigationItem" title="Gallery" id="7CC-AA-LSa">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="g1O-wU-rwl"/>
                         <rightBarButtonItems>
@@ -208,7 +208,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="photo" catalog="system" width="128" height="93"/>
-        <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="play.rectangle" catalog="system" width="128" height="93"/>
+        <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
     </resources>
 </document>
