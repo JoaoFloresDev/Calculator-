@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
-class ModelController {static let shared = ModelController()
+class ModelController {
+    static let shared = ModelController()
 
     let entityName = "StoredImage"
 
@@ -50,27 +51,6 @@ class ModelController {static let shared = ModelController()
     }
     
     func saveImageObject(image: UIImage) {
-        let imageName = ImageController.shared.saveImage(image: image)
-        
-        if let imageName = imageName {
-            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext)
-            let newImageEntity = NSManagedObject(entity: coreDataEntity!, insertInto: managedContext) as! StoredImage
-            
-            newImageEntity.imageName = imageName
-            
-            do {
-                try managedContext.save()
-                
-                images.append(image)
-                
-                print("\(imageName) was saved in new object.")
-            } catch let error as NSError {
-                print("Could not save new image object: \(error)")
-            }
-        }
-    }
-    
-    func saveVideoObject(image: UIImage) {
         let imageName = ImageController.shared.saveImage(image: image)
         
         if let imageName = imageName {

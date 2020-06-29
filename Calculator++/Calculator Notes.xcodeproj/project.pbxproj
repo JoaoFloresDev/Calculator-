@@ -24,8 +24,6 @@
 		C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */; };
 		C4507E0B24A7C32F00960972 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4507E0A24A7C32F00960972 /* PlayVideoViewController.swift */; };
 		C467BC9D24A7F32F0039D237 /* VideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BC9C24A7F32F0039D237 /* VideoHelper.swift */; };
-		C467BC9F24A962550039D237 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BC9E24A962550039D237 /* VideoController.swift */; };
-		C467BCA124A962670039D237 /* VideoModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCA024A962670039D237 /* VideoModelController.swift */; };
 		C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */; };
 		C46AD1012441708400EF0236 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46AD1002441708400EF0236 /* ModelController.swift */; };
 		C480A50224A770E500094FC8 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C480A50124A770E500094FC8 /* MasterViewController.swift */; };
@@ -78,8 +76,6 @@
 		C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
 		C4507E0A24A7C32F00960972 /* PlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		C467BC9C24A7F32F0039D237 /* VideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
-		C467BC9E24A962550039D237 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
-		C467BCA024A962670039D237 /* VideoModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModelController.swift; sourceTree = "<group>"; };
 		C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdCoreDataImg.swift; sourceTree = "<group>"; };
 		C46AD1002441708400EF0236 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		C480A50124A770E500094FC8 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -153,8 +149,8 @@
 		2E4A07A51C42F3F2007F415F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C4507E0924A7C31A00960972 /* VideoPlayer */,
 				C48108E524A57505003E2FA5 /* Protections */,
+				C4507E0924A7C31A00960972 /* VideoPlayer */,
 				C48108E224A55991003E2FA5 /* Settings */,
 				C435ED10243FEA6C00D5F708 /* Gallery */,
 				C435ED0F243FEA5D00D5F708 /* Notes */,
@@ -236,8 +232,6 @@
 			children = (
 				C467BC9C24A7F32F0039D237 /* VideoHelper.swift */,
 				C4507E0A24A7C32F00960972 /* PlayVideoViewController.swift */,
-				C467BC9E24A962550039D237 /* VideoController.swift */,
-				C467BCA024A962670039D237 /* VideoModelController.swift */,
 			);
 			path = VideoPlayer;
 			sourceTree = "<group>";
@@ -437,12 +431,10 @@
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
-				C467BC9F24A962550039D237 /* VideoController.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
 				C480A50224A770E500094FC8 /* MasterViewController.swift in Sources */,
-				C467BCA124A962670039D237 /* VideoModelController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
 			);

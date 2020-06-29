@@ -35,9 +35,11 @@ import CoreData
 class PlayVideoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var imgView: UIImageView!
+    
     var imagePickerController = UIImagePickerController()
     var videoURL : NSURL?
-
+    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    
     @IBAction func btnSelectVideo_Action(_ sender: Any) {
         imagePickerController.sourceType = .savedPhotosAlbum
         imagePickerController.delegate = self
@@ -50,23 +52,22 @@ class PlayVideoViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        videoURL = info[UIImagePickerControllerMediaURL]as? NSURL
-        print(videoURL!)
-        do {
-            let asset = AVURLAsset(url: videoURL! as URL , options: nil)
-            let imgGenerator = AVAssetImageGenerator(asset: asset)
-            imgGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
-            let thumbnail = UIImage(cgImage: cgImage)
-            imgView.image = thumbnail
-        } catch let error {
-            print("*** Error generating thumbnail: \(error.localizedDescription)")
-        }
-        self.dismiss(animated: true, completion: nil)
+        
+            let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
+            let videoData = NSData(contentsOf: videoURL as URL)
+        
+            let path = try! FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+            let newPath = path.appendingPathComponent("/videoFileName.mp4")
+            do {
+                try videoData?.write(to: newPath)
+            } catch {
+                print(error)
+            }
+            self.dismiss(animated: true, completion: nil)
     }
     
     func playVideo() {
-        let player = AVPlayer(url: videoURL as! URL)
+        let player = AVPlayer(url: videoURL! as URL)
         let playerController = AVPlayerViewController()
         playerController.player = player
         self.present(playerController, animated: true) {
