@@ -488,7 +488,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYp-fk-BuR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-512" y="733"/>
+            <point key="canvasLocation" x="-197" y="17"/>
         </scene>
         <!--Password View Controller-->
         <scene sceneID="Wtx-Rg-EfN">
@@ -801,7 +801,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BX5-g9-P09" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-512" y="74"/>
+            <point key="canvasLocation" x="-197" y="681"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

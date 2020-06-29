@@ -10,11 +10,12 @@
         <attribute name="imageName" optional="YES" attributeType="String"/>
     </entity>
     <entity name="StoredVideo" representedClassName="StoredVideo" syncable="YES" codeGenerationType="class">
-        <attribute name="videoName" optional="YES" attributeType="String"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+        <attribute name="pathURL" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Note" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="StoredImage" positionX="-63" positionY="9" width="128" height="58"/>
-        <element name="StoredVideo" positionX="-63" positionY="9" width="128" height="58"/>
+        <element name="StoredVideo" positionX="-63" positionY="9" width="128" height="73"/>
     </elements>
 </model>

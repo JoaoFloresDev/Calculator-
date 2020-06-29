@@ -75,7 +75,6 @@ class PlayVideoViewController: UIViewController, UINavigationControllerDelegate,
         playerController.player = player
         self.present(playerController, animated: true) {
             player.play()
-
         }
     }
 }
