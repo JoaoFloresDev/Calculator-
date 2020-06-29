@@ -8,45 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Video-->
-        <scene sceneID="GzO-De-ccI">
-            <objects>
-                <viewController id="1WN-rh-B9N" customClass="VideoPlayerViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="72q-pe-gE4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uZ-Se-f9F">
-                                <rect key="frame" x="10" y="98" width="394" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="playVideo:" destination="1WN-rh-B9N" eventType="touchUpInside" id="x9c-ql-dOC"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oUC-TZ-zdP">
-                                <rect key="frame" x="20" y="148" width="374" height="645"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="oUC-TZ-zdP" firstAttribute="top" secondItem="3uZ-Se-f9F" secondAttribute="bottom" constant="20" id="0Wj-HJ-lzS"/>
-                            <constraint firstItem="CQJ-N0-wVi" firstAttribute="trailing" secondItem="3uZ-Se-f9F" secondAttribute="trailing" constant="10" id="SSa-nc-VYx"/>
-                            <constraint firstItem="3uZ-Se-f9F" firstAttribute="leading" secondItem="CQJ-N0-wVi" secondAttribute="leading" constant="10" id="Woy-z8-wnT"/>
-                            <constraint firstItem="CQJ-N0-wVi" firstAttribute="bottom" secondItem="oUC-TZ-zdP" secondAttribute="bottom" constant="20" id="Xdu-XS-8TE"/>
-                            <constraint firstItem="CQJ-N0-wVi" firstAttribute="trailing" secondItem="oUC-TZ-zdP" secondAttribute="trailing" constant="20" id="bvf-yg-CHA"/>
-                            <constraint firstItem="oUC-TZ-zdP" firstAttribute="leading" secondItem="CQJ-N0-wVi" secondAttribute="leading" constant="20" id="vt6-5P-aAf"/>
-                            <constraint firstItem="3uZ-Se-f9F" firstAttribute="top" secondItem="CQJ-N0-wVi" secondAttribute="top" constant="10" id="zT8-ZX-wAR"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="CQJ-N0-wVi"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Video" image="play.rectangle" catalog="system" selectedImage="play.rectangle.fill" id="Qyu-g0-IR6"/>
-                    <navigationItem key="navigationItem" title="Video" id="pd3-No-jhp"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qNZ-rF-KI8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-16" y="1"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="sEp-lj-moQ">
             <objects>
@@ -56,16 +17,60 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="1WN-rh-B9N" kind="relationship" relationship="rootViewController" id="u61-jo-EW9"/>
+                        <segue destination="Jil-yS-kVD" kind="relationship" relationship="rootViewController" id="GnU-Jm-SN9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnB-2w-BlI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-746" y="1"/>
         </scene>
+        <!--Play Video View Controller-->
+        <scene sceneID="PaB-q0-yer">
+            <objects>
+                <viewController id="Jil-yS-kVD" customClass="PlayVideoViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TLx-Ol-VeH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="73X-P6-TQm">
+                                <rect key="frame" x="20" y="108" width="374" height="734"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5F9-cG-Mzw">
+                                <rect key="frame" x="30" y="118" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnSelectVideo_Action:" destination="Jil-yS-kVD" eventType="touchUpInside" id="ACm-tC-2xQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-jB-4Zc">
+                                <rect key="frame" x="348" y="108" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="playVideoAction:" destination="Jil-yS-kVD" eventType="touchUpInside" id="eLs-6h-WpT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="73X-P6-TQm" firstAttribute="leading" secondItem="Bfu-pj-Y4s" secondAttribute="leading" constant="20" id="2Y9-8z-3kP"/>
+                            <constraint firstItem="gg5-jB-4Zc" firstAttribute="top" secondItem="Bfu-pj-Y4s" secondAttribute="top" constant="20" id="INc-pP-Kj3"/>
+                            <constraint firstItem="5F9-cG-Mzw" firstAttribute="leading" secondItem="Bfu-pj-Y4s" secondAttribute="leading" constant="30" id="JFA-Ha-Sez"/>
+                            <constraint firstItem="Bfu-pj-Y4s" firstAttribute="trailing" secondItem="73X-P6-TQm" secondAttribute="trailing" constant="20" id="Mdd-s1-l65"/>
+                            <constraint firstItem="73X-P6-TQm" firstAttribute="top" secondItem="Bfu-pj-Y4s" secondAttribute="top" constant="20" id="aT6-ph-37q"/>
+                            <constraint firstItem="5F9-cG-Mzw" firstAttribute="top" secondItem="Bfu-pj-Y4s" secondAttribute="top" constant="30" id="dSa-Yo-bzb"/>
+                            <constraint firstItem="Bfu-pj-Y4s" firstAttribute="bottom" secondItem="73X-P6-TQm" secondAttribute="bottom" constant="20" id="hqn-KV-FGi"/>
+                            <constraint firstItem="Bfu-pj-Y4s" firstAttribute="trailing" secondItem="gg5-jB-4Zc" secondAttribute="trailing" constant="20" id="xkb-SH-Nv9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bfu-pj-Y4s"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8P6-SW-0ob"/>
+                    <connections>
+                        <outlet property="imgView" destination="73X-P6-TQm" id="RdO-n0-WY5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uuf-sw-zGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="107" y="1"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="play.rectangle" catalog="system" width="128" height="93"/>
-        <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
-    </resources>
 </document>

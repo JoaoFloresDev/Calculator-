@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
-class ImageController {
-    static let shared = ImageController()
+class VideoController {
+    static let shared = VideoController()
 
     let fileManager = FileManager.default
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

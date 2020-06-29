@@ -155,9 +155,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
         
-        
-        
-        
         cell.isInEditingMode = isEditing
         
         cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
@@ -226,11 +223,11 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 
                 let indexPath = IndexPath(row: modelData.count - 1, section: 0)
                 collectionView!.insertItems(at: [indexPath])
-                
                 modelController.saveImageObject(image: image)
             }
         }
     }
+    
     
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.default()

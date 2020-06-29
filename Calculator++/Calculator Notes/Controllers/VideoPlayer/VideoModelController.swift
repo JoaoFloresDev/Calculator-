@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import CoreData
 
-class ModelController {static let shared = ModelController()
+class VideoModelController {static let shared = ModelController()
 
-    let entityName = "StoredImage"
+    let entityName = "StoredVideo"
 
      var savedObjects = [NSManagedObject]()
-     var images = [UIImage]()
+     var images = [Any]()
      var managedContext: NSManagedObjectContext!
 
      init() {
@@ -115,7 +115,7 @@ class ModelController {static let shared = ModelController()
         }
     }
     
-    func fetchImageObjectsInit() -> [UIImage]{
+    func fetchImageObjectsInit() -> [Any]{
     let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
     
     do {
