@@ -12,127 +12,111 @@ import CoreData
 
 class VideoModelController {
     static let shared = VideoModelController()
-    let entityName = "StoredVideo"
 
-     var savedObjects = [NSManagedObject]()
-     var images = [UIImage]()
-     var managedContext: NSManagedObjectContext!
+        let entityName = "StoredVideo"
 
-     init() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        managedContext = appDelegate.persistentContainer.viewContext
-        
-        fetchImageObjects()
-    }
-    
-    func fetchImageObjects() {
-    let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-    
-    do {
-        savedObjects = try managedContext.fetch(imageObjectRequest)
-        
-        images.removeAll()
-        
-        for imageObject in savedObjects {
-            let savedImageObject = imageObject as! StoredVideo
+         var savedObjects = [NSManagedObject]()
+         var images = [UIImage]()
+         var managedContext: NSManagedObjectContext!
+
+         init() {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            managedContext = appDelegate.persistentContainer.viewContext
             
-            guard savedImageObject.videoName != nil else { return }
-            
-            let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.videoName!)
-            
-            if let storedImage = storedImage {
-                images.append(storedImage)
-            }
-        }
-    } catch let error as NSError {
-        print("Could not return image objects: \(error)")
-    }
-    }
-    
-    func saveImageObject(image: UIImage, video: NSData) {
-        let imageName = VideoController.shared.saveImage(image: image)
-        
-        if let imageName = imageName {
-            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext)
-            let newImageEntity = NSManagedObject(entity: coreDataEntity!, insertInto: managedContext) as! StoredVideo
-            
-            newImageEntity.videoName = imageName
-            
-            do {
-                try managedContext.save()
-                
-                images.append(image)
-                
-                print("\(imageName) was saved in new object.")
-            } catch let error as NSError {
-                print("Could not save new image object: \(error)")
-            }
+            fetchImageObjects()
         }
         
-        let videoName = VideoController.shared.saveVideo(image: video)
-        
-        if let imageName = videoName {
-            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext)
-            let newImageEntity = NSManagedObject(entity: coreDataEntity!, insertInto: managedContext) as! StoredVideo
-            
-            newImageEntity.pathURL = imageName
-            
-            do {
-                try managedContext.save()
-                
-                print("\(imageName) was saved in new object.")
-            } catch let error as NSError {
-                print("Could not save new image object: \(error)")
-            }
-        }
-    }
-    
-    func deleteImageObject(imageIndex: Int) {
-        guard images.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else { return }
-        
-        let imageObjectToDelete = savedObjects[imageIndex] as! StoredVideo
-        let imageName = imageObjectToDelete.videoName
+        func fetchImageObjects() {
+        let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
-            managedContext.delete(imageObjectToDelete)
+            savedObjects = try managedContext.fetch(imageObjectRequest)
             
-            try managedContext.save()
+            images.removeAll()
+            
+            for imageObject in savedObjects {
+                let savedImageObject = imageObject as! StoredVideo
+                
+                guard savedImageObject.imageName != nil else { return }
+                
+                let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.imageName!)
+                
+                if let storedImage = storedImage {
+                    images.append(storedImage)
+                }
+            }
+        } catch let error as NSError {
+            print("Could not return image objects: \(error)")
+        }
+        }
+        
+        func saveImageObject(image: UIImage) {
+            let imageName = ImageController.shared.saveImage(image: image)
             
             if let imageName = imageName {
-                ImageController.shared.deleteImage(imageName: imageName)
+                let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext)
+                let newImageEntity = NSManagedObject(entity: coreDataEntity!, insertInto: managedContext) as! StoredVideo
+                
+                newImageEntity.imageName = imageName
+                
+                do {
+                    try managedContext.save()
+                    
+                    images.append(image)
+                    
+                    print("\(imageName) was saved in new object.")
+                } catch let error as NSError {
+                    print("Could not save new image object: \(error)")
+                }
             }
+        }
+        
+        func deleteImageObject(imageIndex: Int) {
+            guard images.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else { return }
             
-            savedObjects.remove(at: imageIndex)
-            images.remove(at: imageIndex)
+            let imageObjectToDelete = savedObjects[imageIndex] as! StoredVideo
+            let imageName = imageObjectToDelete.imageName
             
-            print("Image object was deleted.")
+            do {
+                managedContext.delete(imageObjectToDelete)
+                
+                try managedContext.save()
+                
+                if let imageName = imageName {
+                    ImageController.shared.deleteImage(imageName: imageName)
+                }
+                
+                savedObjects.remove(at: imageIndex)
+                images.remove(at: imageIndex)
+                
+                print("Image object was deleted.")
+            } catch let error as NSError {
+                print("Could not delete image object: \(error)")
+            }
+        }
+        
+        func fetchImageObjectsInit() -> [UIImage]{
+        let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        
+        do {
+            savedObjects = try managedContext.fetch(imageObjectRequest)
+            
+            images.removeAll()
+            
+            for imageObject in savedObjects {
+                let savedImageObject = imageObject as! StoredVideo
+                
+                guard savedImageObject.imageName != nil else { return []}
+                
+                let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.imageName!)
+                
+                if let storedImage = storedImage {
+                    images.append(storedImage)
+                }
+            }
         } catch let error as NSError {
-            print("Could not delete image object: \(error)")
+            print("Could not return image objects: \(error)")
+        }
+            return images
         }
     }
-    
-    func fetchImageObjectsInit() -> [UIImage]{
-    let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-    
-    do {
-        savedObjects = try managedContext.fetch(imageObjectRequest)
-        
-        images.removeAll()
-        
-        for imageObject in savedObjects {
-            let savedImageObject = imageObject as! StoredVideo
-            
-            guard savedImageObject.videoName != nil else { return []}
-            
-            let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.videoName!)
-            
-            if let storedImage = storedImage {
-                images.append(storedImage)
-            }
-        }
-    } catch let error as NSError {
-        print("Could not return image objects: \(error)")
-    }
-        return images
-    }
-}

@@ -247,7 +247,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
             
             let indexPath = IndexPath(row: self.modelData.count - 1, section: 0)
             self.collectionView!.insertItems(at: [indexPath])
-            self.modelController.saveImageObject(image: image!, video: videoData!)
+            self.modelController.saveImageObject(image: image!)
         }
     }
     
