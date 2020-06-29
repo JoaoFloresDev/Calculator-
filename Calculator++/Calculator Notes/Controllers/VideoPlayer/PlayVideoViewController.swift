@@ -67,7 +67,10 @@ class PlayVideoViewController: UIViewController, UINavigationControllerDelegate,
     }
     
     func playVideo() {
-        let player = AVPlayer(url: videoURL! as URL)
+        let path = try! FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+        let newPath = path.appendingPathComponent("/videoFileName.mp4")
+        
+        let player = AVPlayer(url: newPath)
         let playerController = AVPlayerViewController()
         playerController.player = player
         self.present(playerController, animated: true) {
