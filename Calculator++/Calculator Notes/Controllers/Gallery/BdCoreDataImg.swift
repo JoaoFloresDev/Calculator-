@@ -42,6 +42,26 @@ class ImageController {
         }
     }
     
+    func saveVideo(image: NSData) -> String? {
+        let date = String( Date.timeIntervalSinceReferenceDate )
+        let imageName = date.replacingOccurrences(of: ".", with: "-") + ".mp4"
+        
+        let imageData = image
+            do {
+                let filePath = documentsPath.appendingPathComponent(imageName)
+                
+                try imageData.write(to: filePath)
+                
+                print("\(imageName) was saved.")
+                
+                return imageName
+            } catch let error as NSError {
+                print("\(imageName) could not be saved: \(error)")
+                
+                return nil
+            }
+            
+    }
     func fetchImage(imageName: String) -> UIImage? {
         let imagePath = documentsPath.appendingPathComponent(imageName).path
         

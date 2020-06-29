@@ -50,15 +50,18 @@ class VideoModelController {
         }
         }
         
-        func saveImageObject(image: UIImage) {
+    func saveImageObject(image: UIImage, video: NSData) {
+//            saving image
             let imageName = ImageController.shared.saveImage(image: image)
+            
+            let videoName = ImageController.shared.saveVideo(image: video)
             
             if let imageName = imageName {
                 let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext)
                 let newImageEntity = NSManagedObject(entity: coreDataEntity!, insertInto: managedContext) as! StoredVideo
                 
                 newImageEntity.imageName = imageName
-                
+                newImageEntity.pathURL = videoName
                 do {
                     try managedContext.save()
                     
@@ -69,6 +72,8 @@ class VideoModelController {
                     print("Could not save new image object: \(error)")
                 }
             }
+            
+//            saving video
         }
         
         func deleteImageObject(imageIndex: Int) {
