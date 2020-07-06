@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5JB-cT-JJE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item-->
+        <scene sceneID="LY7-XR-C29">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="5JB-cT-JJE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="RhQ-Mc-2An"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mJ7-ya-ylj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ijo-gf-4Lh" kind="relationship" relationship="rootViewController" id="MYL-HY-4ao"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3gW-Wg-gn6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746" y="677"/>
+        </scene>
+        <!--Video-->
+        <scene sceneID="OSr-c8-okK">
+            <objects>
+                <collectionViewController storyboardIdentifier="VideoCollectionViewController" modalPresentationStyle="fullScreen" id="ijo-gf-4Lh" customClass="VideoCollectionViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" indicatorStyle="black" canCancelContentTouches="NO" dataMode="prototypes" id="hm4-dB-87j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="contentStretch" x="0.5" y="0.5" width="1" height="1"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="BZM-aS-HqT">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="15"/>
+                            <size key="footerReferenceSize" width="150" height="130"/>
+                            <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderPremium" id="fQ5-R3-3D5">
+                            <rect key="frame" x="0.0" y="-88" width="414" height="896"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Y1F-By-iW2" customClass="CollectionViewCell" customModule="Calculator_Notes" customModuleProvider="target">
+                                <rect key="frame" x="15" y="15" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view tag="123" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uh-AC-UnB">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cx5-2u-Hhs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gAJ-WA-S3T">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Cx5-2u-Hhs" firstAttribute="centerY" secondItem="5uh-AC-UnB" secondAttribute="centerY" id="1z7-3n-6Js"/>
+                                                <constraint firstItem="gAJ-WA-S3T" firstAttribute="height" secondItem="5uh-AC-UnB" secondAttribute="height" id="3pT-cL-fwS"/>
+                                                <constraint firstItem="gAJ-WA-S3T" firstAttribute="width" secondItem="5uh-AC-UnB" secondAttribute="width" id="Enr-0Z-47E"/>
+                                                <constraint firstItem="gAJ-WA-S3T" firstAttribute="centerX" secondItem="5uh-AC-UnB" secondAttribute="centerX" id="FY6-ue-YPk"/>
+                                                <constraint firstItem="gAJ-WA-S3T" firstAttribute="centerY" secondItem="5uh-AC-UnB" secondAttribute="centerY" id="Jwo-vb-o2U"/>
+                                                <constraint firstItem="Cx5-2u-Hhs" firstAttribute="width" secondItem="5uh-AC-UnB" secondAttribute="width" id="Oke-zQ-28B"/>
+                                                <constraint firstItem="Cx5-2u-Hhs" firstAttribute="centerX" secondItem="5uh-AC-UnB" secondAttribute="centerX" id="Xw2-V9-Rja"/>
+                                                <constraint firstItem="Cx5-2u-Hhs" firstAttribute="height" secondItem="5uh-AC-UnB" secondAttribute="height" id="v5x-co-7iE"/>
+                                            </constraints>
+                                        </view>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8L-66-XOb">
+                                            <rect key="frame" x="69" y="70" width="0.0" height="0.0"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="5uh-AC-UnB" firstAttribute="width" secondItem="Y1F-By-iW2" secondAttribute="width" id="2oS-uo-hXP"/>
+                                    <constraint firstItem="5uh-AC-UnB" firstAttribute="centerX" secondItem="Y1F-By-iW2" secondAttribute="centerX" id="4qN-97-Oqb"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="a8L-66-XOb" secondAttribute="trailing" constant="3" id="8vg-BU-mzO"/>
+                                    <constraint firstItem="5uh-AC-UnB" firstAttribute="centerY" secondItem="Y1F-By-iW2" secondAttribute="centerY" id="JX4-rH-NVE"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="a8L-66-XOb" secondAttribute="bottom" constant="2" id="ZaA-X3-18n"/>
+                                    <constraint firstItem="a8L-66-XOb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y1F-By-iW2" secondAttribute="leading" symbolic="YES" id="aX4-yA-log"/>
+                                    <constraint firstItem="5uh-AC-UnB" firstAttribute="height" secondItem="Y1F-By-iW2" secondAttribute="height" id="avJ-S5-TxZ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="checkmarkLabel" destination="a8L-66-XOb" id="nl6-pT-nyv"/>
+                                    <outlet property="imageCell" destination="Cx5-2u-Hhs" id="EHv-Co-t2j"/>
+                                    <outlet property="selectedItem" destination="gAJ-WA-S3T" id="Eyb-a8-LbN"/>
+                                    <outlet property="viewPhoto" destination="5uh-AC-UnB" id="27y-2T-yuF"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="64c-DM-gH8">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bUh-mf-Qag">
+                            <rect key="frame" x="0.0" y="95" width="414" height="130"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="ijo-gf-4Lh" id="elq-h4-euA"/>
+                            <outlet property="delegate" destination="ijo-gf-4Lh" id="8g9-Jf-6rl"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Video" image="play.rectangle" catalog="system" selectedImage="play.rectangle.fill" id="5j4-wf-cco"/>
+                    <navigationItem key="navigationItem" title="Video" id="7CC-AA-LSa">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="g1O-wU-rwl"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="kFm-ng-Mcz">
+                                <connections>
+                                    <action selector="addPhoto:" destination="ijo-gf-4Lh" id="F0m-Ev-wmB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="trash" id="Dof-Jg-fHh">
+                                <connections>
+                                    <action selector="deleteItem:" destination="ijo-gf-4Lh" id="qCo-Mc-sf6"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="action" id="olr-hD-S88">
+                                <connections>
+                                    <action selector="saveItem:" destination="ijo-gf-4Lh" id="qDG-5E-Ofg"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="deleteButton" destination="Dof-Jg-fHh" id="vdp-2l-0el"/>
+                        <outlet property="placeholderImage" destination="fQ5-R3-3D5" id="5Ew-BE-2XO"/>
+                        <outlet property="saveButton" destination="olr-hD-S88" id="dKj-9R-SE7"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G6u-nP-grt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="106" y="676"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="placeholderPremium" width="600" height="474"/>
+        <image name="play.rectangle" catalog="system" width="128" height="93"/>
+        <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
+    </resources>
+</document>

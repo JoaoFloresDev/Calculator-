@@ -1,0 +1,109 @@
+PODS:
+  - AssetsPickerViewController (2.7.5):
+    - Device
+    - SnapKit
+  - Device (3.2.1)
+  - DTPhotoViewerController (1.2.5)
+  - Google-Mobile-Ads-SDK (7.58.0):
+    - GoogleAppMeasurement (~> 6.0)
+  - GoogleAppMeasurement (6.4.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - GoogleUtilities/AppDelegateSwizzler (6.5.2):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.5.2)
+  - GoogleUtilities/Logger (6.5.2):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.5.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.5.2):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.5.2)"
+  - GoogleUtilities/Reachability (6.5.2):
+    - GoogleUtilities/Logger
+  - ImageViewer (6.0.0)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - NYTPhotoViewer (4.0.1):
+    - NYTPhotoViewer/AnimatedGifSupport (= 4.0.1)
+    - NYTPhotoViewer/Core (= 4.0.1)
+  - NYTPhotoViewer/AnimatedGifSupport (4.0.1):
+    - NYTPhotoViewer/Core
+    - PINRemoteImage (~> 3.0.0)
+  - NYTPhotoViewer/Core (4.0.1)
+  - PINCache (3.0.1-beta.8):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.8)
+    - PINCache/Core (= 3.0.1-beta.8)
+  - PINCache/Arc-exception-safe (3.0.1-beta.8):
+    - PINCache/Core
+  - PINCache/Core (3.0.1-beta.8):
+    - PINOperation (~> 1.1.1)
+  - PINOperation (1.1.2)
+  - PINRemoteImage (3.0.0):
+    - PINRemoteImage/PINCache (= 3.0.0)
+  - PINRemoteImage/Core (3.0.0):
+    - PINOperation
+  - PINRemoteImage/PINCache (3.0.0):
+    - PINCache (= 3.0.1-beta.8)
+    - PINRemoteImage/Core
+  - SnapKit (5.0.1)
+  - VegaScrollFlowLayout (1.1)
+  - WLEmptyState (3.1.0)
+
+DEPENDENCIES:
+  - AssetsPickerViewController (~> 2.0)
+  - DTPhotoViewerController (~> 1.2.5)
+  - Google-Mobile-Ads-SDK
+  - ImageViewer
+  - NYTPhotoViewer
+  - VegaScrollFlowLayout
+  - WLEmptyState
+
+SPEC REPOS:
+  trunk:
+    - AssetsPickerViewController
+    - Device
+    - DTPhotoViewerController
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - ImageViewer
+    - nanopb
+    - NYTPhotoViewer
+    - PINCache
+    - PINOperation
+    - PINRemoteImage
+    - SnapKit
+    - VegaScrollFlowLayout
+    - WLEmptyState
+
+SPEC CHECKSUMS:
+  AssetsPickerViewController: 6954aff04b95d26be0d65a58557a9dfbef7811c3
+  Device: 0738862dd8a30856b4bd9e21cb9b728873d21392
+  DTPhotoViewerController: 369a36bddc3dc2cb67c5423a134111c270917786
+  Google-Mobile-Ads-SDK: 7052557293c75c676db55feb707ace9b790f32c1
+  GoogleAppMeasurement: e49be3954045b17d046f271b9cc1ec052bad9702
+  GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
+  ImageViewer: cb88ef1c0ba19161bc10702adfdcebc116a7a59d
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  NYTPhotoViewer: 2c9990696386eed9dd9e0c1d137c7c9d05d905d7
+  PINCache: 534fd41d358d828dfdf227a0d327f3673a65e20b
+  PINOperation: 24b774353ca248fcf87d67b2d61eef42087c125a
+  PINRemoteImage: e2b89e19fb6e77ffc099f9d9f3b3fe1745e3f9f9
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
+  WLEmptyState: 2bbb3970f62c0b9252029d34a8f74cb3d436eeea
+
+PODFILE CHECKSUM: 4f6bdaff76e969ca6176ab18930464c687c2fb46
+
+COCOAPODS: 1.9.1
