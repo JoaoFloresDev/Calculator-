@@ -207,6 +207,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
         }
     }
     
+    //    MARK: - imagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
