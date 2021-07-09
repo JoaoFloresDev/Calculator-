@@ -138,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iW-yB-9jj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3351" y="-1122"/>
+            <point key="canvasLocation" x="3196" y="-1118"/>
         </scene>
         <!--Change Calculator View Controller-->
         <scene sceneID="BHj-9n-jza">
@@ -586,6 +586,7 @@
         <!--Change Password View Controller-->
         <scene sceneID="NgW-3v-3WG">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7tN-Zi-T2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController modalPresentationStyle="fullScreen" id="9BG-Vo-nLC" customClass="ChangePasswordViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="caz-qM-WVu"/>
@@ -902,9 +903,8 @@
                         <outlet property="instructionsLabel" destination="a0Z-Kn-CPE" id="bY9-rT-dGO"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7tN-Zi-T2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3304" y="289"/>
+            <point key="canvasLocation" x="4610" y="384"/>
         </scene>
         <!--Settings-->
         <scene sceneID="6Qv-MD-p3f">
@@ -946,7 +946,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1u-xc-9Cu">
                                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="339"/>
                                                                 <connections>
-                                                                    <segue destination="kL6-jf-H2R" kind="showDetail" id="au6-0L-cDe"/>
+                                                                    <action selector="showCalculatorMode:" destination="bO4-RD-LXC" eventType="touchUpInside" id="u17-Zp-bL6"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -979,7 +979,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KS-Zg-0zE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="339"/>
                                                                 <connections>
-                                                                    <segue destination="O5I-eq-Sxz" kind="showDetail" id="7GP-qQ-8zt"/>
+                                                                    <action selector="showBankMode:" destination="bO4-RD-LXC" eventType="touchUpInside" id="R2i-4q-k2s"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -1067,6 +1067,8 @@
                         <outlet property="calcModeView" destination="qSg-FV-y9H" id="XV1-b2-kTr"/>
                         <outlet property="noProtection" destination="7Fd-wC-954" id="B81-vR-pED"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>
+                        <segue destination="kL6-jf-H2R" kind="showDetail" identifier="ChangeCalculatorSegue" id="yGk-OO-8Ic"/>
+                        <segue destination="O5I-eq-Sxz" kind="showDetail" identifier="ChangePasswordSegue" id="OKG-hy-Z3u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGj-2x-F75" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1462,7 +1464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scd-GO-BJC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3877" y="-417"/>
+            <point key="canvasLocation" x="3196" y="314"/>
         </scene>
     </scenes>
     <resources>

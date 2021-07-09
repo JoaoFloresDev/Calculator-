@@ -18,7 +18,16 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var ModeGroupView: UIView!
     
     @IBAction func noProtectionPressed(_ sender: Any) {
-        print("aqui")
+        UserDefaultService().setTypeProtection(protectionMode: .noProtection)
+        showProtectionType(typeProtection: .noProtection)
+    }
+
+    @IBAction func showBankMode(_ sender: Any) {
+        performSegue(withIdentifier: "ChangePasswordSegue", sender: nil)
+    }
+
+    @IBAction func showCalculatorMode(_ sender: Any) {
+        performSegue(withIdentifier: "ChangeCalculatorSegue", sender: nil)
     }
 
     override func viewDidLoad() {
@@ -34,9 +43,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         ModeGroupView.layer.shadowOpacity = 5
         noProtection.layer.cornerRadius = 10
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         let typeProtection = UserDefaultService().getTypeProtection()
+        showProtectionType(typeProtection: typeProtection)
+    }
+
+    private func showProtectionType(typeProtection: ProtectionMode) {
         switch typeProtection {
             case .calculator:
                 bankModeView.alpha = 0.4
@@ -53,15 +66,5 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                 noProtection.alpha = 0.4
                 calcModeView.alpha = 0.4
         }
-//        if (UserDefaultService().getTypeProtection() == .calculator) {
-//            bankModeView.alpha = 0.4
-//            noProtection.alpha = 0.4
-//            calcModeView.alpha = 1
-//        }
-//        else {
-//            bankModeView.alpha = 1
-//            calcModeView.alpha = 0.4
-//        }
     }
-    
 }

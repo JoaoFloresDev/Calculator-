@@ -41,7 +41,7 @@ struct UserDefaultService {
                 UserDefaults.standard.set(ProtectionMode.noProtection.rawValue, forKey: protectionModeKey)
 
             default:
-                UserDefaults.standard.set(ProtectionMode.noProtection.rawValue, forKey: protectionModeKey)
+                UserDefaults.standard.set(ProtectionMode.bank.rawValue, forKey: protectionModeKey)
         }
     }
 }
