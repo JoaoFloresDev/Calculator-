@@ -270,7 +270,7 @@ open class ItemBaseController<T: UIView>: UIViewController, ItemController, UIGe
     }
 
     @objc func scrollViewDidLongPress() {
-        print("long press detectado!")
+
         self.delegate?.itemControllerDidLongPress(self, in: itemView)
     }
 

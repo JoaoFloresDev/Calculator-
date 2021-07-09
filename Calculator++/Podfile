@@ -6,8 +6,8 @@ target 'Calculator Notes' do
   use_frameworks!
 
   # Pods for Calculator Notes
-pod 'AssetsPickerViewController', '~> 2.0'
-pod 'DTPhotoViewerController', '~> 1.2.5'
+pod 'AssetsPickerViewController'
+pod 'DTPhotoViewerController'
 pod 'ImageViewer'
 pod 'NYTPhotoViewer'
 pod 'Google-Mobile-Ads-SDK'

@@ -1,6 +1,5 @@
 # DTPhotoViewerController
 
-[![CI Status](http://img.shields.io/travis/Tung Vo/DTPhotoViewerController.svg?style=flat)](https://travis-ci.org/Tung Vo/DTPhotoViewerController)
 [![Version](https://img.shields.io/cocoapods/v/DTPhotoViewerController.svg?style=flat)](http://cocoapods.org/pods/DTPhotoViewerController)
 [![License](https://img.shields.io/cocoapods/l/DTPhotoViewerController.svg?style=flat)](http://cocoapods.org/pods/DTPhotoViewerController)
 [![Platform](https://img.shields.io/cocoapods/p/DTPhotoViewerController.svg?style=flat)](http://cocoapods.org/pods/DTPhotoViewerController)
@@ -57,11 +56,28 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+### CocoaPods
 DTPhotoViewerController is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
+For Swift 5:
+
 ```ruby
 pod "DTPhotoViewerController"
+```
+
+For Swift 4.2:
+
+```ruby
+pod 'DTPhotoViewerController', '~> 1.2.5'
+```
+
+### Swift package manager
+`DTPhotoViewerController` is available for SPM from version `3.0.2`.
+Add the following to the dependencies of your `Package.swift`:
+
+```swift
+.package(url: "https://github.com/tungvoduc/DTPhotoViewerController", from: "version")
 ```
 
 ## Author
@@ -71,3 +87,7 @@ Tung Vo, tung98.dn@gmail.com
 ## License
 
 DTPhotoViewerController is available under the MIT license. See the LICENSE file for more info.
+
+## Feedbacks & requests
+- Open an issue if you find a bug, make a proposal or simply need some help.
+- You can also contact me via [email](mailto:tung98.dn@gmail.com).

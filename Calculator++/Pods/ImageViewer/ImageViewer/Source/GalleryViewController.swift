@@ -425,23 +425,41 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
 
     @objc fileprivate func deleteItem() {
 
-//        deleteButton?.isEnabled = false
-//        view.isUserInteractionEnabled = false
-//
-//        itemsDelegate?.removeGalleryItem(at: currentIndex)
-//        removePage(atIndex: currentIndex) {
-//
-//            [weak self] in
-//            self?.deleteButton?.isEnabled = true
-//            self?.view.isUserInteractionEnabled = true
-//        }
-        print("aqui")
+        deleteButton?.isEnabled = false
+        view.isUserInteractionEnabled = false
+
+        itemsDelegate?.removeGalleryItem(at: currentIndex)
+        removePage(atIndex: currentIndex) {
+
+            [weak self] in
+            self?.deleteButton?.isEnabled = true
+            self?.view.isUserInteractionEnabled = true
+        }
     }
 
     //ThumbnailsimageBlock
 
     @objc fileprivate func showThumbnails() {
-        print("dica")
+
+        let thumbnailsController = ThumbnailsViewController(itemsDataSource: self.itemsDataSource)
+
+        if let closeButton = seeAllCloseButton {
+            thumbnailsController.closeButton = closeButton
+            thumbnailsController.closeLayout = seeAllCloseLayout
+        } else if let closeButton = closeButton {
+            let seeAllCloseButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: closeButton.bounds.size))
+            seeAllCloseButton.setImage(closeButton.image(for: UIControl.State()), for: UIControl.State())
+            seeAllCloseButton.setImage(closeButton.image(for: .highlighted), for: .highlighted)
+            thumbnailsController.closeButton = seeAllCloseButton
+            thumbnailsController.closeLayout = closeLayout
+        }
+
+        thumbnailsController.onItemSelected = { [weak self] index in
+
+            self?.page(toIndex: index)
+        }
+
+        present(thumbnailsController, animated: true, completion: nil)
     }
 
     open func page(toIndex index: Int) {
