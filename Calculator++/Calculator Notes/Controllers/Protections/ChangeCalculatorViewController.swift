@@ -67,8 +67,8 @@ class ChangeCalculatorViewController: UIViewController {
             result = ""
             currentOperation = .NULL
             outputLbl.text = "0"
-            
-            UserDefaults.standard.set(true, forKey: "Mode")
+
+            UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.calculator)
             UserDefaults.standard.set(keyTemp, forKey: "Key")
             showAlert()
         }

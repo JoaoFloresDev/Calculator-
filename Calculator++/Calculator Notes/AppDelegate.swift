@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         //        select root
-        if (UserDefaults.standard.bool(forKey: "Mode") == true) {
+        if UserDefaultService().getTypeProtection() == ProtectionMode.calculator {
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
 
             self.window?.rootViewController = initialViewController
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
 
         if (UserDefaults.standard.bool(forKey: "InGallery") == true) {
-            if (UserDefaults.standard.bool(forKey: "Mode") == true) {
+            if (UserDefaultService().getTypeProtection() == .calculator) {
                 self.window = UIWindow(frame: UIScreen.main.bounds)
 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

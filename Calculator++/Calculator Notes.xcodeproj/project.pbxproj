@@ -39,6 +39,7 @@
 		C4A819F224A6C113005023C6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819ED24A6C112005023C6 /* DetailViewController.swift */; };
 		C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EE24A6C112005023C6 /* ProductCell.swift */; };
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
+		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
 		F6B0DEFAD8397A4646C29BEC /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F17912CE0F7D4FEAE3F3E1 /* Pods_Calculator_Notes.framework */; };
 /* End PBXBuildFile section */
@@ -93,6 +94,7 @@
 		C4A819ED24A6C112005023C6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C4A819EE24A6C112005023C6 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
+		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		F2F17912CE0F7D4FEAE3F3E1 /* Pods_Calculator_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -153,6 +155,7 @@
 		2E4A07A51C42F3F2007F415F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C4C079C82698CF8D0020FC69 /* Services */,
 				C457C38824ACDA6200CE7B14 /* InformationsFirstUseViewController.swift */,
 				C467BCA224A99BA90039D237 /* VideoTeste (apagar depois) */,
 				C48108E524A57505003E2FA5 /* Protections */,
@@ -279,6 +282,14 @@
 				C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */,
 			);
 			path = Purchase;
+			sourceTree = "<group>";
+		};
+		C4C079C82698CF8D0020FC69 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,6 +467,7 @@
 				C480A50224A770E500094FC8 /* MasterViewController.swift in Sources */,
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
+				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

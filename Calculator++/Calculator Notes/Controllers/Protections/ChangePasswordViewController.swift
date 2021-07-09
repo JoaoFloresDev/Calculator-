@@ -120,7 +120,7 @@ class ChangePasswordViewController: UIViewController {
         }
         else if(KeyTemp == password) {
             clearAll()
-            UserDefaults.standard.set(false, forKey: "Mode")
+            UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.bank)
             UserDefaults.standard.set(KeyTemp, forKey: "Key")
             
             showAlert()
