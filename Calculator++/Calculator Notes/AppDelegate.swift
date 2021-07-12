@@ -21,25 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set(true, forKey: "NoAds.Calc")
         UserDefaults.standard.set(false, forKey: "InGallery")
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        //        select root
-        if UserDefaultService().getTypeProtection() == ProtectionMode.calculator {
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
 
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        }
-        else {
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
+        if UserDefaultService().getTypeProtection() != ProtectionMode.noProtection {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if UserDefaultService().getTypeProtection() == ProtectionMode.calculator {
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
 
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            } else {
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
+
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }
+            WLEmptyState.configure()
         }
-        
-        WLEmptyState.configure()
         
         return true
     }
@@ -47,38 +45,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
 
         if (UserDefaults.standard.bool(forKey: "InGallery") == true) {
-            if (UserDefaultService().getTypeProtection() == .calculator) {
-                self.window = UIWindow(frame: UIScreen.main.bounds)
+            if UserDefaultService().getTypeProtection() != .noProtection {
+                if (UserDefaultService().getTypeProtection() == .calculator) {
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
+                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
 
-                self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
+                    self.window?.rootViewController = initialViewController
+                    self.window?.makeKeyAndVisible()
+                } else {
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
+
+                    self.window?.rootViewController = initialViewController
+                    self.window?.makeKeyAndVisible()
+                }
+
+                if let rootViewController = window?.rootViewController as? CalculatorViewController,
+                   let presentedViewController = rootViewController.presentedViewController{
+                    presentedViewController.dismiss(animated: false, completion: nil)
+                }
+
+                else if let rootViewController = window?.rootViewController as? PasswordViewController,
+                        let presentedViewController = rootViewController.presentedViewController{
+                    presentedViewController.dismiss(animated: false, completion: nil)
+                }
+                UserDefaults.standard.set(false, forKey: "InGallery")
             }
-            else {
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
-
-                self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
-            }
-
-            if let rootViewController = window?.rootViewController as? CalculatorViewController,
-                let presentedViewController = rootViewController.presentedViewController{
-                print("\(rootViewController)")
-                presentedViewController.dismiss(animated: false, completion: nil)
-            }
-            else if let rootViewController = window?.rootViewController as? PasswordViewController,
-                let presentedViewController = rootViewController.presentedViewController{
-                print("\(rootViewController)")
-                presentedViewController.dismiss(animated: false, completion: nil)
-            }
-            UserDefaults.standard.set(false, forKey: "InGallery")
         }
     }
     

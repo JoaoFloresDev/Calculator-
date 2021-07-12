@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JpR-h0-Vdp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ez-Al-Xfm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -53,7 +53,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="o5V-VC-7Bp">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="8ez-Al-Xfm" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="teste" modalPresentationStyle="fullScreen" id="8ez-Al-Xfm" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cvh-nA-JKi"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M4W-bt-GPM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -1020,7 +1020,7 @@ Your photos are stored locally in your device.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0l5-8x-s7a"/>
+        <segue reference="e4T-p1-AJP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="keyCurrent" width="181" height="181"/>
