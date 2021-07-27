@@ -21,27 +21,30 @@ struct UserDefaultService {
     func getTypeProtection() -> ProtectionMode {
         let protectionMode = userDefaults.string(forKey: protectionModeKey)
         switch protectionMode {
-            case ProtectionMode.calculator.rawValue:
-                return .calculator
+        case ProtectionMode.calculator.rawValue:
+            return .calculator
 
-            case ProtectionMode.noProtection.rawValue:
-                return .noProtection
+        case ProtectionMode.noProtection.rawValue:
+            return .noProtection
 
-            default:
-                return .bank
+        case ProtectionMode.bank.rawValue:
+            return .bank
+
+        default:
+            return .noProtection
         }
     }
 
     func setTypeProtection(protectionMode: ProtectionMode) {
         switch protectionMode {
-            case .calculator:
-                UserDefaults.standard.set(ProtectionMode.calculator.rawValue, forKey: protectionModeKey)
+        case .calculator:
+            UserDefaults.standard.set(ProtectionMode.calculator.rawValue, forKey: protectionModeKey)
 
-            case .noProtection:
-                UserDefaults.standard.set(ProtectionMode.noProtection.rawValue, forKey: protectionModeKey)
+        case .noProtection:
+            UserDefaults.standard.set(ProtectionMode.noProtection.rawValue, forKey: protectionModeKey)
 
-            default:
-                UserDefaults.standard.set(ProtectionMode.bank.rawValue, forKey: protectionModeKey)
+        default:
+            UserDefaults.standard.set(ProtectionMode.bank.rawValue, forKey: protectionModeKey)
         }
     }
 }
