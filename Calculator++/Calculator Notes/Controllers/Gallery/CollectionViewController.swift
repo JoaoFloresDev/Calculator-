@@ -15,6 +15,17 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
+
+import UIKit
+import SceneKit
+import ARKit
+import simd
+import Photos
+import StoreKit
+import Foundation
+import AVFoundation
+import AVKit
+
 private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
@@ -220,6 +231,13 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         }))
         
         present(refreshAlert, animated: true, completion: nil)
+    }
+    @IBAction func teste(_ sender: Any) {
+        openGalery()
+    }
+
+    func openGalery() {
+        
     }
 
 //    MARK: - StoreKit

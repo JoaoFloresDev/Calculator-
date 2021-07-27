@@ -40,6 +40,8 @@
 		C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EE24A6C112005023C6 /* ProductCell.swift */; };
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
+		C4CBBA7926AF8CBC00CF1436 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CBBA7826AF8CBC00CF1436 /* ViewController.swift */; };
+		C4CBBA7B26AF8E3800CF1436 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CBBA7A26AF8E3800CF1436 /* art.scnassets */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
 		F6B0DEFAD8397A4646C29BEC /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F17912CE0F7D4FEAE3F3E1 /* Pods_Calculator_Notes.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +97,8 @@
 		C4A819EE24A6C112005023C6 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
+		C4CBBA7826AF8CBC00CF1436 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C4CBBA7A26AF8E3800CF1436 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		F2F17912CE0F7D4FEAE3F3E1 /* Pods_Calculator_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,6 +136,8 @@
 		2E4A07921C42F3B0007F415F /* Calculator Notes */ = {
 			isa = PBXGroup;
 			children = (
+				C4CBBA7A26AF8E3800CF1436 /* art.scnassets */,
+				C4CBBA7726AF8CAF00CF1436 /* teste */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
 				C4A819EA24A6C0FB005023C6 /* Purchase */,
 				2E4A07AC1C42F4EB007F415F /* Helpers */,
@@ -229,20 +235,12 @@
 			children = (
 				C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */,
 				C467BCC224A9B1880039D237 /* VideoModelController.swift */,
-				C4507E0924A7C31A00960972 /* VideoPlayer */,
 				C4148D882440F45E00225706 /* CollectionViewCell.swift */,
 				C4148D892440F45E00225706 /* CollectionViewController.swift */,
 				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
 				C46AD1002441708400EF0236 /* ModelController.swift */,
 			);
 			path = Gallery;
-			sourceTree = "<group>";
-		};
-		C4507E0924A7C31A00960972 /* VideoPlayer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = VideoPlayer;
 			sourceTree = "<group>";
 		};
 		C467BCA224A99BA90039D237 /* VideoTeste (apagar depois) */ = {
@@ -290,6 +288,14 @@
 				C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		C4CBBA7726AF8CAF00CF1436 /* teste */ = {
+			isa = PBXGroup;
+			children = (
+				C4CBBA7826AF8CBC00CF1436 /* ViewController.swift */,
+			);
+			path = teste;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C480A50424A7746B00094FC8 /* Notes.storyboard in Resources */,
+				C4CBBA7B26AF8E3800CF1436 /* art.scnassets in Resources */,
 				C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */,
 				2E4A079E1C42F3B0007F415F /* LaunchScreen.storyboard in Resources */,
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
@@ -460,6 +467,7 @@
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				C457C38924ACDA6200CE7B14 /* InformationsFirstUseViewController.swift in Sources */,
 				C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */,
+				C4CBBA7926AF8CBC00CF1436 /* ViewController.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,

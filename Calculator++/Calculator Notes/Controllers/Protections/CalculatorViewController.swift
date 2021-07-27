@@ -62,11 +62,11 @@ class CalculatorViewController: UIViewController {
             myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
                 DispatchQueue.main.async {
                     if success {
-                        print("sucesso")
                         self.instructionsLabel.text = "Key: "
                         self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
                         self.instructionsLabel.text! += ". Write the Key and confirm with '='"
                         self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
+                        self.performSegue(withIdentifier: "showNotes", sender: nil)
                     } else {
                         self.helpDeskButton.alpha = 1
                         let alert = UIAlertController(title: "Recognition Failed", message: "Use the Help Desk for more information", preferredStyle: UIAlertControllerStyle.alert)

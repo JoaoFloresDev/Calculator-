@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L4p-cr-RK0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L4p-cr-RK0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -96,7 +97,15 @@
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Gallery" image="photo" catalog="system" selectedImage="photo.fill" id="qXq-vg-57j"/>
                     <navigationItem key="navigationItem" title="Gallery" id="Ki9-XI-BOH">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="3VU-TW-LpM"/>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Item" id="3VU-TW-LpM"/>
+                            <barButtonItem title="AR" id="aki-yL-EwC">
+                                <connections>
+                                    <action selector="teste:" destination="kQz-V5-vHs" id="Sha-lR-16L"/>
+                                    <segue destination="ZFz-rf-8D5" kind="modal" id="hUS-Vj-mQk"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="Tsr-RJ-2ey">
                                 <connections>
@@ -146,10 +155,80 @@
             </objects>
             <point key="canvasLocation" x="1454" y="254"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="uEe-yN-EwK">
+            <objects>
+                <viewController id="ZFz-rf-8D5" customClass="ViewController" customModule="Draw_In_Air" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OwE-aN-utQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Or-n9-XiK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Zd-tJ-SUk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1s-He-thC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="uKl-SU-mYo"/>
+                                </constraints>
+                            </arscnView>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plX-xU-fZe">
+                                <rect key="frame" x="172" y="728.5" width="70" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="5tM-tn-kNZ"/>
+                                    <constraint firstAttribute="width" secondItem="plX-xU-fZe" secondAttribute="height" multiplier="1:1" id="B6w-Ug-lNg"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="plus.circle" catalog="system">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeImage:" destination="ZFz-rf-8D5" eventType="touchUpInside" id="UAn-m2-dRl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjP-xV-lGz">
+                                <rect key="frame" x="16" y="16" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VH4-ms-pAs"/>
+                                    <constraint firstAttribute="width" constant="50" id="p8H-so-qsi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButton:" destination="ZFz-rf-8D5" eventType="touchUpInside" id="vUM-GO-ujH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="znA-Hu-4kz"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="p1s-He-thC" secondAttribute="bottom" id="9lc-2G-qTm"/>
+                            <constraint firstItem="p1s-He-thC" firstAttribute="leading" secondItem="znA-Hu-4kz" secondAttribute="leading" id="A8l-v2-aoB"/>
+                            <constraint firstItem="p1s-He-thC" firstAttribute="top" secondItem="znA-Hu-4kz" secondAttribute="top" id="CIX-lz-djw"/>
+                            <constraint firstItem="p1s-He-thC" firstAttribute="trailing" secondItem="znA-Hu-4kz" secondAttribute="trailing" id="CTf-kw-ek5"/>
+                            <constraint firstItem="plX-xU-fZe" firstAttribute="centerX" secondItem="1Zd-tJ-SUk" secondAttribute="centerX" id="HIC-Nz-FtN"/>
+                            <constraint firstItem="AjP-xV-lGz" firstAttribute="top" secondItem="znA-Hu-4kz" secondAttribute="top" constant="16" id="ICj-SM-ntg"/>
+                            <constraint firstItem="znA-Hu-4kz" firstAttribute="bottom" secondItem="plX-xU-fZe" secondAttribute="bottom" constant="10" id="aw2-kH-7pH"/>
+                            <constraint firstItem="AjP-xV-lGz" firstAttribute="leading" secondItem="znA-Hu-4kz" secondAttribute="leading" constant="16" id="bto-5k-aAY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Osg-BI-tVA"/>
+                    <connections>
+                        <outlet property="sceneView" destination="p1s-He-thC" id="Kmo-xh-W59"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uh0-tT-axp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3050.7246376811595" y="253.79464285714283"/>
+        </scene>
     </scenes>
     <resources>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
         <image name="placeholderImages" width="600" height="474"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

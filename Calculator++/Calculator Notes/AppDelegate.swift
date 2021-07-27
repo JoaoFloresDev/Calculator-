@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         
-//        UserDefaults.standard.set(true, forKey: "NoAds.Calc")
-//        UserDefaults.standard.set(false, forKey: "InGallery")
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
         if UserDefaultService().getTypeProtection() != ProtectionMode.noProtection {
