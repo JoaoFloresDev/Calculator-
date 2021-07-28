@@ -18,7 +18,6 @@ class ChangePasswordViewController: UIViewController {
     var KeyTemp = ""
     
     //    MARK: - IBOutlets
-    
     @IBAction func dismissScreen(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -80,8 +79,8 @@ class ChangePasswordViewController: UIViewController {
         
         arrayCircles[0].image = UIImage(named: "keyCurrent")
     }
-    
-    @IBAction func ClearPassword(_ sender: Any) {
+
+    @IBAction func clear(_ sender: Any) {
         clearAll()
     }
     
