@@ -488,7 +488,7 @@
                                     <constraint firstAttribute="width" constant="80" id="HXp-E6-wf9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="HelpDesk"/>
+                                <state key="normal" title="Enter"/>
                                 <connections>
                                     <action selector="showHelpDesk:" destination="wdA-gv-WKS" eventType="touchUpInside" id="acc-IA-i36"/>
                                 </connections>
@@ -873,7 +873,7 @@
                                             <action selector="useFaceID:" destination="JpR-h0-Vdp" eventType="touchUpInside" id="HDn-Ui-0AA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJ0-Om-TW3">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJ0-Om-TW3" userLabel="Enter">
                                         <rect key="frame" x="0.0" y="200" width="414" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="LfV-TY-rbu"/>
@@ -1020,7 +1020,7 @@ Your photos are stored locally in your device.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e4T-p1-AJP"/>
+        <segue reference="MFR-4k-rw2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="keyCurrent" width="181" height="181"/>

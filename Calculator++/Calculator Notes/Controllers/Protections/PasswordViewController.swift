@@ -54,19 +54,12 @@ class PasswordViewController: UIViewController {
                             self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
                             self.performSegue(withIdentifier: "showNotes2", sender: nil)
                         } else {
-                            self.helpDeskButton.alpha = 1
-                            let alert = UIAlertController(title: "Recognition Failed", message: "Use the Help Desk for more information", preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                            
+                            self.performSegue(withIdentifier: "showNotes2", sender: nil)
                         }
                     }
                 }
             } else {
-                helpDeskButton.alpha = 1
-                let alert = UIAlertController(title: "Recognition Failed", message: "Could not evaluate policy. Use the Help Desk for more information", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.performSegue(withIdentifier: "showNotes2", sender: nil)
             }
         }
     }
