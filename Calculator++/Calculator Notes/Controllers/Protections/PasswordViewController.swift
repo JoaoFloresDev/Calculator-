@@ -28,10 +28,8 @@ class PasswordViewController: UIViewController {
     @IBOutlet weak var circle5: UIImageView!
     @IBOutlet weak var circle6: UIImageView!
     @IBOutlet weak var instructionsLabel: UILabel!
-    @IBOutlet weak var helpDeskButton: UIButton!
     
     //    MARK: - IBAction
-    
     @IBOutlet weak var buttonFaceID: UIButton!
     @IBAction func useFaceID(_ sender: UIButton) {
         if (UserDefaults.standard.string(forKey: "Key") == nil) {
@@ -61,12 +59,6 @@ class PasswordViewController: UIViewController {
             } else {
                 self.performSegue(withIdentifier: "showNotes2", sender: nil)
             }
-        }
-    }
-    
-    @IBAction func showHelpDesk(_ sender: Any) {
-        if let url = URL(string: "https://www.facebook.com/SharkApplications/") {
-            UIApplication.shared.open(url)
         }
     }
     
@@ -191,6 +183,8 @@ class PasswordViewController: UIViewController {
             instructionsLabel.text = "Create a passcode and click 'enter'"
             captureKey = 1
         }
+
+        buttonFaceID.isHidden = UserDefaultService().getRecoveryStatus()
     }
     
     //    MARK: Style

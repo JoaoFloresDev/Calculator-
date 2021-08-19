@@ -38,19 +38,14 @@ class CalculatorViewController: UIViewController {
         if(senha == "") {
             captureKey = 1
         }
-        
+
+        faceIDButton.isHidden = UserDefaultService().getRecoveryStatus()
     }
 
     @IBOutlet weak var outputLbl: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
-    @IBOutlet weak var helpDeskButton: UIButton!
-
-    @IBAction func showHelpDesk(_ sender: Any) {
-        if let url = URL(string: "https://www.facebook.com/SharkApplications/") {
-            UIApplication.shared.open(url)
-        }
-    }
     
+    @IBOutlet weak var faceIDButton: UIButton!
     @IBAction func useFaceID(_ sender: UIButton) {
         
         let myContext = LAContext()
