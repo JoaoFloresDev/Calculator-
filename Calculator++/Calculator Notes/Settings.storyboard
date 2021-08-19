@@ -1024,6 +1024,9 @@
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVG-9x-eof">
                                                 <rect key="frame" x="357" y="9.5" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="switchButtonAction:" destination="bO4-RD-LXC" eventType="valueChanged" id="CQc-JS-gyL"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide recover button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dac-Ca-htn">
                                                 <rect key="frame" x="16" y="13.5" width="172" height="23"/>
@@ -1092,6 +1095,7 @@
                         <outlet property="bankModeView" destination="zXW-wP-cuH" id="NCr-i8-nR7"/>
                         <outlet property="calcModeView" destination="qSg-FV-y9H" id="XV1-b2-kTr"/>
                         <outlet property="noProtection" destination="7Fd-wC-954" id="B81-vR-pED"/>
+                        <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>
                         <segue destination="kL6-jf-H2R" kind="showDetail" identifier="ChangeCalculatorSegue" id="yGk-OO-8Ic"/>
                         <segue destination="9BG-Vo-nLC" kind="showDetail" identifier="ChangePasswordSegue" id="pks-Ev-wNW"/>

@@ -10,13 +10,19 @@ import UIKit
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
-    
+    // MARK: - IBOutlet
     @IBOutlet weak var upgradeButton: UIButton!
     @IBOutlet weak var bankModeView: UIView!
     @IBOutlet weak var calcModeView: UIView!
     @IBOutlet weak var noProtection: UIButton!
     @IBOutlet weak var ModeGroupView: UIView!
-    
+    @IBOutlet weak var switchButton: UISwitch!
+
+    // MARK: - IBAction
+    @IBAction func switchButtonAction(_ sender: UISwitch) {
+        UserDefaultService().setRecoveryStatus(status: sender.isOn)
+    }
+
     @IBAction func noProtectionPressed(_ sender: Any) {
         UserDefaultService().setTypeProtection(protectionMode: .noProtection)
         showProtectionType(typeProtection: .noProtection)
@@ -30,6 +36,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         performSegue(withIdentifier: "ChangeCalculatorSegue", sender: nil)
     }
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +48,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         ModeGroupView.layer.shadowRadius = 4
         ModeGroupView.layer.shadowOpacity = 0.5
         noProtection.layer.cornerRadius = 8
+
+        switchButton.isOn = UserDefaultService().getRecoveryStatus()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +57,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         showProtectionType(typeProtection: typeProtection)
     }
 
+    // MARK: - Private Methods
     private func showProtectionType(typeProtection: ProtectionMode) {
         switch typeProtection {
             case .calculator:
