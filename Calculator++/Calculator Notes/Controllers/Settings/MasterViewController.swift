@@ -44,7 +44,6 @@ class MasterViewController: UIViewController {
     }()
     
     //    MARK: - IBOutlets
-    
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var teste: UILabel!

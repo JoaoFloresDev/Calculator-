@@ -14,10 +14,15 @@ enum ProtectionMode: String {
     case bank  = "bank"
 }
 
+enum Key: String {
+    case recoveryStatus
+}
+
 var userDefaults = UserDefaults.standard
 var protectionModeKey = "Mode"
 
 struct UserDefaultService {
+    // MARK: - Protection Type
     func getTypeProtection() -> ProtectionMode {
         let protectionMode = userDefaults.string(forKey: protectionModeKey)
         switch protectionMode {
@@ -46,5 +51,15 @@ struct UserDefaultService {
         default:
             UserDefaults.standard.set(ProtectionMode.bank.rawValue, forKey: protectionModeKey)
         }
+    }
+
+    // MARK: - Recovery Status
+    func getRecoveryStatus() -> Bool {
+        return userDefaults.bool(forKey: Key.recoveryStatus.rawValue)
+    }
+
+    func setRecoveryStatus(status: Bool) {
+        print(Key.recoveryStatus.rawValue)
+        UserDefaults.standard.set(status, forKey: Key.recoveryStatus.rawValue)
     }
 }

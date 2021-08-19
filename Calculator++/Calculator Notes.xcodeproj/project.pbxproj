@@ -22,7 +22,6 @@
 		C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41F8483249F271F0015F134 /* PasswordViewController.swift */; };
 		C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43CBCE1245E004E000B348E /* StyleClass.swift */; };
 		C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */; };
-		C4507E0B24A7C32F00960972 /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4507E0A24A7C32F00960972 /* PlayVideoViewController.swift */; };
 		C457C38924ACDA6200CE7B14 /* InformationsFirstUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457C38824ACDA6200CE7B14 /* InformationsFirstUseViewController.swift */; };
 		C467BCAB24A9AABF0039D237 /* VideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */; };
 		C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCC224A9B1880039D237 /* VideoModelController.swift */; };
@@ -79,7 +78,6 @@
 		C41F8483249F271F0015F134 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C43CBCE1245E004E000B348E /* StyleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleClass.swift; sourceTree = "<group>"; };
 		C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
-		C4507E0A24A7C32F00960972 /* PlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		C457C38824ACDA6200CE7B14 /* InformationsFirstUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationsFirstUseViewController.swift; sourceTree = "<group>"; };
 		C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
 		C467BCC224A9B1880039D237 /* VideoModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModelController.swift; sourceTree = "<group>"; };
@@ -137,14 +135,13 @@
 			isa = PBXGroup;
 			children = (
 				C4CBBA7A26AF8E3800CF1436 /* art.scnassets */,
-				C4CBBA7726AF8CAF00CF1436 /* AR */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
+				C4C079C82698CF8D0020FC69 /* Services */,
 				C4A819EA24A6C0FB005023C6 /* Purchase */,
 				2E4A07AC1C42F4EB007F415F /* Helpers */,
 				2E4A07AD1C42F4EB007F415F /* Extensions */,
 				2E4A07A51C42F3F2007F415F /* Controllers */,
 				2E4A07A61C42F3F2007F415F /* Views */,
-				2E4A07A71C42F3F2007F415F /* Models */,
 				848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */,
 				2E4A07971C42F3B0007F415F /* Main.storyboard */,
 				C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */,
@@ -161,9 +158,8 @@
 		2E4A07A51C42F3F2007F415F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C4C079C82698CF8D0020FC69 /* Services */,
+				C4CBBA7726AF8CAF00CF1436 /* AR */,
 				C457C38824ACDA6200CE7B14 /* InformationsFirstUseViewController.swift */,
-				C467BCA224A99BA90039D237 /* VideoTeste (apagar depois) */,
 				C48108E524A57505003E2FA5 /* Protections */,
 				C48108E224A55991003E2FA5 /* Settings */,
 				C435ED10243FEA6C00D5F708 /* Gallery */,
@@ -179,13 +175,6 @@
 				C43CBCE1245E004E000B348E /* StyleClass.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		2E4A07A71C42F3F2007F415F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		2E4A07AC1C42F4EB007F415F /* Helpers */ = {
@@ -241,14 +230,6 @@
 				C46AD1002441708400EF0236 /* ModelController.swift */,
 			);
 			path = Gallery;
-			sourceTree = "<group>";
-		};
-		C467BCA224A99BA90039D237 /* VideoTeste (apagar depois) */ = {
-			isa = PBXGroup;
-			children = (
-				C4507E0A24A7C32F00960972 /* PlayVideoViewController.swift */,
-			);
-			path = "VideoTeste (apagar depois)";
 			sourceTree = "<group>";
 		};
 		C48108E224A55991003E2FA5 /* Settings */ = {
@@ -462,7 +443,6 @@
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
 				C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */,
-				C4507E0B24A7C32F00960972 /* PlayVideoViewController.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				C457C38924ACDA6200CE7B14 /* InformationsFirstUseViewController.swift in Sources */,

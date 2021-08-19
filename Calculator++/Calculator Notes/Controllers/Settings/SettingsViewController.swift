@@ -35,13 +35,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
         navigationController?.navigationBar.backgroundColor = UIColor.black
         
-        upgradeButton.layer.cornerRadius = 10
-
-        ModeGroupView.layer.cornerRadius = 10
+        upgradeButton.layer.cornerRadius = 8
+        ModeGroupView.layer.cornerRadius = 8
         ModeGroupView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        ModeGroupView.layer.shadowRadius = 5
-        ModeGroupView.layer.shadowOpacity = 5
-        noProtection.layer.cornerRadius = 10
+        ModeGroupView.layer.shadowRadius = 4
+        ModeGroupView.layer.shadowOpacity = 0.5
+        noProtection.layer.cornerRadius = 8
     }
 
     override func viewWillAppear(_ animated: Bool) {
