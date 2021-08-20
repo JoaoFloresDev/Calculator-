@@ -16,6 +16,7 @@ enum ProtectionMode: String {
 
 enum Key: String {
     case recoveryStatus
+    case firstUse
 }
 
 var userDefaults = UserDefaults.standard
@@ -59,7 +60,15 @@ struct UserDefaultService {
     }
 
     func setRecoveryStatus(status: Bool) {
-        print(Key.recoveryStatus.rawValue)
         UserDefaults.standard.set(status, forKey: Key.recoveryStatus.rawValue)
+    }
+
+    // MARK: - FirstUse Status
+    func getFirstUseStatus() -> Bool {
+        return userDefaults.bool(forKey: Key.firstUse.rawValue)
+    }
+
+    func setFirstUseStatus(status: Bool) {
+        UserDefaults.standard.set(status, forKey: Key.firstUse.rawValue)
     }
 }
