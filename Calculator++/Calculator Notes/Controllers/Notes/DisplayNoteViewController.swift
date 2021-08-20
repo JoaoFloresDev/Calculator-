@@ -12,7 +12,8 @@ class DisplayNoteViewController: UIViewController, UINavigationControllerDelegat
     
     @IBOutlet weak var noteTitleTextField: UITextField!
     @IBOutlet weak var noteContentTextView: UITextView!
-    
+    @IBOutlet weak var bottomNotes: NSLayoutConstraint!
+
     var note: Note?
     
     override func viewDidLoad() {
@@ -31,6 +32,24 @@ class DisplayNoteViewController: UIViewController, UINavigationControllerDelegat
             noteTitleTextField.text = ""
             noteContentTextView.text = ""
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            bottomNotes.constant = keyboardHeight - 40
+        }
+    }
+    
+    @objc func keyboardWillDisappear() {
+        bottomNotes.constant = 0
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

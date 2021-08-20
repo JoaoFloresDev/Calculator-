@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HmR-An-KgV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HmR-An-KgV">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,12 +19,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="200"/>
                         <view key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" id="0jN-VG-yI2">
-                            <rect key="frame" x="0.0" y="131" width="414" height="130"/>
+                            <rect key="frame" x="0.0" y="124.00000034679067" width="414" height="130"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listNotesTableViewCell" rowHeight="75" id="td0-JG-zWG" customClass="ListNotesTableViewCell" customModule="Calculator_Notes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="td0-JG-zWG" id="3CS-sT-GIw">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
@@ -48,7 +49,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="highlightedColor" systemColor="systemTealColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -68,7 +69,7 @@
                     <tabBarItem key="tabBarItem" title="Notes" image="doc.text" catalog="system" selectedImage="doc.text.fill" id="60r-EX-sPh"/>
                     <navigationItem key="navigationItem" title="Notes" id="EDi-SA-1cP">
                         <barButtonItem key="leftBarButtonItem" title="Edit" style="plain" id="8vs-5f-ofa">
-                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" systemColor="systemBlueColor"/>
                             <connections>
                                 <action selector="showDeleteButton:" destination="dSA-GS-6UX" id="Dk3-Ek-H92"/>
                             </connections>
@@ -103,17 +104,20 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" placeholder="Título" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aRz-xv-QCT">
                                 <rect key="frame" x="20" y="104" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="gtD-7M-J6h"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5iO-Pr-G9I">
-                                <rect key="frame" x="20" y="158" width="374" height="718"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="20" y="158" width="374" height="655"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="SEP-SC-bKH"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aRz-xv-QCT" firstAttribute="trailing" secondItem="5iO-Pr-G9I" secondAttribute="trailing" id="5vI-QR-hyO"/>
@@ -122,9 +126,8 @@
                             <constraint firstItem="aRz-xv-QCT" firstAttribute="trailing" secondItem="Yvc-DF-wrL" secondAttribute="trailingMargin" id="Mwc-qm-mfi"/>
                             <constraint firstItem="aRz-xv-QCT" firstAttribute="leading" secondItem="Yvc-DF-wrL" secondAttribute="leadingMargin" id="eZc-QU-73r"/>
                             <constraint firstItem="aRz-xv-QCT" firstAttribute="top" secondItem="oKc-7l-YoI" secondAttribute="bottom" constant="16" id="oAY-J2-xen"/>
-                            <constraint firstAttribute="bottom" secondItem="5iO-Pr-G9I" secondAttribute="bottom" constant="20" symbolic="YES" id="v1X-HR-YyX"/>
+                            <constraint firstItem="SEP-SC-bKH" firstAttribute="bottom" secondItem="5iO-Pr-G9I" secondAttribute="bottom" id="v1X-HR-YyX"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SEP-SC-bKH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Fl3-d3-IB4">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="ZOw-iu-Flk">
@@ -139,6 +142,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomNotes" destination="v1X-HR-YyX" id="enY-QZ-2NR"/>
                         <outlet property="noteContentTextView" destination="5iO-Pr-G9I" id="9lT-go-HXw"/>
                         <outlet property="noteTitleTextField" destination="aRz-xv-QCT" id="Xc0-Nv-7Pb"/>
                     </connections>
@@ -175,5 +179,11 @@
     <resources>
         <image name="doc.text" catalog="system" width="115" height="128"/>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
