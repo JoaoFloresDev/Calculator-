@@ -136,6 +136,7 @@
 			children = (
 				C4CBBA7A26AF8E3800CF1436 /* art.scnassets */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
+				C4A6257426F8189400F1B300 /* Components */,
 				C4C079C82698CF8D0020FC69 /* Services */,
 				C4A819EA24A6C0FB005023C6 /* Purchase */,
 				2E4A07AC1C42F4EB007F415F /* Helpers */,
@@ -250,6 +251,13 @@
 				C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */,
 			);
 			path = Protections;
+			sourceTree = "<group>";
+		};
+		C4A6257426F8189400F1B300 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		C4A819EA24A6C0FB005023C6 /* Purchase */ = {
