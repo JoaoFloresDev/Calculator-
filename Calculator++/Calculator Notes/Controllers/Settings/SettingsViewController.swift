@@ -15,13 +15,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var bankModeView: UIView!
     @IBOutlet weak var bankModeImage: UIImageView!
-
     @IBOutlet weak var calcModeView: UIView!
     @IBOutlet weak var calcModeImage: UIImageView!
-
     @IBOutlet weak var noProtection: UIButton!
     @IBOutlet weak var noProtectionImage: UIImageView!
-
     @IBOutlet weak var ModeGroupView: UIView!
     @IBOutlet weak var switchButton: UISwitch!
 
@@ -68,28 +65,16 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func showProtectionType(typeProtection: ProtectionMode) {
         switch typeProtection {
             case .calculator:
-//                bankModeView.alpha = 0.4
-//                noProtection.alpha = 0.4
-//                calcModeView.alpha = 1
-
                 bankModeImage.image = UIImage(named: "diselectedIndicator")
                 calcModeImage.image = UIImage(named: "selectedIndicator")
                 noProtectionImage.image = UIImage(named: "diselectedIndicator")
 
             case .noProtection:
-//                bankModeView.alpha = 0.4
-//                noProtection.alpha = 1
-//                calcModeView.alpha = 0.4
-
                 bankModeImage.image = UIImage(named: "diselectedIndicator")
                 calcModeImage.image = UIImage(named: "diselectedIndicator")
                 noProtectionImage.image = UIImage(named: "selectedIndicator")
 
             default: // .bank
-//                bankModeView.alpha = 1
-//                noProtection.alpha = 0.4
-//                calcModeView.alpha = 0.4
-
                 bankModeImage.image = UIImage(named: "selectedIndicator")
                 calcModeImage.image = UIImage(named: "diselectedIndicator")
                 noProtectionImage.image = UIImage(named: "diselectedIndicator")

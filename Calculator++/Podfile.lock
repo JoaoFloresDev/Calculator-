@@ -4,6 +4,12 @@ PODS:
     - SnapKit
   - Device (3.2.1)
   - DTPhotoViewerController (3.1.0)
+  - FBSDKCoreKit (9.0.0):
+    - FBSDKCoreKit/Basics (= 9.0.0)
+    - FBSDKCoreKit/Core (= 9.0.0)
+  - FBSDKCoreKit/Basics (9.0.0)
+  - FBSDKCoreKit/Core (9.0.0):
+    - FBSDKCoreKit/Basics
   - Google-Mobile-Ads-SDK (7.69.0):
     - GoogleAppMeasurement (~> 7.0)
     - GoogleUserMessagingPlatform (~> 1.1)
@@ -68,6 +74,7 @@ PODS:
 DEPENDENCIES:
   - AssetsPickerViewController
   - DTPhotoViewerController
+  - FBSDKCoreKit
   - Google-Mobile-Ads-SDK
   - ImageViewer
   - NYTPhotoViewer
@@ -79,6 +86,7 @@ SPEC REPOS:
     - AssetsPickerViewController
     - Device
     - DTPhotoViewerController
+    - FBSDKCoreKit
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUserMessagingPlatform
@@ -98,6 +106,7 @@ SPEC CHECKSUMS:
   AssetsPickerViewController: 6954aff04b95d26be0d65a58557a9dfbef7811c3
   Device: 0738862dd8a30856b4bd9e21cb9b728873d21392
   DTPhotoViewerController: 2b5e64792ee89fcab1f154538577d1856e04e15b
+  FBSDKCoreKit: ac6cc500b8e104bb9a4dd20b1527b5d199123c2e
   Google-Mobile-Ads-SDK: 2f288748a42920d1c744946a460896a95b0e9110
   GoogleAppMeasurement: 688d7f00e2894d9e13823ed9a028b13b993bc277
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
@@ -113,6 +122,6 @@ SPEC CHECKSUMS:
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
   WLEmptyState: 2bbb3970f62c0b9252029d34a8f74cb3d436eeea
 
-PODFILE CHECKSUM: c0de50cbf035dd8a0a8ae5dbab9393cc9fb5c2d6
+PODFILE CHECKSUM: bacc8a25e218d50af0b7896ab8b2dd88584e5cd9
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

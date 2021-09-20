@@ -13,5 +13,6 @@ pod 'NYTPhotoViewer'
 pod 'Google-Mobile-Ads-SDK'
 pod 'VegaScrollFlowLayout'
 pod 'WLEmptyState'
+pod 'FBSDKCoreKit'
 
 end
