@@ -68,6 +68,7 @@ extension String {
 
 }
 
+@available(iOS 13.0, *)
 class ViewController: UIViewController, ARSCNViewDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, GADInterstitialDelegate {
 
     //    MARK: - IBOutlet
@@ -133,7 +134,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIGestureRecognizerDe
         let scene = SCNScene(named: "art.scnassets/world.scn")!
 
         sceneView.scene = scene
-        metalLayer = self.sceneView.layer as? CAMetalLayer
+        if #available(iOS 13.0, *) {
+            metalLayer = self.sceneView.layer as? CAMetalLayer
+        } else {
+            // Fallback on earlier versions
+        }
         metalLayer.framebufferOnly = false
 
         let tap = UILongPressGestureRecognizer(target: self, action: #selector(tapHandler))
@@ -520,6 +525,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIGestureRecognizerDe
     }
 }
 
+@available(iOS 13.0, *)
 extension ViewController {
     public func addGlowTechnique(node:SCNNode ,sceneView:ARSCNView){
         node.categoryBitMask = 2;
