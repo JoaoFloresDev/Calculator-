@@ -92,7 +92,6 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.backgroundColor = UIColor.black
         navigationItem.leftBarButtonItem =  editButtonItem
     }
     

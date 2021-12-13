@@ -43,8 +43,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationController?.navigationBar.backgroundColor = UIColor.black
         
         upgradeButton.layer.cornerRadius = 8
         ModeGroupView.layer.cornerRadius = 8

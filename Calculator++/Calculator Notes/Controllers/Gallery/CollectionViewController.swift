@@ -83,8 +83,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         
         UserDefaults.standard.set(true, forKey:"FirtsUse")
         UserDefaults.standard.set(true, forKey:"InGallery")
-        
-        navigationController?.navigationBar.backgroundColor = UIColor.black
         navigationItem.leftBarButtonItem =  editButtonItem
         
         setupAds()

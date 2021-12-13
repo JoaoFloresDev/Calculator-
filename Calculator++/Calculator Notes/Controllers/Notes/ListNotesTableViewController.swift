@@ -38,7 +38,6 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.backgroundColor = UIColor.black
         notes = CoreDataHelper.retrieveNote()
         
         
