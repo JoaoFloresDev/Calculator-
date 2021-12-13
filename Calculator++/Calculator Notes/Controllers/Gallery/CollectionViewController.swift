@@ -81,6 +81,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.setup()
         UserDefaults.standard.set(true, forKey:"FirtsUse")
         UserDefaults.standard.set(true, forKey:"InGallery")
         navigationItem.leftBarButtonItem =  editButtonItem

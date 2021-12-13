@@ -44,6 +44,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.setup()
+        
         upgradeButton.layer.cornerRadius = 8
         ModeGroupView.layer.cornerRadius = 8
         ModeGroupView.layer.shadowOffset = CGSize(width: 0, height: 0)

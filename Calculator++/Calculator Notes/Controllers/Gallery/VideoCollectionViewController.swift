@@ -91,8 +91,8 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     //    MARK: - Life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.leftBarButtonItem =  editButtonItem
+        navigationItem.leftBarButtonItem = editButtonItem
+        self.navigationController?.setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {

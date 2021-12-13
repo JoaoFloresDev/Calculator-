@@ -15,6 +15,7 @@
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="XoY-UQ-w5v" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="PNP-BQ-CUx"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Og-qT-8ru">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

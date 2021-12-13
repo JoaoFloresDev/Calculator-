@@ -38,6 +38,8 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.setup()
+        
         notes = CoreDataHelper.retrieveNote()
         
         
