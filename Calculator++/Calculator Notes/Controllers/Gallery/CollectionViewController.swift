@@ -82,6 +82,14 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         super.viewDidLoad()
         
         self.navigationController?.setup()
+        
+        if #available(iOS 13.0, *) {
+        let appearance = UITabBarAppearance()
+        appearance.backgroundColor = .white
+        UITabBar.appearance().standardAppearance = appearance
+        }
+        
+        
         UserDefaults.standard.set(true, forKey:"FirtsUse")
         UserDefaults.standard.set(true, forKey:"InGallery")
         navigationItem.leftBarButtonItem =  editButtonItem
