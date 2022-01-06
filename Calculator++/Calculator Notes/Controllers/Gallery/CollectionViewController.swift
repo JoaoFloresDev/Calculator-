@@ -97,6 +97,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         setupAds()
 
         if !UserDefaultService().getFirstUseStatus() {
+            UserDefaultService().setFirstUseStatus(status: true)
             performSegue(withIdentifier: "setupCalc", sender: nil)
         }
     }
