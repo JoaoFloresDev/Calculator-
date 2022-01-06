@@ -57,11 +57,12 @@ class DisplayNoteViewController: UIViewController, UINavigationControllerDelegat
         if segue.identifier == "save" {
             
             // if note exists, update title and content
-            let note = self.note ?? CoreDataHelper.crateNote()
-            note.title = noteTitleTextField.text ?? ""
-            note.content = noteContentTextView.text ?? ""
-            note.modificationTime = Date()
-            CoreDataHelper.saveNote()
+            if let note = self.note ?? CoreDataHelper.crateNote() {
+                note.title = noteTitleTextField.text ?? ""
+                note.content = noteContentTextView.text ?? ""
+                note.modificationTime = Date()
+                CoreDataHelper.saveNote()
+            }
         }
     }
     

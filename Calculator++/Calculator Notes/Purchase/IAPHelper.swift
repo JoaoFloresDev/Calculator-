@@ -68,8 +68,8 @@ extension IAPHelper {
     productsRequestCompletionHandler = completionHandler
 
     productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
-    productsRequest!.delegate = self
-    productsRequest!.start()
+    productsRequest?.delegate = self
+    productsRequest?.start()
   }
 
   public func buyProduct(_ product: SKProduct) {

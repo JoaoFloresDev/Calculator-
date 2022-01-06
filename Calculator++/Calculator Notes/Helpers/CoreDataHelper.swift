@@ -34,8 +34,8 @@ class CoreDataHelper {
         
     }
     
-    static func crateNote () -> Note {
-        let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: managedContext) as! Note
+    static func crateNote () -> Note? {
+        let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: managedContext) as? Note
         return note
     }
     

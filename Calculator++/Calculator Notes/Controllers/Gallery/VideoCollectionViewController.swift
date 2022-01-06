@@ -114,7 +114,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
             self.rateApp()
         }
         
-        collectionView!.allowsMultipleSelection = editing
+        collectionView?.allowsMultipleSelection = editing
         let indexPaths = collectionView!.indexPathsForVisibleItems
         for indexPath in indexPaths {
             let cell = collectionView!.cellForItem(at: indexPath) as! CollectionViewCell

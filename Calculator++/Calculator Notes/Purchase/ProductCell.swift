@@ -82,6 +82,7 @@ class ProductCell: UITableViewCell {
   }
   
   @objc func buyButtonTapped(_ sender: AnyObject) {
-    buyButtonHandler?(product!)
+    guard let product = product else {return}
+    buyButtonHandler?(product)
   }
 }
