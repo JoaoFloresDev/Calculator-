@@ -10,12 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="CWe-LF-h6F">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="XoY-UQ-w5v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PNP-BQ-CUx"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="xDH-Cb-Q4c"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Og-qT-8ru">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1124,6 +1125,7 @@
                         <outlet property="bankModeView" destination="zXW-wP-cuH" id="NCr-i8-nR7"/>
                         <outlet property="calcModeImage" destination="pe4-e6-H6U" id="agV-ZK-7hf"/>
                         <outlet property="calcModeView" destination="qSg-FV-y9H" id="XV1-b2-kTr"/>
+                        <outlet property="customTabBar" destination="hh2-yq-auE" id="Fgj-8r-Zdu"/>
                         <outlet property="noProtection" destination="7Fd-wC-954" id="B81-vR-pED"/>
                         <outlet property="noProtectionImage" destination="5PD-4q-NZj" id="dbc-wh-VXn"/>
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>

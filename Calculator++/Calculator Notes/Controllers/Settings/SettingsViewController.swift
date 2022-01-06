@@ -21,7 +21,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var noProtectionImage: UIImageView!
     @IBOutlet weak var ModeGroupView: UIView!
     @IBOutlet weak var switchButton: UISwitch!
-
+    @IBOutlet weak var customTabBar: UITabBarItem!
+    
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         UserDefaultService().setRecoveryStatus(status: sender.isOn)
@@ -54,6 +55,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         noProtection.layer.cornerRadius = 8
 
         switchButton.isOn = UserDefaultService().getRecoveryStatus()
+        
+        customTabBar.title = "teste123"
+        navigationController?.tabBarItem.title = "aaaa"
     }
 
     override func viewWillAppear(_ animated: Bool) {

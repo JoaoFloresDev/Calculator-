@@ -156,9 +156,10 @@
         <scene sceneID="b6t-w7-trZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HmR-An-KgV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notes" image="doc.text" catalog="system" selectedImage="doc.text.fill" id="lXW-mX-KrT"/>
+                    <tabBarItem key="tabBarItem" title="Notes" id="63p-YC-FVa"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lS9-pr-ats"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Adm-sA-6py">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

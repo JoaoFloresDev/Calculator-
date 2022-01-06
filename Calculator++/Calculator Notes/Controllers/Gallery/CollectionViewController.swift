@@ -97,12 +97,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         setupAds()
 
         if !UserDefaultService().getFirstUseStatus() {
-            UserDefaultService().setFirstUseStatus(status: true)
-            let alert = UIAlertController(title: "Choose protection mode", message: "Create a password and select your protection mode!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action: UIAlertAction!) in
-                self.tabBarController?.selectedIndex = 3
-       }))
-            self.present(alert, animated: true, completion: nil)
+            performSegue(withIdentifier: "setupCalc", sender: nil)
         }
     }
     
