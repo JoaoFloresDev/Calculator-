@@ -67,6 +67,9 @@ PODS:
     - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
   - PromisesObjC (1.2.12)
+  - Purchases (3.13.1):
+    - PurchasesCoreSwift (= 3.13.1)
+  - PurchasesCoreSwift (3.13.1)
   - SnapKit (5.0.1)
   - VegaScrollFlowLayout (1.1)
   - WLEmptyState (3.1.0)
@@ -78,6 +81,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - ImageViewer
   - NYTPhotoViewer
+  - Purchases
   - VegaScrollFlowLayout
   - WLEmptyState
 
@@ -98,6 +102,8 @@ SPEC REPOS:
     - PINOperation
     - PINRemoteImage
     - PromisesObjC
+    - Purchases
+    - PurchasesCoreSwift
     - SnapKit
     - VegaScrollFlowLayout
     - WLEmptyState
@@ -118,10 +124,12 @@ SPEC CHECKSUMS:
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Purchases: 2693d6444609de044ab25fcda9561bef038f24da
+  PurchasesCoreSwift: ca55f9ef671f89abed133775dd9e53f55007828d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
   WLEmptyState: 2bbb3970f62c0b9252029d34a8f74cb3d436eeea
 
-PODFILE CHECKSUM: bacc8a25e218d50af0b7896ab8b2dd88584e5cd9
+PODFILE CHECKSUM: 8058121892371e8660b744e5e38783f9962ca9eb
 
 COCOAPODS: 1.11.2

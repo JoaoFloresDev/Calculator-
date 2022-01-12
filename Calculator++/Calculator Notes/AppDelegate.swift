@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 import WLEmptyState
+import Purchases
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             WLEmptyState.configure()
         }
+        
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_VMKzfvxxzrBMCYybjxADGXNzRtu")
         
         return true
     }
