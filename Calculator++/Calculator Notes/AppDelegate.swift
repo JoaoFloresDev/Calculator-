@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             WLEmptyState.configure()
         }
         
+        // Initialize RevenueCat
         Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "appl_VMKzfvxxzrBMCYybjxADGXNzRtu")
         

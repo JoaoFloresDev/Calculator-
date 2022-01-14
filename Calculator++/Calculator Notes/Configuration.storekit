@@ -1,0 +1,50 @@
+{
+  "identifier" : "60BB377A",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_compatibilityTimeRate" : 6,
+    "_timeRate" : 15
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "11C89369",
+      "localizations" : [
+
+      ],
+      "name" : "Subscription",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "ABC55E88",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Remove All Ads & Video Support",
+              "displayName" : "Premium Version",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "cn_1_1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Version",
+          "subscriptionGroupID" : "11C89369",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XoY-UQ-w5v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XoY-UQ-w5v">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -34,11 +34,11 @@
             <objects>
                 <viewController id="bps-hS-c1c" customClass="MasterViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dOk-q7-cEp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iks-O0-QeS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Produtos" id="Vwr-b1-3JK">
                                         <barButtonItem key="leftBarButtonItem" title="Fechar" id="xkH-D0-AYq">
@@ -55,7 +55,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUi-FO-xle">
-                                <rect key="frame" x="0.0" y="66" width="414" height="67"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="67"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carregando..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-Na-bwO">
                                         <rect key="frame" x="10" y="10" width="289" height="21"/>
@@ -111,7 +111,7 @@
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NW6-Ep-ul2">
-                                <rect key="frame" x="197" y="153" width="20" height="20"/>
+                                <rect key="frame" x="197" y="185" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SCj-lV-cIn"/>
@@ -140,6 +140,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iW-yB-9jj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3196" y="-1118"/>
+        </scene>
+        <!--Master Subscription View Controller-->
+        <scene sceneID="lKk-GP-Rxt">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ofv-Xb-AA0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="i77-Bc-OCh" customClass="MasterSubscriptionViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WGd-kq-m34">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9d-sg-yQW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="Produtos" id="Cm7-zv-xEa">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="uiW-bK-vq0">
+                                            <connections>
+                                                <action selector="dismissView:" destination="i77-Bc-OCh" id="K2R-z4-qmM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Restore" id="LAB-Iy-mPG">
+                                            <connections>
+                                                <action selector="restorePressed:" destination="i77-Bc-OCh" id="bxz-xm-ssQ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zoi-jq-cDw">
+                                <rect key="frame" x="0.0" y="66" width="414" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carregando..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2W-6c-O3Z">
+                                        <rect key="frame" x="10" y="10" width="289" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carregando..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZC-un-lYo">
+                                        <rect key="frame" x="10" y="41" width="289" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carregando..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JH-bQ-RSa">
+                                        <rect key="frame" x="312" y="39" width="94" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" systemColor="linkColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IQ-8C-MzI">
+                                        <rect key="frame" x="320.5" y="10" width="77" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="linkColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDV-ee-kds">
+                                        <rect key="frame" x="309" y="5" width="100" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="FDZ-Ve-MCm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <connections>
+                                            <action selector="buyPressed:" destination="i77-Bc-OCh" eventType="touchUpInside" id="kSF-cV-an8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KDV-ee-kds" secondAttribute="trailing" constant="5" id="12j-YF-F4j"/>
+                                    <constraint firstItem="t2W-6c-O3Z" firstAttribute="top" secondItem="zoi-jq-cDw" secondAttribute="top" constant="10" id="7q0-T7-yB1"/>
+                                    <constraint firstAttribute="bottom" secondItem="SZC-un-lYo" secondAttribute="bottom" constant="10" id="Kax-bd-9Zt"/>
+                                    <constraint firstItem="KDV-ee-kds" firstAttribute="leading" secondItem="t2W-6c-O3Z" secondAttribute="trailing" constant="10" id="U8S-di-cqR"/>
+                                    <constraint firstItem="SZC-un-lYo" firstAttribute="top" secondItem="t2W-6c-O3Z" secondAttribute="bottom" constant="10" id="VX7-qL-Yha"/>
+                                    <constraint firstItem="3IQ-8C-MzI" firstAttribute="centerX" secondItem="KDV-ee-kds" secondAttribute="centerX" id="WRo-Uu-e4v"/>
+                                    <constraint firstItem="t2W-6c-O3Z" firstAttribute="leading" secondItem="zoi-jq-cDw" secondAttribute="leading" constant="10" id="WZN-NL-0YO"/>
+                                    <constraint firstItem="SZC-un-lYo" firstAttribute="trailing" secondItem="t2W-6c-O3Z" secondAttribute="trailing" id="XHB-1j-Xcz"/>
+                                    <constraint firstItem="3IQ-8C-MzI" firstAttribute="top" secondItem="zoi-jq-cDw" secondAttribute="top" constant="10" id="bMt-1X-KA9"/>
+                                    <constraint firstItem="SZC-un-lYo" firstAttribute="leading" secondItem="zoi-jq-cDw" secondAttribute="leading" constant="10" id="gkU-Ye-Hyz"/>
+                                    <constraint firstAttribute="bottom" secondItem="7JH-bQ-RSa" secondAttribute="bottom" constant="10" id="kNO-VG-vXg"/>
+                                    <constraint firstAttribute="bottom" secondItem="KDV-ee-kds" secondAttribute="bottom" constant="5" id="niP-gR-GcR"/>
+                                    <constraint firstItem="KDV-ee-kds" firstAttribute="top" secondItem="zoi-jq-cDw" secondAttribute="top" constant="5" id="pU6-m4-J0x"/>
+                                    <constraint firstItem="7JH-bQ-RSa" firstAttribute="centerX" secondItem="KDV-ee-kds" secondAttribute="centerX" id="qEg-sm-vlX"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="lvB-us-ZCK">
+                                <rect key="frame" x="197" y="153" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wve-jW-e9r"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wve-jW-e9r" firstAttribute="trailing" secondItem="zoi-jq-cDw" secondAttribute="trailing" id="5pe-UN-qZC"/>
+                            <constraint firstItem="lvB-us-ZCK" firstAttribute="centerX" secondItem="WGd-kq-m34" secondAttribute="centerX" id="Fyi-92-wCJ"/>
+                            <constraint firstItem="zoi-jq-cDw" firstAttribute="top" secondItem="R9d-sg-yQW" secondAttribute="bottom" constant="10" id="KKK-M8-XBm"/>
+                            <constraint firstItem="R9d-sg-yQW" firstAttribute="leading" secondItem="wve-jW-e9r" secondAttribute="leading" id="Oe8-S7-m3F"/>
+                            <constraint firstItem="R9d-sg-yQW" firstAttribute="trailing" secondItem="wve-jW-e9r" secondAttribute="trailing" id="RLQ-CY-HGU"/>
+                            <constraint firstItem="lvB-us-ZCK" firstAttribute="top" secondItem="zoi-jq-cDw" secondAttribute="bottom" constant="20" id="SF8-vC-3G7"/>
+                            <constraint firstItem="zoi-jq-cDw" firstAttribute="leading" secondItem="wve-jW-e9r" secondAttribute="leading" id="XHQ-Zu-RrH"/>
+                            <constraint firstItem="R9d-sg-yQW" firstAttribute="top" secondItem="wve-jW-e9r" secondAttribute="top" id="lH5-ld-EpX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xtt-8J-Aeg"/>
+                    <connections>
+                        <outlet property="buttonBuy" destination="KDV-ee-kds" id="Thi-B1-MUh"/>
+                        <outlet property="buyLabel" destination="3IQ-8C-MzI" id="9TN-Uu-EId"/>
+                        <outlet property="descriptionLabel" destination="SZC-un-lYo" id="nWt-rj-FsA"/>
+                        <outlet property="loadingView" destination="lvB-us-ZCK" id="DX2-IO-oyY"/>
+                        <outlet property="priceLabel" destination="7JH-bQ-RSa" id="j78-P0-Uhf"/>
+                        <outlet property="teste" destination="t2W-6c-O3Z" id="eXE-dM-2Qu"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="4038" y="-1118"/>
         </scene>
         <!--Change Calculator View Controller-->
         <scene sceneID="BHj-9n-jza">
@@ -1083,7 +1195,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="bps-hS-c1c" kind="presentation" id="Qz2-Nv-4CG"/>
+                                            <segue destination="i77-Bc-OCh" kind="presentation" id="jTO-aw-u4E"/>
                                         </connections>
                                     </button>
                                 </subviews>

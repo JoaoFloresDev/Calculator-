@@ -57,7 +57,7 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     
 //    MARK: - Ads
     func checkPurchase() {
-        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
             if let banner = bannerView {
                 banner.removeFromSuperview()
             }
@@ -65,7 +65,7 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     }
     
     func setupAds() {
-        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
             if let banner = bannerView {
                 banner.removeFromSuperview()
             }
