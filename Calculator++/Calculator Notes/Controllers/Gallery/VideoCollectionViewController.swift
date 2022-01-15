@@ -77,6 +77,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     
     @IBAction func addPhoto(_ sender: Any) {
         Purchases.shared.purchaserInfo { info, error in
+            //Check if user is subscribed
             if info?.entitlements["premium"]?.isActive == true {
                 self.imagePickerController.sourceType = .savedPhotosAlbum
                 self.imagePickerController.delegate = self
@@ -110,9 +111,16 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
-            placeholderImage.image = UIImage(named: "placeholderVideo")
+        Purchases.shared.purchaserInfo { info, error in
+            // Check if user is subscribed
+            if info?.entitlements["premium"]?.isActive == true {
+                self.placeholderImage.image = UIImage(named: "placeholderVideo")
+            }
         }
+        
+//        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
+//            placeholderImage.image = UIImage(named: "placeholderVideo")
+//        }
     }
     
     //    MARK: - Collection View

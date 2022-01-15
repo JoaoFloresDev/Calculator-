@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import Purchases
 
 class MasterSubscriptionViewController: UIViewController {
     //    MARK: - Variables
@@ -58,10 +59,13 @@ class MasterSubscriptionViewController: UIViewController {
     
     func confirmCheckmark() {
         DispatchQueue.main.async {
-            if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
-                self.stopLoading()
-                self.buyLabel.text = "   ✓✓✓"
-                UserDefaults.standard.set(true, forKey:"cn_1_1m")
+            Purchases.shared.purchaserInfo { (info, error) in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    self.stopLoading()
+                    self.buyLabel.text = "   ✓✓✓"
+                    UserDefaults.standard.set(true, forKey:"cn_1_1m")
+                }
             }
         }
     }
@@ -70,7 +74,7 @@ class MasterSubscriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.handlePurchaseNotification(_:)),
+        NotificationCenter.default.addObserver(self, selector: #selector(MasterSubscriptionViewController.handlePurchaseNotification(_:)),
                                                name: .IAPHelperPurchaseNotification,
                                                object: nil)
         

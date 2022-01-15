@@ -15,6 +15,7 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
+import Purchases
 
 import UIKit
 import SceneKit
@@ -108,20 +109,31 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     
     //    MARK: - Ads
     func checkPurchase() {
-        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
-            if let banner = bannerView {
-                banner.removeFromSuperview()
+        if let banner = bannerView {
+            Purchases.shared.purchaserInfo { info, error in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    banner.removeFromSuperview()
+                }
             }
         }
+        
+        //        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
+        //            if let banner = bannerView {
+        //                banner.removeFromSuperview()
+        //            }
+        //        }
     }
     
     func setupAds() {
-        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
-            if let banner = bannerView {
-                banner.removeFromSuperview()
+        if let banner = bannerView {
+            Purchases.shared.purchaserInfo { info, error in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    banner.removeFromSuperview()
+                }
             }
-        }
-        else {
+        } else {
             GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
             
             bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
@@ -133,6 +145,24 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             bannerView.load(GADRequest())
             bannerView.delegate = self
         }
+        
+//        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
+//            if let banner = bannerView {
+//                banner.removeFromSuperview()
+//            }
+//        }
+//        else {
+//            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
+//
+//            bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+//            addBannerViewToView(bannerView)
+//
+//            bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
+//            bannerView.rootViewController = self
+//
+//            bannerView.load(GADRequest())
+//            bannerView.delegate = self
+//        }
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
