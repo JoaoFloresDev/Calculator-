@@ -67,11 +67,11 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
             }
         }
         
-//        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
-//            if let banner = bannerView {
-//                banner.removeFromSuperview()
-//            }
-//        }
+        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+            if let banner = bannerView {
+                banner.removeFromSuperview()
+            }
+        }
     }
     
     func setupAds() {
@@ -95,23 +95,23 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
             bannerView.delegate = self
         }
         
-//        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
-//            if let banner = bannerView {
-//                banner.removeFromSuperview()
-//            }
-//        }
-//        else {
-//            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
-//
-//            bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
-//            addBannerViewToView(bannerView)
-//
-//            bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
-//            bannerView.rootViewController = self
-//
-//            bannerView.load(GADRequest())
-//            bannerView.delegate = self
-//        }
+        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+            if let banner = bannerView {
+                banner.removeFromSuperview()
+            }
+        }
+        else {
+            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
+
+            bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+            addBannerViewToView(bannerView)
+
+            bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
+            bannerView.rootViewController = self
+
+            bannerView.load(GADRequest())
+            bannerView.delegate = self
+        }
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {

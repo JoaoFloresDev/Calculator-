@@ -28,6 +28,7 @@
 
 import UIKit
 import StoreKit
+import Purchases
 
 class MasterViewController: UIViewController {
     
@@ -51,6 +52,12 @@ class MasterViewController: UIViewController {
     @IBOutlet weak var buttonBuy: UIButton!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
+    @IBOutlet weak var subsLabel: UILabel!
+    @IBOutlet weak var subsDescriptionLabel: UILabel!
+    @IBOutlet weak var subsNameLabel: UILabel!
+    @IBOutlet weak var subsPriceLabel: UILabel!
+    @IBOutlet weak var subsButton: UIButton!
+    
     //    MARK: - IBAction
     @IBAction func dismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -64,11 +71,22 @@ class MasterViewController: UIViewController {
         confirmCheckmark()
     }
     
+    @IBAction func subscribePressed(_ sender: Any) {
+        PurchaseService.purchase(productId: "cn_1_1m") {
+            self.startLoading()
+            self.timerLoad = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.loadingPlaying), userInfo: nil, repeats: false)
+            
+            self.confirmCheckmark()
+        }
+    }
+    
     @IBAction func restorePressed(_ sender: Any) {
         RazeFaceProducts.store.restorePurchases()
+        Purchases.shared.restoreTransactions { purchaserInfo, error in }
         startLoading()
         timerLoad = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loadingPlaying), userInfo: nil, repeats: false)
         confirmCheckmark()
+        
     }
     
     //    MARK: - UI
@@ -171,5 +189,26 @@ class MasterViewController: UIViewController {
         }
         
         confirmCheckmark()
+        fetchProducts()
+    }
+    
+    //    MARK: - Fetch products from RevenueCat
+    func fetchProducts() {
+        Purchases.shared.offerings { (offerings, error) in
+            if let packages = offerings?.offering(identifier: "default")?.availablePackages {
+                let product = packages.first?.product
+                
+                let title = product?.localizedTitle
+                let description = product?.localizedDescription
+                let price = product?.price
+                
+                self.subsNameLabel.text = title
+                self.subsDescriptionLabel.text = description
+                self.subsPriceLabel.text = MasterViewController.self.priceFormatter.string(from: price!)!
+                
+                self.subsNameLabel.textColor = UIColor.black
+                self.subsDescriptionLabel.textColor = UIColor.black
+            }
+        }
     }
 }

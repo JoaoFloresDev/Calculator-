@@ -118,9 +118,9 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
             }
         }
         
-//        if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
-//            placeholderImage.image = UIImage(named: "placeholderVideo")
-//        }
+        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+            placeholderImage.image = UIImage(named: "placeholderVideo")
+        }
     }
     
     //    MARK: - Collection View
