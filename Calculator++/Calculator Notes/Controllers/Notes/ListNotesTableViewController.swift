@@ -24,6 +24,7 @@
 import UIKit
 import CoreData
 import GoogleMobileAds
+import Purchases
 
 class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate {
     var bannerView: GADBannerView!
@@ -58,30 +59,29 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
 //    MARK: - Ads
     func checkPurchase() {
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
-            if let banner = bannerView {
-                banner.removeFromSuperview()
+                bannerView?.removeFromSuperview()
+        } else {
+            Purchases.shared.purchaserInfo { info, error in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    self.bannerView?.removeFromSuperview()
+                }
             }
         }
     }
     
     func setupAds() {
-        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
-            if let banner = bannerView {
-                banner.removeFromSuperview()
-            }
-        }
-        else {
-            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
-            
-            bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
-            addBannerViewToView(bannerView)
-            
-            bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
-            bannerView.rootViewController = self
-            
-            bannerView.load(GADRequest())
-            bannerView.delegate = self
-        }
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+        addBannerViewToView(bannerView)
+        
+        bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
+        bannerView.rootViewController = self
+        
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        checkPurchase()
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -197,5 +197,4 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
             }
         }
     }
-    
 }

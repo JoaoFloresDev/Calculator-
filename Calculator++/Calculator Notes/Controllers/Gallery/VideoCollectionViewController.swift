@@ -15,6 +15,7 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
+import Purchases
 
 import AVKit
 import MobileCoreServices
@@ -75,17 +76,25 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     }
     
     @IBAction func addPhoto(_ sender: Any) {
-        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
-            imagePickerController.sourceType = .savedPhotosAlbum
-            imagePickerController.delegate = self
-            imagePickerController.mediaTypes = [kUTTypeMovie as String]
-            present(imagePickerController, animated: true, completion: nil)
+        Purchases.shared.purchaserInfo { info, error in
+            //Check if user is subscribed
+            if info?.entitlements["premium"]?.isActive == true ||
+                RazeFaceProducts.store.isProductPurchased("cn_1_1m") ||
+                (UserDefaults.standard.object(forKey: "cn_1_1m") != nil) {
+                self.presentPickerController()
+            } else {
+                let alert = UIAlertController(title: "Premium Tool", message: "Video support is only offered in the Premium Version. See upgrades in Settings", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
-        else {
-            let alert = UIAlertController(title: "Premium Tool", message: "Video support is only offered in the Premium Version. See upgrades in Settings", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+    }
+    
+    private func presentPickerController() {
+        self.imagePickerController.sourceType = .savedPhotosAlbum
+        self.imagePickerController.delegate = self
+        self.imagePickerController.mediaTypes = [kUTTypeMovie as String]
+        self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
     //    MARK: - Life cicle
@@ -98,6 +107,13 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     override func viewWillAppear(_ animated: Bool) {
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
             placeholderImage.image = UIImage(named: "placeholderVideo")
+        } else {
+            Purchases.shared.purchaserInfo { info, error in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    self.placeholderImage.image = UIImage(named: "placeholderVideo")
+                }
+            }
         }
     }
     

@@ -1,0 +1,66 @@
+{
+  "identifier" : "60BB377A",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "19.99",
+      "familyShareable" : false,
+      "internalID" : "B3AA76D4",
+      "localizations" : [
+        {
+          "description" : "Remove All Ads & Video Support",
+          "displayName" : "Premium Version Lifelong",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "NoAds.Calc",
+      "referenceName" : "Premium Version Lifelong",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_compatibilityTimeRate" : 6,
+    "_failTransactionsEnabled" : false,
+    "_storeKitError" : 0,
+    "_timeRate" : 15
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "11C89369",
+      "localizations" : [
+
+      ],
+      "name" : "Subscription",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "ABC55E88",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Remove All Ads & Video Support",
+              "displayName" : "Premium Version",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "cn_1_1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Version",
+          "subscriptionGroupID" : "11C89369",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}
