@@ -109,15 +109,15 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     
     //    MARK: - Ads
     func checkPurchase() {
-        Purchases.shared.purchaserInfo { info, error in
-            // Check if user is subscribed
-            if info?.entitlements["premium"]?.isActive == true {
-                self.bannerView?.removeFromSuperview()
-            }
-        }
-        
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
             bannerView?.removeFromSuperview()
+        } else {
+            Purchases.shared.purchaserInfo { info, error in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    self.bannerView?.removeFromSuperview()
+                }
+            }
         }
     }
     

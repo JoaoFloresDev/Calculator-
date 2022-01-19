@@ -78,9 +78,9 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     @IBAction func addPhoto(_ sender: Any) {
         Purchases.shared.purchaserInfo { info, error in
             //Check if user is subscribed
-            if info?.entitlements["premium"]?.isActive == true {
-                self.presentPickerController()
-            } else if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
+            if info?.entitlements["premium"]?.isActive == true ||
+                RazeFaceProducts.store.isProductPurchased("cn_1_1m") ||
+                (UserDefaults.standard.object(forKey: "cn_1_1m") != nil) {
                 self.presentPickerController()
             } else {
                 let alert = UIAlertController(title: "Premium Tool", message: "Video support is only offered in the Premium Version. See upgrades in Settings", preferredStyle: UIAlertControllerStyle.alert)
@@ -105,15 +105,15 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Purchases.shared.purchaserInfo { info, error in
-            // Check if user is subscribed
-            if info?.entitlements["premium"]?.isActive == true {
-                self.placeholderImage.image = UIImage(named: "placeholderVideo")
-            }
-        }
-        
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
             placeholderImage.image = UIImage(named: "placeholderVideo")
+        } else {
+            Purchases.shared.purchaserInfo { info, error in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    self.placeholderImage.image = UIImage(named: "placeholderVideo")
+                }
+            }
         }
     }
     

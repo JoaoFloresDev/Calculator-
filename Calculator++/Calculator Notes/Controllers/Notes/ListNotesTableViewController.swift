@@ -58,60 +58,30 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     
 //    MARK: - Ads
     func checkPurchase() {
-        if let banner = bannerView {
+        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+                bannerView?.removeFromSuperview()
+        } else {
             Purchases.shared.purchaserInfo { info, error in
                 // Check if user is subscribed
                 if info?.entitlements["premium"]?.isActive == true {
-                    banner.removeFromSuperview()
+                    self.bannerView?.removeFromSuperview()
                 }
-            }
-        }
-        
-        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
-            if let banner = bannerView {
-                banner.removeFromSuperview()
             }
         }
     }
     
     func setupAds() {
-        if let banner = bannerView {
-            Purchases.shared.purchaserInfo { info, error in
-                // Check if user is subscribed
-                if info?.entitlements["premium"]?.isActive == true {
-                    banner.removeFromSuperview()
-                }
-            }
-        } else {
-            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
-            
-            bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
-            addBannerViewToView(bannerView)
-            
-            bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
-            bannerView.rootViewController = self
-            
-            bannerView.load(GADRequest())
-            bannerView.delegate = self
-        }
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
         
-        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
-            if let banner = bannerView {
-                banner.removeFromSuperview()
-            }
-        }
-        else {
-            GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
-
-            bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
-            addBannerViewToView(bannerView)
-
-            bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
-            bannerView.rootViewController = self
-
-            bannerView.load(GADRequest())
-            bannerView.delegate = self
-        }
+        bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+        addBannerViewToView(bannerView)
+        
+        bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
+        bannerView.rootViewController = self
+        
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        checkPurchase()
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
