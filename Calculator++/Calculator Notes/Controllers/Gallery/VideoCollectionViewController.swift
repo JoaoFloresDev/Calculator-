@@ -79,21 +79,22 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
         Purchases.shared.purchaserInfo { info, error in
             //Check if user is subscribed
             if info?.entitlements["premium"]?.isActive == true {
-                self.imagePickerController.sourceType = .savedPhotosAlbum
-                self.imagePickerController.delegate = self
-                self.imagePickerController.mediaTypes = [kUTTypeMovie as String]
-                self.present(self.imagePickerController, animated: true, completion: nil)
+                self.presentPickerController()
             } else if(RazeFaceProducts.store.isProductPurchased("cn_1_1m") || (UserDefaults.standard.object(forKey: "cn_1_1m") != nil)) {
-                self.imagePickerController.sourceType = .savedPhotosAlbum
-                self.imagePickerController.delegate = self
-                self.imagePickerController.mediaTypes = [kUTTypeMovie as String]
-                self.present(imagePickerController, animated: true, completion: nil)
+                self.presentPickerController()
             } else {
                 let alert = UIAlertController(title: "Premium Tool", message: "Video support is only offered in the Premium Version. See upgrades in Settings", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    private func presentPickerController() {
+        self.imagePickerController.sourceType = .savedPhotosAlbum
+        self.imagePickerController.delegate = self
+        self.imagePickerController.mediaTypes = [kUTTypeMovie as String]
+        self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
     //    MARK: - Life cicle
