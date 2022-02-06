@@ -11,7 +11,7 @@ import UIKit
 
 extension UINavigationController {
     func setup() {
-        navigationBar.tintColor = UIColor.blue
+        navigationBar.tintColor = UIColor.systemBlue
         navigationBar.isTranslucent = true
 
         if #available(iOS 13.0, *) {
