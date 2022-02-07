@@ -31,3 +31,6 @@ edit = "Edit";
 
 premiumToolTitle = "Premium Tool";
 premiumToolMessage = "Video support is only offered in the Premium Version. See upgrades in Settings";
+
+save = "Save";
+cancel = "Cancel";
