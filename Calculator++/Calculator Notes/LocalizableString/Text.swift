@@ -17,5 +17,16 @@ enum Text: String {
 }
 
 enum Img: String {
-    case hello = "teste"
+    case diselectedIndicator
+    case selectedIndicator
+    case keyEmpty
+    case keyCurrent
+    case placeholderVideo
+    case placeholderNotes
+    case keyFill
+}
+
+enum Segue: String {
+    case ChangePasswordSegue
+    case ChangeCalculatorSegue
 }

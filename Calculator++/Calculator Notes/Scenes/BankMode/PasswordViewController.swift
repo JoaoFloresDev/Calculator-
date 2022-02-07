@@ -105,10 +105,10 @@ class PasswordViewController: UIViewController {
     func clearAll() {
         arrayPassword.removeAll()
         for x in 0...arrayCircles.count-1 {
-            arrayCircles[x].image = UIImage(named: "keyEmpity")
+            arrayCircles[x].setImage(.keyEmpty)
         }
         
-        arrayCircles[0].image = UIImage(named: "keyCurrent")
+        arrayCircles[0].setImage(.keyCurrent)
     }
     
     @IBAction func ClearPassword(_ sender: Any) {
@@ -156,11 +156,11 @@ class PasswordViewController: UIViewController {
     
     func updatePassword() {
         for x in 0...arrayPassword.count-1 {
-            arrayCircles[x].image = UIImage(named: "keyFill")
+            arrayCircles[x].setImage(.keyFill)
         }
         
         if(arrayPassword.count < 6) {
-            arrayCircles[arrayPassword.count].image = UIImage(named: "keyCurrent")
+            arrayCircles[arrayPassword.count].setImage(.keyCurrent)
         }
     }
     

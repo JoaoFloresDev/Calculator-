@@ -45,7 +45,8 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         
         
         tableView.backgroundView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        let imageView2 = UIImageView(image: UIImage(named: "placeholderNotes.png"))
+        let imageView2 = UIImageView()
+        imageView2.setImage(.placeholderNotes)
         imageView2.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height / 2) - (UIScreen.main.bounds.width * 0.4), width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.8)
         tableView.backgroundView?.addSubview(imageView2)
         

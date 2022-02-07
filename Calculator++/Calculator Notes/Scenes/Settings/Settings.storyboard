@@ -845,31 +845,31 @@
                                             <constraint firstAttribute="width" secondItem="Pwq-wA-tcE" secondAttribute="height" multiplier="1:1" id="22s-d9-A4K"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="sSB-JM-G7R">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="sSB-JM-G7R">
                                         <rect key="frame" x="139.5" y="56" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="sSB-JM-G7R" secondAttribute="height" multiplier="1:1" id="ujU-lz-XXd"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="R7a-RH-kLd">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="R7a-RH-kLd">
                                         <rect key="frame" x="207" y="56" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="R7a-RH-kLd" secondAttribute="height" multiplier="1:1" id="R9n-fa-zRe"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="pVD-te-47u">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="pVD-te-47u">
                                         <rect key="frame" x="274.5" y="56" width="67" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pVD-te-47u" secondAttribute="height" multiplier="1:1" id="DhL-fz-MN6"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="gwt-jX-hPk">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="gwt-jX-hPk">
                                         <rect key="frame" x="341.5" y="56" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="gwt-jX-hPk" secondAttribute="height" multiplier="1:1" id="g4n-JJ-dhp"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="AgL-bo-Uhz">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="AgL-bo-Uhz">
                                         <rect key="frame" x="72.5" y="56" width="67" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="AgL-bo-Uhz" secondAttribute="height" multiplier="1:1" id="w8I-VT-xSP"/>
@@ -1212,7 +1212,7 @@
         <image name="diselectedIndicator" width="600" height="600"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="keyCurrent" width="181" height="181"/>
-        <image name="keyEmpity" width="179" height="179"/>
+        <image name="keyEmpty" width="179" height="179"/>
         <image name="selectedIndicator" width="600" height="600"/>
         <namedColor name="Background">
             <color red="0.13699999451637268" green="0.15299999713897705" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

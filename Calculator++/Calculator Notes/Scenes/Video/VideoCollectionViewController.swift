@@ -106,12 +106,12 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     
     override func viewWillAppear(_ animated: Bool) {
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
-            placeholderImage.image = UIImage(named: "placeholderVideo")
+            placeholderImage.setImage(.placeholderVideo)
         } else {
             Purchases.shared.purchaserInfo { info, error in
                 // Check if user is subscribed
                 if info?.entitlements["premium"]?.isActive == true {
-                    self.placeholderImage.image = UIImage(named: "placeholderVideo")
+                    self.placeholderImage.setImage(.placeholderVideo)
                 }
             }
         }

@@ -26,7 +26,8 @@
 		73B54D6827B09DF100499F66 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6727B09DF100499F66 /* Text.swift */; };
 		73B54D6B27B09FDA00499F66 /* UILabel+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6A27B09FDA00499F66 /* UILabel+extensions.swift */; };
 		73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6C27B0A89800499F66 /* UIButton+Extension.swift */; };
-		73B54D6F27B0AC7A00499F66 /* Controller+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6E27B0AC7A00499F66 /* Controller+extension.swift */; };
+		73B54D6F27B0AC7A00499F66 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6E27B0AC7A00499F66 /* UIViewController+extension.swift */; };
+		73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */; };
 		848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */; };
 		C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4148D882440F45E00225706 /* CollectionViewCell.swift */; };
 		C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4148D892440F45E00225706 /* CollectionViewController.swift */; };
@@ -97,7 +98,8 @@
 		73B54D6727B09DF100499F66 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		73B54D6A27B09FDA00499F66 /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
 		73B54D6C27B0A89800499F66 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		73B54D6E27B0AC7A00499F66 /* Controller+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+extension.swift"; sourceTree = "<group>"; };
+		73B54D6E27B0AC7A00499F66 /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
+		73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		848490D21D68F5610043C60B /* MakeSchoolNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MakeSchoolNotes.xcdatamodel; sourceTree = "<group>"; };
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C4148D892440F45E00225706 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -194,8 +196,9 @@
 				7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */,
 				73B54D6527B09D9800499F66 /* String+Localized.swift */,
 				73B54D6A27B09FDA00499F66 /* UILabel+extensions.swift */,
-				73B54D6E27B0AC7A00499F66 /* Controller+extension.swift */,
+				73B54D6E27B0AC7A00499F66 /* UIViewController+extension.swift */,
 				73B54D6C27B0A89800499F66 /* UIButton+Extension.swift */,
+				73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -525,8 +528,9 @@
 				C457C38924ACDA6200CE7B14 /* InformationsFirstUseViewController.swift in Sources */,
 				C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */,
 				C4CBBA7926AF8CBC00CF1436 /* ViewController.swift in Sources */,
+				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
-				73B54D6F27B0AC7A00499F66 /* Controller+extension.swift in Sources */,
+				73B54D6F27B0AC7A00499F66 /* UIViewController+extension.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,

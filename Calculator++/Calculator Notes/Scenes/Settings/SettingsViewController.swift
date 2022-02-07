@@ -44,11 +44,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @IBAction func showBankMode(_ sender: Any) {
-        performSegue(withIdentifier: "ChangePasswordSegue", sender: nil)
+        performSegue(withIdentifier: Segue.ChangePasswordSegue.rawValue, sender: nil)
     }
 
     @IBAction func showCalculatorMode(_ sender: Any) {
-        performSegue(withIdentifier: "ChangeCalculatorSegue", sender: nil)
+        performSegue(withIdentifier: Segue.ChangeCalculatorSegue.rawValue, sender: nil)
     }
 
     // MARK: - Life Cycle
@@ -69,19 +69,19 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func showProtectionType(typeProtection: ProtectionMode) {
         switch typeProtection {
             case .calculator:
-                bankModeImage.image = UIImage(named: "diselectedIndicator")
-                calcModeImage.image = UIImage(named: "selectedIndicator")
-                noProtectionImage.image = UIImage(named: "diselectedIndicator")
-
+                bankModeImage.setImage(.diselectedIndicator)
+                calcModeImage.setImage(.selectedIndicator)
+                noProtectionImage.setImage(.diselectedIndicator)
+            
             case .noProtection:
-                bankModeImage.image = UIImage(named: "diselectedIndicator")
-                calcModeImage.image = UIImage(named: "diselectedIndicator")
-                noProtectionImage.image = UIImage(named: "selectedIndicator")
+                bankModeImage.setImage(.diselectedIndicator)
+                calcModeImage.setImage(.diselectedIndicator)
+                noProtectionImage.setImage(.selectedIndicator)
 
             default: // .bank
-                bankModeImage.image = UIImage(named: "selectedIndicator")
-                calcModeImage.image = UIImage(named: "diselectedIndicator")
-                noProtectionImage.image = UIImage(named: "diselectedIndicator")
+                bankModeImage.setImage(.selectedIndicator)
+                calcModeImage.setImage(.diselectedIndicator)
+                noProtectionImage.setImage(.diselectedIndicator)
         }
     }
     

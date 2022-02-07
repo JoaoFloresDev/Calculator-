@@ -1,5 +1,5 @@
 //
-//  Controller+extension.swift
+//  UIViewController+extension.swift
 //  Calculator Notes
 //
 //  Created by Joao Victor Flores da Costa on 06/02/22.

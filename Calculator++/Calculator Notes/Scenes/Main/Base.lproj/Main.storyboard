@@ -775,31 +775,31 @@
                                             <constraint firstAttribute="width" secondItem="wPa-Xm-fMO" secondAttribute="height" multiplier="1:1" id="OxP-N3-pqk"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="3i9-mT-Grm">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="3i9-mT-Grm">
                                         <rect key="frame" x="139.5" y="15" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="3i9-mT-Grm" secondAttribute="height" multiplier="1:1" id="AoR-OT-dkE"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="QHa-fq-Sjm">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="QHa-fq-Sjm">
                                         <rect key="frame" x="207" y="15" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="QHa-fq-Sjm" secondAttribute="height" multiplier="1:1" id="G0V-L3-NxP"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="MQn-a9-mfJ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="MQn-a9-mfJ">
                                         <rect key="frame" x="274.5" y="15" width="67" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MQn-a9-mfJ" secondAttribute="height" multiplier="1:1" id="Jbd-hj-L7G"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="6nM-4q-moE">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="6nM-4q-moE">
                                         <rect key="frame" x="341.5" y="15" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6nM-4q-moE" secondAttribute="height" multiplier="1:1" id="USb-5b-61a"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="x4q-8B-bpW">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="x4q-8B-bpW">
                                         <rect key="frame" x="72.5" y="15" width="67" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="x4q-8B-bpW" secondAttribute="height" multiplier="1:1" id="s5h-2S-vg0"/>
@@ -994,7 +994,7 @@ Your photos are stored locally in your device.</string>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="keyCurrent" width="181" height="181"/>
-        <image name="keyEmpity" width="179" height="179"/>
+        <image name="keyEmpty" width="179" height="179"/>
         <namedColor name="Background">
             <color red="0.13699999451637268" green="0.15299999713897705" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

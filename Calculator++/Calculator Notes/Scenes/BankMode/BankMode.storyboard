@@ -270,31 +270,31 @@
                                             <constraint firstAttribute="width" secondItem="8Tj-F4-9Us" secondAttribute="height" multiplier="1:1" id="csV-ih-72k"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="CoT-VC-Iwp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="CoT-VC-Iwp">
                                         <rect key="frame" x="139.5" y="15" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="CoT-VC-Iwp" secondAttribute="height" multiplier="1:1" id="acn-jU-Lxn"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="Ubu-gF-3eI">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="Ubu-gF-3eI">
                                         <rect key="frame" x="207" y="15" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Ubu-gF-3eI" secondAttribute="height" multiplier="1:1" id="Std-Xf-k0O"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="byH-lF-yZr">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="byH-lF-yZr">
                                         <rect key="frame" x="274.5" y="15" width="67" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="byH-lF-yZr" secondAttribute="height" multiplier="1:1" id="gLP-qL-LBA"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="SZq-yF-uAx">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="SZq-yF-uAx">
                                         <rect key="frame" x="341.5" y="15" width="67.5" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="SZq-yF-uAx" secondAttribute="height" multiplier="1:1" id="uMn-yf-Bgx"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpity" translatesAutoresizingMaskIntoConstraints="NO" id="RiD-Gw-xNM">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="RiD-Gw-xNM">
                                         <rect key="frame" x="72.5" y="15" width="67" height="67.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RiD-Gw-xNM" secondAttribute="height" multiplier="1:1" id="rhV-p9-GyC"/>
@@ -413,7 +413,7 @@
     </scenes>
     <resources>
         <image name="keyCurrent" width="181" height="181"/>
-        <image name="keyEmpity" width="179" height="179"/>
+        <image name="keyEmpty" width="179" height="179"/>
         <namedColor name="Background">
             <color red="0.13699999451637268" green="0.15299999713897705" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
