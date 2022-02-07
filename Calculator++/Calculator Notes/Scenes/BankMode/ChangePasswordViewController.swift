@@ -138,8 +138,9 @@ class ChangePasswordViewController: UIViewController {
         arrayCircles.append(circle4)
         arrayCircles.append(circle5)
         arrayCircles.append(circle6)
-        
         captureKey = 1
+        
+        instructionsLabel.setText(.instructionFirstStepBank)
     }
     
     //    MARK: - Style

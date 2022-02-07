@@ -640,8 +640,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="mKh-wQ-QTa"/>
                     <connections>
+                        <outlet property="instructionsLabel" destination="Qjo-7L-1fa" id="Z8M-6P-ayI"/>
                         <outlet property="outputLbl" destination="80S-7P-Ker" id="ccz-Vv-XHE"/>
-                        <outletCollection property="InstructionsLabel" destination="Qjo-7L-1fa" collectionClass="NSMutableArray" id="4jM-oB-8WM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18S-ST-LbL" sceneMemberID="firstResponder"/>

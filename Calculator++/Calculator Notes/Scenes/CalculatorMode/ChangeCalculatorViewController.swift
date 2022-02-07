@@ -10,7 +10,7 @@ import UIKit
 
 class ChangeCalculatorViewController: UIViewController {
     
-    @IBOutlet var InstructionsLabel: [UILabel]!
+    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var outputLbl: UILabel!
     
     var captureKey = 0
@@ -20,11 +20,12 @@ class ChangeCalculatorViewController: UIViewController {
     var result = ""
     var currentOperation:Operation = .NULL
     
-    var senha = UserDefaults.standard.string(forKey: "Key") ?? ""
+    var key = UserDefaults.standard.string(forKey: "Key") ?? ""
     var keyTemp = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        instructionsLabel.setText(.instructionFirstStepCalc)
         captureKey = 1
         outputLbl.text = "0"
     }
@@ -50,15 +51,16 @@ class ChangeCalculatorViewController: UIViewController {
     
     @IBAction func equalsPressed(_ sender: UIButton) {
         if(runningNumber.count > 0 && captureKey == 1) {
-            senha = String(runningNumber)
-            keyTemp = senha
-            InstructionsLabel[0].text = "Key: \(senha). Repeat the Key and confirm change with '='"
+            key = String(runningNumber)
+            keyTemp = key
+            var instructionText = Text.instructionSecondStepCalc.rawValue.localized()
+            instructionText = instructionText.replacingOccurrences(of: "*****", with: key)
+            instructionsLabel.text = instructionText
             captureKey = 2
-            Clear()
-            
+            clear()
         } else if(captureKey == 2 && String(runningNumber) == keyTemp) {
-            InstructionsLabel[0].text = ""
-            InstructionsLabel[0].alpha = 0
+            instructionsLabel.text = ""
+            instructionsLabel.alpha = 0
             
             captureKey = 0
             runningNumber = ""
@@ -95,7 +97,7 @@ class ChangeCalculatorViewController: UIViewController {
         operation(operation: .Divide)
     }
     
-    func Clear() {
+    func clear() {
         
         runningNumber = ""
         leftValue = ""
@@ -106,7 +108,7 @@ class ChangeCalculatorViewController: UIViewController {
     }
     
     @IBAction func allClearPerssed(_ sender: UIButton) {
-        Clear()
+        clear()
     }
     
     func operation(operation: Operation) {
