@@ -40,10 +40,7 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         super.viewDidLoad()
         
         self.navigationController?.setup()
-        
         notes = CoreDataHelper.retrieveNote()
-        
-        
         tableView.backgroundView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         let imageView2 = UIImageView()
         imageView2.setImage(.placeholderNotes)
@@ -51,6 +48,8 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         tableView.backgroundView?.addSubview(imageView2)
         
         setupAds()
+        buttonEdit.title = Text.edit.rawValue.localized()
+        self.setText(.notes)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,11 +147,11 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         
         if(self.isEditing) {
             self.setEditing(false, animated: true)
-            buttonEdit.title = "Edit"
+            buttonEdit.title = Text.edit.rawValue.localized()
             self.rateApp()
         } else {
             self.setEditing(true, animated: true)
-            buttonEdit.title = "Done"
+            buttonEdit.title = Text.done.rawValue.localized()
         }
     }
     

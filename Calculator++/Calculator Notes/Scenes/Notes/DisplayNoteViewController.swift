@@ -18,7 +18,7 @@ class DisplayNoteViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setText(.notes)
     }
     
     override func viewWillAppear(_ animated: Bool) {

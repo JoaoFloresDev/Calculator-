@@ -10,10 +10,23 @@ premiumVersion = "Versão premium";
 noProtection = "Sem proteção";
 hideRecoverButton = "Remover botão recuperar senha";
 chooseProtectionMode = "Escolha o modo de proteção";
+
 settings = "Configurações";
+gallery = "Galeria";
+notes = "Notas";
 
 instructionFirstStepCalc = "Crie uma senha e clique no botão '='";
 instructionSecondStepCalc = "Senha: *****. Repita a senha e confirme com '='";
 
 instructionFirstStepBank = "Crie uma senha e clique em 'enter'";
 instructionSecondStepBank = "Senha: *****. Repita a senha e confirme com 'Enter'";
+
+bankModeHasBeenActivated = "Modo cofre ativado";
+calcModeHasBeenActivated = "Modo calculadora ativado";
+
+welcomeInstructionBank = "Digite sua senha";
+
+done = "Pronto";
+edit = "Editar";
+
+

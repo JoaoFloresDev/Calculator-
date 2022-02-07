@@ -187,6 +187,8 @@ class PasswordViewController: UIViewController {
         }
 
         buttonFaceID.isHidden = UserDefaultService().getRecoveryStatus()
+        
+        instructionsLabel.setText(.welcomeInstructionBank)
     }
     
     //    MARK: Style

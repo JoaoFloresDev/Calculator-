@@ -150,7 +150,9 @@ class ChangePasswordViewController: UIViewController {
     
     //    MARK: - Alert
     func showAlert() {
-        let refreshAlert = UIAlertController(title: "Done", message: "Bank mode has been activated", preferredStyle: UIAlertControllerStyle.alert)
+        let refreshAlert = UIAlertController(title: Text.done.rawValue.localized(),
+                                             message: Text.bankModeHasBeenActivated.rawValue.localized(),
+                                             preferredStyle: UIAlertControllerStyle.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             self.dismiss(animated: true, completion: nil)

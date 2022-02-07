@@ -104,6 +104,8 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             UserDefaultService().setFirstUseStatus(status: true)
             performSegue(withIdentifier: "setupCalc", sender: nil)
         }
+        
+        self.setText(.gallery)
     }
     
     override func viewWillAppear(_ animated: Bool) {

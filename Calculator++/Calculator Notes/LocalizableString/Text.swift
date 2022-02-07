@@ -13,13 +13,23 @@ enum Text: String {
     case noProtection
     case hideRecoverButton
     case chooseProtectionMode
+    
     case settings
+    case gallery
+    case notes
     
     case instructionFirstStepCalc
     case instructionSecondStepCalc
     
     case instructionFirstStepBank
     case instructionSecondStepBank
+    case welcomeInstructionBank
+    
+    case done
+    case edit
+    
+    case bankModeHasBeenActivated
+    case calcModeHasBeenActivated
 }
 
 enum Img: String {
