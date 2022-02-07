@@ -39,7 +39,7 @@ class PasswordViewController: UIViewController {
         }
         else {
             let myContext = LAContext()
-            let myLocalizedReasonString = "Biometric Authntication testing !! "
+            let myLocalizedReasonString = "Biometric Authntication"
             
             var authError: NSError?
             
@@ -140,7 +140,9 @@ class PasswordViewController: UIViewController {
             }
         }
         else {
-            let alert = UIAlertController(title: "Incorrect password", message: "Try again", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: Text.incorrectPassword.rawValue.localized(),
+                                          message: Text.tryAgain.rawValue.localized(),
+                                          preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 self.clearAll()
             }))

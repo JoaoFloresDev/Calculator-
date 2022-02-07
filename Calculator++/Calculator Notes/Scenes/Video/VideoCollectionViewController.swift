@@ -26,7 +26,7 @@ private let reuseIdentifier = "Cell"
 class VideoCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
     
     //    MARK: - Variables
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var modelData = VideoModelController().fetchImageObjectsInit()
     
     var modelDataVideo = VideoModelController().fetchPathVideosObjectsInit()
@@ -53,8 +53,18 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
             
             let items = selectedCells.map { $0.item }.sorted().reversed()
             
-            let path = try! FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+            var path: URL?
             
+            do {
+                path = try FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+            } catch {
+                self.showGenericError()
+            }
+            
+            guard let path = path else {
+                return
+            }
+
             var vetImgs = [URL] ()
             
             for item in items {
@@ -133,10 +143,12 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
         }
         
         collectionView?.allowsMultipleSelection = editing
-        let indexPaths = collectionView!.indexPathsForVisibleItems
-        for indexPath in indexPaths {
-            let cell = collectionView!.cellForItem(at: indexPath) as! CollectionViewCell
-            cell.isInEditingMode = editing
+        if let indexPaths = collectionView?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                if let cell = collectionView?.cellForItem(at: indexPath) as? CollectionViewCell {
+                    cell.isInEditingMode = editing
+                }
+            }
         }
     }
     
@@ -157,14 +169,18 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
-        
-        cell.isInEditingMode = isEditing
-        
-        cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
-        applyshadowWithCorner(containerView : cell)
-        
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
+            cell.isInEditingMode = isEditing
+            if indexPath.indices.contains(1),
+               modelData.indices.contains(indexPath[1]) {
+                cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+            }
+            applyshadowWithCorner(containerView : cell)
+            
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
     }
     
     func applyshadowWithCorner(containerView : UIView){
@@ -177,7 +193,19 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
-            let path = try! FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+            
+            var path: URL?
+            
+            do {
+                path = try FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+            } catch {
+                self.showGenericError()
+            }
+            
+            guard let path = path else {
+                return
+            }
+            
             let newPath = path.appendingPathComponent(modelDataVideo[indexPath[1]])
             
             let player = AVPlayer(url: newPath)
@@ -198,9 +226,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
         
         refreshAlert.modalPresentationStyle = .popover
         
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action: UIAlertAction!) in
-            print("Cancel pressed")
-        }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
@@ -209,7 +235,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
                     self.modelData.remove(at: item)
                     self.modelController.deleteImageObject(imageIndex: item)
                 }
-                self.collectionView!.deleteItems(at: selectedCells)
+                self.collectionView?.deleteItems(at: selectedCells)
             }
         }))
         
@@ -227,21 +253,21 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     //    MARK: - imagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
-        let videoData = NSData(contentsOf: videoURL as URL)
+        guard let videoURL = info[UIImagePickerControllerMediaURL] as? NSURL else { return }
+        guard let videoData = NSData(contentsOf: videoURL as URL) else { return }
         self.dismiss(animated: true, completion: nil)
         
-        
         self.getThumbnailImageFromVideoUrl(url: videoURL as URL) { (thumbImage) in
-            let image = thumbImage
+            guard let image = thumbImage else { return }
             
             let indexPath = IndexPath(row: self.modelData.count - 1, section: 0)
             
-            self.collectionView!.insertItems(at: [indexPath])
-            let pathVideo = self.modelController.saveImageObject(image: image!, video: videoData!)
+            self.collectionView?.insertItems(at: [indexPath])
+
+            let pathVideo = self.modelController.saveImageObject(image: image, video: videoData)
             
             if let path = pathVideo {
-                self.modelData.append(image!)
+                self.modelData.append(image)
                 self.modelDataVideo.append(path)
             }
         }
@@ -281,14 +307,17 @@ extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
         var thumbnail = UIImage()
         option.isSynchronous = true
         manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result!
+            thumbnail = result ?? UIImage()
         })
         return thumbnail
     }
     
     func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
         
-        let cgimage = image.cgImage!
+        guard let cgimage = image.cgImage else {
+            return image
+        }
+        
         let contextImage: UIImage = UIImage(cgImage: cgimage)
         let contextSize: CGSize = contextImage.size
         var posX: CGFloat = 0.0
@@ -310,7 +339,7 @@ extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
         
         let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
         
-        let imageRef: CGImage = cgimage.cropping(to: rect)!
+        guard let imageRef: CGImage = cgimage.cropping(to: rect) else { return image }
         
         let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
         

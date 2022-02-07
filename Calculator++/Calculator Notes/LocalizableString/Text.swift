@@ -37,6 +37,12 @@ enum Text: String {
     case save
     case cancel
     
+    case errorTitle
+    case errorMessage
+    
+    case incorrectPassword
+    case tryAgain
+    
     case deleteFiles
 }
 

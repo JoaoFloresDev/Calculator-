@@ -35,14 +35,12 @@ class ModelController {
         images.removeAll()
         
         for imageObject in savedObjects {
-            let savedImageObject = imageObject as! StoredImage
-            
-            guard savedImageObject.imageName != nil else { return }
-            
-            let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.imageName!)
-            
-            if let storedImage = storedImage {
-                images.append(storedImage)
+            if let savedImageObject = imageObject as? StoredImage {
+                guard savedImageObject.imageName != nil else { return }
+                if let imageName = savedImageObject.imageName,
+                   let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
+                    images.append(storedImage)
+                }
             }
         }
     } catch let error as NSError {
@@ -53,17 +51,14 @@ class ModelController {
     func saveImageObject(image: UIImage) {
         let imageName = ImageController.shared.saveImage(image: image)
         
-        if let imageName = imageName {
-            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext)
-            let newImageEntity = NSManagedObject(entity: coreDataEntity!, insertInto: managedContext) as! StoredImage
-            
-            newImageEntity.imageName = imageName
-            
+        if let imageName = imageName,
+           let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext){
+            let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredImage
+            newImageEntity?.imageName = imageName
             do {
                 try managedContext.save()
                 
                 images.append(image)
-                
                 print("\(imageName) was saved in new object.")
             } catch let error as NSError {
                 print("Could not save new image object: \(error)")
@@ -76,7 +71,8 @@ class ModelController {
         
         guard images.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else { return }
         
-        let imageObjectToDelete = savedObjects[imageIndex] as! StoredImage
+        guard let imageObjectToDelete = savedObjects[imageIndex] as? StoredImage else { return }
+        
         let imageName = imageObjectToDelete.imageName
         
         do {
@@ -106,14 +102,12 @@ class ModelController {
         images.removeAll()
         
         for imageObject in savedObjects {
-            let savedImageObject = imageObject as! StoredImage
-            
-            guard savedImageObject.imageName != nil else { return []}
-            
-            let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.imageName!)
-            
-            if let storedImage = storedImage {
-                images.append(storedImage)
+            if let savedImageObject = imageObject as? StoredImage {
+                guard savedImageObject.imageName != nil else { return []}
+                let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.imageName!)
+                if let storedImage = storedImage {
+                    images.append(storedImage)
+                }
             }
         }
     } catch let error as NSError {
