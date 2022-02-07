@@ -14,6 +14,12 @@ enum Text: String {
     case hideRecoverButton
     case chooseProtectionMode
     case settings
+    
+    case messageLabelCalc
+    case instructionLabelCalc
+    
+    case messageLabelBank
+    case instructionLabelBank
 }
 
 enum Img: String {
@@ -29,4 +35,5 @@ enum Img: String {
 enum Segue: String {
     case ChangePasswordSegue
     case ChangeCalculatorSegue
+    case showNotes
 }

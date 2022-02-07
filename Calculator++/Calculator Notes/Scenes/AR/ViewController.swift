@@ -134,11 +134,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIGestureRecognizerDe
         let scene = SCNScene(named: "art.scnassets/world.scn")!
 
         sceneView.scene = scene
-        if #available(iOS 13.0, *) {
-            metalLayer = self.sceneView.layer as? CAMetalLayer
-        } else {
-            // Fallback on earlier versions
-        }
+        
+        metalLayer = self.sceneView.layer as? CAMetalLayer
         metalLayer.framebufferOnly = false
 
         let tap = UILongPressGestureRecognizer(target: self, action: #selector(tapHandler))
@@ -154,9 +151,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIGestureRecognizerDe
     }
 
     func rateApp() {
-        if #available(iOS 10.3, *) {
-            SKStoreReviewController.requestReview()
-        }
+        SKStoreReviewController.requestReview()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

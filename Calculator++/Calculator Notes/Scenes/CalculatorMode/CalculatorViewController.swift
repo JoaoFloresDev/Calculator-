@@ -57,18 +57,19 @@ class CalculatorViewController: UIViewController {
             myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
                 DispatchQueue.main.async {
                     if success {
-                        self.instructionsLabel.text = "Key: "
-                        self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
-                        self.instructionsLabel.text! += ". Write the Key and confirm with '='"
+                        var instructionText = Text.instructionLabelCalc.rawValue.localized()
+                        let key = UserDefaults.standard.string(forKey: "Key") ?? "314159"
+                        instructionText = instructionText.replacingOccurrences(of: "*****", with: key)
+                        self.instructionsLabel.text = instructionText
                         self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
-                        self.performSegue(withIdentifier: "showNotes", sender: nil)
+                        self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
                     } else {
-                        self.performSegue(withIdentifier: "showNotes", sender: nil)
+                        self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
                     }
                 }
             }
         } else {
-            self.performSegue(withIdentifier: "showNotes", sender: nil)
+            self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
         }
     }
     
@@ -109,7 +110,7 @@ class CalculatorViewController: UIViewController {
             
             outputLbl.text = "0"
             
-            self.performSegue(withIdentifier: "showNotes", sender: nil)
+            self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
         }
         
         operation(operation: currentOperation)

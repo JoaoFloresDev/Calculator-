@@ -123,7 +123,9 @@ class PasswordViewController: UIViewController {
         
         if(password.count >= 1 && captureKey == 1) {
             keyCurret = String(password)
-            instructionsLabel.text = "Key: \(keyCurret). Repeat the Key and confirm with 'Enter'"
+            var instructionsText = Text.instructionLabelBank.rawValue.localized()
+            instructionsText = instructionsText.replacingOccurrences(of: "*****", with: keyCurret)
+            instructionsLabel.text = instructionsText
             captureKey = 2
             clearAll()
         }
@@ -180,7 +182,7 @@ class PasswordViewController: UIViewController {
         arrayCircles.append(circle6)
         
         if(keyCurret == "") {
-            instructionsLabel.text = "Create a passcode and click 'enter'"
+            instructionsLabel.setText(.messageLabelBank)
             captureKey = 1
         }
 

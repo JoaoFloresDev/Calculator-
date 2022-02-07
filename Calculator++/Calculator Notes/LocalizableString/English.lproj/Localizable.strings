@@ -6,6 +6,10 @@
   Copyright © 2022 MakeSchool. All rights reserved.
 */
 
-Hello = "Hello123123";
-Buy = "Buy this book";
-Register = "Register for a new account";
+premiumVersion = "Versão premium";
+noProtection = "Sem proteção";
+hideRecoverButton = "Remover botão recuperar senha";
+chooseProtectionMode = "Escolha o modo de proteção";
+settings = "Configurações";
+instructionLabelCalc = "Chave: *****. Repita a senha e confirme com '='";
+instructionLabelBank = "Key: *****. Repeat the Key and confirm with 'Enter'";
