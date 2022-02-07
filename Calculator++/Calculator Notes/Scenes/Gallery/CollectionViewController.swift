@@ -239,6 +239,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
 
     }
     
+    
     func ConfirmationReset() {
         let refreshAlert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: UIAlertController.Style.alert)
         
