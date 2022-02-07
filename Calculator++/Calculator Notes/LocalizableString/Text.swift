@@ -36,6 +36,8 @@ enum Text: String {
     
     case save
     case cancel
+    
+    case deleteFiles
 }
 
 enum Img: String {

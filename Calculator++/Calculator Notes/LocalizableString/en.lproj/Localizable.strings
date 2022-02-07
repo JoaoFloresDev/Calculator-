@@ -34,3 +34,6 @@ premiumToolMessage = "Video support is only offered in the Premium Version. See 
 
 save = "Save";
 cancel = "Cancel";
+
+deleteFiles = "Delete files?";
+

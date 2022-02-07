@@ -82,24 +82,37 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.setup()
-        
-        let buttonTitle = NSLocalizedString("Hello", comment: "")
-        print(buttonTitle)
-        
-        if #available(iOS 13.0, *) {
-        let appearance = UITabBarAppearance()
-        appearance.backgroundColor = .white
-        UITabBar.appearance().standardAppearance = appearance
+        if #available(iOS 15, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithDefaultBackground()
+            appearance.stackedLayoutAppearance.normal.iconColor = .systemGray
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray]
+            
+            appearance.stackedLayoutAppearance.selected.iconColor = .systemBlue
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]
+            tabBarController?.tabBar.standardAppearance = appearance
+            tabBarController?.tabBar.scrollEdgeAppearance = appearance
         }
         
+        if #available(iOS 13, *) {
+            let appearance = UITabBarAppearance()
+            appearance.shadowImage = UIImage()
+            appearance.shadowColor = .white
+            
+            appearance.stackedLayoutAppearance.normal.iconColor = .systemGray
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray]
+            appearance.stackedLayoutAppearance.selected.iconColor = .systemBlue
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]
+            
+            tabBarController?.tabBar.standardAppearance = appearance
+        }
         
         UserDefaults.standard.set(true, forKey:"FirtsUse")
         UserDefaults.standard.set(true, forKey:"InGallery")
         navigationItem.leftBarButtonItem =  editButtonItem
         
         setupAds()
-
+        
         if !UserDefaultService().getFirstUseStatus() {
             UserDefaultService().setFirstUseStatus(status: true)
             performSegue(withIdentifier: "setupCalc", sender: nil)
@@ -107,7 +120,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         
         self.setText(.gallery)
         
-        var controllers = self.tabBarController?.viewControllers
+        let controllers = self.tabBarController?.viewControllers
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
     }
@@ -133,13 +146,13 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     
     func setupAds() {
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["bc9b21ec199465e69782ace1e97f5b79"]
-
+        
         bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
         addBannerViewToView(bannerView)
-
+        
         bannerView.adUnitID = "ca-app-pub-8858389345934911/5265350806"
         bannerView.rootViewController = self
-
+        
         bannerView.load(GADRequest())
         bannerView.delegate = self
         checkPurchase()
@@ -163,7 +176,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
                                 attribute: .centerX,
                                 multiplier: 1,
                                 constant: 0)
-        ])
+            ])
     }
     
     //    MARK: - Collection View
@@ -190,7 +203,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(modelData.isEmpty) {
@@ -227,18 +239,15 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-
-    }
-    
     func ConfirmationReset() {
-        let refreshAlert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: Text.deleteFiles.rawValue.localized(),
+                                             message: nil,
+                                             preferredStyle: UIAlertController.Style.alert)
         
         refreshAlert.modalPresentationStyle = .popover
         
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action: UIAlertAction!) in
-            print("Cancel pressed")
-        }))
+        refreshAlert.addAction(UIAlertAction(title: Text.cancel.rawValue.localized(),
+                                             style: .destructive, handler: nil))
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
@@ -256,16 +265,16 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     @IBAction func teste(_ sender: Any) {
         openGalery()
     }
-
+    
     func openGalery() {
         
     }
-
-//    MARK: - StoreKit
+    
+    //    MARK: - StoreKit
     func rateApp() {
         if #available(iOS 10.3, *) {
-
-            SKStoreReviewController.requestReview()
+            
+            //            SKStoreReviewController.requestReview()
         }
     }
 }
@@ -277,7 +286,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             if(asset.mediaType.rawValue != 2) {
                 image = getAssetThumbnail(asset: asset)
                 modelData.append(image)
-                
                 let indexPath = IndexPath(row: modelData.count - 1, section: 0)
                 collectionView!.insertItems(at: [indexPath])
                 modelController.saveImageObject(image: image)

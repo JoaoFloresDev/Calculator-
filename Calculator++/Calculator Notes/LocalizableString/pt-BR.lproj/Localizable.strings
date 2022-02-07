@@ -35,3 +35,4 @@ premiumToolMessage = "O suporte para vídeo é apenas oferecido para usuários p
 save = "Salvar";
 cancel = "Cancelar";
 
+deleteFiles = "Deletar arquivo?";
