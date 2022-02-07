@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  Calculator Notes
+
+  Created by Joao Victor Flores da Costa on 06/02/22.
+  Copyright © 2022 MakeSchool. All rights reserved.
+*/
+
+premiumVersion = "Premium version";
+noProtection = "No protection";
+hideRecoverButton = "Remove recover password button";
+chooseProtectionMode = "Choose protection mode";
+
+settings = "Settings";
+gallery = "Gallery";
+notes = "Notes";
+
+instructionFirstStepCalc = "Create a password and click the '=' button";
+instructionSecondStepCalc = "Key: *****. Repeat password and confirm with '='";
+
+instructionFirstStepBank = "Create a password and click 'enter'";
+instructionSecondStepBank = "Key: *****. Repeat password and confirm with 'Enter'";
+
+bankModeHasBeenActivated = "Bank mode activated";
+calcModeHasBeenActivated = "Calculator mode activated";
+
+welcomeInstructionBank = "Type your password";
+
+done = "Done";
+edit = "Edit";
+
+premiumToolTitle = "Premium Tool";
+premiumToolMessage = "Video support is only offered in the Premium Version. See upgrades in Settings";
+
+save = "Save";
+cancel = "Cancel";
