@@ -134,7 +134,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             bannerView?.removeFromSuperview()
         } else {
             Purchases.shared.purchaserInfo { info, error in
-                // Check if user is subscribed
                 if info?.entitlements["premium"]?.isActive == true {
                     UserDefaults.standard.set(true, forKey:"NoAds.Calc")
                     self.bannerView?.removeFromSuperview()
