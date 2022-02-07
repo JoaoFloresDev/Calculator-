@@ -16,7 +16,6 @@ import ImageViewer
 import StoreKit
 import GoogleMobileAds
 import Purchases
-
 import UIKit
 import SceneKit
 import ARKit
@@ -81,7 +80,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     //    MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.setup()
         if #available(iOS 15, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithDefaultBackground()
