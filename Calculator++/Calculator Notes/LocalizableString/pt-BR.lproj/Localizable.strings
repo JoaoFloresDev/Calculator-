@@ -29,4 +29,6 @@ welcomeInstructionBank = "Digite sua senha";
 done = "Pronto";
 edit = "Editar";
 
+premiumToolTitle = "Ferramenta premium"
+premiumToolMessage = "O suporte para vídeo é apenas oferecido para usuários premium. Veja os upgrades na seção Configurações"
 

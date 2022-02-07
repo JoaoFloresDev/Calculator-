@@ -6,10 +6,28 @@
   Copyright © 2022 MakeSchool. All rights reserved.
 */
 
-premiumVersion = "Versão premium";
-noProtection = "Sem proteção";
-hideRecoverButton = "Remover botão recuperar senha";
-chooseProtectionMode = "Escolha o modo de proteção";
-settings = "Configurações";
-instructionLabelCalc = "Chave: *****. Repita a senha e confirme com '='";
-instructionLabelBank = "Key: *****. Repeat the Key and confirm with 'Enter'";
+premiumVersion = "Premium version";
+noProtection = "No protection";
+hideRecoverButton = "Remove recover password button";
+chooseProtectionMode = "Choose protection mode";
+
+settings = "Settings";
+gallery = "Gallery";
+notes = "Notes";
+
+instructionFirstStepCalc = "Create a password and click the '=' button";
+instructionSecondStepCalc = "Key: *****. Repeat password and confirm with '='";
+
+instructionFirstStepBank = "Create a password and click 'enter'";
+instructionSecondStepBank = "Key: *****. Repeat password and confirm with 'Enter'";
+
+bankModeHasBeenActivated = "Bank mode activated";
+calcModeHasBeenActivated = "Calculator mode activated";
+
+welcomeInstructionBank = "Type your password";
+
+done = "Done";
+edit = "Edit";
+
+premiumToolTitle = "Premium Tool"
+premiumToolMessage = "Video support is only offered in the Premium Version. See upgrades in Settings"

@@ -83,7 +83,10 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
                 (UserDefaults.standard.object(forKey: "cn_1_1m") != nil) {
                 self.presentPickerController()
             } else {
-                let alert = UIAlertController(title: "Premium Tool", message: "Video support is only offered in the Premium Version. See upgrades in Settings", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
+                                              message: Text.premiumToolMessage.rawValue.localized(),
+                                              preferredStyle: UIAlertControllerStyle.alert)
+                
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

@@ -30,6 +30,9 @@ enum Text: String {
     
     case bankModeHasBeenActivated
     case calcModeHasBeenActivated
+    
+    case premiumToolTitle
+    case premiumToolMessage
 }
 
 enum Img: String {
