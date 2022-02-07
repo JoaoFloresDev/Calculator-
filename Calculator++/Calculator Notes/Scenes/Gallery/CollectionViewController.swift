@@ -84,6 +84,9 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         
         self.navigationController?.setup()
         
+        let buttonTitle = NSLocalizedString("Hello", comment: "")
+        print(buttonTitle)
+        
         if #available(iOS 13.0, *) {
         let appearance = UITabBarAppearance()
         appearance.backgroundColor = .white

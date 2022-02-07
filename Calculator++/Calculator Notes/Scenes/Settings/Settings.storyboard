@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XoY-UQ-w5v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XoY-UQ-w5v">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1120,8 +1120,8 @@
                                                     <action selector="switchButtonAction:" destination="bO4-RD-LXC" eventType="valueChanged" id="CQc-JS-gyL"/>
                                                 </connections>
                                             </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide recover button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dac-Ca-htn">
-                                                <rect key="frame" x="16" y="13.5" width="172" height="23"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide recover button" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dac-Ca-htn">
+                                                <rect key="frame" x="16" y="13.5" width="331" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1130,6 +1130,7 @@
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
                                             <constraint firstItem="Dac-Ca-htn" firstAttribute="leading" secondItem="HT7-x9-f8c" secondAttribute="leading" constant="16" id="CcV-0a-wnk"/>
+                                            <constraint firstItem="BVG-9x-eof" firstAttribute="leading" secondItem="Dac-Ca-htn" secondAttribute="trailing" constant="10" id="ewE-DG-JhF"/>
                                             <constraint firstAttribute="trailing" secondItem="BVG-9x-eof" secondAttribute="trailing" constant="8" id="fS4-Au-fxH"/>
                                             <constraint firstItem="Dac-Ca-htn" firstAttribute="centerY" secondItem="HT7-x9-f8c" secondAttribute="centerY" id="hKZ-4i-00n"/>
                                             <constraint firstAttribute="height" constant="50" id="hP0-tf-7SH"/>
@@ -1189,9 +1190,11 @@
                         <outlet property="bankModeView" destination="zXW-wP-cuH" id="NCr-i8-nR7"/>
                         <outlet property="calcModeImage" destination="pe4-e6-H6U" id="agV-ZK-7hf"/>
                         <outlet property="calcModeView" destination="qSg-FV-y9H" id="XV1-b2-kTr"/>
+                        <outlet property="chooseProtectionLabel" destination="iZ2-Cu-Jza" id="JKq-gE-ARf"/>
                         <outlet property="customTabBar" destination="hh2-yq-auE" id="Fgj-8r-Zdu"/>
                         <outlet property="noProtection" destination="7Fd-wC-954" id="B81-vR-pED"/>
                         <outlet property="noProtectionImage" destination="5PD-4q-NZj" id="dbc-wh-VXn"/>
+                        <outlet property="recoverLabel" destination="Dac-Ca-htn" id="Txt-1e-RiB"/>
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>
                         <segue destination="kL6-jf-H2R" kind="showDetail" identifier="ChangeCalculatorSegue" id="yGk-OO-8Ic"/>
