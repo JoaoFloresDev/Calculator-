@@ -112,7 +112,7 @@ class ChangePasswordViewController: UIViewController {
             password += String(word)
         }
         if(captureKey == 1 && arrayPassword.count > 0) {
-            var instructionsText = Text.instructionLabelBank.rawValue.localized()
+            var instructionsText = Text.instructionSecondStepBank.rawValue.localized()
             instructionsText = instructionsText.replacingOccurrences(of: "*****", with: password)
             instructionsLabel.text = instructionsText
             KeyTemp = password

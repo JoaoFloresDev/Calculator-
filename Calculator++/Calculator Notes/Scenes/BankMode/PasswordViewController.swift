@@ -123,7 +123,7 @@ class PasswordViewController: UIViewController {
         
         if(password.count >= 1 && captureKey == 1) {
             keyCurret = String(password)
-            var instructionsText = Text.instructionLabelBank.rawValue.localized()
+            var instructionsText = Text.instructionSecondStepBank.rawValue.localized()
             instructionsText = instructionsText.replacingOccurrences(of: "*****", with: keyCurret)
             instructionsLabel.text = instructionsText
             captureKey = 2
@@ -182,7 +182,7 @@ class PasswordViewController: UIViewController {
         arrayCircles.append(circle6)
         
         if(keyCurret == "") {
-            instructionsLabel.setText(.messageLabelBank)
+            instructionsLabel.setText(.instructionFirstStepBank)
             captureKey = 1
         }
 

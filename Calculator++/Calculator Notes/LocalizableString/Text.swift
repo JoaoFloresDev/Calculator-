@@ -15,11 +15,11 @@ enum Text: String {
     case chooseProtectionMode
     case settings
     
-    case messageLabelCalc
-    case instructionLabelCalc
+    case instructionFirstStepCalc
+    case instructionSecondStepCalc
     
-    case messageLabelBank
-    case instructionLabelBank
+    case instructionFirstStepBank
+    case instructionSecondStepBank
 }
 
 enum Img: String {

@@ -12,8 +12,8 @@ hideRecoverButton = "Remover botão recuperar senha";
 chooseProtectionMode = "Escolha o modo de proteção";
 settings = "Configurações";
 
-messageLabelCalc = "Crie uma senha e clique no botão '='"
-instructionLabelCalc = "Senha: *****. Repita a senha e confirme com '='";
+instructionFirstStepCalc = "Crie uma senha e clique no botão '='"
+instructionSecondStepCalc = "Senha: *****. Repita a senha e confirme com '='";
 
-messageLabelBank = "Crie uma senha e clique em 'enter'"
-instructionLabelBank = "Senha: *****. Repita a senha e confirme com 'Enter'";
+instructionFirstStepBank = "Crie uma senha e clique em 'enter'"
+instructionSecondStepBank = "Senha: *****. Repita a senha e confirme com 'Enter'";
