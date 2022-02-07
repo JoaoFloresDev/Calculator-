@@ -661,8 +661,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="MaH-O5-1hF"/>
                     <connections>
+                        <outlet property="instructionsLabel" destination="nsd-8q-Y7P" id="GzI-ik-qjx"/>
                         <outlet property="outputLbl" destination="b7C-Sb-vNp" id="3i0-3C-UtN"/>
-                        <outletCollection property="instructionsLabel" destination="nsd-8q-Y7P" collectionClass="NSMutableArray" id="XLc-Ri-oZD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vl0-tp-ATw" sceneMemberID="firstResponder"/>

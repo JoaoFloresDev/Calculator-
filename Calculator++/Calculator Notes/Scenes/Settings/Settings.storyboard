@@ -976,7 +976,7 @@
             <objects>
                 <viewController storyboardIdentifier="SegueCardsViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="bO4-RD-LXC" customClass="SettingsViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qim-TZ-ASC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJS-1P-87J">
@@ -1180,10 +1180,12 @@
                             <constraint firstItem="dJS-1P-87J" firstAttribute="trailing" secondItem="Ctr-Fn-1Wa" secondAttribute="trailing" id="w1q-Du-EVY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="hh2-yq-auE"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="hh2-yq-auE">
+                        <color key="badgeColor" systemColor="opaqueSeparatorColor"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Settings" id="lcd-Ii-Qi9"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="ModeGroupView" destination="pR5-UN-XhX" id="oda-zo-FiX"/>
                         <outlet property="bankModeImage" destination="w9k-GH-3KC" id="Pei-WP-KcS"/>

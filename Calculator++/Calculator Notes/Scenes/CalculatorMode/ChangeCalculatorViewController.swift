@@ -25,9 +25,9 @@ class ChangeCalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        instructionsLabel.setText(.instructionFirstStepCalc)
         captureKey = 1
         outputLbl.text = "0"
+        instructionsLabel.text = Text.instructionFirstStepCalc.rawValue.localized()
     }
     
     @IBAction func dismissView(_ sender: Any) {

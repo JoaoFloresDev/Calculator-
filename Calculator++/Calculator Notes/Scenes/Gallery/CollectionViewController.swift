@@ -106,6 +106,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         }
         
         self.setText(.gallery)
+        
+        var controllers = self.tabBarController?.viewControllers
+        controllers?[2].setText(.notes)
+        controllers?[3].setText(.settings)
     }
     
     override func viewWillAppear(_ animated: Bool) {

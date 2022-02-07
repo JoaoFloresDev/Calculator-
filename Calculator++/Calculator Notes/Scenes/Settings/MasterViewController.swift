@@ -72,8 +72,8 @@ class MasterViewController: UIViewController {
     }
     
     @IBAction func subscribePressed(_ sender: Any) {
+        self.startLoading()
         PurchaseService.purchase(productId: "cn_1_1m") {
-            self.startLoading()
             self.timerLoad = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.loadingPlaying), userInfo: nil, repeats: false)
             
             self.confirmCheckmark()
@@ -96,10 +96,17 @@ class MasterViewController: UIViewController {
     
     func confirmCheckmark() {
         DispatchQueue.main.async {
-            if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+            if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc")) {
                 self.stopLoading()
                 self.buyLabel.text = "   ✓✓✓"
                 UserDefaults.standard.set(true, forKey:"NoAds.Calc")
+            }
+            
+            Purchases.shared.purchaserInfo { info, error in
+                if info?.entitlements["premium"]?.isActive == true {
+                    UserDefaults.standard.set(true, forKey:"NoAds.Calc")
+                    self.subsLabel.text = "   ✓✓✓"
+                }
             }
         }
     }
