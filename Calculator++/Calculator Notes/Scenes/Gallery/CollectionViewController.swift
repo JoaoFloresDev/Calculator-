@@ -206,8 +206,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
             cell.isInEditingMode = isEditing
-            
+            if indexPath.indices.contains(1),
+               modelData.indices.contains(indexPath[1]) {
             cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+            }
             applyshadowWithCorner(containerView : cell)
             
             return cell
@@ -226,7 +228,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
-            self.presentImageGallery(GalleryViewController(startIndex: indexPath[1], itemsDataSource: self))
+            if indexPath.indices.contains(1),
+               modelData.indices.contains(indexPath[1]) {
+                self.presentImageGallery(GalleryViewController(startIndex: indexPath[1], itemsDataSource: self))
+            }
         }
     }
     

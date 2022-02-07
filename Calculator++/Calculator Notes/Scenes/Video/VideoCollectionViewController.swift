@@ -171,8 +171,10 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
             cell.isInEditingMode = isEditing
-            
-            cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+            if indexPath.indices.contains(1),
+               modelData.indices.contains(indexPath[1]) {
+                cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+            }
             applyshadowWithCorner(containerView : cell)
             
             return cell
