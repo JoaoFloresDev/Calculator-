@@ -190,7 +190,7 @@ class MasterViewController: UIViewController {
                     self.descriptionLabel.textColor = UIColor.black
                     
                     MasterViewController.self.priceFormatter.locale = self.products[0].priceLocale
-                    self.priceLabel.text = MasterViewController.self.priceFormatter.string(from: self.products[0].price)!
+                    self.priceLabel.text = MasterViewController.self.priceFormatter.string(from: self.products[0].price) ?? "..."
                 }
             }
         }
@@ -211,7 +211,9 @@ class MasterViewController: UIViewController {
                 
                 self.subsNameLabel.text = title
                 self.subsDescriptionLabel.text = description
-                self.subsPriceLabel.text = MasterViewController.self.priceFormatter.string(from: price!)!
+                if let price = price {
+                    self.subsPriceLabel.text = MasterViewController.self.priceFormatter.string(from: price) ?? "..."
+                }
                 
                 self.subsNameLabel.textColor = UIColor.black
                 self.subsDescriptionLabel.textColor = UIColor.black

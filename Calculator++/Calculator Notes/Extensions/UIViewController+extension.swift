@@ -13,4 +13,12 @@ extension UIViewController {
     func setText(_ text: Text) {
         self.title = text.rawValue.localized()
     }
+    
+    func showGenericError() {
+        let alert = UIAlertController(title: Text.errorTitle.rawValue.localized(),
+                                      message: Text.errorMessage.rawValue.localized(),
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

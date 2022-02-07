@@ -181,7 +181,7 @@ class CalculatorViewController: UIViewController {
     
     func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
         
-        let cgimage = image.cgImage!
+        guard let cgimage = image.cgImage else { return image }
         let contextImage: UIImage = UIImage(cgImage: cgimage)
         let contextSize: CGSize = contextImage.size
         var posX: CGFloat = 0.0
@@ -203,14 +203,14 @@ class CalculatorViewController: UIViewController {
         
         let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
         
-        let imageRef: CGImage = cgimage.cropping(to: rect)!
+        guard let imageRef: CGImage = cgimage.cropping(to: rect) else { return image }
         
         let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
         
         return image
     }
     
-//    MARK: Style
+//    MARK: - Style
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

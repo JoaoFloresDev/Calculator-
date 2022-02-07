@@ -34,3 +34,9 @@ premiumToolMessage = "Video support is only offered in the Premium Version. See 
 
 save = "Save";
 cancel = "Cancel";
+
+errorTitle = "Unexpected error";
+errorMessage = "Try again later";
+
+incorrectPassword = "Incorrect password";
+tryAgain = "Try again";

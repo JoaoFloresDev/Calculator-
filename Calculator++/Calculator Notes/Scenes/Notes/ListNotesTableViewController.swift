@@ -120,25 +120,16 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     
     // 2
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 3
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as! ListNotesTableViewCell
-        
-        // 1
-        let row = indexPath.row
-        
-        // 2
-        let note = notes[row]
-        
-        // 3
-        cell.noteTitleLabel.text = note.title
-        cell.contentLabel.text = note.content
-        
-        // 4
-        cell.noteModificationTimeLabel.text = note.modificationTime?.convertToString()
-
-        
-        // 5
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "listNotesTableViewCell", for: indexPath) as? ListNotesTableViewCell {
+            let row = indexPath.row
+            let note = notes[row]
+            cell.noteTitleLabel.text = note.title
+            cell.contentLabel.text = note.content
+            cell.noteModificationTimeLabel.text = note.modificationTime?.convertToString()
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     
     
@@ -179,20 +170,14 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 1
         if let identifier = segue.identifier {
-            // 2
             if identifier == "displayNote" {
                 print("Table view cell tapped")
-                
-                let indexPath = tableView.indexPathForSelectedRow!
-                
-                let note = notes[indexPath.row]
-                
-                let displayNoteViewController = segue.destination as! DisplayNoteViewController
-                displayNoteViewController.note = note
-                
-                
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    let note = notes[indexPath.row]
+                    let displayNoteViewController = segue.destination as! DisplayNoteViewController
+                    displayNoteViewController.note = note
+                }
             } else if identifier == "addNote" {
                 print("+ button tapped")
             }

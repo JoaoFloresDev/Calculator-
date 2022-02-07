@@ -35,3 +35,8 @@ premiumToolMessage = "O suporte para vídeo é apenas oferecido para usuários p
 save = "Salvar";
 cancel = "Cancelar";
 
+errorTitle = "Erro inesperado";
+errorMessage = "Tente novamente mais tarde";
+
+incorrectPassword = "Senha incorreta";
+tryAgain = "Tente";

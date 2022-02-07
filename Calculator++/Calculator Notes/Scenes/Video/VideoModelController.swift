@@ -37,13 +37,11 @@ class VideoModelController {
             images.removeAll()
             
             for imageObject in savedObjects {
-                let savedImageObject = imageObject as! StoredVideo
+                let savedImageObject = imageObject as? StoredVideo
                 
-                guard savedImageObject.imageName != nil else { return }
-                
-                let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.imageName!)
-                
-                if let storedImage = storedImage {
+                guard savedImageObject?.imageName != nil else { return }
+                if let imageName = savedImageObject?.imageName,
+                   let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
                     images.append(storedImage)
                 }
             }
@@ -53,22 +51,17 @@ class VideoModelController {
     }
     
     func saveImageObject(image: UIImage, video: NSData) -> String? {
-        //            saving image
         let imageName = ImageController.shared.saveImage(image: image)
-        
         let videoName = ImageController.shared.saveVideo(image: video)
-        
         if let imageName = imageName {
-            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext)
-            let newImageEntity = NSManagedObject(entity: coreDataEntity!, insertInto: managedContext) as! StoredVideo
+            guard let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else { return nil}
+            let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredVideo
+            newImageEntity?.imageName = imageName
+            newImageEntity?.pathURL = videoName
             
-            newImageEntity.imageName = imageName
-            newImageEntity.pathURL = videoName
             do {
                 try managedContext.save()
-                
                 images.append(image)
-                
                 print("\(imageName) was saved in new object.")
             } catch let error as NSError {
                 print("Could not save new image object: \(error)")
@@ -76,8 +69,6 @@ class VideoModelController {
         }
         return videoName
     }
-    
-    
     
     func deleteImageObject(imageIndex: Int) {
         fetchImageObjects()
@@ -89,7 +80,7 @@ class VideoModelController {
         
         guard images.indices.contains(imageIndex) && PathURL.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else { return }
         
-        let imageObjectToDelete = savedObjects[imageIndex] as! StoredVideo
+        guard let imageObjectToDelete = savedObjects[imageIndex] as? StoredVideo else { return }
         
         let imageName = imageObjectToDelete.imageName
         let videoName = imageObjectToDelete.pathURL
@@ -127,13 +118,12 @@ class VideoModelController {
             images.removeAll()
             
             for imageObject in savedObjects {
-                let savedImageObject = imageObject as! StoredVideo
+                let savedImageObject = imageObject as? StoredVideo
                 
-                guard savedImageObject.imageName != nil else { return []}
+                guard savedImageObject?.imageName != nil else { return []}
                 
-                let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.imageName!)
-                
-                if let storedImage = storedImage {
+                if let imageName = savedImageObject?.imageName,
+                   let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
                     images.append(storedImage)
                 }
             }
@@ -152,9 +142,9 @@ class VideoModelController {
             PathURL.removeAll()
             
             for imageObject in savedObjects {
-                let savedImageObject = imageObject as! StoredVideo
+                let savedImageObject = imageObject as? StoredVideo
                 
-                if let path = savedImageObject.pathURL {
+                if let path = savedImageObject?.pathURL {
                     PathURL.append(path)
                 }
             }
@@ -172,9 +162,9 @@ class VideoModelController {
             PathURL.removeAll()
             
             for imageObject in savedObjects {
-                let savedImageObject = imageObject as! StoredVideo
+                let savedImageObject = imageObject as? StoredVideo
                 
-                if let path = savedImageObject.pathURL {
+                if let path = savedImageObject?.pathURL {
                     PathURL.append(path)
                 }
             }

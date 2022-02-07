@@ -32,7 +32,7 @@ private let reuseIdentifier = "Cell"
 class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
     
     //    MARK: - Variables
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var modelData = ModelController().fetchImageObjectsInit()
     var image: UIImage!
     var modelController = ModelController()
@@ -179,11 +179,12 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             self.rateApp()
         }
         
-        collectionView!.allowsMultipleSelection = editing
-        let indexPaths = collectionView!.indexPathsForVisibleItems
-        for indexPath in indexPaths {
-            let cell = collectionView!.cellForItem(at: indexPath) as! CollectionViewCell
-            cell.isInEditingMode = editing
+        collectionView?.allowsMultipleSelection = editing
+        if let indexPaths = collectionView?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                let cell = collectionView?.cellForItem(at: indexPath) as? CollectionViewCell
+                cell?.isInEditingMode = editing
+            }
         }
     }
     
@@ -203,14 +204,16 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
-        
-        cell.isInEditingMode = isEditing
-        
-        cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
-        applyshadowWithCorner(containerView : cell)
-        
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
+            cell.isInEditingMode = isEditing
+            
+            cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+            applyshadowWithCorner(containerView : cell)
+            
+            return cell
+        } else {
+            return CollectionViewCell()
+        }
     }
     
     func applyshadowWithCorner(containerView : UIView){
@@ -292,14 +295,14 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         var thumbnail = UIImage()
         option.isSynchronous = true
         manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result!
+            thumbnail = result ?? UIImage()
         })
         return thumbnail
     }
     
     func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
         
-        let cgimage = image.cgImage!
+        guard let cgimage = image.cgImage else { return image }
         let contextImage: UIImage = UIImage(cgImage: cgimage)
         let contextSize: CGSize = contextImage.size
         var posX: CGFloat = 0.0
@@ -321,7 +324,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         
         let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
         
-        let imageRef: CGImage = cgimage.cropping(to: rect)!
+        guard let imageRef: CGImage = cgimage.cropping(to: rect) else { return image }
         
         let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
         
