@@ -33,6 +33,9 @@ enum Text: String {
     
     case premiumToolTitle
     case premiumToolMessage
+    
+    case save
+    case cancel
 }
 
 enum Img: String {

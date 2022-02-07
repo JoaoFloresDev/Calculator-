@@ -143,6 +143,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomNotes" destination="v1X-HR-YyX" id="enY-QZ-2NR"/>
+                        <outlet property="navItem" destination="Fl3-d3-IB4" id="lFi-fl-JHS"/>
                         <outlet property="noteContentTextView" destination="5iO-Pr-G9I" id="9lT-go-HXw"/>
                         <outlet property="noteTitleTextField" destination="aRz-xv-QCT" id="Xc0-Nv-7Pb"/>
                     </connections>

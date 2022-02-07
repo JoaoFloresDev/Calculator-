@@ -29,5 +29,5 @@ welcomeInstructionBank = "Type your password";
 done = "Done";
 edit = "Edit";
 
-premiumToolTitle = "Premium Tool"
-premiumToolMessage = "Video support is only offered in the Premium Version. See upgrades in Settings"
+premiumToolTitle = "Premium Tool";
+premiumToolMessage = "Video support is only offered in the Premium Version. See upgrades in Settings";

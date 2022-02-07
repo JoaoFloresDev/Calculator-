@@ -13,12 +13,15 @@ class DisplayNoteViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var noteTitleTextField: UITextField!
     @IBOutlet weak var noteContentTextView: UITextView!
     @IBOutlet weak var bottomNotes: NSLayoutConstraint!
-
+    @IBOutlet weak var navItem: UINavigationItem!
+    
     var note: Note?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setText(.notes)
+        navItem.leftBarButtonItem?.title = Text.cancel.rawValue.localized()
+        navItem.rightBarButtonItem?.title = Text.save.rawValue.localized()
     }
     
     override func viewWillAppear(_ animated: Bool) {
