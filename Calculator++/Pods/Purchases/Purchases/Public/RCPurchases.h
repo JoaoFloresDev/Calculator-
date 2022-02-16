@@ -11,7 +11,7 @@
 #import "RCAttributionNetwork.h"
 #import "RCLogLevel.h"
 
-@class SKProduct, SKPayment, SKPaymentTransaction, SKPaymentDiscount, SKProductDiscount, RCPurchaserInfo, RCIntroEligibility, RCOfferings, RCOffering, RCPackage;
+@class SKProduct, SKPayment, SKPaymentTransaction, SKPaymentDiscount, SKProductDiscount, RCPurchaserInfo, RCIntroEligibility, RCOfferings, RCOffering, RCPackage, RCDangerousSettings;
 @protocol RCPurchasesDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -157,6 +157,27 @@ NS_SWIFT_NAME(Purchases)
                           appUserID:(nullable NSString *)appUserID
                        observerMode:(BOOL)observerMode
                        userDefaults:(nullable NSUserDefaults *)userDefaults;
+
+/**
+ Configures an instance of the Purchases SDK with a custom userDefaults. Use this constructor if you want to sync status across a shared container, such as between a host app and an extension. The instance of the Purchases SDK will be set as a singleton. You should access the singleton instance using [RCPurchases sharedPurchases]
+ 
+ @param APIKey The API Key generated for your app from https://app.revenuecat.com/
+ 
+ @param appUserID The unique app user id for this user. This user id will allow users to share their purchases and subscriptions across devices. Pass nil if you want `RCPurchases` to generate this for you.
+ 
+ @param observerMode Set this to TRUE if you have your own IAP implementation and want to use only RevenueCat's backend. Default is FALSE.
+
+ @param userDefaults Custom userDefaults to use
+
+ @param dangerousSettings Only use a Dangerous Setting if suggested by RevenueCat support team.
+
+ @return An instantiated `RCPurchases` object that has been set as a singleton.
+ */
++ (instancetype)configureWithAPIKey:(NSString *)APIKey
+                          appUserID:(nullable NSString *)appUserID
+                       observerMode:(BOOL)observerMode
+                       userDefaults:(nullable NSUserDefaults *)userDefaults
+                  dangerousSettings:(nullable RCDangerousSettings *)dangerousSettings;
 
 /**
  Indicates whether the user is allowed to make payments.
@@ -361,7 +382,7 @@ NS_SWIFT_NAME(syncPurchases(_:));
 /**
  Computes whether or not a user is eligible for the introductory pricing period of a given product. You should use this method to determine whether or not you show the user the normal product price or the introductory price. This also applies to trials (trials are considered a type of introductory pricing).
 
- @note Subscription groups are automatically collected for determining eligibility. If RevenueCat can't definitively compute the eligibilty, most likely because of missing group information, it will return `RCIntroEligibilityStatusUnknown`. The best course of action on unknown status is to display the non-intro pricing, to not create a misleading situation. To avoid this, make sure you are testing with the latest version of iOS so that the subscription group can be collected by the SDK.
+ @note Subscription groups are automatically collected for determining eligibility. If RevenueCat can't definitively compute the eligibility, most likely because of missing group information, it will return `RCIntroEligibilityStatusUnknown`. The best course of action on unknown status is to display the non-intro pricing, to not create a misleading situation. To avoid this, make sure you are testing with the latest version of iOS so that the subscription group can be collected by the SDK.
 
  @param productIdentifiers Array of product identifiers for which you want to compute eligibility
  @param receiveEligibility A block that receives a dictionary of product_id -> `RCIntroEligibility`.

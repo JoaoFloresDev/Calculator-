@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, copy, nullable) NSString *platformFlavor;
 @property(nonatomic, copy, nullable) NSString *platformFlavorVersion;
+@property(nonatomic, readwrite) RCDangerousSettings *dangerousSettings;
 
 @end
 
@@ -27,6 +28,16 @@ static BOOL _forceUniversalAppStore = NO;
 - (instancetype)initWithPlatformFlavor:(nullable NSString *)platformFlavor
                  platformFlavorVersion:(nullable NSString *)platformFlavorVersion
                     finishTransactions:(BOOL)finishTransactions {
+    return [self initWithPlatformFlavor:platformFlavor
+                  platformFlavorVersion:platformFlavorVersion
+                     finishTransactions:finishTransactions
+                      dangerousSettings:nil];
+}
+
+- (instancetype)initWithPlatformFlavor:(nullable NSString *)platformFlavor
+                 platformFlavorVersion:(nullable NSString *)platformFlavorVersion
+                    finishTransactions:(BOOL)finishTransactions
+                     dangerousSettings:(nullable RCDangerousSettings *)dangerousSettings {
     if (self = [super init]) {
         NSAssert((platformFlavor && platformFlavorVersion) || (!platformFlavor && !platformFlavorVersion),
             @"RCSystemInfo initialized with non-matching platform flavor and platform flavor versions!");
@@ -38,6 +49,10 @@ static BOOL _forceUniversalAppStore = NO;
         self.platformFlavor = platformFlavor;
         self.platformFlavorVersion = platformFlavorVersion;
         self.finishTransactions = finishTransactions;
+        if (!dangerousSettings) {
+            dangerousSettings = [[RCDangerousSettings alloc] init];
+        }
+        self.dangerousSettings = dangerousSettings;
     }
     return self;
 }
@@ -49,7 +64,7 @@ static BOOL _forceUniversalAppStore = NO;
 }
 
 + (NSString *)frameworkVersion {
-    return @"3.13.1";
+    return @"3.14.1";
 }
 
 + (NSString *)systemVersion {

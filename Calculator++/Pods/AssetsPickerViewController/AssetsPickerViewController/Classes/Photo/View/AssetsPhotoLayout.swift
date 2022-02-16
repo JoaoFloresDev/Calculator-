@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Device
 
 open class AssetsPhotoLayout: UICollectionViewFlowLayout {
     
@@ -39,20 +38,21 @@ open class AssetsPhotoLayout: UICollectionViewFlowLayout {
 extension AssetsPhotoLayout {
     
     open func expectedContentHeight(forViewSize size: CGSize, isPortrait: Bool) -> CGFloat {
-        var rows = AssetsManager.shared.assetArray.count / (isPortrait ? pickerConfig.assetPortraitColumnCount : pickerConfig.assetLandscapeColumnCount)
-        let remainder = AssetsManager.shared.assetArray.count % (isPortrait ? pickerConfig.assetPortraitColumnCount : pickerConfig.assetLandscapeColumnCount)
+        guard let fetchResult = AssetsManager.shared.fetchResult else { return 0.0 }
+        var rows = fetchResult.count / (isPortrait ? pickerConfig.assetPortraitColumnCount : pickerConfig.assetLandscapeColumnCount)
+        let remainder = fetchResult.count % (isPortrait ? pickerConfig.assetPortraitColumnCount : pickerConfig.assetLandscapeColumnCount)
         rows += remainder > 0 ? 1 : 0
         
         let cellSize = isPortrait ? pickerConfig.assetPortraitCellSize(forViewSize: UIScreen.main.portraitContentSize) : pickerConfig.assetLandscapeCellSize(forViewSize: UIScreen.main.landscapeContentSize)
         let lineSpace = isPortrait ? pickerConfig.assetPortraitLineSpace : pickerConfig.assetLandscapeLineSpace
         let contentHeight = CGFloat(rows) * cellSize.height + (CGFloat(max(rows - 1, 0)) * lineSpace)
-        let bottomHeight = cellSize.height * 2/3 + Device.safeAreaInsets(isPortrait: isPortrait).bottom
+        let bottomHeight = cellSize.height * 2/3 + UIScreen.safeAreaInsets(isPortrait: isPortrait).bottom
         
         return contentHeight + bottomHeight
     }
     
     private func offsetRatio(collectionView: UICollectionView, offset: CGPoint, contentSize: CGSize, isPortrait: Bool) -> CGFloat {
-        return (offset.y > 0 ? offset.y : 0) / ((contentSize.height + Device.safeAreaInsets(isPortrait: isPortrait).bottom) - collectionView.bounds.height)
+        return (offset.y > 0 ? offset.y : 0) / ((contentSize.height + UIScreen.safeAreaInsets(isPortrait: isPortrait).bottom) - collectionView.bounds.height)
     }
     
     open func translateOffset(forChangingSize size: CGSize, currentOffset: CGPoint) -> CGPoint? {
@@ -67,8 +67,8 @@ extension AssetsPhotoLayout {
         var futureOffsetY = (contentHeight - size.height) * currentRatio
         
         if currentOffset.y < 0 {
-            let insetRatio = (-currentOffset.y) / Device.safeAreaInsets(isPortrait: isPortraitCurrent).top
-            let insetDiff = Device.safeAreaInsets(isPortrait: isPortraitFuture).top * insetRatio
+            let insetRatio = (-currentOffset.y) / UIScreen.safeAreaInsets(isPortrait: isPortraitCurrent).top
+            let insetDiff = UIScreen.safeAreaInsets(isPortrait: isPortraitFuture).top * insetRatio
             futureOffsetY -= insetDiff
         }
         

@@ -6,6 +6,7 @@
 //
 //
 
+import UIKit
 import SnapKit
 
 fileprivate let kDimmerViewKey                          = "kDimmerViewKey"
@@ -95,11 +96,7 @@ extension UIView {
         return activityIndicator
     }
     
-    open func dimForTouch() {
-        dim(animated: false, color: .black, alpha: 0.15, ratio: 1)
-    }
-    
-    open func dim(animated: Bool = true, color: UIColor = .black, alpha: CGFloat = 0.6, ratio: CGFloat = 1) {
+    open func dmr_dim(animated: Bool = true, color: UIColor = .black, alpha: CGFloat = 0.6, ratio: CGFloat = 1) {
         
         if let _ = self.dimmerView {
             
@@ -115,7 +112,7 @@ extension UIView {
         }
     }
     
-    open func undim(animated: Bool = true) {
+    open func dmr_undim(animated: Bool = true) {
         if animated {
             dimmerView?.fadeOutFromSuperview(completion: {
                 self.clearKVO()
@@ -126,7 +123,7 @@ extension UIView {
         }
     }
     
-    open var isLoading: Bool {
+    open var dmr_isLoading: Bool {
         if let _ = get(kDimmerActivityIndicatorView), dimmingRatio > 0 {
             return true
         } else {
@@ -134,8 +131,8 @@ extension UIView {
         }
     }
     
-    open func showLoading(animated: Bool = true, color: UIColor = UIColor(rgbHex: 0xEF4B49), dimColor: UIColor = .clear, alpha: CGFloat = 1, verticalRatio: CGFloat = 1, isBlock: Bool = true) {
-        dim(animated: animated, color: dimColor, alpha: alpha)
+    open func dmr_showLoading(animated: Bool = true, color: UIColor = UIColor(rgbHex: 0xEF4B49), dimColor: UIColor = .clear, alpha: CGFloat = 1, verticalRatio: CGFloat = 1, isBlock: Bool = true) {
+        dmr_dim(animated: animated, color: dimColor, alpha: alpha)
         if let _ = self.dimmerActivityView {
             // already loading
         } else {
@@ -155,8 +152,8 @@ extension UIView {
         dimmerView?.isUserInteractionEnabled = isBlock
     }
     
-    open func hideLoading(animated: Bool = true) {
-        undim(animated: animated)
+    open func dmr_hideLoading(animated: Bool = true) {
+        dmr_undim(animated: animated)
     }
     
     fileprivate func clearKVO() {
