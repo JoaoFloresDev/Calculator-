@@ -87,9 +87,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     @IBAction func addPhoto(_ sender: Any) {
         Purchases.shared.purchaserInfo { info, error in
             //Check if user is subscribed
-            if info?.entitlements["premium"]?.isActive == true ||
-                RazeFaceProducts.store.isProductPurchased("cn_1_1m") ||
-                (UserDefaults.standard.object(forKey: "cn_1_1m") != nil) {
+            if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil) {
                 self.presentPickerController()
             } else {
                 let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),

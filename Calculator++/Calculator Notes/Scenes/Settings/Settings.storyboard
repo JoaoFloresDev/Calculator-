@@ -110,7 +110,7 @@
                                     <constraint firstItem="lO6-r7-E7L" firstAttribute="leading" secondItem="q3A-Cb-0AC" secondAttribute="leading" constant="10" id="wV1-s1-NH5"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1vI-gQ-chH">
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1vI-gQ-chH">
                                 <rect key="frame" x="197" y="216" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -119,6 +119,7 @@
                         <constraints>
                             <constraint firstItem="jLZ-fz-zrd" firstAttribute="top" secondItem="Ziq-UH-HQh" secondAttribute="top" id="8ha-85-UCK"/>
                             <constraint firstItem="jLZ-fz-zrd" firstAttribute="leading" secondItem="Ziq-UH-HQh" secondAttribute="leading" id="HbE-VV-rE1"/>
+                            <constraint firstItem="1vI-gQ-chH" firstAttribute="top" secondItem="q3A-Cb-0AC" secondAttribute="bottom" constant="83" id="epQ-bL-Bfb"/>
                             <constraint firstItem="jLZ-fz-zrd" firstAttribute="trailing" secondItem="Ziq-UH-HQh" secondAttribute="trailing" id="hhd-Ox-6jd"/>
                             <constraint firstItem="q3A-Cb-0AC" firstAttribute="leading" secondItem="Ziq-UH-HQh" secondAttribute="leading" id="iz9-AR-Koq"/>
                             <constraint firstItem="q3A-Cb-0AC" firstAttribute="top" secondItem="jLZ-fz-zrd" secondAttribute="bottom" constant="10" id="lX5-2W-0Vp"/>
