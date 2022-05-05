@@ -8,6 +8,11 @@ PODS:
     - FBAEMKit (= 12.3.2)
     - FBSDKCoreKit_Basics (= 12.3.2)
   - FBSDKCoreKit_Basics (12.3.2)
+  - FBSDKLoginKit (12.3.2):
+    - FBSDKCoreKit (= 12.3.2)
+  - FBSDKMessengerShareKit (1.3.2)
+  - FBSDKShareKit (12.3.2):
+    - FBSDKCoreKit (= 12.3.2)
   - Google-Mobile-Ads-SDK (7.69.0):
     - GoogleAppMeasurement (~> 7.0)
     - GoogleUserMessagingPlatform (~> 1.1)
@@ -83,6 +88,9 @@ DEPENDENCIES:
   - AssetsPickerViewController
   - DTPhotoViewerController
   - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKMessengerShareKit
+  - FBSDKShareKit
   - Google-Mobile-Ads-SDK (= 7.69.0)
   - ImageViewer
   - NYTPhotoViewer
@@ -97,6 +105,9 @@ SPEC REPOS:
     - FBAEMKit
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
+    - FBSDKLoginKit
+    - FBSDKMessengerShareKit
+    - FBSDKShareKit
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUserMessagingPlatform
@@ -120,6 +131,9 @@ SPEC CHECKSUMS:
   FBAEMKit: 955ca52eba8219c20f90774e8c6ff8bc7b3192a3
   FBSDKCoreKit: 678f64eda3f0ff25c189c2ebbfe87b1d96a85a6d
   FBSDKCoreKit_Basics: 6bee7c1f0932432901781203fa5e587ec5099148
+  FBSDKLoginKit: 56d55e23fe66a6db045826190b0b4dbc0e1ca0a0
+  FBSDKMessengerShareKit: bdd14265f5845e6d1c95a128ab33705a68ca1c21
+  FBSDKShareKit: 4ef957addab76816116ea92bd872e792f7137669
   Google-Mobile-Ads-SDK: 2f288748a42920d1c744946a460896a95b0e9110
   GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
@@ -137,6 +151,6 @@ SPEC CHECKSUMS:
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
   WLEmptyState: 2bbb3970f62c0b9252029d34a8f74cb3d436eeea
 
-PODFILE CHECKSUM: e19c12f29aeaa981be92dd1f20f69d648ea11661
+PODFILE CHECKSUM: b07c6a8816d200602973336224f50cd8b9003f34
 
 COCOAPODS: 1.11.2
