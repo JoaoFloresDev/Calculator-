@@ -25,6 +25,7 @@ import StoreKit
 import Foundation
 import AVFoundation
 import AVKit
+import AppTrackingTransparency
 
 private let reuseIdentifier = "Cell"
 
@@ -122,11 +123,31 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         let controllers = self.tabBarController?.viewControllers
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         checkPurchase()
     }
+    
+    func setNotification(){
+       //Ask for notification permission
+       let n = NotificationHandler()
+       n.askNotificationPermission {
+           //n.scheduleAllNotifications()
+           
+           //IMPORTANT: wait for 1 second to display another alert
+           DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+               if #available(iOS 14, *) {
+                 ATTrackingManager.requestTrackingAuthorization { (status) in
+                   //print("IDFA STATUS: \(status.rawValue)")
+                   //FBAdSettings.setAdvertiserTrackingEnabled(true)
+                 }
+               }
+           }
+       }
+   }
     
     //    MARK: - Ads
     func checkPurchase() {
@@ -364,4 +385,21 @@ extension CollectionViewController: GalleryItemsDataSource {
         
         return galleryItem
     }
+}
+
+import UserNotifications
+
+class NotificationHandler{
+//Permission function
+func askNotificationPermission(completion: @escaping ()->Void){
+    
+    //Permission to send notifications
+    let center = UNUserNotificationCenter.current()
+    // Request permission to display alerts and play sounds.
+    center.requestAuthorization(options: [.alert, .badge, .sound])
+    { (granted, error) in
+        // Enable or disable features based on authorization.
+        completion()
+    }
+}
 }

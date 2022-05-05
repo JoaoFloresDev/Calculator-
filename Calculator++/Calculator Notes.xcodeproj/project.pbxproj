@@ -18,6 +18,10 @@
 		2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07B01C42F599007F415F /* ListNotesTableViewCell.swift */; };
 		337061F82792021B00B1D30D /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337061F72792021B00B1D30D /* PurchaseService.swift */; };
 		337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */; };
+		735E9486282461DC00BBD5D3 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735E9482282461D900BBD5D3 /* FBSDKLoginKit.framework */; };
+		735E9487282461DC00BBD5D3 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735E9483282461D900BBD5D3 /* Bolts.framework */; };
+		735E9488282461DC00BBD5D3 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735E9484282461DB00BBD5D3 /* FBSDKCoreKit.framework */; };
+		735E9489282461DC00BBD5D3 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735E9485282461DB00BBD5D3 /* FBSDKShareKit.framework */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
 		73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4D27B096F600499F66 /* BankMode.storyboard */; };
@@ -87,6 +91,10 @@
 		337061FB27921AA100B1D30D /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		507DCE2495DCDB987B456563 /* Pods-Calculator Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.debug.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.debug.xcconfig"; sourceTree = "<group>"; };
+		735E9482282461D900BBD5D3 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		735E9483282461D900BBD5D3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		735E9484282461DB00BBD5D3 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		735E9485282461DB00BBD5D3 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalculatorMode.storyboard; sourceTree = "<group>"; };
 		73B54D4D27B096F600499F66 /* BankMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankMode.storyboard; sourceTree = "<group>"; };
@@ -134,6 +142,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				735E9487282461DC00BBD5D3 /* Bolts.framework in Frameworks */,
+				735E9488282461DC00BBD5D3 /* FBSDKCoreKit.framework in Frameworks */,
+				735E9489282461DC00BBD5D3 /* FBSDKShareKit.framework in Frameworks */,
+				735E9486282461DC00BBD5D3 /* FBSDKLoginKit.framework in Frameworks */,
 				F6B0DEFAD8397A4646C29BEC /* Pods_Calculator_Notes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +174,10 @@
 		2E4A07921C42F3B0007F415F /* Calculator Notes */ = {
 			isa = PBXGroup;
 			children = (
+				735E9483282461D900BBD5D3 /* Bolts.framework */,
+				735E9484282461DB00BBD5D3 /* FBSDKCoreKit.framework */,
+				735E9482282461D900BBD5D3 /* FBSDKLoginKit.framework */,
+				735E9485282461DB00BBD5D3 /* FBSDKShareKit.framework */,
 				C4CBBA7A26AF8E3800CF1436 /* art.scnassets */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
 				73B54D6427B09CE000499F66 /* LocalizableString */,
@@ -691,6 +707,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Calculator\\ Notes",
+					"$(PROJECT_DIR)/Calculator\\ Notes",
+					"$(PROJECT_DIR)/Calculator\\ Notes",
+					"$(PROJECT_DIR)/Calculator\\ Notes",
 				);
 				INFOPLIST_FILE = "Calculator Notes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -716,6 +736,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Calculator\\ Notes",
+					"$(PROJECT_DIR)/Calculator\\ Notes",
+					"$(PROJECT_DIR)/Calculator\\ Notes",
+					"$(PROJECT_DIR)/Calculator\\ Notes",
 				);
 				INFOPLIST_FILE = "Calculator Notes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
