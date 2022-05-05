@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>NSUserTrackingUsageDescription</key>
+    <string>Este identificador será usado para entregar anúncios personalizados para você.</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>

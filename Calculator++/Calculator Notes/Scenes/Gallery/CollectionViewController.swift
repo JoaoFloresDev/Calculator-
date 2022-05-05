@@ -26,6 +26,9 @@ import Foundation
 import AVFoundation
 import AVKit
 import AppTrackingTransparency
+import FBSDKCoreKit
+import FBSDKShareKit
+import FBSDKLoginKit
 
 private let reuseIdentifier = "Cell"
 
@@ -124,30 +127,31 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
         
-        
+        requestPermission()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         checkPurchase()
     }
     
-    func setNotification(){
-       //Ask for notification permission
-       let n = NotificationHandler()
-       n.askNotificationPermission {
-           //n.scheduleAllNotifications()
-           
-           //IMPORTANT: wait for 1 second to display another alert
-           DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-               if #available(iOS 14, *) {
-                 ATTrackingManager.requestTrackingAuthorization { (status) in
-                   //print("IDFA STATUS: \(status.rawValue)")
-                   //FBAdSettings.setAdvertiserTrackingEnabled(true)
-                 }
-               }
-           }
-       }
-   }
+    func requestPermission() {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("Authorized")
+                case .denied:
+                    print("Denied")
+                case .notDetermined:
+                    print("Not Determined")
+                case .restricted:
+                    print("Restricted")
+                @unknown default:
+                    print("Unknown")
+                }
+            }
+        }
+    }
     
     //    MARK: - Ads
     func checkPurchase() {

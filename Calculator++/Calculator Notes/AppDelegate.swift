@@ -44,7 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize RevenueCat
         Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "appl_VMKzfvxxzrBMCYybjxADGXNzRtu")
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+                    
+                default:
+                    print("Unknown")
+                }
+            }
+        }
+        
         return true
     }
     
@@ -100,7 +111,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        FBSDKAppEvents.activateApp()
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    FBSDKAppEvents.activateApp()
+                    
+                default:
+                    print("Unknown")
+                }
+            }
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
