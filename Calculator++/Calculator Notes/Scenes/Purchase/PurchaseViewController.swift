@@ -28,7 +28,6 @@
 
 import UIKit
 import StoreKit
-import Purchases
 
 class PurchaseViewController: UIViewController {
     
@@ -59,7 +58,6 @@ class PurchaseViewController: UIViewController {
     
     @IBAction func restorePressed(_ sender: Any) {
         RazeFaceProducts.store.restorePurchases()
-        Purchases.shared.restoreTransactions { purchaserInfo, error in }
         startLoading()
         timerLoad = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loadingPlaying), userInfo: nil, repeats: false)
         confirmCheckmark()

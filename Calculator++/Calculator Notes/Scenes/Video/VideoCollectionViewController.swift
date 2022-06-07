@@ -15,7 +15,6 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
-import Purchases
 import AVKit
 import MobileCoreServices
 import Photos
@@ -84,7 +83,6 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     }
     
     @IBAction func addPhoto(_ sender: Any) {
-        Purchases.shared.purchaserInfo { info, error in
             //Check if user is subscribed
             if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil) {
                 self.presentPickerController()
@@ -96,7 +94,6 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-        }
     }
     
     private func presentPickerController() {
@@ -116,13 +113,6 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     override func viewWillAppear(_ animated: Bool) {
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
             placeholderImage.setImage(.placeholderVideo)
-        } else {
-            Purchases.shared.purchaserInfo { info, error in
-                // Check if user is subscribed
-                if info?.entitlements["premium"]?.isActive == true {
-                    self.placeholderImage.setImage(.placeholderVideo)
-                }
-            }
         }
     }
     

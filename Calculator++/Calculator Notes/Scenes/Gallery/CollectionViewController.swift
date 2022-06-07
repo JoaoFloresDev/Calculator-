@@ -15,7 +15,6 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
-import Purchases
 import UIKit
 import SceneKit
 import ARKit
@@ -132,13 +131,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     func checkPurchase() {
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
             bannerView?.removeFromSuperview()
-        } else {
-            Purchases.shared.purchaserInfo { info, error in
-                if info?.entitlements["premium"]?.isActive == true {
-                    UserDefaults.standard.set(true, forKey:"NoAds.Calc")
-                    self.bannerView?.removeFromSuperview()
-                }
-            }
         }
     }
     
