@@ -101,9 +101,6 @@ class PurchaseViewController: UIViewController {
                                                name: .IAPHelperPurchaseNotification,
                                                object: nil)
         confirmCheckmark()
-        
-//        title = Text.products.rawValue.localized()
-//        self.setText(.products)
         customNavigator.title = Text.products.rawValue.localized()
         closeButton.title = Text.close.rawValue.localized()
         restoreButton.title = Text.restore.rawValue.localized()

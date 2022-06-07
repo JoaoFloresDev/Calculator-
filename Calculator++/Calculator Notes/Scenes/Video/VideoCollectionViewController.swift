@@ -38,7 +38,6 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     //    Video adaptation
     var imagePickerController = UIImagePickerController()
     var videoURL : NSURL?
-    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     //    MARK: - IBOutlet
     
