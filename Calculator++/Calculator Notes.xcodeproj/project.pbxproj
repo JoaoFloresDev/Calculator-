@@ -19,6 +19,7 @@
 		337061F82792021B00B1D30D /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337061F72792021B00B1D30D /* PurchaseService.swift */; };
 		337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
+		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
 		73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4D27B096F600499F66 /* BankMode.storyboard */; };
 		73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D5F27B09A1B00499F66 /* Localizable.strings */; };
@@ -34,12 +35,11 @@
 		C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41F8483249F271F0015F134 /* PasswordViewController.swift */; };
 		C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43CBCE1245E004E000B348E /* StyleClass.swift */; };
 		C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */; };
-		C457C38924ACDA6200CE7B14 /* InformationsFirstUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457C38824ACDA6200CE7B14 /* InformationsFirstUseViewController.swift */; };
 		C467BCAB24A9AABF0039D237 /* VideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */; };
 		C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCC224A9B1880039D237 /* VideoModelController.swift */; };
 		C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */; };
 		C46AD1012441708400EF0236 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46AD1002441708400EF0236 /* ModelController.swift */; };
-		C480A50224A770E500094FC8 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C480A50124A770E500094FC8 /* MasterViewController.swift */; };
+		C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C480A50124A770E500094FC8 /* PurchaseViewController.swift */; };
 		C480A50424A7746B00094FC8 /* Notes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C480A50324A7746A00094FC8 /* Notes.storyboard */; };
 		C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C480A50524A7752F00094FC8 /* Gallery.storyboard */; };
 		C480A50824A7757600094FC8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C480A50724A7757600094FC8 /* Settings.storyboard */; };
@@ -88,6 +88,7 @@
 		337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		507DCE2495DCDB987B456563 /* Pods-Calculator Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.debug.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
+		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalculatorMode.storyboard; sourceTree = "<group>"; };
 		73B54D4D27B096F600499F66 /* BankMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankMode.storyboard; sourceTree = "<group>"; };
 		73B54D5927B0995600499F66 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -106,12 +107,11 @@
 		C41F8483249F271F0015F134 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C43CBCE1245E004E000B348E /* StyleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleClass.swift; sourceTree = "<group>"; };
 		C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
-		C457C38824ACDA6200CE7B14 /* InformationsFirstUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationsFirstUseViewController.swift; sourceTree = "<group>"; };
 		C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
 		C467BCC224A9B1880039D237 /* VideoModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModelController.swift; sourceTree = "<group>"; };
 		C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BdCoreDataImg.swift; sourceTree = "<group>"; };
 		C46AD1002441708400EF0236 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		C480A50124A770E500094FC8 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		C480A50124A770E500094FC8 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		C480A50324A7746A00094FC8 /* Notes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notes.storyboard; sourceTree = "<group>"; };
 		C480A50524A7752F00094FC8 /* Gallery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gallery.storyboard; sourceTree = "<group>"; };
 		C480A50724A7757600094FC8 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -220,9 +220,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		73ABC0ED284F187F00E5C3A4 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				C480A50124A770E500094FC8 /* PurchaseViewController.swift */,
+				73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
 		73B54D5027B0979B00499F66 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				73ABC0ED284F187F00E5C3A4 /* Purchase */,
 				73B54D5827B0983000499F66 /* AR */,
 				73B54D5727B097F200499F66 /* Main */,
 				73B54D5627B097D300499F66 /* Settings */,
@@ -291,7 +301,6 @@
 		73B54D5627B097D300499F66 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C480A50124A770E500094FC8 /* MasterViewController.swift */,
 				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
 				C480A50724A7757600094FC8 /* Settings.storyboard */,
 			);
@@ -301,7 +310,6 @@
 		73B54D5727B097F200499F66 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C457C38824ACDA6200CE7B14 /* InformationsFirstUseViewController.swift */,
 				2E4A07971C42F3B0007F415F /* Main.storyboard */,
 			);
 			path = Main;
@@ -417,6 +425,7 @@
 				2E4A079E1C42F3B0007F415F /* LaunchScreen.storyboard in Resources */,
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
+				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
 				C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */,
 				73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */,
 				2E4A079B1C42F3B0007F415F /* Assets.xcassets in Resources */,
@@ -521,7 +530,6 @@
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
-				C457C38924ACDA6200CE7B14 /* InformationsFirstUseViewController.swift in Sources */,
 				C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */,
 				C4CBBA7926AF8CBC00CF1436 /* ViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
@@ -530,7 +538,7 @@
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
-				C480A50224A770E500094FC8 /* MasterViewController.swift in Sources */,
+				C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */,
 				73B54D6627B09D9800499F66 /* String+Localized.swift in Sources */,
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,

@@ -43,3 +43,9 @@ tryAgain = "Try again";
 
 deleteFiles = "Delete files?";
 
+// Purchase
+products = "Products";
+loading = "Loading...";
+close = "Close";
+restore = "Restore";
+buy = "Buy";

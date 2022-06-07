@@ -30,27 +30,19 @@ import UIKit
 import StoreKit
 import Purchases
 
-class MasterViewController: UIViewController {
-    
-    //    MARK: - Variables
-    var products: [SKProduct] = []
-    var timerLoad: Timer!
-    static let priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        
-        formatter.formatterBehavior = .behavior10_4
-        formatter.numberStyle = .currency
-        
-        return formatter
-    }()
+class PurchaseViewController: UIViewController {
     
     //    MARK: - IBOutlets
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var teste: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var buttonBuy: UIButton!
+    @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    
+    @IBOutlet weak var customNavigator: UINavigationItem!
+    @IBOutlet weak var closeButton: UIBarButtonItem!
+    @IBOutlet weak var restoreButton: UIBarButtonItem!
     
     //    MARK: - IBAction
     @IBAction func dismissView(_ sender: Any) {
@@ -74,6 +66,18 @@ class MasterViewController: UIViewController {
         
     }
     
+    //    MARK: - Variables
+    var products: [SKProduct] = []
+    var timerLoad: Timer!
+    static let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        
+        formatter.formatterBehavior = .behavior10_4
+        formatter.numberStyle = .currency
+        
+        return formatter
+    }()
+    
     //    MARK: - UI
     @objc func loadingPlaying() {
         stopLoading()
@@ -93,11 +97,18 @@ class MasterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.handlePurchaseNotification(_:)),
+        NotificationCenter.default.addObserver(self, selector: #selector(PurchaseViewController.handlePurchaseNotification(_:)),
                                                name: .IAPHelperPurchaseNotification,
                                                object: nil)
-        
         confirmCheckmark()
+        
+//        title = Text.products.rawValue.localized()
+//        self.setText(.products)
+        customNavigator.title = Text.products.rawValue.localized()
+        closeButton.title = Text.close.rawValue.localized()
+        restoreButton.title = Text.restore.rawValue.localized()
+        buyLabel.text = Text.buy.rawValue.localized()
+        priceLabel.text  = Text.loading.rawValue.localized()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -154,8 +165,8 @@ class MasterViewController: UIViewController {
                     self.descriptionLabel.text = self.products[0].localizedDescription
                     self.descriptionLabel.textColor = UIColor.black
                     
-                    MasterViewController.self.priceFormatter.locale = self.products[0].priceLocale
-                    self.priceLabel.text = MasterViewController.self.priceFormatter.string(from: self.products[0].price)!
+                    PurchaseViewController.self.priceFormatter.locale = self.products[0].priceLocale
+                    self.priceLabel.text = PurchaseViewController.self.priceFormatter.string(from: self.products[0].price)!
                     
                 }
             }
@@ -167,8 +178,8 @@ class MasterViewController: UIViewController {
                     self.descriptionLabel.text = self.products[0].localizedDescription
                     self.descriptionLabel.textColor = UIColor.black
                     
-                    MasterViewController.self.priceFormatter.locale = self.products[0].priceLocale
-                    self.priceLabel.text = MasterViewController.self.priceFormatter.string(from: self.products[0].price) ?? "..."
+                    PurchaseViewController.self.priceFormatter.locale = self.products[0].priceLocale
+                    self.priceLabel.text = PurchaseViewController.self.priceFormatter.string(from: self.products[0].price) ?? "..."
                 }
             }
         }

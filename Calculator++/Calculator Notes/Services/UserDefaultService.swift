@@ -9,9 +9,9 @@
 import Foundation
 
 enum ProtectionMode: String {
-    case calculator = "calculator"
-    case noProtection  = "noProtection"
-    case bank  = "bank"
+    case calculator
+    case noProtection
+    case bank
 }
 
 enum Key: String {

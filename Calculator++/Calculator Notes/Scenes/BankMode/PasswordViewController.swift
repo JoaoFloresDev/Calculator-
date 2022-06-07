@@ -131,13 +131,7 @@ class PasswordViewController: UIViewController {
         }
         else if(keyCurret == password || password == keyRecovery) {
             UserDefaults.standard.set (keyCurret, forKey: "Key")
-            
-            if (UserDefaults.standard.object(forKey: "FirtsUse") == nil) {
-                self.performSegue(withIdentifier: "showRules", sender: nil)
-            }
-            else {
                 self.performSegue(withIdentifier: "showNotes2", sender: nil)
-            }
         }
         else {
             let alert = UIAlertController(title: Text.incorrectPassword.rawValue.localized(),

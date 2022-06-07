@@ -44,6 +44,12 @@ enum Text: String {
     case tryAgain
     
     case deleteFiles
+    
+    case loading
+    case close
+    case restore
+    case buy
+    case products
 }
 
 enum Img: String {
