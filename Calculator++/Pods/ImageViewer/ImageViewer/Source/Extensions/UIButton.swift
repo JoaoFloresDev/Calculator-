@@ -101,7 +101,7 @@ extension UIButton {
     static func thumbnailsButton() -> UIButton {
 
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 80, height: 50)))
-        button.setTitle("See All", for: .normal)
+        button.setTitle("", for: .normal)
         //button.titleLabel?.textColor = UIColor.redColor()
 
         return button
