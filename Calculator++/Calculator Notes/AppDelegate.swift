@@ -11,10 +11,6 @@ import CoreData
 import GoogleMobileAds
 import WLEmptyState
 import Purchases
-import FBSDKCoreKit
-import FBSDKLoginKit
-import FBSDKShareKit
-import FBSDKMessengerShareKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
