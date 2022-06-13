@@ -27,7 +27,7 @@ import AVKit
 
 private let reuseIdentifier = "Cell"
 
-class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
+class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     
     //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -105,7 +105,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             tabBarController?.tabBar.standardAppearance = appearance
         }
         
-        UserDefaults.standard.set(true, forKey:"FirtsUse")
         UserDefaults.standard.set(true, forKey:"InGallery")
         navigationItem.leftBarButtonItem =  editButtonItem
         
@@ -113,14 +112,38 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         
         if !UserDefaultService().getFirstUseStatus() {
             UserDefaultService().setFirstUseStatus(status: true)
-            performSegue(withIdentifier: "setupCalc", sender: nil)
+            performSegue(withIdentifier: Segue.setupCalc.rawValue, sender: nil)
         }
-        
+        UserDefaultService().setFirstUseStatus(status: true)
         self.setText(.gallery)
         
         let controllers = self.tabBarController?.viewControllers
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
+        
+        let getAddPhotoCounter =  UserDefaultService().getAddPhotoCounter()
+        UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
+    }
+    
+    var interstitial: GADInterstitial!
+    
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
+        if getAddPhotoCounter > 5 {
+            interstitial.present(fromRootViewController: self)
+            UserDefaultService().setAddPhotoCounter(status: 0)
+        }
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+      let interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/8516660323")
+      interstitial.delegate = self
+      interstitial.load(GADRequest())
+      return interstitial
+    }
+
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+      interstitial = createAndLoadInterstitial()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,6 +154,14 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     func checkPurchase() {
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
             bannerView?.removeFromSuperview()
+        } else {
+            let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
+            if getAddPhotoCounter > 5 {
+                let request = GADRequest()
+                interstitial = createAndLoadInterstitial()
+                interstitial.load(request)
+                interstitial.delegate = self
+            }
         }
     }
     

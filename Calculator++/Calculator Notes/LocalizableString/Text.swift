@@ -66,4 +66,5 @@ enum Segue: String {
     case ChangePasswordSegue
     case ChangeCalculatorSegue
     case showNotes
+    case setupCalc
 }

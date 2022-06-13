@@ -17,6 +17,7 @@ enum ProtectionMode: String {
 enum Key: String {
     case recoveryStatus
     case firstUse
+    case addPhotoCounter
 }
 
 var userDefaults = UserDefaults.standard
@@ -70,5 +71,14 @@ struct UserDefaultService {
 
     func setFirstUseStatus(status: Bool) {
         UserDefaults.standard.set(status, forKey: Key.firstUse.rawValue)
+    }
+    
+    // MARK: - FirstUse Status
+    func getAddPhotoCounter() -> Int {
+        return userDefaults.integer(forKey: Key.addPhotoCounter.rawValue)
+    }
+
+    func setAddPhotoCounter(status: Int) {
+        UserDefaults.standard.set(status, forKey: Key.addPhotoCounter.rawValue)
     }
 }
