@@ -108,6 +108,14 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
         self.navigationController?.setup()
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        let screenWidth = self.view.frame.size.width - 100
+        layout.itemSize = CGSize(width: screenWidth/4, height: screenWidth/4)
+        layout.minimumInteritemSpacing = 20
+        layout.minimumLineSpacing = 20
+        collectionView?.collectionViewLayout = layout
     }
     
     override func viewWillAppear(_ animated: Bool) {
