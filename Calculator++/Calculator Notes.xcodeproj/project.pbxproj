@@ -16,7 +16,6 @@
 		2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07AA1C42F497007F415F /* DisplayNoteViewController.swift */; };
 		2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07AE1C42F539007F415F /* Date+convertToString.swift */; };
 		2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07B01C42F599007F415F /* ListNotesTableViewCell.swift */; };
-		337061F82792021B00B1D30D /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337061F72792021B00B1D30D /* PurchaseService.swift */; };
 		337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
@@ -47,7 +46,6 @@
 		C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */; };
 		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
-		C4A819F224A6C113005023C6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819ED24A6C112005023C6 /* DetailViewController.swift */; };
 		C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EE24A6C112005023C6 /* ProductCell.swift */; };
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
@@ -83,7 +81,6 @@
 		2E4A07AA1C42F497007F415F /* DisplayNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayNoteViewController.swift; sourceTree = "<group>"; };
 		2E4A07AE1C42F539007F415F /* Date+convertToString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+convertToString.swift"; sourceTree = "<group>"; };
 		2E4A07B01C42F599007F415F /* ListNotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListNotesTableViewCell.swift; sourceTree = "<group>"; };
-		337061F72792021B00B1D30D /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
 		337061FB27921AA100B1D30D /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		507DCE2495DCDB987B456563 /* Pods-Calculator Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.debug.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,7 +119,6 @@
 		C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
-		C4A819ED24A6C112005023C6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C4A819EE24A6C112005023C6 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
@@ -170,7 +166,6 @@
 				73B54D6427B09CE000499F66 /* LocalizableString */,
 				C4C079C82698CF8D0020FC69 /* Services */,
 				C4A819EA24A6C0FB005023C6 /* Purchase */,
-				2E4A07AC1C42F4EB007F415F /* Helpers */,
 				2E4A07AD1C42F4EB007F415F /* Extensions */,
 				73B54D5027B0979B00499F66 /* Scenes */,
 				848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */,
@@ -271,6 +266,7 @@
 		73B54D5327B097BD00499F66 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				2E4A07AC1C42F4EB007F415F /* Helpers */,
 				2E4A07A81C42F40B007F415F /* ListNotesTableViewController.swift */,
 				2E4A07AA1C42F497007F415F /* DisplayNoteViewController.swift */,
 				2E4A07B01C42F599007F415F /* ListNotesTableViewCell.swift */,
@@ -338,7 +334,6 @@
 		C4A819EA24A6C0FB005023C6 /* Purchase */ = {
 			isa = PBXGroup;
 			children = (
-				C4A819ED24A6C112005023C6 /* DetailViewController.swift */,
 				C4A819EC24A6C111005023C6 /* IAPHelper.swift */,
 				C4A819EE24A6C112005023C6 /* ProductCell.swift */,
 				C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */,
@@ -350,7 +345,6 @@
 			isa = PBXGroup;
 			children = (
 				C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */,
-				337061F72792021B00B1D30D /* PurchaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -519,7 +513,6 @@
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
-				C4A819F224A6C113005023C6 /* DetailViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */,
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
@@ -543,7 +536,6 @@
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
-				337061F82792021B00B1D30D /* PurchaseService.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
