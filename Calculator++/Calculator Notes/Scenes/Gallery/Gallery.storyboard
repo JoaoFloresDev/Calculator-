@@ -20,8 +20,8 @@
                         <rect key="contentStretch" x="0.5" y="0.5" width="1" height="1"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="YJA-MH-dEo">
                             <size key="itemSize" width="80" height="80"/>
-                            <size key="headerReferenceSize" width="0.0" height="15"/>
-                            <size key="footerReferenceSize" width="150" height="130"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImages" id="gUr-ic-HoI">
@@ -30,7 +30,7 @@
                         </imageView>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="dCh-pG-wun" customClass="CollectionViewCell" customModule="Calculator_Notes" customModuleProvider="target">
-                                <rect key="frame" x="15" y="15" width="80" height="80"/>
+                                <rect key="frame" x="15" y="0.0" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -83,14 +83,6 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DTy-Us-st2">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </collectionReusableView>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZgH-ZN-HiT">
-                            <rect key="frame" x="0.0" y="95" width="414" height="130"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="kQz-V5-vHs" id="g3T-Ff-IcY"/>
                             <outlet property="delegate" destination="kQz-V5-vHs" id="Gk9-Kb-4Sw"/>
@@ -100,10 +92,14 @@
                     <navigationItem key="navigationItem" title="Gallery" id="Ki9-XI-BOH">
                         <leftBarButtonItems>
                             <barButtonItem title="Item" id="3VU-TW-LpM"/>
-                            <barButtonItem title="AR" id="aki-yL-EwC">
+                            <barButtonItem enabled="NO" systemItem="action" id="usl-Pv-hD8">
                                 <connections>
-                                    <action selector="teste:" destination="kQz-V5-vHs" id="Sha-lR-16L"/>
-                                    <segue destination="ZFz-rf-8D5" kind="modal" id="hUS-Vj-mQk"/>
+                                    <action selector="saveItem:" destination="kQz-V5-vHs" id="flc-Up-TF1"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" systemItem="trash" id="M3X-jn-4gy">
+                                <connections>
+                                    <action selector="deleteItem:" destination="kQz-V5-vHs" id="Yoq-lP-V1a"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
@@ -113,14 +109,9 @@
                                     <action selector="addPhoto:" destination="kQz-V5-vHs" id="Smy-7x-RIW"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="trash" id="M3X-jn-4gy">
+                            <barButtonItem image="folder.badge.plus" catalog="system" id="r9J-oD-V0b">
                                 <connections>
-                                    <action selector="deleteItem:" destination="kQz-V5-vHs" id="Yoq-lP-V1a"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="action" id="usl-Pv-hD8">
-                                <connections>
-                                    <action selector="saveItem:" destination="kQz-V5-vHs" id="flc-Up-TF1"/>
+                                    <action selector="addPhoto:" destination="kQz-V5-vHs" id="Cw8-Nf-IFV"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -166,17 +157,17 @@
                         <viewControllerLayoutGuide type="bottom" id="4Or-n9-XiK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1Zd-tJ-SUk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1s-He-thC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="uKl-SU-mYo"/>
                                 </constraints>
                             </arscnView>
                             <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plX-xU-fZe">
-                                <rect key="frame" x="172" y="728.5" width="70" height="69"/>
+                                <rect key="frame" x="172" y="782.5" width="70" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="5tM-tn-kNZ"/>
                                     <constraint firstAttribute="width" secondItem="plX-xU-fZe" secondAttribute="height" multiplier="1:1" id="B6w-Ug-lNg"/>
@@ -190,7 +181,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjP-xV-lGz">
-                                <rect key="frame" x="16" y="16" width="50" height="50"/>
+                                <rect key="frame" x="16" y="60" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VH4-ms-pAs"/>
                                     <constraint firstAttribute="width" constant="50" id="p8H-so-qsi"/>
@@ -671,6 +662,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="folder.badge.plus" catalog="system" width="128" height="91"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
         <image name="placeholderImages" width="600" height="474"/>

@@ -12,6 +12,7 @@ import GoogleMobileAds
 import WLEmptyState
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
