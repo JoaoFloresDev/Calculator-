@@ -51,13 +51,9 @@ class PasswordViewController: UIViewController {
                             self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
                             self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
                             self.performSegue(withIdentifier: "showNotes2", sender: nil)
-                        } else {
-                            self.performSegue(withIdentifier: "showNotes2", sender: nil)
                         }
                     }
                 }
-            } else {
-                self.performSegue(withIdentifier: "showNotes2", sender: nil)
             }
         }
     }
