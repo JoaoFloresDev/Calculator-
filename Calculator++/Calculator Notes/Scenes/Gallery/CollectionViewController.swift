@@ -15,6 +15,7 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
+import Purchases
 import UIKit
 import SceneKit
 import ARKit
@@ -31,7 +32,7 @@ import FBSDKLoginKit
 
 private let reuseIdentifier = "Cell"
 
-class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
+class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
     
     //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -109,6 +110,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             tabBarController?.tabBar.standardAppearance = appearance
         }
         
+        UserDefaults.standard.set(true, forKey:"FirtsUse")
         UserDefaults.standard.set(true, forKey:"InGallery")
         navigationItem.leftBarButtonItem =  editButtonItem
         
@@ -116,52 +118,16 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         
         if !UserDefaultService().getFirstUseStatus() {
             UserDefaultService().setFirstUseStatus(status: true)
-            performSegue(withIdentifier: Segue.setupCalc.rawValue, sender: nil)
+            performSegue(withIdentifier: "setupCalc", sender: nil)
         }
-        UserDefaultService().setFirstUseStatus(status: true)
+        
         self.setText(.gallery)
         
         let controllers = self.tabBarController?.viewControllers
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
         
-<<<<<<< HEAD
         requestPermission()
-=======
-        let getAddPhotoCounter =  UserDefaultService().getAddPhotoCounter()
-        UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
-        
-        collectionView?.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier)
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        let screenWidth = self.view.frame.size.width - 100
-        layout.itemSize = CGSize(width: screenWidth/4, height: screenWidth/4)
-        layout.minimumInteritemSpacing = 20
-        layout.minimumLineSpacing = 20
-        collectionView?.collectionViewLayout = layout
-    }
-    
-    var interstitial: GADInterstitial!
-    
-    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
-        if getAddPhotoCounter > 5 {
-            interstitial.present(fromRootViewController: self)
-            UserDefaultService().setAddPhotoCounter(status: 0)
-        }
-    }
-    
-    func createAndLoadInterstitial() -> GADInterstitial {
-      let interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/8516660323")
-      interstitial.delegate = self
-      interstitial.load(GADRequest())
-      return interstitial
-    }
-
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-      interstitial = createAndLoadInterstitial()
->>>>>>> refatoração
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -192,12 +158,11 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
             bannerView?.removeFromSuperview()
         } else {
-            let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
-            if getAddPhotoCounter > 5 {
-                let request = GADRequest()
-                interstitial = createAndLoadInterstitial()
-                interstitial.load(request)
-                interstitial.delegate = self
+            Purchases.shared.purchaserInfo { info, error in
+                if info?.entitlements["premium"]?.isActive == true {
+                    UserDefaults.standard.set(true, forKey:"NoAds.Calc")
+                    self.bannerView?.removeFromSuperview()
+                }
             }
         }
     }
@@ -286,35 +251,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         } else {
             return CollectionViewCell()
         }
-    }
-    
-    let collectionViewHeaderFooterReuseIdentifier = "MyHeaderFooterClass"
-    
-    override func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-
-        switch kind {
-
-        case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier, for: indexPath)
-
-            headerView.backgroundColor = UIColor.blue
-            return headerView
-
-        case UICollectionElementKindSectionFooter:
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier, for: indexPath)
-
-            footerView.backgroundColor = UIColor.green
-            return footerView
-
-        default:
-            return UICollectionViewCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-            return CGSize(width: collectionView.frame.width, height: 0)
     }
     
     func applyshadowWithCorner(containerView : UIView){
@@ -455,7 +391,6 @@ extension CollectionViewController: GalleryItemsDataSource {
     }
 }
 
-<<<<<<< HEAD
 import UserNotifications
 
 class NotificationHandler{
@@ -471,21 +406,4 @@ func askNotificationPermission(completion: @escaping ()->Void){
         completion()
     }
 }
-=======
-
-class MyHeaderFooterClass: UICollectionReusableView {
-
- override init(frame: CGRect) {
-    super.init(frame: frame)
-    self.backgroundColor = UIColor.purple
-
-    // Customize here
-
- }
-
- required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-
- }
->>>>>>> refatoração
 }

@@ -24,6 +24,7 @@
 import UIKit
 import CoreData
 import GoogleMobileAds
+import Purchases
 
 class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate {
     var bannerView: GADBannerView!
@@ -59,6 +60,14 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     func checkPurchase() {
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
                 bannerView?.removeFromSuperview()
+        } else {
+            Purchases.shared.purchaserInfo { info, error in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    UserDefaults.standard.set(true, forKey:"NoAds.Calc")
+                    self.bannerView?.removeFromSuperview()
+                }
+            }
         }
     }
     

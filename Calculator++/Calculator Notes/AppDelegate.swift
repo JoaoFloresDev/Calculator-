@@ -10,16 +10,12 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 import WLEmptyState
-<<<<<<< HEAD
 import Purchases
 
 import FBSDKCoreKit
 import AppTrackingTransparency
-=======
->>>>>>> refatoração
 
 @UIApplicationMain
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
@@ -45,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             WLEmptyState.configure()
         }
         
-<<<<<<< HEAD
         // Initialize RevenueCat
         Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "appl_VMKzfvxxzrBMCYybjxADGXNzRtu")
@@ -61,8 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-=======
->>>>>>> refatoração
         return true
     }
     

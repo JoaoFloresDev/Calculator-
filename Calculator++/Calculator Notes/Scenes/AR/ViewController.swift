@@ -117,7 +117,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIGestureRecognizerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        ads
         if(UserDefaults.standard.object(forKey: "NoAds.DIA") != nil) {
         }
         else {

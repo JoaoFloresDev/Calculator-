@@ -5,11 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-<<<<<<< HEAD
 	<string>Calculator Notes</string>
-=======
-	<string>Calc+</string>
->>>>>>> refatoração
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
