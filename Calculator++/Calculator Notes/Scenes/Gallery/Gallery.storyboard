@@ -109,9 +109,10 @@
                                     <action selector="addPhoto:" destination="kQz-V5-vHs" id="Smy-7x-RIW"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="folder.badge.plus" catalog="system" id="r9J-oD-V0b">
+                            <barButtonItem title="AR" id="r9J-oD-V0b">
                                 <connections>
                                     <action selector="addPhoto:" destination="kQz-V5-vHs" id="Cw8-Nf-IFV"/>
+                                    <segue destination="ZFz-rf-8D5" kind="presentation" id="ltS-qb-t33"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -157,17 +158,17 @@
                         <viewControllerLayoutGuide type="bottom" id="4Or-n9-XiK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1Zd-tJ-SUk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1s-He-thC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="uKl-SU-mYo"/>
                                 </constraints>
                             </arscnView>
                             <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plX-xU-fZe">
-                                <rect key="frame" x="172" y="782.5" width="70" height="69"/>
+                                <rect key="frame" x="172" y="728.5" width="70" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="5tM-tn-kNZ"/>
                                     <constraint firstAttribute="width" secondItem="plX-xU-fZe" secondAttribute="height" multiplier="1:1" id="B6w-Ug-lNg"/>
@@ -181,7 +182,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjP-xV-lGz">
-                                <rect key="frame" x="16" y="60" width="50" height="50"/>
+                                <rect key="frame" x="16" y="16" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VH4-ms-pAs"/>
                                     <constraint firstAttribute="width" constant="50" id="p8H-so-qsi"/>
@@ -662,7 +663,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="folder.badge.plus" catalog="system" width="128" height="91"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
         <image name="placeholderImages" width="600" height="474"/>
