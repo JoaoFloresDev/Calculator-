@@ -17,34 +17,10 @@ enum Operation:String {
     case NULL = "Null"
 }
 
-class CalculatorViewController: UIViewController {
-    
-    var keyTemp = ""
-    var captureKey = 0
-    var runningNumber = ""
-    var leftValue = ""
-    var rightValue = ""
-    var result = ""
-    var currentOperation:Operation = .NULL
-    
-    var senha = UserDefaults.standard.string(forKey: "Key") ?? ""
-    
-    let recoveryKey = "314159"
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        outputLbl.text = "0"
-        
-        if(senha == "") {
-            captureKey = 1
-        }
+class CalculatorViewController: BaseCalculatorViewController {
 
-        faceIDButton.isHidden = UserDefaultService().getRecoveryStatus()
-    }
-
-    @IBOutlet weak var outputLbl: UILabel!
+    
     @IBOutlet weak var instructionsLabel: UILabel!
-    
     @IBOutlet weak var faceIDButton: UIButton!
     @IBAction func useFaceID(_ sender: UIButton) {
         
@@ -81,26 +57,22 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func dotPressed(_ sender: UIButton) {
-        
-        if runningNumber.count <= 8 {
-            runningNumber += "."
-            outputLbl.text = runningNumber
-        }
+        dotPressed()
     }
     
     @IBAction func equalsPressed(_ sender: UIButton) {
         if(runningNumber.count <= 6 && runningNumber.count >= 1 && captureKey == 1) {
-            senha = String(runningNumber)
+            key = String(runningNumber)
             captureKey = 2
-            keyTemp = senha
+            keyTemp = key
 
-            Clear()
+            clear()
             
         } else if(captureKey == 2 && String(runningNumber) == keyTemp && runningNumber.count <= 6 && runningNumber.count >= 1) {
-            UserDefaults.standard.set (senha, forKey: "Key")
+            UserDefaults.standard.set (key, forKey: "Key")
             captureKey = 0
         }
-        else if((String(runningNumber) == senha && captureKey == 0) || runningNumber == recoveryKey) {
+        else if((String(runningNumber) == key && captureKey == 0) || runningNumber == recoveryKey) {
             captureKey = 0
             runningNumber = ""
             leftValue = ""
@@ -117,7 +89,6 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func addPressed(_ sender: UIButton) {
-        
         operation(operation: .Add)
     }
     
@@ -127,7 +98,6 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func multiplyPressed(_ sender: UIButton) {
-        
         operation(operation: .Multiply)
     }
     
@@ -135,85 +105,17 @@ class CalculatorViewController: UIViewController {
         operation(operation: .Divide)
     }
     
-    func Clear() {
-        
-        runningNumber = ""
-        leftValue = ""
-        rightValue = ""
-        result = ""
-        currentOperation = .NULL
-        outputLbl.text = "0 "
-    }
-    
     @IBAction func allClearPerssed(_ sender: UIButton) {
-        Clear()
+        clear()
     }
     
-    func operation(operation: Operation) {
-        if currentOperation != .NULL {
-            if runningNumber != "" {
-                rightValue = runningNumber
-                runningNumber = ""
-                
-                if currentOperation == .Add {
-                    result = "\((Double(leftValue) ?? Double(0)) + (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Subtract {
-                    result = "\((Double(leftValue) ?? Double(0)) - (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Multiply {
-                    result = "\((Double(leftValue) ?? Double(0)) * (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Divide {
-                    result = "\((Double(leftValue) ?? Double(0)) / (Double(rightValue) ?? Double(0)))"
-                }
-                
-                leftValue = result
-                if ((Double(result) ?? Double(0)).truncatingRemainder(dividingBy: 1) == 0) {
-                    result = "\((Int(Double(result) ?? Double(0))))"
-                }
-                outputLbl.text = result
-            }
-            currentOperation = operation
-        } else {
-            leftValue = runningNumber
-            runningNumber = ""
-            currentOperation = operation
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        outputLbl.text = "0"
+        if(key == "") {
+            captureKey = 1
         }
-    }
-    
-    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
-        
-        guard let cgimage = image.cgImage else { return image }
-        let contextImage: UIImage = UIImage(cgImage: cgimage)
-        let contextSize: CGSize = contextImage.size
-        var posX: CGFloat = 0.0
-        var posY: CGFloat = 0.0
-        var cgwidth: CGFloat = CGFloat(width)
-        var cgheight: CGFloat = CGFloat(height)
-        
-        if contextSize.width > contextSize.height {
-            posX = ((contextSize.width - contextSize.height) / 2)
-            posY = 0
-            cgwidth = contextSize.height
-            cgheight = contextSize.height
-        } else {
-            posX = 0
-            posY = ((contextSize.height - contextSize.width) / 2)
-            cgwidth = contextSize.width
-            cgheight = contextSize.width
-        }
-        
-        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
-        
-        guard let imageRef: CGImage = cgimage.cropping(to: rect) else { return image }
-        
-        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
-        
-        return image
-    }
-    
-//    MARK: - Style
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        faceIDButton.isHidden = UserDefaultService().getRecoveryStatus()
     }
 }
-
-

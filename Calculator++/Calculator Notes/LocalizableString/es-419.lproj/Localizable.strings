@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  Calculator Notes
+
+  Created by Joao Victor Flores da Costa on 06/02/22.
+  Copyright © 2022 MakeSchool. All rights reserved.
+*/
+
+premiumVersion = "Versión premium";
+noProtection = "Sin protección";
+hideRecoverButton = "Esconder recuperar contraseña";
+chooseProtectionMode = "Elija el modo de protección";
+
+settings = "Ajustes";
+gallery = "Galería";
+notes = "Notas";
+
+instructionFirstStepCalc = "Cree una contraseña y haga clic en el botón '='";
+instructionSecondStepCalc = "Llave: *****. Repita la contraseña y confirme con '='";
+
+instructionFirstStepBank = "Cree una contraseña y haga clic en 'Enter'";
+instructionSecondStepBank = "Llave: *****. Repita la contraseña y confirme con 'Enter'";
+
+bankModeHasBeenActivated = "Modo banco activado";
+calcModeHasBeenActivated = "Modo calculadora activado";
+
+welcomeInstructionBank = "Escribe tu contraseña";
+
+done = "Hecho";
+edit = "Editar";
+
+premiumToolTitle = "Herramienta Premium";
+premiumToolMessage = "El soporte de video solo se ofrece en la versión Premium. Ver actualizaciones en Configuración";
+
+save = "Salvar";
+cancel = "Cancelar";
+
+errorTitle = "Unexpected error";
+errorMessage = "Try again later";
+
+incorrectPassword = "Contraseña incorrecta";
+tryAgain = "Intentar otra vez";
+
+deleteFiles = "¿Borrar archivos?";
+
+// Purchase
+products = "Productos";
+loading = "Cargando...";
+close = "Descartar";
+restore = "Restaurar";
+buy = "Comprar";
