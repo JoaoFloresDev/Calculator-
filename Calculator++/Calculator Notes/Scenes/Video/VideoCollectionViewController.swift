@@ -15,6 +15,7 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
+import Purchases
 import AVKit
 import MobileCoreServices
 import Photos
@@ -37,8 +38,10 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     //    Video adaptation
     var imagePickerController = UIImagePickerController()
     var videoURL : NSURL?
+    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     //    MARK: - IBOutlet
+    
     @IBOutlet weak var placeholderImage: UIImageView!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -63,6 +66,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
             }
 
             var vetImgs = [URL] ()
+            
             for item in items {
                 let newPath = path.appendingPathComponent(modelDataVideo[item])
                 vetImgs.append(newPath)
@@ -81,6 +85,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     }
     
     @IBAction func addPhoto(_ sender: Any) {
+        Purchases.shared.purchaserInfo { info, error in
             //Check if user is subscribed
             if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil) {
                 self.presentPickerController()
@@ -92,6 +97,7 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+        }
     }
     
     private func presentPickerController() {
@@ -106,19 +112,18 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
         self.navigationController?.setup()
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        let screenWidth = self.view.frame.size.width - 100
-        layout.itemSize = CGSize(width: screenWidth/4, height: screenWidth/4)
-        layout.minimumInteritemSpacing = 20
-        layout.minimumLineSpacing = 20
-        collectionView?.collectionViewLayout = layout
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
             placeholderImage.setImage(.placeholderVideo)
+        } else {
+            Purchases.shared.purchaserInfo { info, error in
+                // Check if user is subscribed
+                if info?.entitlements["premium"]?.isActive == true {
+                    self.placeholderImage.setImage(.placeholderVideo)
+                }
+            }
         }
     }
     

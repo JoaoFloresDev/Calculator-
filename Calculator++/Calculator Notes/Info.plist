@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Calc+</string>
+	<string>Calculator Notes</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -39,6 +39,13 @@
 	<string>ca-app-pub-8858389345934911~5648494185</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -49,6 +56,8 @@
 	<string>Photo Library Additions access will be used to save images from the app in your iPhone</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Gallery access will be used to save images and videos within the app</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Este identificador será usado para entregar anúncios personalizados para você.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

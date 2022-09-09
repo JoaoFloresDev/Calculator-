@@ -10,9 +10,12 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 import WLEmptyState
+import Purchases
+
+import FBSDKCoreKit
+import AppTrackingTransparency
 
 @UIApplicationMain
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
@@ -38,7 +41,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             WLEmptyState.configure()
         }
         
+        // Initialize RevenueCat
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_VMKzfvxxzrBMCYybjxADGXNzRtu")
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+                    
+                default:
+                    print("Unknown")
+                }
+            }
+        }
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -89,8 +111,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    FBSDKAppEvents.activateApp()
+                    
+                default:
+                    print("Unknown")
+                }
+            }
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
