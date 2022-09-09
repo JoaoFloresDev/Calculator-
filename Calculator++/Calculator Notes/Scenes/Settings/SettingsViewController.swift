@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
@@ -32,6 +33,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var customTabBar: UITabBarItem!
     
+    @IBOutlet weak var rateApp: UIView!
     
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
@@ -51,6 +53,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         performSegue(withIdentifier: Segue.ChangeCalculatorSegue.rawValue, sender: nil)
     }
 
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        SKStoreReviewController.requestReview()
+    }
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +64,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         setupViewStyle()
         switchButton.isOn = UserDefaultService().getRecoveryStatus()
         setupTexts()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        rateApp.addGestureRecognizer(tap)
     }
 
     override func viewWillAppear(_ animated: Bool) {
