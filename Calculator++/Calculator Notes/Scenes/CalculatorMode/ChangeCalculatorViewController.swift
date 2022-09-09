@@ -8,28 +8,12 @@
 
 import UIKit
 
-class ChangeCalculatorViewController: UIViewController {
+class ChangeCalculatorViewController: BaseCalculatorViewController {
     
+    // MARK: - IBOutlet
     @IBOutlet weak var instructionsLabel: UILabel!
-    @IBOutlet weak var outputLbl: UILabel!
     
-    var captureKey = 0
-    var runningNumber = ""
-    var leftValue = ""
-    var rightValue = ""
-    var result = ""
-    var currentOperation:Operation = .NULL
-    
-    var key = UserDefaults.standard.string(forKey: "Key") ?? ""
-    var keyTemp = ""
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        captureKey = 1
-        outputLbl.text = "0"
-        instructionsLabel.text = Text.instructionFirstStepCalc.rawValue.localized()
-    }
-    
+    // MARK: - IBAction
     @IBAction func dismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -42,14 +26,10 @@ class ChangeCalculatorViewController: UIViewController {
     }
     
     @IBAction func dotPressed(_ sender: UIButton) {
-        
-        if runningNumber.count <= 8 {
-            runningNumber += "."
-            outputLbl.text = runningNumber
-        }
+        dotPressed()
     }
     
-    @IBAction func equalsPressed(_ sender: UIButton) {
+    private func equalsPressed() {
         if(runningNumber.count > 0 && captureKey == 1) {
             key = String(runningNumber)
             keyTemp = key
@@ -69,7 +49,7 @@ class ChangeCalculatorViewController: UIViewController {
             result = ""
             currentOperation = .NULL
             outputLbl.text = "0"
-
+            
             UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.calculator)
             UserDefaults.standard.set(keyTemp, forKey: "Key")
             showAlert()
@@ -78,8 +58,11 @@ class ChangeCalculatorViewController: UIViewController {
         operation(operation: currentOperation)
     }
     
+    @IBAction func equalsPressed(_ sender: UIButton) {
+        equalsPressed()
+    }
+    
     @IBAction func addPressed(_ sender: UIButton) {
-        
         operation(operation: .Add)
     }
     
@@ -97,53 +80,16 @@ class ChangeCalculatorViewController: UIViewController {
         operation(operation: .Divide)
     }
     
-    func clear() {
-        
-        runningNumber = ""
-        leftValue = ""
-        rightValue = ""
-        result = ""
-        currentOperation = .NULL
-        outputLbl.text = "0 "
-    }
-    
     @IBAction func allClearPerssed(_ sender: UIButton) {
         clear()
     }
     
-    func operation(operation: Operation) {
-        if currentOperation != .NULL {
-            if runningNumber != "" {
-                rightValue = runningNumber
-                runningNumber = ""
-                
-                if currentOperation == .Add {
-                    result = "\((Double(leftValue) ?? Double(0)) + (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Subtract {
-                    result = "\((Double(leftValue) ?? Double(0)) - (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Multiply {
-                    result = "\((Double(leftValue) ?? Double(0)) * (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Divide {
-                    result = "\((Double(leftValue) ?? Double(0)) / (Double(rightValue) ?? Double(0)))"
-                }
-                
-                leftValue = result
-                if ((Double(result) ?? Double(0)).truncatingRemainder(dividingBy: 1) == 0) {
-                    result = "\((Int(Double(result) ?? Double(0))))"
-                }
-                outputLbl.text = result
-            }
-            currentOperation = operation
-        } else {
-            leftValue = runningNumber
-            runningNumber = ""
-            currentOperation = operation
-        }
-    }
-    
-    //    MARK: - Style
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        captureKey = 1
+        outputLbl.text = "0"
+        instructionsLabel.text = Text.instructionFirstStepCalc.rawValue.localized()
     }
     
     //    MARK: - Alert

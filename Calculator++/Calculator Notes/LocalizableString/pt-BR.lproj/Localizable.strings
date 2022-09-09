@@ -41,3 +41,10 @@ deleteFiles = "Deletar arquivo?";
 
 incorrectPassword = "Senha incorreta";
 tryAgain = "Tente";
+
+// Purchase
+products = "Produtos";
+loading = "Carregando...";
+close = "Fechar";
+restore = "Restaurar";
+buy = "Comprar";
