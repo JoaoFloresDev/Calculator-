@@ -164,8 +164,7 @@ class PurchaseViewController: UIViewController {
                     self.priceLabel.text = PurchaseViewController.self.priceFormatter.string(from: self.products[0].price)!
                     
                 }
-            }
-            else {
+            } else {
                 if products?[0] != nil {
                     self.teste.text = self.products[0].localizedTitle
                     self.teste.textColor = UIColor.black
@@ -178,8 +177,6 @@ class PurchaseViewController: UIViewController {
                 }
             }
         }
-        
         confirmCheckmark()
     }
-    
 }

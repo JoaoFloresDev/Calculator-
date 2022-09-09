@@ -39,7 +39,6 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     var videoURL : NSURL?
     
     //    MARK: - IBOutlet
-    
     @IBOutlet weak var placeholderImage: UIImageView!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -64,7 +63,6 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
             }
 
             var vetImgs = [URL] ()
-            
             for item in items {
                 let newPath = path.appendingPathComponent(modelDataVideo[item])
                 vetImgs.append(newPath)

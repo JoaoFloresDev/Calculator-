@@ -282,7 +282,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             return footerView
 
         default:
-            assert(false, "Unexpected element kind")
+            return UICollectionViewCell()
         }
     }
     
