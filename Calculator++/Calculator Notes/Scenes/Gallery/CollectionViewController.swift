@@ -231,31 +231,42 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(modelData.isEmpty) {
-            placeHolderImage.isHidden = false
+        let presentPlaceHolderImage = !modelData.isEmpty
+        placeHolderImage.isHidden = presentPlaceHolderImage
+        switch section {
+        case .zero:
+            return 1
+        default:
+            return modelData.count
         }
-        else {
-            placeHolderImage.isHidden = true
-        }
-        return modelData.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
-            cell.isInEditingMode = isEditing
-            if indexPath.indices.contains(1),
-               modelData.indices.contains(indexPath[1]) {
-            cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+        switch indexPath.section {
+        case .zero:
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
+                cell.imageCell.image = UIImage(named: "folder")
+                return cell
+            } else {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
             }
-            applyshadowWithCorner(containerView : cell)
-            
-            return cell
-        } else {
-            return CollectionViewCell()
+        default:
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
+                cell.isInEditingMode = isEditing
+                if indexPath.indices.contains(1),
+                   modelData.indices.contains(indexPath[1]) {
+                cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+                }
+                applyshadowWithCorner(containerView : cell)
+
+                return cell
+            } else {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+            }
         }
     }
     
@@ -272,10 +283,15 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !isEditing {
-            if indexPath.indices.contains(1),
-               modelData.indices.contains(indexPath[1]) {
-                self.presentImageGallery(GalleryViewController(startIndex: indexPath[1], itemsDataSource: self))
+        switch indexPath.section {
+        case .zero:
+            self.navigationController?.pushViewController(UIViewController(), animated: true)
+        default:
+            if !isEditing {
+                if indexPath.indices.contains(1),
+                   modelData.indices.contains(indexPath[1]) {
+                    self.presentImageGallery(GalleryViewController(startIndex: indexPath[1], itemsDataSource: self))
+                }
             }
         }
     }
@@ -303,19 +319,11 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         
         present(refreshAlert, animated: true, completion: nil)
     }
-    @IBAction func teste(_ sender: Any) {
-        openGalery()
-    }
-    
-    func openGalery() {
-        
-    }
     
     //    MARK: - StoreKit
     func rateApp() {
         if #available(iOS 10.3, *) {
-            
-            //            SKStoreReviewController.requestReview()
+            SKStoreReviewController.requestReview()
         }
     }
 }
