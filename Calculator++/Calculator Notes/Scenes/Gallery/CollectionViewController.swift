@@ -124,8 +124,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         let getAddPhotoCounter =  UserDefaultService().getAddPhotoCounter()
         UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         
-        collectionView?.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier)
-        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         let screenWidth = self.view.frame.size.width - 100
@@ -258,31 +256,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             return cell
         } else {
             return CollectionViewCell()
-        }
-    }
-    
-    let collectionViewHeaderFooterReuseIdentifier = "MyHeaderFooterClass"
-    
-    override func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-
-        switch kind {
-
-        case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier, for: indexPath)
-
-            headerView.backgroundColor = UIColor.blue
-            return headerView
-
-        case UICollectionElementKindSectionFooter:
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderFooterReuseIdentifier, for: indexPath)
-
-            footerView.backgroundColor = UIColor.green
-            return footerView
-
-        default:
-            return UICollectionViewCell()
         }
     }
     
@@ -426,21 +399,4 @@ extension CollectionViewController: GalleryItemsDataSource {
         
         return galleryItem
     }
-}
-
-
-class MyHeaderFooterClass: UICollectionReusableView {
-
- override init(frame: CGRect) {
-    super.init(frame: frame)
-    self.backgroundColor = UIColor.purple
-
-    // Customize here
-
- }
-
- required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-
- }
 }

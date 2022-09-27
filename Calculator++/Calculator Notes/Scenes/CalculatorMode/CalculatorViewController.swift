@@ -39,8 +39,6 @@ class CalculatorViewController: BaseCalculatorViewController {
                         self.instructionsLabel.text = instructionText
                         self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
                         self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
-                    } else {
-                        self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
                     }
                 }
             }
