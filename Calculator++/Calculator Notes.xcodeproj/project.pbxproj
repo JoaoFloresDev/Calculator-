@@ -18,6 +18,11 @@
 		2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07B01C42F599007F415F /* ListNotesTableViewCell.swift */; };
 		337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
+		7396A17C293AB3A0006D6ED4 /* CollectionViewController+ADS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A17B293AB3A0006D6ED4 /* CollectionViewController+ADS.swift */; };
+		7396A17E293AB485006D6ED4 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A17D293AB485006D6ED4 /* UIView+extension.swift */; };
+		7396A180293AB62E006D6ED4 /* GalleryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A17F293AB62E006D6ED4 /* GalleryService.swift */; };
+		7396A182293AB72E006D6ED4 /* TabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */; };
+		7396A184293AB850006D6ED4 /* CollectionViewController+CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A183293AB850006D6ED4 /* CollectionViewController+CollectionDelegate.swift */; };
 		73A45B6228A9CEB600CCEE08 /* BaseCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A45B6128A9CEB600CCEE08 /* BaseCalculatorViewController.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
@@ -86,6 +91,11 @@
 		337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		507DCE2495DCDB987B456563 /* Pods-Calculator Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.debug.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
+		7396A17B293AB3A0006D6ED4 /* CollectionViewController+ADS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CollectionViewController+ADS.swift"; path = "../../../../../../../CollectionViewController+ADS.swift"; sourceTree = "<group>"; };
+		7396A17D293AB485006D6ED4 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+extension.swift"; path = "../../../../../UIView+extension.swift"; sourceTree = "<group>"; };
+		7396A17F293AB62E006D6ED4 /* GalleryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryService.swift; path = ../../../../../../../GalleryService.swift; sourceTree = "<group>"; };
+		7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TabBarController+Extensions.swift"; path = "../../../../../TabBarController+Extensions.swift"; sourceTree = "<group>"; };
+		7396A183293AB850006D6ED4 /* CollectionViewController+CollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CollectionViewController+CollectionDelegate.swift"; path = "../../../../../../../CollectionViewController+CollectionDelegate.swift"; sourceTree = "<group>"; };
 		73A45B6128A9CEB600CCEE08 /* BaseCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCalculatorViewController.swift; path = ../../../../../../BaseCalculatorViewController.swift; sourceTree = "<group>"; };
 		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -199,6 +209,8 @@
 				73B54D6E27B0AC7A00499F66 /* UIViewController+extension.swift */,
 				73B54D6C27B0A89800499F66 /* UIButton+Extension.swift */,
 				73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */,
+				7396A17D293AB485006D6ED4 /* UIView+extension.swift */,
+				7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -224,7 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				C4148D892440F45E00225706 /* CollectionViewController.swift */,
+				7396A17B293AB3A0006D6ED4 /* CollectionViewController+ADS.swift */,
 				C46AD1002441708400EF0236 /* ModelController.swift */,
+				7396A183293AB850006D6ED4 /* CollectionViewController+CollectionDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -233,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
+				7396A17F293AB62E006D6ED4 /* GalleryService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -542,10 +557,13 @@
 				73A45B6228A9CEB600CCEE08 /* BaseCalculatorViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
+				7396A17E293AB485006D6ED4 /* UIView+extension.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */,
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
 				73B54D6B27B09FDA00499F66 /* UILabel+extensions.swift in Sources */,
+				7396A17C293AB3A0006D6ED4 /* CollectionViewController+ADS.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
+				7396A180293AB62E006D6ED4 /* GalleryService.swift in Sources */,
 				73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */,
 				C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
@@ -556,7 +574,9 @@
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* UIViewController+extension.swift in Sources */,
+				7396A184293AB850006D6ED4 /* CollectionViewController+CollectionDelegate.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
+				7396A182293AB72E006D6ED4 /* TabBarController+Extensions.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
 				C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */,
