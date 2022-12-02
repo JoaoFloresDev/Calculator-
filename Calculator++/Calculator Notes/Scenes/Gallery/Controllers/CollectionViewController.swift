@@ -44,7 +44,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     
     //    MARK: - IBAction
     @IBAction func saveItem(_ sender: Any) {
-        
         if let selectedCells = collectionView?.indexPathsForSelectedItems {
             let items = selectedCells.map { $0.item }.sorted().reversed()
             
@@ -67,11 +66,8 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
     
     @IBAction func addPhoto(_ sender: Any) {
-        
-        let pickerConfig = AssetsPickerConfig()
-        
         let picker = AssetsPickerViewController()
-        picker.pickerConfig = pickerConfig
+        picker.pickerConfig = AssetsPickerConfig()
         picker.pickerDelegate = self
         present(picker, animated: true, completion: nil)
     }
