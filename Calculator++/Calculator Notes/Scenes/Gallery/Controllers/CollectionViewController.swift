@@ -37,6 +37,8 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     var interstitial: GADInterstitial!
     var galleryService = GalleryService()
     
+    var numberOfFolders = 2
+    
     //    MARK: - IBOutlet
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -70,6 +72,13 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         picker.pickerConfig = AssetsPickerConfig()
         picker.pickerDelegate = self
         present(picker, animated: true, completion: nil)
+    }
+    
+    @IBAction func addFolder(_ sender: Any) {
+        numberOfFolders += 1
+//        let indexPath = IndexPath(row: numberOfFolders, section: 0)
+//        collectionView!.insertItems(at: [indexPath])
+        collectionView?.reloadData()
     }
     
     //    MARK: - Life Cycle
@@ -127,7 +136,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             if(asset.mediaType.rawValue != 2) {
                 image = galleryService.getAssetThumbnail(asset: asset)
                 modelData.append(image)
-                let indexPath = IndexPath(row: modelData.count - 1, section: 0)
+                let indexPath = IndexPath(row: modelData.count - 1, section: 1)
                 collectionView!.insertItems(at: [indexPath])
                 modelController.saveImageObject(image: image)
             }
