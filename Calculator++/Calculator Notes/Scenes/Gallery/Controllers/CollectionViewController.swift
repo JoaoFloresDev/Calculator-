@@ -37,7 +37,15 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     var interstitial: GADInterstitial!
     var galleryService = GalleryService()
     
-    var numberOfFolders = 2
+    var folders = [
+        Folder(name: "name1", path: "path"),
+        Folder(name: "name2", path: "path")
+    ]
+    
+    struct Folder {
+        var name: String
+        var path: String
+    }
     
     //    MARK: - IBOutlet
     @IBOutlet weak var deleteButton: UIBarButtonItem!
@@ -75,10 +83,17 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
     
     @IBAction func addFolder(_ sender: Any) {
-        numberOfFolders += 1
-//        let indexPath = IndexPath(row: numberOfFolders, section: 0)
-//        collectionView!.insertItems(at: [indexPath])
-        collectionView?.reloadData()
+        showInputDialog(title: "Nome da pasta",
+                        actionTitle: "Criar",
+                        cancelTitle: "Cancelar",
+                        inputPlaceholder: "Digite o nome da nova pasta",
+                        actionHandler:
+                            { (input:String?) in
+            if let input = input {
+                self.folders.append(Folder(name: input, path: "path"))
+                self.collectionView?.reloadData()
+            }
+        })
     }
     
     //    MARK: - Life Cycle
@@ -164,5 +179,34 @@ extension CollectionViewController: GalleryItemsDataSource {
         let galleryItem = GalleryItem.image { $0(imageView.image) }
         
         return galleryItem
+    }
+}
+
+
+extension UIViewController {
+    func showInputDialog(title:String? = nil,
+                         subtitle:String? = nil,
+                         actionTitle:String?,
+                         cancelTitle:String?,
+                         inputPlaceholder:String? = nil,
+                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
+                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.addTextField { (textField:UITextField) in
+            textField.placeholder = inputPlaceholder
+            textField.keyboardType = inputKeyboardType
+        }
+        
+        alert.addAction(UIAlertAction(title: cancelTitle, style: .default, handler: cancelHandler))
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
+            guard let textField =  alert.textFields?.first else {
+                actionHandler?(nil)
+                return
+            }
+            actionHandler?(textField.text)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
