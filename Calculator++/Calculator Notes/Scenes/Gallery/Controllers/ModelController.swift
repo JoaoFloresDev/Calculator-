@@ -57,7 +57,6 @@ class ModelController {
             newImageEntity?.imageName = imageName
             do {
                 try managedContext.save()
-                
                 images.append(image)
                 print("\(imageName) was saved in new object.")
             } catch let error as NSError {

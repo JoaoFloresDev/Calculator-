@@ -25,7 +25,14 @@ import Foundation
 import AVFoundation
 import AVKit
 
-class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
+extension CollectionViewController: UIImagePickerControllerDelegate {
+    
+}
+
+class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
+    
+    public let reuseIdentifier = "Cell"
+    public let folderReuseIdentifier = "FolderCell"
     
     //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -37,15 +44,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     var interstitial: GADInterstitial!
     var galleryService = GalleryService()
     
-    var folders = [
-        Folder(name: "name1", path: "path"),
-        Folder(name: "name2", path: "path")
-    ]
-    
-    struct Folder {
-        var name: String
-        var path: String
-    }
+    var folders: [String] = []
     
     //    MARK: - IBOutlet
     @IBOutlet weak var deleteButton: UIBarButtonItem!
@@ -90,8 +89,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
                         actionHandler:
                             { (input:String?) in
             if let input = input {
-                self.folders.append(Folder(name: input, path: "path"))
-                self.collectionView?.reloadData()
+                self.folders.append(input)
+                let defaults = UserDefaults.standard
+                defaults.set(self.folders, forKey: "FoldersPath")
+                self.collectionView?.reloadSections(IndexSet(integer: .zero))
             }
         })
     }
@@ -101,6 +102,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         super.viewDidLoad()
         self.navigationController?.setup()
         self.tabBarController?.setup()
+        
+        let defaults = UserDefaults.standard
+        folders = defaults.stringArray(forKey: "FoldersPath") ?? [String]()
+        self.collectionView?.reloadSections(IndexSet(integer: .zero))
         
         UserDefaults.standard.set(true, forKey:"InGallery")
         navigationItem.leftBarButtonItem =  editButtonItem
@@ -165,7 +170,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
-    
 }
 
 //    MARK: - Extension Viewer Image
