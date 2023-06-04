@@ -15,7 +15,6 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
-import UIKit
 import SceneKit
 import ARKit
 import simd
@@ -24,10 +23,6 @@ import StoreKit
 import Foundation
 import AVFoundation
 import AVKit
-
-extension CollectionViewController: UIImagePickerControllerDelegate {
-    
-}
 
 class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     
