@@ -28,6 +28,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     
     public let reuseIdentifier = "Cell"
     public let folderReuseIdentifier = "FolderCell"
+    public let adsService = AdsService()
     
     //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -86,7 +87,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
             if let input = input {
                 self.folders.append(input)
                 let defaults = UserDefaults.standard
-                defaults.set(self.folders, forKey: "FoldersPath")
+                defaults.set(self.folders, forKey: Key.foldersPath.rawValue)
                 self.collectionView?.reloadSections(IndexSet(integer: .zero))
             }
         })
@@ -99,14 +100,18 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         self.tabBarController?.setup()
         
         let defaults = UserDefaults.standard
-        folders = defaults.stringArray(forKey: "FoldersPath") ?? [String]()
+        folders = defaults.stringArray(forKey: Key.foldersPath.rawValue) ?? [String]()
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
         
         UserDefaults.standard.set(true, forKey:"InGallery")
         navigationItem.leftBarButtonItem =  editButtonItem
         
-        setupAds()
-        
+        interstitial = AdsService().createAndLoadInterstitial(delegate: self)
+        adsService.setupAds(controller: self,
+                              interstitial: &interstitial,
+                              bannerDelegate: self,
+                              interstitialDelegate: self)
+
         if !UserDefaultService().getFirstUseStatus() {
             UserDefaultService().setFirstUseStatus(status: true)
             performSegue(withIdentifier: Segue.setupCalc.rawValue, sender: nil)
@@ -129,12 +134,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         layout.minimumLineSpacing = 20
         collectionView?.collectionViewLayout = layout
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        checkPurchase()
-    }
-    
-    
     
     //    MARK: - StoreKit
     func rateApp() {
@@ -178,34 +177,5 @@ extension CollectionViewController: GalleryItemsDataSource {
         let galleryItem = GalleryItem.image { $0(imageView.image) }
         
         return galleryItem
-    }
-}
-
-
-extension UIViewController {
-    func showInputDialog(title:String? = nil,
-                         subtitle:String? = nil,
-                         actionTitle:String?,
-                         cancelTitle:String?,
-                         inputPlaceholder:String? = nil,
-                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
-                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
-                         actionHandler: ((_ text: String?) -> Void)? = nil) {
-        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
-        alert.addTextField { (textField:UITextField) in
-            textField.placeholder = inputPlaceholder
-            textField.keyboardType = inputKeyboardType
-        }
-        
-        alert.addAction(UIAlertAction(title: cancelTitle, style: .default, handler: cancelHandler))
-        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
-            guard let textField =  alert.textFields?.first else {
-                actionHandler?(nil)
-                return
-            }
-            actionHandler?(textField.text)
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
     }
 }

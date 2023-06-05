@@ -67,6 +67,7 @@ PODS:
     - PINRemoteImage/Core
   - PromisesObjC (2.1.0)
   - SnapKit (5.6.0)
+  - SwiftLint (0.48.0)
   - VegaScrollFlowLayout (1.1)
   - WLEmptyState (3.1.0)
 
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK (= 7.69.0)
   - ImageViewer
   - NYTPhotoViewer
+  - SwiftLint
   - VegaScrollFlowLayout
   - WLEmptyState
 
@@ -95,6 +97,7 @@ SPEC REPOS:
     - PINRemoteImage
     - PromisesObjC
     - SnapKit
+    - SwiftLint
     - VegaScrollFlowLayout
     - WLEmptyState
 
@@ -113,9 +116,10 @@ SPEC CHECKSUMS:
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
   WLEmptyState: 2bbb3970f62c0b9252029d34a8f74cb3d436eeea
 
-PODFILE CHECKSUM: 52cb9ff5e940f5c13df51116fac3cddf7ab4a6cc
+PODFILE CHECKSUM: 9bb783999e45229fe88ce0b076fc33164f2855e0
 
 COCOAPODS: 1.11.2

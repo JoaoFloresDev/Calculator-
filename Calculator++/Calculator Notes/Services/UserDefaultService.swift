@@ -18,6 +18,7 @@ enum Key: String {
     case recoveryStatus
     case firstUse
     case addPhotoCounter
+    case foldersPath
 }
 
 var userDefaults = UserDefaults.standard
