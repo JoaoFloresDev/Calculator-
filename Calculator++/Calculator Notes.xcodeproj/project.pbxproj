@@ -18,7 +18,8 @@
 		2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07B01C42F599007F415F /* ListNotesTableViewCell.swift */; };
 		337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */; };
 		7303DC792A2D512000F3DC35 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7303DC782A2D512000F3DC35 /* swiftlint.yml */; };
-		7303DC7B2A2D5BD400F3DC35 /* serviceAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7303DC7A2A2D5BD400F3DC35 /* serviceAds.swift */; };
+		7303DC7B2A2D5BD400F3DC35 /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7303DC7A2A2D5BD400F3DC35 /* AdsService.swift */; };
+		7303DC7D2A2D7DEE00F3DC35 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7303DC7C2A2D7DEE00F3DC35 /* FlowLayout.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		7396A17E293AB485006D6ED4 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A17D293AB485006D6ED4 /* UIView+extension.swift */; };
 		7396A180293AB62E006D6ED4 /* GalleryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A17F293AB62E006D6ED4 /* GalleryService.swift */; };
@@ -94,7 +95,8 @@
 		337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		507DCE2495DCDB987B456563 /* Pods-Calculator Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.debug.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		7303DC782A2D512000F3DC35 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = swiftlint.yml; path = ../../../../swiftlint.yml; sourceTree = "<group>"; };
-		7303DC7A2A2D5BD400F3DC35 /* serviceAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = serviceAds.swift; path = ../../../../../../../serviceAds.swift; sourceTree = "<group>"; };
+		7303DC7A2A2D5BD400F3DC35 /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsService.swift; path = ../../../../../../../AdsService.swift; sourceTree = "<group>"; };
+		7303DC7C2A2D7DEE00F3DC35 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlowLayout.swift; path = ../../../../../../../FlowLayout.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		7396A17D293AB485006D6ED4 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+extension.swift"; path = "../../../../../UIView+extension.swift"; sourceTree = "<group>"; };
 		7396A17F293AB62E006D6ED4 /* GalleryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryService.swift; path = ../../../../../../../GalleryService.swift; sourceTree = "<group>"; };
@@ -244,8 +246,8 @@
 			children = (
 				73B260FA2A257542000ED632 /* CollectionViewController+ADS.swift */,
 				C4148D892440F45E00225706 /* CollectionViewController.swift */,
-				C46AD1002441708400EF0236 /* ModelController.swift */,
 				73B260FC2A257645000ED632 /* CollectionViewController+CollectionDelegate.swift */,
+				7303DC7C2A2D7DEE00F3DC35 /* FlowLayout.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,7 +257,8 @@
 			children = (
 				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
 				7396A17F293AB62E006D6ED4 /* GalleryService.swift */,
-				7303DC7A2A2D5BD400F3DC35 /* serviceAds.swift */,
+				7303DC7A2A2D5BD400F3DC35 /* AdsService.swift */,
+				C46AD1002441708400EF0236 /* ModelController.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -585,7 +588,8 @@
 				73B54D6F27B0AC7A00499F66 /* UIViewController+extension.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				7396A182293AB72E006D6ED4 /* TabBarController+Extensions.swift in Sources */,
-				7303DC7B2A2D5BD400F3DC35 /* serviceAds.swift in Sources */,
+				7303DC7B2A2D5BD400F3DC35 /* AdsService.swift in Sources */,
+				7303DC7D2A2D7DEE00F3DC35 /* FlowLayout.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				73B260FD2A257645000ED632 /* CollectionViewController+CollectionDelegate.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,

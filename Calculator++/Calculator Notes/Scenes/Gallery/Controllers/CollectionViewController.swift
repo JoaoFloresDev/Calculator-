@@ -29,6 +29,8 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     public let reuseIdentifier = "Cell"
     public let folderReuseIdentifier = "FolderCell"
     public let adsService = AdsService()
+    public var basePath = "/"
+    let defaults = UserDefaults.standard
     
     //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -99,11 +101,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         self.navigationController?.setup()
         self.tabBarController?.setup()
         
-        let defaults = UserDefaults.standard
         folders = defaults.stringArray(forKey: Key.foldersPath.rawValue) ?? [String]()
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
         
-        UserDefaults.standard.set(true, forKey:"InGallery")
+        UserDefaults.standard.set(true, forKey: "InGallery")
         navigationItem.leftBarButtonItem =  editButtonItem
         
         interstitial = AdsService().createAndLoadInterstitial(delegate: self)
@@ -126,13 +127,8 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         let getAddPhotoCounter =  UserDefaultService().getAddPhotoCounter()
         UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         let screenWidth = self.view.frame.size.width - 100
-        layout.itemSize = CGSize(width: screenWidth/4, height: screenWidth/4)
-        layout.minimumInteritemSpacing = 20
-        layout.minimumLineSpacing = 20
-        collectionView?.collectionViewLayout = layout
+        collectionView?.collectionViewLayout = FlowLayout(screenWidth: screenWidth)
     }
     
     //    MARK: - StoreKit
@@ -152,7 +148,8 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 modelData.append(image)
                 let indexPath = IndexPath(row: modelData.count - 1, section: 1)
                 collectionView!.insertItems(at: [indexPath])
-                modelController.saveImageObject(image: image)
+                modelController.saveImageObject(image: image,
+                                                basePath: basePath)
             }
         }
     }
