@@ -29,12 +29,12 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     public let reuseIdentifier = "Cell"
     public let folderReuseIdentifier = "FolderCell"
     public let adsService = AdsService()
-    public var basePath = "/"
+    public var basePath = "@"
     let defaults = UserDefaults.standard
     
     //    MARK: - Variables
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    var modelData = ModelController().fetchImageObjectsInit()
+    var modelData: [UIImage] = []
     var image: UIImage!
     var modelController = ModelController()
     
@@ -105,7 +105,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
         
         UserDefaults.standard.set(true, forKey: "InGallery")
-        navigationItem.leftBarButtonItem =  editButtonItem
         
         interstitial = AdsService().createAndLoadInterstitial(delegate: self)
         adsService.setupAds(controller: self,
@@ -129,6 +128,75 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         
         let screenWidth = self.view.frame.size.width - 100
         collectionView?.collectionViewLayout = FlowLayout(screenWidth: screenWidth)
+        
+        modelData = ModelController().fetchImageObjectsInit(basePath: basePath)
+        
+//        navigationItem.leftBarButtonItems = basePath == "@" ?
+//        [selectImagesButton, shareImageButton, deleteButton] :
+//        [backButton, selectImagesButton, shareImageButton, deleteButton]
+        
+        let backButton = UIButton()
+        backButton.setImage(UIImage(named: "leftarrow"), for: .normal)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+
+        let selectImagesButton = UIButton()
+        if #available(iOS 13.0, *) {
+            selectImagesButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        } else {
+            selectImagesButton.setTitle("Edit", for: .normal)
+        }
+        selectImagesButton.addTarget(self, action: #selector(selectImagesButtonTapped), for: .touchUpInside)
+
+        let shareImageButton = UIButton()
+        if #available(iOS 13.0, *) {
+            shareImageButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        } else {
+            shareImageButton.setTitle("Share", for: .normal)
+        }
+        shareImageButton.addTarget(self, action: #selector(shareImageButtonTapped), for: .touchUpInside)
+
+        let deleteButton = UIButton()
+        if #available(iOS 13.0, *) {
+            deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        } else {
+            deleteButton.setTitle("Delete", for: .normal)
+        }
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+
+        let stackView = UIStackView(arrangedSubviews: [backButton, selectImagesButton, shareImageButton, deleteButton])
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8
+
+        let customView = UIView()
+        customView.addSubview(stackView)
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: customView.trailingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: customView.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: customView.bottomAnchor).isActive = true
+
+        let customBarButtonItem = UIBarButtonItem(customView: customView)
+
+        navigationItem.leftBarButtonItems = [customBarButtonItem]
+    }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func selectImagesButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func shareImageButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func deleteButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     //    MARK: - StoreKit

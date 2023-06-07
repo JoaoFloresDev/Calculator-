@@ -49,11 +49,10 @@ class ModelController {
     }
     
     func saveImageObject(image: UIImage, basePath: String) {
-        let imageName = ImageController.shared.saveImage(image: image)
+        let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
         
         if var imageName = imageName,
            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext){
-            imageName = basePath + imageName
             let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredImage
             newImageEntity?.imageName = imageName
             do {
@@ -93,7 +92,7 @@ class ModelController {
         }
     }
     
-    func fetchImageObjectsInit() -> [UIImage]{
+    func fetchImageObjectsInit(basePath: String) -> [UIImage] {
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
@@ -103,10 +102,22 @@ class ModelController {
             
             for imageObject in savedObjects {
                 if let savedImageObject = imageObject as? StoredImage {
-                    guard savedImageObject.imageName != nil else { return []}
-                    let storedImage = ImageController.shared.fetchImage(imageName: savedImageObject.imageName!)
-                    if let storedImage = storedImage {
-                        images.append(storedImage)
+                    guard let imageName = savedImageObject.imageName else { return []}
+                    print("---------")
+                    print(imageName)
+                    print(basePath)
+                    print(savedImageObject.imageName)
+                    print(basePath.filter({ $0 == "@" }).count)
+                    print(imageName.filter({ $0 == "@" }).count)
+                    print("---------")
+                    if imageName.contains(basePath)
+                        && imageName.filter({ $0 == "@" }).count ==
+                        basePath.filter({ $0 == "@" }).count {
+                        
+                        let storedImage = ImageController.shared.fetchImage(imageName: imageName)
+                        if let storedImage = storedImage {
+                            images.append(storedImage)
+                        }
                     }
                 }
             }

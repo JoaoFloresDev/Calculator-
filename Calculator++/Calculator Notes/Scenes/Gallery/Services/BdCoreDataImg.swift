@@ -16,9 +16,9 @@ class ImageController {
     let fileManager = FileManager.default
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
-    func saveImage(image: UIImage) -> String? {
+    func saveImage(image: UIImage, basePath: String) -> String? {
         let date = String( Date.timeIntervalSinceReferenceDate )
-        let imageName = date.replacingOccurrences(of: ".", with: "-") + ".png"
+        let imageName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".png"
         
         if let imageData = UIImagePNGRepresentation(image) {
             do {
@@ -52,7 +52,7 @@ class ImageController {
                 
                 try imageData.write(to: filePath)
                 
-                print("\(imageName) was saved.")
+                print("\(imageName) was saved.\(filePath)")
                 
                 return imageName
             } catch let error as NSError {
@@ -65,7 +65,7 @@ class ImageController {
     
     func fetchImage(imageName: String) -> UIImage? {
         let imagePath = documentsPath.appendingPathComponent(imageName).path
-        
+        print("load imagePath:", imagePath)
         guard fileManager.fileExists(atPath: imagePath) else {
             print("Image does not exist at path: \(imagePath)")
             
