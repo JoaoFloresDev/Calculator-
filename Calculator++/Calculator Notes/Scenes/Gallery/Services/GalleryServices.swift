@@ -41,13 +41,18 @@ struct GalleryService {
 struct FoldersService {
     let defaults = UserDefaults.standard
     var folders: [String] = []
-
+    
+    init() {
+        folders = defaults.stringArray(forKey: Key.foldersPath.rawValue) ?? [String]()
+    }
+    
     func getFolders() -> [String] {
-        
-        return folders
+        folders
     }
 
-    func add(folder: String) {
-
+    mutating func add(folder: String) {
+        self.folders.append(folder)
+        let defaults = UserDefaults.standard
+        defaults.set(self.folders, forKey: Key.foldersPath.rawValue)
     }
 }

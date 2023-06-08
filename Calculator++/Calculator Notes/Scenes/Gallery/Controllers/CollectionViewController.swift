@@ -30,6 +30,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     public let folderReuseIdentifier = "FolderCell"
     public let adsService = AdsService()
     public var basePath = "@"
+    var foldersService = FoldersService()
     let defaults = UserDefaults.standard
 
     // MARK: - Variables
@@ -41,9 +42,8 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     var bannerView: GADBannerView!
     var interstitial: GADInterstitial!
     var galleryService = GalleryService()
-
     var folders: [String] = []
-
+    
     // MARK: - IBOutlet
     @IBOutlet weak var placeHolderImage: UIImageView!
 
@@ -64,9 +64,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
                         actionHandler:
                             { (input: String?) in
                                 if let input = input {
-                                    self.folders.append(input)
-                                    let defaults = UserDefaults.standard
-                                    defaults.set(self.folders, forKey: Key.foldersPath.rawValue)
+                                    self.foldersService.add(folder: input)
                                     self.collectionView?.reloadSections(IndexSet(integer: .zero))
                                 }
                             })
@@ -144,7 +142,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
 
     private func setupUserDefaults() {
-        folders = defaults.stringArray(forKey: Key.foldersPath.rawValue) ?? [String]()
+        folders = foldersService.getFolders()
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
         UserDefaults.standard.set(true, forKey: "InGallery")
     }
