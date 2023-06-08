@@ -45,53 +45,54 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     
     //    MARK: - IBAction
     @IBAction func saveItem(_ sender: Any) {
+        guard let selectedCells = collectionView?.indexPathsForSelectedItems,
+              !selectedCells.isEmpty else {
+            return
+        }
         
-        if let selectedCells = collectionView?.indexPathsForSelectedItems {
+        do {
+            let documentsURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             
-            let items = selectedCells.map { $0.item }.sorted().reversed()
-            
-            var path: URL?
-            
-            do {
-                path = try FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
-            } catch {
-                self.showGenericError()
+            let fileURLs = selectedCells.compactMap { indexPath -> URL? in
+                let itemIndex = indexPath.item
+                
+                guard itemIndex < modelDataVideo.count else {
+                    return nil
+                }
+                
+                let fileName = modelDataVideo[itemIndex]
+                let fileURL = documentsURL.appendingPathComponent(fileName)
+                
+                return fileURL
             }
             
-            guard let path = path else {
-                return
-            }
-
-            var vetImgs = [URL] ()
-            for item in items {
-                let newPath = path.appendingPathComponent(modelDataVideo[item])
-                vetImgs.append(newPath)
-            }
+            let activityController = UIActivityViewController(activityItems: fileURLs, applicationActivities: nil)
+            activityController.popoverPresentationController?.sourceView = view
+            activityController.popoverPresentationController?.sourceRect = view.frame
             
-            let activity: [Any] = vetImgs
-            let actController = UIActivityViewController(activityItems: activity, applicationActivities: nil)
-            actController.popoverPresentationController?.sourceView = view
-            actController.popoverPresentationController?.sourceRect = view.frame
-            self.present(actController, animated: true, completion: nil)
+            present(activityController, animated: true, completion: nil)
+        } catch {
+            showGenericError()
         }
     }
+
     
     @IBAction func deleteItem(_ sender: Any) {
         ConfirmationReset()
     }
     
     @IBAction func addPhoto(_ sender: Any) {
-            //Check if user is subscribed
-            if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil) {
-                self.presentPickerController()
-            } else {
-                let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
-                                              message: Text.premiumToolMessage.rawValue.localized(),
-                                              preferredStyle: UIAlertControllerStyle.alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
+        if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") ||
+            UserDefaults.standard.object(forKey: "NoAds.Calc") != nil {
+            presentPickerController()
+        } else {
+            let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
+                                          message: Text.premiumToolMessage.rawValue.localized(),
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     private func presentPickerController() {
@@ -126,24 +127,19 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
-        if(editing) {
-            deleteButton.isEnabled = true
-            saveButton.isEnabled = true
-        } else {
-            deleteButton.isEnabled = false
-            saveButton.isEnabled = false
-            self.rateApp()
-        }
+        deleteButton.isEnabled = editing
+        saveButton.isEnabled = editing
         
         collectionView?.allowsMultipleSelection = editing
-        if let indexPaths = collectionView?.indexPathsForVisibleItems {
-            for indexPath in indexPaths {
-                if let cell = collectionView?.cellForItem(at: indexPath) as? CollectionViewCell {
-                    cell.isInEditingMode = editing
-                }
+        
+        collectionView?.visibleCells.forEach { cell in
+            guard let collectionViewCell = cell as? CollectionViewCell else {
+                return
             }
+            collectionViewCell.isInEditingMode = editing
         }
     }
+
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -186,47 +182,39 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
-            
-            var path: URL?
-            
             do {
-                path = try FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask, appropriateFor: nil, create: false)
+                let path = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                let newPath = path.appendingPathComponent(modelDataVideo[indexPath.item])
+                
+                let player = AVPlayer(url: newPath)
+                let playerController = AVPlayerViewController()
+                playerController.player = player
+                present(playerController, animated: true) {
+                    player.play()
+                }
             } catch {
-                self.showGenericError()
-            }
-            
-            guard let path = path else {
-                return
-            }
-            
-            let newPath = path.appendingPathComponent(modelDataVideo[indexPath[1]])
-            
-            let player = AVPlayer(url: newPath)
-            let playerController = AVPlayerViewController()
-            playerController.player = player
-            self.present(playerController, animated: true) {
-                player.play()
+                showGenericError()
             }
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
-    }
-    
     func ConfirmationReset() {
-        let refreshAlert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: .alert)
         
         refreshAlert.modalPresentationStyle = .popover
         
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            
             if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
                 let items = selectedCells.map { $0.item }.sorted().reversed()
                 for item in items {
-                    self.modelData.remove(at: item)
-                    self.modelController.deleteImageObject(imageIndex: item)
+                    if item < self.modelData.count {
+                        self.modelData.remove(at: item)
+                        self.modelController.deleteImageObject(imageIndex: item)
+                    }
                 }
                 self.collectionView?.deleteItems(at: selectedCells)
             }
@@ -238,61 +226,67 @@ class VideoCollectionViewController: UICollectionViewController, UINavigationCon
     //    MARK: - StoreKit
     func rateApp() {
         if #available(iOS 10.3, *) {
-            
             SKStoreReviewController.requestReview()
         }
     }
     
     //    MARK: - imagePickerController
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
         
-        guard let videoURL = info[UIImagePickerControllerMediaURL] as? NSURL else { return }
-        guard let videoData = NSData(contentsOf: videoURL as URL) else { return }
+        guard let videoData = try? Data(contentsOf: videoURL) else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
         self.dismiss(animated: true, completion: nil)
         
-        self.getThumbnailImageFromVideoUrl(url: videoURL as URL) { (thumbImage) in
+        self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
             guard let image = thumbImage else { return }
             
             let indexPath = IndexPath(row: self.modelData.count - 1, section: 0)
-            
             self.collectionView?.insertItems(at: [indexPath])
-
-            let pathVideo = self.modelController.saveImageObject(image: image, video: videoData)
             
-            if let path = pathVideo {
+            if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData) {
                 self.modelData.append(image)
-                self.modelDataVideo.append(path)
+                self.modelDataVideo.append(pathVideo)
             }
         }
     }
     
-    func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?)->Void)) {
-        DispatchQueue.global().async { //1
-            let asset = AVAsset(url: url) //2
-            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset) //3
-            avAssetImageGenerator.appliesPreferredTrackTransform = true //4
-            let thumnailTime = CMTimeMake(2, 1) //5
+    func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
+        DispatchQueue.global().async { // 1
+            let asset = AVURLAsset(url: url) // 2
+            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset) // 3
+            avAssetImageGenerator.appliesPreferredTrackTransform = true // 4
+            let thumbnailTime = CMTimeMake(2, 1) // 5
+            
             do {
-                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil) //6
-                let thumbImage = UIImage(cgImage: cgThumbImage) //7
-                DispatchQueue.main.async { //8
-                    completion(thumbImage) //9
+                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumbnailTime, actualTime: nil) // 6
+                let thumbImage = UIImage(cgImage: cgThumbImage) // 7
+                
+                DispatchQueue.main.async { // 8
+                    completion(thumbImage) // 9
                 }
             } catch {
-                print(error.localizedDescription) //10
+                print(error.localizedDescription) // 10
+                
                 DispatchQueue.main.async {
-                    completion(nil) //11
+                    completion(nil) // 11
                 }
             }
         }
     }
+
 }
 
 //    MARK: - Extension CollectionView Input Image
 extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
     }
-    
     
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.default()
@@ -346,5 +340,4 @@ extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
-    
 }

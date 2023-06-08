@@ -1,3 +1,11 @@
+//
+//  ModelController.swift
+//  Calculator Notes
+//
+//  Created by Joao Flores on 11/04/20.
+//  Copyright © 2020 MakeSchool. All rights reserved.
+//
+
 import Foundation
 import UIKit
 import CoreData
@@ -9,24 +17,16 @@ class ModelController {
     
     var savedObjects = [NSManagedObject]()
     var images = [UIImage]()
-    var managedContext: NSManagedObjectContext?
+    var managedContext: NSManagedObjectContext!
     
     init() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            print("AppDelegate not found")
-            return
-        }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         managedContext = appDelegate.persistentContainer.viewContext
         
         fetchImageObjects()
     }
     
     func fetchImageObjects() {
-        guard let managedContext = managedContext else {
-            print("Managed context not found")
-            return
-        }
-        
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
@@ -36,39 +36,29 @@ class ModelController {
             
             for imageObject in savedObjects {
                 if let savedImageObject = imageObject as? StoredImage {
-                    guard let imageName = savedImageObject.imageName else {
-                        continue
-                    }
-                    if let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
+                    guard savedImageObject.imageName != nil else { return }
+                    if let imageName = savedImageObject.imageName,
+                       let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
                         images.append(storedImage)
                     }
                 }
             }
         } catch let error as NSError {
-            print("Could not fetch image objects: \(error)")
+            print("Could not return image objects: \(error)")
         }
     }
     
     func saveImageObject(image: UIImage, basePath: String) {
-        guard let managedContext = managedContext else {
-            print("Managed context not found")
-            return
-        }
-        
-        guard let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else {
-            print("Failed to get entity description")
-            return
-        }
-        
         let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
         
-        if let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredImage {
-            newImageEntity.imageName = imageName
-            
+        if var imageName = imageName,
+           let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext){
+            let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredImage
+            newImageEntity?.imageName = imageName
             do {
                 try managedContext.save()
                 images.append(image)
-                print("\(imageName ?? "") was saved in a new object.")
+                print("\(imageName) was saved in new object.")
             } catch let error as NSError {
                 print("Could not save new image object: \(error)")
             }
@@ -76,26 +66,22 @@ class ModelController {
     }
     
     func deleteImageObject(imageIndex: Int) {
-        guard images.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else {
-            return
-        }
+        fetchImageObjects()
         
-        guard let managedContext = managedContext else {
-            print("Managed context not found")
-            return
-        }
+        guard images.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else { return }
         
-        guard let imageObjectToDelete = savedObjects[imageIndex] as? StoredImage,
-              let imageName = imageObjectToDelete.imageName else {
-            return
-        }
+        guard let imageObjectToDelete = savedObjects[imageIndex] as? StoredImage else { return }
+        
+        let imageName = imageObjectToDelete.imageName
         
         do {
             managedContext.delete(imageObjectToDelete)
             
             try managedContext.save()
             
-            ImageController.shared.deleteImage(imageName: imageName)
+            if let imageName = imageName {
+                ImageController.shared.deleteImage(imageName: imageName)
+            }
             
             savedObjects.remove(at: imageIndex)
             images.remove(at: imageIndex)
@@ -107,11 +93,6 @@ class ModelController {
     }
     
     func fetchImageObjectsInit(basePath: String) -> [UIImage] {
-        guard let managedContext = managedContext else {
-            print("Managed context not found")
-            return []
-        }
-        
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
@@ -121,20 +102,21 @@ class ModelController {
             
             for imageObject in savedObjects {
                 if let savedImageObject = imageObject as? StoredImage {
-                    guard let imageName = savedImageObject.imageName else {
-                        continue
-                    }
-                    if imageName.contains(basePath) && imageName.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count {
-                        if let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
+                    guard let imageName = savedImageObject.imageName else { return []}
+                    if imageName.contains(basePath)
+                        && imageName.filter({ $0 == "@" }).count ==
+                        basePath.filter({ $0 == "@" }).count {
+                        
+                        let storedImage = ImageController.shared.fetchImage(imageName: imageName)
+                        if let storedImage = storedImage {
                             images.append(storedImage)
                         }
                     }
                 }
             }
         } catch let error as NSError {
-            print("Could not fetch image objects: \(error)")
+            print("Could not return image objects: \(error)")
         }
-        
         return images
     }
 }
