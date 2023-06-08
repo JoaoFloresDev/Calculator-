@@ -13,6 +13,17 @@ extension UIViewController {
     func setText(_ text: Text) {
         self.title = text.rawValue.localized()
     }
+
+    func showError(title: String, text: String, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: title,
+                                      message: text,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completion()
+        }))
+        
+        self.present(alert, animated: true)
+    }
     
     func showGenericError() {
         let alert = UIAlertController(title: Text.errorTitle.rawValue.localized(),

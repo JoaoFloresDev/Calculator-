@@ -57,6 +57,10 @@ struct FoldersService {
         }
         return folderInPath
     }
+    
+    func checkAlreadyExist(folder: String, basePath: String) -> Bool {
+        return folders.contains("\(basePath)\(folder)")
+    }
 
     mutating func add(folder: String, basePath: String) -> [String] {
         self.folders.append("\(basePath)\(folder)")
@@ -65,7 +69,9 @@ struct FoldersService {
     }
     
     mutating func delete(folder: String, basePath: String)  -> [String] {
-        folders.removeAll { $0 == folder }
+        folders.removeAll { string in
+            return string.contains(folder)
+        }
         defaults.set(self.folders, forKey: Key.foldersPath.rawValue)
         return getFolders(basePath: basePath)
     }

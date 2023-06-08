@@ -57,19 +57,29 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
 
     @IBAction func addFolder(_ sender: Any) {
+        addFolder()
+    }
+
+    func addFolder() {
         showInputDialog(title: "Nome da pasta",
                         actionTitle: "Criar",
                         cancelTitle: "Cancelar",
                         inputPlaceholder: "Digite o nome da nova pasta",
                         actionHandler:
                             { (input: String?) in
-                                if let input = input {
-                                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
-                                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
-                                }
-                            })
+            if let input = input {
+                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
+                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
+                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
+                } else {
+                    self.showError(title: "Nome já utilizado", text: "Escolha outro nome para pasta", completion: {
+                        self.addFolder()
+                    })
+                }
+                               
+            }
+        })
     }
-
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
