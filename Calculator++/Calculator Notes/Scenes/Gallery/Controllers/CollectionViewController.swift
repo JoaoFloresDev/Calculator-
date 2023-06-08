@@ -43,6 +43,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     var interstitial: GADInterstitial!
     var galleryService = GalleryService()
     var folders: [String] = []
+    var galleryBarButtonItem: EditLeftBarButtonItem?
     
     // MARK: - IBOutlet
     @IBOutlet weak var placeHolderImage: UIImageView!
@@ -91,67 +92,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         loadModelData()
     }
 
-    let shareImageButton = UIButton()
-    let deleteButton = UIButton()
-
     private func setupNavigationItems() {
-        self.navigationController?.setup()
         self.tabBarController?.setup()
-
-        let backButton = UIButton()
-        backButton.setImage(UIImage(named: "leftarrow"), for: .normal)
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-
-        let selectImagesButton = UIButton()
-        if #available(iOS 13.0, *) {
-            selectImagesButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
-        } else {
-            selectImagesButton.setTitle("Edit", for: .normal)
-        }
-        selectImagesButton.addTarget(self, action: #selector(selectImagesButtonTapped), for: .touchUpInside)
-
-        if #available(iOS 13.0, *) {
-            shareImageButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
-        } else {
-            shareImageButton.setTitle("Share", for: .normal)
-        }
-        shareImageButton.addTarget(self, action: #selector(shareImageButtonTapped), for: .touchUpInside)
-
-        if #available(iOS 13.0, *) {
-            deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
-        } else {
-            deleteButton.setTitle("Delete", for: .normal)
-        }
-        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
-
-        let stackItens: [UIView] = basePath == "@" ?
-            [selectImagesButton, shareImageButton, deleteButton] :
-            [backButton, selectImagesButton, shareImageButton, deleteButton]
-
-        let stackView = UIStackView(arrangedSubviews: stackItens)
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 16
-
-        let customView = UIView()
-        customView.addSubview(stackView)
-
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 2).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: customView.trailingAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: customView.topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: customView.bottomAnchor).isActive = true
-
-        let customBarButtonItem = UIBarButtonItem(customView: customView)
-
-        deleteButton.isEnabled = false
-        deleteButton.tintColor = .darkGray
-        
-        shareImageButton.isEnabled = false
-        shareImageButton.tintColor = .darkGray
-
-        navigationItem.leftBarButtonItems = [customBarButtonItem]
+        galleryBarButtonItem = EditLeftBarButtonItem(basePath: basePath, delegate: self)
+        navigationItem.leftBarButtonItem = galleryBarButtonItem
     }
 
     private func setupUserDefaults() {
@@ -194,40 +138,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         modelData = modelController.fetchImageObjectsInit(basePath: basePath)
     }
 
-    @objc func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-
     var isEditMode = false {
         didSet {
             setEditionMode(isEditMode, animated: true)
         }
-    }
-
-    @objc func selectImagesButtonTapped() {
-        isEditMode.toggle()
-    }
-
-    @objc func shareImageButtonTapped() {
-        if let selectedCells = collectionView?.indexPathsForSelectedItems {
-            let items = selectedCells.map { $0.item }.sorted().reversed()
-
-            var vetImgs = [UIImage]()
-
-            for item in items {
-                let image = modelData[item]
-                vetImgs.append(image)
-            }
-
-            if !vetImgs.isEmpty {
-                let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
-                self.present(activityVC, animated: true)
-            }
-        }
-    }
-
-    @objc func deleteButtonTapped() {
-        deleteConfirmation()
     }
 
     // MARK: - StoreKit
@@ -273,5 +187,37 @@ extension CollectionViewController: GalleryItemsDataSource {
         let galleryItem = GalleryItem.image { $0(imageView.image) }
 
         return galleryItem
+    }
+}
+
+extension CollectionViewController: EditLeftBarButtonItemDelegate {
+    func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func selectImagesButtonTapped() {
+        isEditMode.toggle()
+    }
+    
+    func shareImageButtonTapped() {
+        if let selectedCells = collectionView?.indexPathsForSelectedItems {
+            let items = selectedCells.map { $0.item }.sorted().reversed()
+
+            var vetImgs = [UIImage]()
+
+            for item in items {
+                let image = modelData[item]
+                vetImgs.append(image)
+            }
+
+            if !vetImgs.isEmpty {
+                let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
+                self.present(activityVC, animated: true)
+            }
+        }
+    }
+    
+    func deleteButtonTapped() {
+        deleteConfirmation()
     }
 }

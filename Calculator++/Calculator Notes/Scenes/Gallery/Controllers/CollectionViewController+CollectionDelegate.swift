@@ -4,12 +4,14 @@ import Photos
 
 extension CollectionViewController {
     func setEditionMode(_ editing: Bool, animated: Bool) {
-        deleteButton.isEnabled = editing
-        deleteButton.tintColor = editing ? .systemBlue : .darkGray
+//        deleteButton.isEnabled = editing
+//        deleteButton.tintColor = editing ? .systemBlue : .darkGray
+//
+//        shareImageButton.isEnabled = editing
+//        shareImageButton.tintColor = editing ? .systemBlue : .darkGray
         
-        shareImageButton.isEnabled = editing
-        shareImageButton.tintColor = editing ? .systemBlue : .darkGray
-        
+//        setEditing(_ editing: Bool)
+        galleryBarButtonItem?.setEditing(editing)
         collectionView?.allowsMultipleSelection = editing
         if let indexPaths = collectionView?.indexPathsForVisibleItems {
             for indexPath in indexPaths {

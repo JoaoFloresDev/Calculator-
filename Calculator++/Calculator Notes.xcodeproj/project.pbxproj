@@ -22,6 +22,7 @@
 		730438632A315B02001EF25B /* GalleryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438622A315B02001EF25B /* GalleryServices.swift */; };
 		730438652A315B17001EF25B /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438642A315B17001EF25B /* AdsService.swift */; };
 		730438672A31774E001EF25B /* CollectionViewController+CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438662A31774D001EF25B /* CollectionViewController+CollectionDelegate.swift */; };
+		730438692A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438682A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		7396A17E293AB485006D6ED4 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A17D293AB485006D6ED4 /* UIView+extension.swift */; };
 		7396A182293AB72E006D6ED4 /* TabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */; };
@@ -99,6 +100,7 @@
 		730438622A315B02001EF25B /* GalleryServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryServices.swift; sourceTree = "<group>"; };
 		730438642A315B17001EF25B /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		730438662A31774D001EF25B /* CollectionViewController+CollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionViewController+CollectionDelegate.swift"; sourceTree = "<group>"; };
+		730438682A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditLeftBarButtonItemDelegate.swift; path = ../../../../../../../EditLeftBarButtonItemDelegate.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		7396A17D293AB485006D6ED4 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+extension.swift"; path = "../../../../../UIView+extension.swift"; sourceTree = "<group>"; };
 		7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TabBarController+Extensions.swift"; path = "../../../../../TabBarController+Extensions.swift"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				C4148D882440F45E00225706 /* CollectionViewCell.swift */,
 				C480A50524A7752F00094FC8 /* Gallery.storyboard */,
 				73B2527C2A2504C10069F938 /* FolderCollectionViewCell.swift */,
+				730438682A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				73B2527D2A2504C10069F938 /* FolderCollectionViewCell.swift in Sources */,
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
+				730438692A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
 				73B260FB2A257542000ED632 /* CollectionViewController+ADS.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
