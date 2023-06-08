@@ -52,7 +52,7 @@ class VideoModelController {
     
     func saveImageObject(image: UIImage, video: NSData) -> String? {
         let imageName = ImageController.shared.saveImage(image: image, basePath: String())
-        let videoName = ImageController.shared.saveVideo(image: video)
+        let videoName = ImageController.shared.saveVideo(image: video as Data)
         if let imageName = imageName {
             guard let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else { return nil}
             let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredVideo

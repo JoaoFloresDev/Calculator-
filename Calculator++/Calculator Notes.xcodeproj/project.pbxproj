@@ -255,10 +255,10 @@
 		7396A179293AB2BE006D6ED4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
 				7396A17F293AB62E006D6ED4 /* GalleryService.swift */,
 				7303DC7A2A2D5BD400F3DC35 /* AdsService.swift */,
 				C46AD1002441708400EF0236 /* ModelController.swift */,
+				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
