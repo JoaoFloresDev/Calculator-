@@ -64,7 +64,7 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
                         actionHandler:
                             { (input: String?) in
                                 if let input = input {
-                                    self.foldersService.add(folder: input)
+                                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
                                     self.collectionView?.reloadSections(IndexSet(integer: .zero))
                                 }
                             })
@@ -136,13 +136,16 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         let customBarButtonItem = UIBarButtonItem(customView: customView)
 
         deleteButton.isEnabled = false
+        deleteButton.tintColor = .darkGray
+        
         shareImageButton.isEnabled = false
+        shareImageButton.tintColor = .darkGray
 
         navigationItem.leftBarButtonItems = [customBarButtonItem]
     }
 
     private func setupUserDefaults() {
-        folders = foldersService.getFolders()
+        folders = foldersService.getFolders(basePath: basePath)
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
         UserDefaults.standard.set(true, forKey: "InGallery")
     }

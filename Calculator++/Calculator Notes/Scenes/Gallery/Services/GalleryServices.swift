@@ -46,13 +46,27 @@ struct FoldersService {
         folders = defaults.stringArray(forKey: Key.foldersPath.rawValue) ?? [String]()
     }
     
-    func getFolders() -> [String] {
-        folders
+    func getFolders(basePath: String) -> [String] {
+        var folderInPath: [String] = []
+        for folder in folders {
+            if folder.contains(basePath)
+                && folder.filter({ $0 == "@" }).count ==
+                basePath.filter({ $0 == "@" }).count {
+                folderInPath.append(folder)
+            }
+        }
+        return folderInPath
     }
 
-    mutating func add(folder: String) {
-        self.folders.append(folder)
-        let defaults = UserDefaults.standard
+    mutating func add(folder: String, basePath: String) -> [String] {
+        self.folders.append("\(basePath)\(folder)")
         defaults.set(self.folders, forKey: Key.foldersPath.rawValue)
+        return getFolders(basePath: basePath)
+    }
+    
+    mutating func delete(folder: String, basePath: String)  -> [String] {
+        folders.removeAll { $0 == folder }
+        defaults.set(self.folders, forKey: Key.foldersPath.rawValue)
+        return getFolders(basePath: basePath)
     }
 }
