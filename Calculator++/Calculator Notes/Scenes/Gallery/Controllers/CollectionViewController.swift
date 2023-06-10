@@ -296,7 +296,7 @@ extension CollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0:
+        case .zero:
             if !isEditMode {
                 let storyboard = UIStoryboard(name: "Gallery", bundle: nil)
                 if let controller = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController {

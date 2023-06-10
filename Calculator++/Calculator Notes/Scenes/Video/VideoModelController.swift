@@ -3,7 +3,6 @@
 //  Calculator Notes
 //
 //  Created by Joao Flores on 11/04/20.
-//  Copyright © 2020 MakeSchool. All rights reserved.
 //
 
 import Foundation
@@ -15,18 +14,18 @@ class VideoModelController {
     
     let entityName = "StoredVideo"
     
-    var savedObjects = [StoredVideo]()
-    var images = [UIImage]()
-    var pathURLs = [String]()
+    private var savedObjects = [StoredVideo]()
+    private var images = [UIImage]()
+    private var pathURLs = [String]()
     
-    var managedContext: NSManagedObjectContext?
+    private var managedContext: NSManagedObjectContext? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        return appDelegate.persistentContainer.viewContext
+    }
     
     init() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        managedContext = appDelegate.persistentContainer.viewContext
-        
         fetchImageObjects()
     }
     
@@ -202,4 +201,3 @@ class VideoModelController {
         }
     }
 }
-

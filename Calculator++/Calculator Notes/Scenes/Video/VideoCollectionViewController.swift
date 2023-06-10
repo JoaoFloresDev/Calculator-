@@ -103,9 +103,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 }
                 return cell
             }
-            var cell = UICollectionViewCell()
-            cell.backgroundColor = .red
-            return cell
         default:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
                 cell.isInEditingMode = isEditMode
@@ -123,19 +120,31 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditMode {
-            guard let videoURL = modelDataVideo[safe: indexPath.item],
-                  let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoURL) else {
-                showGenericError()
-                return
+                    switch indexPath.section {
+                    case .zero:
+                        let storyboard = UIStoryboard(name: "VideoPlayer", bundle: nil)
+                        if let controller = storyboard.instantiateViewController(withIdentifier: "VideoCollectionViewController") as? VideoCollectionViewController {
+                            if indexPath.row < folders.count {
+                                controller.basePath = basePath + folders[indexPath.row] + "@"
+                                self.navigationController?.pushViewController(controller, animated: true)
+                            }
+                        }
+                    default:
+                        // Reproduz o vídeo
+                        guard let videoURL = modelDataVideo[safe: indexPath.item],
+                              let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoURL) else {
+                            showGenericError()
+                            return
+                        }
+                        
+                        let player = AVPlayer(url: path)
+                        let playerController = AVPlayerViewController()
+                        playerController.player = player
+                        present(playerController, animated: true) {
+                            player.play()
+                        }
+                    }
             }
-            
-            let player = AVPlayer(url: path)
-            let playerController = AVPlayerViewController()
-            playerController.player = player
-            present(playerController, animated: true) {
-                player.play()
-            }
-        }
     }
     
     func confirmationDelete() {
@@ -260,11 +269,5 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
 
     func addFolderButtonTapped() {
         addFolder()
-    }
-}
-
-extension Array {
-    subscript(safe index: Int) -> Element? {
-        return indices.contains(index) ? self[index] : nil
     }
 }
