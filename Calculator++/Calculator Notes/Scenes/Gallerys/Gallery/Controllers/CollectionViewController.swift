@@ -27,14 +27,23 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
+    var willappearedFisrtTime = false {
+        didSet {
+            setupFolders()
+        }
+    }
+    
     // MARK: - IBOutlet
     @IBOutlet weak var placeHolderImage: UIImageView!
 
     // MARK: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        willappearedFisrtTime = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationItems(delegate: self)
-        setupFolders()
         setupAds()
         setupFirstUse()
         setupCollectionViewLayout()
@@ -45,7 +54,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             self.setText(.gallery)
         }
     }
-
+    
     private func setupFolders() {
         folders = foldersService.getFolders(basePath: basePath)
         self.collectionView?.reloadSections(IndexSet(integer: .zero))

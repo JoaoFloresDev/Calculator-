@@ -508,7 +508,7 @@
                         <outlet property="faceIDButton" destination="IJi-Rh-AGZ" id="Zqx-Kv-K0U"/>
                         <outlet property="instructionsLabel" destination="WXb-0s-Buh" id="qDz-Ql-QWI"/>
                         <outlet property="outputLbl" destination="SHe-Vy-Lju" id="fKu-Tj-XYo"/>
-                        <segue destination="8ez-Al-Xfm" kind="presentation" identifier="showNotes" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="e4T-p1-AJP"/>
+                        <segue destination="8ez-Al-Xfm" kind="presentation" identifier="showNotes" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="e4T-p1-AJP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYp-fk-BuR" sceneMemberID="firstResponder"/>
@@ -917,7 +917,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MFR-4k-rw2"/>
+        <segue reference="e4T-p1-AJP"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="keyCurrent" width="181" height="181"/>

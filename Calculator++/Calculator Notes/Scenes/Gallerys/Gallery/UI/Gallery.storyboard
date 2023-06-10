@@ -12,6 +12,7 @@
         <!--Gallery-->
         <scene sceneID="1Ct-kX-esd">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ttm-i4-gjc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController storyboardIdentifier="CollectionViewController" modalPresentationStyle="fullScreen" id="kQz-V5-vHs" customClass="CollectionViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" indicatorStyle="black" canCancelContentTouches="NO" dataMode="prototypes" id="xqB-oC-LsO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -114,7 +115,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUG-c9-fPr">
                                             <rect key="frame" x="0.0" y="63" width="80" height="17"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="17" id="BCS-zV-n0U"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="BCS-zV-n0U"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
@@ -151,7 +152,6 @@
                         <segue destination="RKl-Ey-9Wd" kind="presentation" identifier="setupCalc" id="lQa-8z-n9G"/>
                     </connections>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ttm-i4-gjc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2230" y="254"/>
         </scene>
