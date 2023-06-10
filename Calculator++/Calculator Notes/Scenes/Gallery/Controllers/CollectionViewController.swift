@@ -279,7 +279,7 @@ extension CollectionViewController {
                 cell.isInEditingMode = isEditMode
                 if indexPath.item < modelData.count {
                     let image = modelData[indexPath.item]
-                    cell.imageCell.image = UI().cropToBounds(image: image, width: 200, height: 200)
+                    cell.imageCell.image = UI.cropToBounds(image: image, width: 200, height: 200)
                 }
                 cell.applyshadowWithCorner()
                 

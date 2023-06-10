@@ -48,7 +48,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         super.viewDidLoad()
         setupCollectionViewLayout()
         setupNavigationItems(delegate: self)
-        foldersService = FoldersService(type: .video)
+        setupFolders()
         setText(.video)
         modelData = modelController.fetchImageObjectsInit()
         modelDataVideo = modelController.fetchPathVideosObjectsInit()
@@ -57,6 +57,12 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         placeholderImage.isHidden = modelData.isEmpty || isPremium
+    }
+    
+    func setupFolders() {
+        foldersService = FoldersService(type: .video)
+        folders = foldersService.getFolders(basePath: basePath)
+        self.collectionView?.reloadData()
     }
     
     // Collection View
@@ -75,27 +81,44 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         placeholderImage.isHidden = !modelData.isEmpty
-        return modelData.count
+        switch section {
+        case 0:
+            return folders.count
+        default:
+            return modelData.count
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell else {
-            return UICollectionViewCell()
+        switch indexPath.section {
+        case 0:
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
+                if let folderName = folders[indexPath.row].components(separatedBy: "@").last {
+                    cell.setup(name: folderName)
+                }
+                return cell
+            }
+            var cell = UICollectionViewCell()
+            cell.backgroundColor = .red
+            return cell
+        default:
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
+                cell.isInEditingMode = isEditMode
+                if indexPath.item < modelData.count {
+                    let image = modelData[indexPath.item]
+                    cell.imageCell.image = UI.cropToBounds(image: image, width: 200, height: 200)
+                }
+                cell.applyshadowWithCorner()
+                
+                return cell
+            }
         }
-        
-        cell.isInEditingMode = isEditMode
-        
-        if let image = modelData[safe: indexPath.item] {
-            cell.imageCell.image = UI().cropToBounds(image: image, width: 200, height: 200)
-        }
-        
-        cell.applyshadowWithCorner()
-        return cell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

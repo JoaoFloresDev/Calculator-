@@ -49,7 +49,7 @@ extension UIImage {
 }
 
 struct UI {
-    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
+    static func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
         
         guard let cgimage = image.cgImage else { return image }
         let contextImage: UIImage = UIImage(cgImage: cgimage)
