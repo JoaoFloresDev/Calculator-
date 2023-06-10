@@ -1,20 +1,4 @@
-//
-//  CollectionViewCell.swift
-//  Calculator Notes
-//
-//  Created by Joao Flores on 08/04/20.
-//  Copyright © 2020 Joao Flores. All rights reserved.
-//
-
 import UIKit
-import Photos
-import AssetsPickerViewController
-import DTPhotoViewerController
-import CoreData
-import NYTPhotoViewer
-import ImageViewer
-import StoreKit
-import GoogleMobileAds
 import AVKit
 import MobileCoreServices
 import Photos
@@ -22,18 +6,18 @@ import CoreData
 
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    //    MARK: - Variables
-    var modelData = VideoModelController().fetchImageObjectsInit()
-    var modelDataVideo = VideoModelController().fetchPathVideosObjectsInit()
+    // Variables
+    var modelData: [UIImage] = []
+    var modelDataVideo: [String] = []
     
     var modelController = VideoModelController()
     
-    //    Video adaptation
+    // Video adaptation
     var imagePickerController = UIImagePickerController()
-    var videoURL : NSURL?
+    var videoURL: URL?
     
     var isPremium: Bool {
-        (RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil))
+        return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
     
     var isEditMode = false {
@@ -42,33 +26,39 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    //    MARK: - IBOutlet
+    // IBOutlet
     @IBOutlet weak var placeholderImage: UIImageView!
     
-    //    MARK: - IBAction
+    // IBAction
     private func presentPickerController() {
-        self.imagePickerController.sourceType = .savedPhotosAlbum
-        self.imagePickerController.delegate = self
-        self.imagePickerController.mediaTypes = [kUTTypeMovie as String]
-        self.present(self.imagePickerController, animated: true, completion: nil)
+        guard UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) else {
+            showGenericError()
+            return
+        }
+        
+        imagePickerController.sourceType = .savedPhotosAlbum
+        imagePickerController.delegate = self
+        imagePickerController.mediaTypes = [kUTTypeMovie as String]
+        present(imagePickerController, animated: true, completion: nil)
     }
     
-    //    MARK: - Life cicle
+    // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViewLayout()
         setupNavigationItems(delegate: self)
         foldersService = FoldersService(type: .video)
-        self.setText(.video)
+        setText(.video)
+        modelData = modelController.fetchImageObjectsInit()
+        modelDataVideo = modelController.fetchPathVideosObjectsInit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if isPremium {
-            placeholderImage.setImage(.placeholderVideo)
-        }
+        super.viewWillAppear(animated)
+        placeholderImage.isHidden = modelData.isEmpty || isPremium
     }
     
-    //    MARK: - Collection View
+    // Collection View
     func setEditionMode(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         editLeftBarButtonItem?.setEditing(editing)
@@ -82,55 +72,44 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             collectionViewCell.isInEditingMode = editing
         }
     }
-
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if modelData.count == 0 {
-            placeholderImage.isHidden = false
-        } else {
-            placeholderImage.isHidden = true
-        }
-        
+        placeholderImage.isHidden = !modelData.isEmpty
         return modelData.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
-            cell.isInEditingMode = isEditMode
-            if indexPath.indices.contains(1),
-               modelData.indices.contains(indexPath[1]) {
-                let image = modelData[indexPath[1]]
-                cell.imageCell.image = UI().cropToBounds(image: image, width: 200, height: 200)
-                
-            }
-            cell.applyshadowWithCorner()
-            
-            return cell
-        } else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell else {
             return UICollectionViewCell()
         }
+        
+        cell.isInEditingMode = isEditMode
+        
+        if let image = modelData[safe: indexPath.item] {
+            cell.imageCell.image = UI().cropToBounds(image: image, width: 200, height: 200)
+        }
+        
+        cell.applyshadowWithCorner()
+        return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditMode {
-            do {
-                let path = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                let newPath = path.appendingPathComponent(modelDataVideo[indexPath.item])
-                
-                let player = AVPlayer(url: newPath)
-                let playerController = AVPlayerViewController()
-                playerController.player = player
-                present(playerController, animated: true) {
-                    player.play()
-                }
-            } catch {
+            guard let videoURL = modelDataVideo[safe: indexPath.item],
+                  let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoURL) else {
                 showGenericError()
+                return
+            }
+            
+            let player = AVPlayer(url: path)
+            let playerController = AVPlayerViewController()
+            playerController.player = player
+            present(playerController, animated: true) {
+                player.play()
             }
         }
     }
@@ -150,22 +129,21 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    //    MARK: - imagePickerController
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else {
-            self.dismiss(animated: true, completion: nil)
+    // imagePickerController
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let videoURL = info[.mediaURL] as? URL,
+              let videoData = try? Data(contentsOf: videoURL) else {
+            showGenericError()
             return
         }
         
-        guard let videoData = try? Data(contentsOf: videoURL) else {
-            self.dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        self.dismiss(animated: true, completion: nil)
-        
-        self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
-            guard let image = thumbImage else { return }
+        getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
+            guard let image = thumbImage else {
+                showGenericError()
+                return
+            }
             
             let indexPath = IndexPath(row: self.modelData.count - 1, section: 0)
             self.collectionView?.insertItems(at: [indexPath])
@@ -178,24 +156,24 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     }
     
     func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
-        DispatchQueue.global().async { // 1
-            let asset = AVURLAsset(url: url) // 2
-            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset) // 3
-            avAssetImageGenerator.appliesPreferredTrackTransform = true // 4
-            let thumbnailTime = CMTimeMake(2, 1) // 5
+        DispatchQueue.global().async {
+            let asset = AVURLAsset(url: url)
+            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset)
+            avAssetImageGenerator.appliesPreferredTrackTransform = true
+            let thumbnailTime = CMTimeMake(value: 2, timescale: 1)
             
             do {
-                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumbnailTime, actualTime: nil) // 6
-                let thumbImage = UIImage(cgImage: cgThumbImage) // 7
-                
-                DispatchQueue.main.async { // 8
-                    completion(thumbImage) // 9
-                }
-            } catch {
-                print(error.localizedDescription) // 10
+                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumbnailTime, actualTime: nil)
+                let thumbImage = UIImage(cgImage: cgThumbImage)
                 
                 DispatchQueue.main.async {
-                    completion(nil) // 11
+                    completion(thumbImage)
+                }
+            } catch {
+                print(error.localizedDescription)
+                
+                DispatchQueue.main.async {
+                    completion(nil)
                 }
             }
         }
