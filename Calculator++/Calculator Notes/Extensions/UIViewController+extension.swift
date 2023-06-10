@@ -14,6 +14,7 @@ extension UIViewController {
         self.title = text.rawValue.localized()
     }
 
+    // Errors
     func showError(title: String, text: String, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: title,
                                       message: text,
@@ -33,6 +34,7 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // Folders
     func showInputDialog(title:String? = nil,
                          subtitle:String? = nil,
                          actionTitle:String?,
@@ -58,4 +60,28 @@ extension UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    // Edition
+    func showConfirmationDelete(completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: .alert)
+        
+        alert.modalPresentationStyle = .popover
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completion()
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // Premium
+    func showBePremiumToUse() {
+        let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
+                                      message: Text.premiumToolMessage.rawValue.localized(),
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }

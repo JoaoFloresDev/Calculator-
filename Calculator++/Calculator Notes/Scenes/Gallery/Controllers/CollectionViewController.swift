@@ -1,11 +1,3 @@
-//
-//  CollectionViewCell.swift
-//  Calculator Notes
-//
-//  Created by Joao Flores on 08/04/20.
-//  Copyright © 2020 Joao Flores. All rights reserved.
-//
-
 import UIKit
 import Photos
 import AssetsPickerViewController
@@ -23,9 +15,6 @@ import StoreKit
 import Foundation
 import AVFoundation
 import AVKit
-import UIKit
-import ImageViewer
-import Photos
 
 class BasicCollectionViewController: UICollectionViewController {
     let reuseIdentifier = "Cell"
@@ -57,6 +46,17 @@ class BasicCollectionViewController: UICollectionViewController {
         editLeftBarButtonItem = EditLeftBarButtonItem(basePath: basePath, delegate: delegate)
         navigationItem.leftBarButtonItem = editLeftBarButtonItem
     }
+    
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.default()
+        let option = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+            thumbnail = result ?? UIImage()
+        })
+        return thumbnail
+    }
 }
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
@@ -66,7 +66,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     var modelData: [UIImage] = []
     var folders: [String] = []
     var modelController = ModelController()
-    var galleryService = GalleryService()
     
     var isEditMode = false {
         didSet {
@@ -124,12 +123,12 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
 }
 
-//   MARK: - Extension CollectionView Input Image
+// MARK: - Extension CollectionView Input Image
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
         for asset in assets {
             if(asset.mediaType.rawValue != 2) {
-                image = galleryService.getAssetThumbnail(asset: asset)
+                image = getAssetThumbnail(asset: asset)
                 guard let image = image else {
                     return
                 }
@@ -151,7 +150,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     }
 }
 
-//    MARK: - Extension Viewer Image
+// MARK: - Extension Viewer Image
 extension CollectionViewController: GalleryItemsDataSource {
     func itemCount() -> Int {
         return modelData.count
@@ -333,9 +332,6 @@ extension CollectionViewController {
                 for cell in selectedCells {
                     if cell.section == 0 {
                         if cell.row < self.folders.count {
-                            // self.folders.remove(at: cell.row)
-                            // let defaults = UserDefaults.standard
-                            // defaults.set(self.folders, forKey: Key.foldersPath.rawValue)
                             self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
                         }
                     } else {
@@ -350,16 +346,5 @@ extension CollectionViewController {
         }))
         
         present(refreshAlert, animated: true, completion: nil)
-    }
-    
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result ?? UIImage()
-        })
-        return thumbnail
     }
 }

@@ -32,6 +32,16 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var imagePickerController = UIImagePickerController()
     var videoURL : NSURL?
     
+    var isPremium: Bool {
+        (RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil))
+    }
+    
+    var isEditMode = false {
+        didSet {
+            setEditionMode(isEditMode, animated: true)
+        }
+    }
+    
     //    MARK: - IBOutlet
     @IBOutlet weak var placeholderImage: UIImageView!
     
@@ -52,13 +62,13 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || (UserDefaults.standard.object(forKey: "NoAds.Calc") != nil)) {
+        if isPremium {
             placeholderImage.setImage(.placeholderVideo)
         }
     }
     
     //    MARK: - Collection View
-    override func setEditing(_ editing: Bool, animated: Bool) {
+    func setEditionMode(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         editLeftBarButtonItem?.setEditing(editing)
         
@@ -91,12 +101,14 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
-            cell.isInEditingMode = isEditing
+            cell.isInEditingMode = isEditMode
             if indexPath.indices.contains(1),
                modelData.indices.contains(indexPath[1]) {
-                cell.imageCell.image = cropToBounds(image: modelData[indexPath[1]], width: 200, height: 200)
+                let image = modelData[indexPath[1]]
+                cell.imageCell.image = UI().cropToBounds(image: image, width: 200, height: 200)
+                
             }
-            applyshadowWithCorner(containerView : cell)
+            cell.applyshadowWithCorner()
             
             return cell
         } else {
@@ -104,16 +116,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    func applyshadowWithCorner(containerView : UIView){
-        containerView.clipsToBounds = false
-        containerView.layer.shadowColor = UIColor.black.cgColor
-        containerView.layer.shadowOpacity = 0.5
-        containerView.layer.shadowOffset = CGSize.zero
-        containerView.layer.shadowRadius = 3
-    }
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !isEditing {
+        if !isEditMode {
             do {
                 let path = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
                 let newPath = path.appendingPathComponent(modelDataVideo[indexPath.item])
@@ -130,16 +134,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    func ConfirmationDelete() {
-        let refreshAlert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: .alert)
-        
-        refreshAlert.modalPresentationStyle = .popover
-        
-        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self] _ in
-            guard let self = self else { return }
-            
+    func confirmationDelete() {
+        showConfirmationDelete {
             if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
                 let items = selectedCells.map { $0.item }.sorted().reversed()
                 for item in items {
@@ -150,15 +146,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 }
                 self.collectionView?.deleteItems(at: selectedCells)
             }
-        }))
-        
-        present(refreshAlert, animated: true, completion: nil)
-    }
-    
-    //    MARK: - StoreKit
-    func rateApp() {
-        if #available(iOS 10.3, *) {
-            SKStoreReviewController.requestReview()
         }
     }
     
@@ -220,50 +207,6 @@ extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
     }
     
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result ?? UIImage()
-        })
-        return thumbnail
-    }
-    
-    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
-        
-        guard let cgimage = image.cgImage else {
-            return image
-        }
-        
-        let contextImage: UIImage = UIImage(cgImage: cgimage)
-        let contextSize: CGSize = contextImage.size
-        var posX: CGFloat = 0.0
-        var posY: CGFloat = 0.0
-        var cgwidth: CGFloat = CGFloat(width)
-        var cgheight: CGFloat = CGFloat(height)
-        
-        if contextSize.width > contextSize.height {
-            posX = ((contextSize.width - contextSize.height) / 2)
-            posY = 0
-            cgwidth = contextSize.height
-            cgheight = contextSize.height
-        } else {
-            posX = 0
-            posY = ((contextSize.height - contextSize.width) / 2)
-            cgwidth = contextSize.width
-            cgheight = contextSize.width
-        }
-        
-        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
-        
-        guard let imageRef: CGImage = cgimage.cropping(to: rect) else { return image }
-        
-        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
-        
-        return image
-    }
     
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
@@ -276,7 +219,7 @@ extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
 
 extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     func selectImagesButtonTapped() {
-        
+        isEditMode.toggle()
     }
     
     func shareImageButtonTapped() {
@@ -312,22 +255,16 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     }
     
     func deleteButtonTapped() {
-        ConfirmationDelete()
+        confirmationDelete()
     }
 }
 
 extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     func addPhotoButtonTapped() {
-        if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") ||
-            UserDefaults.standard.object(forKey: "NoAds.Calc") != nil {
+        if isPremium {
             presentPickerController()
         } else {
-            let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
-                                          message: Text.premiumToolMessage.rawValue.localized(),
-                                          preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+            showBePremiumToUse()
         }
     }
 

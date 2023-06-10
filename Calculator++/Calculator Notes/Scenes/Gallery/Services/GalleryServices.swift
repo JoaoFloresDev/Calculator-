@@ -25,19 +25,6 @@ import Foundation
 import AVFoundation
 import AVKit
 
-struct GalleryService {
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result ?? UIImage()
-        })
-        return thumbnail
-    }
-}
-
 struct FoldersService {
     enum AssetType {
         case video
