@@ -126,31 +126,10 @@
                     <tabBarItem key="tabBarItem" title="Video" image="play.rectangle" catalog="system" selectedImage="play.rectangle.fill" id="5j4-wf-cco">
                         <color key="badgeColor" systemColor="systemGrayColor"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Video" id="7CC-AA-LSa">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="g1O-wU-rwl"/>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="kFm-ng-Mcz">
-                                <connections>
-                                    <action selector="addPhoto:" destination="ijo-gf-4Lh" id="F0m-Ev-wmB"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="trash" id="Dof-Jg-fHh">
-                                <connections>
-                                    <action selector="deleteItem:" destination="ijo-gf-4Lh" id="qCo-Mc-sf6"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="action" id="olr-hD-S88">
-                                <connections>
-                                    <action selector="saveItem:" destination="ijo-gf-4Lh" id="qDG-5E-Ofg"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Video" id="7CC-AA-LSa"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="deleteButton" destination="Dof-Jg-fHh" id="vdp-2l-0el"/>
                         <outlet property="placeholderImage" destination="fQ5-R3-3D5" id="5Ew-BE-2XO"/>
-                        <outlet property="saveButton" destination="olr-hD-S88" id="dKj-9R-SE7"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6u-nP-grt" userLabel="First Responder" sceneMemberID="firstResponder"/>

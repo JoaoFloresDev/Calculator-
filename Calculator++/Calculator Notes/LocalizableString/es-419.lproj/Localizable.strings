@@ -13,6 +13,7 @@ chooseProtectionMode = "Elija el modo de protección";
 
 settings = "Ajustes";
 gallery = "Galería";
+video = "Video";
 notes = "Notas";
 
 instructionFirstStepCalc = "Cree una contraseña y haga clic en el botón '='";

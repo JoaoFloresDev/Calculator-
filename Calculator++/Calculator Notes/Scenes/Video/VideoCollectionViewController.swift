@@ -20,14 +20,13 @@ import MobileCoreServices
 import Photos
 import CoreData
 
-class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
+class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     //    MARK: - Variables
     var modelData = VideoModelController().fetchImageObjectsInit()
     var modelDataVideo = VideoModelController().fetchPathVideosObjectsInit()
     
     var modelController = VideoModelController()
-    var bannerView: GADBannerView!
     
     //    Video adaptation
     var imagePickerController = UIImagePickerController()
@@ -35,61 +34,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     
     //    MARK: - IBOutlet
     @IBOutlet weak var placeholderImage: UIImageView!
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     //    MARK: - IBAction
-    @IBAction func saveItem(_ sender: Any) {
-        guard let selectedCells = collectionView?.indexPathsForSelectedItems,
-              !selectedCells.isEmpty else {
-            return
-        }
-        
-        do {
-            let documentsURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            
-            let fileURLs = selectedCells.compactMap { indexPath -> URL? in
-                let itemIndex = indexPath.item
-                
-                guard itemIndex < modelDataVideo.count else {
-                    return nil
-                }
-                
-                let fileName = modelDataVideo[itemIndex]
-                let fileURL = documentsURL.appendingPathComponent(fileName)
-                
-                return fileURL
-            }
-            
-            let activityController = UIActivityViewController(activityItems: fileURLs, applicationActivities: nil)
-            activityController.popoverPresentationController?.sourceView = view
-            activityController.popoverPresentationController?.sourceRect = view.frame
-            
-            present(activityController, animated: true, completion: nil)
-        } catch {
-            showGenericError()
-        }
-    }
-
-    
-    @IBAction func deleteItem(_ sender: Any) {
-        ConfirmationReset()
-    }
-    
-    @IBAction func addPhoto(_ sender: Any) {
-        if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") ||
-            UserDefaults.standard.object(forKey: "NoAds.Calc") != nil {
-            presentPickerController()
-        } else {
-            let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
-                                          message: Text.premiumToolMessage.rawValue.localized(),
-                                          preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
     private func presentPickerController() {
         self.imagePickerController.sourceType = .savedPhotosAlbum
         self.imagePickerController.delegate = self
@@ -100,16 +46,9 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     //    MARK: - Life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = editButtonItem
-        self.navigationController?.setup()
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        let screenWidth = self.view.frame.size.width - 100
-        layout.itemSize = CGSize(width: screenWidth/4, height: screenWidth/4)
-        layout.minimumInteritemSpacing = 20
-        layout.minimumLineSpacing = 20
-        collectionView?.collectionViewLayout = layout
+        setupCollectionViewLayout()
+        setupNavigationItems(delegate: self)
+        self.setText(.video)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,9 +60,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     //    MARK: - Collection View
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        
-        deleteButton.isEnabled = editing
-        saveButton.isEnabled = editing
+        editLeftBarButtonItem?.setEditing(editing)
         
         collectionView?.allowsMultipleSelection = editing
         
@@ -193,7 +130,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    func ConfirmationReset() {
+    func ConfirmationDelete() {
         let refreshAlert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: .alert)
         
         refreshAlert.modalPresentationStyle = .popover
@@ -334,5 +271,71 @@ extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
     
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
+    }
+}
+
+extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
+    func selectImagesButtonTapped() {
+        
+    }
+    
+    func shareImageButtonTapped() {
+        guard let selectedCells = collectionView?.indexPathsForSelectedItems,
+              !selectedCells.isEmpty else {
+            return
+        }
+        
+        do {
+            let documentsURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            
+            let fileURLs = selectedCells.compactMap { indexPath -> URL? in
+                let itemIndex = indexPath.item
+                
+                guard itemIndex < modelDataVideo.count else {
+                    return nil
+                }
+                
+                let fileName = modelDataVideo[itemIndex]
+                let fileURL = documentsURL.appendingPathComponent(fileName)
+                
+                return fileURL
+            }
+            
+            let activityController = UIActivityViewController(activityItems: fileURLs, applicationActivities: nil)
+            activityController.popoverPresentationController?.sourceView = view
+            activityController.popoverPresentationController?.sourceRect = view.frame
+            
+            present(activityController, animated: true, completion: nil)
+        } catch {
+            showGenericError()
+        }
+    }
+    
+    func deleteButtonTapped() {
+        ConfirmationDelete()
+    }
+}
+
+extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
+    func addPhotoButtonTapped() {
+        if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") ||
+            UserDefaults.standard.object(forKey: "NoAds.Calc") != nil {
+            presentPickerController()
+        } else {
+            let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
+                                          message: Text.premiumToolMessage.rawValue.localized(),
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+
+    func addFolderButtonTapped() {
+        addFolder()
+    }
+
+    func addFolder() {
+        
     }
 }

@@ -16,6 +16,7 @@ enum Text: String {
     
     case settings
     case gallery
+    case video
     case notes
     
     case instructionFirstStepCalc
