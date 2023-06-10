@@ -24,25 +24,24 @@ import Foundation
 import AVFoundation
 import AVKit
 
-class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
-
+class BasicCollectionViewController: UICollectionViewController {
     let reuseIdentifier = "Cell"
     let folderReuseIdentifier = "FolderCell"
-    let adsService = AdsService()
-    var foldersService = FoldersService()
-    public var basePath = "@"
+    var adsHandler: AdsHandler = AdsHandler()
     let defaults = UserDefaults.standard
-
-    // MARK: - Variables
+    public var basePath = "@"
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    var modelData: [UIImage] = []
-    var image: UIImage!
-    var modelController = ModelController()
+    var image: UIImage?
+}
 
-    var bannerView: GADBannerView!
-    var interstitial: GADInterstitial!
-    var galleryService = GalleryService()
+class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
+    var foldersService = FoldersService(type: .image)
+    
+    // MARK: - Variables
+    var modelData: [UIImage] = []
     var folders: [String] = []
+    var modelController = ModelController()
+    var galleryService = GalleryService()
     var editLeftBarButtonItem: EditLeftBarButtonItem?
     var additionsRightBarButtonItem: AdditionsRightBarButtonItem?
     
@@ -59,45 +58,44 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationItems()
-        setupUserDefaults()
+        setupFolders()
         setupAds()
         setupFirstUse()
         setupCollectionViewLayout()
         loadModelData()
     }
 
-    private func setupNavigationItems() {
+    func setupNavigationItems() {
         self.navigationController?.setup()
         self.tabBarController?.setup()
         additionsRightBarButtonItem = AdditionsRightBarButtonItem(delegate: self)
         navigationItem.rightBarButtonItem = additionsRightBarButtonItem
-        
+        self.setText(.gallery)
         editLeftBarButtonItem = EditLeftBarButtonItem(basePath: basePath, delegate: self)
         navigationItem.leftBarButtonItem = editLeftBarButtonItem
     }
 
-    private func setupUserDefaults() {
+    private func setupFolders() {
         folders = foldersService.getFolders(basePath: basePath)
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
-        UserDefaults.standard.set(true, forKey: "InGallery")
     }
 
     private func setupAds() {
-        interstitial = adsService.createAndLoadInterstitial(delegate: self)
-        adsService.setupAds(controller: self,
-                            interstitial: &interstitial,
+        adsHandler.setupAds(controller: self,
                             bannerDelegate: self,
                             interstitialDelegate: self)
     }
 
     private func setupFirstUse() {
         let firstUseService = UserDefaultService()
+        
         if !firstUseService.getFirstUseStatus() {
             firstUseService.setFirstUseStatus(status: true)
             performSegue(withIdentifier: Segue.setupCalc.rawValue, sender: nil)
         }
+        
+        UserDefaults.standard.set(true, forKey: "InGallery")
         firstUseService.setFirstUseStatus(status: true)
-        self.setText(.gallery)
 
         let controllers = self.tabBarController?.viewControllers
         controllers?[2].setText(.notes)
@@ -117,12 +115,15 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
 }
 
-////    MARK: - Extension CollectionView Input Image
+//   MARK: - Extension CollectionView Input Image
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
         for asset in assets {
             if(asset.mediaType.rawValue != 2) {
                 image = galleryService.getAssetThumbnail(asset: asset)
+                guard let image = image else {
+                    return
+                }
                 modelData.append(image)
                 let indexPath = IndexPath(row: modelData.count - 1, section: 1)
                 collectionView!.insertItems(at: [indexPath])
@@ -218,5 +219,15 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
 
             }
         })
+    }
+}
+
+extension CollectionViewController {
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        adsHandler.interstitialDidReceiveAd(ad)
+    }
+
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        adsHandler.interstitialDidDismissScreen(delegate: self)
     }
 }

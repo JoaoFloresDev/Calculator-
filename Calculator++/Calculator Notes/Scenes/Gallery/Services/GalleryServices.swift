@@ -39,10 +39,15 @@ struct GalleryService {
 }
 
 struct FoldersService {
+    enum AssetType {
+        case video
+        case image
+    }
+    
     let defaults = UserDefaults.standard
     var folders: [String] = []
     
-    init() {
+    init(type: AssetType) {
         folders = defaults.stringArray(forKey: Key.foldersPath.rawValue) ?? [String]()
     }
     

@@ -20,17 +20,12 @@ import MobileCoreServices
 import Photos
 import CoreData
 
-private let reuseIdentifier = "Cell"
-
-class VideoCollectionViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
+class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GADBannerViewDelegate {
     
     //    MARK: - Variables
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var modelData = VideoModelController().fetchImageObjectsInit()
-    
     var modelDataVideo = VideoModelController().fetchPathVideosObjectsInit()
     
-    var image: UIImage!
     var modelController = VideoModelController()
     var bannerView: GADBannerView!
     

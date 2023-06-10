@@ -24,13 +24,13 @@
 		730438672A31774E001EF25B /* CollectionViewController+CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438662A31774D001EF25B /* CollectionViewController+CollectionDelegate.swift */; };
 		730438692A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438682A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		7304386B2A32905E001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304386A2A32905E001EF25B /* AdditionsRightBarButtonItem.swift */; };
+		730438712A341519001EF25B /* AdsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438702A341519001EF25B /* AdsHandler.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		7396A17E293AB485006D6ED4 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A17D293AB485006D6ED4 /* UIView+extension.swift */; };
 		7396A182293AB72E006D6ED4 /* TabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */; };
 		73A45B6228A9CEB600CCEE08 /* BaseCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A45B6128A9CEB600CCEE08 /* BaseCalculatorViewController.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B2527D2A2504C10069F938 /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B2527C2A2504C10069F938 /* FolderCollectionViewCell.swift */; };
-		73B260FB2A257542000ED632 /* CollectionViewController+ADS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B260FA2A257542000ED632 /* CollectionViewController+ADS.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
 		73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4D27B096F600499F66 /* BankMode.storyboard */; };
 		73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D5F27B09A1B00499F66 /* Localizable.strings */; };
@@ -103,6 +103,7 @@
 		730438662A31774D001EF25B /* CollectionViewController+CollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionViewController+CollectionDelegate.swift"; sourceTree = "<group>"; };
 		730438682A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditLeftBarButtonItemDelegate.swift; path = ../../../../../../../EditLeftBarButtonItemDelegate.swift; sourceTree = "<group>"; };
 		7304386A2A32905E001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdditionsRightBarButtonItem.swift; path = ../../../../../../../AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
+		730438702A341519001EF25B /* AdsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsHandler.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		7396A17D293AB485006D6ED4 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+extension.swift"; path = "../../../../../UIView+extension.swift"; sourceTree = "<group>"; };
 		7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TabBarController+Extensions.swift"; path = "../../../../../TabBarController+Extensions.swift"; sourceTree = "<group>"; };
@@ -112,7 +113,6 @@
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		73ABC0F2284F25CB00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73B2527C2A2504C10069F938 /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FolderCollectionViewCell.swift; path = ../../../../../../../FolderCollectionViewCell.swift; sourceTree = "<group>"; };
-		73B260FA2A257542000ED632 /* CollectionViewController+ADS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionViewController+ADS.swift"; sourceTree = "<group>"; };
 		73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalculatorMode.storyboard; sourceTree = "<group>"; };
 		73B54D4D27B096F600499F66 /* BankMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankMode.storyboard; sourceTree = "<group>"; };
 		73B54D5927B0995600499F66 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -248,7 +248,6 @@
 		7396A177293AB016006D6ED4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				73B260FA2A257542000ED632 /* CollectionViewController+ADS.swift */,
 				C4148D892440F45E00225706 /* CollectionViewController.swift */,
 				730438662A31774D001EF25B /* CollectionViewController+CollectionDelegate.swift */,
 				7303DC7C2A2D7DEE00F3DC35 /* FlowLayout.swift */,
@@ -263,6 +262,7 @@
 				730438642A315B17001EF25B /* AdsService.swift */,
 				C46AD1002441708400EF0236 /* ModelController.swift */,
 				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
+				730438702A341519001EF25B /* AdsHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -582,6 +582,7 @@
 				C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */,
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
 				73B54D6B27B09FDA00499F66 /* UILabel+extensions.swift in Sources */,
+				730438712A341519001EF25B /* AdsHandler.swift in Sources */,
 				730438632A315B02001EF25B /* GalleryServices.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
 				73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */,
@@ -606,7 +607,6 @@
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				730438692A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
-				73B260FB2A257542000ED632 /* CollectionViewController+ADS.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
 				730438672A31774E001EF25B /* CollectionViewController+CollectionDelegate.swift in Sources */,
 			);
