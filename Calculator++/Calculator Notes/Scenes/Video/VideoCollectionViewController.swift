@@ -1,3 +1,4 @@
+
 import UIKit
 import AVKit
 import MobileCoreServices
@@ -130,20 +131,23 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     }
     
     // imagePickerController
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         picker.dismiss(animated: true, completion: nil)
         
-        guard let videoURL = info[.mediaURL] as? URL,
-              let videoData = try? Data(contentsOf: videoURL) else {
-            showGenericError()
+        guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else {
+            self.dismiss(animated: true, completion: nil)
             return
         }
         
-        getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
-            guard let image = thumbImage else {
-                showGenericError()
-                return
-            }
+        guard let videoData = try? Data(contentsOf: videoURL) else {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
+            guard let image = thumbImage else { return }
             
             let indexPath = IndexPath(row: self.modelData.count - 1, section: 0)
             self.collectionView?.insertItems(at: [indexPath])
@@ -154,13 +158,13 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             }
         }
     }
-    
+
     func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
         DispatchQueue.global().async {
             let asset = AVURLAsset(url: url)
             let avAssetImageGenerator = AVAssetImageGenerator(asset: asset)
             avAssetImageGenerator.appliesPreferredTrackTransform = true
-            let thumbnailTime = CMTimeMake(value: 2, timescale: 1)
+            let thumbnailTime = CMTimeMake(2, 1)
             
             do {
                 let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumbnailTime, actualTime: nil)
@@ -233,5 +237,11 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
 
     func addFolderButtonTapped() {
         addFolder()
+    }
+}
+
+extension Array {
+    subscript(safe index: Int) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }
