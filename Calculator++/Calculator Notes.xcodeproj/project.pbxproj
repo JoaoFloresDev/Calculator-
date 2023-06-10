@@ -23,6 +23,7 @@
 		730438652A315B17001EF25B /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438642A315B17001EF25B /* AdsService.swift */; };
 		730438672A31774E001EF25B /* CollectionViewController+CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438662A31774D001EF25B /* CollectionViewController+CollectionDelegate.swift */; };
 		730438692A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438682A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
+		7304386B2A32905E001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304386A2A32905E001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		7396A17E293AB485006D6ED4 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A17D293AB485006D6ED4 /* UIView+extension.swift */; };
 		7396A182293AB72E006D6ED4 /* TabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */; };
@@ -101,6 +102,7 @@
 		730438642A315B17001EF25B /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		730438662A31774D001EF25B /* CollectionViewController+CollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionViewController+CollectionDelegate.swift"; sourceTree = "<group>"; };
 		730438682A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditLeftBarButtonItemDelegate.swift; path = ../../../../../../../EditLeftBarButtonItemDelegate.swift; sourceTree = "<group>"; };
+		7304386A2A32905E001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdditionsRightBarButtonItem.swift; path = ../../../../../../../AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		7396A17D293AB485006D6ED4 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+extension.swift"; path = "../../../../../UIView+extension.swift"; sourceTree = "<group>"; };
 		7396A181293AB72E006D6ED4 /* TabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TabBarController+Extensions.swift"; path = "../../../../../TabBarController+Extensions.swift"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				C480A50524A7752F00094FC8 /* Gallery.storyboard */,
 				73B2527C2A2504C10069F938 /* FolderCollectionViewCell.swift */,
 				730438682A328A64001EF25B /* EditLeftBarButtonItemDelegate.swift */,
+				7304386A2A32905E001EF25B /* AdditionsRightBarButtonItem.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,
 				73A45B6228A9CEB600CCEE08 /* BaseCalculatorViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
+				7304386B2A32905E001EF25B /* AdditionsRightBarButtonItem.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				7396A17E293AB485006D6ED4 /* UIView+extension.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* BdCoreDataImg.swift in Sources */,

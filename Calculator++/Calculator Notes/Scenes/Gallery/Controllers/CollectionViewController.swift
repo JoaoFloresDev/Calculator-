@@ -26,11 +26,11 @@ import AVKit
 
 class CollectionViewController: UICollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
 
-    public let reuseIdentifier = "Cell"
-    public let folderReuseIdentifier = "FolderCell"
-    public let adsService = AdsService()
-    public var basePath = "@"
+    let reuseIdentifier = "Cell"
+    let folderReuseIdentifier = "FolderCell"
+    let adsService = AdsService()
     var foldersService = FoldersService()
+    public var basePath = "@"
     let defaults = UserDefaults.standard
 
     // MARK: - Variables
@@ -43,44 +43,18 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     var interstitial: GADInterstitial!
     var galleryService = GalleryService()
     var folders: [String] = []
-    var galleryBarButtonItem: EditLeftBarButtonItem?
+    var editLeftBarButtonItem: EditLeftBarButtonItem?
+    var additionsRightBarButtonItem: AdditionsRightBarButtonItem?
+    
+    var isEditMode = false {
+        didSet {
+            setEditionMode(isEditMode, animated: true)
+        }
+    }
     
     // MARK: - IBOutlet
     @IBOutlet weak var placeHolderImage: UIImageView!
 
-    // MARK: - IBAction
-
-    @IBAction func addPhoto(_ sender: Any) {
-        let picker = AssetsPickerViewController()
-        picker.pickerConfig = AssetsPickerConfig()
-        picker.pickerDelegate = self
-        present(picker, animated: true, completion: nil)
-    }
-
-    @IBAction func addFolder(_ sender: Any) {
-        addFolder()
-    }
-
-    func addFolder() {
-        showInputDialog(title: "Nome da pasta",
-                        actionTitle: "Criar",
-                        cancelTitle: "Cancelar",
-                        inputPlaceholder: "Digite o nome da nova pasta",
-                        actionHandler:
-                            { (input: String?) in
-            if let input = input {
-                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
-                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
-                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
-                } else {
-                    self.showError(title: "Nome já utilizado", text: "Escolha outro nome para pasta", completion: {
-                        self.addFolder()
-                    })
-                }
-                               
-            }
-        })
-    }
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,9 +67,13 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     }
 
     private func setupNavigationItems() {
+        self.navigationController?.setup()
         self.tabBarController?.setup()
-        galleryBarButtonItem = EditLeftBarButtonItem(basePath: basePath, delegate: self)
-        navigationItem.leftBarButtonItem = galleryBarButtonItem
+        additionsRightBarButtonItem = AdditionsRightBarButtonItem(delegate: self)
+        navigationItem.rightBarButtonItem = additionsRightBarButtonItem
+        
+        editLeftBarButtonItem = EditLeftBarButtonItem(basePath: basePath, delegate: self)
+        navigationItem.leftBarButtonItem = editLeftBarButtonItem
     }
 
     private func setupUserDefaults() {
@@ -136,19 +114,6 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
 
     private func loadModelData() {
         modelData = modelController.fetchImageObjectsInit(basePath: basePath)
-    }
-
-    var isEditMode = false {
-        didSet {
-            setEditionMode(isEditMode, animated: true)
-        }
-    }
-
-    // MARK: - StoreKit
-    func rateApp() {
-        if #available(iOS 10.3, *) {
-            SKStoreReviewController.requestReview()
-        }
     }
 }
 
@@ -219,5 +184,39 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
     
     func deleteButtonTapped() {
         deleteConfirmation()
+    }
+}
+
+extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
+    func addPhotoButtonTapped() {
+        let picker = AssetsPickerViewController()
+        picker.pickerConfig = AssetsPickerConfig()
+        picker.pickerDelegate = self
+        present(picker, animated: true, completion: nil)
+    }
+
+    func addFolderButtonTapped() {
+        addFolder()
+    }
+
+    func addFolder() {
+        showInputDialog(title: "Nome da pasta",
+                        actionTitle: "Criar",
+                        cancelTitle: "Cancelar",
+                        inputPlaceholder: "Digite o nome da nova pasta",
+                        actionHandler:
+                            { (input: String?) in
+            if let input = input {
+                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
+                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
+                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
+                } else {
+                    self.showError(title: "Nome já utilizado", text: "Escolha outro nome para pasta", completion: {
+                        self.addFolder()
+                    })
+                }
+
+            }
+        })
     }
 }
