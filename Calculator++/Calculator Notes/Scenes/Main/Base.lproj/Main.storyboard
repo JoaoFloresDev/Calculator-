@@ -508,7 +508,7 @@
                         <outlet property="faceIDButton" destination="IJi-Rh-AGZ" id="Zqx-Kv-K0U"/>
                         <outlet property="instructionsLabel" destination="WXb-0s-Buh" id="qDz-Ql-QWI"/>
                         <outlet property="outputLbl" destination="SHe-Vy-Lju" id="fKu-Tj-XYo"/>
-                        <segue destination="8ez-Al-Xfm" kind="show" identifier="showNotes" id="e4T-p1-AJP"/>
+                        <segue destination="8ez-Al-Xfm" kind="presentation" identifier="showNotes" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="e4T-p1-AJP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYp-fk-BuR" sceneMemberID="firstResponder"/>
@@ -908,7 +908,7 @@
                         <outlet property="circle5" destination="MQn-a9-mfJ" id="sV6-EB-pPt"/>
                         <outlet property="circle6" destination="6nM-4q-moE" id="bfE-qk-uV8"/>
                         <outlet property="instructionsLabel" destination="5IM-y2-YWc" id="gSF-G5-4lo"/>
-                        <segue destination="8ez-Al-Xfm" kind="show" identifier="showNotes2" id="MFR-4k-rw2"/>
+                        <segue destination="8ez-Al-Xfm" kind="presentation" identifier="showNotes2" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="MFR-4k-rw2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BX5-g9-P09" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
