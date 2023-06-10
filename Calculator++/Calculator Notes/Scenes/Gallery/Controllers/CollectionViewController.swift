@@ -26,6 +26,8 @@ class BasicCollectionViewController: UICollectionViewController {
     var image: UIImage?
     var editLeftBarButtonItem: EditLeftBarButtonItem?
     var additionsRightBarButtonItem: AdditionsRightBarButtonItem?
+    var foldersService = FoldersService(type: .image)
+    var folders: [String] = []
     
     typealias BarButtonItemDelegate = AdditionsRightBarButtonItemDelegate & EditLeftBarButtonItemDelegate
     
@@ -47,24 +49,30 @@ class BasicCollectionViewController: UICollectionViewController {
         navigationItem.leftBarButtonItem = editLeftBarButtonItem
     }
     
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result ?? UIImage()
+    func addFolder() {
+        showInputDialog(title: "Nome da pasta",
+                        actionTitle: "Criar",
+                        cancelTitle: "Cancelar",
+                        inputPlaceholder: "Digite o nome da nova pasta",
+                        actionHandler:
+                            { (input: String?) in
+            if let input = input {
+                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
+                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
+                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
+                } else {
+                    self.showError(title: "Nome já utilizado", text: "Escolha outro nome para pasta", completion: {
+                        self.addFolder()
+                    })
+                }
+            }
         })
-        return thumbnail
     }
 }
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
-    var foldersService = FoldersService(type: .image)
-    
     // MARK: - Variables
     var modelData: [UIImage] = []
-    var folders: [String] = []
     var modelController = ModelController()
     
     var isEditMode = false {
@@ -141,6 +149,17 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         }
     }
 
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.default()
+        let option = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+            thumbnail = result ?? UIImage()
+        })
+        return thumbnail
+    }
+    
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
@@ -202,27 +221,6 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
 
     func addFolderButtonTapped() {
         addFolder()
-    }
-
-    func addFolder() {
-        showInputDialog(title: "Nome da pasta",
-                        actionTitle: "Criar",
-                        cancelTitle: "Cancelar",
-                        inputPlaceholder: "Digite o nome da nova pasta",
-                        actionHandler:
-                            { (input: String?) in
-            if let input = input {
-                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
-                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
-                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
-                } else {
-                    self.showError(title: "Nome já utilizado", text: "Escolha outro nome para pasta", completion: {
-                        self.addFolder()
-                    })
-                }
-
-            }
-        })
     }
 }
 

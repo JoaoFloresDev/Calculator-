@@ -58,6 +58,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         super.viewDidLoad()
         setupCollectionViewLayout()
         setupNavigationItems(delegate: self)
+        foldersService = FoldersService(type: .video)
         self.setText(.video)
     }
     
@@ -199,22 +200,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             }
         }
     }
-
-}
-
-//    MARK: - Extension CollectionView Input Image
-extension VideoCollectionViewController: AssetsPickerViewControllerDelegate {
-    func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
-    }
-    
-    
-    func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
-        return true
-    }
 }
 
 extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
@@ -270,9 +255,5 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
 
     func addFolderButtonTapped() {
         addFolder()
-    }
-
-    func addFolder() {
-        
     }
 }
