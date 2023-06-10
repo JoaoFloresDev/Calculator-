@@ -16,60 +16,6 @@ import Foundation
 import AVFoundation
 import AVKit
 
-class BasicCollectionViewController: UICollectionViewController {
-    let reuseIdentifier = "Cell"
-    let folderReuseIdentifier = "FolderCell"
-    var adsHandler: AdsHandler = AdsHandler()
-    let defaults = UserDefaults.standard
-    public var basePath = "@"
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    var image: UIImage?
-    var editLeftBarButtonItem: EditLeftBarButtonItem?
-    var additionsRightBarButtonItem: AdditionsRightBarButtonItem?
-    var foldersService = FoldersService(type: .image)
-    var folders: [String] = []
-    
-    typealias BarButtonItemDelegate = AdditionsRightBarButtonItemDelegate & EditLeftBarButtonItemDelegate
-    
-    func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func setupCollectionViewLayout() {
-        let screenWidth = self.view.frame.size.width - 100
-        collectionView?.collectionViewLayout = FlowLayout(screenWidth: screenWidth)
-    }
-    
-    func setupNavigationItems(delegate: BarButtonItemDelegate) {
-        self.navigationController?.setup()
-        self.tabBarController?.setup()
-        additionsRightBarButtonItem = AdditionsRightBarButtonItem(delegate: delegate)
-        navigationItem.rightBarButtonItem = additionsRightBarButtonItem
-        editLeftBarButtonItem = EditLeftBarButtonItem(basePath: basePath, delegate: delegate)
-        navigationItem.leftBarButtonItem = editLeftBarButtonItem
-    }
-    
-    func addFolder() {
-        showInputDialog(title: "Nome da pasta",
-                        actionTitle: "Criar",
-                        cancelTitle: "Cancelar",
-                        inputPlaceholder: "Digite o nome da nova pasta",
-                        actionHandler:
-                            { (input: String?) in
-            if let input = input {
-                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
-                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
-                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
-                } else {
-                    self.showError(title: "Nome já utilizado", text: "Escolha outro nome para pasta", completion: {
-                        self.addFolder()
-                    })
-                }
-            }
-        })
-    }
-}
-
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     // MARK: - Variables
     var modelData: [UIImage] = []
