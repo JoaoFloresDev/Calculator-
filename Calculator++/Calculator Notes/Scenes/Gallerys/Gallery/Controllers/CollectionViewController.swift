@@ -39,7 +39,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupFirstUse()
         setupCollectionViewLayout()
         loadModelData()
-        self.setText(.gallery)
+        if let navigationTitle = navigationTitle {
+            self.title = navigationTitle
+        } else {
+            self.setText(.gallery)
+        }
     }
 
     private func setupFolders() {
@@ -248,6 +252,8 @@ extension CollectionViewController {
                 if let controller = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController {
                     if indexPath.row < folders.count {
                         controller.basePath = basePath + folders[indexPath.row] + "@"
+                        controller.navigationTitle = folders[indexPath.row].replacingOccurrences(of: "@",
+                                                                                                 with: String())
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                 }

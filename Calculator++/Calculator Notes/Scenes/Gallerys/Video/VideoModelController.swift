@@ -29,6 +29,7 @@ class VideoModelController {
         fetchImageObjects()
     }
     
+    // MARK: - Fetching
     func fetchImageObjectsInit(basePath: String) -> [UIImage] {
         guard let managedContext = managedContext else {
             print("Managed context is nil.")
@@ -115,6 +116,7 @@ class VideoModelController {
         }
     }
     
+    // MARK: - Saving and Deleting
     func saveImageObject(image: UIImage, video: Data, basePath: String) -> String? {
         guard let managedContext = managedContext else {
             print("Managed context is nil.")
@@ -203,6 +205,40 @@ class VideoModelController {
             }
         } catch let error as NSError {
             print("Could not fetch path URLs: \(error)")
+        }
+    }
+}
+
+extension VideoModelController {
+    // MARK: - Helper Methods
+    private func managedContextUnavailable() -> Bool {
+        guard managedContext == nil else {
+            return false
+        }
+        print("Managed context is nil.")
+        return true
+    }
+}
+
+extension VideoModelController {
+    // MARK: - Additional Functionality
+    func clearAllData() {
+        guard let managedContext = managedContext else {
+            print("Managed context is nil.")
+            return
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedContext.execute(batchDeleteRequest)
+            savedObjects.removeAll()
+            images.removeAll()
+            pathURLs.removeAll()
+            print("All data was cleared.")
+        } catch let error as NSError {
+            print("Could not clear all data: \(error)")
         }
     }
 }
