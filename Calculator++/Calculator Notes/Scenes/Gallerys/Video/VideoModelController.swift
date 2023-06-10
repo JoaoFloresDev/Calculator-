@@ -29,7 +29,7 @@ class VideoModelController {
         fetchImageObjects()
     }
     
-    func fetchImageObjectsInit() -> [UIImage] {
+    func fetchImageObjectsInit(basePath: String) -> [UIImage] {
         guard let managedContext = managedContext else {
             print("Managed context is nil.")
             return []
@@ -47,8 +47,13 @@ class VideoModelController {
                     continue
                 }
                 
-                if let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
-                    images.append(storedImage)
+                if imageName.contains(basePath)
+                    && imageName.filter({ $0 == "@" }).count ==
+                    basePath.filter({ $0 == "@" }).count {
+                    
+                    if let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
+                        images.append(storedImage)
+                    }
                 }
             }
         } catch let error as NSError {
@@ -110,13 +115,13 @@ class VideoModelController {
         }
     }
     
-    func saveImageObject(image: UIImage, video: Data) -> String? {
+    func saveImageObject(image: UIImage, video: Data, basePath: String) -> String? {
         guard let managedContext = managedContext else {
             print("Managed context is nil.")
             return nil
         }
         
-        let imageName = ImageController.shared.saveImage(image: image, basePath: "")
+        let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
         let videoName = ImageController.shared.saveVideo(image: video)
         
         if let imageName = imageName, let videoName = videoName {

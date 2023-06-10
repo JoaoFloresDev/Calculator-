@@ -18,6 +18,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var videoURL: URL?
     
     var isPremium: Bool {
+        UserDefaults.standard.set(true, forKey: "NoAds.Calc")
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
     
@@ -50,13 +51,13 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         setupNavigationItems(delegate: self)
         setupFolders()
         setText(.video)
-        modelData = modelController.fetchImageObjectsInit()
+        modelData = modelController.fetchImageObjectsInit(basePath: basePath)
         modelDataVideo = modelController.fetchPathVideosObjectsInit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        placeholderImage.isHidden = modelData.isEmpty || isPremium
+        placeholderImage.isHidden = isPremium
     }
     
     func setupFolders() {
@@ -85,7 +86,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        placeholderImage.isHidden = !modelData.isEmpty
         switch section {
         case 0:
             return folders.count
@@ -181,12 +181,28 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
             guard let image = thumbImage else { return }
             
-            let indexPath = IndexPath(row: self.modelData.count - 1, section: 0)
-            self.collectionView?.insertItems(at: [indexPath])
+            // Verifica se a seção 0 contém algum item
+            let section = 0
+            let sectionHasItems = self.collectionView?.numberOfItems(inSection: section) ?? 0 > 0
             
-            if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData) {
-                self.modelData.append(image)
-                self.modelDataVideo.append(pathVideo)
+            if sectionHasItems {
+                // Se a seção 0 já contiver itens, insira o novo item no início da seção
+                let indexPath = IndexPath(row: 0, section: section)
+                self.collectionView?.insertItems(at: [indexPath])
+                
+                if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath) {
+                    self.modelData.insert(image, at: 0)
+                    self.modelDataVideo.insert(pathVideo, at: 0)
+                }
+            } else {
+                // Se a seção 0 estiver vazia, adicione o novo item no final da seção
+                let indexPath = IndexPath(row: self.modelData.count, section: section)
+                self.collectionView?.insertItems(at: [indexPath])
+                
+                if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath) {
+                    self.modelData.append(image)
+                    self.modelDataVideo.append(pathVideo)
+                }
             }
         }
     }

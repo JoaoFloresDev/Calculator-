@@ -51,7 +51,7 @@ class ModelController {
     func saveImageObject(image: UIImage, basePath: String) {
         let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
         
-        if var imageName = imageName,
+        if let imageName = imageName,
            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext){
             let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredImage
             newImageEntity?.imageName = imageName
