@@ -252,8 +252,7 @@ extension CollectionViewController {
                 if let controller = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController {
                     if indexPath.row < folders.count {
                         controller.basePath = basePath + folders[indexPath.row] + "@"
-                        controller.navigationTitle = folders[indexPath.row].replacingOccurrences(of: "@",
-                                                                                                 with: String())
+                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: "@").last
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                 }

@@ -5,43 +5,43 @@ import Photos
 import CoreData
 
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+    
     // Variables
     var modelData: [UIImage] = []
     var modelDataVideo: [String] = []
     var modelController = VideoModelController()
-
+    
     // Video adaptation
     var imagePickerController = UIImagePickerController()
     var videoURL: URL?
-
+    
     var isPremium: Bool {
         UserDefaults.standard.set(true, forKey: "NoAds.Calc")
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
-
+    
     var isEditMode = false {
         didSet {
             setEditionMode(isEditMode, animated: true)
         }
     }
-
+    
     // IBOutlet
     @IBOutlet weak var placeholderImage: UIImageView!
-
+    
     // IBAction
     private func presentPickerController() {
         guard UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) else {
             showGenericError()
             return
         }
-
+        
         imagePickerController.sourceType = .savedPhotosAlbum
         imagePickerController.delegate = self
         imagePickerController.mediaTypes = [kUTTypeMovie as String]
         present(imagePickerController, animated: true, completion: nil)
     }
-
+    
     // Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,37 +57,40 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             self.setText(.video)
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         placeholderImage.isHidden = isPremium
     }
-
+    
     func setupFolders() {
         foldersService = FoldersService(type: .video)
         folders = foldersService.getFolders(basePath: basePath)
         self.collectionView?.reloadData()
     }
-
+    
     // Collection View
     func setEditionMode(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
         editLeftBarButtonItem?.setEditing(editing)
-
+        
         collectionView?.allowsMultipleSelection = editing
-
-        collectionView?.visibleCells.forEach { cell in
-            guard let collectionViewCell = cell as? CollectionViewCell else {
-                return
+        
+        if let indexPaths = collectionView?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                if let cell = collectionView?.cellForItem(at: indexPath) as? CollectionViewCell {
+                    cell.isInEditingMode = editing
+                }
+                if let cell = collectionView?.cellForItem(at: indexPath) as? FolderCollectionViewCell {
+                    cell.isInEditingMode = editing
+                }
             }
-            collectionViewCell.isInEditingMode = editing
         }
     }
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -96,7 +99,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             return modelData.count
         }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
@@ -114,13 +117,13 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                     cell.imageCell.image = UI.cropToBounds(image: image, width: 200, height: 200)
                 }
                 cell.applyshadowWithCorner()
-
+                
                 return cell
             }
         }
         return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditMode {
             switch indexPath.section {
@@ -129,8 +132,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 if let controller = storyboard.instantiateViewController(withIdentifier: "VideoCollectionViewController") as? VideoCollectionViewController {
                     if indexPath.row < folders.count {
                         controller.basePath = basePath + folders[indexPath.row] + "@"
-                        controller.navigationTitle = folders[indexPath.row].replacingOccurrences(of: "@",
-                                                                                                 with: String())
+                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: "@").last
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                 }
@@ -141,7 +143,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                     showGenericError()
                     return
                 }
-
+                
                 let player = AVPlayer(url: path)
                 let playerController = AVPlayerViewController()
                 playerController.player = player
@@ -151,22 +153,27 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             }
         }
     }
-
+    
     func confirmationDelete() {
         showConfirmationDelete {
             if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
-                let items = selectedCells.map { $0.item }.sorted().reversed()
-                for item in items {
-                    if item < self.modelData.count {
-                        self.modelData.remove(at: item)
-                        self.modelController.deleteImageObject(imageIndex: item)
+                for cell in selectedCells {
+                    if cell.section == 0 {
+                        if cell.row < self.folders.count {
+                            self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
+                        }
+                    } else {
+                        if cell.row < self.modelData.count {
+                            self.modelData.remove(at: cell.row)
+                            self.modelController.deleteImageObject(imageIndex: cell.row)
+                        }
                     }
                 }
                 self.collectionView?.deleteItems(at: selectedCells)
             }
         }
     }
-
+    
     // imagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else {
@@ -193,7 +200,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             }
         }
     }
-
+    
     func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
         DispatchQueue.global().async {
             let asset = AVURLAsset(url: url)
@@ -223,39 +230,39 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     func selectImagesButtonTapped() {
         isEditMode.toggle()
     }
-
+    
     func shareImageButtonTapped() {
         guard let selectedCells = collectionView?.indexPathsForSelectedItems,
               !selectedCells.isEmpty else {
             return
         }
-
+        
         do {
             let documentsURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-
+            
             let fileURLs = selectedCells.compactMap { indexPath -> URL? in
                 let itemIndex = indexPath.item
-
+                
                 guard itemIndex < modelDataVideo.count else {
                     return nil
                 }
-
+                
                 let fileName = modelDataVideo[itemIndex]
                 let fileURL = documentsURL.appendingPathComponent(fileName)
-
+                
                 return fileURL
             }
-
+            
             let activityController = UIActivityViewController(activityItems: fileURLs, applicationActivities: nil)
             activityController.popoverPresentationController?.sourceView = view
             activityController.popoverPresentationController?.sourceRect = view.frame
-
+            
             present(activityController, animated: true, completion: nil)
         } catch {
             showGenericError()
         }
     }
-
+    
     func deleteButtonTapped() {
         confirmationDelete()
     }
@@ -269,7 +276,7 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
             showBePremiumToUse()
         }
     }
-
+    
     func addFolderButtonTapped() {
         addFolder()
     }
