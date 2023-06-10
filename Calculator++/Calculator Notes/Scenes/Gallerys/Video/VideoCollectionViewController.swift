@@ -164,8 +164,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     
     // imagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        
         guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else {
             self.dismiss(animated: true, completion: nil)
             return
@@ -181,28 +179,12 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
             guard let image = thumbImage else { return }
             
-            // Verifica se a seção 0 contém algum item
-            let section = 0
-            let sectionHasItems = self.collectionView?.numberOfItems(inSection: section) ?? 0 > 0
+            let indexPath = IndexPath(row: self.modelData.count - 1, section: 1)
+            self.collectionView?.insertItems(at: [indexPath])
             
-            if sectionHasItems {
-                // Se a seção 0 já contiver itens, insira o novo item no início da seção
-                let indexPath = IndexPath(row: 0, section: section)
-                self.collectionView?.insertItems(at: [indexPath])
-                
-                if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath) {
-                    self.modelData.insert(image, at: 0)
-                    self.modelDataVideo.insert(pathVideo, at: 0)
-                }
-            } else {
-                // Se a seção 0 estiver vazia, adicione o novo item no final da seção
-                let indexPath = IndexPath(row: self.modelData.count, section: section)
-                self.collectionView?.insertItems(at: [indexPath])
-                
-                if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath) {
-                    self.modelData.append(image)
-                    self.modelDataVideo.append(pathVideo)
-                }
+            if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath) {
+                self.modelData.append(image)
+                self.modelDataVideo.append(pathVideo)
             }
         }
     }
