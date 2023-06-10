@@ -60,7 +60,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        placeholderImage.isHidden = isPremium
+        placeholderImage.image = isPremium ? UIImage(named: "placeholderVideo") : UIImage(named: "placeholderPremium")
     }
     
     func setupFolders() {
@@ -92,6 +92,9 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
+        placeholderImage.isHidden = !presentPlaceHolderImage
+        
         switch section {
         case 0:
             return folders.count

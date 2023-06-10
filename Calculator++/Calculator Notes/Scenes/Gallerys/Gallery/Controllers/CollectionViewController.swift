@@ -205,8 +205,8 @@ extension CollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let presentPlaceHolderImage = !modelData.isEmpty
-        placeHolderImage.isHidden = presentPlaceHolderImage
+        let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
+        placeHolderImage.isHidden = !presentPlaceHolderImage
         switch section {
         case 0:
             return folders.count

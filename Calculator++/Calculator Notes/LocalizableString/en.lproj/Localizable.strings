@@ -50,3 +50,12 @@ loading = "Loading...";
 close = "Close";
 restore = "Restore";
 buy = "Buy";
+
+// folder
+folderTitle = "Folder Name";
+createActionTitle = "Create";
+cancelTitle = "Cancel";
+inputPlaceholder = "Enter the new folder name";
+folderNameAlreadyUsedTitle = "Name Already Used";
+folderNameAlreadyUsedText = "Choose another name for the folder";
+deleteConfirmationTitle = "Delete files?";

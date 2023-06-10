@@ -51,6 +51,15 @@ enum Text: String {
     case restore
     case buy
     case products
+    
+    case folderTitle
+    case createActionTitle
+    case cancelTitle
+    case inputPlaceholder
+    case folderNameAlreadyUsedTitle
+    case folderNameAlreadyUsedText
+    
+    case deleteConfirmationTitle
 }
 
 enum Img: String {

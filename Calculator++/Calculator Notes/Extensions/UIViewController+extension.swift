@@ -63,7 +63,7 @@ extension UIViewController {
     
     // Edition
     func showConfirmationDelete(completion: @escaping () -> Void) {
-        let alert = UIAlertController(title: "Delete files?", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: Text.deleteConfirmationTitle.rawValue.localized(), message: nil, preferredStyle: .alert)
         
         alert.modalPresentationStyle = .popover
         

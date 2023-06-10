@@ -50,3 +50,11 @@ loading = "Cargando...";
 close = "Descartar";
 restore = "Restaurar";
 buy = "Comprar";
+
+folderTitle = "Nombre de Carpeta";
+createActionTitle = "Crear";
+cancelTitle = "Cancelar";
+inputPlaceholder = "Ingrese el nuevo nombre de la carpeta";
+folderNameAlreadyUsedTitle = "Nombre Ya Utilizado";
+folderNameAlreadyUsedText = "Elija otro nombre para la carpeta";
+deleteConfirmationTitle = "¿Eliminar archivos?";
