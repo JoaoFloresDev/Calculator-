@@ -13,6 +13,7 @@ chooseProtectionMode = "Escolha o modo de proteção";
 
 settings = "Configurações";
 gallery = "Galeria";
+video = "Video";
 notes = "Notas";
 
 instructionFirstStepCalc = "Crie uma senha e clique no botão '='";
@@ -48,3 +49,12 @@ loading = "Carregando...";
 close = "Fechar";
 restore = "Restaurar";
 buy = "Comprar";
+
+// folder
+folderTitle = "Nome da Pasta";
+createActionTitle = "Criar";
+cancelTitle = "Cancelar";
+inputPlaceholder = "Digite o nome da nova pasta";
+folderNameAlreadyUsedTitle = "Nome Já Utilizado";
+folderNameAlreadyUsedText = "Escolha outro nome para a pasta";
+deleteConfirmationTitle = "Excluir Arquivos?";

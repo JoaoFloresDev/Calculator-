@@ -45,12 +45,14 @@ class PasswordViewController: UIViewController {
             
             if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
                 myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                    DispatchQueue.main.async {
-                        if success {
-                            self.instructionsLabel.text = "Key: "
-                            self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
-                            self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
-                            self.performSegue(withIdentifier: "showNotes2", sender: nil)
+                    if success {
+                        DispatchQueue.main.async {
+                            if success {
+                                self.instructionsLabel.text = "Key: "
+                                self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
+                                self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+                                self.performSegue(withIdentifier: "showNotes2", sender: nil)
+                            }
                         }
                     }
                 }

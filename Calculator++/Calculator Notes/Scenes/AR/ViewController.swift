@@ -253,7 +253,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UIGestureRecognizerDe
         }
     }
 
-
     func createAndLoadInterstitial() -> GADInterstitial {
       let interstitial = GADInterstitial(adUnitID: "ca-app-pub-8858389345934911/3254547941")
       interstitial.delegate = self

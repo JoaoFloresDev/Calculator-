@@ -13,6 +13,7 @@ chooseProtectionMode = "Choose protection mode";
 
 settings = "Settings";
 gallery = "Gallery";
+video = "Video";
 notes = "Notes";
 
 instructionFirstStepCalc = "Create a password and click the '=' button";
@@ -49,3 +50,12 @@ loading = "Loading...";
 close = "Close";
 restore = "Restore";
 buy = "Buy";
+
+// folder
+folderTitle = "Folder Name";
+createActionTitle = "Create";
+cancelTitle = "Cancel";
+inputPlaceholder = "Enter the new folder name";
+folderNameAlreadyUsedTitle = "Name Already Used";
+folderNameAlreadyUsedText = "Choose another name for the folder";
+deleteConfirmationTitle = "Delete files?";

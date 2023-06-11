@@ -6,11 +6,21 @@ target 'Calculator Notes' do
   use_frameworks!
 
   # Pods for Calculator Notes
-pod 'AssetsPickerViewController'
-pod 'DTPhotoViewerController'
-pod 'ImageViewer'
-pod 'NYTPhotoViewer'
-pod 'Google-Mobile-Ads-SDK', '7.69.0'
-pod 'VegaScrollFlowLayout'
-pod 'WLEmptyState'
+  pod 'AssetsPickerViewController'
+  pod 'DTPhotoViewerController'
+  pod 'ImageViewer'
+  pod 'NYTPhotoViewer'
+  pod 'Google-Mobile-Ads-SDK', '7.69.0'
+  pod 'VegaScrollFlowLayout'
+  pod 'WLEmptyState'
+  pod 'SwiftLint'
+  pod 'SnapKit', '~> 5.0.0'
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+    end
+  end
 end

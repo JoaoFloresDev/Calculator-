@@ -13,6 +13,7 @@ chooseProtectionMode = "Elija el modo de protección";
 
 settings = "Ajustes";
 gallery = "Galería";
+video = "Video";
 notes = "Notas";
 
 instructionFirstStepCalc = "Cree una contraseña y haga clic en el botón '='";
@@ -49,3 +50,11 @@ loading = "Cargando...";
 close = "Descartar";
 restore = "Restaurar";
 buy = "Comprar";
+
+folderTitle = "Nombre de Carpeta";
+createActionTitle = "Crear";
+cancelTitle = "Cancelar";
+inputPlaceholder = "Ingrese el nuevo nombre de la carpeta";
+folderNameAlreadyUsedTitle = "Nombre Ya Utilizado";
+folderNameAlreadyUsedText = "Elija otro nombre para la carpeta";
+deleteConfirmationTitle = "¿Eliminar archivos?";
