@@ -63,7 +63,7 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
-        stackView.spacing = 8
+        stackView.spacing = 12
         return stackView
     }
 

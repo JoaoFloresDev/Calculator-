@@ -2,7 +2,7 @@
 //  GalleryBarButtonItem.swift
 //  Calculator Notes
 //
-//  Created by Joao Victor Flores da Costa on 04/06/43.
+//  Created by Joao Victor Flores da Costa on 010/010/103.
 //
 
 import UIKit
@@ -47,43 +47,32 @@ class EditLeftBarButtonItem: UIBarButtonItem {
         let backButton = UIButton()
         backButton.setImage(UIImage(named: "leftarrow"), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        backButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        backButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 10)
         return backButton
     }
 
     private func createSelectImagesButton() -> UIButton {
         let selectImagesButton = UIButton()
-        if #available(iOS 13.0, *) {
-            selectImagesButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
-        } else {
-            selectImagesButton.setTitle("Edit", for: .normal)
-        }
+        selectImagesButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         selectImagesButton.addTarget(self, action: #selector(selectImagesButtonTapped), for: .touchUpInside)
-        selectImagesButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        selectImagesButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return selectImagesButton
     }
 
     private func createShareImageButton() -> UIButton {
         let shareImageButton = UIButton()
-        if #available(iOS 13.0, *) {
-            shareImageButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
-        } else {
-            shareImageButton.setTitle("Share", for: .normal)
-        }
+        shareImageButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         shareImageButton.addTarget(self, action: #selector(shareImageButtonTapped), for: .touchUpInside)
-        shareImageButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        shareImageButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return shareImageButton
     }
 
     private func createDeleteButton() -> UIButton {
         let deleteButton = UIButton()
-        if #available(iOS 13.0, *) {
-            deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
-        } else {
-            deleteButton.setTitle("Delete", for: .normal)
-        }
+        let image = UIImage(systemName: "trash")
+        deleteButton.setImage(image, for: .normal)
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
-        deleteButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        deleteButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return deleteButton
     }
 
@@ -96,7 +85,7 @@ class EditLeftBarButtonItem: UIBarButtonItem {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
-        stackView.spacing = 8
+        stackView.spacing = 4
         return stackView
     }
 
@@ -104,7 +93,7 @@ class EditLeftBarButtonItem: UIBarButtonItem {
         let customView = UIView()
         customView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 2).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: customView.trailingAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: customView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: customView.bottomAnchor).isActive = true
