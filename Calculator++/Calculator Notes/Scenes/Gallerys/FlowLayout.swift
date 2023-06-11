@@ -16,8 +16,6 @@ class FlowLayout: UICollectionViewFlowLayout {
         itemSize = CGSize(width: screenWidth/4, height: screenWidth/4)
         minimumInteritemSpacing = 20
         minimumLineSpacing = 20
-//        footerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
-//        headerReferenceSize = CGSize.zero
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,7 +39,7 @@ class FlowLayout: UICollectionViewFlowLayout {
         if elementKind == UICollectionElementKindSectionFooter && indexPath.section == collectionView!.numberOfSections - 1 {
             let footerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
             let contentWidth = collectionViewContentSize.width - sectionInset.left - sectionInset.right
-            let footerHeight: CGFloat = 100
+            let footerHeight: CGFloat = 70
 
             footerAttributes.frame = CGRect(x: sectionInset.left, y: attributes?.frame.maxY ?? 0, width: contentWidth, height: footerHeight)
 
@@ -53,7 +51,7 @@ class FlowLayout: UICollectionViewFlowLayout {
 
     override var collectionViewContentSize: CGSize {
         var contentSize = super.collectionViewContentSize
-        let lastSectionFooterHeight: CGFloat = 100
+        let lastSectionFooterHeight: CGFloat = 70
 
         if collectionView!.numberOfSections > 0 {
             contentSize.height += lastSectionFooterHeight
