@@ -48,7 +48,7 @@ class FlowLayout: UICollectionViewFlowLayout {
 
         return attributes
     }
-    s
+    
 
     override var collectionViewContentSize: CGSize {
         var contentSize = super.collectionViewContentSize
