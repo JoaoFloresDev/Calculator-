@@ -45,7 +45,6 @@
 		C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4148D882440F45E00225706 /* CollectionViewCell.swift */; };
 		C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4148D892440F45E00225706 /* CollectionViewController.swift */; };
 		C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41F8483249F271F0015F134 /* PasswordViewController.swift */; };
-		C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43CBCE1245E004E000B348E /* StyleClass.swift */; };
 		C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */; };
 		C467BCAB24A9AABF0039D237 /* VideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */; };
 		C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCC224A9B1880039D237 /* VideoModelController.swift */; };
@@ -130,7 +129,6 @@
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C4148D892440F45E00225706 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C41F8483249F271F0015F134 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
-		C43CBCE1245E004E000B348E /* StyleClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleClass.swift; sourceTree = "<group>"; };
 		C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
 		C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
 		C467BCC224A9B1880039D237 /* VideoModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModelController.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 		2E4A07AD1C42F4EB007F415F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C43CBCE1245E004E000B348E /* StyleClass.swift */,
 				2E4A07AE1C42F539007F415F /* Date+convertToString.swift */,
 				7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */,
 				73B54D6527B09D9800499F66 /* String+Localized.swift */,
@@ -245,27 +242,12 @@
 				730438642A315B17001EF25B /* AdsService.swift */,
 				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
 				730438702A341519001EF25B /* AdsHandler.swift */,
+				730438752A3445EF001EF25B /* FlowLayout.swift */,
+				7396A17A293AB2D1006D6ED4 /* UI */,
 				73B54D5427B097C200499F66 /* Gallery */,
 				73B54D5527B097C900499F66 /* Video */,
 			);
 			path = Gallerys;
-			sourceTree = "<group>";
-		};
-		7396A177293AB016006D6ED4 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				C4148D892440F45E00225706 /* CollectionViewController.swift */,
-				730438752A3445EF001EF25B /* FlowLayout.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		7396A179293AB2BE006D6ED4 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				C46AD1002441708400EF0236 /* ModelController.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		7396A17A293AB2D1006D6ED4 /* UI */ = {
@@ -273,7 +255,6 @@
 			children = (
 				C4148D882440F45E00225706 /* CollectionViewCell.swift */,
 				730438792A34467B001EF25B /* FolderCollectionViewCell.swift */,
-				C480A50524A7752F00094FC8 /* Gallery.storyboard */,
 				7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */,
 				7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */,
 			);
@@ -340,9 +321,9 @@
 		73B54D5427B097C200499F66 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				7396A179293AB2BE006D6ED4 /* Services */,
-				7396A177293AB016006D6ED4 /* Controllers */,
-				7396A17A293AB2D1006D6ED4 /* UI */,
+				C4148D892440F45E00225706 /* CollectionViewController.swift */,
+				C46AD1002441708400EF0236 /* ModelController.swift */,
+				C480A50524A7752F00094FC8 /* Gallery.storyboard */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -614,7 +595,6 @@
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
-				C43CBCE2245E004E000B348E /* StyleClass.swift in Sources */,
 				C4CBBA7926AF8CBC00CF1436 /* ViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,

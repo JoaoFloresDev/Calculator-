@@ -81,8 +81,10 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
 
-        let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
-        UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
+        if basePath == "@" {
+            let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
+            UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
+        }
     }
 
     private func loadModelData() {
