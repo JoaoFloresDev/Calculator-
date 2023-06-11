@@ -103,9 +103,8 @@ class ModelController {
             for imageObject in savedObjects {
                 if let savedImageObject = imageObject as? StoredImage {
                     guard let imageName = savedImageObject.imageName else { return []}
-                    if imageName.contains(basePath)
-                        && imageName.filter({ $0 == "@" }).count ==
-                        basePath.filter({ $0 == "@" }).count {
+                    if handleNewImage(basePath: basePath, imageName: imageName) ||
+                        handleOldImage(basePath: basePath, imageName: imageName) {
                         
                         let storedImage = ImageController.shared.fetchImage(imageName: imageName)
                         if let storedImage = storedImage {
@@ -118,5 +117,17 @@ class ModelController {
             print("Could not return image objects: \(error)")
         }
         return images
+    }
+    
+    func handleNewImage(basePath: String, imageName: String) -> Bool {
+        imageName.contains(basePath) && samePathDeep(basePath: basePath, imageName: imageName)
+    }
+    
+    func samePathDeep(basePath: String, imageName: String) -> Bool {
+        imageName.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count
+    }
+    
+    func handleOldImage(basePath: String, imageName: String) -> Bool {
+        basePath == "@" && imageName.first != "@"
     }
 }

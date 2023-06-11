@@ -18,7 +18,7 @@
 		2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07B01C42F599007F415F /* ListNotesTableViewCell.swift */; };
 		337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */; };
 		7303DC792A2D512000F3DC35 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7303DC782A2D512000F3DC35 /* swiftlint.yml */; };
-		730438632A315B02001EF25B /* GalleryServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438622A315B02001EF25B /* GalleryServices.swift */; };
+		730438632A315B02001EF25B /* FoldersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438622A315B02001EF25B /* FoldersService.swift */; };
 		730438652A315B17001EF25B /* AdsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438642A315B17001EF25B /* AdsService.swift */; };
 		730438712A341519001EF25B /* AdsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438702A341519001EF25B /* AdsHandler.swift */; };
 		730438762A3445EF001EF25B /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438752A3445EF001EF25B /* FlowLayout.swift */; };
@@ -98,7 +98,7 @@
 		3E9959DEE321E246C5EC4CA1 /* Pods-Calculator Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.release.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.release.xcconfig"; sourceTree = "<group>"; };
 		41E732BE49B1015BBBE29594 /* Pods-Calculator Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.debug.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		7303DC782A2D512000F3DC35 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = swiftlint.yml; path = ../../../../swiftlint.yml; sourceTree = "<group>"; };
-		730438622A315B02001EF25B /* GalleryServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryServices.swift; sourceTree = "<group>"; };
+		730438622A315B02001EF25B /* FoldersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldersService.swift; sourceTree = "<group>"; };
 		730438642A315B17001EF25B /* AdsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsService.swift; sourceTree = "<group>"; };
 		730438702A341519001EF25B /* AdsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsHandler.swift; sourceTree = "<group>"; };
 		730438752A3445EF001EF25B /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
@@ -241,6 +241,10 @@
 			isa = PBXGroup;
 			children = (
 				730438772A344618001EF25B /* BasicCollectionViewController.swift */,
+				730438622A315B02001EF25B /* FoldersService.swift */,
+				730438642A315B17001EF25B /* AdsService.swift */,
+				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
+				730438702A341519001EF25B /* AdsHandler.swift */,
 				73B54D5427B097C200499F66 /* Gallery */,
 				73B54D5527B097C900499F66 /* Video */,
 			);
@@ -259,11 +263,7 @@
 		7396A179293AB2BE006D6ED4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				730438622A315B02001EF25B /* GalleryServices.swift */,
-				730438642A315B17001EF25B /* AdsService.swift */,
 				C46AD1002441708400EF0236 /* ModelController.swift */,
-				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
-				730438702A341519001EF25B /* AdsHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -606,7 +606,7 @@
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
 				73B54D6B27B09FDA00499F66 /* UILabel+extensions.swift in Sources */,
 				730438712A341519001EF25B /* AdsHandler.swift in Sources */,
-				730438632A315B02001EF25B /* GalleryServices.swift in Sources */,
+				730438632A315B02001EF25B /* FoldersService.swift in Sources */,
 				730438762A3445EF001EF25B /* FlowLayout.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
 				73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */,
