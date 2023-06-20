@@ -24,7 +24,8 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
         addPhotoButton = createAddPhotoButton()
         addFolderButton = createAddFolderButton()
         
-        let stackItems = createStackItems(buttons: [addFolderButton, addPhotoButton])
+//        let stackItems = createStackItems(buttons: [addFolderButton, addPhotoButton])
+        let stackItems = createStackItems(buttons: [addPhotoButton])
         let stackView = createStackView(arrangedSubviews: stackItems)
         let customView = createCustomView(with: stackView)
         self.customView = customView
@@ -32,11 +33,7 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
 
     private func createAddPhotoButton() -> UIButton {
         let addPhotoButton = UIButton()
-        if #available(iOS 13.0, *) {
-            addPhotoButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        } else {
-            addPhotoButton.setTitle("Add", for: .normal)
-        }
+        addPhotoButton.setImage(UIImage(systemName: "plus"), for: .normal)
         addPhotoButton.addTarget(self, action: #selector(addPhotoButtonTapped), for: .touchUpInside)
         addPhotoButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         return addPhotoButton
@@ -44,11 +41,7 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
 
     private func createAddFolderButton() -> UIButton {
         let addFolderButton = UIButton()
-        if #available(iOS 13.0, *) {
-            addFolderButton.setImage(UIImage(systemName: "folder.badge.plus"), for: .normal)
-        } else {
-            addFolderButton.setTitle("Folder", for: .normal)
-        }
+        addFolderButton.setImage(UIImage(systemName: "folder.badge.plus"), for: .normal)
         addFolderButton.addTarget(self, action: #selector(addFolderButtonTapped), for: .touchUpInside)
         addFolderButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         return addFolderButton
