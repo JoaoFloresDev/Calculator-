@@ -259,7 +259,6 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
         configureFooterView()
         configureCloseButton()
         configureThumbnailsButton()
-        configureDeleteButton()
         configureScrubber()
 
         self.view.clipsToBounds = false
