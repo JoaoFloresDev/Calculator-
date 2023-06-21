@@ -24,8 +24,7 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
         addPhotoButton = createAddPhotoButton()
         addFolderButton = createAddFolderButton()
         
-//        let stackItems = createStackItems(buttons: [addFolderButton, addPhotoButton])
-        let stackItems = createStackItems(buttons: [addPhotoButton])
+        let stackItems = createStackItems(buttons: [addFolderButton, addPhotoButton])
         let stackView = createStackView(arrangedSubviews: stackItems)
         let customView = createCustomView(with: stackView)
         self.customView = customView

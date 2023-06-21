@@ -16,9 +16,14 @@ import Foundation
 import AVFoundation
 import AVKit
 
+struct Photo {
+    var name: String
+    var image: UIImage
+}
+
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     // MARK: - Variables
-    var modelData: [UIImage] = []
+    var modelData: [Photo] = []
     var modelController = ModelController()
     
     var isEditMode = false {
@@ -35,7 +40,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     // MARK: - IBOutlet
     @IBOutlet weak var placeHolderImage: UIImageView!
-
+    
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         willappearedFisrtTime = true
@@ -59,13 +64,13 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         folders = foldersService.getFolders(basePath: basePath)
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
     }
-
+    
     private func setupAds() {
         adsHandler.setupAds(controller: self,
                             bannerDelegate: self,
                             interstitialDelegate: self)
     }
-
+    
     private func setupFirstUse() {
         let firstUseService = UserDefaultService()
         
@@ -76,17 +81,17 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         
         UserDefaults.standard.set(true, forKey: "InGallery")
         firstUseService.setFirstUseStatus(status: true)
-
+        
         let controllers = self.tabBarController?.viewControllers
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
-
+        
         if basePath == "@" {
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
     }
-
+    
     private func loadModelData() {
         modelData = modelController.fetchImageObjectsInit(basePath: basePath)
     }
@@ -101,15 +106,16 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 guard let image = image else {
                     return
                 }
-                modelData.append(image)
-                let indexPath = IndexPath(row: modelData.count - 1, section: 1)
-                collectionView!.insertItems(at: [indexPath])
-                modelController.saveImageObject(image: image,
-                                                basePath: basePath)
+                if let photo = modelController.saveImageObject(image: image,
+                                                               basePath: basePath) {
+                    modelData.append(photo)
+                    let indexPath = IndexPath(row: modelData.count - 1, section: 1)
+                    collectionView!.insertItems(at: [indexPath])
+                }
             }
         }
     }
-
+    
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
@@ -124,7 +130,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
@@ -135,11 +141,11 @@ extension CollectionViewController: GalleryItemsDataSource {
     func itemCount() -> Int {
         return modelData.count
     }
-
+    
     func provideGalleryItem(_ index: Int) -> GalleryItem {
-        let imageView = UIImageView(image: modelData[index])
+        let imageView = UIImageView(image: modelData[index].image)
         let galleryItem = GalleryItem.image { $0(imageView.image) }
-
+        
         return galleryItem
     }
 }
@@ -152,14 +158,14 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
     func shareImageButtonTapped() {
         if let selectedCells = collectionView?.indexPathsForSelectedItems {
             let items = selectedCells.map { $0.item }.sorted().reversed()
-
+            
             var vetImgs = [UIImage]()
-
+            
             for item in items {
                 let image = modelData[item]
-                vetImgs.append(image)
+                vetImgs.append(image.image)
             }
-
+            
             if !vetImgs.isEmpty {
                 let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
                 self.present(activityVC, animated: true)
@@ -179,7 +185,7 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
         picker.pickerDelegate = self
         present(picker, animated: true, completion: nil)
     }
-
+    
     func addFolderButtonTapped() {
         addFolder()
     }
@@ -189,7 +195,7 @@ extension CollectionViewController {
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
         adsHandler.interstitialDidReceiveAd(ad)
     }
-
+    
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         adsHandler.interstitialDidDismissScreen(delegate: self)
     }
@@ -240,7 +246,7 @@ extension CollectionViewController {
                 cell.isInEditingMode = isEditMode
                 if indexPath.item < modelData.count {
                     let image = modelData[indexPath.item]
-                    cell.imageCell.image = UI.cropToBounds(image: image, width: 200, height: 200)
+                    cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
                 }
                 cell.applyshadowWithCorner()
                 
@@ -296,8 +302,8 @@ extension CollectionViewController {
                         }
                     } else {
                         if cell.row < self.modelData.count {
+                            self.modelController.deleteImageObject(name: self.modelData[cell.row].name)
                             self.modelData.remove(at: cell.row)
-                            self.modelController.deleteImageObject(imageIndex: cell.row)
                         }
                     }
                 }

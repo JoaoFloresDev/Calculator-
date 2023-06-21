@@ -16,7 +16,7 @@ class ModelController {
     let entityName = "StoredImage"
     
     var savedObjects = [NSManagedObject]()
-    var images = [UIImage]()
+    var images = [Photo]()
     var managedContext: NSManagedObjectContext!
     
     init() {
@@ -39,7 +39,7 @@ class ModelController {
                     guard savedImageObject.imageName != nil else { return }
                     if let imageName = savedImageObject.imageName,
                        let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
-                        images.append(storedImage)
+                        images.append(Photo(name: imageName, image: storedImage))
                     }
                 }
             }
@@ -48,7 +48,7 @@ class ModelController {
         }
     }
     
-    func saveImageObject(image: UIImage, basePath: String) {
+    func saveImageObject(image: UIImage, basePath: String) -> Photo? {
         let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
         
         if let imageName = imageName,
@@ -57,13 +57,48 @@ class ModelController {
             newImageEntity?.imageName = imageName
             do {
                 try managedContext.save()
-                images.append(image)
+                images.append(Photo(name: imageName, image: image))
                 print("\(imageName) was saved in new object.")
+                return Photo(name: imageName, image: image)
             } catch let error as NSError {
                 print("Could not save new image object: \(error)")
             }
         }
+        return nil
     }
+
+    func deleteImageObject(name: String) {
+        fetchImageObjects()
+        
+        // Procura o objeto de imagem com o nome fornecido
+        if let imageObjectToDelete = savedObjects.first(where: { ($0 as? StoredImage)?.imageName == name }) as? StoredImage {
+            let imageIndex = savedObjects.firstIndex(of: imageObjectToDelete)
+            
+            do {
+                // Exclui o objeto de imagem do contexto gerenciado
+                managedContext.delete(imageObjectToDelete)
+                
+                // Salva as alterações no contexto
+                try managedContext.save()
+                
+                // Exclui a imagem associada ao objeto
+                if let imageName = imageObjectToDelete.imageName {
+                    ImageController.shared.deleteImage(imageName: imageName)
+                }
+                
+                // Remove o objeto de imagem e a foto associada da matriz
+                if let index = imageIndex {
+                    savedObjects.remove(at: index)
+                    images.remove(at: index)
+                }
+                
+                print("Image object was deleted.")
+            } catch let error as NSError {
+                print("Could not delete image object: \(error)")
+            }
+        }
+    }
+
     
     func deleteImageObject(imageIndex: Int) {
         fetchImageObjects()
@@ -92,7 +127,7 @@ class ModelController {
         }
     }
     
-    func fetchImageObjectsInit(basePath: String) -> [UIImage] {
+    func fetchImageObjectsInit(basePath: String) -> [Photo] {
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
@@ -108,7 +143,7 @@ class ModelController {
                         
                         let storedImage = ImageController.shared.fetchImage(imageName: imageName)
                         if let storedImage = storedImage {
-                            images.append(storedImage)
+                            images.append(Photo(name: imageName, image: storedImage))
                         }
                     }
                 }
