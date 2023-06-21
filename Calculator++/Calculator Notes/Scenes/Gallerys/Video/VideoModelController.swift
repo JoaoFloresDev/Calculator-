@@ -9,6 +9,12 @@ import Foundation
 import UIKit
 import CoreData
 
+struct Video {
+    var image: UIImage
+    var name: String
+    var path: String
+}
+
 class VideoModelController {
     static let shared = VideoModelController()
     
@@ -146,6 +152,50 @@ class VideoModelController {
         }
         
         return videoName
+    }
+    
+    func deleteImageObject(name: String) {
+        guard let managedContext = managedContext else {
+            print("Managed context is nil.")
+            return
+        }
+        
+        // Procura o objeto com o nome correspondente
+        let fetchRequest = NSFetchRequest<StoredVideo>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "imageName == %@", name)
+        
+        do {
+            let fetchResults = try managedContext.fetch(fetchRequest)
+            
+            guard let imageObjectToDelete = fetchResults.first else {
+                print("No image object found with the given name.")
+                return
+            }
+            
+            if let imageName = imageObjectToDelete.imageName {
+                ImageController.shared.deleteImage(imageName: imageName)
+            }
+            
+            if let videoName = imageObjectToDelete.pathURL {
+                ImageController.shared.deleteImage(imageName: videoName)
+            }
+            
+            managedContext.delete(imageObjectToDelete)
+            
+            do {
+                try managedContext.save()
+                if let index = savedObjects.firstIndex(of: imageObjectToDelete) {
+                    savedObjects.remove(at: index)
+                    images.remove(at: index)
+                    pathURLs.remove(at: index)
+                }
+                print("Image object was deleted.")
+            } catch let error as NSError {
+                print("Could not delete image object: \(error)")
+            }
+        } catch let error as NSError {
+            print("Could not fetch image objects: \(error)")
+        }
     }
     
     func deleteImageObject(imageIndex: Int) {

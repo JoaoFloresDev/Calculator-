@@ -110,7 +110,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                                                                basePath: basePath) {
                     modelData.append(photo)
                     let indexPath = IndexPath(row: modelData.count - 1, section: 1)
-                    collectionView!.insertItems(at: [indexPath])
+                    collectionView?.insertItems(at: [indexPath])
                 }
             }
         }

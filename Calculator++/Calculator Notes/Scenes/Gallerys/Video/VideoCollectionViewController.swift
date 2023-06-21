@@ -194,12 +194,12 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
             guard let image = thumbImage else { return }
             
-            let indexPath = IndexPath(row: self.modelData.count - 1, section: 1)
-            self.collectionView?.insertItems(at: [indexPath])
-            
             if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath) {
                 self.modelData.append(image)
                 self.modelDataVideo.append(pathVideo)
+                
+                let indexPath = IndexPath(row: self.modelData.count - 1, section: 1)
+                self.collectionView?.insertItems(at: [indexPath])
             }
         }
     }
