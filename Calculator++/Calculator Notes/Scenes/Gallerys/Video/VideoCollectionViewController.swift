@@ -5,6 +5,11 @@ import Photos
 import CoreData
 import os.log
 
+struct VideoModel {
+    var image: UIImage
+    var name: String
+}
+
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     // Variables
@@ -17,6 +22,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var videoURL: URL?
     
     var isPremium: Bool {
+        return true
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
     
