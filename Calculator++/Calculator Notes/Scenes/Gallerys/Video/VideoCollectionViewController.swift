@@ -3,6 +3,7 @@ import AVKit
 import MobileCoreServices
 import Photos
 import CoreData
+import os.log
 
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -142,6 +143,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 // Reproduz o vídeo
                 guard let videoURL = modelDataVideo[safe: indexPath.item],
                       let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoURL) else {
+                    os_log("Failed to retrieve video URL", log: .default, type: .error)
                     showGenericError()
                     return
                 }
@@ -219,6 +221,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                     completion(thumbImage)
                 }
             } catch {
+                os_log("Failed to retrieve thumbnail image from video URL", log: .default, type: .error)
                 print(error.localizedDescription)
                 
                 DispatchQueue.main.async {
@@ -262,6 +265,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
             
             present(activityController, animated: true, completion: nil)
         } catch {
+            os_log("Failed to share video", log: .default, type: .error)
             showGenericError()
         }
     }
