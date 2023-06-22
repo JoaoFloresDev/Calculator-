@@ -36,9 +36,9 @@ class ImageController {
         }
     }
 
-    func saveVideo(image: Data) -> String? {
+    func saveVideo(image: Data, basePath: String) -> String? {
         let date = String(Date.timeIntervalSinceReferenceDate)
-        let imageName = date.replacingOccurrences(of: ".", with: "-") + ".mp4"
+        let imageName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".mp4"
 
         let filePath = documentsPath.appendingPathComponent(imageName)
         do {

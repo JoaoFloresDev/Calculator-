@@ -7,7 +7,7 @@ import CoreData
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     // Variables
-    var modelData: [UIImage] = []
+    var modelData: [Video] = []
     var modelDataVideo: [String] = []
     var modelController = VideoModelController()
     
@@ -50,7 +50,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         setupFolders()
         setText(.video)
         modelData = modelController.fetchImageObjectsInit(basePath: basePath)
-        modelDataVideo = modelController.fetchPathVideosObjectsInit()
+        modelDataVideo = modelController.fetchPathVideosObjectsInit(basePath: basePath)
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
@@ -117,7 +117,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 cell.isInEditingMode = isEditMode
                 if indexPath.item < modelData.count {
                     let image = modelData[indexPath.item]
-                    cell.imageCell.image = UI.cropToBounds(image: image, width: 200, height: 200)
+                    cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
                 }
                 cell.applyshadowWithCorner()
                 
@@ -167,8 +167,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                         }
                     } else {
                         if cell.row < self.modelData.count {
+                            self.modelController.deleteImageObject(name: self.modelData[cell.row].name)
                             self.modelData.remove(at: cell.row)
-                            self.modelController.deleteImageObject(imageIndex: cell.row)
                         }
                     }
                 }
@@ -193,9 +193,10 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         
         self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
             guard let image = thumbImage else { return }
-            
-            if let pathVideo = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath) {
-                self.modelData.append(image)
+            let result = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath)
+            if let pathVideo = result.0,
+               let imageName = result.1 {
+                self.modelData.append(Video(image: image, name: imageName))
                 self.modelDataVideo.append(pathVideo)
                 
                 let indexPath = IndexPath(row: self.modelData.count - 1, section: 1)

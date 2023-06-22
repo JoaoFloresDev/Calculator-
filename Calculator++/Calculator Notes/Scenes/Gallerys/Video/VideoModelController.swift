@@ -12,7 +12,6 @@ import CoreData
 struct Video {
     var image: UIImage
     var name: String
-    var path: String
 }
 
 class VideoModelController {
@@ -21,7 +20,8 @@ class VideoModelController {
     let entityName = "StoredVideo"
     
     private var savedObjects = [StoredVideo]()
-    private var images = [UIImage]()
+    private var videos = [Video]()
+//    private var images = [UIImage]()
     private var pathURLs = [String]()
     
     private var managedContext: NSManagedObjectContext? {
@@ -36,7 +36,7 @@ class VideoModelController {
     }
     
     // MARK: - Fetching
-    func fetchImageObjectsInit(basePath: String) -> [UIImage] {
+    func fetchImageObjectsInit(basePath: String) -> [Video] {
         guard let managedContext = managedContext else {
             print("Managed context is nil.")
             return []
@@ -47,7 +47,7 @@ class VideoModelController {
         do {
             savedObjects = try managedContext.fetch(imageObjectRequest)
             
-            images.removeAll()
+            videos.removeAll()
             
             for imageObject in savedObjects {
                 guard let imageName = imageObject.imageName else {
@@ -59,7 +59,7 @@ class VideoModelController {
                     basePath.filter({ $0 == "@" }).count {
                     
                     if let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
-                        images.append(storedImage)
+                        videos.append(Video(image: storedImage, name: imageName))
                     }
                 }
             }
@@ -67,10 +67,10 @@ class VideoModelController {
             print("Could not fetch image objects: \(error)")
         }
         
-        return images
+        return videos
     }
 
-    func fetchPathVideosObjectsInit() -> [String] {
+    func fetchPathVideosObjectsInit(basePath: String) -> [String] {
         guard let managedContext = managedContext else {
             print("Managed context is nil.")
             return []
@@ -85,7 +85,11 @@ class VideoModelController {
             
             for videoObject in savedObjects {
                 if let path = videoObject.pathURL {
-                    pathURLs.append(path)
+                    if path.contains(basePath)
+                        && path.filter({ $0 == "@" }).count ==
+                        basePath.filter({ $0 == "@" }).count {
+                        pathURLs.append(path)
+                    }
                 }
             }
         } catch let error as NSError {
@@ -106,7 +110,7 @@ class VideoModelController {
         do {
             savedObjects = try managedContext.fetch(imageObjectRequest)
             
-            images.removeAll()
+            videos.removeAll()
             
             for imageObject in savedObjects {
                 guard let imageName = imageObject.imageName else {
@@ -114,7 +118,7 @@ class VideoModelController {
                 }
                 
                 if let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
-                    images.append(storedImage)
+                    videos.append(Video(image: storedImage, name: imageName))
                 }
             }
         } catch let error as NSError {
@@ -123,19 +127,19 @@ class VideoModelController {
     }
     
     // MARK: - Saving and Deleting
-    func saveImageObject(image: UIImage, video: Data, basePath: String) -> String? {
+    func saveImageObject(image: UIImage, video: Data, basePath: String) -> (String?, String?) {
         guard let managedContext = managedContext else {
             print("Managed context is nil.")
-            return nil
+            return (nil, nil)
         }
         
         let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
-        let videoName = ImageController.shared.saveVideo(image: video)
+        let videoName = ImageController.shared.saveVideo(image: video, basePath: basePath)
         
         if let imageName = imageName, let videoName = videoName {
             guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else {
                 print("Could not create entity description.")
-                return nil
+                return (nil, nil)
             }
             
             let newImageEntity = StoredVideo(entity: entity, insertInto: managedContext)
@@ -144,15 +148,16 @@ class VideoModelController {
             
             do {
                 try managedContext.save()
-                images.append(image)
+                videos.append(Video(image: image, name: imageName))
                 print("\(imageName) was saved in a new object.")
             } catch let error as NSError {
                 print("Could not save new image object: \(error)")
             }
         }
         
-        return videoName
+        return (videoName, imageName)
     }
+
     
     func deleteImageObject(name: String) {
         guard let managedContext = managedContext else {
@@ -186,7 +191,7 @@ class VideoModelController {
                 try managedContext.save()
                 if let index = savedObjects.firstIndex(of: imageObjectToDelete) {
                     savedObjects.remove(at: index)
-                    images.remove(at: index)
+                    videos.remove(at: index)
                     pathURLs.remove(at: index)
                 }
                 print("Image object was deleted.")
@@ -202,7 +207,7 @@ class VideoModelController {
         fetchImageObjects()
         fetchPathVideosObjects()
         
-        guard images.indices.contains(imageIndex) && pathURLs.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else {
+        guard videos.indices.contains(imageIndex) && pathURLs.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else {
             print("Invalid image index.")
             return
         }
@@ -227,7 +232,7 @@ class VideoModelController {
         do {
             try managedContext.save()
             savedObjects.remove(at: imageIndex)
-            images.remove(at: imageIndex)
+            videos.remove(at: imageIndex)
             pathURLs.remove(at: imageIndex)
             print("Image object was deleted.")
         } catch let error as NSError {
@@ -284,7 +289,7 @@ extension VideoModelController {
         do {
             try managedContext.execute(batchDeleteRequest)
             savedObjects.removeAll()
-            images.removeAll()
+            videos.removeAll()
             pathURLs.removeAll()
             print("All data was cleared.")
         } catch let error as NSError {
