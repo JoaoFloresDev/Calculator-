@@ -16,7 +16,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var videoURL: URL?
     
     var isPremium: Bool {
-        UserDefaults.standard.set(true, forKey: "NoAds.Calc")
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
     

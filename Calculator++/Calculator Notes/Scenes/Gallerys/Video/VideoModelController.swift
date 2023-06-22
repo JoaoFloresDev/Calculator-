@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
+import os.log
 
 struct Video {
     var image: UIImage
@@ -21,7 +22,6 @@ class VideoModelController {
     
     private var savedObjects = [StoredVideo]()
     private var videos = [Video]()
-//    private var images = [UIImage]()
     private var pathURLs = [String]()
     
     private var managedContext: NSManagedObjectContext? {
@@ -31,6 +31,9 @@ class VideoModelController {
         return appDelegate.persistentContainer.viewContext
     }
     
+    private let subsystem = "com.example.yourapp"
+    private let category = "errors"
+    
     init() {
         fetchImageObjects()
     }
@@ -38,7 +41,7 @@ class VideoModelController {
     // MARK: - Fetching
     func fetchImageObjectsInit(basePath: String) -> [Video] {
         guard let managedContext = managedContext else {
-            print("Managed context is nil.")
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return []
         }
         
@@ -64,7 +67,7 @@ class VideoModelController {
                 }
             }
         } catch let error as NSError {
-            print("Could not fetch image objects: \(error)")
+            os_log("Could not fetch image objects: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
         
         return videos
@@ -72,7 +75,7 @@ class VideoModelController {
 
     func fetchPathVideosObjectsInit(basePath: String) -> [String] {
         guard let managedContext = managedContext else {
-            print("Managed context is nil.")
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return []
         }
         
@@ -93,7 +96,7 @@ class VideoModelController {
                 }
             }
         } catch let error as NSError {
-            print("Could not fetch video objects: \(error)")
+            os_log("Could not fetch video objects: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
         
         return pathURLs
@@ -101,7 +104,7 @@ class VideoModelController {
 
     func fetchImageObjects() {
         guard let managedContext = managedContext else {
-            print("Managed context is nil.")
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return
         }
         
@@ -122,14 +125,14 @@ class VideoModelController {
                 }
             }
         } catch let error as NSError {
-            print("Could not fetch image objects: \(error)")
+            os_log("Could not fetch image objects: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
     }
     
     // MARK: - Saving and Deleting
     func saveImageObject(image: UIImage, video: Data, basePath: String) -> (String?, String?) {
         guard let managedContext = managedContext else {
-            print("Managed context is nil.")
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return (nil, nil)
         }
         
@@ -138,7 +141,7 @@ class VideoModelController {
         
         if let imageName = imageName, let videoName = videoName {
             guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else {
-                print("Could not create entity description.")
+                os_log("Could not create entity description.", log: OSLog(subsystem: subsystem, category: category), type: .error)
                 return (nil, nil)
             }
             
@@ -149,9 +152,9 @@ class VideoModelController {
             do {
                 try managedContext.save()
                 videos.append(Video(image: image, name: imageName))
-                print("\(imageName) was saved in a new object.")
+                os_log("%@ was saved in a new object.", log: OSLog(subsystem: subsystem, category: category), type: .info, imageName)
             } catch let error as NSError {
-                print("Could not save new image object: \(error)")
+                os_log("Could not save new image object: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
             }
         }
         
@@ -161,7 +164,7 @@ class VideoModelController {
     
     func deleteImageObject(name: String) {
         guard let managedContext = managedContext else {
-            print("Managed context is nil.")
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return
         }
         
@@ -173,7 +176,7 @@ class VideoModelController {
             let fetchResults = try managedContext.fetch(fetchRequest)
             
             guard let imageObjectToDelete = fetchResults.first else {
-                print("No image object found with the given name.")
+                os_log("No image object found with the given name.", log: OSLog(subsystem: subsystem, category: category), type: .error)
                 return
             }
             
@@ -194,12 +197,12 @@ class VideoModelController {
                     videos.remove(at: index)
                     pathURLs.remove(at: index)
                 }
-                print("Image object was deleted.")
+                os_log("Image object was deleted.", log: OSLog(subsystem: subsystem, category: category), type: .info)
             } catch let error as NSError {
-                print("Could not delete image object: \(error)")
+                os_log("Could not delete image object: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
             }
         } catch let error as NSError {
-            print("Could not fetch image objects: \(error)")
+            os_log("Could not fetch image objects: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
     }
     
@@ -208,12 +211,12 @@ class VideoModelController {
         fetchPathVideosObjects()
         
         guard videos.indices.contains(imageIndex) && pathURLs.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else {
-            print("Invalid image index.")
+            os_log("Invalid image index.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return
         }
         
         guard let managedContext = managedContext else {
-            print("Managed context is nil.")
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return
         }
         
@@ -234,15 +237,15 @@ class VideoModelController {
             savedObjects.remove(at: imageIndex)
             videos.remove(at: imageIndex)
             pathURLs.remove(at: imageIndex)
-            print("Image object was deleted.")
+            os_log("Image object was deleted.", log: OSLog(subsystem: subsystem, category: category), type: .info)
         } catch let error as NSError {
-            print("Could not delete image object: \(error)")
+            os_log("Could not delete image object: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
     }
     
     func fetchPathVideosObjects() {
         guard let managedContext = managedContext else {
-            print("Managed context is nil.")
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return
         }
         
@@ -259,7 +262,7 @@ class VideoModelController {
                 }
             }
         } catch let error as NSError {
-            print("Could not fetch path URLs: \(error)")
+            os_log("Could not fetch path URLs: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
     }
 }
@@ -270,7 +273,7 @@ extension VideoModelController {
         guard managedContext == nil else {
             return false
         }
-        print("Managed context is nil.")
+        os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
         return true
     }
 }
@@ -279,7 +282,7 @@ extension VideoModelController {
     // MARK: - Additional Functionality
     func clearAllData() {
         guard let managedContext = managedContext else {
-            print("Managed context is nil.")
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return
         }
         
@@ -291,9 +294,9 @@ extension VideoModelController {
             savedObjects.removeAll()
             videos.removeAll()
             pathURLs.removeAll()
-            print("All data was cleared.")
+            os_log("All data was cleared.", log: OSLog(subsystem: subsystem, category: category), type: .info)
         } catch let error as NSError {
-            print("Could not clear all data: \(error)")
+            os_log("Could not clear all data: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
     }
 }
