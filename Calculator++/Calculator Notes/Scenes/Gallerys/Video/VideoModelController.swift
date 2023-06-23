@@ -194,8 +194,8 @@ class VideoModelController {
                 try managedContext.save()
                 if let index = savedObjects.firstIndex(of: imageObjectToDelete) {
                     savedObjects.remove(at: index)
-                    videos.remove(at: index)
-                    pathURLs.remove(at: index)
+                    fetchImageObjects()
+                    fetchPathVideosObjects()
                 }
                 os_log("Image object was deleted.", log: OSLog(subsystem: subsystem, category: category), type: .info)
             } catch let error as NSError {
