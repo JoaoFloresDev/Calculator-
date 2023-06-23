@@ -98,34 +98,6 @@ class ModelController {
             }
         }
     }
-
-    
-    func deleteImageObject(imageIndex: Int) {
-        fetchImageObjects()
-        
-        guard images.indices.contains(imageIndex) && savedObjects.indices.contains(imageIndex) else { return }
-        
-        guard let imageObjectToDelete = savedObjects[imageIndex] as? StoredImage else { return }
-        
-        let imageName = imageObjectToDelete.imageName
-        
-        do {
-            managedContext.delete(imageObjectToDelete)
-            
-            try managedContext.save()
-            
-            if let imageName = imageName {
-                ImageController.shared.deleteImage(imageName: imageName)
-            }
-            
-            savedObjects.remove(at: imageIndex)
-            images.remove(at: imageIndex)
-            
-            print("Image object was deleted.")
-        } catch let error as NSError {
-            print("Could not delete image object: \(error)")
-        }
-    }
     
     func fetchImageObjectsInit(basePath: String) -> [Photo] {
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
@@ -163,6 +135,16 @@ class ModelController {
     }
     
     func handleOldImage(basePath: String, imageName: String) -> Bool {
-        basePath == "@" && imageName.first != "@"
+        countOccurrences(of: "@", in: basePath) < 2 && imageName.first != "@"
+    }
+    
+    func countOccurrences(of character: Character, in string: String) -> Int {
+        var count = 0
+        for char in string {
+            if char == character {
+                count += 1
+            }
+        }
+        return count
     }
 }
