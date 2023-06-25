@@ -17,7 +17,13 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var modelDataVideo: [String] = []
     var modelController = VideoModelController()
     
-    var allPhotosIsExpanded = false
+    var filesIsExpanded = false {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView?.reloadSections(IndexSet(integer: 1))
+            }
+        }
+    }
     
     // Video adaptation
     var imagePickerController = UIImagePickerController()
@@ -62,7 +68,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
         
         if basePath != "@" {
-            allPhotosIsExpanded = true
+            filesIsExpanded = true
         }
         
         if let navigationTitle = navigationTitle {
@@ -81,9 +87,10 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         foldersService = FoldersService(type: .video)
         folders = foldersService.getFolders(basePath: basePath)
         if folders.isEmpty {
-            allPhotosIsExpanded = true
+            filesIsExpanded = true
+        } else {
+            self.collectionView?.reloadSections(IndexSet(integer: .zero))
         }
-        self.collectionView?.reloadData()
     }
     
     // Collection View
@@ -116,7 +123,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         case 0:
             return folders.count
         default:
-            if allPhotosIsExpanded {
+            if filesIsExpanded {
                 return modelData.count
             } else {
                 return 0
@@ -191,7 +198,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 headerView.gradientView?.isHidden = false
             } else if indexPath.section == 1 {
                 if !modelData.isEmpty {
-                    if allPhotosIsExpanded {
+                    if filesIsExpanded {
                         headerView.messageLabel.text = Text.hideAllVideos.localized()
                     } else {
                         headerView.messageLabel.text = Text.showAllVideos.localized()
@@ -351,7 +358,7 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
 
 extension VideoCollectionViewController: HeaderViewDelegate {
     func headerTapped(header: HeaderView) {
-        allPhotosIsExpanded.toggle()
+        filesIsExpanded.toggle()
         collectionView?.reloadSections(IndexSet(integer: 1))
     }
 }

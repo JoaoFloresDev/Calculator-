@@ -32,7 +32,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
-    var allPhotosIsExpanded = false {
+    var filesIsExpanded = false {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView?.reloadSections(IndexSet(integer: 1))
@@ -65,7 +65,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
         
         if basePath != "@" {
-            allPhotosIsExpanded = true
+            filesIsExpanded = true
         }
         
         if let navigationTitle = navigationTitle {
@@ -78,9 +78,10 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     private func setupFolders() {
         folders = foldersService.getFolders(basePath: basePath)
         if folders.isEmpty {
-            allPhotosIsExpanded = true
+            filesIsExpanded = true
+        } else {
+            self.collectionView?.reloadSections(IndexSet(integer: .zero))
         }
-        self.collectionView?.reloadSections(IndexSet(integer: .zero))
     }
     
     private func setupAds() {
@@ -245,7 +246,7 @@ extension CollectionViewController {
         case 0:
             return folders.count
         default:
-            if allPhotosIsExpanded {
+            if filesIsExpanded {
                 return modelData.count
             } else {
                 return 0
@@ -344,7 +345,7 @@ extension CollectionViewController {
                 headerView.gradientView?.isHidden = false
             } else if indexPath.section == 1 {
                 if !modelData.isEmpty {
-                    if allPhotosIsExpanded {
+                    if filesIsExpanded {
                         headerView.messageLabel.text = Text.hideAllPhotos.localized()
                     } else {
                         headerView.messageLabel.text = Text.showAllPhotos.localized()
@@ -373,7 +374,7 @@ extension CollectionViewController {
 
 extension CollectionViewController: HeaderViewDelegate {
     func headerTapped(header: HeaderView) {
-        allPhotosIsExpanded.toggle()
+        filesIsExpanded.toggle()
     }
 }
 
