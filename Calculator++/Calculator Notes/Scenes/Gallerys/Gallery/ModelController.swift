@@ -135,7 +135,7 @@ class ModelController {
     }
     
     func handleOldImage(basePath: String, imageName: String) -> Bool {
-        countOccurrences(of: "@", in: basePath) < 2 && imageName.first != "@"
+        countOccurrences(of: "@", in: basePath) < 2
     }
     
     func countOccurrences(of character: Character, in string: String) -> Int {

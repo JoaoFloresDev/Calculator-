@@ -32,6 +32,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
+    var allPhotosIsExpanded = false
+    
     var willappearedFisrtTime = false {
         didSet {
             setupFolders()
@@ -53,6 +55,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupFirstUse()
         setupCollectionViewLayout()
         loadModelData()
+        collectionView?.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView")
+        collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
+        
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
@@ -228,7 +233,11 @@ extension CollectionViewController {
         case 0:
             return folders.count
         default:
-            return modelData.count
+            if allPhotosIsExpanded {
+                return modelData.count
+            } else {
+                return 0
+            }
         }
     }
     
@@ -255,10 +264,6 @@ extension CollectionViewController {
         }
         
         return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -313,4 +318,44 @@ extension CollectionViewController {
         
         present(refreshAlert, animated: true, completion: nil)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            // Dequeue and configure the header view
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? HeaderView else {
+                return UICollectionReusableView()
+            }
+            if indexPath.section == .zero {
+                headerView.messageLabel.text = String()
+            } else if indexPath.section == 1 {
+                if allPhotosIsExpanded {
+                    headerView.messageLabel.text = "Ocultar todas as fotos salvas"
+                } else {
+                    headerView.messageLabel.text = "Ver todas as fotos salvas"
+                }
+                headerView.activityIndicatorView.isHidden = true
+                headerView.gradientView?.isHidden = true
+                headerView.delegate = self
+            }
+            return headerView
+        } else if kind == UICollectionElementKindSectionFooter {
+            // Dequeue and configure the footer view
+            guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView", for: indexPath) as? FooterView else {
+                return UICollectionReusableView()
+            }
+            
+            return footerView
+        }
+        
+        // Return an empty view for other supplementary elements
+        return UICollectionReusableView()
+    }
 }
+
+extension CollectionViewController: HeaderViewDelegate {
+    func headerTapped(header: HeaderView) {
+        allPhotosIsExpanded.toggle()
+        collectionView?.reloadSections(IndexSet(integer: 1))
+    }
+}
+
