@@ -64,6 +64,14 @@ enum Text: String {
     case showAllVideos
     case hideAllPhotos
     case showAllPhotos
+    
+    func localized() -> String {
+        return NSLocalizedString(self.rawValue,
+                                 tableName: "Localizable",
+                                 bundle: .main,
+                                 value: self.rawValue,
+                                 comment: self.rawValue)
+    }
 }
 
 enum Img: String {

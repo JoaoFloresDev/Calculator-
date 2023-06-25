@@ -124,8 +124,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 if let photo = modelController.saveImageObject(image: image,
                                                                basePath: basePath) {
                     modelData.append(photo)
-                    let indexPath = IndexPath(row: modelData.count - 1, section: 1)
-                    collectionView?.insertItems(at: [indexPath])
+                    collectionView?.reloadSections(IndexSet(integer: 1))
                 }
             }
         }
@@ -341,9 +340,9 @@ extension CollectionViewController {
                 headerView.gradientView?.isHidden = false
             } else if indexPath.section == 1 {
                 if allPhotosIsExpanded {
-                    headerView.messageLabel.text = "Ocultar todas as fotos salvas"
+                    headerView.messageLabel.text = Text.hideAllPhotos.localized()
                 } else {
-                    headerView.messageLabel.text = "Ver todas as fotos salvas"
+                    headerView.messageLabel.text = Text.showAllPhotos.localized()
                 }
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = true

@@ -189,9 +189,9 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 headerView.gradientView?.isHidden = false
             } else if indexPath.section == 1 {
                 if allPhotosIsExpanded {
-                    headerView.messageLabel.text = "Ocultar todas as fotos salvas"
+                    headerView.messageLabel.text = Text.hideAllVideos.localized()
                 } else {
-                    headerView.messageLabel.text = "Ver todas as fotos salvas"
+                    headerView.messageLabel.text = Text.showAllVideos.localized()
                 }
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = true
@@ -252,9 +252,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                let imageName = result.1 {
                 self.modelData.append(Video(image: image, name: imageName))
                 self.modelDataVideo.append(pathVideo)
-                
-                let indexPath = IndexPath(row: self.modelData.count - 1, section: 1)
-                self.collectionView?.insertItems(at: [indexPath])
+                self.collectionView?.reloadSections(IndexSet(integer: 1))
             }
         }
     }
