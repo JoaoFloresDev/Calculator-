@@ -72,7 +72,7 @@ class VideoModelController {
         
         return videos
     }
-
+    
     func fetchPathVideosObjectsInit(basePath: String) -> [String] {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
@@ -101,7 +101,7 @@ class VideoModelController {
         
         return pathURLs
     }
-
+    
     func fetchImageObjects() {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
@@ -160,7 +160,7 @@ class VideoModelController {
         
         return (videoName, imageName)
     }
-
+    
     
     func deleteImageObject(name: String) {
         guard let managedContext = managedContext else {

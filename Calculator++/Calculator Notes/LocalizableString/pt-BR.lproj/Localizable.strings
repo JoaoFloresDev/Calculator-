@@ -58,3 +58,9 @@ inputPlaceholder = "Digite o nome da nova pasta";
 folderNameAlreadyUsedTitle = "Nome Já Utilizado";
 folderNameAlreadyUsedText = "Escolha outro nome para a pasta";
 deleteConfirmationTitle = "Excluir Arquivos?";
+
+// Show All
+hideAllVideos = "Ocultar todos os videos salvos";
+showAllVideos = "Ver todos os videos salvos";
+hideAllPhotos = "Ocultar todas as fotos salvas";
+showAllPhotos = "Ver todas as fotos salvas";

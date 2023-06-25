@@ -59,3 +59,9 @@ inputPlaceholder = "Enter the new folder name";
 folderNameAlreadyUsedTitle = "Name Already Used";
 folderNameAlreadyUsedText = "Choose another name for the folder";
 deleteConfirmationTitle = "Delete files?";
+
+// Show All
+hideAllVideos = "Hide all saved videos";
+showAllVideos = "Show all saved videos";
+hideAllPhotos = "Hide all saved photos";
+showAllPhotos = "Show all saved photos";

@@ -60,6 +60,10 @@ enum Text: String {
     case folderNameAlreadyUsedText
     
     case deleteConfirmationTitle
+    case hideAllVideos
+    case showAllVideos
+    case hideAllPhotos
+    case showAllPhotos
 }
 
 enum Img: String {

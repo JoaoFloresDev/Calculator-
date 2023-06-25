@@ -58,3 +58,9 @@ inputPlaceholder = "Ingrese el nuevo nombre de la carpeta";
 folderNameAlreadyUsedTitle = "Nombre Ya Utilizado";
 folderNameAlreadyUsedText = "Elija otro nombre para la carpeta";
 deleteConfirmationTitle = "¿Eliminar archivos?";
+
+// Show All
+hideAllVideos = "Ocultar todos los videos guardados";
+showAllVideos = "Mostrar todos los videos guardados";
+hideAllPhotos = "Ocultar todas las fotos guardadas";
+showAllPhotos = "Mostrar todas las fotos guardadas";

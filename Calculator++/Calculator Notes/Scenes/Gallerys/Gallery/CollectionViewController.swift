@@ -32,7 +32,13 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
-    var allPhotosIsExpanded = false
+    var allPhotosIsExpanded = false {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView?.reloadSections(IndexSet(integer: 1))
+            }
+        }
+    }
     
     var willappearedFisrtTime = false {
         didSet {
@@ -361,7 +367,6 @@ extension CollectionViewController {
 extension CollectionViewController: HeaderViewDelegate {
     func headerTapped(header: HeaderView) {
         allPhotosIsExpanded.toggle()
-        collectionView?.reloadSections(IndexSet(integer: 1))
     }
 }
 
