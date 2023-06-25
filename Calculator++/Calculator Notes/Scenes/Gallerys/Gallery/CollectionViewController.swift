@@ -77,6 +77,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     private func setupFolders() {
         folders = foldersService.getFolders(basePath: basePath)
+        if folders.isEmpty {
+            allPhotosIsExpanded = true
+        }
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
     }
     
