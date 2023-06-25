@@ -80,6 +80,9 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     func setupFolders() {
         foldersService = FoldersService(type: .video)
         folders = foldersService.getFolders(basePath: basePath)
+        if folders.isEmpty {
+            allPhotosIsExpanded = true
+        }
         self.collectionView?.reloadData()
     }
     
@@ -187,10 +190,12 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = false
             } else if indexPath.section == 1 {
-                if allPhotosIsExpanded {
-                    headerView.messageLabel.text = Text.hideAllVideos.localized()
-                } else {
-                    headerView.messageLabel.text = Text.showAllVideos.localized()
+                if !modelData.isEmpty {
+                    if allPhotosIsExpanded {
+                        headerView.messageLabel.text = Text.hideAllVideos.localized()
+                    } else {
+                        headerView.messageLabel.text = Text.showAllVideos.localized()
+                    }
                 }
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = true
@@ -218,14 +223,15 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                         if cell.row < self.folders.count {
                             self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
                         }
+                        self.collectionView?.reloadSections(IndexSet(integer: 0))
                     } else {
                         if cell.row < self.modelData.count {
                             self.modelController.deleteImageObject(name: self.modelData[cell.row].name)
                             self.modelData.remove(at: cell.row)
                         }
+                        self.collectionView?.reloadSections(IndexSet(integer: 1))
                     }
                 }
-                self.collectionView?.deleteItems(at: selectedCells)
             }
         }
     }
