@@ -17,26 +17,12 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var modelDataVideo: [String] = []
     var modelController = VideoModelController()
     
-    var filesIsExpanded = false {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView?.reloadSections(IndexSet(integer: 1))
-            }
-        }
-    }
-    
     // Video adaptation
     var imagePickerController = UIImagePickerController()
     var videoURL: URL?
     
     var isPremium: Bool {
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
-    }
-    
-    var isEditMode = false {
-        didSet {
-            setEditionMode(isEditMode, animated: true)
-        }
     }
     
     // IBOutlet
@@ -56,31 +42,25 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     }
     
     // Life cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        placeholderImage.image = isPremium ? UIImage(named: "placeholderVideo") : UIImage(named: "placeholderPremium")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionViewLayout()
+        commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()
         setText(.video)
         modelData = modelController.fetchImageObjectsInit(basePath: basePath)
         modelDataVideo = modelController.fetchPathVideosObjectsInit(basePath: basePath)
-        collectionView?.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView")
-        collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
-        
-        if basePath != "@" {
-            filesIsExpanded = true
-        }
         
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
             self.setText(.video)
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        placeholderImage.image = isPremium ? UIImage(named: "placeholderVideo") : UIImage(named: "placeholderPremium")
     }
     
     func setupFolders() {
@@ -90,24 +70,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             filesIsExpanded = true
         } else {
             self.collectionView?.reloadSections(IndexSet(integer: .zero))
-        }
-    }
-    
-    // Collection View
-    func setEditionMode(_ editing: Bool, animated: Bool) {
-        editLeftBarButtonItem?.setEditing(editing)
-        
-        collectionView?.allowsMultipleSelection = editing
-        
-        if let indexPaths = collectionView?.indexPathsForVisibleItems {
-            for indexPath in indexPaths {
-                if let cell = collectionView?.cellForItem(at: indexPath) as? CollectionViewCell {
-                    cell.isInEditingMode = editing
-                }
-                if let cell = collectionView?.cellForItem(at: indexPath) as? FolderCollectionViewCell {
-                    cell.isInEditingMode = editing
-                }
-            }
         }
     }
     
@@ -353,12 +315,5 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
         } else {
             showBePremiumToUse()
         }
-    }
-}
-
-extension VideoCollectionViewController: HeaderViewDelegate {
-    func headerTapped(header: HeaderView) {
-        filesIsExpanded.toggle()
-        collectionView?.reloadSections(IndexSet(integer: 1))
     }
 }

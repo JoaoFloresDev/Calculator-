@@ -26,20 +26,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     var modelData: [Photo] = []
     var modelController = ModelController()
     
-    var isEditMode = false {
-        didSet {
-            setEditionMode(isEditMode, animated: true)
-        }
-    }
-    
-    var filesIsExpanded = false {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView?.reloadSections(IndexSet(integer: 1))
-            }
-        }
-    }
-    
     var willappearedFisrtTime = false {
         didSet {
             setupFolders()
@@ -56,17 +42,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupAds()
         setupFirstUse()
-        setupCollectionViewLayout()
-        loadModelData()
-        collectionView?.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView")
-        collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
-        
-        if basePath != "@" {
-            filesIsExpanded = true
-        }
+        modelData = modelController.fetchImageObjectsInit(basePath: basePath)
         
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
@@ -109,10 +89,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
-    }
-    
-    private func loadModelData() {
-        modelData = modelController.fetchImageObjectsInit(basePath: basePath)
     }
 }
 
@@ -220,20 +196,6 @@ extension CollectionViewController {
 }
 
 extension CollectionViewController {
-    func setEditionMode(_ editing: Bool, animated: Bool) {
-        editLeftBarButtonItem?.setEditing(editing)
-        collectionView?.allowsMultipleSelection = editing
-        if let indexPaths = collectionView?.indexPathsForVisibleItems {
-            for indexPath in indexPaths {
-                if let cell = collectionView?.cellForItem(at: indexPath) as? CollectionViewCell {
-                    cell.isInEditingMode = editing
-                }
-                if let cell = collectionView?.cellForItem(at: indexPath) as? FolderCollectionViewCell {
-                    cell.isInEditingMode = editing
-                }
-            }
-        }
-    }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -371,10 +333,3 @@ extension CollectionViewController {
         return UICollectionReusableView()
     }
 }
-
-extension CollectionViewController: HeaderViewDelegate {
-    func headerTapped(header: HeaderView) {
-        filesIsExpanded.toggle()
-    }
-}
-
