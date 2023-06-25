@@ -341,7 +341,11 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     }
     
     func addFolderButtonTapped() {
-        addFolder()
+        if isPremium {
+            addFolder()
+        } else {
+            showBePremiumToUse()
+        }
     }
 }
 
