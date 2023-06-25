@@ -23,7 +23,16 @@ struct Photo {
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     // MARK: - Variables
-    var modelData: [Photo] = []
+    var modelData: [Photo] = [] {
+        didSet {
+            if !modelData.isEmpty {
+                self.collectionView?.reloadSections(IndexSet(integer: 1))
+            } else {
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
     var modelController = ModelController()
     
     var willappearedFisrtTime = false {
@@ -59,8 +68,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         folders = foldersService.getFolders(basePath: basePath)
         if folders.isEmpty {
             filesIsExpanded = true
-        } else {
-            self.collectionView?.reloadSections(IndexSet(integer: .zero))
         }
     }
     
@@ -85,62 +92,10 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
         
-        if basePath == "@" {
+        if basePath == deepSeparatorPath {
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
-    }
-}
-
-// MARK: - Extension CollectionView Input Image
-extension CollectionViewController: AssetsPickerViewControllerDelegate {
-    func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
-        for asset in assets {
-            if(asset.mediaType.rawValue != 2) {
-                image = getAssetThumbnail(asset: asset)
-                guard let image = image else {
-                    return
-                }
-                if let photo = modelController.saveImageObject(image: image,
-                                                               basePath: basePath) {
-                    modelData.append(photo)
-                    collectionView?.reloadSections(IndexSet(integer: 1))
-                }
-            }
-        }
-    }
-    
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result ?? UIImage()
-        })
-        return thumbnail
-    }
-    
-    func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
-        return true
-    }
-}
-
-// MARK: - Extension Viewer Image
-extension CollectionViewController: GalleryItemsDataSource {
-    func itemCount() -> Int {
-        return modelData.count
-    }
-    
-    func provideGalleryItem(_ index: Int) -> GalleryItem {
-        let imageView = UIImageView(image: modelData[index].image)
-        let galleryItem = GalleryItem.image { $0(imageView.image) }
-        
-        return galleryItem
     }
 }
 
@@ -185,16 +140,7 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
     }
 }
 
-extension CollectionViewController {
-    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        adsHandler.interstitialDidReceiveAd(ad)
-    }
-    
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        adsHandler.interstitialDidDismissScreen(delegate: self)
-    }
-}
-
+// Collection view DataSource & Delegate
 extension CollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -220,7 +166,7 @@ extension CollectionViewController {
         switch indexPath.section {
         case 0:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
-                if let folderName = folders[indexPath.row].components(separatedBy: "@").last {
+                if let folderName = folders[indexPath.row].components(separatedBy: deepSeparatorPath).last {
                     cell.setup(name: folderName)
                 }
                 return cell
@@ -248,8 +194,8 @@ extension CollectionViewController {
                 let storyboard = UIStoryboard(name: "Gallery", bundle: nil)
                 if let controller = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController {
                     if indexPath.row < folders.count {
-                        controller.basePath = basePath + folders[indexPath.row] + "@"
-                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: "@").last
+                        controller.basePath = basePath + folders[indexPath.row] + deepSeparatorPath
+                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: deepSeparatorPath).last
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                 }
@@ -280,13 +226,11 @@ extension CollectionViewController {
                         if cell.row < self.folders.count {
                             self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
                         }
-                        self.collectionView?.reloadSections(IndexSet(integer: 0))
                     } else {
                         if cell.row < self.modelData.count {
                             self.modelController.deleteImageObject(name: self.modelData[cell.row].name)
                             self.modelData.remove(at: cell.row)
                         }
-                        self.collectionView?.reloadSections(IndexSet(integer: 1))
                     }
                 }
             }
@@ -331,5 +275,65 @@ extension CollectionViewController {
         
         // Return an empty view for other supplementary elements
         return UICollectionReusableView()
+    }
+}
+
+extension CollectionViewController: AssetsPickerViewControllerDelegate {
+    func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
+        for asset in assets {
+            if(asset.mediaType.rawValue != 2) {
+                image = getAssetThumbnail(asset: asset)
+                guard let image = image else {
+                    return
+                }
+                if let photo = modelController.saveImageObject(image: image,
+                                                               basePath: basePath) {
+                    modelData.append(photo)
+                }
+            }
+        }
+    }
+    
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.default()
+        let option = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+            thumbnail = result ?? UIImage()
+        })
+        return thumbnail
+    }
+    
+    func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
+        return true
+    }
+}
+
+extension CollectionViewController: GalleryItemsDataSource {
+    func itemCount() -> Int {
+        return modelData.count
+    }
+    
+    func provideGalleryItem(_ index: Int) -> GalleryItem {
+        let imageView = UIImageView(image: modelData[index].image)
+        let galleryItem = GalleryItem.image { $0(imageView.image) }
+        
+        return galleryItem
+    }
+}
+
+// ads
+extension CollectionViewController {
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        adsHandler.interstitialDidReceiveAd(ad)
+    }
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        adsHandler.interstitialDidDismissScreen(delegate: self)
     }
 }
