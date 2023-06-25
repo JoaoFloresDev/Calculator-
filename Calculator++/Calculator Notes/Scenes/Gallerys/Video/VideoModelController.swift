@@ -57,9 +57,9 @@ class VideoModelController {
                     continue
                 }
                 
-                if imageName.contains(basePath)
+                if (imageName.contains(basePath)
                     && imageName.filter({ $0 == "@" }).count ==
-                    basePath.filter({ $0 == "@" }).count {
+                    basePath.filter({ $0 == "@" }).count)  || handleOldImage(basePath: basePath){
                     
                     if let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
                         videos.append(Video(image: storedImage, name: imageName))
@@ -88,9 +88,9 @@ class VideoModelController {
             
             for videoObject in savedObjects {
                 if let path = videoObject.pathURL {
-                    if path.contains(basePath)
+                    if (path.contains(basePath)
                         && path.filter({ $0 == "@" }).count ==
-                        basePath.filter({ $0 == "@" }).count {
+                        basePath.filter({ $0 == "@" }).count) || handleOldImage(basePath: basePath) {
                         pathURLs.append(path)
                     }
                 }
@@ -264,6 +264,20 @@ class VideoModelController {
         } catch let error as NSError {
             os_log("Could not fetch path URLs: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
+    }
+    
+    func handleOldImage(basePath: String) -> Bool {
+        countOccurrences(of: "@", in: basePath) < 2
+    }
+    
+    func countOccurrences(of character: Character, in string: String) -> Int {
+        var count = 0
+        for char in string {
+            if char == character {
+                count += 1
+            }
+        }
+        return count
     }
 }
 

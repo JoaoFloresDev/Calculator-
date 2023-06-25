@@ -17,6 +17,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var modelDataVideo: [String] = []
     var modelController = VideoModelController()
     
+    var allPhotosIsExpanded = false
+    
     // Video adaptation
     var imagePickerController = UIImagePickerController()
     var videoURL: URL?
@@ -57,6 +59,13 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         setText(.video)
         modelData = modelController.fetchImageObjectsInit(basePath: basePath)
         modelDataVideo = modelController.fetchPathVideosObjectsInit(basePath: basePath)
+        collectionView?.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView")
+        collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
+        
+        if basePath != "@" {
+            allPhotosIsExpanded = true
+        }
+        
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
@@ -105,7 +114,11 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         case 0:
             return folders.count
         default:
-            return modelData.count
+            if allPhotosIsExpanded {
+                return modelData.count
+            } else {
+                return 0
+            }
         }
     }
     
@@ -162,6 +175,40 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 }
             }
         }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            // Dequeue and configure the header view
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? HeaderView else {
+                return UICollectionReusableView()
+            }
+            if indexPath.section == .zero {
+                headerView.messageLabel.text = String()
+                headerView.activityIndicatorView.isHidden = true
+                headerView.gradientView?.isHidden = false
+            } else if indexPath.section == 1 {
+                if allPhotosIsExpanded {
+                    headerView.messageLabel.text = "Ocultar todas as fotos salvas"
+                } else {
+                    headerView.messageLabel.text = "Ver todas as fotos salvas"
+                }
+                headerView.activityIndicatorView.isHidden = true
+                headerView.gradientView?.isHidden = true
+                headerView.delegate = self
+            }
+            return headerView
+        } else if kind == UICollectionElementKindSectionFooter {
+            // Dequeue and configure the footer view
+            guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView", for: indexPath) as? FooterView else {
+                return UICollectionReusableView()
+            }
+            
+            return footerView
+        }
+        
+        // Return an empty view for other supplementary elements
+        return UICollectionReusableView()
     }
     
     func confirmationDelete() {
@@ -292,5 +339,12 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     
     func addFolderButtonTapped() {
         addFolder()
+    }
+}
+
+extension VideoCollectionViewController: HeaderViewDelegate {
+    func headerTapped(header: HeaderView) {
+        allPhotosIsExpanded.toggle()
+        collectionView?.reloadSections(IndexSet(integer: 1))
     }
 }

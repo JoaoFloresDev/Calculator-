@@ -111,7 +111,7 @@ class ModelController {
                 if let savedImageObject = imageObject as? StoredImage {
                     guard let imageName = savedImageObject.imageName else { return []}
                     if handleNewImage(basePath: basePath, imageName: imageName) ||
-                        handleOldImage(basePath: basePath, imageName: imageName) {
+                        handleOldImage(basePath: basePath) {
                         
                         let storedImage = ImageController.shared.fetchImage(imageName: imageName)
                         if let storedImage = storedImage {
@@ -134,7 +134,7 @@ class ModelController {
         imageName.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count
     }
     
-    func handleOldImage(basePath: String, imageName: String) -> Bool {
+    func handleOldImage(basePath: String) -> Bool {
         countOccurrences(of: "@", in: basePath) < 2
     }
     

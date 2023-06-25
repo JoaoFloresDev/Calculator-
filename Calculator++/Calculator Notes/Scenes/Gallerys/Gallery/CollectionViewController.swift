@@ -58,6 +58,10 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         collectionView?.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView")
         collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
         
+        if basePath != "@" {
+            allPhotosIsExpanded = true
+        }
+        
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
@@ -327,6 +331,8 @@ extension CollectionViewController {
             }
             if indexPath.section == .zero {
                 headerView.messageLabel.text = String()
+                headerView.activityIndicatorView.isHidden = true
+                headerView.gradientView?.isHidden = false
             } else if indexPath.section == 1 {
                 if allPhotosIsExpanded {
                     headerView.messageLabel.text = "Ocultar todas as fotos salvas"
