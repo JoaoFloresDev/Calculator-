@@ -19,13 +19,13 @@ import AVKit
 struct Photo {
     var name: String
     var image: UIImage
+    var isSelected: Bool = false
 }
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     // MARK: - Variables
     var modelData: [Photo] = []
     var modelController = ModelController()
-    
     var willappearedFisrtTime = false {
         didSet {
             setupFolders()
@@ -64,12 +64,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
-    private func setupAds() {
-        adsHandler.setupAds(controller: self,
-                            bannerDelegate: self,
-                            interstitialDelegate: self)
-    }
-    
     private func setupFirstUse() {
         let firstUseService = UserDefaultService()
         
@@ -85,12 +79,199 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
         
-        if basePath == "@" {
+        if basePath == deepSeparatorPath {
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
     }
+    
+    func deselectAllObjects() {
+        for index in 0 ..< modelData.count {
+            modelData[index].isSelected = false
+        }
+    }
 }
+
+extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
+    func addPhotoButtonTapped() {
+        let picker = AssetsPickerViewController()
+        picker.pickerConfig = AssetsPickerConfig()
+        picker.pickerDelegate = self
+        present(picker, animated: true) {
+            self.filesIsExpanded = true
+        }
+    }
+    
+    func addFolderButtonTapped() {
+        addFolder()
+    }
+}
+
+extension CollectionViewController: EditLeftBarButtonItemDelegate {
+    func selectImagesButtonTapped() {
+        self.deselectAllObjects()
+        isEditMode.toggle()
+    }
+    
+    func shareImageButtonTapped() {
+            var vetImgs = [UIImage]()
+            for photo in modelData where photo.isSelected == true {
+                vetImgs.append(photo.image)
+            }
+            
+            if !vetImgs.isEmpty {
+                let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
+                self.present(activityVC, animated: true)
+                self.deselectAllObjects()
+            }
+    }
+    
+    func deleteButtonTapped() {
+        let refreshAlert = UIAlertController(title: Text.deleteFiles.rawValue.localized(),
+                                             message: nil,
+                                             preferredStyle: UIAlertController.Style.alert)
+        
+        refreshAlert.modalPresentationStyle = .popover
+        
+        refreshAlert.addAction(UIAlertAction(title: Text.cancel.rawValue.localized(),
+                                             style: .destructive, handler: nil))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
+                for cell in selectedCells {
+                    if cell.section == 0 {
+                        if cell.row < self.folders.count {
+                            self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
+                        }
+                        self.collectionView?.reloadSections(IndexSet(integer: 0))
+                    }
+                }
+            }
+            for photo in self.modelData where photo.isSelected == true {
+                self.modelController.deleteImageObject(name: photo.name, basePath: self.basePath)
+                if let index = self.modelData.firstIndex(where: { $0.name == photo.name }) {
+                    self.modelData.remove(at: index)
+                }
+            }
+            self.deselectAllObjects()
+            self.collectionView?.reloadSections(IndexSet(integer: 1))
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
+    }
+}
+
+extension CollectionViewController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
+        placeHolderImage.isHidden = !presentPlaceHolderImage
+        switch section {
+        case 0:
+            return folders.count
+        default:
+            if filesIsExpanded {
+                return modelData.count
+            } else {
+                return 0
+            }
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.section {
+        case 0:
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
+                if let folderName = folders[indexPath.row].components(separatedBy: deepSeparatorPath).last {
+                    cell.setup(name: folderName)
+                }
+                return cell
+            }
+        default:
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
+                cell.isInEditingMode = isEditMode
+                if indexPath.item < modelData.count {
+                    let image = modelData[indexPath.item]
+                    cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
+                }
+                cell.applyshadowWithCorner()
+                
+                return cell
+            }
+        }
+        
+        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !isEditMode {
+            switch indexPath.section {
+            case .zero:
+                let storyboard = UIStoryboard(name: "Gallery", bundle: nil)
+                if let controller = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController {
+                    if indexPath.row < folders.count {
+                        controller.basePath = basePath + folders[indexPath.row] + deepSeparatorPath
+                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: deepSeparatorPath).last
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    }
+                }
+            default:
+                if indexPath.item < modelData.count {
+                    self.presentImageGallery(GalleryViewController(startIndex: indexPath.item, itemsDataSource: self))
+                }
+            }
+        } else {
+            updateSelectedPhotos(indexPath: indexPath)
+        }
+    }
+    
+    func updateSelectedPhotos(indexPath: IndexPath) {
+        modelData[indexPath.item].isSelected.toggle()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            // Dequeue and configure the header view
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? HeaderView else {
+                return UICollectionReusableView()
+            }
+            if indexPath.section == .zero {
+                headerView.messageLabel.text = String()
+                headerView.activityIndicatorView.isHidden = true
+                headerView.gradientView?.isHidden = false
+                headerView.isUserInteractionEnabled = false
+            } else if indexPath.section == 1 {
+                if !modelData.isEmpty {
+                    if filesIsExpanded {
+                        headerView.messageLabel.text = Text.hideAllPhotos.localized()
+                    } else {
+                        headerView.messageLabel.text = Text.showAllPhotos.localized()
+                    }
+                } else {
+                    headerView.messageLabel.text = String()
+                }
+                headerView.activityIndicatorView.isHidden = true
+                headerView.gradientView?.isHidden = true
+                headerView.delegate = self
+            }
+            return headerView
+        } else if kind == UICollectionElementKindSectionFooter {
+            // Dequeue and configure the footer view
+            guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView", for: indexPath) as? FooterView else {
+                return UICollectionReusableView()
+            }
+            
+            return footerView
+        }
+        
+        // Return an empty view for other supplementary elements
+        return UICollectionReusableView()
+    }
+}
+
 
 // MARK: - Extension CollectionView Input Image
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
@@ -144,47 +325,6 @@ extension CollectionViewController: GalleryItemsDataSource {
     }
 }
 
-extension CollectionViewController: EditLeftBarButtonItemDelegate {
-    func selectImagesButtonTapped() {
-        isEditMode.toggle()
-    }
-    
-    func shareImageButtonTapped() {
-        if let selectedCells = collectionView?.indexPathsForSelectedItems {
-            let items = selectedCells.map { $0.item }.sorted().reversed()
-            
-            var vetImgs = [UIImage]()
-            
-            for item in items {
-                let image = modelData[item]
-                vetImgs.append(image.image)
-            }
-            
-            if !vetImgs.isEmpty {
-                let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
-                self.present(activityVC, animated: true)
-            }
-        }
-    }
-    
-    func deleteButtonTapped() {
-        deleteConfirmation()
-    }
-}
-
-extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
-    func addPhotoButtonTapped() {
-        let picker = AssetsPickerViewController()
-        picker.pickerConfig = AssetsPickerConfig()
-        picker.pickerDelegate = self
-        present(picker, animated: true, completion: nil)
-    }
-    
-    func addFolderButtonTapped() {
-        addFolder()
-    }
-}
-
 extension CollectionViewController {
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
         adsHandler.interstitialDidReceiveAd(ad)
@@ -193,143 +333,10 @@ extension CollectionViewController {
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         adsHandler.interstitialDidDismissScreen(delegate: self)
     }
-}
-
-extension CollectionViewController {
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
-        placeHolderImage.isHidden = !presentPlaceHolderImage
-        switch section {
-        case 0:
-            return folders.count
-        default:
-            if filesIsExpanded {
-                return modelData.count
-            } else {
-                return 0
-            }
-        }
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
-                if let folderName = folders[indexPath.row].components(separatedBy: "@").last {
-                    cell.setup(name: folderName)
-                }
-                return cell
-            }
-        default:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
-                cell.isInEditingMode = isEditMode
-                if indexPath.item < modelData.count {
-                    let image = modelData[indexPath.item]
-                    cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
-                }
-                cell.applyshadowWithCorner()
-                
-                return cell
-            }
-        }
-        
-        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case .zero:
-            if !isEditMode {
-                let storyboard = UIStoryboard(name: "Gallery", bundle: nil)
-                if let controller = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController {
-                    if indexPath.row < folders.count {
-                        controller.basePath = basePath + folders[indexPath.row] + "@"
-                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: "@").last
-                        self.navigationController?.pushViewController(controller, animated: true)
-                    }
-                }
-            }
-        default:
-            if !isEditMode {
-                if indexPath.item < modelData.count {
-                    self.presentImageGallery(GalleryViewController(startIndex: indexPath.item, itemsDataSource: self))
-                }
-            }
-        }
-    }
-    
-    func deleteConfirmation() {
-        let refreshAlert = UIAlertController(title: Text.deleteFiles.rawValue.localized(),
-                                             message: nil,
-                                             preferredStyle: UIAlertController.Style.alert)
-        
-        refreshAlert.modalPresentationStyle = .popover
-        
-        refreshAlert.addAction(UIAlertAction(title: Text.cancel.rawValue.localized(),
-                                             style: .destructive, handler: nil))
-        
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
-                for cell in selectedCells {
-                    if cell.section == 0 {
-                        if cell.row < self.folders.count {
-                            self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
-                        }
-                        self.collectionView?.reloadSections(IndexSet(integer: 0))
-                    } else {
-                        if cell.row < self.modelData.count {
-                            self.modelController.deleteImageObject(name: self.modelData[cell.row].name)
-                            self.modelData.remove(at: cell.row)
-                        }
-                        self.collectionView?.reloadSections(IndexSet(integer: 1))
-                    }
-                }
-            }
-        }))
-        
-        present(refreshAlert, animated: true, completion: nil)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionHeader {
-            // Dequeue and configure the header view
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? HeaderView else {
-                return UICollectionReusableView()
-            }
-            if indexPath.section == .zero {
-                headerView.messageLabel.text = String()
-                headerView.activityIndicatorView.isHidden = true
-                headerView.gradientView?.isHidden = false
-            } else if indexPath.section == 1 {
-                if !modelData.isEmpty {
-                    if filesIsExpanded {
-                        headerView.messageLabel.text = Text.hideAllPhotos.localized()
-                    } else {
-                        headerView.messageLabel.text = Text.showAllPhotos.localized()
-                    }
-                } else {
-                    headerView.messageLabel.text = String()
-                }
-                headerView.activityIndicatorView.isHidden = true
-                headerView.gradientView?.isHidden = true
-                headerView.delegate = self
-            }
-            return headerView
-        } else if kind == UICollectionElementKindSectionFooter {
-            // Dequeue and configure the footer view
-            guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView", for: indexPath) as? FooterView else {
-                return UICollectionReusableView()
-            }
-            
-            return footerView
-        }
-        
-        // Return an empty view for other supplementary elements
-        return UICollectionReusableView()
+    private func setupAds() {
+        adsHandler.setupAds(controller: self,
+                            bannerDelegate: self,
+                            interstitialDelegate: self)
     }
 }

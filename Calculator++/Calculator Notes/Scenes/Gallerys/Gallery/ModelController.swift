@@ -22,11 +22,9 @@ class ModelController {
     init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         managedContext = appDelegate.persistentContainer.viewContext
-        
-        fetchImageObjects()
     }
     
-    func fetchImageObjects() {
+    func fetchImageObjectsInit(basePath: String) -> [Photo] {
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
@@ -36,16 +34,21 @@ class ModelController {
             
             for imageObject in savedObjects {
                 if let savedImageObject = imageObject as? StoredImage {
-                    guard savedImageObject.imageName != nil else { return }
-                    if let imageName = savedImageObject.imageName,
-                       let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
-                        images.append(Photo(name: imageName, image: storedImage))
+                    guard let imageName = savedImageObject.imageName else { return []}
+                    if handleNewImage(basePath: basePath, imageName: imageName) ||
+                        handleOldImage(basePath: basePath) {
+                        
+                        let storedImage = ImageController.shared.fetchImage(imageName: imageName)
+                        if let storedImage = storedImage {
+                            images.append(Photo(name: imageName, image: storedImage))
+                        }
                     }
                 }
             }
         } catch let error as NSError {
             print("Could not return image objects: \(error)")
         }
+        return images
     }
     
     func saveImageObject(image: UIImage, basePath: String) -> Photo? {
@@ -67,8 +70,8 @@ class ModelController {
         return nil
     }
 
-    func deleteImageObject(name: String) {
-        fetchImageObjects()
+    func deleteImageObject(name: String, basePath: String) {
+        fetchImageObjectsInit(basePath: basePath)
         
         // Procura o objeto de imagem com o nome fornecido
         if let imageObjectToDelete = savedObjects.first(where: { ($0 as? StoredImage)?.imageName == name }) as? StoredImage {
@@ -97,33 +100,6 @@ class ModelController {
                 print("Could not delete image object: \(error)")
             }
         }
-    }
-    
-    func fetchImageObjectsInit(basePath: String) -> [Photo] {
-        let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        
-        do {
-            savedObjects = try managedContext.fetch(imageObjectRequest)
-            
-            images.removeAll()
-            
-            for imageObject in savedObjects {
-                if let savedImageObject = imageObject as? StoredImage {
-                    guard let imageName = savedImageObject.imageName else { return []}
-                    if handleNewImage(basePath: basePath, imageName: imageName) ||
-                        handleOldImage(basePath: basePath) {
-                        
-                        let storedImage = ImageController.shared.fetchImage(imageName: imageName)
-                        if let storedImage = storedImage {
-                            images.append(Photo(name: imageName, image: storedImage))
-                        }
-                    }
-                }
-            }
-        } catch let error as NSError {
-            print("Could not return image objects: \(error)")
-        }
-        return images
     }
     
     func handleNewImage(basePath: String, imageName: String) -> Bool {

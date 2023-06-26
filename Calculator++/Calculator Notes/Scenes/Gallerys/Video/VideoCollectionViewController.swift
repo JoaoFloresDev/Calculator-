@@ -8,6 +8,7 @@ import os.log
 struct VideoModel {
     var image: UIImage
     var name: String
+    var isSelected: Bool
 }
 
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate {
