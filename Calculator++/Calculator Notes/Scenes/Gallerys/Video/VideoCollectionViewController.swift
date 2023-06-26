@@ -18,6 +18,22 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var modelDataVideo: [String] = []
     var modelController = VideoModelController()
     
+    var folders: [String] = [] {
+        didSet {
+            if !folders.isEmpty {
+                self.collectionView?.reloadSections(IndexSet(integer: .zero))
+            } else {
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
+    var isEditMode = false {
+        didSet {
+            setEditionMode(isEditMode)
+        }
+    }
+    
     // Video adaptation
     var imagePickerController = UIImagePickerController()
     var videoURL: URL?
@@ -136,6 +152,27 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
         } else {
             showBePremiumToUse()
         }
+    }
+    
+    func addFolder() {
+        showInputDialog(title: Text.folderTitle.rawValue.localized(),
+                        actionTitle: Text.createActionTitle.rawValue.localized(),
+                        cancelTitle: Text.cancelTitle.rawValue.localized(),
+                        inputPlaceholder: Text.inputPlaceholder.rawValue.localized(),
+                        actionHandler: { (input: String?) in
+            if let input = input {
+                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
+                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
+                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
+                } else {
+                    self.showError(title: Text.folderNameAlreadyUsedTitle.rawValue.localized(),
+                                   text: Text.folderNameAlreadyUsedText.rawValue.localized(),
+                                   completion: {
+                        self.addFolder()
+                    })
+                }
+            }
+        })
     }
 }
 

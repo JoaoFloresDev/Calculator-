@@ -34,10 +34,11 @@ class CollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func cropBounds(viewlayer: CALayer, cornerRadius: Float) {
-        let imageLayer = viewlayer
-        imageLayer.cornerRadius = CGFloat(cornerRadius)
-        imageLayer.masksToBounds = true
+    var isSelectedCell: Bool = false {
+        didSet {
+            checkmarkLabel.text = isSelectedCell ? "✓" : ""
+            selectedItem.alpha = isSelectedCell ? 0.5 : 0
+        }
     }
 }
 

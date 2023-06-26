@@ -18,6 +18,14 @@ class FolderCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var isSelectedCell: Bool = false {
+        didSet {
+            imageCell.alpha = isSelectedCell ? 0.5 : 1
+            titleLabel.alpha = isSelectedCell ? 0.5 : 1
+            checkmarkLabel.text = isSelectedCell ? "✓" : ""
+        }
+    }
+    
     func setup(name: String) {
         imageCell.image = UIImage(named: "folder")
         titleLabel.text = name

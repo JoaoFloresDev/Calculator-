@@ -16,6 +16,11 @@ import Foundation
 import AVFoundation
 import AVKit
 
+struct Folder {
+    var name: String
+    var isSelected = false
+}
+
 struct Photo {
     var name: String
     var image: UIImage
@@ -26,9 +31,26 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Variables
     var modelData: [Photo] = []
     var modelController = ModelController()
+    
+    var folders: [Folder] = [] {
+        didSet {
+            if !folders.isEmpty {
+                self.collectionView?.reloadSections(IndexSet(integer: .zero))
+            } else {
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
     var willappearedFisrtTime = false {
         didSet {
             setupFolders()
+        }
+    }
+    
+    var isEditMode = false {
+        didSet {
+            editLeftBarButtonItem?.setEditing(isEditMode)
         }
     }
     
@@ -56,7 +78,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
     
     private func setupFolders() {
-        folders = foldersService.getFolders(basePath: basePath)
+        folders = foldersService.getFolders(basePath: basePath).map { folderName in
+            return Folder(name: folderName, isSelected: false)
+        }
         if folders.isEmpty {
             filesIsExpanded = true
         } else {
@@ -105,6 +129,30 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
     func addFolderButtonTapped() {
         addFolder()
     }
+    
+    func addFolder() {
+        showInputDialog(title: Text.folderTitle.rawValue.localized(),
+                        actionTitle: Text.createActionTitle.rawValue.localized(),
+                        cancelTitle: Text.cancelTitle.rawValue.localized(),
+                        inputPlaceholder: Text.inputPlaceholder.rawValue.localized(),
+                        actionHandler: { (input: String?) in
+            if let input = input {
+                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
+                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { folderName in
+                        return Folder(name: folderName, isSelected: false)
+                    }
+                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
+                } else {
+                    self.showError(title: Text.folderNameAlreadyUsedTitle.rawValue.localized(),
+                                   text: Text.folderNameAlreadyUsedText.rawValue.localized(),
+                                   completion: {
+                        self.addFolder()
+                    })
+                }
+            }
+        })
+    }
+    
 }
 
 extension CollectionViewController: EditLeftBarButtonItemDelegate {
@@ -141,7 +189,9 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
                 for cell in selectedCells {
                     if cell.section == 0 {
                         if cell.row < self.folders.count {
-                            self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
+                            self.folders = self.foldersService.delete(folder: self.folders[cell.row].name, basePath: self.basePath).map { folderName in
+                                return Folder(name: folderName, isSelected: false)
+                            }
                         }
                         self.collectionView?.reloadSections(IndexSet(integer: 0))
                     }
@@ -185,8 +235,9 @@ extension CollectionViewController {
         switch indexPath.section {
         case 0:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
-                if let folderName = folders[indexPath.row].components(separatedBy: deepSeparatorPath).last {
+                if let folderName = folders[indexPath.row].name.components(separatedBy: deepSeparatorPath).last {
                     cell.setup(name: folderName)
+                    cell.isSelectedCell = folders[indexPath.row].isSelected
                 }
                 return cell
             }
@@ -196,6 +247,7 @@ extension CollectionViewController {
                 if indexPath.item < modelData.count {
                     let image = modelData[indexPath.item]
                     cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
+                    cell.isSelectedCell = modelData[indexPath.item].isSelected
                 }
                 cell.applyshadowWithCorner()
                 
@@ -213,8 +265,8 @@ extension CollectionViewController {
                 let storyboard = UIStoryboard(name: "Gallery", bundle: nil)
                 if let controller = storyboard.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController {
                     if indexPath.row < folders.count {
-                        controller.basePath = basePath + folders[indexPath.row] + deepSeparatorPath
-                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: deepSeparatorPath).last
+                        controller.basePath = basePath + folders[indexPath.row].name + deepSeparatorPath
+                        controller.navigationTitle = folders[indexPath.row].name.components(separatedBy: deepSeparatorPath).last
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                 }
@@ -229,7 +281,12 @@ extension CollectionViewController {
     }
     
     func updateSelectedPhotos(indexPath: IndexPath) {
-        modelData[indexPath.item].isSelected.toggle()
+        if indexPath.section == .zero {
+            folders[indexPath.row].isSelected.toggle()
+        } else {
+            modelData[indexPath.row].isSelected.toggle()
+        }
+        self.collectionView?.reloadItems(at: [indexPath])
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -253,6 +310,7 @@ extension CollectionViewController {
                 } else {
                     headerView.messageLabel.text = String()
                 }
+                headerView.isUserInteractionEnabled = true
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = true
                 headerView.delegate = self
