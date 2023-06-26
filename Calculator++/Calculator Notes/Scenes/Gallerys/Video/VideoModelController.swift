@@ -10,11 +10,6 @@ import UIKit
 import CoreData
 import os.log
 
-struct Video {
-    var image: UIImage
-    var name: String
-}
-
 class VideoModelController {
     static let shared = VideoModelController()
     

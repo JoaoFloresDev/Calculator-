@@ -32,15 +32,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     var modelData: [Photo] = []
     var modelController = ModelController()
     
-    var folders: [Folder] = [] {
-        didSet {
-            if !folders.isEmpty {
-                self.collectionView?.reloadSections(IndexSet(integer: .zero))
-            } else {
-                self.collectionView?.reloadData()
-            }
-        }
-    }
+    var folders: [Folder] = []
     
     var willappearedFisrtTime = false {
         didSet {
@@ -59,7 +51,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
-        willappearedFisrtTime = true
+        if !willappearedFisrtTime {
+            willappearedFisrtTime = true
+        }
     }
     
     override func viewDidLoad() {
@@ -108,8 +102,14 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
     }
+
+    func deselectAllFoldersObjects() {
+        for index in 0 ..< modelData.count {
+            modelData[index].isSelected = false
+        }
+    }
     
-    func deselectAllObjects() {
+    func deselectAllPhotoObjects() {
         for index in 0 ..< modelData.count {
             modelData[index].isSelected = false
         }
@@ -157,7 +157,8 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
 
 extension CollectionViewController: EditLeftBarButtonItemDelegate {
     func selectImagesButtonTapped() {
-        self.deselectAllObjects()
+        self.deselectAllFoldersObjects()
+        self.deselectAllPhotoObjects()
         isEditMode.toggle()
     }
     
@@ -170,44 +171,33 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
             if !vetImgs.isEmpty {
                 let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
                 self.present(activityVC, animated: true)
-                self.deselectAllObjects()
+                self.deselectAllFoldersObjects()
+                self.deselectAllPhotoObjects()
             }
     }
     
     func deleteButtonTapped() {
-        let refreshAlert = UIAlertController(title: Text.deleteFiles.rawValue.localized(),
-                                             message: nil,
-                                             preferredStyle: UIAlertController.Style.alert)
-        
-        refreshAlert.modalPresentationStyle = .popover
-        
-        refreshAlert.addAction(UIAlertAction(title: Text.cancel.rawValue.localized(),
-                                             style: .destructive, handler: nil))
-        
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
-                for cell in selectedCells {
-                    if cell.section == 0 {
-                        if cell.row < self.folders.count {
-                            self.folders = self.foldersService.delete(folder: self.folders[cell.row].name, basePath: self.basePath).map { folderName in
-                                return Folder(name: folderName, isSelected: false)
-                            }
-                        }
-                        self.collectionView?.reloadSections(IndexSet(integer: 0))
-                    }
+        showConfirmationDelete {
+            for folder in self.folders where folder.isSelected == true {
+                self.folders = self.foldersService.delete(folder: folder.name, basePath: self.basePath).map { folderName in
+                    return Folder(name: folderName, isSelected: false)
                 }
             }
+            if self.folders.isEmpty {
+                self.filesIsExpanded = true
+            }
+            self.deselectAllFoldersObjects()
+            self.collectionView?.reloadSections(IndexSet(integer: 0))
+            
             for photo in self.modelData where photo.isSelected == true {
                 self.modelController.deleteImageObject(name: photo.name, basePath: self.basePath)
                 if let index = self.modelData.firstIndex(where: { $0.name == photo.name }) {
                     self.modelData.remove(at: index)
                 }
             }
-            self.deselectAllObjects()
+            self.deselectAllPhotoObjects()
             self.collectionView?.reloadSections(IndexSet(integer: 1))
-        }))
-        
-        present(refreshAlert, animated: true, completion: nil)
+        }
     }
 }
 

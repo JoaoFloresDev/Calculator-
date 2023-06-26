@@ -5,10 +5,10 @@ import Photos
 import CoreData
 import os.log
 
-struct VideoModel {
+struct Video {
     var image: UIImage
     var name: String
-    var isSelected: Bool
+    var isSelected: Bool = false
 }
 
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate {
@@ -18,7 +18,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var modelDataVideo: [String] = []
     var modelController = VideoModelController()
     
-    var folders: [String] = [] {
+    var folders: [Folder] = [] {
         didSet {
             if !folders.isEmpty {
                 self.collectionView?.reloadSections(IndexSet(integer: .zero))
@@ -68,7 +68,9 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     
     func setupFolders() {
         foldersService = FoldersService(type: .video)
-        folders = foldersService.getFolders(basePath: basePath)
+        folders = foldersService.getFolders(basePath: basePath).map { folderName in
+            return Folder(name: folderName, isSelected: false)
+        }
         if folders.isEmpty {
             filesIsExpanded = true
         } else {
@@ -120,10 +122,14 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
             if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
                 for cell in selectedCells {
                     if cell.section == 0 {
-                        if cell.row < self.folders.count {
-                            self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
+                        if cell.section == 0 {
+                            if cell.row < self.folders.count {
+                                self.folders = self.foldersService.delete(folder: self.folders[cell.row].name, basePath: self.basePath).map { folderName in
+                                    return Folder(name: folderName, isSelected: false)
+                                }
+                            }
+                            self.collectionView?.reloadSections(IndexSet(integer: 0))
                         }
-                        self.collectionView?.reloadSections(IndexSet(integer: 0))
                     } else {
                         if cell.row < self.modelData.count {
                             self.modelController.deleteImageObject(name: self.modelData[cell.row].name)
@@ -162,7 +168,9 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
                         actionHandler: { (input: String?) in
             if let input = input {
                 if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
-                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath)
+                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { folderName in
+                        return Folder(name: folderName, isSelected: false)
+                    }
                     self.collectionView?.reloadSections(IndexSet(integer: .zero))
                 } else {
                     self.showError(title: Text.folderNameAlreadyUsedTitle.rawValue.localized(),
@@ -205,8 +213,8 @@ extension VideoCollectionViewController {
                 let storyboard = UIStoryboard(name: "VideoPlayer", bundle: nil)
                 if let controller = storyboard.instantiateViewController(withIdentifier: "VideoCollectionViewController") as? VideoCollectionViewController {
                     if indexPath.row < folders.count {
-                        controller.basePath = basePath + folders[indexPath.row] + "@"
-                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: "@").last
+                        controller.basePath = basePath + folders[indexPath.row].name + "@"
+                        controller.navigationTitle = folders[indexPath.row].name.components(separatedBy: "@").last
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                 }
@@ -226,7 +234,18 @@ extension VideoCollectionViewController {
                     player.play()
                 }
             }
+        } else {
+            updateSelectedPhotos(indexPath: indexPath)
         }
+    }
+    
+    func updateSelectedPhotos(indexPath: IndexPath) {
+        if indexPath.section == .zero {
+            folders[indexPath.row].isSelected.toggle()
+        } else {
+            modelData[indexPath.row].isSelected.toggle()
+        }
+        self.collectionView?.reloadItems(at: [indexPath])
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -239,6 +258,7 @@ extension VideoCollectionViewController {
                 headerView.messageLabel.text = String()
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = false
+                headerView.isUserInteractionEnabled = false
             } else if indexPath.section == 1 {
                 if !modelData.isEmpty {
                     if filesIsExpanded {
@@ -247,6 +267,7 @@ extension VideoCollectionViewController {
                         headerView.messageLabel.text = Text.showAllVideos.localized()
                     }
                 }
+                headerView.isUserInteractionEnabled = true
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = true
                 headerView.delegate = self
@@ -269,8 +290,9 @@ extension VideoCollectionViewController {
         switch indexPath.section {
         case 0:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
-                if let folderName = folders[indexPath.row].components(separatedBy: "@").last {
+                if let folderName = folders[indexPath.row].name.components(separatedBy: deepSeparatorPath).last {
                     cell.setup(name: folderName)
+                    cell.isSelectedCell = folders[indexPath.row].isSelected
                 }
                 return cell
             }
