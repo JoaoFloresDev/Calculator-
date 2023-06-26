@@ -104,8 +104,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
 
     func deselectAllFoldersObjects() {
-        for index in 0 ..< modelData.count {
-            modelData[index].isSelected = false
+        for index in 0 ..< folders.count {
+            folders[index].isSelected = false
         }
     }
     
@@ -159,6 +159,9 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
     func selectImagesButtonTapped() {
         self.deselectAllFoldersObjects()
         self.deselectAllPhotoObjects()
+        if isEditMode {
+            collectionView?.reloadData()
+        }
         isEditMode.toggle()
     }
     
