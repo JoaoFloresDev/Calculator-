@@ -87,12 +87,12 @@ class ModelController {
                 // Exclui a imagem associada ao objeto
                 if let imageName = imageObjectToDelete.imageName {
                     ImageController.shared.deleteImage(imageName: imageName)
+                    images.removeAll { $0.name == imageName }
                 }
                 
                 // Remove o objeto de imagem e a foto associada da matriz
                 if let index = imageIndex {
                     savedObjects.remove(at: index)
-                    images.remove(at: index)
                 }
                 
                 print("Image object was deleted.")

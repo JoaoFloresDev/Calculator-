@@ -13,19 +13,17 @@ struct Video {
 
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate {
     
-    // Variables
+    // MARK: -  Variables
     var modelData: [Video] = []
     var modelDataVideo: [String] = []
     var modelController = VideoModelController()
+    var imagePickerController = UIImagePickerController()
+    var videoURL: URL?
     
-    var folders: [Folder] = [] {
-        didSet {
-            if !folders.isEmpty {
-                self.collectionView?.reloadSections(IndexSet(integer: .zero))
-            } else {
-                self.collectionView?.reloadData()
-            }
-        }
+    var folders: [Folder] = []
+    
+    var isPremium: Bool {
+        return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
     
     var isEditMode = false {
@@ -34,18 +32,10 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    // Video adaptation
-    var imagePickerController = UIImagePickerController()
-    var videoURL: URL?
-    
-    var isPremium: Bool {
-        return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
-    }
-    
-    // IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet weak var placeholderImage: UIImageView!
     
-    // Life cycle
+    // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         placeholderImage.image = isPremium ? UIImage(named: "placeholderVideo") : UIImage(named: "placeholderPremium")
@@ -59,6 +49,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         setText(.video)
         modelData = modelController.fetchImageObjectsInit(basePath: basePath)
         modelDataVideo = modelController.fetchPathVideosObjectsInit(basePath: basePath)
+        
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
@@ -77,11 +68,48 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             self.collectionView?.reloadSections(IndexSet(integer: .zero))
         }
     }
+    
+    func deselectAllFoldersObjects() {
+        for index in 0 ..< folders.count {
+            folders[index].isSelected = false
+        }
+    }
+    
+    func deselectAllPhotoObjects() {
+        for index in 0 ..< modelData.count {
+            modelData[index].isSelected = false
+        }
+    }
 }
 
 extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     func selectImagesButtonTapped() {
+        self.deselectAllFoldersObjects()
+        self.deselectAllPhotoObjects()
+        if isEditMode {
+            collectionView?.reloadData()
+        }
         isEditMode.toggle()
+    }
+
+    func shareImageButtonTapped2() {
+        var fileURLs = [String]()
+        for video in modelData where video.isSelected == true {
+            if let index = self.modelData.firstIndex(where: { $0.name == video.name }) {
+                fileURLs.append(modelDataVideo[index])
+            }
+        }
+        
+        do {
+            let activityController = UIActivityViewController(activityItems: fileURLs, applicationActivities: nil)
+            activityController.popoverPresentationController?.sourceView = view
+            activityController.popoverPresentationController?.sourceRect = view.frame
+            
+            present(activityController, animated: true, completion: nil)
+        } catch {
+            os_log("Failed to share video", log: .default, type: .error)
+            showGenericError()
+        }
     }
     
     func shareImageButtonTapped() {

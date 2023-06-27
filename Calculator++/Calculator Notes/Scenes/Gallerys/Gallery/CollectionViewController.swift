@@ -34,12 +34,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     var folders: [Folder] = []
     
-    var willappearedFisrtTime = false {
-        didSet {
-            setupFolders()
-        }
-    }
-    
     var isEditMode = false {
         didSet {
             editLeftBarButtonItem?.setEditing(isEditMode)
@@ -50,18 +44,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     @IBOutlet weak var placeHolderImage: UIImageView!
     
     // MARK: - Life Cycle
-    override func viewWillAppear(_ animated: Bool) {
-        if !willappearedFisrtTime {
-            willappearedFisrtTime = true
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
-        setupAds()
-        setupFirstUse()
+        setupFolders()
         modelData = modelController.fetchImageObjectsInit(basePath: basePath)
         
         if let navigationTitle = navigationTitle {
@@ -69,6 +56,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         } else {
             self.setText(.gallery)
         }
+        
+        setupAds()
+        setupFirstUse()
     }
     
     private func setupFolders() {
@@ -102,7 +92,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
     }
-
+    
     func deselectAllFoldersObjects() {
         for index in 0 ..< folders.count {
             folders[index].isSelected = false
@@ -112,6 +102,53 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     func deselectAllPhotoObjects() {
         for index in 0 ..< modelData.count {
             modelData[index].isSelected = false
+        }
+    }
+}
+
+extension CollectionViewController: EditLeftBarButtonItemDelegate {
+    func selectImagesButtonTapped() {
+        self.deselectAllFoldersObjects()
+        self.deselectAllPhotoObjects()
+        if isEditMode {
+            collectionView?.reloadData()
+        }
+        isEditMode.toggle()
+    }
+    
+    func shareImageButtonTapped() {
+        var vetImgs = [UIImage]()
+        for photo in modelData where photo.isSelected == true {
+            vetImgs.append(photo.image)
+        }
+        
+        if !vetImgs.isEmpty {
+            let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
+            self.present(activityVC, animated: true)
+        }
+    }
+    
+    func deleteButtonTapped() {
+        showConfirmationDelete {
+            for folder in self.folders where folder.isSelected == true {
+                self.folders = self.foldersService.delete(folder: folder.name, basePath: self.basePath).map { folderName in
+                    return Folder(name: folderName, isSelected: false)
+                }
+            }
+            if self.folders.isEmpty {
+                self.filesIsExpanded = true
+            }
+            self.deselectAllFoldersObjects()
+            self.collectionView?.reloadSections(IndexSet(integer: 0))
+            
+            for photo in self.modelData where photo.isSelected == true {
+                self.modelController.deleteImageObject(name: photo.name, basePath: self.basePath)
+                if let index = self.modelData.firstIndex(where: { $0.name == photo.name }) {
+                    self.modelData.remove(at: index)
+                }
+            }
+            self.deselectAllPhotoObjects()
+            self.collectionView?.reloadSections(IndexSet(integer: 1))
         }
     }
 }
@@ -153,55 +190,6 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
         })
     }
     
-}
-
-extension CollectionViewController: EditLeftBarButtonItemDelegate {
-    func selectImagesButtonTapped() {
-        self.deselectAllFoldersObjects()
-        self.deselectAllPhotoObjects()
-        if isEditMode {
-            collectionView?.reloadData()
-        }
-        isEditMode.toggle()
-    }
-    
-    func shareImageButtonTapped() {
-            var vetImgs = [UIImage]()
-            for photo in modelData where photo.isSelected == true {
-                vetImgs.append(photo.image)
-            }
-            
-            if !vetImgs.isEmpty {
-                let activityVC = UIActivityViewController(activityItems: vetImgs, applicationActivities: nil)
-                self.present(activityVC, animated: true)
-                self.deselectAllFoldersObjects()
-                self.deselectAllPhotoObjects()
-            }
-    }
-    
-    func deleteButtonTapped() {
-        showConfirmationDelete {
-            for folder in self.folders where folder.isSelected == true {
-                self.folders = self.foldersService.delete(folder: folder.name, basePath: self.basePath).map { folderName in
-                    return Folder(name: folderName, isSelected: false)
-                }
-            }
-            if self.folders.isEmpty {
-                self.filesIsExpanded = true
-            }
-            self.deselectAllFoldersObjects()
-            self.collectionView?.reloadSections(IndexSet(integer: 0))
-            
-            for photo in self.modelData where photo.isSelected == true {
-                self.modelController.deleteImageObject(name: photo.name, basePath: self.basePath)
-                if let index = self.modelData.firstIndex(where: { $0.name == photo.name }) {
-                    self.modelData.remove(at: index)
-                }
-            }
-            self.deselectAllPhotoObjects()
-            self.collectionView?.reloadSections(IndexSet(integer: 1))
-        }
-    }
 }
 
 extension CollectionViewController {
