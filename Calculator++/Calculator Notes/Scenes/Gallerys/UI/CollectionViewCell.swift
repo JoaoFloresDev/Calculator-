@@ -18,22 +18,6 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageCell: UIImageView!
     
-    var isInEditingMode: Bool = false {
-        didSet {
-            checkmarkLabel.isHidden = !isInEditingMode
-            selectedItem.isHidden = !isInEditingMode
-        }
-    }
-    
-    override var isSelected: Bool {
-        didSet {
-            if isInEditingMode {
-                checkmarkLabel.text = isSelected ? "✓" : ""
-                selectedItem.alpha = isSelected ? 0.5 : 0
-            }
-        }
-    }
-    
     var isSelectedCell: Bool = false {
         didSet {
             checkmarkLabel.text = isSelectedCell ? "✓" : ""
@@ -41,4 +25,3 @@ class CollectionViewCell: UICollectionViewCell {
         }
     }
 }
-

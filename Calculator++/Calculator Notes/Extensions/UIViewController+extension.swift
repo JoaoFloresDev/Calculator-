@@ -68,7 +68,8 @@ extension UIViewController {
         alert.modalPresentationStyle = .popover
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completion()
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completion()
         }))
         
         present(alert, animated: true, completion: nil)

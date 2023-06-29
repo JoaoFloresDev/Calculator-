@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import os.log
 
 class ModelController {
     static let shared = ModelController()
@@ -17,14 +18,24 @@ class ModelController {
     
     var savedObjects = [NSManagedObject]()
     var images = [Photo]()
-    var managedContext: NSManagedObjectContext!
     
-    init() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        managedContext = appDelegate.persistentContainer.viewContext
+    private var managedContext: NSManagedObjectContext? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        return appDelegate.persistentContainer.viewContext
     }
     
+    private let subsystem = "com.example.calculatornotes"
+    private let category = "errors"
+    
+    // MARK: - Fetching
     func fetchImageObjectsInit(basePath: String) -> [Photo] {
+        guard let managedContext = managedContext else {
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
+            return []
+        }
+        
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
         do {
@@ -52,6 +63,11 @@ class ModelController {
     }
     
     func saveImageObject(image: UIImage, basePath: String) -> Photo? {
+        guard let managedContext = managedContext else {
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
+            return nil
+        }
+        
         let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
         
         if let imageName = imageName,
@@ -71,7 +87,12 @@ class ModelController {
     }
 
     func deleteImageObject(name: String, basePath: String) {
-        fetchImageObjectsInit(basePath: basePath)
+        guard let managedContext = managedContext else {
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
+            return
+        }
+        
+        _ = fetchImageObjectsInit(basePath: basePath)
         
         // Procura o objeto de imagem com o nome fornecido
         if let imageObjectToDelete = savedObjects.first(where: { ($0 as? StoredImage)?.imageName == name }) as? StoredImage {
@@ -87,12 +108,12 @@ class ModelController {
                 // Exclui a imagem associada ao objeto
                 if let imageName = imageObjectToDelete.imageName {
                     ImageController.shared.deleteImage(imageName: imageName)
+                    images.removeAll { $0.name == imageName }
                 }
                 
                 // Remove o objeto de imagem e a foto associada da matriz
                 if let index = imageIndex {
                     savedObjects.remove(at: index)
-                    images.remove(at: index)
                 }
                 
                 print("Image object was deleted.")

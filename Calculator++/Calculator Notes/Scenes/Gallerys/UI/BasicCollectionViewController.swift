@@ -56,24 +56,6 @@ class BasicCollectionViewController: UICollectionViewController {
         navigationItem.leftBarButtonItem = editLeftBarButtonItem
     }
     
-    // Collection View
-    func setEditionMode(_ editing: Bool) {
-        editLeftBarButtonItem?.setEditing(editing)
-        
-        collectionView?.allowsMultipleSelection = true
-        
-        if let indexPaths = collectionView?.indexPathsForVisibleItems {
-            for indexPath in indexPaths {
-                if let cell = collectionView?.cellForItem(at: indexPath) as? CollectionViewCell {
-                    cell.isInEditingMode = editing
-                }
-                if let cell = collectionView?.cellForItem(at: indexPath) as? FolderCollectionViewCell {
-                    cell.isInEditingMode = editing
-                }
-            }
-        }
-    }
-    
     func commonViewDidLoad() {
         setupCollectionViewLayout()
         
