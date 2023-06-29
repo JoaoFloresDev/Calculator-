@@ -65,3 +65,4 @@ hideAllVideos = "Hide all saved videos";
 showAllVideos = "Show all saved videos";
 hideAllPhotos = "Hide all saved photos";
 showAllPhotos = "Show all saved photos";
+wouldLikeSetProtection = "Would you like to add security to your gallery?";

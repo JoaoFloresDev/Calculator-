@@ -128,8 +128,9 @@ class PasswordViewController: UIViewController {
             clearAll()
         }
         else if(keyCurret == password || password == keyRecovery) {
-            UserDefaults.standard.set (keyCurret, forKey: "Key")
-                self.performSegue(withIdentifier: "showNotes2", sender: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+            self.present(homeViewController, animated: true)
         }
         else {
             let alert = UIAlertController(title: Text.incorrectPassword.rawValue.localized(),
@@ -179,7 +180,7 @@ class PasswordViewController: UIViewController {
             instructionsLabel.setText(.instructionFirstStepBank)
             captureKey = 1
         }
-
+        
         buttonFaceID.isHidden = UserDefaultService().getRecoveryStatus()
         
         instructionsLabel.setText(.welcomeInstructionBank)

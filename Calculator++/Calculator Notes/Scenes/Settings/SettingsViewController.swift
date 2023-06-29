@@ -10,7 +10,7 @@ import UIKit
 import StoreKit
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
-
+    
     // MARK: - IBOutlet
     
     @IBOutlet weak var switchButton: UISwitch!
@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var calcModeView: UIView!
     @IBOutlet weak var calcModeImage: UIImageView!
-
+    
     @IBOutlet weak var noProtectionImage: UIImageView!
     @IBOutlet weak var noProtection: UIButton!
     
@@ -39,20 +39,30 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         UserDefaultService().setRecoveryStatus(status: sender.isOn)
     }
-
+    
     @IBAction func noProtectionPressed(_ sender: Any) {
         UserDefaultService().setTypeProtection(protectionMode: .noProtection)
         showProtectionType(typeProtection: .noProtection)
     }
-
+    
     @IBAction func showBankMode(_ sender: Any) {
-        performSegue(withIdentifier: Segue.ChangePasswordSegue.rawValue, sender: nil)
+        let storyboard = UIStoryboard(name: "BankMode", bundle: nil)
+        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordBankMode")
+        present(changePasswordCalcMode, animated: true)
     }
-
+    
     @IBAction func showCalculatorMode(_ sender: Any) {
-        performSegue(withIdentifier: Segue.ChangeCalculatorSegue.rawValue, sender: nil)
+        let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
+        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
+        present(changePasswordCalcMode, animated: true)
     }
-
+    
+    @IBAction func premiumVersionPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+        present(changePasswordCalcMode, animated: true)
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         SKStoreReviewController.requestReview()
     }
@@ -67,29 +77,29 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         rateApp.addGestureRecognizer(tap)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
     }
-
+    
     // MARK: - Private Methods
     private func showProtectionType(typeProtection: ProtectionMode) {
         switch typeProtection {
-            case .calculator:
-                bankModeImage.setImage(.diselectedIndicator)
-                calcModeImage.setImage(.selectedIndicator)
-                noProtectionImage.setImage(.diselectedIndicator)
+        case .calculator:
+            bankModeImage.setImage(.diselectedIndicator)
+            calcModeImage.setImage(.selectedIndicator)
+            noProtectionImage.setImage(.diselectedIndicator)
             
-            case .noProtection:
-                bankModeImage.setImage(.diselectedIndicator)
-                calcModeImage.setImage(.diselectedIndicator)
-                noProtectionImage.setImage(.selectedIndicator)
-
-            default: // .bank
-                bankModeImage.setImage(.selectedIndicator)
-                calcModeImage.setImage(.diselectedIndicator)
-                noProtectionImage.setImage(.diselectedIndicator)
+        case .noProtection:
+            bankModeImage.setImage(.diselectedIndicator)
+            calcModeImage.setImage(.diselectedIndicator)
+            noProtectionImage.setImage(.selectedIndicator)
+            
+        case .bank:
+            bankModeImage.setImage(.selectedIndicator)
+            calcModeImage.setImage(.diselectedIndicator)
+            noProtectionImage.setImage(.diselectedIndicator)
         }
     }
     

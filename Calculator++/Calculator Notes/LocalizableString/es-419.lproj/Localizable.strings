@@ -64,3 +64,4 @@ hideAllVideos = "Ocultar todos los videos guardados";
 showAllVideos = "Mostrar todos los videos guardados";
 hideAllPhotos = "Ocultar todas las fotos guardadas";
 showAllPhotos = "Mostrar todas las fotos guardadas";
+wouldLikeSetProtection = "¿Te gustaría añadir seguridad a tu galería?";

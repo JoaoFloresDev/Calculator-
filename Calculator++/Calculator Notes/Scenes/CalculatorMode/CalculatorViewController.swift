@@ -19,7 +19,6 @@ enum Operation:String {
 
 class CalculatorViewController: BaseCalculatorViewController {
 
-    
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var faceIDButton: UIButton!
     @IBAction func useFaceID(_ sender: UIButton) {
@@ -38,12 +37,20 @@ class CalculatorViewController: BaseCalculatorViewController {
                         instructionText = instructionText.replacingOccurrences(of: "*****", with: key)
                         self.instructionsLabel.text = instructionText
                         self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
-                        self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                        self.present(homeViewController, animated: true)
+                    } else {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                        self.present(homeViewController, animated: true)
                     }
                 }
             }
         } else {
-            self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+            self.present(homeViewController, animated: true)
         }
     }
     
@@ -79,8 +86,9 @@ class CalculatorViewController: BaseCalculatorViewController {
             currentOperation = .NULL
             
             outputLbl.text = "0"
-            
-            self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+            self.present(homeViewController, animated: true)
         }
         
         operation(operation: currentOperation)

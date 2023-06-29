@@ -65,6 +65,8 @@ enum Text: String {
     case hideAllPhotos
     case showAllPhotos
     
+    case wouldLikeSetProtection
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",
@@ -84,9 +86,7 @@ enum Img: String {
     case keyFill
 }
 
-enum Segue: String {
-    case ChangePasswordSegue
-    case ChangeCalculatorSegue
-    case showNotes
-    case setupCalc
-}
+//enum Segue: String {
+//    case ChangePasswordSegue
+//    case ChangeCalculatorSegue
+//}

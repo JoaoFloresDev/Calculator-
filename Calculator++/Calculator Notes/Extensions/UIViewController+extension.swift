@@ -85,4 +85,17 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // First use
+    func showSetProtectionAsk(completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: Text.wouldLikeSetProtection.localized(), message: nil, preferredStyle: .alert)
+        
+        alert.modalPresentationStyle = .popover
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completion()
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
 }

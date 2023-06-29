@@ -21,80 +21,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
-        if UserDefaultService().getTypeProtection() != ProtectionMode.noProtection {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if UserDefaultService().getTypeProtection() == ProtectionMode.calculator {
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
-
-                self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
-            } else {
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
-
-                self.window?.rootViewController = initialViewController
-                self.window?.makeKeyAndVisible()
-            }
-            WLEmptyState.configure()
+        if UserDefaultService().getTypeProtection() == ProtectionMode.noProtection {
+                return true
         }
         
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        if UserDefaultService().getTypeProtection() == ProtectionMode.calculator {
+            let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            let storyboard = UIStoryboard(name: "BankMode", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+        
+        WLEmptyState.configure()
         return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-
-        if (UserDefaults.standard.bool(forKey: "InGallery") == true) {
-            if UserDefaultService().getTypeProtection() != .noProtection {
-                if (UserDefaultService().getTypeProtection() == .calculator) {
-                    self.window = UIWindow(frame: UIScreen.main.bounds)
-
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
-
-                    self.window?.rootViewController = initialViewController
-                    self.window?.makeKeyAndVisible()
-                } else {
-                    self.window = UIWindow(frame: UIScreen.main.bounds)
-
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
-
-                    self.window?.rootViewController = initialViewController
-                    self.window?.makeKeyAndVisible()
-                }
-
-                if let rootViewController = window?.rootViewController as? CalculatorViewController,
-                   let presentedViewController = rootViewController.presentedViewController{
-                    presentedViewController.dismiss(animated: false, completion: nil)
-                }
-
-                else if let rootViewController = window?.rootViewController as? PasswordViewController,
-                        let presentedViewController = rootViewController.presentedViewController{
-                    presentedViewController.dismiss(animated: false, completion: nil)
-                }
-                UserDefaults.standard.set(false, forKey: "InGallery")
-            }
+        if isShieldViewController() {
+            return
+        }
+        
+        if UserDefaultService().getTypeProtection() == .noProtection {
+            return
+        }
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        if (UserDefaultService().getTypeProtection() == .calculator) {
+            let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            let storyboard = UIStoryboard(name: "BankMode", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+        
+        if let rootViewController = window?.rootViewController as? CalculatorViewController,
+           let presentedViewController = rootViewController.presentedViewController{
+            presentedViewController.dismiss(animated: false, completion: nil)
+        }
+        
+        else if let rootViewController = window?.rootViewController as? PasswordViewController,
+                let presentedViewController = rootViewController.presentedViewController{
+            presentedViewController.dismiss(animated: false, completion: nil)
         }
     }
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-    
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    func isShieldViewController() -> Bool {
+        if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+            var currentViewController = rootViewController
+            
+            while let presentedViewController = currentViewController.presentedViewController {
+                currentViewController = presentedViewController
+            }
+            return currentViewController is PasswordViewController ||
+            currentViewController is ChangePasswordViewController ||
+            currentViewController is CalculatorViewController ||
+            currentViewController is ChangeCalculatorViewController
+        }
         
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        return false
     }
     
     // MARK: - Core Data stack

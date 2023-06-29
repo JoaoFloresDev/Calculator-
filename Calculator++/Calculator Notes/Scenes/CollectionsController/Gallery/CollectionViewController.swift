@@ -21,13 +21,13 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     var modelData: [Photo] = []
     var folders: [Folder] = []
     var modelController = ModelController()
-
+    
     var isEditMode = false {
         didSet {
             editLeftBarButtonItem?.setEditing(isEditMode)
         }
     }
-
+    
     // MARK: - IBOutlet
     @IBOutlet weak var placeHolderImage: UIImageView!
     
@@ -44,11 +44,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         } else {
             self.setText(.gallery)
         }
-
+        
         setupAds()
         setupFirstUse()
     }
-
+    
     private func setupFolders() {
         folders = foldersService.getFolders(basePath: basePath).map { folderName in
             return Folder(name: folderName, isSelected: false)
@@ -59,34 +59,35 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             self.collectionView?.reloadSections(IndexSet(integer: .zero))
         }
     }
-
+    
     private func setupFirstUse() {
         let firstUseService = UserDefaultService()
-
+        
         if !firstUseService.getFirstUseStatus() {
             firstUseService.setFirstUseStatus(status: true)
-            performSegue(withIdentifier: Segue.setupCalc.rawValue, sender: nil)
+            showSetProtectionAsk {
+                let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
+                self.present(changePasswordCalcMode, animated: true)
+            }
         }
-
-        UserDefaults.standard.set(true, forKey: "InGallery")
-        firstUseService.setFirstUseStatus(status: true)
-
+        
         let controllers = self.tabBarController?.viewControllers
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
-
+        
         if basePath == deepSeparatorPath {
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
     }
-
+    
     func deselectAllFoldersObjects() {
         for index in 0 ..< folders.count {
             folders[index].isSelected = false
         }
     }
-
+    
     func deselectAllFileObjects() {
         for index in 0 ..< modelData.count {
             modelData[index].isSelected = false
@@ -103,19 +104,19 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
         }
         isEditMode.toggle()
     }
-
+    
     func shareImageButtonTapped() {
         var photoArray = [UIImage]()
         for photo in modelData where photo.isSelected == true {
             photoArray.append(photo.image)
         }
-
+        
         if !photoArray.isEmpty {
             let activityVC = UIActivityViewController(activityItems: photoArray, applicationActivities: nil)
             self.present(activityVC, animated: true)
         }
     }
-
+    
     func deleteButtonTapped() {
         showConfirmationDelete {
             for folder in self.folders where folder.isSelected == true {
@@ -128,7 +129,7 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
             }
             self.deselectAllFoldersObjects()
             self.collectionView?.reloadSections(IndexSet(integer: 0))
-
+            
             for photo in self.modelData where photo.isSelected == true {
                 self.modelController.deleteImageObject(name: photo.name, basePath: self.basePath)
                 if let index = self.modelData.firstIndex(where: { $0.name == photo.name }) {
@@ -150,11 +151,11 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
             self.filesIsExpanded = true
         }
     }
-
+    
     func addFolderButtonTapped() {
         addFolder()
     }
-
+    
     func addFolder() {
         showInputDialog(title: Text.folderTitle.rawValue.localized(),
                         actionTitle: Text.createActionTitle.rawValue.localized(),
@@ -177,14 +178,14 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
             }
         })
     }
-
+    
 }
 
 extension CollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
         placeHolderImage.isHidden = !presentPlaceHolderImage
@@ -199,7 +200,7 @@ extension CollectionViewController {
             }
         }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
@@ -218,14 +219,14 @@ extension CollectionViewController {
                     cell.isSelectedCell = modelData[indexPath.item].isSelected
                 }
                 cell.applyshadowWithCorner()
-
+                
                 return cell
             }
         }
-
+        
         return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditMode {
             switch indexPath.section {
@@ -247,7 +248,7 @@ extension CollectionViewController {
             updateSelectedPhotos(indexPath: indexPath)
         }
     }
-
+    
     func updateSelectedPhotos(indexPath: IndexPath) {
         if indexPath.section == .zero {
             folders[indexPath.row].isSelected.toggle()
@@ -256,7 +257,7 @@ extension CollectionViewController {
         }
         self.collectionView?.reloadItems(at: [indexPath])
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             // Dequeue and configure the header view
@@ -289,10 +290,10 @@ extension CollectionViewController {
             guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView", for: indexPath) as? FooterView else {
                 return UICollectionReusableView()
             }
-
+            
             return footerView
         }
-
+        
         // Return an empty view for other supplementary elements
         return UICollectionReusableView()
     }
@@ -316,7 +317,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             }
         }
     }
-
+    
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
@@ -327,11 +328,11 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         })
         return thumbnail
     }
-
+    
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
@@ -342,11 +343,11 @@ extension CollectionViewController: GalleryItemsDataSource {
     func itemCount() -> Int {
         return modelData.count
     }
-
+    
     func provideGalleryItem(_ index: Int) -> GalleryItem {
         let imageView = UIImageView(image: modelData[index].image)
         let galleryItem = GalleryItem.image { $0(imageView.image) }
-
+        
         return galleryItem
     }
 }
@@ -355,11 +356,11 @@ extension CollectionViewController {
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
         adsHandler.interstitialDidReceiveAd(ad)
     }
-
+    
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         adsHandler.interstitialDidDismissScreen(delegate: self)
     }
-
+    
     private func setupAds() {
         adsHandler.setupAds(controller: self,
                             bannerDelegate: self,
