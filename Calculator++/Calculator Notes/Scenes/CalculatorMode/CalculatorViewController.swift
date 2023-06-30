@@ -18,7 +18,7 @@ enum Operation:String {
 }
 
 class CalculatorViewController: BaseCalculatorViewController {
-
+    
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var faceIDButton: UIButton!
     @IBAction func useFaceID(_ sender: UIButton) {
@@ -30,8 +30,8 @@ class CalculatorViewController: BaseCalculatorViewController {
         
         if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
             myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                DispatchQueue.main.async {
-                    if success {
+                if success {
+                    DispatchQueue.main.async {
                         var instructionText = Text.instructionSecondStepCalc.rawValue.localized()
                         let key = UserDefaults.standard.string(forKey: "Key") ?? "314159"
                         instructionText = instructionText.replacingOccurrences(of: "*****", with: key)
@@ -40,18 +40,24 @@ class CalculatorViewController: BaseCalculatorViewController {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
                         self.present(homeViewController, animated: true)
-                    } else {
+                    }
+                } else {
+                    DispatchQueue.main.async {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
                         self.present(homeViewController, animated: true)
                     }
                 }
+                
             }
         } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-            self.present(homeViewController, animated: true)
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                self.present(homeViewController, animated: true)
+            }
         }
+        
     }
     
     @IBAction func numberPressed(_ sender: UIButton) {
@@ -70,7 +76,7 @@ class CalculatorViewController: BaseCalculatorViewController {
             key = String(runningNumber)
             captureKey = 2
             keyTemp = key
-
+            
             clear()
             
         } else if(captureKey == 2 && String(runningNumber) == keyTemp && runningNumber.count <= 6 && runningNumber.count >= 1) {

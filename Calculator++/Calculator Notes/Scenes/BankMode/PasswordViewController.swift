@@ -43,20 +43,36 @@ class PasswordViewController: UIViewController {
             
             var authError: NSError?
             
-            if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
-                myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                    if success {
-                        DispatchQueue.main.async {
+                if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
+                    myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
+                        
+                        if success {
                             if success {
-                                self.instructionsLabel.text = "Key: "
-                                self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
-                                self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
-                                self.performSegue(withIdentifier: "showNotes2", sender: nil)
+                                DispatchQueue.main.async {
+                                    self.instructionsLabel.text = "Key: "
+                                    self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
+                                    self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                                    self.present(homeViewController, animated: true)
+                                }
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                                self.present(homeViewController, animated: true)
                             }
                         }
+                        
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                        self.present(homeViewController, animated: true)
                     }
                 }
-            }
         }
     }
     
