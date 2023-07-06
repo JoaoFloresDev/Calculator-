@@ -11,7 +11,7 @@ noProtection = "Sem proteção";
 hideRecoverButton = "Remover botão recuperar senha";
 chooseProtectionMode = "Escolha o modo de proteção";
 
-settings = "Configurações";
+settings = "Proteções";
 gallery = "Galeria";
 video = "Video";
 notes = "Notas";

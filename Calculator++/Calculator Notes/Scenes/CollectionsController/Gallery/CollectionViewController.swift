@@ -47,6 +47,19 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         
         setupAds()
         setupFirstUse()
+        
+        setupTabBars()
+        
+        if basePath == deepSeparatorPath {
+            let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
+            UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
+        }
+    }
+    
+    private func setupTabBars() {
+        let controllers = self.tabBarController?.viewControllers
+        controllers?[2].setText(.notes)
+        controllers?[3].setText(.settings)
     }
     
     private func setupFolders() {
@@ -65,20 +78,20 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         
         if !firstUseService.getFirstUseStatus() {
             firstUseService.setFirstUseStatus(status: true)
-            showSetProtectionAsk {
-                let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
-                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
-                self.present(changePasswordCalcMode, animated: true)
+            showSetProtectionAsk { createProtection in
+                if createProtection {
+                    let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
+                    let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
+                    self.present(changePasswordCalcMode, animated: true)
+                } else {
+                    if let tabBarController = self.tabBarController {
+                        let desiredTabIndex = 3
+                        if desiredTabIndex < tabBarController.viewControllers?.count ?? 0 {
+                            tabBarController.selectedIndex = desiredTabIndex
+                        }
+                    }
+                }
             }
-        }
-        
-        let controllers = self.tabBarController?.viewControllers
-        controllers?[2].setText(.notes)
-        controllers?[3].setText(.settings)
-        
-        if basePath == deepSeparatorPath {
-            let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
-            UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
     }
     

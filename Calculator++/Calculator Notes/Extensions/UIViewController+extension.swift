@@ -76,24 +76,28 @@ extension UIViewController {
     }
     
     // Premium
-    func showBePremiumToUse() {
+    func showBePremiumToUse(completion: @escaping () -> Void) {
         let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
                                       message: Text.premiumToolMessage.rawValue.localized(),
                                       preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "See", style: .default, handler: { _ in
+            completion()
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
     // First use
-    func showSetProtectionAsk(completion: @escaping () -> Void) {
+    func showSetProtectionAsk(completion: @escaping (Bool) -> Void) {
         let alert = UIAlertController(title: Text.wouldLikeSetProtection.localized(), message: nil, preferredStyle: .alert)
         
         alert.modalPresentationStyle = .popover
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+            completion(false)
+        }))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            completion()
+            completion(true)
         }))
         
         present(alert, animated: true, completion: nil)

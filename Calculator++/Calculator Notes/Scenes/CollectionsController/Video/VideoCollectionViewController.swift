@@ -131,7 +131,11 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
         if isPremium {
             presentPickerController()
         } else {
-            showBePremiumToUse()
+            showBePremiumToUse {
+                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                self.present(changePasswordCalcMode, animated: true)
+            }
         }
     }
     
@@ -139,7 +143,11 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
         if isPremium {
             addFolder()
         } else {
-            showBePremiumToUse()
+            showBePremiumToUse {
+                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                self.present(changePasswordCalcMode, animated: true)
+            }
         }
     }
     
