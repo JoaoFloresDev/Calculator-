@@ -1,67 +1,68 @@
-/* 
+/*
   Localizable.strings
   Calculator Notes
 
   Created by Joao Victor Flores da Costa on 06/02/22.
-  Copyright © 2022 MakeSchool. All rights reserved.
+  Copyright © 2022 MakeSchool. Todos los derechos reservados.
 */
 
-premiumVersion = "Versión premium";
-noProtection = "Sin protección";
-hideRecoverButton = "Esconder recuperar contraseña";
-chooseProtectionMode = "Elija el modo de protección";
+"premiumVersion" = "Versión Premium";
+"noProtection" = "Sin Protección";
+"hideRecoverButton" = "Esconder recuperar contraseña";
+"chooseProtectionMode" = "Elegir modo de protección";
 
-settings = "Protecciones";
-gallery = "Galería";
-video = "Video";
-notes = "Notas";
+"settings" = "Configuración";
+"gallery" = "Galería";
+"video" = "Video";
+"notes" = "Notas";
 
-instructionFirstStepCalc = "Cree una contraseña y haga clic en el botón '='";
-instructionSecondStepCalc = "Llave: *****. Repita la contraseña y confirme con '='";
+"instructionFirstStepCalc" = "Crea una contraseña y pulsa el botón '='";
+"instructionSecondStepCalc" = "Contraseña: *****. Repite la contraseña y confirma con '='";
 
-instructionFirstStepBank = "Cree una contraseña y haga clic en 'Enter'";
-instructionSecondStepBank = "Llave: *****. Repita la contraseña y confirme con 'Enter'";
+"instructionFirstStepBank" = "Crea una contraseña y pulsa 'Enter'";
+"instructionSecondStepBank" = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
 
-bankModeHasBeenActivated = "Modo banco activado";
-calcModeHasBeenActivated = "Modo calculadora activado";
+"bankModeHasBeenActivated" = "Modo Caja Fuerte Activado";
+"calcModeHasBeenActivated" = "Modo Calculadora Activado";
 
-welcomeInstructionBank = "Escribe tu contraseña";
+"welcomeInstructionBank" = "Ingresa tu contraseña";
 
-done = "Hecho";
-edit = "Editar";
+"done" = "Hecho";
+"edit" = "Editar";
 
-premiumToolTitle = "Herramienta Premium";
-premiumToolMessage = "El soporte de video solo se ofrece en la versión Premium. Ver actualizaciones en Configuración";
+"premiumToolTitle" = "Herramienta Premium";
+"premiumToolMessage" = "El soporte de video solo está disponible para usuarios premium. Consulta las actualizaciones en la sección de Configuración";
 
-save = "Salvar";
-cancel = "Cancelar";
+"save" = "Guardar";
+"cancel" = "Cancelar";
+"ok" = "Confirmar";
 
-errorTitle = "Unexpected error";
-errorMessage = "Try again later";
+"errorTitle" = "Error Inesperado";
+"errorMessage" = "Por favor, inténtalo nuevamente más tarde";
+"deleteFiles" = "¿Eliminar archivo?";
 
-incorrectPassword = "Contraseña incorrecta";
-tryAgain = "Intentar otra vez";
-
-deleteFiles = "¿Borrar archivos?";
+"incorrectPassword" = "Contraseña incorrecta";
+"tryAgain" = "Intentar de nuevo";
 
 // Purchase
-products = "Productos";
-loading = "Cargando...";
-close = "Descartar";
-restore = "Restaurar";
-buy = "Comprar";
+"products" = "Productos";
+"loading" = "Cargando...";
+"close" = "Cerrar";
+"restore" = "Restaurar";
+"buy" = "Comprar";
 
-folderTitle = "Nombre de Carpeta";
-createActionTitle = "Crear";
-cancelTitle = "Cancelar";
-inputPlaceholder = "Ingrese el nuevo nombre de la carpeta";
-folderNameAlreadyUsedTitle = "Nombre Ya Utilizado";
-folderNameAlreadyUsedText = "Elija otro nombre para la carpeta";
-deleteConfirmationTitle = "¿Eliminar archivos?";
+// folder
+"folderTitle" = "Nombre de Carpeta";
+"createActionTitle" = "Crear";
+"cancelTitle" = "Cancelar";
+"inputPlaceholder" = "Ingresa el nombre de la nueva carpeta";
+"folderNameAlreadyUsedTitle" = "Nombre Ya Utilizado";
+"folderNameAlreadyUsedText" = "Elige otro nombre para la carpeta";
+"deleteConfirmationTitle" = "¿Eliminar Archivos?";
 
 // Show All
-hideAllVideos = "Ocultar todos los videos guardados";
-showAllVideos = "Mostrar todos los videos guardados";
-hideAllPhotos = "Ocultar todas las fotos guardadas";
-showAllPhotos = "Mostrar todas las fotos guardadas";
-wouldLikeSetProtection = "¿Te gustaría añadir seguridad a tu galería?";
+"hideAllVideos" = "Ocultar Todos los Videos Guardados";
+"showAllVideos" = "Mostrar Todos los Videos Guardados";
+"hideAllPhotos" = "Ocultar Todas las Fotos Guardadas";
+"showAllPhotos" = "Mostrar Todas las Fotos Guardadas";
+"wouldLikeSetProtection" = "¿Deseas añadir protección a tu galería?";

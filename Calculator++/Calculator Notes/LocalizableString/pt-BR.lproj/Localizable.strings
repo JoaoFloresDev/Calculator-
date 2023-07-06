@@ -11,7 +11,7 @@ noProtection = "Sem proteção";
 hideRecoverButton = "Remover botão recuperar senha";
 chooseProtectionMode = "Escolha o modo de proteção";
 
-settings = "Proteções";
+settings = "Configurações";
 gallery = "Galeria";
 video = "Video";
 notes = "Notas";
@@ -35,6 +35,7 @@ premiumToolMessage = "O suporte para vídeo é apenas oferecido para usuários p
 
 save = "Salvar";
 cancel = "Cancelar";
+ok = "Confirmar";
 
 errorTitle = "Erro inesperado";
 errorMessage = "Tente novamente mais tarde";

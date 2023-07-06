@@ -67,7 +67,7 @@ extension UIViewController {
         
         alert.modalPresentationStyle = .popover
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: Text.cancel.localized(), style: .destructive, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             completion()
         }))
@@ -80,7 +80,7 @@ extension UIViewController {
         let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
                                       message: Text.premiumToolMessage.rawValue.localized(),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: Text.cancel.localized(), style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "See", style: .default, handler: { _ in
             completion()
         }))
@@ -93,7 +93,7 @@ extension UIViewController {
         
         alert.modalPresentationStyle = .popover
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: Text.cancel.localized(), style: .default, handler: { _ in
             completion(false)
         }))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in

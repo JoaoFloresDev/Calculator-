@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Calculator Notes
 
@@ -6,63 +6,63 @@
   Copyright © 2022 MakeSchool. All rights reserved.
 */
 
-premiumVersion = "Premium version";
-noProtection = "No protection";
-hideRecoverButton = "Remove recover password button";
-chooseProtectionMode = "Choose protection mode";
+"premiumVersion" = "Premium Version";
+"noProtection" = "No Protection";
+"hideRecoverButton" = "Hide Password Recovery Button";
+"chooseProtectionMode" = "Choose Protection Mode";
 
-settings = "Protections";
-gallery = "Gallery";
-video = "Video";
-notes = "Notes";
+"settings" = "Settings";
+"gallery" = "Gallery";
+"video" = "Video";
+"notes" = "Notes";
 
-instructionFirstStepCalc = "Create a password and click the '=' button";
-instructionSecondStepCalc = "Key: *****. Repeat password and confirm with '='";
+"instructionFirstStepCalc" = "Create a password and tap the '=' button";
+"instructionSecondStepCalc" = "Password: *****. Repeat the password and confirm with '='";
 
-instructionFirstStepBank = "Create a password and click 'enter'";
-instructionSecondStepBank = "Key: *****. Repeat password and confirm with 'Enter'";
+"instructionFirstStepBank" = "Create a password and tap 'Enter'";
+"instructionSecondStepBank" = "Password: *****. Repeat the password and confirm with 'Enter'";
 
-bankModeHasBeenActivated = "Bank mode activated";
-calcModeHasBeenActivated = "Calculator mode activated";
+"bankModeHasBeenActivated" = "Vault Mode Activated";
+"calcModeHasBeenActivated" = "Calculator Mode Activated";
 
-welcomeInstructionBank = "Type your password";
+"welcomeInstructionBank" = "Enter your password";
 
-done = "Done";
-edit = "Edit";
+"done" = "Done";
+"edit" = "Edit";
 
-premiumToolTitle = "Premium Tool";
-premiumToolMessage = "Video support is only offered in the Premium Version. See upgrades in Settings";
+"premiumToolTitle" = "Premium Tool";
+"premiumToolMessage" = "Video support is only available for premium users. Check out the upgrades in the Settings section";
 
-save = "Save";
-cancel = "Cancel";
+"save" = "Save";
+"cancel" = "Cancel";
+"ok" = "Confirm";
 
-errorTitle = "Unexpected error";
-errorMessage = "Try again later";
+"errorTitle" = "Unexpected Error";
+"errorMessage" = "Please try again later";
+"deleteFiles" = "Delete file?";
 
-incorrectPassword = "Incorrect password";
-tryAgain = "Try again";
-
-deleteFiles = "Delete files?";
+"incorrectPassword" = "Incorrect Password";
+"tryAgain" = "Try Again";
 
 // Purchase
-products = "Products";
-loading = "Loading...";
-close = "Close";
-restore = "Restore";
-buy = "Buy";
+"products" = "Products";
+"loading" = "Loading...";
+"close" = "Close";
+"restore" = "Restore";
+"buy" = "Buy";
 
 // folder
-folderTitle = "Folder Name";
-createActionTitle = "Create";
-cancelTitle = "Cancel";
-inputPlaceholder = "Enter the new folder name";
-folderNameAlreadyUsedTitle = "Name Already Used";
-folderNameAlreadyUsedText = "Choose another name for the folder";
-deleteConfirmationTitle = "Delete files?";
+"folderTitle" = "Folder Name";
+"createActionTitle" = "Create";
+"cancelTitle" = "Cancel";
+"inputPlaceholder" = "Enter the name of the new folder";
+"folderNameAlreadyUsedTitle" = "Name Already Used";
+"folderNameAlreadyUsedText" = "Choose another name for the folder";
+"deleteConfirmationTitle" = "Delete Files?";
 
 // Show All
-hideAllVideos = "Hide all saved videos";
-showAllVideos = "Show all saved videos";
-hideAllPhotos = "Hide all saved photos";
-showAllPhotos = "Show all saved photos";
-wouldLikeSetProtection = "Would you like to add security to your gallery?";
+"hideAllVideos" = "Hide All Saved Videos";
+"showAllVideos" = "Show All Saved Videos";
+"hideAllPhotos" = "Hide All Saved Photos";
+"showAllPhotos" = "Show All Saved Photos";
+"wouldLikeSetProtection" = "Would you like to add protection to your gallery?";
