@@ -13,9 +13,11 @@ extension UIViewController {
     func setText(_ text: Text) {
         self.title = text.rawValue.localized()
     }
+}
 
+struct Alerts {
     // Errors
-    func showError(title: String, text: String, completion: @escaping () -> Void) {
+    static func showError(title: String, text: String, controller: UIViewController, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: title,
                                       message: text,
                                       preferredStyle: .alert)
@@ -23,20 +25,21 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completion()
         }))
         
-        self.present(alert, animated: true)
+        controller.present(alert, animated: true)
     }
     
-    func showGenericError() {
+    static func showGenericError(controller: UIViewController) {
         let alert = UIAlertController(title: Text.errorTitle.rawValue.localized(),
                                       message: Text.errorMessage.rawValue.localized(),
                                       preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        controller.present(alert, animated: true, completion: nil)
     }
     
     // Folders
-    func showInputDialog(title:String? = nil,
+    static func showInputDialog(title:String? = nil,
                          subtitle:String? = nil,
+                         controller: UIViewController,
                          actionTitle:String?,
                          cancelTitle:String?,
                          inputPlaceholder:String? = nil,
@@ -58,11 +61,11 @@ extension UIViewController {
             actionHandler?(textField.text)
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        controller.present(alert, animated: true, completion: nil)
     }
     
     // Edition
-    func showConfirmationDelete(completion: @escaping () -> Void) {
+    static func showConfirmationDelete(controller: UIViewController, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: Text.deleteConfirmationTitle.rawValue.localized(), message: nil, preferredStyle: .alert)
         
         alert.modalPresentationStyle = .popover
@@ -72,11 +75,11 @@ extension UIViewController {
             completion()
         }))
         
-        present(alert, animated: true, completion: nil)
+        controller.present(alert, animated: true, completion: nil)
     }
     
     // Premium
-    func showBePremiumToUse(completion: @escaping () -> Void) {
+    static func showBePremiumToUse(controller: UIViewController, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: Text.premiumToolTitle.rawValue.localized(),
                                       message: Text.premiumToolMessage.rawValue.localized(),
                                       preferredStyle: .alert)
@@ -84,11 +87,11 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "See", style: .default, handler: { _ in
             completion()
         }))
-        self.present(alert, animated: true, completion: nil)
+        controller.present(alert, animated: true, completion: nil)
     }
     
     // First use
-    func showSetProtectionAsk(completion: @escaping (Bool) -> Void) {
+    static func showSetProtectionAsk(controller: UIViewController, completion: @escaping (Bool) -> Void) {
         let alert = UIAlertController(title: Text.wouldLikeSetProtection.localized(), message: nil, preferredStyle: .alert)
         
         alert.modalPresentationStyle = .popover
@@ -100,6 +103,6 @@ extension UIViewController {
             completion(true)
         }))
         
-        present(alert, animated: true, completion: nil)
+        controller.present(alert, animated: true, completion: nil)
     }
 }

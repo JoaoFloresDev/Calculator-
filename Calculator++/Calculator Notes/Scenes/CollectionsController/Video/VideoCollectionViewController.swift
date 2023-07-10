@@ -102,7 +102,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     }
     
     func deleteButtonTapped() {
-        showConfirmationDelete {
+        Alerts.showConfirmationDelete(controller: self) {
             for folder in self.folders where folder.isSelected == true {
                 self.folders = self.foldersService.delete(folder: folder.name, basePath: self.basePath).map { folderName in
                     return Folder(name: folderName, isSelected: false)
@@ -131,7 +131,7 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
         if isPremium {
             presentPickerController()
         } else {
-            showBePremiumToUse {
+            Alerts.showBePremiumToUse(controller: self) {
                 let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
                 let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
                 self.present(changePasswordCalcMode, animated: true)
@@ -143,7 +143,7 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
         if isPremium {
             addFolder()
         } else {
-            showBePremiumToUse {
+            Alerts.showBePremiumToUse(controller: self) {
                 let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
                 let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
                 self.present(changePasswordCalcMode, animated: true)
@@ -152,11 +152,11 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     }
     
     func addFolder() {
-        showInputDialog(title: Text.folderTitle.rawValue.localized(),
-                        actionTitle: Text.createActionTitle.rawValue.localized(),
-                        cancelTitle: Text.cancelTitle.rawValue.localized(),
-                        inputPlaceholder: Text.inputPlaceholder.rawValue.localized(),
-                        actionHandler: { (input: String?) in
+        Alerts.showInputDialog(title: Text.folderTitle.rawValue.localized(),
+                               actionTitle: Text.createActionTitle.rawValue.localized(), controller: self,
+                               cancelTitle: Text.cancelTitle.rawValue.localized(),
+                               inputPlaceholder: Text.inputPlaceholder.rawValue.localized(),
+                               actionHandler: { (input: String?) in
             if let input = input {
                 if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
                     self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { folderName in
@@ -164,9 +164,9 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
                     }
                     self.collectionView?.reloadSections(IndexSet(integer: .zero))
                 } else {
-                    self.showError(title: Text.folderNameAlreadyUsedTitle.rawValue.localized(),
-                                   text: Text.folderNameAlreadyUsedText.rawValue.localized(),
-                                   completion: {
+                    Alerts.showError(title: Text.folderNameAlreadyUsedTitle.rawValue.localized(),
+                                     text: Text.folderNameAlreadyUsedText.rawValue.localized(), controller: self,
+                                     completion: {
                         self.addFolder()
                     })
                 }
@@ -239,7 +239,7 @@ extension VideoCollectionViewController {
                 guard let videoURL = videoPaths[safe: indexPath.item],
                       let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoURL) else {
                     os_log("Failed to retrieve video URL", log: .default, type: .error)
-                    showGenericError()
+                    Alerts.showGenericError(controller: self)
                     return
                 }
                 
@@ -356,7 +356,7 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
     
     private func presentPickerController() {
         guard UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) else {
-            showGenericError()
+            Alerts.showGenericError(controller: self)
             return
         }
         let imagePickerController = UIImagePickerController()
