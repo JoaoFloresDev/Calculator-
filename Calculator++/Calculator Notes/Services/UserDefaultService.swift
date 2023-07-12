@@ -20,6 +20,7 @@ enum Key: String {
     case addPhotoCounter
     case galleryFoldersPath
     case videoFoldersPath
+    case disableRecoveryButtonCounter
 }
 
 var userDefaults = UserDefaults.standard
@@ -61,5 +62,14 @@ struct UserDefaultService {
 
     func setAddPhotoCounter(status: Int) {
         UserDefaults.standard.set(status, forKey: Key.addPhotoCounter.rawValue)
+    }
+    
+    // MARK: - FirstUse Status
+    func getDisableRecoveryButtonCounter() -> Int {
+        return userDefaults.integer(forKey: Key.disableRecoveryButtonCounter.rawValue)
+    }
+
+    func setDisableRecoveryButtonCounter(status: Int) {
+        UserDefaults.standard.set(status, forKey: Key.disableRecoveryButtonCounter.rawValue)
     }
 }

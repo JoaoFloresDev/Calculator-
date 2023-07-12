@@ -36,7 +36,7 @@
 "save" = "Save";
 "cancel" = "Cancel";
 "ok" = "Confirm";
-
+"see" = "See";
 "errorTitle" = "Unexpected Error";
 "errorMessage" = "Please try again later";
 "deleteFiles" = "Delete file?";

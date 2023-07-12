@@ -67,6 +67,7 @@ enum Text: String {
     
     case wouldLikeSetProtection
     case ok
+    case see
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

@@ -41,7 +41,7 @@ class BasicCollectionViewController: UICollectionViewController {
     func setupCollectionViewLayout() {
         let screenWidth = self.view.frame.size.width - 100
         let flowLayout = FlowLayout(screenWidth: screenWidth)
-        if basePath == "@" {
+        if basePath == deepSeparatorPath {
             flowLayout.headerReferenceSize = CGSize(width: screenWidth, height: 25)
         }
         collectionView?.collectionViewLayout = flowLayout
@@ -62,7 +62,7 @@ class BasicCollectionViewController: UICollectionViewController {
         collectionView?.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView")
         collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
         
-        if basePath != "@" {
+        if basePath != deepSeparatorPath {
             filesIsExpanded = true
         }
     }

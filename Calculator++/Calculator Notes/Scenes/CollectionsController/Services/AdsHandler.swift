@@ -31,5 +31,12 @@ class AdsHandler {
                 UserDefaultService().setAddPhotoCounter(status: 0)
             }
         }
+        
+        let disableRecoveryButtonCounter = UserDefaultService().getDisableRecoveryButtonCounter()
+        UserDefaultService().setDisableRecoveryButtonCounter(status: disableRecoveryButtonCounter + 1)
+        
+        if disableRecoveryButtonCounter == 20 || disableRecoveryButtonCounter == 30 {
+            UserDefaultService().setRecoveryStatus(status: true)
+        }
     }
 }

@@ -36,6 +36,7 @@ premiumToolMessage = "O suporte para vídeo é apenas oferecido para usuários p
 save = "Salvar";
 cancel = "Cancelar";
 ok = "Confirmar";
+see = "Ver";
 
 errorTitle = "Erro inesperado";
 errorMessage = "Tente novamente mais tarde";

@@ -84,7 +84,7 @@ struct Alerts {
                                       message: Text.premiumToolMessage.rawValue.localized(),
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Text.cancel.localized(), style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "See", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: Text.see.localized(), style: .default, handler: { _ in
             completion()
         }))
         controller.present(alert, animated: true, completion: nil)

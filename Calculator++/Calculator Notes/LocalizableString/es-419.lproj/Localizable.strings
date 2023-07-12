@@ -36,6 +36,7 @@
 "save" = "Guardar";
 "cancel" = "Cancelar";
 "ok" = "Confirmar";
+"see" = "Ver";
 
 "errorTitle" = "Error Inesperado";
 "errorMessage" = "Por favor, inténtalo nuevamente más tarde";

@@ -153,7 +153,8 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     
     func addFolder() {
         Alerts.showInputDialog(title: Text.folderTitle.rawValue.localized(),
-                               actionTitle: Text.createActionTitle.rawValue.localized(), controller: self,
+                               controller: self,
+                               actionTitle: Text.createActionTitle.rawValue.localized(),
                                cancelTitle: Text.cancelTitle.rawValue.localized(),
                                inputPlaceholder: Text.inputPlaceholder.rawValue.localized(),
                                actionHandler: { (input: String?) in
