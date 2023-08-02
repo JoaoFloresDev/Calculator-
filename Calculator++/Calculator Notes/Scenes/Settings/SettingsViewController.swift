@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
-        UserDefaultService().setRecoveryStatus(status: sender.isOn)
+        Key.recoveryStatus.setBoolean(sender.isOn)
     }
     
     @IBAction func noProtectionPressed(_ sender: Any) {
@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         self.navigationController?.setup()
         setupViewStyle()
-        switchButton.isOn = UserDefaultService().getRecoveryStatus()
+        switchButton.isOn = Key.recoveryStatus.getBoolean()
         setupTexts()
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         rateApp.addGestureRecognizer(tap)

@@ -15,6 +15,7 @@ import StoreKit
 import Foundation
 import AVFoundation
 import AVKit
+import CloudKit
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     // MARK: - Variables
@@ -54,6 +55,14 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
+        
+        CKContainer.default().fetchUserRecordID { (recordID, error) in
+            if let error = error {
+                print(error)
+            } else if let recordID = recordID {
+                print(recordID)
+            }
+        }
     }
     
     private func setupTabBars() {
@@ -76,8 +85,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     private func setupFirstUse() {
         let firstUseService = UserDefaultService()
         
-        if !firstUseService.getFirstUseStatus() {
-            firstUseService.setFirstUseStatus(status: true)
+        if !Key.firstUse.getBoolean() {
+            Key.firstUse.setBoolean(true)
             Alerts.showSetProtectionAsk(controller: self) { createProtection in
                 if createProtection {
                     let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)

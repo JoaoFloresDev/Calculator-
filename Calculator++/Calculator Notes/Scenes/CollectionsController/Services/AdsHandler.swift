@@ -36,7 +36,7 @@ class AdsHandler {
         UserDefaultService().setDisableRecoveryButtonCounter(status: disableRecoveryButtonCounter + 1)
         
         if disableRecoveryButtonCounter == 20 || disableRecoveryButtonCounter == 30 {
-            UserDefaultService().setRecoveryStatus(status: true)
+            Key.recoveryStatus.setBoolean(true)
         }
     }
 }

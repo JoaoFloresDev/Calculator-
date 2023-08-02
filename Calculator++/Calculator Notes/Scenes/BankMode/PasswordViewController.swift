@@ -197,7 +197,7 @@ class PasswordViewController: UIViewController {
             captureKey = 1
         }
         
-        buttonFaceID.isHidden = UserDefaultService().getRecoveryStatus()
+        buttonFaceID.isHidden = Key.recoveryStatus.getBoolean()
         
         instructionsLabel.setText(.welcomeInstructionBank)
     }

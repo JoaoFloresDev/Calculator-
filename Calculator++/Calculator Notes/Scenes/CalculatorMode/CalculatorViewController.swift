@@ -128,6 +128,6 @@ class CalculatorViewController: BaseCalculatorViewController {
         if(key == "") {
             captureKey = 1
         }
-        faceIDButton.isHidden = UserDefaultService().getRecoveryStatus()
+        faceIDButton.isHidden = Key.recoveryStatus.getBoolean()
     }
 }

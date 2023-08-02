@@ -14,17 +14,25 @@ enum ProtectionMode: String {
     case bank
 }
 
-enum Key: String {
+var userDefaults = UserDefaults.standard
+var protectionModeKey = "Mode"
+
+public enum Key: String {
     case recoveryStatus
     case firstUse
     case addPhotoCounter
     case galleryFoldersPath
     case videoFoldersPath
     case disableRecoveryButtonCounter
+    
+    func setBoolean(_ bool: Bool) {
+        userDefaults.set(bool, forKey: self.rawValue)
+    }
+    
+    func getBoolean() -> Bool {
+        return userDefaults.bool(forKey: self.rawValue)
+    }
 }
-
-var userDefaults = UserDefaults.standard
-var protectionModeKey = "Mode"
 
 struct UserDefaultService {
     // MARK: - Protection Type
@@ -35,24 +43,6 @@ struct UserDefaultService {
 
     func setTypeProtection(protectionMode: ProtectionMode) {
         UserDefaults.standard.set(protectionMode.rawValue, forKey: protectionModeKey)
-    }
-
-    // MARK: - Recovery Status
-    func getRecoveryStatus() -> Bool {
-        return userDefaults.bool(forKey: Key.recoveryStatus.rawValue)
-    }
-
-    func setRecoveryStatus(status: Bool) {
-        UserDefaults.standard.set(status, forKey: Key.recoveryStatus.rawValue)
-    }
-
-    // MARK: - FirstUse Status
-    func getFirstUseStatus() -> Bool {
-        return userDefaults.bool(forKey: Key.firstUse.rawValue)
-    }
-
-    func setFirstUseStatus(status: Bool) {
-        UserDefaults.standard.set(status, forKey: Key.firstUse.rawValue)
     }
     
     // MARK: - FirstUse Status
