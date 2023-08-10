@@ -63,6 +63,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
                 print(recordID)
             }
         }
+        
+        let cloudKitItemsViewController = CloudKitItemsViewController()
+        self.present(UINavigationController(rootViewController: cloudKitItemsViewController), animated: true )
     }
     
     private func setupTabBars() {
@@ -83,8 +86,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
     
     private func setupFirstUse() {
-        let firstUseService = UserDefaultService()
-        
         if !Key.firstUse.getBoolean() {
             Key.firstUse.setBoolean(true)
             Alerts.showSetProtectionAsk(controller: self) { createProtection in
