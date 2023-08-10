@@ -21,7 +21,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Variables
     var modelData: [Photo] = []
     var folders: [Folder] = []
-    var modelController = ModelController()
     
     var isEditMode = false {
         didSet {
@@ -35,7 +34,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        modelData = modelController.fetchImageObjectsInit(basePath: basePath)
+        modelData = ModelController.fetchImageObjectsInit(basePath: basePath)
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()
@@ -55,8 +54,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
-        let cloudKitItemsViewController = CloudKitItemsViewController()
-        self.present(UINavigationController(rootViewController: cloudKitItemsViewController), animated: true )
     }
     
     private func setupTabBars() {
@@ -145,7 +142,7 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
             self.collectionView?.reloadSections(IndexSet(integer: 0))
             
             for photo in self.modelData where photo.isSelected == true {
-                self.modelController.deleteImageObject(name: photo.name, basePath: self.basePath)
+                ModelController.deleteImageObject(name: photo.name, basePath: self.basePath)
                 if let index = self.modelData.firstIndex(where: { $0.name == photo.name }) {
                     self.modelData.remove(at: index)
                 }
@@ -324,7 +321,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 guard let image = image else {
                     return
                 }
-                if let photo = modelController.saveImageObject(image: image,
+                if let photo = ModelController.saveImageObject(image: image,
                                                                basePath: basePath) {
                     modelData.append(photo)
                     collectionView?.reloadSections(IndexSet(integer: 1))

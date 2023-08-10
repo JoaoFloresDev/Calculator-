@@ -1,36 +1,24 @@
-//
-//  ModelController.swift
-//  Calculator Notes
-//
-//  Created by Joao Flores on 11/04/20.
-//  Copyright © 2020 MakeSchool. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import CoreData
 import os.log
 
-class ModelController {
-    static let shared = ModelController()
+struct ModelController {
+    private static let entityName = "StoredImage"
+    private static var savedObjects = [NSManagedObject]()
+    private static var images = [Photo]()
     
-    let entityName = "StoredImage"
-    
-    var savedObjects = [NSManagedObject]()
-    var images = [Photo]()
-    
-    private var managedContext: NSManagedObjectContext? {
+    private static var managedContext: NSManagedObjectContext? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
         }
         return appDelegate.persistentContainer.viewContext
     }
     
-    private let subsystem = "com.example.calculatornotes"
-    private let category = "errors"
+    private static let subsystem = "com.example.calculatornotes"
+    private static let category = "errors"
     
-    // MARK: - Fetching
-    func fetchImageObjectsInit(basePath: String) -> [Photo] {
+    static func fetchImageObjectsInit(basePath: String) -> [Photo] {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return []
@@ -62,7 +50,7 @@ class ModelController {
         return images
     }
     
-    func saveImageObject(image: UIImage, basePath: String) -> Photo? {
+    static func saveImageObject(image: UIImage, basePath: String) -> Photo? {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return nil
@@ -86,7 +74,7 @@ class ModelController {
         return nil
     }
 
-    func deleteImageObject(name: String, basePath: String) {
+    static func deleteImageObject(name: String, basePath: String) {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return
@@ -125,19 +113,19 @@ class ModelController {
         }
     }
     
-    func handleNewImage(basePath: String, imageName: String) -> Bool {
+    static func handleNewImage(basePath: String, imageName: String) -> Bool {
         imageName.contains(basePath) && samePathDeep(basePath: basePath, imageName: imageName)
     }
     
-    func samePathDeep(basePath: String, imageName: String) -> Bool {
+    static func samePathDeep(basePath: String, imageName: String) -> Bool {
         imageName.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count
     }
     
-    func handleOldImage(basePath: String) -> Bool {
+    static func handleOldImage(basePath: String) -> Bool {
         countOccurrences(of: "@", in: basePath) < 2
     }
     
-    func countOccurrences(of character: Character, in string: String) -> Int {
+    static func countOccurrences(of character: Character, in string: String) -> Int {
         var count = 0
         for char in string {
             if char == character {

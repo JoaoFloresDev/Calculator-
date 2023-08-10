@@ -3,9 +3,6 @@ import UIKit
 import CoreData
 
 struct ImageController {
-    static let shared = ImageController()
-    private static var cloudKitItemsViewModel = CloudKitItemsViewModel()
-    
     static let fileManager = FileManager.default
     static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
@@ -22,7 +19,7 @@ struct ImageController {
         do {
             try imageData.write(to: filePath)
             print("\(imageName) was saved.")
-            cloudKitItemsViewModel.saveItem(name: imageName, userImage: image) { saved, error in
+            CloudKitItemsViewModel.saveItem(name: imageName, userImage: image) { saved, error in
                 print("Response:")
                 print(saved, error)
             }
@@ -75,7 +72,7 @@ struct ImageController {
         do {
             try fileManager.removeItem(at: imagePath)
             print("\(imageName) was deleted.")
-            cloudKitItemsViewModel.deleteItem(name: imageName) { saved, error in
+            CloudKitItemsViewModel.deleteItem(name: imageName) { saved, error in
                 print("Response:")
                 print(saved, error)
             }
