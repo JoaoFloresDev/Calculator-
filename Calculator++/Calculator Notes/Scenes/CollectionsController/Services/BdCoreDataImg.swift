@@ -4,12 +4,12 @@ import CoreData
 
 struct ImageController {
     static let shared = ImageController()
-    private var cloudKitItemsViewModel = CloudKitItemsViewModel()
+    private static var cloudKitItemsViewModel = CloudKitItemsViewModel()
     
-    let fileManager = FileManager.default
-    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let fileManager = FileManager.default
+    static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
-    func saveImage(image: UIImage, basePath: String) -> String? {
+    static func saveImage(image: UIImage, basePath: String) -> String? {
         let date = String(Date.timeIntervalSinceReferenceDate)
         let imageName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".png"
 
@@ -33,7 +33,7 @@ struct ImageController {
         }
     }
 
-    func saveVideo(videoData: Data, basePath: String) -> String? {
+    static func saveVideo(videoData: Data, basePath: String) -> String? {
         let date = String(Date.timeIntervalSinceReferenceDate)
         let videoName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".mp4"
 
@@ -48,7 +48,7 @@ struct ImageController {
         }
     }
 
-    func fetchImage(imageName: String) -> UIImage? {
+    static func fetchImage(imageName: String) -> UIImage? {
         let imagePath = documentsPath.appendingPathComponent(imageName).path
         print("Loading image from path:", imagePath)
         guard fileManager.fileExists(atPath: imagePath) else {
@@ -64,7 +64,7 @@ struct ImageController {
         }
     }
 
-    func deleteImage(imageName: String) {
+    static func deleteImage(imageName: String) {
         let imagePath = documentsPath.appendingPathComponent(imageName)
 
         guard fileManager.fileExists(atPath: imagePath.path) else {

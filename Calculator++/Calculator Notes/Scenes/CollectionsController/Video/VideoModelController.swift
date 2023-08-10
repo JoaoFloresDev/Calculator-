@@ -52,7 +52,7 @@ class VideoModelController {
                     && imageName.filter({ $0 == "@" }).count ==
                     basePath.filter({ $0 == "@" }).count)  || handleOldImage(basePath: basePath){
                     
-                    if let storedImage = ImageController.shared.fetchImage(imageName: imageName) {
+                    if let storedImage = ImageController.fetchImage(imageName: imageName) {
                         videos.append(Video(image: storedImage, name: imageName))
                     }
                 }
@@ -100,8 +100,8 @@ class VideoModelController {
             return (nil, nil)
         }
         
-        let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
-        let videoName = ImageController.shared.saveVideo(videoData: video, basePath: basePath)
+        let imageName = ImageController.saveImage(image: image, basePath: basePath)
+        let videoName = ImageController.saveVideo(videoData: video, basePath: basePath)
         
         if let imageName = imageName, let videoName = videoName {
             guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else {
@@ -148,11 +148,11 @@ class VideoModelController {
             }
             
             if let imageName = imageObjectToDelete.imageName {
-                ImageController.shared.deleteImage(imageName: imageName)
+                ImageController.deleteImage(imageName: imageName)
             }
             
             if let videoName = imageObjectToDelete.pathURL {
-                ImageController.shared.deleteImage(imageName: videoName)
+                ImageController.deleteImage(imageName: videoName)
             }
             
             managedContext.delete(imageObjectToDelete)

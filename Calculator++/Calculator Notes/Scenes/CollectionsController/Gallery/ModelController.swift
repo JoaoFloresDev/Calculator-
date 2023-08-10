@@ -49,7 +49,7 @@ class ModelController {
                     if handleNewImage(basePath: basePath, imageName: imageName) ||
                         handleOldImage(basePath: basePath) {
                         
-                        let storedImage = ImageController.shared.fetchImage(imageName: imageName)
+                        let storedImage = ImageController.fetchImage(imageName: imageName)
                         if let storedImage = storedImage {
                             images.append(Photo(name: imageName, image: storedImage))
                         }
@@ -68,7 +68,7 @@ class ModelController {
             return nil
         }
         
-        let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
+        let imageName = ImageController.saveImage(image: image, basePath: basePath)
         
         if let imageName = imageName,
            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext){
@@ -109,7 +109,7 @@ class ModelController {
                 
                 // Exclui a imagem associada ao objeto
                 if let imageName = imageName {
-                    ImageController.shared.deleteImage(imageName: imageName)
+                    ImageController.deleteImage(imageName: imageName)
                     images.removeAll { $0.name == imageName }
                 }
                 
