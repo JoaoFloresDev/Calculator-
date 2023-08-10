@@ -14,6 +14,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var modelController = VideoModelController()
     
     var isPremium: Bool {
+        // !!!! tirar isso aqui
+        return true
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
     
@@ -34,8 +36,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        modelData = modelController.fetchImageObjectsInit(basePath: basePath)
-        videoPaths = modelController.fetchPathVideosObjectsInit(basePath: basePath)
+        modelData = VideoModelController.fetchImageObjectsInit(basePath: basePath)
+        videoPaths = VideoModelController.fetchPathVideosObjectsInit(basePath: basePath)
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()
@@ -115,7 +117,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
             self.collectionView?.reloadSections(IndexSet(integer: 0))
             
             for video in self.modelData where video.isSelected == true {
-                self.modelController.deleteImageObject(name: video.name, basePath: self.basePath)
+                VideoModelController.deleteImageObject(name: video.name, basePath: self.basePath)
                 if let index = self.modelData.firstIndex(where: { $0.name == video.name }) {
                     self.modelData.remove(at: index)
                 }
@@ -320,7 +322,7 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
         
         self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
             guard let image = thumbImage else { return }
-            let result = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath)
+            let result = VideoModelController.saveImageObject(image: image, video: videoData, basePath: self.basePath)
             if let pathVideo = result.0,
                let imageName = result.1 {
                 self.modelData.append(Video(image: image, name: imageName))

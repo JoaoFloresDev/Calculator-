@@ -1,36 +1,29 @@
-//
-//  ModelController.swift
-//  Calculator Notes
-//
-//  Created by Joao Flores on 11/04/20.
-//
-
 import Foundation
 import UIKit
 import CoreData
 import os.log
 
-class VideoModelController {
+struct VideoModelController {
     static let shared = VideoModelController()
     
-    let entityName = "StoredVideo"
+    static let entityName = "StoredVideo"
     
-    private var savedObjects = [StoredVideo]()
-    private var videos = [Video]()
-    private var pathURLs = [String]()
+    private static var savedObjects = [StoredVideo]()
+    private static var videos = [Video]()
+    private static var pathURLs = [String]()
     
-    private var managedContext: NSManagedObjectContext? {
+    private static var managedContext: NSManagedObjectContext? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
         }
         return appDelegate.persistentContainer.viewContext
     }
     
-    private let subsystem = "com.example.calculatornotes"
-    private let category = "errors"
+    private static let subsystem = "com.example.calculatornotes"
+    private static let category = "errors"
     
     // MARK: - Fetching
-    func fetchImageObjectsInit(basePath: String) -> [Video] {
+    static func fetchImageObjectsInit(basePath: String) -> [Video] {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return []
@@ -64,7 +57,7 @@ class VideoModelController {
         return videos
     }
     
-    func fetchPathVideosObjectsInit(basePath: String) -> [String] {
+    static func fetchPathVideosObjectsInit(basePath: String) -> [String] {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return []
@@ -94,7 +87,7 @@ class VideoModelController {
     }
     
     // MARK: - Saving and Deleting
-    func saveImageObject(image: UIImage, video: Data, basePath: String) -> (String?, String?) {
+    static func saveImageObject(image: UIImage, video: Data, basePath: String) -> (String?, String?) {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return (nil, nil)
@@ -125,8 +118,7 @@ class VideoModelController {
         return (videoName, imageName)
     }
     
-    
-    func deleteImageObject(name: String, basePath: String) {
+    static func deleteImageObject(name: String, basePath: String) {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return
@@ -171,11 +163,11 @@ class VideoModelController {
         }
     }
     
-    func handleOldImage(basePath: String) -> Bool {
+    static func handleOldImage(basePath: String) -> Bool {
         countOccurrences(of: "@", in: basePath) < 2
     }
     
-    func countOccurrences(of character: Character, in string: String) -> Int {
+    static func countOccurrences(of character: Character, in string: String) -> Int {
         var count = 0
         for char in string {
             if char == character {
