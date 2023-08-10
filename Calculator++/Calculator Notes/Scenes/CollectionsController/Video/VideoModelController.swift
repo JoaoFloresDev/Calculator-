@@ -101,7 +101,7 @@ class VideoModelController {
         }
         
         let imageName = ImageController.shared.saveImage(image: image, basePath: basePath)
-        let videoName = ImageController.shared.saveVideo(image: video, basePath: basePath)
+        let videoName = ImageController.shared.saveVideo(videoData: video, basePath: basePath)
         
         if let imageName = imageName, let videoName = videoName {
             guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else {

@@ -1,18 +1,11 @@
-//
-//  BdCoreDataImg.swift
-//  Calculator Notes
-//
-//  Created by Joao Flores on 11/04/20.
-//  Copyright © 2020 MakeSchool. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import CoreData
 
-class ImageController {
+struct ImageController {
     static let shared = ImageController()
-
+    private var cloudKitItemsViewModel = CloudKitItemsViewModel()
+    
     let fileManager = FileManager.default
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
@@ -29,8 +22,8 @@ class ImageController {
         do {
             try imageData.write(to: filePath)
             print("\(imageName) was saved.")
-            CloudKitItemsViewModel().saveItem(name: imageName, userImage: image) { saved, error in
-                print("respostaa!!!")
+            cloudKitItemsViewModel.saveItem(name: imageName, userImage: image) { saved, error in
+                print("Response:")
                 print(saved, error)
             }
             return imageName
@@ -40,17 +33,17 @@ class ImageController {
         }
     }
 
-    func saveVideo(image: Data, basePath: String) -> String? {
+    func saveVideo(videoData: Data, basePath: String) -> String? {
         let date = String(Date.timeIntervalSinceReferenceDate)
-        let imageName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".mp4"
+        let videoName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".mp4"
 
-        let filePath = documentsPath.appendingPathComponent(imageName)
+        let filePath = documentsPath.appendingPathComponent(videoName)
         do {
-            try image.write(to: filePath)
-            print("\(imageName) was saved at \(filePath).")
-            return imageName
+            try videoData.write(to: filePath)
+            print("\(videoName) was saved at \(filePath).")
+            return videoName
         } catch let error as NSError {
-            print("\(imageName) could not be saved: \(error)")
+            print("\(videoName) could not be saved: \(error)")
             return nil
         }
     }
@@ -82,8 +75,8 @@ class ImageController {
         do {
             try fileManager.removeItem(at: imagePath)
             print("\(imageName) was deleted.")
-            CloudKitItemsViewModel().deleteItem(name: imagePath) { saved, error in
-                print("respostaa!!!")
+            cloudKitItemsViewModel.deleteItem(name: imageName) { saved, error in
+                print("Response:")
                 print(saved, error)
             }
         } catch let error as NSError {

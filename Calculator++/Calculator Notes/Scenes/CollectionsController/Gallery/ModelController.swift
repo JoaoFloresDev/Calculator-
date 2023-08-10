@@ -99,6 +99,8 @@ class ModelController {
             let imageIndex = savedObjects.firstIndex(of: imageObjectToDelete)
             
             do {
+                let imageName = imageObjectToDelete.imageName
+                
                 // Exclui o objeto de imagem do contexto gerenciado
                 managedContext.delete(imageObjectToDelete)
                 
@@ -106,7 +108,7 @@ class ModelController {
                 try managedContext.save()
                 
                 // Exclui a imagem associada ao objeto
-                if let imageName = imageObjectToDelete.imageName {
+                if let imageName = imageName {
                     ImageController.shared.deleteImage(imageName: imageName)
                     images.removeAll { $0.name == imageName }
                 }

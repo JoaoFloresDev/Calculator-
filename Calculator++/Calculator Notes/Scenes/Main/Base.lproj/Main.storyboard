@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ez-Al-Xfm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ez-Al-Xfm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,11 +63,36 @@
                         <segue destination="vPt-rd-R9y" kind="relationship" relationship="viewControllers" id="yaI-bm-SJ9"/>
                         <segue destination="Cq2-Ky-0P7" kind="relationship" relationship="viewControllers" id="n7k-Gz-Fy7"/>
                         <segue destination="jRq-v2-uOx" kind="relationship" relationship="viewControllers" id="ZhR-NF-y09"/>
+                        <segue destination="2wh-wr-rPV" kind="relationship" relationship="viewControllers" id="Zrg-GB-Vnc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owk-kC-tB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="561" y="279"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="SGz-VW-vY0">
+            <objects>
+                <viewController storyboardIdentifier="CloudKitItemsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2wh-wr-rPV" customClass="CloudKitItemsViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xO2-AB-6Rg"/>
+                        <viewControllerLayoutGuide type="bottom" id="U15-LH-Oas"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hjV-lH-QfU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="t1A-03-agx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgf-o1-YMF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1807" y="279"/>
+        </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
