@@ -39,31 +39,22 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()
-        
+
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
             self.setText(.gallery)
         }
-        
+
         setupAds()
         setupFirstUse()
-        
+
         setupTabBars()
-        
+
         if basePath == deepSeparatorPath {
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
-        
-        CKContainer.default().fetchUserRecordID { (recordID, error) in
-            if let error = error {
-                print(error)
-            } else if let recordID = recordID {
-                print(recordID)
-            }
-        }
-        
         let cloudKitItemsViewController = CloudKitItemsViewController()
         self.present(UINavigationController(rootViewController: cloudKitItemsViewController), animated: true )
     }
