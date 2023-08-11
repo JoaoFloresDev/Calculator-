@@ -34,7 +34,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        modelData = ModelController.fetchImageObjectsInit(basePath: basePath)
+        modelData = ModelController.listPhotosOf(basePath: basePath)
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()

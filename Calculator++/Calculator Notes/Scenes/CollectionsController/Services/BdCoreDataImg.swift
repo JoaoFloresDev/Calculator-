@@ -19,10 +19,6 @@ struct ImageController {
         do {
             try imageData.write(to: filePath)
             print("\(imageName) was saved.")
-            CloudKitItemsViewModel.saveItem(name: imageName, userImage: image) { saved, error in
-                print("Response:")
-                print(saved, error)
-            }
             return imageName
         } catch let error as NSError {
             print("\(imageName) could not be saved: \(error)")
@@ -72,10 +68,6 @@ struct ImageController {
         do {
             try fileManager.removeItem(at: imagePath)
             print("\(imageName) was deleted.")
-            CloudKitItemsViewModel.deleteItem(name: imageName) { saved, error in
-                print("Response:")
-                print(saved, error)
-            }
         } catch let error as NSError {
             print("Could not delete \(imageName): \(error)")
         }

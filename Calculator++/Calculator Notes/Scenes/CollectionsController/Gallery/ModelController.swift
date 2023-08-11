@@ -6,7 +6,6 @@ import os.log
 struct ModelController {
     private static let entityName = "StoredImage"
     private static var savedObjects = [NSManagedObject]()
-    private static var images = [Photo]()
     
     private static var managedContext: NSManagedObjectContext? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -18,7 +17,7 @@ struct ModelController {
     private static let subsystem = "com.example.calculatornotes"
     private static let category = "errors"
     
-    static func fetchImageObjectsInit(basePath: String) -> [Photo] {
+    static func listPhotosOf(basePath: String) -> [Photo] {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return []
@@ -26,10 +25,9 @@ struct ModelController {
         
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
+        var images = [Photo]()
         do {
             savedObjects = try managedContext.fetch(imageObjectRequest)
-            
-            images.removeAll()
             
             for imageObject in savedObjects {
                 if let savedImageObject = imageObject as? StoredImage {
@@ -64,7 +62,6 @@ struct ModelController {
             newImageEntity?.imageName = imageName
             do {
                 try managedContext.save()
-                images.append(Photo(name: imageName, image: image))
                 print("\(imageName) was saved in new object.")
                 return Photo(name: imageName, image: image)
             } catch let error as NSError {
@@ -80,7 +77,7 @@ struct ModelController {
             return
         }
         
-        _ = fetchImageObjectsInit(basePath: basePath)
+        _ = listPhotosOf(basePath: basePath)
         
         // Procura o objeto de imagem com o nome fornecido
         if let imageObjectToDelete = savedObjects.first(where: { ($0 as? StoredImage)?.imageName == name }) as? StoredImage {
@@ -98,7 +95,6 @@ struct ModelController {
                 // Exclui a imagem associada ao objeto
                 if let imageName = imageName {
                     ImageController.deleteImage(imageName: imageName)
-                    images.removeAll { $0.name == imageName }
                 }
                 
                 // Remove o objeto de imagem e a foto associada da matriz
@@ -113,19 +109,49 @@ struct ModelController {
         }
     }
     
-    static func handleNewImage(basePath: String, imageName: String) -> Bool {
+    static func listAllPhotos() -> [Photo] {
+        guard let managedContext = managedContext else {
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
+            return []
+        }
+        
+        let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        
+        do {
+            savedObjects = try managedContext.fetch(imageObjectRequest)
+            
+            images.removeAll()
+            
+            for imageObject in savedObjects {
+                if let savedImageObject = imageObject as? StoredImage {
+                    guard let imageName = savedImageObject.imageName else { return []}
+                    let storedImage = ImageController.fetchImage(imageName: imageName)
+                    if let storedImage = storedImage {
+                        images.append(Photo(name: imageName, image: storedImage))
+                    }
+                }
+            }
+        } catch let error as NSError {
+            print("Could not return image objects: \(error)")
+        }
+        return images
+    }
+}
+
+extension ModelController {
+    private static func handleNewImage(basePath: String, imageName: String) -> Bool {
         imageName.contains(basePath) && samePathDeep(basePath: basePath, imageName: imageName)
     }
     
-    static func samePathDeep(basePath: String, imageName: String) -> Bool {
+    private static func samePathDeep(basePath: String, imageName: String) -> Bool {
         imageName.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count
     }
     
-    static func handleOldImage(basePath: String) -> Bool {
+    private static func handleOldImage(basePath: String) -> Bool {
         countOccurrences(of: "@", in: basePath) < 2
     }
     
-    static func countOccurrences(of character: Character, in string: String) -> Int {
+    private static func countOccurrences(of character: Character, in string: String) -> Int {
         var count = 0
         for char in string {
             if char == character {
