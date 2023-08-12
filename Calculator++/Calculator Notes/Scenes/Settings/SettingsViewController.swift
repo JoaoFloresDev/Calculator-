@@ -35,6 +35,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var rateApp: UIView!
     
+    @IBOutlet weak var restoreBackup: UIView!
+    
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Key.recoveryStatus.setBoolean(sender.isOn)
@@ -67,6 +69,32 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         SKStoreReviewController.requestReview()
     }
     
+    var loadingAlert = LoadingAlert()
+    @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
+        self.loadingAlert.startLoading(in: self)
+        BackupService.hasDataInCloudKit { hasData, _, items  in
+            self.loadingAlert.stopLoading {
+                guard let items = items,
+                      !items.isEmpty,
+                      hasData else {
+                    
+                    return
+                }
+                Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+                    if restoreBackup {
+                        self.loadingAlert.startLoading(in: self)
+                        BackupService.restoreBackup(photos: items) { success, _ in
+                            self.loadingAlert.stopLoading()
+                            if success {
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +104,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         setupTexts()
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         rateApp.addGestureRecognizer(tap)
+        let restoreBackupPressed = UITapGestureRecognizer(target: self, action: #selector(self.restoreBackupPressed(_:)))
+        restoreBackup.addGestureRecognizer(restoreBackupPressed)
     }
     
     override func viewWillAppear(_ animated: Bool) {

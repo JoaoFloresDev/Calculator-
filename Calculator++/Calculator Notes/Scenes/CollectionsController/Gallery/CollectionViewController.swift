@@ -386,10 +386,10 @@ extension CollectionViewController {
     }
 }
 
-// First use
+// MARK: - First use
 extension CollectionViewController {
     private func setupFirstUse() {
-        if !Key.firstUse.getBoolean() || true {
+        if !Key.firstUse.getBoolean() {
             Key.firstUse.setBoolean(true)
             performFirstUseSetup()
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XoY-UQ-w5v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XoY-UQ-w5v">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -41,10 +41,10 @@
                                 <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfN-Lz-BTp">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="507"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="576"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pR5-UN-XhX">
-                                                <rect key="frame" x="10" y="97" width="394" height="400"/>
+                                                <rect key="frame" x="10" y="166" width="394" height="400"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSg-FV-y9H">
                                                         <rect key="frame" x="202" y="41" width="182" height="289"/>
@@ -153,16 +153,16 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1u-xc-9Cu">
-                                                <rect key="frame" x="224" y="110" width="182" height="320"/>
+                                                <rect key="frame" x="224" y="110" width="182" height="389"/>
                                                 <connections>
                                                     <action selector="showCalculatorMode:" destination="bO4-RD-LXC" eventType="touchUpInside" id="u17-Zp-bL6"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ert-Ym-P1Q">
-                                                <rect key="frame" x="0.0" y="42" width="414" height="41"/>
+                                                <rect key="frame" x="0.0" y="49" width="414" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9d-kN-wwz">
-                                                        <rect key="frame" x="16" y="10" width="87" height="21"/>
+                                                        <rect key="frame" x="16" y="13.5" width="87" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -170,9 +170,26 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="41" id="AC7-PB-DFk"/>
+                                                    <constraint firstAttribute="height" constant="48" id="AC7-PB-DFk"/>
                                                     <constraint firstItem="a9d-kN-wwz" firstAttribute="centerY" secondItem="ert-Ym-P1Q" secondAttribute="centerY" id="W6Z-AW-qvD"/>
                                                     <constraint firstItem="a9d-kN-wwz" firstAttribute="leading" secondItem="ert-Ym-P1Q" secondAttribute="leading" constant="16" id="tzV-m0-pVS"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvF-2r-Bte">
+                                                <rect key="frame" x="0.0" y="98" width="414" height="48"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recuperar backup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xx-Ks-sjO">
+                                                        <rect key="frame" x="16" y="13.5" width="143" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <constraints>
+                                                    <constraint firstItem="9Xx-Ks-sjO" firstAttribute="leading" secondItem="zvF-2r-Bte" secondAttribute="leading" constant="16" id="RmA-JJ-MS2"/>
+                                                    <constraint firstAttribute="height" constant="48" id="XWM-1J-Ykl"/>
+                                                    <constraint firstItem="9Xx-Ks-sjO" firstAttribute="centerY" secondItem="zvF-2r-Bte" secondAttribute="centerY" id="vq2-Dl-cqG"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -180,26 +197,29 @@
                                             <constraint firstAttribute="trailing" secondItem="pR5-UN-XhX" secondAttribute="trailing" constant="10" id="2Vc-Bu-UV4"/>
                                             <constraint firstItem="g1u-xc-9Cu" firstAttribute="top" secondItem="qfN-Lz-BTp" secondAttribute="top" constant="110" id="3W5-Fe-fQP"/>
                                             <constraint firstAttribute="bottom" secondItem="pR5-UN-XhX" secondAttribute="bottom" constant="10" id="7Rw-om-SSF"/>
+                                            <constraint firstItem="zvF-2r-Bte" firstAttribute="top" secondItem="ert-Ym-P1Q" secondAttribute="bottom" constant="1" id="CJO-Py-G8r"/>
+                                            <constraint firstItem="zvF-2r-Bte" firstAttribute="leading" secondItem="qfN-Lz-BTp" secondAttribute="leading" id="HEr-HZ-ERH"/>
                                             <constraint firstAttribute="trailing" secondItem="g1u-xc-9Cu" secondAttribute="trailing" constant="8" id="K6L-eV-NWL"/>
                                             <constraint firstItem="ert-Ym-P1Q" firstAttribute="leading" secondItem="qfN-Lz-BTp" secondAttribute="leading" id="Uuf-Fw-PTQ"/>
                                             <constraint firstAttribute="bottom" secondItem="g1u-xc-9Cu" secondAttribute="bottom" constant="77" id="Wd4-hj-KR2"/>
+                                            <constraint firstItem="pR5-UN-XhX" firstAttribute="top" secondItem="zvF-2r-Bte" secondAttribute="bottom" constant="20" id="Ymd-W7-CrB"/>
                                             <constraint firstItem="g1u-xc-9Cu" firstAttribute="leading" secondItem="qfN-Lz-BTp" secondAttribute="leading" constant="224" id="ai5-x0-MWw"/>
+                                            <constraint firstAttribute="trailing" secondItem="zvF-2r-Bte" secondAttribute="trailing" id="ozk-YP-TDl"/>
                                             <constraint firstItem="pR5-UN-XhX" firstAttribute="leading" secondItem="qfN-Lz-BTp" secondAttribute="leading" constant="10" id="qBO-r4-Iat"/>
-                                            <constraint firstItem="pR5-UN-XhX" firstAttribute="top" secondItem="ert-Ym-P1Q" secondAttribute="bottom" constant="14" id="sUQ-QZ-exL"/>
                                             <constraint firstAttribute="trailing" secondItem="ert-Ym-P1Q" secondAttribute="trailing" id="twR-fi-Wnu"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HT7-x9-f8c">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVG-9x-eof">
-                                                <rect key="frame" x="357" y="5" width="51" height="31"/>
+                                                <rect key="frame" x="357" y="8.5" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="switchButtonAction:" destination="bO4-RD-LXC" eventType="valueChanged" id="CQc-JS-gyL"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hide recover button" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dac-Ca-htn">
-                                                <rect key="frame" x="16" y="10" width="331" height="20.5"/>
+                                                <rect key="frame" x="16" y="13.5" width="331" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -211,7 +231,7 @@
                                             <constraint firstItem="BVG-9x-eof" firstAttribute="leading" secondItem="Dac-Ca-htn" secondAttribute="trailing" constant="10" id="ewE-DG-JhF"/>
                                             <constraint firstAttribute="trailing" secondItem="BVG-9x-eof" secondAttribute="trailing" constant="8" id="fS4-Au-fxH"/>
                                             <constraint firstItem="Dac-Ca-htn" firstAttribute="centerY" secondItem="HT7-x9-f8c" secondAttribute="centerY" id="hKZ-4i-00n"/>
-                                            <constraint firstAttribute="height" constant="41" id="hP0-tf-7SH"/>
+                                            <constraint firstAttribute="height" constant="48" id="hP0-tf-7SH"/>
                                             <constraint firstItem="BVG-9x-eof" firstAttribute="centerY" secondItem="HT7-x9-f8c" secondAttribute="centerY" id="yGE-4d-W6V"/>
                                         </constraints>
                                     </view>
@@ -276,6 +296,7 @@
                         <outlet property="noProtectionImage" destination="5PD-4q-NZj" id="dbc-wh-VXn"/>
                         <outlet property="rateApp" destination="ert-Ym-P1Q" id="Sbs-qT-fHv"/>
                         <outlet property="recoverLabel" destination="Dac-Ca-htn" id="Txt-1e-RiB"/>
+                        <outlet property="restoreBackup" destination="zvF-2r-Bte" id="Ziw-Jk-3LJ"/>
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>
                     </connections>
