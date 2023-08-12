@@ -119,7 +119,17 @@ class CloudKitImageService: ObservableObject {
         for name in names {
             deleteImage(name: name) { success, error in
                 if success && error == nil {
-                    NameManager.deleteName(name)
+                    CloudDeletionManager.deleteName(name)
+                }
+            }
+        }
+    }
+    
+    static func saveImages(names: [String]) {
+        for name in names {
+            if let image = CoreDataImageService.fetchImage(imageName: name) {
+                CloudKitImageService.saveImage(name: name, image: image) { success, error in
+                    CloudInsertionManager.deleteName(name)
                 }
             }
         }

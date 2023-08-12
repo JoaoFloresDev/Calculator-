@@ -19,6 +19,7 @@ struct CoreDataImageService {
         do {
             try imageData.write(to: filePath)
             print("\(imageName) was saved.")
+            CloudInsertionManager.addName(imageName)
             return imageName
         } catch let error as NSError {
             print("\(imageName) could not be saved: \(error)")
@@ -87,7 +88,7 @@ struct CoreDataImageService {
         do {
             try fileManager.removeItem(at: imagePath)
             print("\(imageName) was deleted.")
-            NameManager.addName(imageName)
+            CloudDeletionManager.addName(imageName)
         } catch let error as NSError {
             print("Could not delete \(imageName): \(error)")
         }

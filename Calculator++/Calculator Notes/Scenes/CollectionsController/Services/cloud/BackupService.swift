@@ -2,30 +2,8 @@ import UIKit
 
 struct BackupService {
     static func updateBackup() {
-        let photos = ModelController.listAllPhotos()
-        addIfNeed(photos: photos)
-        CloudKitImageService.deleteImages(names: NameManager.getNames())
-    }
-    
-    static func addIfNeed(photos: [Photo]) {
-        for photo in photos {
-            CloudKitImageService.imageExists(withName: photo.name) { exists, error in
-                if let error = error {
-                    print("\(Notifications.errorVerifyingImage) \(error.localizedDescription)")
-                    return
-                }
-                if exists {
-                    print(Notifications.imageExists)
-                } else {
-                    CloudKitImageService.saveImage(name: photo.name, image: photo.image) { success, error in
-                        if let error = error {
-                            print(error.localizedDescription)
-                        }
-                    }
-                }
-            }
-        }
-        print(Notifications.success)
+        CloudKitImageService.saveImages(names: CloudInsertionManager.getNames())
+        CloudKitImageService.deleteImages(names: CloudDeletionManager.getNames())
     }
     
     static func hasDataInCloudKit(completion: @escaping (Bool, Error?, [(String, UIImage)]?) -> Void) {
