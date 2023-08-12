@@ -160,6 +160,7 @@ extension ModelController {
         return count
     }
     
+    @discardableResult
     static func saveImageObject(image: UIImage, path: String) -> Photo? {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)

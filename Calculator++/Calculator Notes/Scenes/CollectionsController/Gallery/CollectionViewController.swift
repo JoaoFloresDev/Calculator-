@@ -1,3 +1,4 @@
+import Network
 import UIKit
 import Photos
 import AssetsPickerViewController
@@ -20,6 +21,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Variables
     var modelData: [Photo] = []
     var folders: [Folder] = []
+    var loadingAlert = LoadingAlert()
     
     var isEditMode = false {
         didSet {
@@ -33,10 +35,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        modelData = ModelController.listPhotosOf(basePath: basePath)
-        commonViewDidLoad()
-        setupNavigationItems(delegate: self)
-        setupFolders()
+        setupData()
 
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
@@ -54,13 +53,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
         
-        BackupService.updateBackup()
-    }
-    
-    private func setupTabBars() {
-        let controllers = self.tabBarController?.viewControllers
-        controllers?[2].setText(.notes)
-        controllers?[3].setText(.settings)
+        isConnectedToWiFi { isConnected in
+            if isConnected {
+                BackupService.updateBackup()
+            }
+        }
     }
     
     private func setupFolders() {
@@ -74,36 +71,19 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
-    private func setupFirstUse() {
-        if !Key.firstUse.getBoolean() {
-            Key.firstUse.setBoolean(true)
-            let alert = UIAlertController(title: "Recuperar Backup",
-                                          message: "Você gostaria de recuperar seu último backup?",
-                                          preferredStyle: .alert)
-
-            alert.addAction(UIAlertAction(title: "Sim", style: .default) { _ in
-                BackupService.restoreBackup()
-            })
-
-            alert.addAction(UIAlertAction(title: "Não", style: .default))
-            present(alert, animated: true)
-//            Alerts.showSetProtectionAsk(controller: self) { createProtection in
-//                if createProtection {
-//                    let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
-//                    let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
-//                    self.present(changePasswordCalcMode, animated: true)
-//                } else {
-//                    if let tabBarController = self.tabBarController {
-//                        let desiredTabIndex = 3
-//                        if desiredTabIndex < tabBarController.viewControllers?.count ?? 0 {
-//                            tabBarController.selectedIndex = desiredTabIndex
-//                        }
-//                    }
-//                }
-//            }
-        }
+    private func setupData() {
+        modelData = ModelController.listPhotosOf(basePath: basePath)
+        commonViewDidLoad()
+        setupNavigationItems(delegate: self)
+        setupFolders()
     }
     
+    private func setupTabBars() {
+        let controllers = self.tabBarController?.viewControllers
+        controllers?[2].setText(.notes)
+        controllers?[3].setText(.settings)
+    }
+
     func deselectAllFoldersObjects() {
         for index in 0 ..< folders.count {
             folders[index].isSelected = false
@@ -114,6 +94,21 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         for index in 0 ..< modelData.count {
             modelData[index].isSelected = false
         }
+    }
+    
+    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
+        let monitor = NWPathMonitor()
+
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
     }
 }
 
@@ -390,3 +385,73 @@ extension CollectionViewController {
                             interstitialDelegate: self)
     }
 }
+
+// First use
+extension CollectionViewController {
+    private func setupFirstUse() {
+        if !Key.firstUse.getBoolean() || true {
+            Key.firstUse.setBoolean(true)
+            performFirstUseSetup()
+        }
+    }
+
+    private func performFirstUseSetup() {
+        loadingAlert.startLoading(in: self)
+        
+        BackupService.hasDataInCloudKit { hasData, _, items  in
+            self.loadingAlert.stopLoading()
+            guard let items = items,
+                  !items.isEmpty,
+                  hasData else {
+                self.showSetProtectionOrNavigateToSettings()
+                return
+            }
+            Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+                if restoreBackup {
+                    self.restoreBackupAndReloadData(photos: items)
+                }
+            }
+        }
+    }
+
+    private func restoreBackupAndReloadData(photos: [(String, UIImage)]) {
+        loadingAlert.startLoading(in: self)
+        BackupService.restoreBackup(photos: photos) { success, _ in
+            self.loadingAlert.stopLoading()
+            if success {
+                self.setupData()
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+
+    private func showSetProtectionOrNavigateToSettings() {
+        Alerts.showSetProtectionAsk(controller: self) { createProtection in
+            if createProtection {
+                self.presentChangePasswordCalcMode()
+            } else {
+                self.navigateToSettingsTab()
+            }
+        }
+    }
+
+    private func presentChangePasswordCalcMode() {
+        let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
+        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
+        self.present(changePasswordCalcMode, animated: true)
+    }
+
+    private func navigateToSettingsTab() {
+        if let tabBarController = self.tabBarController {
+            let desiredTabIndex = 3
+            if desiredTabIndex < tabBarController.viewControllers?.count ?? 0 {
+                tabBarController.selectedIndex = desiredTabIndex
+            }
+        }
+    }
+}
+
+
+
+
+

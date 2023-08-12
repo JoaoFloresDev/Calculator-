@@ -49,7 +49,8 @@ struct FoldersService {
         folders = defaults.stringArray(forKey: key) ?? [String]()
     }
     
-    func getFolders(basePath: String) -> [String] {
+    mutating func getFolders(basePath: String) -> [String] {
+        folders = defaults.stringArray(forKey: key) ?? [String]()
         var folderInPath: [String] = []
         for folder in folders {
             if folder.contains(basePath)
@@ -65,6 +66,7 @@ struct FoldersService {
         return folders.contains("\(basePath)\(folder)")
     }
 
+    @discardableResult
     mutating func add(folder: String, basePath: String) -> [String] {
         self.folders.append("\(basePath)\(folder)")
         defaults.set(self.folders, forKey: key)
