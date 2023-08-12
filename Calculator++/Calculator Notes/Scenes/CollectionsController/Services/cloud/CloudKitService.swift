@@ -6,7 +6,7 @@ class CloudKitImageService: ObservableObject {
     
     static var images: [(String, UIImage)] = []
     
-    static let recordTypeIdentifier = "ItemItem"
+    static let recordTypeIdentifier = "Photos"
     struct RecordKeys {
         static let name = "name"
         static let image = "userImage"
