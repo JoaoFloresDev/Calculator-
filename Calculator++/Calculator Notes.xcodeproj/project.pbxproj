@@ -25,7 +25,8 @@
 		7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
-		733E42ED2A61F304000FBEED /* CloudKitItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733E42EC2A61F304000FBEED /* CloudKitItemsViewModel.swift */; };
+		73741B002A86F0DE0067B269 /* NameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741AFF2A86F0DE0067B269 /* NameManager.swift */; };
+		73741B022A87D06B0067B269 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B012A87D06B0067B269 /* CloudKitService.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
@@ -107,7 +108,8 @@
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calculator Notes.entitlements"; sourceTree = "<group>"; };
-		733E42EC2A61F304000FBEED /* CloudKitItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudKitItemsViewModel.swift; path = ../../../../../CloudKitItemsViewModel.swift; sourceTree = "<group>"; };
+		73741AFF2A86F0DE0067B269 /* NameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NameManager.swift; path = ../../../../../NameManager.swift; sourceTree = "<group>"; };
+		73741B012A87D06B0067B269 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		731436452A48D6BC00B9842E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				73741B012A87D06B0067B269 /* CloudKitService.swift */,
 				C46AD0FE24416D8E00EF0236 /* BdCoreDataImg.swift */,
 				730438622A315B02001EF25B /* FoldersService.swift */,
 				730438642A315B17001EF25B /* AdsService.swift */,
@@ -400,7 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */,
-				733E42EC2A61F304000FBEED /* CloudKitItemsViewModel.swift */,
+				73741AFF2A86F0DE0067B269 /* NameManager.swift */,
 				73ECF50F2A847CFD0027E022 /* CloudKitItemsViewController.swift */,
 			);
 			path = Services;
@@ -587,7 +590,6 @@
 				2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */,
 				730438652A315B17001EF25B /* AdsService.swift in Sources */,
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
-				733E42ED2A61F304000FBEED /* CloudKitItemsViewModel.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
@@ -595,6 +597,7 @@
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,
 				73ECF5102A847CFD0027E022 /* CloudKitItemsViewController.swift in Sources */,
+				73741B002A86F0DE0067B269 /* NameManager.swift in Sources */,
 				73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
@@ -615,6 +618,7 @@
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
+				73741B022A87D06B0067B269 /* CloudKitService.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* UIViewController+extension.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,

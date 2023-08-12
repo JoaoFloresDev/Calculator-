@@ -24,8 +24,8 @@ struct ModelController {
         }
         
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        
         var images = [Photo]()
+        
         do {
             savedObjects = try managedContext.fetch(imageObjectRequest)
             
@@ -35,7 +35,7 @@ struct ModelController {
                     if handleNewImage(basePath: basePath, imageName: imageName) ||
                         handleOldImage(basePath: basePath) {
                         
-                        let storedImage = ImageController.fetchImage(imageName: imageName)
+                        let storedImage = CoreDataImageService.fetchImage(imageName: imageName)
                         if let storedImage = storedImage {
                             images.append(Photo(name: imageName, image: storedImage))
                         }
@@ -54,7 +54,7 @@ struct ModelController {
             return nil
         }
         
-        let imageName = ImageController.saveImage(image: image, basePath: basePath)
+        let imageName = CoreDataImageService.saveImage(image: image, basePath: basePath)
         
         if let imageName = imageName,
            let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext){
@@ -94,7 +94,7 @@ struct ModelController {
                 
                 // Exclui a imagem associada ao objeto
                 if let imageName = imageName {
-                    ImageController.deleteImage(imageName: imageName)
+                    CoreDataImageService.deleteImage(imageName: imageName)
                 }
                 
                 // Remove o objeto de imagem e a foto associada da matriz
@@ -116,16 +116,15 @@ struct ModelController {
         }
         
         let imageObjectRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        var images = [Photo]()
         
         do {
             savedObjects = try managedContext.fetch(imageObjectRequest)
             
-            images.removeAll()
-            
             for imageObject in savedObjects {
                 if let savedImageObject = imageObject as? StoredImage {
                     guard let imageName = savedImageObject.imageName else { return []}
-                    let storedImage = ImageController.fetchImage(imageName: imageName)
+                    let storedImage = CoreDataImageService.fetchImage(imageName: imageName)
                     if let storedImage = storedImage {
                         images.append(Photo(name: imageName, image: storedImage))
                     }
@@ -159,5 +158,28 @@ extension ModelController {
             }
         }
         return count
+    }
+    
+    static func saveImageObject(image: UIImage, path: String) -> Photo? {
+        guard let managedContext = managedContext else {
+            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
+            return nil
+        }
+        
+        let imageName = CoreDataImageService.saveImage(image: image, path: path)
+        
+        if let imageName = imageName,
+           let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext){
+            let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredImage
+            newImageEntity?.imageName = imageName
+            do {
+                try managedContext.save()
+                print("\(imageName) was saved in new object.")
+                return Photo(name: imageName, image: image)
+            } catch let error as NSError {
+                print("Could not save new image object: \(error)")
+            }
+        }
+        return nil
     }
 }

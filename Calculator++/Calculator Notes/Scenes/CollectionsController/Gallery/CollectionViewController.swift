@@ -8,7 +8,6 @@ import ImageViewer
 import StoreKit
 import GoogleMobileAds
 import SceneKit
-import ARKit
 import simd
 import Photos
 import StoreKit
@@ -54,6 +53,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
+        
+        CloudKitService.updateBackup()
     }
     
     private func setupTabBars() {
@@ -76,20 +77,37 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     private func setupFirstUse() {
         if !Key.firstUse.getBoolean() {
             Key.firstUse.setBoolean(true)
-            Alerts.showSetProtectionAsk(controller: self) { createProtection in
-                if createProtection {
-                    let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
-                    let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
-                    self.present(changePasswordCalcMode, animated: true)
-                } else {
-                    if let tabBarController = self.tabBarController {
-                        let desiredTabIndex = 3
-                        if desiredTabIndex < tabBarController.viewControllers?.count ?? 0 {
-                            tabBarController.selectedIndex = desiredTabIndex
-                        }
+            let alert = UIAlertController(title: "Recuperar Backup",
+                                          message: "Você gostaria de recuperar seu último backup?",
+                                          preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Sim", style: .default) { _ in
+                CloudKitService.fetchItems { photos, error in
+                    guard let photos = photos else {
+                        return
+                    }
+                    for photo in photos {
+                        ModelController.saveImageObject(image: photo.1, path: photo.0)
                     }
                 }
-            }
+            })
+
+            alert.addAction(UIAlertAction(title: "Não", style: .default))
+            present(alert, animated: true)
+//            Alerts.showSetProtectionAsk(controller: self) { createProtection in
+//                if createProtection {
+//                    let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
+//                    let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
+//                    self.present(changePasswordCalcMode, animated: true)
+//                } else {
+//                    if let tabBarController = self.tabBarController {
+//                        let desiredTabIndex = 3
+//                        if desiredTabIndex < tabBarController.viewControllers?.count ?? 0 {
+//                            tabBarController.selectedIndex = desiredTabIndex
+//                        }
+//                    }
+//                }
+//            }
         }
     }
     
