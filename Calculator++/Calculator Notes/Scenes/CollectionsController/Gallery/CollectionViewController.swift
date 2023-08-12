@@ -399,16 +399,17 @@ extension CollectionViewController {
         loadingAlert.startLoading(in: self)
         
         BackupService.hasDataInCloudKit { hasData, _, items  in
-            self.loadingAlert.stopLoading()
-            guard let items = items,
-                  !items.isEmpty,
-                  hasData else {
-                self.showSetProtectionOrNavigateToSettings()
-                return
-            }
-            Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
-                if restoreBackup {
-                    self.restoreBackupAndReloadData(photos: items)
+            self.loadingAlert.stopLoading {
+                guard let items = items,
+                      !items.isEmpty,
+                      hasData else {
+                    self.showSetProtectionOrNavigateToSettings()
+                    return
+                }
+                Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+                    if restoreBackup {
+                        self.restoreBackupAndReloadData(photos: items)
+                    }
                 }
             }
         }

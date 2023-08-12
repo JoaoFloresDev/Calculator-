@@ -6,10 +6,10 @@ class CloudKitImageService: ObservableObject {
     
     static var images: [(String, UIImage)] = []
     
-    static let recordTypeIdentifier = "ImageItem"
+    static let recordTypeIdentifier = "ItemItem"
     struct RecordKeys {
         static let name = "name"
-        static let image = "image"
+        static let image = "userImage"
     }
     
     struct PredicateFormats {
@@ -42,7 +42,8 @@ class CloudKitImageService: ObservableObject {
     }
     
     static func fetchImages(completion: @escaping ([(String, UIImage)]?, Error?) -> Void) {
-        let query = CKQuery(recordType: recordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)
+        let query = CKQuery(recordType: recordTypeIdentifier,
+                            predicate: PredicateFormats.alwaysTrue)
         
         database.perform(query, inZoneWith: nil) { records, error in
             if let error = error {
@@ -52,21 +53,21 @@ class CloudKitImageService: ObservableObject {
             }
             
             if let records = records {
-                var fetchedImages = [(String, UIImage)]()
+                var fetchedItems = [(String, UIImage)]()
                 
                 for record in records {
-                    if let imageName = record[RecordKeys.name] as? String,
+                    if let itemName = record[RecordKeys.name] as? String,
                        let imageAsset = record[RecordKeys.image] as? CKAsset,
                        let imageData = try? Data(contentsOf: imageAsset.fileURL),
-                       let image = UIImage(data: imageData) {
-                        fetchedImages.append((imageName, image))
+                       let userImage = UIImage(data: imageData) {
+                        fetchedItems.append((itemName, userImage))
                     }
                 }
                 
                 DispatchQueue.main.async {
-                    images = fetchedImages
-                    print("! \(fetchedImages) !")
-                    completion(fetchedImages, nil)
+                    images = fetchedItems
+                    print("! \(fetchedItems) !")
+                    completion(fetchedItems, nil)
                 }
             }
         }

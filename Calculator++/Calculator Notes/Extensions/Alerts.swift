@@ -126,7 +126,7 @@ struct Alerts {
 
 struct LoadingAlert {
     private var alert: UIAlertController?
-    
+
     mutating func startLoading(in viewController: UIViewController) {
         alert = UIAlertController(title: String(), message: String(), preferredStyle: .alert)
         alert?.view.backgroundColor = .clear
@@ -142,7 +142,9 @@ struct LoadingAlert {
         viewController.present(alert!, animated: true, completion: nil)
     }
     
-    func stopLoading() {
-        alert?.dismiss(animated: true, completion: nil)
+    func stopLoading(completion: (() -> Void)? = nil) {
+        DispatchQueue.main.async {
+            self.alert?.dismiss(animated: true, completion: completion)
+        }
     }
 }
