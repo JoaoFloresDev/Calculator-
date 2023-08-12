@@ -54,7 +54,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
         }
         
-        CloudKitService.updateBackup()
+        BackupService.updateBackup()
     }
     
     private func setupTabBars() {
@@ -82,14 +82,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
                                           preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Sim", style: .default) { _ in
-                CloudKitService.fetchItems { photos, error in
-                    guard let photos = photos else {
-                        return
-                    }
-                    for photo in photos {
-                        ModelController.saveImageObject(image: photo.1, path: photo.0)
-                    }
-                }
+                BackupService.restoreBackup()
             })
 
             alert.addAction(UIAlertAction(title: "Não", style: .default))

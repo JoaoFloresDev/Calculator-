@@ -1,6 +1,18 @@
 import CloudKit
 import UIKit
 
+struct Notifications {
+    static let itemSaved = "Item saved"
+    static let errorSavingItem = "Error saving item:"
+    static let errorFetchingItems = "Error fetching items:"
+    static let errorDeletingItem = "Error deleting item:"
+    static let itemDeleted = "Item deleted:"
+    static let userExists = "Usuário com o nome já existe."
+    static let success = "sucesso!"
+    static let errorVerifyingUser = "Erro ao verificar existência do usuário:"
+    static let itemsDeleted = "Items deleted:"
+}
+
 class CloudKitService: ObservableObject {
     private static let dataBase = CKContainer(identifier: "iCloud.calculatorNotes").publicCloudDatabase
     
@@ -15,18 +27,6 @@ class CloudKitService: ObservableObject {
     struct PredicateFormats {
         static let nameEqual = "name == %@"
         static let alwaysTrue = NSPredicate(value: true)
-    }
-    
-    struct Notifications {
-        static let itemSaved = "Item saved"
-        static let errorSavingItem = "Error saving item:"
-        static let errorFetchingItems = "Error fetching items:"
-        static let errorDeletingItem = "Error deleting item:"
-        static let itemDeleted = "Item deleted:"
-        static let userExists = "Usuário com o nome já existe."
-        static let success = "sucesso!"
-        static let errorVerifyingUser = "Erro ao verificar existência do usuário:"
-        static let itemsDeleted = "Items deleted:"
     }
     
     static func saveItem(name: String, userImage: UIImage, completion: @escaping (Bool, Error?) -> Void) {
@@ -126,11 +126,6 @@ class CloudKitService: ObservableObject {
         }
     }
     
-    static func updateBackup() {
-        addNewPhotos()
-        deletePhotos(nameList: NameManager.getNames())
-    }
-    
     static func deletePhotos(nameList: [String]) {
         for name in nameList {
             deleteItem(name: name) { success, error in
@@ -139,28 +134,6 @@ class CloudKitService: ObservableObject {
                 }
             }
         }
-    }
-    
-    static func addNewPhotos() {
-        let photos = ModelController.listAllPhotos()
-        for photo in photos {
-            CloudKitService.userExists(withName: photo.name) { exists, error in
-                if let error = error {
-                    print("\(Notifications.errorVerifyingUser) \(error.localizedDescription)")
-                    return
-                }
-                if exists {
-                    print(Notifications.userExists)
-                } else {
-                    CloudKitService.saveItem(name: photo.name, userImage: photo.image) { success, error in
-                        if let error = error {
-                            print(error.localizedDescription)
-                        }
-                    }
-                }
-            }
-        }
-        print(Notifications.success)
     }
     
     static func deleteAllItems(completion: @escaping (Bool, Error?) -> Void) {
