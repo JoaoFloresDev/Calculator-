@@ -20,8 +20,8 @@ class DisplayNoteViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setText(.notes)
-        navItem.leftBarButtonItem?.title = Text.cancel.rawValue.localized()
-        navItem.rightBarButtonItem?.title = Text.save.rawValue.localized()
+        navItem.leftBarButtonItem?.title = Text.cancel.localized()
+        navItem.rightBarButtonItem?.title = Text.save.localized()
     }
     
     override func viewWillAppear(_ animated: Bool) {

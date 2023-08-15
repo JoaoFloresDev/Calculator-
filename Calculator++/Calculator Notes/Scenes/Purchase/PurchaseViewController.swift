@@ -99,11 +99,11 @@ class PurchaseViewController: UIViewController {
                                                name: .IAPHelperPurchaseNotification,
                                                object: nil)
         confirmCheckmark()
-        customNavigator.title = Text.products.rawValue.localized()
-        closeButton.title = Text.close.rawValue.localized()
-        restoreButton.title = Text.restore.rawValue.localized()
-        buyLabel.text = Text.buy.rawValue.localized()
-        priceLabel.text  = Text.loading.rawValue.localized()
+        customNavigator.title = Text.products.localized()
+        closeButton.title = Text.close.localized()
+        restoreButton.title = Text.restore.localized()
+        buyLabel.text = Text.buy.localized()
+        priceLabel.text  = Text.loading.localized()
     }
     
     override func viewDidAppear(_ animated: Bool) {

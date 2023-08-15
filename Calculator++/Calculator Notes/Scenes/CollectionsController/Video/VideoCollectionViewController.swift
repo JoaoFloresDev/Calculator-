@@ -154,11 +154,11 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     }
     
     func addFolder() {
-        Alerts.showInputDialog(title: Text.folderTitle.rawValue.localized(),
+        Alerts.showInputDialog(title: Text.folderTitle.localized(),
                                controller: self,
-                               actionTitle: Text.createActionTitle.rawValue.localized(),
-                               cancelTitle: Text.cancelTitle.rawValue.localized(),
-                               inputPlaceholder: Text.inputPlaceholder.rawValue.localized(),
+                               actionTitle: Text.createActionTitle.localized(),
+                               cancelTitle: Text.cancelTitle.localized(),
+                               inputPlaceholder: Text.inputPlaceholder.localized(),
                                actionHandler: { (input: String?) in
             if let input = input {
                 if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
@@ -167,8 +167,8 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
                     }
                     self.collectionView?.reloadSections(IndexSet(integer: .zero))
                 } else {
-                    Alerts.showError(title: Text.folderNameAlreadyUsedTitle.rawValue.localized(),
-                                     text: Text.folderNameAlreadyUsedText.rawValue.localized(), controller: self,
+                    Alerts.showError(title: Text.folderNameAlreadyUsedTitle.localized(),
+                                     text: Text.folderNameAlreadyUsedText.localized(), controller: self,
                                      completion: {
                         self.addFolder()
                     })

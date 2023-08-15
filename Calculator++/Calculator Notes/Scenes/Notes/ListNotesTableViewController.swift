@@ -47,7 +47,7 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         tableView.backgroundView?.addSubview(imageView2)
         
         setupAds()
-        buttonEdit.title = Text.edit.rawValue.localized()
+        buttonEdit.title = Text.edit.localized()
         self.setText(.notes)
     }
     
@@ -129,11 +129,11 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         
         if(self.isEditing) {
             self.setEditing(false, animated: true)
-            buttonEdit.title = Text.edit.rawValue.localized()
+            buttonEdit.title = Text.edit.localized()
             self.rateApp()
         } else {
             self.setEditing(true, animated: true)
-            buttonEdit.title = Text.done.rawValue.localized()
+            buttonEdit.title = Text.done.localized()
         }
     }
     

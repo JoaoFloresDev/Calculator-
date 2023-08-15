@@ -32,7 +32,7 @@ class CalculatorViewController: BaseCalculatorViewController {
             myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
                 if success {
                     DispatchQueue.main.async {
-                        var instructionText = Text.instructionSecondStepCalc.rawValue.localized()
+                        var instructionText = Text.instructionSecondStepCalc.localized()
                         let key = UserDefaults.standard.string(forKey: "Key") ?? "314159"
                         instructionText = instructionText.replacingOccurrences(of: "*****", with: key)
                         self.instructionsLabel.text = instructionText

@@ -137,7 +137,7 @@ class PasswordViewController: UIViewController {
         
         if(password.count >= 1 && captureKey == 1) {
             keyCurret = String(password)
-            var instructionsText = Text.instructionSecondStepBank.rawValue.localized()
+            var instructionsText = Text.instructionSecondStepBank.localized()
             instructionsText = instructionsText.replacingOccurrences(of: "*****", with: keyCurret)
             instructionsLabel.text = instructionsText
             captureKey = 2
@@ -149,8 +149,8 @@ class PasswordViewController: UIViewController {
             self.present(homeViewController, animated: true)
         }
         else {
-            let alert = UIAlertController(title: Text.incorrectPassword.rawValue.localized(),
-                                          message: Text.tryAgain.rawValue.localized(),
+            let alert = UIAlertController(title: Text.incorrectPassword.localized(),
+                                          message: Text.tryAgain.localized(),
                                           preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 self.clearAll()
