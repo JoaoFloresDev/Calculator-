@@ -57,6 +57,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             if isConnected {
                 BackupService.updateBackup()
             }
+            if  let password = UserDefaults.standard.string(forKey: "Key") {
+                CloudKitPasswordService.savePassword(password: password) { success, error in
+                    print("password status", success, error)
+                }
+            }
         }
     }
     
@@ -397,18 +402,27 @@ extension CollectionViewController {
 
     private func performFirstUseSetup() {
         loadingAlert.startLoading(in: self)
-        
-        BackupService.hasDataInCloudKit { hasData, _, items  in
-            self.loadingAlert.stopLoading {
-                guard let items = items,
-                      !items.isEmpty,
-                      hasData else {
+        CloudKitPasswordService.fetchPassword { password, error in
+            guard let password = password,
+                  error == nil else {
+                self.loadingAlert.stopLoading {
                     self.showSetProtectionOrNavigateToSettings()
-                    return
                 }
-                Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
-                    if restoreBackup {
-                        self.restoreBackupAndReloadData(photos: items)
+                return
+            }
+            
+            BackupService.hasDataInCloudKit { hasData, _, items  in
+                self.loadingAlert.stopLoading {
+                    guard let items = items,
+                          !items.isEmpty,
+                          hasData else {
+                        self.showSetProtectionOrNavigateToSettings()
+                        return
+                    }
+                    Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+                        if restoreBackup {
+                            self.restoreBackupAndReloadData(photos: items)
+                        }
                     }
                 }
             }

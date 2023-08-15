@@ -38,14 +38,14 @@ struct Alerts {
     
     // Folders
     static func showInputDialog(title:String? = nil,
-                         subtitle:String? = nil,
-                         controller: UIViewController,
-                         actionTitle:String?,
-                         cancelTitle:String?,
-                         inputPlaceholder:String? = nil,
-                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
-                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
-                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+                                subtitle:String? = nil,
+                                controller: UIViewController,
+                                actionTitle:String?,
+                                cancelTitle:String?,
+                                inputPlaceholder:String? = nil,
+                                inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
+                                cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                                actionHandler: ((_ text: String?) -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         alert.addTextField { (textField:UITextField) in
             textField.placeholder = inputPlaceholder
@@ -108,18 +108,65 @@ struct Alerts {
     
     // Backup
     static func askUserToRestoreBackup(on viewController: UIViewController, completion: @escaping (Bool) -> Void) {
-            let alert = UIAlertController(title: "Recuperar Backup",
-                                          message: "Você gostaria de recuperar seu último backup?",
-                                          preferredStyle: .alert)
-
-            alert.addAction(UIAlertAction(title: "Não", style: .default) { _ in
-                completion(false)
-            })
+        let alert = UIAlertController(title: "Recuperar Backup",
+                                      message: "Você gostaria de recuperar seu último backup?",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Não", style: .default) { _ in
+            completion(false)
+        })
         
         alert.addAction(UIAlertAction(title: "Sim", style: .default) { _ in
             completion(true)
         })
-            
-            viewController.present(alert, animated: true)
+        
+        viewController.present(alert, animated: true)
+    }
+    
+    static func showBackupSuccess(controller: UIViewController) {
+        let alert = UIAlertController(title: "Backup realizado",
+                                      message: "Seu backup foi recuperado com sucesso",
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        controller.present(alert, animated: true, completion: nil)
+    }
+    
+    static func showBackupError(controller: UIViewController) {
+        let alert = UIAlertController(title: "Falha ao realizar backup",
+                                      message: "Não foram encontrados dados no seu backup",
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        controller.present(alert, animated: true, completion: nil)
+    }
+    
+    static func showPasswordError(controller: UIViewController) {
+        let alert = UIAlertController(title: "Senha incorreta",
+                                      message: "A senha fornecida não é compativel, tente novamente",
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        controller.present(alert, animated: true, completion: nil)
+    }
+    
+    static func insertPassword(controller: UIViewController, completion: @escaping (String?) -> Void) {
+        let alertController = UIAlertController(title: "Insira sua senha", message: "Insira a senha que era utilizada para abrir a calculadora", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Digite a senha numérica"
         }
+        
+        let addAction = UIAlertAction(title: "Confirmar", style: .default) { _ in
+            if let password = alertController.textFields?.first?.text {
+                completion(password)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel) { _ in
+            completion(nil)
+        }
+        
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        
+        controller.present(alertController, animated: true)
+    }
+
 }

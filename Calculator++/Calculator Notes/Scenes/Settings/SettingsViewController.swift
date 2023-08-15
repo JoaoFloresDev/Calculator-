@@ -72,25 +72,39 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var loadingAlert = LoadingAlert()
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
         self.loadingAlert.startLoading(in: self)
-        BackupService.hasDataInCloudKit { hasData, _, items  in
+        CloudKitPasswordService.fetchPassword { password, error in
             self.loadingAlert.stopLoading {
-                guard let items = items,
-                      !items.isEmpty,
-                      hasData else {
-                    
-                    return
-                }
-                Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
-                    if restoreBackup {
+                Alerts.insertPassword(controller: self, completion: { insertedPassword in
+                    if insertedPassword == password {
                         self.loadingAlert.startLoading(in: self)
-                        BackupService.restoreBackup(photos: items) { success, _ in
-                            self.loadingAlert.stopLoading()
-                            if success {
-                                
+                        BackupService.hasDataInCloudKit { hasData, _, items  in
+                            self.loadingAlert.stopLoading {
+                                guard let items = items,
+                                      !items.isEmpty,
+                                      hasData else {
+                                    Alerts.showBackupError(controller: self)
+                                    return
+                                }
+                                Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+                                    if restoreBackup {
+                                        self.loadingAlert.startLoading(in: self)
+                                        BackupService.restoreBackup(photos: items) { success, _ in
+                                            self.loadingAlert.stopLoading {
+                                                if success {
+                                                    Alerts.showBackupSuccess(controller: self)
+                                                } else {
+                                                    Alerts.showBackupError(controller: self)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
+                    } else {
+                        Alerts.showPasswordError(controller: self)
                     }
-                }
+                })
             }
         }
     }

@@ -25,11 +25,12 @@
 		7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
-		73741B002A86F0DE0067B269 /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741AFF2A86F0DE0067B269 /* CloudUpdateManager.swift */; };
 		73741B022A87D06B0067B269 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B012A87D06B0067B269 /* CloudKitService.swift */; };
 		73741B092A880B3C0067B269 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B062A880A590067B269 /* BackupService.swift */; };
 		73741B0B2A880BFB0067B269 /* CloudNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B0A2A880BFB0067B269 /* CloudNotifications.swift */; };
 		73741B0D2A882DC30067B269 /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B0C2A882DC30067B269 /* LoadingAlert.swift */; };
+		73741B0F2A886B0B0067B269 /* CloudKitPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B0E2A886B0B0067B269 /* CloudKitPasswordService.swift */; };
+		73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B102A886C310067B269 /* CloudUpdateManager.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
@@ -111,11 +112,12 @@
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calculator Notes.entitlements"; sourceTree = "<group>"; };
-		73741AFF2A86F0DE0067B269 /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudUpdateManager.swift; path = ../../../../../CloudUpdateManager.swift; sourceTree = "<group>"; };
 		73741B012A87D06B0067B269 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		73741B062A880A590067B269 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
 		73741B0A2A880BFB0067B269 /* CloudNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudNotifications.swift; path = ../../../../../../../../CloudNotifications.swift; sourceTree = "<group>"; };
 		73741B0C2A882DC30067B269 /* LoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingAlert.swift; path = ../../../../../LoadingAlert.swift; sourceTree = "<group>"; };
+		73741B0E2A886B0B0067B269 /* CloudKitPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudKitPasswordService.swift; path = ../../../../../../../../CloudKitPasswordService.swift; sourceTree = "<group>"; };
+		73741B102A886C310067B269 /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUpdateManager.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -273,7 +275,9 @@
 		73741B052A880A4E0067B269 /* cloud */ = {
 			isa = PBXGroup;
 			children = (
+				73741B102A886C310067B269 /* CloudUpdateManager.swift */,
 				73741B012A87D06B0067B269 /* CloudKitService.swift */,
+				73741B0E2A886B0B0067B269 /* CloudKitPasswordService.swift */,
 				73741B062A880A590067B269 /* BackupService.swift */,
 				73741B0A2A880BFB0067B269 /* CloudNotifications.swift */,
 			);
@@ -436,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */,
-				73741AFF2A86F0DE0067B269 /* CloudUpdateManager.swift */,
 				73ECF50F2A847CFD0027E022 /* CloudKitItemsViewController.swift */,
 			);
 			path = Services;
@@ -630,8 +633,8 @@
 				73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,
+				73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */,
 				73ECF5102A847CFD0027E022 /* CloudKitItemsViewController.swift in Sources */,
-				73741B002A86F0DE0067B269 /* CloudUpdateManager.swift in Sources */,
 				73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
@@ -648,6 +651,7 @@
 				73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */,
 				C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
+				73741B0F2A886B0B0067B269 /* CloudKitPasswordService.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
