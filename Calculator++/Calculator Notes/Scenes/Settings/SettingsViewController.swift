@@ -194,6 +194,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             self.loadingAlert.stopLoading {
                 if success {
                     Alerts.showBackupSuccess(controller: self)
+                    let controllers = self.tabBarController?.viewControllers
+                    let navigation = controllers?[0] as? UINavigationController
+                    let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
+                    collectionViewController?.viewDidLoad()
                 } else {
                     Alerts.showBackupError(controller: self)
                 }

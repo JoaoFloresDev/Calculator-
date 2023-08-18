@@ -442,13 +442,14 @@ extension CollectionViewController {
     private func restoreBackupAndReloadData(photos: [(String, UIImage)]) {
         loadingAlert.startLoading(in: self)
         BackupService.restoreBackup(photos: photos) { success, _ in
-            self.loadingAlert.stopLoading()
-            if success {
-                self.setupData()
-                self.collectionView?.reloadData()
-                Alerts.showBackupSuccess(controller: self)
-            } else {
-                Alerts.showBackupError(controller: self)
+            self.loadingAlert.stopLoading {
+                if success {
+                    self.setupData()
+                    self.collectionView?.reloadData()
+                    self.showSetProtectionOrNavigateToSettings()
+                } else {
+                    Alerts.showBackupError(controller: self)
+                }
             }
         }
     }

@@ -68,6 +68,7 @@ struct Alerts {
     static func showSetProtectionAsk(controller: UIViewController, completion: @escaping (Bool) -> Void) {
         showAlertWithTitle(Text.wouldLikeSetProtection.localized(),
                            controller: controller,
+                           cancelTitle: Text.cancel.localized(),
                            confirmAction: { _ in completion(true) },
                            cancelAction: { _ in completion(false) })
     }
