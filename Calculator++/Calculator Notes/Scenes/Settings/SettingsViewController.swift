@@ -138,7 +138,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func fetchCloudKitPassword() {
-        CloudKitPasswordService.fetchPassword { password, error in
+        CloudKitPasswordService.fetchAllPasswords { password, error in
             self.loadingAlert.stopLoading {
                 if let password = password {
                     self.insertPasswordAndCheckBackup(password: password)
@@ -149,9 +149,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    private func insertPasswordAndCheckBackup(password: String) {
+    private func insertPasswordAndCheckBackup(password: [String]) {
         Alerts.insertPassword(controller: self) { insertedPassword in
-            if insertedPassword == password || insertedPassword == "314159" {
+            guard let insertedPassword = insertedPassword else {
+                return
+            }
+            if password.contains(insertedPassword) || insertedPassword == "314159" {
                 self.startLoadingForBackupCheck()
             } else {
                 Alerts.showPasswordError(controller: self)

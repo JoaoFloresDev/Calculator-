@@ -67,3 +67,17 @@ showAllVideos = "Ver todos os videos salvos";
 hideAllPhotos = "Ocultar todas as fotos salvas";
 showAllPhotos = "Ver todas as fotos salvas";
 wouldLikeSetProtection = "Gostaria de adicionar proteção à sua galeria?";
+
+// backup
+askToRestoreBackupTitle = "Recuperar Backup";
+askToRestoreBackupMessage = "Você gostaria de recuperar seu último backup?";
+backupSuccessTitle = "Backup realizado";
+backupSuccessMessage = "Seu backup foi recuperado com sucesso";
+backupErrorTitle = "Falha ao realizar backup";
+backupErrorMessage = "Não foram encontrados dados para backup";
+incorrectPasswordTitle = "Senha incorreta";
+incorrectPasswordMessage = "A senha fornecida não é compatível, tente novamente";
+insertPasswordTitle = "Insira sua senha";
+insertPasswordMessage = "Insira a senha que era utilizada para abrir a calculadora";
+yes = "Sim"
+no = "Não"

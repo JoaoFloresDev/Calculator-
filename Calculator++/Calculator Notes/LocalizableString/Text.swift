@@ -69,6 +69,20 @@ enum Text: String {
     case ok
     case see
     
+    case confirm
+    case yes
+    case no
+    case askToRestoreBackupTitle
+    case askToRestoreBackupMessage
+    case backupSuccessTitle
+    case backupSuccessMessage
+    case backupErrorTitle
+    case backupErrorMessage
+    case incorrectPasswordTitle
+    case incorrectPasswordMessage
+    case insertPasswordTitle
+    case insertPasswordMessage
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

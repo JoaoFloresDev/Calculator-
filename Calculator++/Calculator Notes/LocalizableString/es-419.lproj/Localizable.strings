@@ -67,3 +67,17 @@
 "hideAllPhotos" = "Ocultar Todas las Fotos Guardadas";
 "showAllPhotos" = "Mostrar Todas las Fotos Guardadas";
 "wouldLikeSetProtection" = "¿Deseas añadir protección a tu galería?";
+
+//backup
+askToRestoreBackupTitle = "Restaurar Backup";
+askToRestoreBackupMessage = "¿Desea restaurar su última copia de seguridad?";
+backupSuccessTitle = "Copia de Seguridad Exitosa";
+backupSuccessMessage = "Su copia de seguridad se ha restaurado con éxito.";
+backupErrorTitle = "Error de Copia de Seguridad";
+backupErrorMessage = "No se encontraron datos para la copia de seguridad.";
+incorrectPasswordTitle = "Contraseña Incorrecta";
+incorrectPasswordMessage = "La contraseña proporcionada no es compatible, inténtelo nuevamente.";
+insertPasswordTitle = "Ingrese su Contraseña";
+insertPasswordMessage = "Por favor, ingrese la contraseña que se utilizó para abrir la calculadora.";
+yes = "Si"
+no = "Não"

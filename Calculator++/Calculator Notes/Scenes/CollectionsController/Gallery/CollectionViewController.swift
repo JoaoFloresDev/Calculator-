@@ -405,7 +405,7 @@ extension CollectionViewController {
     
     private func performFirstUseSetup() {
         loadingAlert.startLoading(in: self)
-        CloudKitPasswordService.fetchPassword { password, error in
+        CloudKitPasswordService.fetchAllPasswords { password, error in
             guard let password = password,
                   error == nil else {
                 self.loadingAlert.stopLoading {
@@ -418,7 +418,10 @@ extension CollectionViewController {
                     if restoreBackup {
                         Alerts.insertPassword(controller: self, completion: { insertedPassword
                             in
-                            if insertedPassword == password {
+                            guard let insertedPassword = insertedPassword else {
+                                return
+                            }
+                            if password.contains(insertedPassword) {
                                 self.loadingAlert.startLoading(in: self)
                                 BackupService.hasDataInCloudKit { hasData, _, items  in
                                     self.loadingAlert.stopLoading {

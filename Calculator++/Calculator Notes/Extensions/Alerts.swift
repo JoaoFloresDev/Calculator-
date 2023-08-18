@@ -75,51 +75,53 @@ struct Alerts {
     
     // Backup
     static func askUserToRestoreBackup(on viewController: UIViewController, completion: @escaping (Bool) -> Void) {
-        showAlertWithTitle("Recuperar Backup",
-                           message: "Você gostaria de recuperar seu último backup?",
+        showAlertWithTitle(Text.askToRestoreBackupTitle.localized(),
+                           message: Text.askToRestoreBackupMessage.localized(),
                            controller: viewController,
-                           confirmTitle: "Sim",
-                           cancelTitle: "Não",
+                           confirmTitle: Text.yes.localized(),
+                           cancelTitle: Text.no.localized(),
                            confirmAction: { _ in completion(true) },
                            cancelAction: { _ in completion(false) })
     }
-    
+
     static func showBackupSuccess(controller: UIViewController) {
-        showAlertWithTitle("Backup realizado",
-                           message: "Seu backup foi recuperado com sucesso",
+        showAlertWithTitle(Text.backupSuccessTitle.localized(),
+                           message: Text.backupSuccessMessage.localized(),
                            controller: controller)
     }
-    
+
     static func showBackupError(controller: UIViewController) {
-        showAlertWithTitle("Falha ao realizar backup",
-                           message: "Não foram encontrados dados para backup",
+        showAlertWithTitle(Text.backupErrorTitle.localized(),
+                           message: Text.backupErrorMessage.localized(),
                            controller: controller)
     }
-    
+
     static func showPasswordError(controller: UIViewController) {
-        showAlertWithTitle("Senha incorreta",
-                           message: "A senha fornecida não é compativel, tente novamente",
+        showAlertWithTitle(Text.incorrectPasswordTitle.localized(),
+                           message: Text.incorrectPasswordMessage.localized(),
                            controller: controller)
     }
-    
+
     static func insertPassword(controller: UIViewController, completion: @escaping (String?) -> Void) {
-        let alertController = UIAlertController(title: "Insira sua senha", message: "Insira a senha que era utilizada para abrir a calculadora", preferredStyle: .alert)
+        let alertController = UIAlertController(title: Text.insertPasswordTitle.localized(),
+                                                message: Text.insertPasswordMessage.localized(),
+                                                preferredStyle: .alert)
         alertController.addTextField { textField in
-            textField.placeholder = "Digite a senha da calculadora"
+            textField.placeholder = Text.inputPlaceholder.localized()
             textField.keyboardType = .numberPad
         }
-        
-        let addAction = UIAlertAction(title: "Confirmar", style: .default) { _ in
+
+        let addAction = UIAlertAction(title: Text.confirm.localized(), style: .default) { _ in
             completion(alertController.textFields?.first?.text)
         }
-        
+
         let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .default) { _ in
             completion(nil)
         }
-        
+
         alertController.addAction(cancelAction)
         alertController.addAction(addAction)
-        
+
         controller.present(alertController, animated: true)
     }
     
@@ -127,7 +129,7 @@ struct Alerts {
     private static func showAlertWithTitle(_ title: String,
                                            message: String? = nil,
                                            controller: UIViewController,
-                                           confirmTitle: String = "OK",
+                                           confirmTitle: String = Text.ok.localized(),
                                            cancelTitle: String? = nil,
                                            confirmAction: ((UIAlertAction) -> Void)? = nil,
                                            cancelAction: ((UIAlertAction) -> Void)? = nil) {
