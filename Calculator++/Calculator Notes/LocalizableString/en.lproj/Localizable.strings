@@ -78,5 +78,5 @@ incorrectPasswordTitle = "Incorrect Password";
 incorrectPasswordMessage = "The provided password is not compatible, please try again.";
 insertPasswordTitle = "Enter Your Password";
 insertPasswordMessage = "Please enter the password that was used to open the calculator.";
-yes = "Yes"
-no = "No"
+yes = "Yes";
+no = "No";

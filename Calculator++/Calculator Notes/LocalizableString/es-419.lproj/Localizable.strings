@@ -79,5 +79,5 @@ incorrectPasswordTitle = "Contraseña Incorrecta";
 incorrectPasswordMessage = "La contraseña proporcionada no es compatible, inténtelo nuevamente.";
 insertPasswordTitle = "Ingrese su Contraseña";
 insertPasswordMessage = "Por favor, ingrese la contraseña que se utilizó para abrir la calculadora.";
-yes = "Si"
-no = "No"
+yes = "Si";
+no = "No";
