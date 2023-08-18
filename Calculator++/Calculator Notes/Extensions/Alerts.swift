@@ -113,12 +113,12 @@ struct Alerts {
             completion(alertController.textFields?.first?.text)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .default) { _ in
             completion(nil)
         }
         
-        alertController.addAction(addAction)
         alertController.addAction(cancelAction)
+        alertController.addAction(addAction)
         
         controller.present(alertController, animated: true)
     }
@@ -131,16 +131,15 @@ struct Alerts {
                                            cancelTitle: String? = nil,
                                            confirmAction: ((UIAlertAction) -> Void)? = nil,
                                            cancelAction: ((UIAlertAction) -> Void)? = nil) {
+        
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: confirmTitle, style: .default, handler: confirmAction))
-        
         if let cancelTitle = cancelTitle {
-            alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelAction))
+            alert.addAction(UIAlertAction(title: cancelTitle, style: .default, handler: cancelAction))
         }
-        
+        alert.addAction(UIAlertAction(title: confirmTitle, style: .default, handler: confirmAction))
         controller.present(alert, animated: true)
     }
 }

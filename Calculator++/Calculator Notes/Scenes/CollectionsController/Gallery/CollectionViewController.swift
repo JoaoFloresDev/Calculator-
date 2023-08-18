@@ -57,8 +57,10 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
                 BackupService.updateBackup()
                 if Key.needSavePasswordInCloud.getBoolean() == true {
                     if let password = Key.password.getString() {
-                        CloudKitPasswordService.savePassword(password: password) { success, error in
-                            Key.needSavePasswordInCloud.setBoolean(false)
+                        CloudKitPasswordService.updatePassword(newPassword: password) { success, error in
+                            if success && error == nil {
+                                Key.needSavePasswordInCloud.setBoolean(false)
+                            }
                         }
                     }
                 }
@@ -432,7 +434,7 @@ extension CollectionViewController {
                             }
                         })
                     } else {
-                        
+                        self.showSetProtectionOrNavigateToSettings()
                     }
                 }
             }
