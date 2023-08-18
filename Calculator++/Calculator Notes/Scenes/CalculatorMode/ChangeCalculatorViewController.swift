@@ -51,7 +51,8 @@ class ChangeCalculatorViewController: BaseCalculatorViewController {
             outputLbl.text = "0"
             
             UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.calculator)
-            UserDefaults.standard.set(keyTemp, forKey: "Key")
+            Key.password.setString(keyTemp)
+            Key.needSavePasswordInCloud.setBoolean(true)
             showAlert()
         }
         

@@ -18,6 +18,7 @@ struct BackupService {
                 }
             }
         }
+        
     }
     
     static func restoreBackup(photos: [(String, UIImage)],

@@ -91,7 +91,7 @@ struct Alerts {
     
     static func showBackupError(controller: UIViewController) {
         showAlertWithTitle("Falha ao realizar backup",
-                           message: "Não foram encontrados dados no seu backup",
+                           message: "Não foram encontrados dados para backup",
                            controller: controller)
     }
     
@@ -104,7 +104,8 @@ struct Alerts {
     static func insertPassword(controller: UIViewController, completion: @escaping (String?) -> Void) {
         let alertController = UIAlertController(title: "Insira sua senha", message: "Insira a senha que era utilizada para abrir a calculadora", preferredStyle: .alert)
         alertController.addTextField { textField in
-            textField.placeholder = "Digite a senha numérica"
+            textField.placeholder = "Digite a senha da calculadora"
+            textField.keyboardType = .numberPad
         }
         
         let addAction = UIAlertAction(title: "Confirmar", style: .default) { _ in
@@ -120,7 +121,7 @@ struct Alerts {
         
         controller.present(alertController, animated: true)
     }
-
+    
     // Helper function to show a basic alert
     private static func showAlertWithTitle(_ title: String,
                                            message: String? = nil,

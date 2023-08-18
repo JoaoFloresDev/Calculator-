@@ -36,18 +36,17 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
-
+        
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
             self.setText(.gallery)
         }
-
+        
         setupAds()
         setupFirstUse()
-
         setupTabBars()
-
+        
         if basePath == deepSeparatorPath {
             let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
             UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
@@ -56,10 +55,12 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         isConnectedToWiFi { isConnected in
             if isConnected {
                 BackupService.updateBackup()
-            }
-            if  let password = UserDefaults.standard.string(forKey: "Key") {
-                CloudKitPasswordService.savePassword(password: password) { success, error in
-                    print("password status", success, error)
+                if Key.needSavePasswordInCloud.getBoolean() == true {
+                    if let password = Key.password.getString() {
+                        CloudKitPasswordService.savePassword(password: password) { success, error in
+                            Key.needSavePasswordInCloud.setBoolean(false)
+                        }
+                    }
                 }
             }
         }
@@ -88,7 +89,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         controllers?[2].setText(.notes)
         controllers?[3].setText(.settings)
     }
-
+    
     func deselectAllFoldersObjects() {
         for index in 0 ..< folders.count {
             folders[index].isSelected = false
@@ -103,7 +104,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
         let monitor = NWPathMonitor()
-
+        
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied && path.usesInterfaceType(.wifi) {
                 completion(true)
@@ -111,7 +112,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
                 completion(false)
             }
         }
-
+        
         let queue = DispatchQueue(label: "NetworkMonitor")
         monitor.start(queue: queue)
     }
@@ -181,9 +182,9 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
     func addFolder() {
         Alerts.showInputDialog(title: Text.folderTitle.localized(),
                                controller: self, actionTitle: Text.createActionTitle.localized(),
-                        cancelTitle: Text.cancelTitle.rawValue.localized(),
-                        inputPlaceholder: Text.inputPlaceholder.localized(),
-                        actionHandler: { (input: String?) in
+                               cancelTitle: Text.cancelTitle.rawValue.localized(),
+                               inputPlaceholder: Text.inputPlaceholder.localized(),
+                               actionHandler: { (input: String?) in
             if let input = input {
                 if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
                     self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { folderName in
@@ -194,7 +195,7 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
                     Alerts.showError(title: Text.folderNameAlreadyUsedTitle.localized(),
                                      text: Text.folderNameAlreadyUsedText.localized(),
                                      controller: self,
-                                   completion: {
+                                     completion: {
                         self.addFolder()
                     })
                 }
@@ -399,7 +400,7 @@ extension CollectionViewController {
             performFirstUseSetup()
         }
     }
-
+    
     private func performFirstUseSetup() {
         loadingAlert.startLoading(in: self)
         CloudKitPasswordService.fetchPassword { password, error in
@@ -410,25 +411,34 @@ extension CollectionViewController {
                 }
                 return
             }
-            
-            BackupService.hasDataInCloudKit { hasData, _, items  in
-                self.loadingAlert.stopLoading {
-                    guard let items = items,
-                          !items.isEmpty,
-                          hasData else {
-                        self.showSetProtectionOrNavigateToSettings()
-                        return
-                    }
-                    Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
-                        if restoreBackup {
-                            self.restoreBackupAndReloadData(photos: items)
-                        }
+            self.loadingAlert.stopLoading {
+                Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+                    if restoreBackup {
+                        Alerts.insertPassword(controller: self, completion: { insertedPassword
+                            in
+                            if insertedPassword == password {
+                                self.loadingAlert.startLoading(in: self)
+                                BackupService.hasDataInCloudKit { hasData, _, items  in
+                                    self.loadingAlert.stopLoading {
+                                        guard let items = items,
+                                              !items.isEmpty,
+                                              hasData else {
+                                            self.showSetProtectionOrNavigateToSettings()
+                                            return
+                                        }
+                                        self.restoreBackupAndReloadData(photos: items)
+                                    }
+                                }
+                            }
+                        })
+                    } else {
+                        
                     }
                 }
             }
         }
     }
-
+    
     private func restoreBackupAndReloadData(photos: [(String, UIImage)]) {
         loadingAlert.startLoading(in: self)
         BackupService.restoreBackup(photos: photos) { success, _ in
@@ -436,10 +446,13 @@ extension CollectionViewController {
             if success {
                 self.setupData()
                 self.collectionView?.reloadData()
+                Alerts.showBackupSuccess(controller: self)
+            } else {
+                Alerts.showBackupError(controller: self)
             }
         }
     }
-
+    
     private func showSetProtectionOrNavigateToSettings() {
         Alerts.showSetProtectionAsk(controller: self) { createProtection in
             if createProtection {
@@ -449,13 +462,13 @@ extension CollectionViewController {
             }
         }
     }
-
+    
     private func presentChangePasswordCalcMode() {
         let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
         let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
         self.present(changePasswordCalcMode, animated: true)
     }
-
+    
     private func navigateToSettingsTab() {
         if let tabBarController = self.tabBarController {
             let desiredTabIndex = 3

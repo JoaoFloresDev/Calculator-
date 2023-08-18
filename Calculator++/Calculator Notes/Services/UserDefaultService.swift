@@ -24,6 +24,8 @@ public enum Key: String {
     case galleryFoldersPath
     case videoFoldersPath
     case disableRecoveryButtonCounter
+    case password = "Key"
+    case needSavePasswordInCloud
     
     func setBoolean(_ bool: Bool) {
         userDefaults.set(bool, forKey: self.rawValue)
@@ -31,6 +33,14 @@ public enum Key: String {
     
     func getBoolean() -> Bool {
         return userDefaults.bool(forKey: self.rawValue)
+    }
+    
+    func setString(_ string: String) {
+        userDefaults.set(string, forKey: self.rawValue)
+    }
+    
+    func getString() -> String? {
+        return userDefaults.string(forKey: self.rawValue)
     }
 }
 

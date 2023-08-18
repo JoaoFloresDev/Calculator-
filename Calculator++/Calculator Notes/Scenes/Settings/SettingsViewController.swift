@@ -10,105 +10,65 @@ import UIKit
 import StoreKit
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
-    
+
     // MARK: - IBOutlet
-    
+
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var recoverLabel: UILabel!
-    
+
     @IBOutlet weak var chooseProtectionLabel: UILabel!
-    
+
     @IBOutlet weak var bankModeView: UIView!
     @IBOutlet weak var bankModeImage: UIImageView!
-    
+
     @IBOutlet weak var calcModeView: UIView!
     @IBOutlet weak var calcModeImage: UIImageView!
-    
+
     @IBOutlet weak var noProtectionImage: UIImageView!
     @IBOutlet weak var noProtection: UIButton!
-    
+
     @IBOutlet weak var ModeGroupView: UIView!
-    
+
     @IBOutlet weak var upgradeButton: UIButton!
-    
+
     @IBOutlet weak var customTabBar: UITabBarItem!
-    
+
     @IBOutlet weak var rateApp: UIView!
-    
+
     @IBOutlet weak var restoreBackup: UIView!
-    
+
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Key.recoveryStatus.setBoolean(sender.isOn)
     }
-    
+
     @IBAction func noProtectionPressed(_ sender: Any) {
         UserDefaultService().setTypeProtection(protectionMode: .noProtection)
         showProtectionType(typeProtection: .noProtection)
     }
-    
+
     @IBAction func showBankMode(_ sender: Any) {
         let storyboard = UIStoryboard(name: "BankMode", bundle: nil)
         let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordBankMode")
         present(changePasswordCalcMode, animated: true)
     }
-    
+
     @IBAction func showCalculatorMode(_ sender: Any) {
         let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
         let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
         present(changePasswordCalcMode, animated: true)
     }
-    
+
     @IBAction func premiumVersionPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
         let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
         present(changePasswordCalcMode, animated: true)
     }
-    
+
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         SKStoreReviewController.requestReview()
     }
-    
-    var loadingAlert = LoadingAlert()
-    @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
-        self.loadingAlert.startLoading(in: self)
-        CloudKitPasswordService.fetchPassword { password, error in
-            self.loadingAlert.stopLoading {
-                Alerts.insertPassword(controller: self, completion: { insertedPassword in
-                    if insertedPassword == password {
-                        self.loadingAlert.startLoading(in: self)
-                        BackupService.hasDataInCloudKit { hasData, _, items  in
-                            self.loadingAlert.stopLoading {
-                                guard let items = items,
-                                      !items.isEmpty,
-                                      hasData else {
-                                    Alerts.showBackupError(controller: self)
-                                    return
-                                }
-                                Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
-                                    if restoreBackup {
-                                        self.loadingAlert.startLoading(in: self)
-                                        BackupService.restoreBackup(photos: items) { success, _ in
-                                            self.loadingAlert.stopLoading {
-                                                if success {
-                                                    Alerts.showBackupSuccess(controller: self)
-                                                } else {
-                                                    Alerts.showBackupError(controller: self)
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        Alerts.showPasswordError(controller: self)
-                    }
-                })
-            }
-        }
-    }
-    
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,12 +81,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let restoreBackupPressed = UITapGestureRecognizer(target: self, action: #selector(self.restoreBackupPressed(_:)))
         restoreBackup.addGestureRecognizer(restoreBackupPressed)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
     }
-    
+
     // MARK: - Private Methods
     private func showProtectionType(typeProtection: ProtectionMode) {
         switch typeProtection {
@@ -134,19 +94,19 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             bankModeImage.setImage(.diselectedIndicator)
             calcModeImage.setImage(.selectedIndicator)
             noProtectionImage.setImage(.diselectedIndicator)
-            
+
         case .noProtection:
             bankModeImage.setImage(.diselectedIndicator)
             calcModeImage.setImage(.diselectedIndicator)
             noProtectionImage.setImage(.selectedIndicator)
-            
+
         case .bank:
             bankModeImage.setImage(.selectedIndicator)
             calcModeImage.setImage(.diselectedIndicator)
             noProtectionImage.setImage(.diselectedIndicator)
         }
     }
-    
+
     // MARK: - UI
     private func setupTexts() {
         self.setText(.settings)
@@ -155,7 +115,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         recoverLabel.setText(.hideRecoverButton)
         chooseProtectionLabel.setText(.chooseProtectionMode)
     }
-    
+
     private func setupViewStyle() {
         upgradeButton.layer.cornerRadius = 8
         ModeGroupView.layer.cornerRadius = 8
@@ -163,5 +123,81 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         ModeGroupView.layer.shadowRadius = 4
         ModeGroupView.layer.shadowOpacity = 0.5
         noProtection.layer.cornerRadius = 8
+    }
+    
+    // MARK: - Backup
+    var loadingAlert = LoadingAlert()
+
+    @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
+        startLoadingForRestore()
+        fetchCloudKitPassword()
+    }
+
+    private func startLoadingForRestore() {
+        loadingAlert.startLoading(in: self)
+    }
+
+    private func fetchCloudKitPassword() {
+        CloudKitPasswordService.fetchPassword { password, error in
+            self.loadingAlert.stopLoading {
+                if let password = password {
+                    self.insertPasswordAndCheckBackup(password: password)
+                } else {
+                    Alerts.showPasswordError(controller: self)
+                }
+            }
+        }
+    }
+
+    private func insertPasswordAndCheckBackup(password: String) {
+        Alerts.insertPassword(controller: self) { insertedPassword in
+            if insertedPassword == password {
+                self.startLoadingForBackupCheck()
+            } else {
+                Alerts.showPasswordError(controller: self)
+            }
+        }
+    }
+
+    private func startLoadingForBackupCheck() {
+        loadingAlert.startLoading(in: self)
+        checkBackupData()
+    }
+
+    private func checkBackupData() {
+        BackupService.hasDataInCloudKit { hasData, _, items  in
+            self.loadingAlert.stopLoading {
+                if let items = items, !items.isEmpty, hasData {
+                    self.askUserToRestoreBackup(backupItems: items)
+                } else {
+                    Alerts.showBackupError(controller: self)
+                }
+            }
+        }
+    }
+
+    private func askUserToRestoreBackup(backupItems: [(String, UIImage)]) {
+        Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+            if restoreBackup {
+                self.startLoadingForBackupRestore(backupItems: backupItems)
+            }
+        }
+    }
+
+    private func startLoadingForBackupRestore(backupItems: [(String, UIImage)]) {
+        loadingAlert.startLoading(in: self)
+        restoreBackup(backupItems: backupItems)
+    }
+
+    private func restoreBackup(backupItems: [(String, UIImage)]) {
+        BackupService.restoreBackup(photos: backupItems) { success, _ in
+            self.loadingAlert.stopLoading {
+                if success {
+                    Alerts.showBackupSuccess(controller: self)
+                } else {
+                    Alerts.showBackupError(controller: self)
+                }
+            }
+        }
     }
 }

@@ -14,8 +14,7 @@ class ChangePasswordViewController: UIViewController {
     var arrayPassword = [Int]()
     var arrayCircles = [UIImageView]()
     var captureKey = 0
-    var KeyCurret = UserDefaults.standard.string(forKey: "Key") ?? ""
-    var KeyTemp = ""
+    var keyTemp = ""
     
     //    MARK: - IBOutlets
     @IBAction func dismissScreen(_ sender: Any) {
@@ -115,15 +114,15 @@ class ChangePasswordViewController: UIViewController {
             var instructionsText = Text.instructionSecondStepBank.localized()
             instructionsText = instructionsText.replacingOccurrences(of: "*****", with: password)
             instructionsLabel.text = instructionsText
-            KeyTemp = password
+            keyTemp = password
             captureKey = 0
             clearAll()
         }
-        else if(KeyTemp == password) {
+        else if(keyTemp == password) {
             clearAll()
             UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.bank)
-            UserDefaults.standard.set(KeyTemp, forKey: "Key")
-            
+            Key.password.setString(keyTemp)
+            Key.needSavePasswordInCloud.setBoolean(true)
             showAlert()
         }
     }
