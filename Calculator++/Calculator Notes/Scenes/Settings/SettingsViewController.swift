@@ -36,6 +36,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var rateApp: UIView!
 
     @IBOutlet weak var restoreBackup: UIView!
+    
+    @IBOutlet weak var backupStatus: UILabel!
 
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
@@ -85,6 +87,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
+        backupStatus.text = "Ativado"
     }
 
     // MARK: - Private Methods
@@ -129,15 +132,17 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var loadingAlert = LoadingAlert()
 
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
-        startLoadingForRestore()
-        fetchCloudKitPassword()
-    }
+        let vc = CustomModalViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        if let tabBarController = self.tabBarController {
+            tabBarController.present(vc, animated: false, completion: nil)
+        }
 
-    private func startLoadingForRestore() {
-        loadingAlert.startLoading(in: self)
+//        fetchCloudKitPassword()
     }
 
     private func fetchCloudKitPassword() {
+        loadingAlert.startLoading(in: self)
         CloudKitPasswordService.fetchAllPasswords { password, error in
             self.loadingAlert.stopLoading {
                 if let password = password {

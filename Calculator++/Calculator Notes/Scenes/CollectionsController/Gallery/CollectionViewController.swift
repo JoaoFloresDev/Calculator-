@@ -484,8 +484,3 @@ extension CollectionViewController {
         }
     }
 }
-
-
-
-
-
