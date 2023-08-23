@@ -43,18 +43,22 @@ class CalculatorViewController: BaseCalculatorViewController {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                        self.present(homeViewController, animated: true)
+                        if Key.disableRecoveryButtonCounter.getInt() < 10  {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                            self.present(homeViewController, animated: true)
+                        }
                     }
                 }
                 
             }
         } else {
             DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                self.present(homeViewController, animated: true)
+                if Key.disableRecoveryButtonCounter.getInt() < 10  {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                    self.present(homeViewController, animated: true)
+                }
             }
         }
         

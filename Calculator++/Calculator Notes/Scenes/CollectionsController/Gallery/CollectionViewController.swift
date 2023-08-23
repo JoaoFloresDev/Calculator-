@@ -50,6 +50,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         if basePath == deepSeparatorPath {
             let launchCounter = Key.launchCounter.getInt()
             Key.launchCounter.setInt(launchCounter + 1)
+            
+            let disableRecoveryButtonCounter = Key.disableRecoveryButtonCounter.getInt()
+            Key.disableRecoveryButtonCounter.setInt(disableRecoveryButtonCounter + 1)
         }
         
         isConnectedToWiFi { isConnected in

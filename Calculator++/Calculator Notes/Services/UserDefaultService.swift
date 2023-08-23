@@ -66,13 +66,4 @@ struct UserDefaultService {
     func setTypeProtection(protectionMode: ProtectionMode) {
         UserDefaults.standard.set(protectionMode.rawValue, forKey: protectionModeKey)
     }
-    
-    // MARK: - FirstUse Status
-    func getDisableRecoveryButtonCounter() -> Int {
-        return userDefaults.integer(forKey: Key.disableRecoveryButtonCounter.rawValue)
-    }
-
-    func setDisableRecoveryButtonCounter(status: Int) {
-        UserDefaults.standard.set(status, forKey: Key.disableRecoveryButtonCounter.rawValue)
-    }
 }

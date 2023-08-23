@@ -31,12 +31,5 @@ class AdsHandler {
                 Key.launchCounter.setInt(0)
             }
         }
-        
-        let disableRecoveryButtonCounter = UserDefaultService().getDisableRecoveryButtonCounter()
-        UserDefaultService().setDisableRecoveryButtonCounter(status: disableRecoveryButtonCounter + 1)
-        
-        if disableRecoveryButtonCounter == 20 || disableRecoveryButtonCounter == 30 {
-            Key.recoveryStatus.setBoolean(true)
-        }
     }
 }
