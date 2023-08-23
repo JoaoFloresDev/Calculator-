@@ -140,13 +140,17 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var loadingAlert = LoadingAlert()
 
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
-        let vc = BackupModalViewController {
-            self.fetchCloudKitPassword()
-        }
-        
-        vc.modalPresentationStyle = .overCurrentContext
-        if let tabBarController = self.tabBarController {
-            tabBarController.present(vc, animated: false, completion: nil)
+        if Key.iCloudPurchased.getBoolean() {
+            let vc = BackupModalViewController {
+                self.fetchCloudKitPassword()
+            }
+            
+            vc.modalPresentationStyle = .overCurrentContext
+            if let tabBarController = self.tabBarController {
+                tabBarController.present(vc, animated: false, completion: nil)
+            }
+        } else {
+            Alerts.showGenericError(controller: self)
         }
     }
 
