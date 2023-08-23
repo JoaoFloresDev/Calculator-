@@ -88,13 +88,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
         backupStatus.text = "Ativado"
-        
-        CloudKitImageService.isICloudEnabled { isActive in
-            print("---- isActive:", isActive)
-        }
-        if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
-             UIApplication.shared.open(settingsURL)
-         }
     }
 
     // MARK: - Private Methods

@@ -215,4 +215,10 @@ class CloudKitImageService: ObservableObject {
             }
         }
     }
+    
+    static func redirectToICloudSettings() {
+        if let settingsURL = URL(string: UIApplicationOpenSettingsURLString) {
+             UIApplication.shared.open(settingsURL)
+         }
+    }
 }
