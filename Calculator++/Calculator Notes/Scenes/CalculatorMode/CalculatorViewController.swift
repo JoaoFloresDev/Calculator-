@@ -43,7 +43,7 @@ class CalculatorViewController: BaseCalculatorViewController {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        if Key.disableRecoveryButtonCounter.getInt() < 10  {
+                        if Defaults.getInt(.disableRecoveryButtonCounter) < 10 {
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
                             self.present(homeViewController, animated: true)
@@ -52,16 +52,7 @@ class CalculatorViewController: BaseCalculatorViewController {
                 }
                 
             }
-        } else {
-            DispatchQueue.main.async {
-                if Key.disableRecoveryButtonCounter.getInt() < 10  {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                    self.present(homeViewController, animated: true)
-                }
-            }
         }
-        
     }
     
     @IBAction func numberPressed(_ sender: UIButton) {
@@ -132,6 +123,6 @@ class CalculatorViewController: BaseCalculatorViewController {
         if(key == "") {
             captureKey = 1
         }
-        faceIDButton.isHidden = Key.recoveryStatus.getBoolean()
+        faceIDButton.isHidden = Defaults.getBool(.recoveryStatus)
     }
 }

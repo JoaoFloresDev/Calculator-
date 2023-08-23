@@ -41,7 +41,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
-        Key.recoveryStatus.setBoolean(sender.isOn)
+        Defaults.setBool(.recoveryStatus, sender.isOn)
     }
 
     @IBAction func noProtectionPressed(_ sender: Any) {
@@ -76,7 +76,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         self.navigationController?.setup()
         setupViewStyle()
-        switchButton.isOn = Key.recoveryStatus.getBoolean()
+        switchButton.isOn = Defaults.getBool(.recoveryStatus)
         setupTexts()
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         rateApp.addGestureRecognizer(tap)
@@ -87,7 +87,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
-        if Key.iCloudPurchased.getBoolean() {
+        if Defaults.getBool(.iCloudPurchased) {
             CloudKitImageService.isICloudEnabled { isEnabled in
                 if isEnabled {
                     self.backupStatus.text = "Ativado"
@@ -140,7 +140,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var loadingAlert = LoadingAlert()
 
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
-        if Key.iCloudPurchased.getBoolean() {
+        if Defaults.getBool(.iCloudPurchased) {
             let vc = BackupModalViewController {
                 self.fetchCloudKitPassword()
             }

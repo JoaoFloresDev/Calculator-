@@ -8,55 +8,144 @@
 
 import Foundation
 
+//public enum Key: String {
+//    case recoveryStatus
+//    case firstUse
+//    case launchCounter
+//    case galleryFoldersPath
+//    case videoFoldersPath
+//    case disableRecoveryButtonCounter
+//    case password = "Key"
+//    case needSavePasswordInCloud
+//    case premiumVersionEnabled = "NoAds.Calc"
+//    case iCloudPurchased
+//    case iCloudEnabled
+//
+//
+//    func setBoolean(_ bool: Bool) {
+//        userDefaults.set(bool, forKey: self.rawValue)
+//    }
+//
+//    func getBoolean() -> Bool {
+//        return userDefaults.bool(forKey: self.rawValue)
+//    }
+//
+//    func setInt(_ int: Int) {
+//        userDefaults.set(int, forKey: self.rawValue)
+//    }
+//
+//    func getInt() -> Int {
+//        return userDefaults.integer(forKey: self.rawValue)
+//    }
+//
+//    func setString(_ string: String) {
+//        userDefaults.set(string, forKey: self.rawValue)
+//    }
+//
+//    func getString() -> String? {
+//        return userDefaults.string(forKey: self.rawValue)
+//    }
+//}
+
+var userDefaults = UserDefaults.standard
+
+enum BoolKey: String {
+    case recoveryStatus
+    case needSavePasswordInCloud
+    case notFirstUse
+    case iCloudEnabled
+    case iCloudPurchased
+    
+    func set(_ value: Bool) {
+        userDefaults.set(value, forKey: rawValue)
+    }
+    
+    func get() -> Bool {
+        return userDefaults.bool(forKey: rawValue)
+    }
+}
+
+enum IntKey: String {
+    case launchCounter
+    case disableRecoveryButtonCounter
+    
+    func set(_ value: Int) {
+        userDefaults.set(value, forKey: rawValue)
+    }
+    
+    func get() -> Int {
+        return userDefaults.integer(forKey: rawValue)
+    }
+}
+
+enum StringKey: String {
+    case password
+    
+    func set(_ value: String) {
+        userDefaults.set(value, forKey: rawValue)
+    }
+    
+    func get() -> String {
+        return userDefaults.string(forKey: rawValue) ?? String()
+    }
+}
+
+enum StringArrayKey: String {
+    case galleryFoldersPath
+    case videoFoldersPath
+    
+    func set(_ value: [String]) {
+        userDefaults.set(value, forKey: rawValue)
+    }
+    
+    func get() -> [String]? {
+        return userDefaults.stringArray(forKey: rawValue)
+    }
+}
+
+class Defaults {
+    static func setBool(_ key: BoolKey, _ value: Bool) {
+        key.set(value)
+    }
+    
+    static func getBool(_ key: BoolKey) -> Bool {
+        return key.get()
+    }
+    
+    static func setInt(_ key: IntKey, _ value: Int) {
+        key.set(value)
+    }
+    
+    static func getInt(_ key: IntKey) -> Int {
+        return key.get()
+    }
+    
+    static func setString(_ key: StringKey, _ value: String) {
+        key.set(value)
+    }
+    
+    static func getString(_ key: StringKey) -> String {
+        return key.get()
+    }
+    
+    static func setStringArray(_ key: StringArrayKey, _ value: [String]) {
+        key.set(value)
+    }
+    
+    static func getStringArray(_ key: StringArrayKey) -> [String]? {
+        return key.get()
+    }
+}
+
 enum ProtectionMode: String {
     case calculator
     case noProtection
     case bank
 }
 
-var userDefaults = UserDefaults.standard
-var protectionModeKey = "Mode"
-
-public enum Key: String {
-    case recoveryStatus
-    case firstUse
-    case launchCounter
-    case galleryFoldersPath
-    case videoFoldersPath
-    case disableRecoveryButtonCounter
-    case password = "Key"
-    case needSavePasswordInCloud
-    case premiumVersionEnabled = "NoAds.Calc"
-    case iCloudPurchased
-    case iCloudEnabled
-    
-    
-    func setBoolean(_ bool: Bool) {
-        userDefaults.set(bool, forKey: self.rawValue)
-    }
-    
-    func getBoolean() -> Bool {
-        return userDefaults.bool(forKey: self.rawValue)
-    }
-    
-    func setInt(_ int: Int) {
-        userDefaults.set(int, forKey: self.rawValue)
-    }
-    
-    func getInt() -> Int {
-        return userDefaults.integer(forKey: self.rawValue)
-    }
-    
-    func setString(_ string: String) {
-        userDefaults.set(string, forKey: self.rawValue)
-    }
-    
-    func getString() -> String? {
-        return userDefaults.string(forKey: self.rawValue)
-    }
-}
-
 struct UserDefaultService {
+    var protectionModeKey = "Mode"
+    
     // MARK: - Protection Type
     func getTypeProtection() -> ProtectionMode {
         let protectionMode = userDefaults.string(forKey: protectionModeKey)

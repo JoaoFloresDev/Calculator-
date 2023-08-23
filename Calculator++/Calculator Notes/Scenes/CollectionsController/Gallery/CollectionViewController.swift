@@ -48,22 +48,20 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         
         if basePath == deepSeparatorPath {
-            let launchCounter = Key.launchCounter.getInt()
-            Key.launchCounter.setInt(launchCounter + 1)
+            let launchCounter = Defaults.getInt(.launchCounter)
+            Defaults.setInt(.launchCounter, launchCounter + 1)
             
-            let disableRecoveryButtonCounter = Key.disableRecoveryButtonCounter.getInt()
-            Key.disableRecoveryButtonCounter.setInt(disableRecoveryButtonCounter + 1)
+            let disableRecoveryButtonCounter = Defaults.getInt(.disableRecoveryButtonCounter)
+            Defaults.setInt(.launchCounter, disableRecoveryButtonCounter + 1)
         }
         
         isConnectedToWiFi { isConnected in
             if isConnected {
                 BackupService.updateBackup()
-                if Key.needSavePasswordInCloud.getBoolean() == true {
-                    if let password = Key.password.getString() {
-                        CloudKitPasswordService.updatePassword(newPassword: password) { success, error in
-                            if success && error == nil {
-                                Key.needSavePasswordInCloud.setBoolean(false)
-                            }
+                if Defaults.getBool(.needSavePasswordInCloud) {
+                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
+                        if success && error == nil {
+                            Defaults.setBool(.needSavePasswordInCloud, false)
                         }
                     }
                 }
@@ -400,8 +398,8 @@ extension CollectionViewController {
 // MARK: - First use
 extension CollectionViewController {
     private func setupFirstUse() {
-        if !Key.firstUse.getBoolean() {
-            Key.firstUse.setBoolean(true)
+        if !Defaults.getBool(.notFirstUse) {
+            Defaults.setBool(.notFirstUse, true)
             performFirstUseSetup()
         }
     }

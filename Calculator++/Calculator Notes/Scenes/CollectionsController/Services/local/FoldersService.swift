@@ -35,22 +35,22 @@ struct FoldersService {
     var folders: [String] = []
     var type: AssetType = .image
     
-    var key: String {
+    var key: StringArrayKey {
         switch type {
         case .video:
-            return Key.videoFoldersPath.rawValue
+            return .videoFoldersPath
         case .image:
-            return Key.galleryFoldersPath.rawValue
+            return .galleryFoldersPath
         }
     }
     
     init(type: AssetType) {
         self.type = type
-        folders = defaults.stringArray(forKey: key) ?? [String]()
+        folders = Defaults.getStringArray(key) ?? [String]()
     }
     
     mutating func getFolders(basePath: String) -> [String] {
-        folders = defaults.stringArray(forKey: key) ?? [String]()
+        folders = Defaults.getStringArray(key) ?? [String]()
         var folderInPath: [String] = []
         for folder in folders {
             if folder.contains(basePath)
@@ -69,7 +69,7 @@ struct FoldersService {
     @discardableResult
     mutating func add(folder: String, basePath: String) -> [String] {
         self.folders.append("\(basePath)\(folder)")
-        defaults.set(self.folders, forKey: key)
+        Defaults.setStringArray(key, self.folders)
         return getFolders(basePath: basePath)
     }
     
@@ -77,7 +77,7 @@ struct FoldersService {
         folders.removeAll { string in
             return string.contains(folder)
         }
-        defaults.set(self.folders, forKey: key)
+        Defaults.setStringArray(key, self.folders)
         return getFolders(basePath: basePath)
     }
 }

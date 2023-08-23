@@ -169,10 +169,10 @@ class CloudKitImageService: ObservableObject {
             switch accountStatus {
             case .available:
                 completion(true)
-                Key.iCloudEnabled.setBoolean(true)
+                Defaults.setBool(.iCloudEnabled, true)
             default:
                 completion(false)
-                Key.iCloudEnabled.setBoolean(false)
+                Defaults.setBool(.iCloudEnabled, true)
             }
         }
     }
@@ -186,12 +186,13 @@ class CloudKitImageService: ObservableObject {
             
             CKContainer(identifier: identifier).accountStatus { accountStatus, _ in
                 guard accountStatus == .available else {
+                    Defaults.setBool(.iCloudEnabled, false)
                     completion(false)
                     return
                 }
                 
                 DispatchQueue.main.async {
-                    Key.iCloudEnabled.setBoolean(true)
+                    Defaults.setBool(.iCloudEnabled, true)
                     completion(true)
                 }
             }
@@ -212,7 +213,7 @@ class CloudKitImageService: ObservableObject {
                 }
                 
                 DispatchQueue.main.async {
-                    Key.iCloudEnabled.setBoolean(false)
+                    Defaults.setBool(.iCloudEnabled, false)
                     completion(true)
                 }
             }

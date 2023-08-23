@@ -24,11 +24,11 @@ class AdsHandler {
     }
     
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        let getAddPhotoCounter = Key.launchCounter.getInt()
+        let getAddPhotoCounter = Defaults.getInt(.launchCounter)
         if getAddPhotoCounter > 5 {
             if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
                 ad.present(fromRootViewController: rootViewController)
-                Key.launchCounter.setInt(0)
+                Defaults.setInt(.launchCounter, 0)
             }
         }
     }
