@@ -20,12 +20,16 @@ var protectionModeKey = "Mode"
 public enum Key: String {
     case recoveryStatus
     case firstUse
-    case addPhotoCounter
+    case launchCounter
     case galleryFoldersPath
     case videoFoldersPath
     case disableRecoveryButtonCounter
     case password = "Key"
     case needSavePasswordInCloud
+    case premiumVersionEnabled = "NoAds.Calc"
+    case iCloudPurchased
+    case iCloudEnabled
+    
     
     func setBoolean(_ bool: Bool) {
         userDefaults.set(bool, forKey: self.rawValue)
@@ -33,6 +37,14 @@ public enum Key: String {
     
     func getBoolean() -> Bool {
         return userDefaults.bool(forKey: self.rawValue)
+    }
+    
+    func setInt(_ int: Int) {
+        userDefaults.set(int, forKey: self.rawValue)
+    }
+    
+    func getInt() -> Int {
+        return userDefaults.integer(forKey: self.rawValue)
     }
     
     func setString(_ string: String) {
@@ -53,15 +65,6 @@ struct UserDefaultService {
 
     func setTypeProtection(protectionMode: ProtectionMode) {
         UserDefaults.standard.set(protectionMode.rawValue, forKey: protectionModeKey)
-    }
-    
-    // MARK: - FirstUse Status
-    func getAddPhotoCounter() -> Int {
-        return userDefaults.integer(forKey: Key.addPhotoCounter.rawValue)
-    }
-
-    func setAddPhotoCounter(status: Int) {
-        UserDefaults.standard.set(status, forKey: Key.addPhotoCounter.rawValue)
     }
     
     // MARK: - FirstUse Status

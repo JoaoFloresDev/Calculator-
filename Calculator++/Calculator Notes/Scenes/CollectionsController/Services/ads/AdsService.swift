@@ -19,7 +19,7 @@ struct AdsService {
         if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil {
             bannerView?.removeFromSuperview()
         } else {
-            let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
+            let getAddPhotoCounter = Key.launchCounter.getInt()
             if getAddPhotoCounter > 5 {
                 let request = GADRequest()
                 interstitial = createAndLoadInterstitial(delegate: interstitialDelegate)

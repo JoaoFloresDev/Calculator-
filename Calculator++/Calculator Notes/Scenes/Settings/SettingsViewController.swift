@@ -87,7 +87,15 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
-        backupStatus.text = "Ativado"
+        if Key.iCloudPurchased.getBoolean() {
+            CloudKitImageService.isICloudEnabled { isEnabled in
+                if isEnabled {
+                    self.backupStatus.text = "Ativado"
+                } else {
+                    self.backupStatus.text = "Desativado"
+                }
+            }
+        }
     }
 
     // MARK: - Private Methods
@@ -132,14 +140,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var loadingAlert = LoadingAlert()
 
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
-        let vc = CustomModalViewController {
-            
-        } deactiveBackupTappedHandler: {
-            
-        } restoreBackupTapped: {
+        let vc = BackupModalViewController {
             self.fetchCloudKitPassword()
         }
-
+        
         vc.modalPresentationStyle = .overCurrentContext
         if let tabBarController = self.tabBarController {
             tabBarController.present(vc, animated: false, completion: nil)
@@ -206,6 +210,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         BackupService.restoreBackup(photos: backupItems) { success, _ in
             self.loadingAlert.stopLoading {
                 if success {
+                    self.dismiss(animated: true)
                     Alerts.showBackupSuccess(controller: self)
                     let controllers = self.tabBarController?.viewControllers
                     let navigation = controllers?[0] as? UINavigationController

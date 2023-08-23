@@ -47,7 +47,7 @@
 		73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5062A49D7AE00963BA2 /* TabBarController+Extensions.swift */; };
 		73C2C5092A49D7E700963BA2 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 73C2C5082A49D7E700963BA2 /* swiftlint.yml */; };
 		73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C50A2A49D84000963BA2 /* BasicCollectionViewController.swift */; };
-		73C734A92A92F0D100275AC5 /* CustomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C734A82A92F0D100275AC5 /* CustomModalViewController.swift */; };
+		73C734A92A92F0D100275AC5 /* BackupModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C734A82A92F0D100275AC5 /* BackupModalViewController.swift */; };
 		73ECF5102A847CFD0027E022 /* CloudKitItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ECF50F2A847CFD0027E022 /* CloudKitItemsViewController.swift */; };
 		7C3FA5C5BF2A31D52DE69779 /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377C09316D877D274D20C923 /* Pods_Calculator_Notes.framework */; };
 		848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */; };
@@ -141,7 +141,7 @@
 		73C2C5062A49D7AE00963BA2 /* TabBarController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TabBarController+Extensions.swift"; sourceTree = "<group>"; };
 		73C2C5082A49D7E700963BA2 /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		73C2C50A2A49D84000963BA2 /* BasicCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewController.swift; sourceTree = "<group>"; };
-		73C734A82A92F0D100275AC5 /* CustomModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomModalViewController.swift; path = ../../../../../../CustomModalViewController.swift; sourceTree = "<group>"; };
+		73C734A82A92F0D100275AC5 /* BackupModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackupModalViewController.swift; path = ../../../../../../BackupModalViewController.swift; sourceTree = "<group>"; };
 		73ECF50F2A847CFD0027E022 /* CloudKitItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudKitItemsViewController.swift; path = ../../../../../CloudKitItemsViewController.swift; sourceTree = "<group>"; };
 		848490D21D68F5610043C60B /* MakeSchoolNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MakeSchoolNotes.xcdatamodel; sourceTree = "<group>"; };
 		BA3244412A4B692C00A782CA /* BasicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModels.swift; sourceTree = "<group>"; };
@@ -398,7 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
-				73C734A82A92F0D100275AC5 /* CustomModalViewController.swift */,
+				73C734A82A92F0D100275AC5 /* BackupModalViewController.swift */,
 				C480A50724A7757600094FC8 /* Settings.storyboard */,
 			);
 			path = Settings;
@@ -639,7 +639,7 @@
 				73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */,
 				73ECF5102A847CFD0027E022 /* CloudKitItemsViewController.swift in Sources */,
 				73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */,
-				73C734A92A92F0D100275AC5 /* CustomModalViewController.swift in Sources */,
+				73C734A92A92F0D100275AC5 /* BackupModalViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */,

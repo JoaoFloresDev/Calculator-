@@ -35,7 +35,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.set(true, forKey: "NoAds.Calc")
         setupData()
         
         if let navigationTitle = navigationTitle {
@@ -49,8 +48,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         
         if basePath == deepSeparatorPath {
-            let getAddPhotoCounter = UserDefaultService().getAddPhotoCounter()
-            UserDefaultService().setAddPhotoCounter(status: getAddPhotoCounter + 1)
+            let launchCounter = Key.launchCounter.getInt()
+            Key.launchCounter.setInt(launchCounter + 1)
         }
         
         isConnectedToWiFi { isConnected in

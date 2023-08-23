@@ -2,7 +2,8 @@ import CloudKit
 import UIKit
 
 class CloudKitImageService: ObservableObject {
-    private static let database = CKContainer(identifier: "iCloud.calculatorNotes").publicCloudDatabase
+    private static let identifier = "iCloud.calculatorNotes"
+    private static let database = CKContainer(identifier: identifier).publicCloudDatabase
     
     static var images: [(String, UIImage)] = []
     
@@ -168,8 +169,10 @@ class CloudKitImageService: ObservableObject {
             switch accountStatus {
             case .available:
                 completion(true)
+                Key.iCloudEnabled.setBoolean(true)
             default:
                 completion(false)
+                Key.iCloudEnabled.setBoolean(false)
             }
         }
     }
@@ -181,14 +184,14 @@ class CloudKitImageService: ObservableObject {
                 return
             }
             
-            CKContainer(identifier: "iCloud.calculatorNotes").accountStatus { accountStatus, _ in
+            CKContainer(identifier: identifier).accountStatus { accountStatus, _ in
                 guard accountStatus == .available else {
                     completion(false)
                     return
                 }
                 
                 DispatchQueue.main.async {
-                    UserDefaults.standard.set(true, forKey: "iCloudEnabled")
+                    Key.iCloudEnabled.setBoolean(true)
                     completion(true)
                 }
             }
@@ -202,14 +205,14 @@ class CloudKitImageService: ObservableObject {
                 return
             }
             
-            CKContainer(identifier: "iCloud.calculatorNotes").accountStatus { accountStatus, _ in
+            CKContainer(identifier: identifier).accountStatus { accountStatus, _ in
                 guard accountStatus == .available else {
                     completion(false)
                     return
                 }
                 
                 DispatchQueue.main.async {
-                    UserDefaults.standard.set(false, forKey: "iCloudEnabled")
+                    Key.iCloudEnabled.setBoolean(false)
                     completion(true)
                 }
             }
