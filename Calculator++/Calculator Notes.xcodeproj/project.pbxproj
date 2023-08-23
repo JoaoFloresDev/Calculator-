@@ -25,7 +25,7 @@
 		7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
-		73741B022A87D06B0067B269 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B012A87D06B0067B269 /* CloudKitService.swift */; };
+		73741B022A87D06B0067B269 /* CloudKitImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B012A87D06B0067B269 /* CloudKitImageService.swift */; };
 		73741B092A880B3C0067B269 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B062A880A590067B269 /* BackupService.swift */; };
 		73741B0B2A880BFB0067B269 /* CloudNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B0A2A880BFB0067B269 /* CloudNotifications.swift */; };
 		73741B0D2A882DC30067B269 /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B0C2A882DC30067B269 /* LoadingAlert.swift */; };
@@ -113,7 +113,7 @@
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calculator Notes.entitlements"; sourceTree = "<group>"; };
-		73741B012A87D06B0067B269 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
+		73741B012A87D06B0067B269 /* CloudKitImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitImageService.swift; sourceTree = "<group>"; };
 		73741B062A880A590067B269 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
 		73741B0A2A880BFB0067B269 /* CloudNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudNotifications.swift; path = ../../../../../../../../CloudNotifications.swift; sourceTree = "<group>"; };
 		73741B0C2A882DC30067B269 /* LoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingAlert.swift; path = ../../../../../LoadingAlert.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				73741B102A886C310067B269 /* CloudUpdateManager.swift */,
-				73741B012A87D06B0067B269 /* CloudKitService.swift */,
+				73741B012A87D06B0067B269 /* CloudKitImageService.swift */,
 				73741B0E2A886B0B0067B269 /* CloudKitPasswordService.swift */,
 				73741B062A880A590067B269 /* BackupService.swift */,
 				73741B0A2A880BFB0067B269 /* CloudNotifications.swift */,
@@ -660,7 +660,7 @@
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
-				73741B022A87D06B0067B269 /* CloudKitService.swift in Sources */,
+				73741B022A87D06B0067B269 /* CloudKitImageService.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,

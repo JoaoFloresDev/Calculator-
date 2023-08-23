@@ -35,6 +35,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set(true, forKey: "NoAds.Calc")
         setupData()
         
         if let navigationTitle = navigationTitle {

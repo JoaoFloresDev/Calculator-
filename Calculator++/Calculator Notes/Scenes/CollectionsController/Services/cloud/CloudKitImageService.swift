@@ -162,4 +162,57 @@ class CloudKitImageService: ObservableObject {
             }
         }
     }
+    
+    static func isICloudEnabled(completion: @escaping (Bool) -> Void) {
+        CKContainer.default().accountStatus { accountStatus, _ in
+            switch accountStatus {
+            case .available:
+                completion(true)
+            default:
+                completion(false)
+            }
+        }
+    }
+    
+    static func enableICloudSync(completion: @escaping (Bool) -> Void) {
+        CKContainer.default().accountStatus { accountStatus, error in
+            guard accountStatus == .available else {
+                completion(false)
+                return
+            }
+            
+            CKContainer(identifier: "iCloud.calculatorNotes").accountStatus { accountStatus, _ in
+                guard accountStatus == .available else {
+                    completion(false)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(true, forKey: "iCloudEnabled")
+                    completion(true)
+                }
+            }
+        }
+    }
+    
+    static func disableICloudSync(completion: @escaping (Bool) -> Void) {
+        CKContainer.default().accountStatus { accountStatus, error in
+            guard accountStatus == .available else {
+                completion(false)
+                return
+            }
+            
+            CKContainer(identifier: "iCloud.calculatorNotes").accountStatus { accountStatus, _ in
+                guard accountStatus == .available else {
+                    completion(false)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(false, forKey: "iCloudEnabled")
+                    completion(true)
+                }
+            }
+        }
+    }
 }
