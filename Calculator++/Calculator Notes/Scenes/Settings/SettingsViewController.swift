@@ -71,6 +71,16 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         SKStoreReviewController.requestReview()
     }
 
+    var backupIsActivated = false {
+        didSet  {
+            if backupIsActivated {
+                self.backupStatus.text = "Ativado"
+            } else {
+                self.backupStatus.text = "Desativado"
+            }
+        }
+    }
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,11 +99,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         showProtectionType(typeProtection: typeProtection)
         if Defaults.getBool(.iCloudPurchased) {
             CloudKitImageService.isICloudEnabled { isEnabled in
-                if isEnabled {
-                    self.backupStatus.text = "Ativado"
-                } else {
-                    self.backupStatus.text = "Desativado"
-                }
+                self.backupIsActivated = isEnabled
             }
         }
     }
@@ -120,7 +126,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - UI
     private func setupTexts() {
-        self.setText(.settings)
+        self.title = Text.settings.localized()
         noProtection.setText(.noProtection)
         upgradeButton.setText(.premiumVersion)
         recoverLabel.setText(.hideRecoverButton)
@@ -141,7 +147,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
         if Defaults.getBool(.iCloudPurchased) {
-            let vc = BackupModalViewController {
+            let vc = BackupModalViewController(backupIsActivated: backupIsActivated) {
                 self.fetchCloudKitPassword()
             }
             
@@ -150,7 +156,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                 tabBarController.present(vc, animated: false, completion: nil)
             }
         } else {
-            Alerts.showGenericError(controller: self)
+            Alerts.showBePremiumToUseBackup(controller: self)
         }
     }
 

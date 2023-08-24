@@ -48,7 +48,7 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         
         setupAds()
         buttonEdit.title = Text.edit.localized()
-        self.setText(.notes)
+        self.title = Text.notes.localized()
     }
     
     override func viewWillAppear(_ animated: Bool) {

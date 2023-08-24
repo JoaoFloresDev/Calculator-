@@ -19,7 +19,7 @@ class DisplayNoteViewController: UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setText(.notes)
+        self.title = Text.notes.localized()
         navItem.leftBarButtonItem?.title = Text.cancel.localized()
         navItem.rightBarButtonItem?.title = Text.save.localized()
     }

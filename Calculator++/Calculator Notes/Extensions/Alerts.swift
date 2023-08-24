@@ -144,4 +144,10 @@ struct Alerts {
         alert.addAction(UIAlertAction(title: confirmTitle, style: .default, handler: confirmAction))
         controller.present(alert, animated: true)
     }
+    
+    static func showBePremiumToUseBackup(controller: UIViewController) {
+        showAlertWithTitle("Produto Premium",
+                           message: "A opção de backup em núvem é um recurso premium, apresentaremos os detalhes do produto",
+                           controller: controller)
+    }
 }
