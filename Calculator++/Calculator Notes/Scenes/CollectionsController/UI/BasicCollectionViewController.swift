@@ -9,6 +9,14 @@
 import Foundation
 import  UIKit
 
+enum Constants: String {
+    case deepSeparatorPath = "@"
+    
+    func value() -> String {
+        self.rawValue
+    }
+}
+
 class BasicCollectionViewController: UICollectionViewController {
     let deepSeparatorPath = "@"
     let reuseIdentifier = "Cell"

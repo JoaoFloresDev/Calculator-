@@ -22,7 +22,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     var modelData: [Photo] = []
     var folders: [Folder] = []
     var loadingAlert = LoadingAlert()
-
+    var coordinator: CollectionViewCoordinatorProtocol?
+    
     var isEditMode = false {
         didSet {
             editLeftBarButtonItem?.setEditing(isEditMode)
@@ -42,6 +43,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         handleInitialLaunch()
         monitorWiFiAndPerformActions()
+        coordinator = CollectionViewCoordinator(self)
     }
 
     func deselectAllFoldersObjects() {
@@ -84,15 +86,7 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
     }
 
     func shareImageButtonTapped() {
-        var photoArray = [UIImage]()
-        for photo in modelData where photo.isSelected == true {
-            photoArray.append(photo.image)
-        }
-
-        if !photoArray.isEmpty {
-            let activityVC = UIActivityViewController(activityItems: photoArray, applicationActivities: nil)
-            self.present(activityVC, animated: true)
-        }
+        coordinator?.shareImage(modelData: modelData)
     }
 
     func deleteButtonTapped() {
@@ -130,18 +124,13 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
         collectionView?.reloadSections(IndexSet(integer: 0))
         collectionView?.reloadSections(IndexSet(integer: 1))
     }
-
 }
 
 // MARK: - AdditionsRightBarButtonItemDelegate
 extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
     func addPhotoButtonTapped() {
-        let picker = AssetsPickerViewController()
-        picker.pickerConfig = AssetsPickerConfig()
-        picker.pickerDelegate = self
-        present(picker, animated: true) {
-            self.filesIsExpanded = true
-        }
+        coordinator?.addPhotoButtonTapped()
+        self.filesIsExpanded = true
     }
 
     func addFolderButtonTapped() {
@@ -242,31 +231,11 @@ extension CollectionViewController {
         } else {
             switch indexPath.section {
             case 0:
-                navigateToFolderViewController(indexPath: indexPath)
+                coordinator?.navigateToFolderViewController(indexPath: indexPath, folders: folders, basePath: basePath)
             default:
-                presentImageGalleryForPhoto(indexPath: indexPath)
+                coordinator?.presentImageGallery(for: indexPath.item)
             }
         }
-    }
-
-    private func navigateToFolderViewController(indexPath: IndexPath) {
-        guard let controller = storyboard?.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController,
-              indexPath.row < folders.count else {
-            return
-        }
-
-        controller.basePath = basePath + folders[indexPath.row].name + deepSeparatorPath
-        controller.navigationTitle = folders[indexPath.row].name.components(separatedBy: deepSeparatorPath).last
-        navigationController?.pushViewController(controller, animated: true)
-    }
-
-    private func presentImageGalleryForPhoto(indexPath: IndexPath) {
-        guard indexPath.item < modelData.count else {
-            return
-        }
-
-        let galleryViewController = GalleryViewController(startIndex: indexPath.item, itemsDataSource: self)
-        presentImageGallery(galleryViewController)
     }
 
     func updateSelectedPhotos(indexPath: IndexPath) {
@@ -444,9 +413,9 @@ extension CollectionViewController {
     private func showSetProtectionOrNavigateToSettings() {
         Alerts.showSetProtectionAsk(controller: self) { [weak self] createProtection in
             if createProtection {
-                self?.presentChangePasswordCalcMode()
+                self?.coordinator?.presentChangePasswordCalcMode()
             } else {
-                self?.navigateToSettingsTab()
+                self?.coordinator?.navigateToSettingsTab()
             }
         }
     }
@@ -465,21 +434,6 @@ extension CollectionViewController {
                     }
                     Alerts.showBackupError(controller: strongSelf)
                 }
-            }
-        }
-    }
-
-    private func presentChangePasswordCalcMode() {
-        let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
-        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
-        self.present(changePasswordCalcMode, animated: true)
-    }
-
-    private func navigateToSettingsTab() {
-        if let tabBarController = self.tabBarController {
-            let desiredTabIndex = 3
-            if desiredTabIndex < tabBarController.viewControllers?.count ?? 0 {
-                tabBarController.selectedIndex = desiredTabIndex
             }
         }
     }
