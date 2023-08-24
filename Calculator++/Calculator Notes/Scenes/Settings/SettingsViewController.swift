@@ -15,28 +15,18 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var recoverLabel: UILabel!
-
     @IBOutlet weak var chooseProtectionLabel: UILabel!
-
     @IBOutlet weak var bankModeView: UIView!
     @IBOutlet weak var bankModeImage: UIImageView!
-
     @IBOutlet weak var calcModeView: UIView!
     @IBOutlet weak var calcModeImage: UIImageView!
-
     @IBOutlet weak var noProtectionImage: UIImageView!
     @IBOutlet weak var noProtection: UIButton!
-
     @IBOutlet weak var ModeGroupView: UIView!
-
     @IBOutlet weak var upgradeButton: UIButton!
-
     @IBOutlet weak var customTabBar: UITabBarItem!
-
     @IBOutlet weak var rateApp: UIView!
-
     @IBOutlet weak var restoreBackup: UIView!
-    
     @IBOutlet weak var backupStatus: UILabel!
 
     // MARK: - IBAction
@@ -72,55 +62,27 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     var backupIsActivated = false {
-        didSet  {
-            if backupIsActivated {
-                self.backupStatus.text = "Ativado"
-            } else {
-                self.backupStatus.text = "Desativado"
-            }
+        didSet {
+            backupStatus.text = backupIsActivated ? "Ativado" : "Desativado"
         }
     }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setup()
-        setupViewStyle()
-        switchButton.isOn = Defaults.getBool(.recoveryStatus)
-        setupTexts()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        rateApp.addGestureRecognizer(tap)
-        let restoreBackupPressed = UITapGestureRecognizer(target: self, action: #selector(self.restoreBackupPressed(_:)))
-        restoreBackup.addGestureRecognizer(restoreBackupPressed)
+        setupUI()
+        setupGestures()
+        loadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
         if Defaults.getBool(.iCloudPurchased) {
             CloudKitImageService.isICloudEnabled { isEnabled in
                 self.backupIsActivated = isEnabled
             }
-        }
-    }
-
-    // MARK: - Private Methods
-    private func showProtectionType(typeProtection: ProtectionMode) {
-        switch typeProtection {
-        case .calculator:
-            bankModeImage.setImage(.diselectedIndicator)
-            calcModeImage.setImage(.selectedIndicator)
-            noProtectionImage.setImage(.diselectedIndicator)
-
-        case .noProtection:
-            bankModeImage.setImage(.diselectedIndicator)
-            calcModeImage.setImage(.diselectedIndicator)
-            noProtectionImage.setImage(.selectedIndicator)
-
-        case .bank:
-            bankModeImage.setImage(.selectedIndicator)
-            calcModeImage.setImage(.diselectedIndicator)
-            noProtectionImage.setImage(.diselectedIndicator)
         }
     }
 
@@ -156,7 +118,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                 tabBarController.present(vc, animated: false, completion: nil)
             }
         } else {
-            Alerts.showBePremiumToUseBackup(controller: self)
+            Alerts.showBePremiumToUseBackup(controller: self, completion: {_ in
+                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                self.present(changePasswordCalcMode, animated: true)
+            })
         }
     }
 
@@ -231,5 +197,44 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
         }
+    }
+    
+    private func setupUI() {
+        self.navigationController?.setup()
+        switchButton.isOn = Defaults.getBool(.recoveryStatus)
+        setupTexts()
+        setupViewStyles()
+    }
+    
+    private func setupGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        rateApp.addGestureRecognizer(tap)
+        
+        let restoreBackupPressed = UITapGestureRecognizer(target: self, action: #selector(restoreBackupPressed(_:)))
+        restoreBackup.addGestureRecognizer(restoreBackupPressed)
+    }
+    
+    private func setupViewStyles() {
+        upgradeButton.layer.cornerRadius = 8
+        noProtection.layer.cornerRadius = 8
+        addShadow(to: ModeGroupView, offset: CGSize(width: 0, height: 0), radius: 4, opacity: 0.5)
+    }
+    
+    private func addShadow(to view: UIView, offset: CGSize, radius: CGFloat, opacity: Float) {
+        view.layer.shadowOffset = offset
+        view.layer.shadowRadius = radius
+        view.layer.shadowOpacity = opacity
+    }
+    
+    private func loadData() {
+        bankModeImage.setImage(.diselectedIndicator)
+        calcModeImage.setImage(.selectedIndicator)
+        noProtectionImage.setImage(.diselectedIndicator)
+    }
+    
+    private func showProtectionType(typeProtection: ProtectionMode) {
+        bankModeImage.setImage(typeProtection == .bank ? .selectedIndicator : .diselectedIndicator)
+        calcModeImage.setImage(typeProtection == .calculator ? .selectedIndicator : .diselectedIndicator)
+        noProtectionImage.setImage(typeProtection == .noProtection ? .selectedIndicator : .diselectedIndicator)
     }
 }

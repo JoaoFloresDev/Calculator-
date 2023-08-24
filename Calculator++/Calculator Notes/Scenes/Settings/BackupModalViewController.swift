@@ -8,14 +8,14 @@ class BackupModalViewController: UIViewController {
     
     lazy var modalTitleView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white  // Cor de fundo da barra de título
+        view.backgroundColor = .white
         view.layer.cornerRadius = 16
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         let titleLabel = UILabel()
-        titleLabel.text = "Configurações de Backup"  // Título da barra de título
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)  // Fonte e tamanho do título
-        titleLabel.textColor = .black  // Cor do título
+        titleLabel.text = "Configurações de Backup"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        titleLabel.textColor = .black
         
         view.addSubview(titleLabel)
         

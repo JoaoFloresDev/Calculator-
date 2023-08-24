@@ -145,9 +145,10 @@ struct Alerts {
         controller.present(alert, animated: true)
     }
     
-    static func showBePremiumToUseBackup(controller: UIViewController) {
-        showAlertWithTitle("Produto Premium",
-                           message: "A opção de backup em núvem é um recurso premium, apresentaremos os detalhes do produto",
-                           controller: controller)
+    static func showBePremiumToUseBackup(controller: UIViewController, completion: ((UIAlertAction) -> Void)?) {
+        showAlertWithTitle(Text.premiumToolTitle.localized(),
+                           message: "O suporte para backup é um recurso premium. Apresentaremos os detalhes do produto",
+                           controller: controller,
+                           confirmAction: completion)
     }
 }
