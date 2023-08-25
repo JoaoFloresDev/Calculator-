@@ -100,7 +100,7 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
             photo.isSelected
         }
         modelData.forEach { photo in
-            ModelController.deleteImageObject(name: photo.name, basePath: basePath)
+            CollectionViewCoreDataHandler.deleteImageObject(name: photo.name, basePath: basePath)
         }
         deselectAllFileObjects()
     }
@@ -300,7 +300,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 guard let image = image else {
                     return
                 }
-                if let photo = ModelController.saveImageObject(image: image,
+                if let photo = CollectionViewCoreDataHandler.saveImageObject(image: image,
                                                                basePath: basePath) {
                     modelData.append(photo)
                     collectionView?.reloadSections(IndexSet(integer: 1))
@@ -346,10 +346,11 @@ extension CollectionViewController: GalleryItemsDataSource {
 // MARK: - First use
 extension CollectionViewController {
     private func setupFirstUse() {
-        if !Defaults.getBool(.notFirstUse) {
-            Defaults.setBool(.notFirstUse, true)
-            performFirstUseSetup()
+        guard !Defaults.getBool(.notFirstUse) else {
+            return
         }
+        Defaults.setBool(.notFirstUse, true)
+        performFirstUseSetup()
     }
     
     private func performFirstUseSetup() {
@@ -424,7 +425,7 @@ extension CollectionViewController {
     }
     
     private func monitorWiFiAndPerformActions() {
-        guard Defaults.getBool(.iCloudPurchased) else {
+        guard Defaults.getBool(.iCloudEnabled) else {
             return
         }
         
@@ -489,7 +490,7 @@ extension CollectionViewController {
     }
     
     private func setupData() {
-        modelData = ModelController.listPhotosOf(basePath: basePath)
+        modelData = CollectionViewCoreDataHandler.listPhotosOf(basePath: basePath)
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()

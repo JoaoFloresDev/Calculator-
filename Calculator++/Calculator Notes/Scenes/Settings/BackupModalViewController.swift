@@ -124,7 +124,7 @@ class BackupModalViewController: UIViewController {
     init(backupIsActivated: Bool, restoreBackupTapped: (() -> Void)?) {
         self.restoreBackupTappedHandler = restoreBackupTapped
         super.init(nibName: nil, bundle: nil)
-        switchControl.isOn = Defaults.getBool(.iCloudEnabled)
+        switchControl.isOn = backupIsActivated
     }
     
     required init?(coder: NSCoder) {
@@ -222,7 +222,9 @@ class BackupModalViewController: UIViewController {
             activeBackupTappedHandler?()
             CloudKitImageService.enableICloudSync { success in
                 if success {
-                    sender.isOn = true
+                    DispatchQueue.main.async {
+                        sender.isOn = true
+                    }
                 } else {
                     Alerts.showBackupError(controller: self)
                     CloudKitImageService.redirectToICloudSettings()

@@ -24,7 +24,7 @@ struct BackupService {
     static func restoreBackup(photos: [(String, UIImage)],
                               completion: @escaping (Bool, Error?) -> Void) {
         for photo in photos {
-            ModelController.saveImageObject(image: photo.1, path: photo.0)
+            CollectionViewCoreDataHandler.saveImageObject(image: photo.1, path: photo.0)
         }
         for photo in photos {
             if photo.0.filter({ $0 == "@" }).count > 1 {

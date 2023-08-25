@@ -63,7 +63,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     var backupIsActivated = false {
         didSet {
-            backupStatus.text = backupIsActivated ? "Ativado" : "Desativado"
+            DispatchQueue.main.async {
+                self.backupStatus.text = self.backupIsActivated ? "Ativado" : "Desativado"
+            }
         }
     }
     
@@ -79,9 +81,19 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillAppear(animated)
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
+        
         if Defaults.getBool(.iCloudPurchased) {
-            CloudKitImageService.isICloudEnabled { isEnabled in
-                self.backupIsActivated = isEnabled
+            CloudKitImageService.isICloudEnabled { status in
+                switch status {
+                case .available:
+                    self.backupIsActivated = true
+                    Defaults.setBool(.iCloudEnabled, true)
+                case .couldNotDetermine:
+                    self.backupIsActivated = Defaults.getBool(.iCloudEnabled)
+                default:
+                    self.backupIsActivated = false
+                    Defaults.setBool(.iCloudEnabled, false)
+                }
             }
         }
     }

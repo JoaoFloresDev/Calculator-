@@ -3,7 +3,7 @@ import UIKit
 import CoreData
 import os.log
 
-struct ModelController {
+struct CollectionViewCoreDataHandler {
     private static let entityName = "StoredImage"
     private static var savedObjects = [NSManagedObject]()
     
@@ -137,7 +137,7 @@ struct ModelController {
     }
 }
 
-extension ModelController {
+extension CollectionViewCoreDataHandler {
     private static func handleNewImage(basePath: String, imageName: String) -> Bool {
         imageName.contains(basePath) && samePathDeep(basePath: basePath, imageName: imageName)
     }

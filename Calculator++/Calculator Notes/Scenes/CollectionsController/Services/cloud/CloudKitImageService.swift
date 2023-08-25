@@ -164,60 +164,26 @@ class CloudKitImageService: ObservableObject {
         }
     }
     
-    static func isICloudEnabled(completion: @escaping (Bool) -> Void) {
-        CKContainer.default().accountStatus { accountStatus, _ in
-            switch accountStatus {
-            case .available:
-                completion(true)
-                Defaults.setBool(.iCloudEnabled, true)
-            default:
-                completion(false)
-                Defaults.setBool(.iCloudEnabled, true)
-            }
+    static func isICloudEnabled(completion: @escaping (CKAccountStatus) -> Void) {
+        CKContainer(identifier: identifier).accountStatus { accountStatus, _ in
+            completion(accountStatus)
         }
     }
     
-    static func enableICloudSync(completion: @escaping (Bool) -> Void) {
-        CKContainer.default().accountStatus { accountStatus, error in
-            guard accountStatus == .available else {
-                completion(false)
-                return
-            }
-            
-            CKContainer(identifier: identifier).accountStatus { accountStatus, _ in
-                guard accountStatus == .available else {
-                    Defaults.setBool(.iCloudEnabled, false)
-                    completion(false)
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    Defaults.setBool(.iCloudEnabled, true)
-                    completion(true)
-                }
+    static func enableICloudSync(success: @escaping (Bool) -> Void) {
+        isICloudEnabled { status in
+            switch status {
+            case .available:
+                Defaults.setBool(.iCloudEnabled, true)
+                success(true)
+            default:
+                success(false)
             }
         }
     }
     
     static func disableICloudSync(completion: @escaping (Bool) -> Void) {
-        CKContainer.default().accountStatus { accountStatus, error in
-            guard accountStatus == .available else {
-                completion(false)
-                return
-            }
-            
-            CKContainer(identifier: identifier).accountStatus { accountStatus, _ in
-                guard accountStatus == .available else {
-                    completion(false)
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    Defaults.setBool(.iCloudEnabled, false)
-                    completion(true)
-                }
-            }
-        }
+        Defaults.setBool(.iCloudEnabled, false)
     }
     
     static func redirectToICloudSettings() {
