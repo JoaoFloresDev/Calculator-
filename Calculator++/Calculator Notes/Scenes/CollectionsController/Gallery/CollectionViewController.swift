@@ -29,10 +29,10 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             editLeftBarButtonItem?.setEditing(isEditMode)
         }
     }
-
+    
     // MARK: - IBOutlet
     @IBOutlet weak var placeHolderImage: UIImageView!
-
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,32 +45,17 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         monitorWiFiAndPerformActions()
         coordinator = CollectionViewCoordinator(self)
     }
-
+    
     func deselectAllFoldersObjects() {
         for index in 0 ..< folders.count {
             folders[index].isSelected = false
         }
     }
-
+    
     func deselectAllFileObjects() {
         for index in 0 ..< modelData.count {
             modelData[index].isSelected = false
         }
-    }
-
-    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
-        let monitor = NWPathMonitor()
-
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
-
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        monitor.start(queue: queue)
     }
 }
 
@@ -84,22 +69,22 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
         }
         isEditMode.toggle()
     }
-
+    
     func shareImageButtonTapped() {
         coordinator?.shareImage(modelData: modelData)
     }
-
+    
     func deleteButtonTapped() {
         Alerts.showConfirmationDelete(controller: self) { [weak self] in
             guard let self = self else { return }
-
+            
             self.deleteSelectedFolders()
             self.deleteSelectedPhotos()
-
+            
             self.reloadCollectionViewSections()
         }
     }
-
+    
     private func deleteSelectedFolders() {
         folders.removeAll { folder in
             folder.isSelected
@@ -109,7 +94,7 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
         }
         deselectAllFoldersObjects()
     }
-
+    
     private func deleteSelectedPhotos() {
         modelData.removeAll { photo in
             photo.isSelected
@@ -119,7 +104,7 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
         }
         deselectAllFileObjects()
     }
-
+    
     private func reloadCollectionViewSections() {
         collectionView?.reloadSections(IndexSet(integer: 0))
         collectionView?.reloadSections(IndexSet(integer: 1))
@@ -132,11 +117,11 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
         coordinator?.addPhotoButtonTapped()
         self.filesIsExpanded = true
     }
-
+    
     func addFolderButtonTapped() {
         addFolder()
     }
-
+    
     func addFolder() {
         Alerts.showInputDialog(title: Text.folderTitle.localized(),
                                controller: self,
@@ -145,7 +130,7 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
                                inputPlaceholder: Text.inputPlaceholder.localized(),
                                actionHandler: { [weak self] (input: String?) in
             guard let self = self, let input = input else { return }
-
+            
             if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
                 self.createNewFolderAndReloadCollectionView(input: input)
             } else {
@@ -153,14 +138,14 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
             }
         })
     }
-
+    
     private func createNewFolderAndReloadCollectionView(input: String) {
         self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { folderName in
             return Folder(name: folderName, isSelected: false)
         }
         self.collectionView?.reloadSections(IndexSet(integer: .zero))
     }
-
+    
     private func showErrorAndPromptForRetry() {
         Alerts.showError(title: Text.folderNameAlreadyUsedTitle.localized(),
                          text: Text.folderNameAlreadyUsedText.localized(),
@@ -174,7 +159,7 @@ extension CollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
         placeHolderImage.isHidden = !presentPlaceHolderImage
@@ -189,7 +174,7 @@ extension CollectionViewController {
             }
         }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
@@ -198,33 +183,33 @@ extension CollectionViewController {
             return photoCell(collectionView, cellForItemAt: indexPath)
         }
     }
-
+    
     private func folderCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell else {
             return UICollectionViewCell()
         }
-
-        let folderName = folders[indexPath.row].name.components(separatedBy: deepSeparatorPath).last ?? ""
+        
+        let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath.value()).last ?? ""
         cell.setup(name: folderName)
         cell.isSelectedCell = folders[indexPath.row].isSelected
-
+        
         return cell
     }
-
+    
     private func photoCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell,
               indexPath.item < modelData.count else {
             return UICollectionViewCell()
         }
-
+        
         let image = modelData[indexPath.item]
         cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
         cell.isSelectedCell = modelData[indexPath.item].isSelected
         cell.applyshadowWithCorner()
-
+        
         return cell
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isEditMode {
             updateSelectedPhotos(indexPath: indexPath)
@@ -237,7 +222,7 @@ extension CollectionViewController {
             }
         }
     }
-
+    
     func updateSelectedPhotos(indexPath: IndexPath) {
         if indexPath.section == .zero {
             folders[indexPath.row].isSelected.toggle()
@@ -246,7 +231,7 @@ extension CollectionViewController {
         }
         self.collectionView?.reloadItems(at: [indexPath])
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
@@ -257,28 +242,28 @@ extension CollectionViewController {
             return UICollectionReusableView()
         }
     }
-
+    
     private func dequeueHeaderView(for indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView?.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? HeaderView else {
             return UICollectionReusableView()
         }
-
+        
         if indexPath.section == 0 {
             configureHeaderViewForFolderSection(headerView)
         } else if indexPath.section == 1 {
             configureHeaderViewForPhotoSection(headerView)
         }
-
+        
         return headerView
     }
-
+    
     private func configureHeaderViewForFolderSection(_ headerView: HeaderView) {
         headerView.messageLabel.text = String()
         headerView.activityIndicatorView.isHidden = true
         headerView.gradientView?.isHidden = false
         headerView.isUserInteractionEnabled = false
     }
-
+    
     private func configureHeaderViewForPhotoSection(_ headerView: HeaderView) {
         if !modelData.isEmpty {
             if filesIsExpanded {
@@ -294,15 +279,15 @@ extension CollectionViewController {
         headerView.gradientView?.isHidden = true
         headerView.delegate = self
     }
-
+    
     private func dequeueFooterView(for indexPath: IndexPath) -> UICollectionReusableView {
         guard let footerView = collectionView?.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView", for: indexPath) as? FooterView else {
             return UICollectionReusableView()
         }
-
+        
         return footerView
     }
-
+    
 }
 
 
@@ -323,7 +308,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             }
         }
     }
-
+    
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
@@ -334,11 +319,11 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         })
         return thumbnail
     }
-
+    
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
     }
@@ -349,11 +334,11 @@ extension CollectionViewController: GalleryItemsDataSource {
     func itemCount() -> Int {
         return modelData.count
     }
-
+    
     func provideGalleryItem(_ index: Int) -> GalleryItem {
         let imageView = UIImageView(image: modelData[index].image)
         let galleryItem = GalleryItem.image { $0(imageView.image) }
-
+        
         return galleryItem
     }
 }
@@ -366,7 +351,7 @@ extension CollectionViewController {
             performFirstUseSetup()
         }
     }
-
+    
     private func performFirstUseSetup() {
         loadingAlert.startLoading(in: self)
         CloudKitPasswordService.fetchAllPasswords { [weak self] password, error in
@@ -381,7 +366,7 @@ extension CollectionViewController {
             }
         }
     }
-
+    
     private func handleFirstUseCompletion(with password: [String]) {
         Alerts.askUserToRestoreBackup(on: self) { [weak self] restoreBackup in
             if restoreBackup {
@@ -391,7 +376,7 @@ extension CollectionViewController {
             }
         }
     }
-
+    
     private func handleRestoreBackup(password: [String]) {
         Alerts.insertPassword(controller: self) { [weak self] insertedPassword in
             guard let self = self, let insertedPassword = insertedPassword else {
@@ -409,7 +394,7 @@ extension CollectionViewController {
             }
         }
     }
-
+    
     private func showSetProtectionOrNavigateToSettings() {
         Alerts.showSetProtectionAsk(controller: self) { [weak self] createProtection in
             if createProtection {
@@ -419,7 +404,7 @@ extension CollectionViewController {
             }
         }
     }
-
+    
     private func restoreBackupAndReloadData(photos: [(String, UIImage)]) {
         loadingAlert.startLoading(in: self)
         BackupService.restoreBackup(photos: photos) { [weak self] success, _ in
@@ -430,35 +415,19 @@ extension CollectionViewController {
                     self?.showSetProtectionOrNavigateToSettings()
                 } else {
                     guard let strongSelf = self else {
-                            return
+                        return
                     }
                     Alerts.showBackupError(controller: strongSelf)
                 }
             }
         }
     }
-}
-
-extension CollectionViewController {
-    private func configureNavigationBar() {
-        if let navigationTitle = navigationTitle {
-            self.title = navigationTitle
-        } else {
-            self.setText(.gallery)
-        }
-    }
-
-    private func handleInitialLaunch() {
-        if basePath == deepSeparatorPath {
-            let launchCounter = Defaults.getInt(.launchCounter)
-            Defaults.setInt(.launchCounter, launchCounter + 1)
-
-            let disableRecoveryButtonCounter = Defaults.getInt(.disableRecoveryButtonCounter)
-            Defaults.setInt(.launchCounter, disableRecoveryButtonCounter + 1)
-        }
-    }
-
+    
     private func monitorWiFiAndPerformActions() {
+        guard Defaults.getBool(.iCloudPurchased) else {
+            return
+        }
+        
         isConnectedToWiFi { isConnected in
             if isConnected {
                 BackupService.updateBackup()
@@ -472,7 +441,42 @@ extension CollectionViewController {
             }
         }
     }
+    
+    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
+        let monitor = NWPathMonitor()
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+    }
+}
 
+extension CollectionViewController {
+    private func configureNavigationBar() {
+        if let navigationTitle = navigationTitle {
+            self.title = navigationTitle
+        } else {
+            self.setText(.gallery)
+        }
+    }
+    
+    private func handleInitialLaunch() {
+        if basePath == Constants.deepSeparatorPath.value() {
+            let launchCounter = Defaults.getInt(.launchCounter)
+            Defaults.setInt(.launchCounter, launchCounter + 1)
+            
+            let disableRecoveryButtonCounter = Defaults.getInt(.disableRecoveryButtonCounter)
+            Defaults.setInt(.launchCounter, disableRecoveryButtonCounter + 1)
+        }
+    }
+    
     private func setupFolders() {
         folders = foldersService.getFolders(basePath: basePath).map { folderName in
             return Folder(name: folderName, isSelected: false)

@@ -16,7 +16,7 @@ struct AdsService {
     func checkPurchase(bannerView: GADBannerView?,
                        interstitial: inout GADInterstitial,
                        interstitialDelegate: GADInterstitialDelegate) {
-        if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil {
+        if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || Defaults.getBool(.premiumPurchased) {
             bannerView?.removeFromSuperview()
         } else {
             let getAddPhotoCounter = Defaults.getInt(.launchCounter)

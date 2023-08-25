@@ -16,6 +16,7 @@ enum BoolKey: String {
     case notFirstUse
     case iCloudEnabled
     case iCloudPurchased
+    case premiumPurchased = "NoAds.Calc"
     
     func set(_ value: Bool) {
         userDefaults.set(value, forKey: rawValue)
@@ -55,6 +56,9 @@ enum StringArrayKey: String {
     case galleryFoldersPath
     case videoFoldersPath
     
+    case imagesToUpload
+    case imagesToDelete
+    
     func set(_ value: [String]) {
         userDefaults.set(value, forKey: rawValue)
     }
@@ -75,6 +79,10 @@ class Defaults {
     
     static func setInt(_ key: IntKey, _ value: Int) {
         key.set(value)
+    }
+    
+    static func incrementInt(_ key: IntKey) {
+        key.set(key.get() + 1)
     }
     
     static func getInt(_ key: IntKey) -> Int {

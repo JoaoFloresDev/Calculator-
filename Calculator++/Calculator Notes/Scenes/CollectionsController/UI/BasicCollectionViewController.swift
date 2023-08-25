@@ -18,11 +18,9 @@ enum Constants: String {
 }
 
 class BasicCollectionViewController: UICollectionViewController {
-    let deepSeparatorPath = "@"
     let reuseIdentifier = "Cell"
     let folderReuseIdentifier = "FolderCell"
     var adsHandler: AdsHandler = AdsHandler()
-    let defaults = UserDefaults.standard
     public var basePath = "@"
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     var image: UIImage?
@@ -49,7 +47,7 @@ class BasicCollectionViewController: UICollectionViewController {
     func setupCollectionViewLayout() {
         let screenWidth = self.view.frame.size.width - 100
         let flowLayout = FlowLayout(screenWidth: screenWidth)
-        if basePath == deepSeparatorPath {
+        if basePath == Constants.deepSeparatorPath.value() {
             flowLayout.headerReferenceSize = CGSize(width: screenWidth, height: 25)
         }
         collectionView?.collectionViewLayout = flowLayout
@@ -70,7 +68,7 @@ class BasicCollectionViewController: UICollectionViewController {
         collectionView?.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView")
         collectionView?.register(FooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView")
         
-        if basePath != deepSeparatorPath {
+        if basePath != Constants.deepSeparatorPath.value() {
             filesIsExpanded = true
         }
     }

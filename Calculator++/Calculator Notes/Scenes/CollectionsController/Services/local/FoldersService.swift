@@ -31,7 +31,6 @@ struct FoldersService {
         case image
     }
     
-    let defaults = UserDefaults.standard
     var folders: [String] = []
     var type: AssetType = .image
     

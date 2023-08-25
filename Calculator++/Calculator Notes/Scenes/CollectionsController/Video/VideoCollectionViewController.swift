@@ -14,8 +14,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var modelController = VideoModelController()
     
     var isPremium: Bool {
-        // !!!! tirar isso aqui
-        return true
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
     
@@ -204,7 +202,7 @@ extension VideoCollectionViewController {
         switch indexPath.section {
         case 0:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
-                if let folderName = folders[indexPath.row].name.components(separatedBy: deepSeparatorPath).last {
+                if let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath.value()).last {
                     cell.setup(name: folderName)
                     cell.isSelectedCell = folders[indexPath.row].isSelected
                 }
