@@ -88,7 +88,9 @@ class BackupModalViewController: UIViewController {
     }()
     
     @objc func restoreBackupTapped() {
-        delegate?.restoreBackupTapped()
+        self.dismiss(animated: false) {
+            self.delegate?.restoreBackupTapped()
+        }
     }
 
     lazy var contentStackView: UIStackView = {
@@ -223,9 +225,11 @@ class BackupModalViewController: UIViewController {
         if sender.isOn {
             CloudKitImageService.enableICloudSync { success in
                 if success {
-                    sender.isOn = true
                     self.delegate?.enableBackupToggled(status: true)
                 } else {
+                    DispatchQueue.main.async {
+                        sender.isOn = false
+                    }
                     Alerts.showGoToSettingsToEnbaleCloud(controller: self) { _ in
                         CloudKitImageService.redirectToICloudSettings()
                     }

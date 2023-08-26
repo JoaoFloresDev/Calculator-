@@ -463,7 +463,7 @@ extension CollectionViewController {
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
-            self.setText(.gallery)
+            self.title = Text.gallery.localized()
         }
     }
     
@@ -497,8 +497,8 @@ extension CollectionViewController {
     
     private func setupTabBars() {
         let controllers = self.tabBarController?.viewControllers
-        controllers?[2].setText(.notes)
-        controllers?[3].setText(.settings)
+        controllers?[2].title = Text.notes.localized()
+        controllers?[3].title = Text.settings.localized()
     }
 }
 

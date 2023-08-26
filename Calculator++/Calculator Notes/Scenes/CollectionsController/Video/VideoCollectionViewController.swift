@@ -39,12 +39,12 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()
-        setText(.video)
+        self.title = Text.video.localized()
         
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
-            self.setText(.video)
+            self.title = Text.video.localized()
         }
     }
     
