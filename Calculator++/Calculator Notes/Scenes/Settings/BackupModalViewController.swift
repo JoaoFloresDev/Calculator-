@@ -224,19 +224,13 @@ class BackupModalViewController: UIViewController {
                 if success {
                     sender.isOn = true
                 } else {
-                    Alerts.showBackupError(controller: self)
-                    CloudKitImageService.redirectToICloudSettings()
+                    Alerts.showGoToSettingsToEnbaleCloud(controller: self) { _ in
+                        CloudKitImageService.redirectToICloudSettings()
+                    }
                 }
             }
         } else {
-            CloudKitImageService.disableICloudSync { success in
-                if success {
-                    sender.isOn = false
-                } else {
-                    Alerts.showBackupError(controller: self)
-                    CloudKitImageService.redirectToICloudSettings()
-                }
-            }
+            Defaults.setBool(.iCloudEnabled, false2)
         }
     }
 }

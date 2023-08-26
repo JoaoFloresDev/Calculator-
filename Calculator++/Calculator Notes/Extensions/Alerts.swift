@@ -125,6 +125,20 @@ struct Alerts {
         controller.present(alertController, animated: true)
     }
     
+    static func  showBePremiumToUseBackup(controller: UIViewController, completion: ((UIAlertAction)->Void)?) {
+        showAlertWithTitle("aaaaa",
+                           message: "",
+                           controller: controller,
+                           confirmAction: completion)
+    }
+    
+    static func showGoToSettingsToEnbaleCloud(controller: UIViewController, completion: ((UIAlertAction)->Void)?) {
+        showAlertWithTitle("aaaaa",
+                           message: "",
+                           controller: controller,
+                           confirmAction: completion)
+    }
+    
     // Helper function to show a basic alert
     private static func showAlertWithTitle(_ title: String,
                                            message: String? = nil,
