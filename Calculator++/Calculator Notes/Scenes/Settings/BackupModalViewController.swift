@@ -230,7 +230,7 @@ class BackupModalViewController: UIViewController {
                 }
             }
         } else {
-            Defaults.setBool(.iCloudEnabled, false2)
+            Defaults.setBool(.iCloudEnabled, false)
         }
     }
 }
