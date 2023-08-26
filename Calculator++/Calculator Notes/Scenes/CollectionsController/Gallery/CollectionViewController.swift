@@ -385,11 +385,13 @@ extension CollectionViewController {
             if password.contains(insertedPassword) {
                 self.loadingAlert.startLoading(in: self)
                 BackupService.hasDataInCloudKit { [weak self] hasData, _, items in
-                    guard let self = self, let items = items, !items.isEmpty, hasData else {
-                        self?.showSetProtectionOrNavigateToSettings()
-                        return
+                    self?.loadingAlert.stopLoading {
+                        guard let self = self, let items = items, !items.isEmpty, hasData else {
+                            self?.showSetProtectionOrNavigateToSettings()
+                            return
+                        }
+                        self.restoreBackupAndReloadData(photos: items)
                     }
-                    self.restoreBackupAndReloadData(photos: items)
                 }
             }
         }
