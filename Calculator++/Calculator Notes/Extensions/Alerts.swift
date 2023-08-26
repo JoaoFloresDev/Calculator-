@@ -125,17 +125,18 @@ struct Alerts {
         controller.present(alertController, animated: true)
     }
     
-    static func  showBePremiumToUseBackup(controller: UIViewController, completion: ((UIAlertAction)->Void)?) {
-        showAlertWithTitle("aaaaa",
-                           message: "",
+    static func showBePremiumToUseBackup(controller: UIViewController, completion: ((UIAlertAction) -> Void)?) {
+        showAlertWithTitle(Text.premiumToolTitle.localized(),
+                           message: "O suporte para backup é um recurso premium. Apresentaremos os detalhes do produto",
                            controller: controller,
                            confirmAction: completion)
     }
     
     static func showGoToSettingsToEnbaleCloud(controller: UIViewController, completion: ((UIAlertAction)->Void)?) {
-        showAlertWithTitle("aaaaa",
-                           message: "",
+        showAlertWithTitle("Ative o iCloud para Usar o Calc+",
+                           message: "Vá para Configurações do seu dispositivo, toque em 'Seu Nome' e, em seguida, escolha 'iCloud'. Lá, você encontrará a opção para ativar o iCloud para o Calc+.",
                            controller: controller,
+                           confirmTitle: "Ir para configurações",
                            confirmAction: completion)
     }
     
@@ -156,13 +157,8 @@ struct Alerts {
             alert.addAction(UIAlertAction(title: cancelTitle, style: .default, handler: cancelAction))
         }
         alert.addAction(UIAlertAction(title: confirmTitle, style: .default, handler: confirmAction))
-        controller.present(alert, animated: true)
-    }
-    
-    static func showBePremiumToUseBackup(controller: UIViewController, completion: ((UIAlertAction) -> Void)?) {
-        showAlertWithTitle(Text.premiumToolTitle.localized(),
-                           message: "O suporte para backup é um recurso premium. Apresentaremos os detalhes do produto",
-                           controller: controller,
-                           confirmAction: completion)
+        DispatchQueue.main.async {
+            controller.present(alert, animated: true)
+        }
     }
 }

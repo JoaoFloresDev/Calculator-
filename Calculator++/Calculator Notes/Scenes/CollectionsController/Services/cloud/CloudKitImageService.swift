@@ -168,11 +168,14 @@ class CloudKitImageService: ObservableObject {
         CKContainer.default().accountStatus { accountStatus, _ in
             switch accountStatus {
             case .available:
-                completion(true)
-                Defaults.setBool(.iCloudEnabled, true)
+                if Defaults.getBool(.iCloudEnabled) {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
             default:
                 completion(false)
-                Defaults.setBool(.iCloudEnabled, true)
+                Defaults.setBool(.iCloudEnabled, false)
             }
         }
     }

@@ -63,7 +63,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     var backupIsActivated = false {
         didSet {
-            backupStatus.text = backupIsActivated ? "Ativado" : "Desativado"
+            DispatchQueue.main.async {
+                self.backupStatus.text = self.backupIsActivated ? "Ativado" : "Desativado"
+            }
         }
     }
     
@@ -109,10 +111,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
         if Defaults.getBool(.iCloudPurchased) {
-            let vc = BackupModalViewController(backupIsActivated: backupIsActivated) {
-                self.fetchCloudKitPassword()
-            }
-            
+            let vc = BackupModalViewController(backupIsActivated: backupIsActivated, delegate: self)
             vc.modalPresentationStyle = .overCurrentContext
             if let tabBarController = self.tabBarController {
                 tabBarController.present(vc, animated: false, completion: nil)
@@ -236,5 +235,15 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         bankModeImage.setImage(typeProtection == .bank ? .selectedIndicator : .diselectedIndicator)
         calcModeImage.setImage(typeProtection == .calculator ? .selectedIndicator : .diselectedIndicator)
         noProtectionImage.setImage(typeProtection == .noProtection ? .selectedIndicator : .diselectedIndicator)
+    }
+}
+
+extension  SettingsViewController: BackupModalViewControllerDelegate {
+    func restoreBackupTapped() {
+        self.fetchCloudKitPassword()
+    }
+    
+    func enableBackupToggled(status: Bool) {
+        backupIsActivated = status
     }
 }

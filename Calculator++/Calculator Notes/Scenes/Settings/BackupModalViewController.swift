@@ -1,10 +1,12 @@
 import UIKit
 import SnapKit
 
+protocol BackupModalViewControllerDelegate {
+    func restoreBackupTapped()
+    func enableBackupToggled(status: Bool)
+}
 class BackupModalViewController: UIViewController {
-    var activeBackupTappedHandler: (() -> Void)?
-    var deactiveBackupTappedHandler: (() -> Void)?
-    var restoreBackupTappedHandler: (() -> Void)?
+    var delegate: BackupModalViewControllerDelegate?
     
     lazy var modalTitleView: UIView = {
         let view = UIView()
@@ -86,7 +88,7 @@ class BackupModalViewController: UIViewController {
     }()
     
     @objc func restoreBackupTapped() {
-        restoreBackupTappedHandler?()
+        delegate?.restoreBackupTapped()
     }
 
     lazy var contentStackView: UIStackView = {
@@ -121,9 +123,9 @@ class BackupModalViewController: UIViewController {
     var containerViewHeightConstraint: Constraint?
     var containerViewBottomConstraint: Constraint?
     
-    init(backupIsActivated: Bool, restoreBackupTapped: (() -> Void)?) {
-        self.restoreBackupTappedHandler = restoreBackupTapped
+    init(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
+        self.delegate = delegate
         switchControl.isOn = Defaults.getBool(.iCloudEnabled)
     }
     
@@ -219,10 +221,10 @@ class BackupModalViewController: UIViewController {
     
     @objc func switchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
-            activeBackupTappedHandler?()
             CloudKitImageService.enableICloudSync { success in
                 if success {
                     sender.isOn = true
+                    self.delegate?.enableBackupToggled(status: true)
                 } else {
                     Alerts.showGoToSettingsToEnbaleCloud(controller: self) { _ in
                         CloudKitImageService.redirectToICloudSettings()
@@ -231,6 +233,7 @@ class BackupModalViewController: UIViewController {
             }
         } else {
             Defaults.setBool(.iCloudEnabled, false)
+            delegate?.enableBackupToggled(status: false)
         }
     }
 }
