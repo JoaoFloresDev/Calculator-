@@ -5,7 +5,7 @@ import CoreData
 struct CoreDataImageService {
     static let fileManager = FileManager.default
     static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
+    
     static func saveImage(image: UIImage, basePath: String) -> String? {
         let date = String(Date.timeIntervalSinceReferenceDate)
         let imageName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".png"

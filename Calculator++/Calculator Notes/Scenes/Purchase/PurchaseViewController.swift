@@ -3,74 +3,80 @@ import StoreKit
 
 class PurchaseViewController: UIViewController {
     
-    //    MARK: - IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var teste: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
-    
     @IBOutlet weak var customNavigator: UINavigationItem!
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var restoreButton: UIBarButtonItem!
     
-    //    MARK: - IBAction
+    // MARK: - Variables
+    private var products: [SKProduct] = []
+    private var timerLoad: Timer!
+    
+    private lazy var priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.formatterBehavior = .behavior10_4
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+    
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNotificationObserver()
+        setupLocalizedText()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        reloadAndCheckPurchaseStatus()
+    }
+    
+    // MARK: - IBAction
     @IBAction func dismissView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func buyPressed(_ sender: Any) {
-        RazeFaceProducts.store.buyProduct(self.products[0])
-        startLoading()
-        timerLoad = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.loadingPlaying), userInfo: nil, repeats: false)
-        
-        confirmCheckmark()
+        performPurchase(product: products.first)
     }
     
     @IBAction func restorePressed(_ sender: Any) {
         RazeFaceProducts.store.restorePurchases()
         startLoading()
-        timerLoad = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.loadingPlaying), userInfo: nil, repeats: false)
+        startTimer(with: 1)
         confirmCheckmark()
-        
     }
     
-    //    MARK: - Variables
-    var products: [SKProduct] = []
-    var timerLoad: Timer!
-    static let priceFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        
-        formatter.formatterBehavior = .behavior10_4
-        formatter.numberStyle = .currency
-        
-        return formatter
-    }()
+    // MARK: - UI Management
+    private func startLoading() {
+        loadingView.alpha = 1
+        loadingView.startAnimating()
+    }
     
-    //    MARK: - UI
-    @objc func loadingPlaying() {
+    @objc private func stopLoading() {
+        loadingView.alpha = 0
+        loadingView.stopAnimating()
+    }
+    
+    private func startTimer(with interval: TimeInterval) {
+        timerLoad = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(stopLoading), userInfo: nil, repeats: false)
+    }
+    
+    @objc private func stopLoadingTimer() {
         stopLoading()
     }
     
-    func confirmCheckmark() {
-        DispatchQueue.main.async {
-            if(RazeFaceProducts.store.isProductPurchased("NoAds.Calc")) {
-                self.stopLoading()
-                self.buyLabel.text = "   ✓✓✓"
-                Defaults.setBool(.premiumPurchased, true)
-            }
-        }
+    private func setupNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseNotification(_:)), name: .IAPHelperPurchaseNotification, object: nil)
     }
     
-    //    MARK: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(PurchaseViewController.handlePurchaseNotification(_:)),
-                                               name: .IAPHelperPurchaseNotification,
-                                               object: nil)
-        confirmCheckmark()
+    private func setupLocalizedText() {
         customNavigator.title = Text.products.localized()
         closeButton.title = Text.close.localized()
         restoreButton.title = Text.restore.localized()
@@ -78,77 +84,75 @@ class PurchaseViewController: UIViewController {
         priceLabel.text  = Text.loading.localized()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    // MARK: - Data Management
+    private func performPurchase(product: SKProduct?) {
+        guard let product = product else { return }
+        RazeFaceProducts.store.buyProduct(product)
+        startLoading()
+        startTimer(with: 30)
+        confirmCheckmark()
+    }
+    
+    private func reloadAndCheckPurchaseStatus() {
         reload()
         confirmCheckmark()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        reload()
-        confirmCheckmark()
+    @objc private func reload() {
+        products = []
+        
+        RazeFaceProducts.store.requestProducts { [weak self] success, products in
+            guard let self = self, let products = products else { return }
+            
+            if success {
+                self.products = products
+                
+                DispatchQueue.main.async {
+                    self.updateUI(with: products.first)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.updateUI(with: products.first)
+                }
+            }
+            self.confirmCheckmark()
+        }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        reload()
-        confirmCheckmark()
-    }
-    
-    @objc func handlePurchaseNotification(_ notification: Notification) {
+
+    @objc private func handlePurchaseNotification(_ notification: Notification) {
         guard
             let productID = notification.object as? String,
             let _ = products.firstIndex(where: { product -> Bool in
                 product.productIdentifier == productID
             })
-            else { return }
+        else { return }
         
         confirmCheckmark()
     }
-    //    MARK: - UI
-    func startLoading() {
-        loadingView.alpha = 1
-        loadingView.startAnimating()
-    }
-    
-    func stopLoading() {
-        loadingView.alpha = 0
-        loadingView.stopAnimating()
-    }
-    
-    //    MARK: - Data Management
-    @objc func reload() {
-        products = []
-        
-        RazeFaceProducts.store.requestProducts{ [weak self] success, products in
-            guard let self = self else { return }
-            if success {
-                self.products = products!
-                
-                DispatchQueue.main.async {
-                    self.teste.text = self.products[0].localizedTitle
-                    self.teste.textColor = UIColor.black
-                    
-                    self.descriptionLabel.text = self.products[0].localizedDescription
-                    self.descriptionLabel.textColor = UIColor.black
-                    
-                    PurchaseViewController.self.priceFormatter.locale = self.products[0].priceLocale
-                    self.priceLabel.text = PurchaseViewController.self.priceFormatter.string(from: self.products[0].price)!
-                    
-                }
-            } else {
-                if products?[0] != nil {
-                    self.teste.text = self.products[0].localizedTitle
-                    self.teste.textColor = UIColor.black
-                    
-                    self.descriptionLabel.text = self.products[0].localizedDescription
-                    self.descriptionLabel.textColor = UIColor.black
-                    
-                    PurchaseViewController.self.priceFormatter.locale = self.products[0].priceLocale
-                    self.priceLabel.text = PurchaseViewController.self.priceFormatter.string(from: self.products[0].price) ?? "..."
-                }
+
+    private func confirmCheckmark() {
+        DispatchQueue.main.async {
+            if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
+                self.stopLoading()
+                self.buyLabel.text = "   ✓✓✓"
+                Defaults.setBool(.premiumPurchased, true)
+                Defaults.setBool(.iCloudPurchased, true)
+                Defaults.setBool(.iCloudEnabled, true)
             }
         }
-        confirmCheckmark()
     }
+
+    private func updateUI(with product: SKProduct?) {
+        guard let product = product else { return }
+        
+        teste.text = product.localizedTitle
+        teste.textColor = UIColor.black
+        
+        descriptionLabel.text = product.localizedDescription
+        descriptionLabel.textColor = UIColor.black
+        
+        priceFormatter.locale = product.priceLocale
+        priceLabel.text = priceFormatter.string(from: product.price)
+    }
+
 }

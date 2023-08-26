@@ -295,30 +295,45 @@ extension CollectionViewController {
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
         for asset in assets {
-            if(asset.mediaType.rawValue != 2) {
-                image = getAssetThumbnail(asset: asset)
-                guard let image = image else {
-                    return
-                }
-                if let photo = ModelController.saveImageObject(image: image,
-                                                               basePath: basePath) {
-                    modelData.append(photo)
-                    collectionView?.reloadSections(IndexSet(integer: 1))
+            if asset.mediaType != .image {
+                continue
+            }
+            
+            getAssetThumbnail(asset: asset) { image in
+                if let image = image {
+                    if let photo = ModelController.saveImageObject(image: image, basePath: self.basePath) {
+                        self.modelData.append(photo)
+                        DispatchQueue.main.async {
+                            self.collectionView?.reloadSections(IndexSet(integer: 1))
+                        }
+                    } else {
+                        print("Erro ao salvar a imagem.")
+                    }
+                } else {
+                    print("Falha ao carregar a miniatura do asset.")
                 }
             }
         }
     }
-    
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+
+    func getAssetThumbnail(asset: PHAsset, completion: @escaping (UIImage?) -> Void) {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result ?? UIImage()
-        })
-        return thumbnail
+        option.isSynchronous = false // tornando assíncrono
+        
+        manager.requestImage(for: asset,
+                             targetSize: CGSize(width: 1500, height: 1500),
+                             contentMode: .aspectFit,
+                             options: option) { (result, info) in
+            if let result = result {
+                completion(result)
+            } else {
+                print("Não foi possível obter a imagem.")
+                completion(nil)
+            }
+        }
     }
+
     
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
         return true
