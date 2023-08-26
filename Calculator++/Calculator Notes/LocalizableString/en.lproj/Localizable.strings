@@ -1,67 +1,74 @@
-/* 
-  Localizable.strings
-  Calculator Notes
+"premiumVersion" = "Premium Version";
+"noProtection" = "No Protection";
+"hideRecoverButton" = "Hide Password Recovery Button";
+"chooseProtectionMode" = "Choose Protection Mode";
 
-  Created by Joao Victor Flores da Costa on 06/02/22.
-  Copyright © 2022 MakeSchool. All rights reserved.
-*/
+"settings" = "Settings";
+"gallery" = "Gallery";
+"video" = "Video";
+"notes" = "Notes";
 
-premiumVersion = "Premium version";
-noProtection = "No protection";
-hideRecoverButton = "Remove recover password button";
-chooseProtectionMode = "Choose protection mode";
+"instructionFirstStepCalc" = "Create a password and tap the '=' button";
+"instructionSecondStepCalc" = "Password: *****. Repeat the password and confirm with '='";
 
-settings = "Settings";
-gallery = "Gallery";
-video = "Video";
-notes = "Notes";
+"instructionFirstStepBank" = "Create a password and tap 'Enter'";
+"instructionSecondStepBank" = "Password: *****. Repeat the password and confirm with 'Enter'";
 
-instructionFirstStepCalc = "Create a password and click the '=' button";
-instructionSecondStepCalc = "Key: *****. Repeat password and confirm with '='";
+"bankModeHasBeenActivated" = "Vault Mode Activated";
+"calcModeHasBeenActivated" = "Calculator Mode Activated";
 
-instructionFirstStepBank = "Create a password and click 'enter'";
-instructionSecondStepBank = "Key: *****. Repeat password and confirm with 'Enter'";
+"welcomeInstructionBank" = "Enter your password";
 
-bankModeHasBeenActivated = "Bank mode activated";
-calcModeHasBeenActivated = "Calculator mode activated";
+"done" = "Done";
+"edit" = "Edit";
 
-welcomeInstructionBank = "Type your password";
+"premiumToolTitle" = "Premium Tool";
+"premiumToolMessage" = "Video support is only available for premium users. Check out the upgrades in the Settings section";
 
-done = "Done";
-edit = "Edit";
+"save" = "Save";
+"cancel" = "Cancel";
+"ok" = "Confirm";
+"see" = "See";
+"errorTitle" = "Unexpected Error";
+"errorMessage" = "Please try again later";
+"deleteFiles" = "Delete file?";
 
-premiumToolTitle = "Premium Tool";
-premiumToolMessage = "Video support is only offered in the Premium Version. See upgrades in Settings";
-
-save = "Save";
-cancel = "Cancel";
-
-errorTitle = "Unexpected error";
-errorMessage = "Try again later";
-
-incorrectPassword = "Incorrect password";
-tryAgain = "Try again";
-
-deleteFiles = "Delete files?";
+"incorrectPassword" = "Incorrect Password";
+"tryAgain" = "Try Again";
 
 // Purchase
-products = "Products";
-loading = "Loading...";
-close = "Close";
-restore = "Restore";
-buy = "Buy";
+"products" = "Products";
+"loading" = "Loading...";
+"close" = "Close";
+"restore" = "Restore";
+"buy" = "Buy";
 
 // folder
-folderTitle = "Folder Name";
-createActionTitle = "Create";
-cancelTitle = "Cancel";
-inputPlaceholder = "Enter the new folder name";
-folderNameAlreadyUsedTitle = "Name Already Used";
-folderNameAlreadyUsedText = "Choose another name for the folder";
-deleteConfirmationTitle = "Delete files?";
+"folderTitle" = "Folder Name";
+"createActionTitle" = "Create";
+"cancelTitle" = "Cancel";
+"inputPlaceholder" = "Enter the name of the new folder";
+"folderNameAlreadyUsedTitle" = "Name Already Used";
+"folderNameAlreadyUsedText" = "Choose another name for the folder";
+"deleteConfirmationTitle" = "Delete Files?";
 
 // Show All
-hideAllVideos = "Hide all saved videos";
-showAllVideos = "Show all saved videos";
-hideAllPhotos = "Hide all saved photos";
-showAllPhotos = "Show all saved photos";
+"hideAllVideos" = "Hide All Saved Videos";
+"showAllVideos" = "Show All Saved Videos";
+"hideAllPhotos" = "Hide All Saved Photos";
+"showAllPhotos" = "Show2 All Saved Photos";
+"wouldLikeSetProtection" = "Would you like to add protection to your gallery?";
+
+// backup
+askToRestoreBackupTitle = "Restore Backup";
+askToRestoreBackupMessage = "Would you like to restore your last backup?";
+backupSuccessTitle = "Backup Successful";
+backupSuccessMessage = "Your backup has been successfully restored.";
+backupErrorTitle = "Backup Failed";
+backupErrorMessage = "No data found for backup.";
+incorrectPasswordTitle = "Incorrect Password";
+incorrectPasswordMessage = "The provided password is not compatible, please try again.";
+insertPasswordTitle = "Enter Your Password";
+insertPasswordMessage = "Please enter the password that was used to open the calculator.";
+yes = "Yes";
+no = "No";

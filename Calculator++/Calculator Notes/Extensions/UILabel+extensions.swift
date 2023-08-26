@@ -10,6 +10,6 @@ import UIKit
 
 extension UILabel {
     func setText(_ text: Text) {
-        self.text = text.rawValue.localized()
+        self.text = text.localized()
     }
 }

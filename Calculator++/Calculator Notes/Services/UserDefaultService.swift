@@ -8,24 +8,113 @@
 
 import Foundation
 
+var userDefaults = UserDefaults.standard
+
+enum BoolKey: String {
+    case recoveryStatus
+    case needSavePasswordInCloud
+    case notFirstUse
+    case iCloudEnabled
+    case iCloudPurchased
+    case premiumPurchased = "NoAds.Calc"
+    
+    func set(_ value: Bool) {
+        userDefaults.set(value, forKey: rawValue)
+    }
+    
+    func get() -> Bool {
+        return userDefaults.bool(forKey: rawValue)
+    }
+}
+
+enum IntKey: String {
+    case launchCounter
+    case disableRecoveryButtonCounter
+    
+    func set(_ value: Int) {
+        userDefaults.set(value, forKey: rawValue)
+    }
+    
+    func get() -> Int {
+        return userDefaults.integer(forKey: rawValue)
+    }
+}
+
+enum StringKey: String {
+    case password
+    
+    func set(_ value: String) {
+        userDefaults.set(value, forKey: rawValue)
+    }
+    
+    func get() -> String {
+        return userDefaults.string(forKey: rawValue) ?? String()
+    }
+}
+
+enum StringArrayKey: String {
+    case galleryFoldersPath
+    case videoFoldersPath
+    
+    case imagesToUpload
+    case imagesToDelete
+    
+    func set(_ value: [String]) {
+        userDefaults.set(value, forKey: rawValue)
+    }
+    
+    func get() -> [String]? {
+        return userDefaults.stringArray(forKey: rawValue)
+    }
+}
+
+class Defaults {
+    static func setBool(_ key: BoolKey, _ value: Bool) {
+        key.set(value)
+    }
+    
+    static func getBool(_ key: BoolKey) -> Bool {
+        return key.get()
+    }
+    
+    static func setInt(_ key: IntKey, _ value: Int) {
+        key.set(value)
+    }
+    
+    static func incrementInt(_ key: IntKey) {
+        key.set(key.get() + 1)
+    }
+    
+    static func getInt(_ key: IntKey) -> Int {
+        return key.get()
+    }
+    
+    static func setString(_ key: StringKey, _ value: String) {
+        key.set(value)
+    }
+    
+    static func getString(_ key: StringKey) -> String {
+        return key.get()
+    }
+    
+    static func setStringArray(_ key: StringArrayKey, _ value: [String]) {
+        key.set(value)
+    }
+    
+    static func getStringArray(_ key: StringArrayKey) -> [String]? {
+        return key.get()
+    }
+}
+
 enum ProtectionMode: String {
     case calculator
     case noProtection
     case bank
 }
 
-enum Key: String {
-    case recoveryStatus
-    case firstUse
-    case addPhotoCounter
-    case galleryFoldersPath
-    case videoFoldersPath
-}
-
-var userDefaults = UserDefaults.standard
-var protectionModeKey = "Mode"
-
 struct UserDefaultService {
+    var protectionModeKey = "Mode"
+    
     // MARK: - Protection Type
     func getTypeProtection() -> ProtectionMode {
         let protectionMode = userDefaults.string(forKey: protectionModeKey)
@@ -34,32 +123,5 @@ struct UserDefaultService {
 
     func setTypeProtection(protectionMode: ProtectionMode) {
         UserDefaults.standard.set(protectionMode.rawValue, forKey: protectionModeKey)
-    }
-
-    // MARK: - Recovery Status
-    func getRecoveryStatus() -> Bool {
-        return userDefaults.bool(forKey: Key.recoveryStatus.rawValue)
-    }
-
-    func setRecoveryStatus(status: Bool) {
-        UserDefaults.standard.set(status, forKey: Key.recoveryStatus.rawValue)
-    }
-
-    // MARK: - FirstUse Status
-    func getFirstUseStatus() -> Bool {
-        return userDefaults.bool(forKey: Key.firstUse.rawValue)
-    }
-
-    func setFirstUseStatus(status: Bool) {
-        UserDefaults.standard.set(status, forKey: Key.firstUse.rawValue)
-    }
-    
-    // MARK: - FirstUse Status
-    func getAddPhotoCounter() -> Int {
-        return userDefaults.integer(forKey: Key.addPhotoCounter.rawValue)
-    }
-
-    func setAddPhotoCounter(status: Int) {
-        UserDefaults.standard.set(status, forKey: Key.addPhotoCounter.rawValue)
     }
 }

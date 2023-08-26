@@ -5,30 +5,28 @@ import Photos
 import CoreData
 import os.log
 
-struct VideoModel {
-    var image: UIImage
-    var name: String
-}
-
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate {
     
-    // Variables
+    // MARK: -  Variables
     var modelData: [Video] = []
-    var modelDataVideo: [String] = []
+    var videoPaths: [String] = []
+    var folders: [Folder] = []
     var modelController = VideoModelController()
-    
-    // Video adaptation
-    var imagePickerController = UIImagePickerController()
-    var videoURL: URL?
     
     var isPremium: Bool {
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
     }
     
-    // IBOutlet
+    var isEditMode = false {
+        didSet {
+            editLeftBarButtonItem?.setEditing(isEditMode)
+        }
+    }
+    
+    // MARK: - IBOutlet
     @IBOutlet weak var placeholderImage: UIImageView!
     
-    // Life cycle
+    // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         placeholderImage.image = isPremium ? UIImage(named: "placeholderVideo") : UIImage(named: "placeholderPremium")
@@ -36,86 +34,94 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        modelData = VideoModelController.fetchImageObjectsInit(basePath: basePath)
+        videoPaths = VideoModelController.fetchPathVideosObjectsInit(basePath: basePath)
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()
-        setText(.video)
-        modelData = modelController.fetchImageObjectsInit(basePath: basePath)
-        modelDataVideo = modelController.fetchPathVideosObjectsInit(basePath: basePath)
+        self.title = Text.video.localized()
+        
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
-            self.setText(.video)
+            self.title = Text.video.localized()
         }
     }
     
     func setupFolders() {
         foldersService = FoldersService(type: .video)
-        folders = foldersService.getFolders(basePath: basePath)
+        folders = foldersService.getFolders(basePath: basePath).map { folderName in
+            return Folder(name: folderName, isSelected: false)
+        }
         if folders.isEmpty {
             filesIsExpanded = true
         } else {
             self.collectionView?.reloadSections(IndexSet(integer: .zero))
         }
     }
+    
+    func deselectAllFoldersObjects() {
+        for index in 0 ..< folders.count {
+            folders[index].isSelected = false
+        }
+    }
+    
+    func deselectAllFileObjects() {
+        for index in 0 ..< modelData.count {
+            modelData[index].isSelected = false
+        }
+    }
 }
 
 extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     func selectImagesButtonTapped() {
+        self.deselectAllFoldersObjects()
+        self.deselectAllFileObjects()
+        if isEditMode {
+            collectionView?.reloadData()
+        }
         isEditMode.toggle()
     }
     
     func shareImageButtonTapped() {
-        guard let selectedCells = collectionView?.indexPathsForSelectedItems,
-              !selectedCells.isEmpty else {
-            return
+        var fileURLs = [String]()
+        for video in modelData where video.isSelected == true {
+            if let index = self.modelData.firstIndex(where: { $0.name == video.name }),
+               let fileURL = videoPaths[safe: index] {
+                fileURLs.append(fileURL)
+            }
         }
         
-        do {
-            let documentsURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            
-            let fileURLs = selectedCells.compactMap { indexPath -> URL? in
-                let itemIndex = indexPath.item
-                
-                guard itemIndex < modelDataVideo.count else {
-                    return nil
-                }
-                
-                let fileName = modelDataVideo[itemIndex]
-                let fileURL = documentsURL.appendingPathComponent(fileName)
-                
-                return fileURL
-            }
-            
+        if !fileURLs.isEmpty {
             let activityController = UIActivityViewController(activityItems: fileURLs, applicationActivities: nil)
             activityController.popoverPresentationController?.sourceView = view
             activityController.popoverPresentationController?.sourceRect = view.frame
             
             present(activityController, animated: true, completion: nil)
-        } catch {
-            os_log("Failed to share video", log: .default, type: .error)
-            showGenericError()
         }
     }
     
     func deleteButtonTapped() {
-        showConfirmationDelete {
-            if let selectedCells = self.collectionView?.indexPathsForSelectedItems {
-                for cell in selectedCells {
-                    if cell.section == 0 {
-                        if cell.row < self.folders.count {
-                            self.folders = self.foldersService.delete(folder: self.folders[cell.row], basePath: self.basePath)
-                        }
-                        self.collectionView?.reloadSections(IndexSet(integer: 0))
-                    } else {
-                        if cell.row < self.modelData.count {
-                            self.modelController.deleteImageObject(name: self.modelData[cell.row].name)
-                            self.modelData.remove(at: cell.row)
-                        }
-                        self.collectionView?.reloadSections(IndexSet(integer: 1))
-                    }
+        Alerts.showConfirmationDelete(controller: self) {
+            for folder in self.folders where folder.isSelected == true {
+                self.folders = self.foldersService.delete(folder: folder.name, basePath: self.basePath).map { folderName in
+                    return Folder(name: folderName, isSelected: false)
                 }
             }
+            if self.folders.isEmpty {
+                self.filesIsExpanded = true
+            }
+            self.deselectAllFoldersObjects()
+            self.collectionView?.reloadSections(IndexSet(integer: 0))
+            
+            for video in self.modelData where video.isSelected == true {
+                VideoModelController.deleteImageObject(name: video.name, basePath: self.basePath)
+                if let index = self.modelData.firstIndex(where: { $0.name == video.name }) {
+                    self.modelData.remove(at: index)
+                }
+            }
+            self.deselectAllFileObjects()
+            self.collectionView?.reloadSections(IndexSet(integer: 1))
         }
     }
 }
@@ -125,7 +131,11 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
         if isPremium {
             presentPickerController()
         } else {
-            showBePremiumToUse()
+            Alerts.showBePremiumToUse(controller: self) {
+                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                self.present(changePasswordCalcMode, animated: true)
+            }
         }
     }
     
@@ -133,8 +143,36 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
         if isPremium {
             addFolder()
         } else {
-            showBePremiumToUse()
+            Alerts.showBePremiumToUse(controller: self) {
+                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                self.present(changePasswordCalcMode, animated: true)
+            }
         }
+    }
+    
+    func addFolder() {
+        Alerts.showInputDialog(title: Text.folderTitle.localized(),
+                               controller: self,
+                               actionTitle: Text.createActionTitle.localized(),
+                               cancelTitle: Text.cancelTitle.localized(),
+                               inputPlaceholder: Text.inputPlaceholder.localized(),
+                               actionHandler: { (input: String?) in
+            if let input = input {
+                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
+                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { folderName in
+                        return Folder(name: folderName, isSelected: false)
+                    }
+                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
+                } else {
+                    Alerts.showError(title: Text.folderNameAlreadyUsedTitle.localized(),
+                                     text: Text.folderNameAlreadyUsedText.localized(), controller: self,
+                                     completion: {
+                        self.addFolder()
+                    })
+                }
+            }
+        })
     }
 }
 
@@ -160,6 +198,31 @@ extension VideoCollectionViewController {
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.section {
+        case 0:
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
+                if let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath.value()).last {
+                    cell.setup(name: folderName)
+                    cell.isSelectedCell = folders[indexPath.row].isSelected
+                }
+                return cell
+            }
+        default:
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
+                if indexPath.item < modelData.count {
+                    let image = modelData[indexPath.item]
+                    cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
+                    cell.isSelectedCell = modelData[indexPath.item].isSelected
+                }
+                cell.applyshadowWithCorner()
+                
+                return cell
+            }
+        }
+        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditMode {
             switch indexPath.section {
@@ -167,17 +230,17 @@ extension VideoCollectionViewController {
                 let storyboard = UIStoryboard(name: "VideoPlayer", bundle: nil)
                 if let controller = storyboard.instantiateViewController(withIdentifier: "VideoCollectionViewController") as? VideoCollectionViewController {
                     if indexPath.row < folders.count {
-                        controller.basePath = basePath + folders[indexPath.row] + "@"
-                        controller.navigationTitle = folders[indexPath.row].components(separatedBy: "@").last
+                        controller.basePath = basePath + folders[indexPath.row].name + "@"
+                        controller.navigationTitle = folders[indexPath.row].name.components(separatedBy: "@").last
                         self.navigationController?.pushViewController(controller, animated: true)
                     }
                 }
             default:
                 // Reproduz o vídeo
-                guard let videoURL = modelDataVideo[safe: indexPath.item],
+                guard let videoURL = videoPaths[safe: indexPath.item],
                       let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoURL) else {
                     os_log("Failed to retrieve video URL", log: .default, type: .error)
-                    showGenericError()
+                    Alerts.showGenericError(controller: self)
                     return
                 }
                 
@@ -188,7 +251,18 @@ extension VideoCollectionViewController {
                     player.play()
                 }
             }
+        } else {
+            updateSelectedPhotos(indexPath: indexPath)
         }
+    }
+    
+    func updateSelectedPhotos(indexPath: IndexPath) {
+        if indexPath.section == .zero {
+            folders[indexPath.row].isSelected.toggle()
+        } else {
+            modelData[indexPath.row].isSelected.toggle()
+        }
+        self.collectionView?.reloadItems(at: [indexPath])
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -201,6 +275,7 @@ extension VideoCollectionViewController {
                 headerView.messageLabel.text = String()
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = false
+                headerView.isUserInteractionEnabled = false
             } else if indexPath.section == 1 {
                 if !modelData.isEmpty {
                     if filesIsExpanded {
@@ -209,6 +284,7 @@ extension VideoCollectionViewController {
                         headerView.messageLabel.text = Text.showAllVideos.localized()
                     }
                 }
+                headerView.isUserInteractionEnabled = true
                 headerView.activityIndicatorView.isHidden = true
                 headerView.gradientView?.isHidden = true
                 headerView.delegate = self
@@ -226,34 +302,9 @@ extension VideoCollectionViewController {
         // Return an empty view for other supplementary elements
         return UICollectionReusableView()
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
-                if let folderName = folders[indexPath.row].components(separatedBy: "@").last {
-                    cell.setup(name: folderName)
-                }
-                return cell
-            }
-        default:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
-                cell.isInEditingMode = isEditMode
-                if indexPath.item < modelData.count {
-                    let image = modelData[indexPath.item]
-                    cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
-                }
-                cell.applyshadowWithCorner()
-                
-                return cell
-            }
-        }
-        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    }
 }
 
 extension VideoCollectionViewController: UIImagePickerControllerDelegate {
-    // imagePickerController
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else {
             self.dismiss(animated: true, completion: nil)
@@ -269,11 +320,11 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
         
         self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
             guard let image = thumbImage else { return }
-            let result = self.modelController.saveImageObject(image: image, video: videoData, basePath: self.basePath)
+            let result = VideoModelController.saveImageObject(image: image, video: videoData, basePath: self.basePath)
             if let pathVideo = result.0,
                let imageName = result.1 {
                 self.modelData.append(Video(image: image, name: imageName))
-                self.modelDataVideo.append(pathVideo)
+                self.videoPaths.append(pathVideo)
                 self.collectionView?.reloadSections(IndexSet(integer: 1))
             }
         }
@@ -306,10 +357,10 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
     
     private func presentPickerController() {
         guard UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) else {
-            showGenericError()
+            Alerts.showGenericError(controller: self)
             return
         }
-        
+        let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .savedPhotosAlbum
         imagePickerController.delegate = self
         imagePickerController.mediaTypes = [kUTTypeMovie as String]

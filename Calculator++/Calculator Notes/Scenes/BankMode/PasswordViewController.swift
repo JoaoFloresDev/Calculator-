@@ -43,20 +43,36 @@ class PasswordViewController: UIViewController {
             
             var authError: NSError?
             
-            if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
-                myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                    if success {
-                        DispatchQueue.main.async {
+                if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
+                    myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
+                        
+                        if success {
                             if success {
-                                self.instructionsLabel.text = "Key: "
-                                self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
-                                self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
-                                self.performSegue(withIdentifier: "showNotes2", sender: nil)
+                                DispatchQueue.main.async {
+                                    self.instructionsLabel.text = "Key: "
+                                    self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
+                                    self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                                    self.present(homeViewController, animated: true)
+                                }
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                                self.present(homeViewController, animated: true)
                             }
                         }
+                        
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                        self.present(homeViewController, animated: true)
                     }
                 }
-            }
         }
     }
     
@@ -121,19 +137,20 @@ class PasswordViewController: UIViewController {
         
         if(password.count >= 1 && captureKey == 1) {
             keyCurret = String(password)
-            var instructionsText = Text.instructionSecondStepBank.rawValue.localized()
+            var instructionsText = Text.instructionSecondStepBank.localized()
             instructionsText = instructionsText.replacingOccurrences(of: "*****", with: keyCurret)
             instructionsLabel.text = instructionsText
             captureKey = 2
             clearAll()
         }
         else if(keyCurret == password || password == keyRecovery) {
-            UserDefaults.standard.set (keyCurret, forKey: "Key")
-                self.performSegue(withIdentifier: "showNotes2", sender: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+            self.present(homeViewController, animated: true)
         }
         else {
-            let alert = UIAlertController(title: Text.incorrectPassword.rawValue.localized(),
-                                          message: Text.tryAgain.rawValue.localized(),
+            let alert = UIAlertController(title: Text.incorrectPassword.localized(),
+                                          message: Text.tryAgain.localized(),
                                           preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 self.clearAll()
@@ -179,8 +196,8 @@ class PasswordViewController: UIViewController {
             instructionsLabel.setText(.instructionFirstStepBank)
             captureKey = 1
         }
-
-        buttonFaceID.isHidden = UserDefaultService().getRecoveryStatus()
+        
+        buttonFaceID.isHidden = Defaults.getBool(.recoveryStatus)
         
         instructionsLabel.setText(.welcomeInstructionBank)
     }

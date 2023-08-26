@@ -18,7 +18,6 @@ enum Operation:String {
 }
 
 class CalculatorViewController: BaseCalculatorViewController {
-
     
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var faceIDButton: UIButton!
@@ -31,19 +30,28 @@ class CalculatorViewController: BaseCalculatorViewController {
         
         if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
             myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                DispatchQueue.main.async {
-                    if success {
-                        var instructionText = Text.instructionSecondStepCalc.rawValue.localized()
+                if success {
+                    DispatchQueue.main.async {
+                        var instructionText = Text.instructionSecondStepCalc.localized()
                         let key = UserDefaults.standard.string(forKey: "Key") ?? "314159"
                         instructionText = instructionText.replacingOccurrences(of: "*****", with: key)
                         self.instructionsLabel.text = instructionText
                         self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
-                        self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                        self.present(homeViewController, animated: true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        if Defaults.getInt(.disableRecoveryButtonCounter) < 10 {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                            self.present(homeViewController, animated: true)
+                        }
                     }
                 }
+                
             }
-        } else {
-            self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
         }
     }
     
@@ -63,7 +71,7 @@ class CalculatorViewController: BaseCalculatorViewController {
             key = String(runningNumber)
             captureKey = 2
             keyTemp = key
-
+            
             clear()
             
         } else if(captureKey == 2 && String(runningNumber) == keyTemp && runningNumber.count <= 6 && runningNumber.count >= 1) {
@@ -79,8 +87,9 @@ class CalculatorViewController: BaseCalculatorViewController {
             currentOperation = .NULL
             
             outputLbl.text = "0"
-            
-            self.performSegue(withIdentifier: Segue.showNotes.rawValue, sender: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+            self.present(homeViewController, animated: true)
         }
         
         operation(operation: currentOperation)
@@ -114,6 +123,6 @@ class CalculatorViewController: BaseCalculatorViewController {
         if(key == "") {
             captureKey = 1
         }
-        faceIDButton.isHidden = UserDefaultService().getRecoveryStatus()
+        faceIDButton.isHidden = Defaults.getBool(.recoveryStatus)
     }
 }

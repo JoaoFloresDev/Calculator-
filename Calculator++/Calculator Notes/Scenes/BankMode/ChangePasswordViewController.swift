@@ -14,8 +14,7 @@ class ChangePasswordViewController: UIViewController {
     var arrayPassword = [Int]()
     var arrayCircles = [UIImageView]()
     var captureKey = 0
-    var KeyCurret = UserDefaults.standard.string(forKey: "Key") ?? ""
-    var KeyTemp = ""
+    var keyTemp = ""
     
     //    MARK: - IBOutlets
     @IBAction func dismissScreen(_ sender: Any) {
@@ -112,18 +111,18 @@ class ChangePasswordViewController: UIViewController {
             password += String(word)
         }
         if(captureKey == 1 && arrayPassword.count > 0) {
-            var instructionsText = Text.instructionSecondStepBank.rawValue.localized()
+            var instructionsText = Text.instructionSecondStepBank.localized()
             instructionsText = instructionsText.replacingOccurrences(of: "*****", with: password)
             instructionsLabel.text = instructionsText
-            KeyTemp = password
+            keyTemp = password
             captureKey = 0
             clearAll()
         }
-        else if(KeyTemp == password) {
+        else if(keyTemp == password) {
             clearAll()
             UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.bank)
-            UserDefaults.standard.set(KeyTemp, forKey: "Key")
-            
+            Defaults.setString(.password, keyTemp)
+            Defaults.setBool(.needSavePasswordInCloud, true)
             showAlert()
         }
     }
@@ -150,8 +149,8 @@ class ChangePasswordViewController: UIViewController {
     
     //    MARK: - Alert
     func showAlert() {
-        let refreshAlert = UIAlertController(title: Text.done.rawValue.localized(),
-                                             message: Text.bankModeHasBeenActivated.rawValue.localized(),
+        let refreshAlert = UIAlertController(title: Text.done.localized(),
+                                             message: Text.bankModeHasBeenActivated.localized(),
                                              preferredStyle: UIAlertControllerStyle.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in

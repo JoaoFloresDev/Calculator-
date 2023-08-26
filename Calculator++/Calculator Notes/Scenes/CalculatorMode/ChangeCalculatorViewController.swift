@@ -33,7 +33,7 @@ class ChangeCalculatorViewController: BaseCalculatorViewController {
         if(runningNumber.count > 0 && captureKey == 1) {
             key = String(runningNumber)
             keyTemp = key
-            var instructionText = Text.instructionSecondStepCalc.rawValue.localized()
+            var instructionText = Text.instructionSecondStepCalc.localized()
             instructionText = instructionText.replacingOccurrences(of: "*****", with: key)
             instructionsLabel.text = instructionText
             captureKey = 2
@@ -51,7 +51,8 @@ class ChangeCalculatorViewController: BaseCalculatorViewController {
             outputLbl.text = "0"
             
             UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.calculator)
-            UserDefaults.standard.set(keyTemp, forKey: "Key")
+            Defaults.setString(.password, keyTemp)
+            Defaults.setBool(.needSavePasswordInCloud, true)
             showAlert()
         }
         
@@ -89,12 +90,12 @@ class ChangeCalculatorViewController: BaseCalculatorViewController {
         super.viewDidLoad()
         captureKey = 1
         outputLbl.text = "0"
-        instructionsLabel.text = Text.instructionFirstStepCalc.rawValue.localized()
+        instructionsLabel.text = Text.instructionFirstStepCalc.localized()
     }
     
     //    MARK: - Alert
     func showAlert() {
-        let refreshAlert = UIAlertController(title: Text.done.rawValue.localized(), message: Text.calcModeHasBeenActivated.rawValue.localized(), preferredStyle: UIAlertControllerStyle.alert)
+        let refreshAlert = UIAlertController(title: Text.done.localized(), message: Text.calcModeHasBeenActivated.localized(), preferredStyle: UIAlertControllerStyle.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             self.dismiss(animated: true, completion: nil)
