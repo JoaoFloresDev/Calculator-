@@ -29,7 +29,6 @@
 		736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD22A979D7100851BEF /* BackupModalViewController.swift */; };
 		736BDAD52A979DA400851BEF /* CloudKitPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD42A979DA400851BEF /* CloudKitPasswordService.swift */; };
 		736BDAD72A979DBE00851BEF /* CloudNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD62A979DBE00851BEF /* CloudNotifications.swift */; };
-		736BDAD92A97A17500851BEF /* CloudKitItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD82A97A17500851BEF /* CloudKitItemsViewController.swift */; };
 		73741B022A87D06B0067B269 /* CloudKitImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B012A87D06B0067B269 /* CloudKitImageService.swift */; };
 		73741B092A880B3C0067B269 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B062A880A590067B269 /* BackupService.swift */; };
 		73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B102A886C310067B269 /* CloudUpdateManager.swift */; };
@@ -50,6 +49,7 @@
 		73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5062A49D7AE00963BA2 /* TabBarController+Extensions.swift */; };
 		73C2C5092A49D7E700963BA2 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 73C2C5082A49D7E700963BA2 /* swiftlint.yml */; };
 		73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C50A2A49D84000963BA2 /* BasicCollectionViewController.swift */; };
+		73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */; };
 		7C3FA5C5BF2A31D52DE69779 /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377C09316D877D274D20C923 /* Pods_Calculator_Notes.framework */; };
 		848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */; };
 		BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3244412A4B692C00A782CA /* BasicModels.swift */; };
@@ -118,7 +118,6 @@
 		736BDAD22A979D7100851BEF /* BackupModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupModalViewController.swift; sourceTree = "<group>"; };
 		736BDAD42A979DA400851BEF /* CloudKitPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPasswordService.swift; sourceTree = "<group>"; };
 		736BDAD62A979DBE00851BEF /* CloudNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudNotifications.swift; sourceTree = "<group>"; };
-		736BDAD82A97A17500851BEF /* CloudKitItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitItemsViewController.swift; sourceTree = "<group>"; };
 		73741B012A87D06B0067B269 /* CloudKitImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitImageService.swift; sourceTree = "<group>"; };
 		73741B062A880A590067B269 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
 		73741B102A886C310067B269 /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUpdateManager.swift; sourceTree = "<group>"; };
@@ -145,6 +144,7 @@
 		73C2C5062A49D7AE00963BA2 /* TabBarController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TabBarController+Extensions.swift"; sourceTree = "<group>"; };
 		73C2C5082A49D7E700963BA2 /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		73C2C50A2A49D84000963BA2 /* BasicCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewController.swift; sourceTree = "<group>"; };
+		73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitItemsViewController.swift; sourceTree = "<group>"; };
 		848490D21D68F5610043C60B /* MakeSchoolNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MakeSchoolNotes.xcdatamodel; sourceTree = "<group>"; };
 		BA3244412A4B692C00A782CA /* BasicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModels.swift; sourceTree = "<group>"; };
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -400,6 +400,7 @@
 		73B54D5627B097D300499F66 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */,
 				736BDAD22A979D7100851BEF /* BackupModalViewController.swift */,
 				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
 				C480A50724A7757600094FC8 /* Settings.storyboard */,
@@ -445,7 +446,6 @@
 		C4C079C82698CF8D0020FC69 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				736BDAD82A97A17500851BEF /* CloudKitItemsViewController.swift */,
 				C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */,
 			);
 			path = Services;
@@ -672,7 +672,7 @@
 				736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */,
 				7304387A2A34467C001EF25B /* FolderCollectionViewCell.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
-				736BDAD92A97A17500851BEF /* CloudKitItemsViewController.swift in Sources */,
+				73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
 				C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */,
 				73B54D6627B09D9800499F66 /* String+Localized.swift in Sources */,

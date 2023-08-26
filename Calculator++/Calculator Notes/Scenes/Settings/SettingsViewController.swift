@@ -8,6 +8,24 @@
 
 import UIKit
 import StoreKit
+import Network
+import UIKit
+import Photos
+import AssetsPickerViewController
+import DTPhotoViewerController
+import CoreData
+import NYTPhotoViewer
+import ImageViewer
+import StoreKit
+import GoogleMobileAds
+import SceneKit
+import simd
+import Photos
+import StoreKit
+import Foundation
+import AVFoundation
+import AVKit
+import CloudKit
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
@@ -86,8 +104,43 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                 self.backupIsActivated = isEnabled
             }
         }
+        monitorWiFiAndPerformActions()
     }
 
+    private func monitorWiFiAndPerformActions() {
+        guard Defaults.getBool(.iCloudPurchased) else {
+            return
+        }
+        
+        isConnectedToWiFi { isConnected in
+            if isConnected {
+                BackupService.updateBackup()
+                if Defaults.getBool(.needSavePasswordInCloud) {
+                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
+                        if success && error == nil {
+                            Defaults.setBool(.needSavePasswordInCloud, false)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
+        let monitor = NWPathMonitor()
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+    }
+    
     // MARK: - UI
     private func setupTexts() {
         self.title = Text.settings.localized()
