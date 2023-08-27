@@ -197,19 +197,15 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                 return
             }
             if password.contains(insertedPassword) || insertedPassword == "314159" {
-                self.startLoadingForBackupCheck()
+                self.checkBackupData()
             } else {
                 Alerts.showPasswordError(controller: self)
             }
         }
     }
 
-    private func startLoadingForBackupCheck() {
-        loadingAlert.startLoading(in: self)
-        checkBackupData()
-    }
-
     private func checkBackupData() {
+        loadingAlert.startLoading(in: self)
         BackupService.hasDataInCloudKit { hasData, _, items  in
             self.loadingAlert.stopLoading {
                 if let items = items, !items.isEmpty, hasData {
@@ -238,7 +234,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         BackupService.restoreBackup(photos: backupItems) { success, _ in
             self.loadingAlert.stopLoading {
                 if success {
-                    self.dismiss(animated: true)
                     Alerts.showBackupSuccess(controller: self)
                     let controllers = self.tabBarController?.viewControllers
                     let navigation = controllers?[0] as? UINavigationController

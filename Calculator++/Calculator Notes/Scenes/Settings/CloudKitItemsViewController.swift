@@ -1,5 +1,6 @@
 import UIKit
 import CloudKit
+import SnapKit
 
 class CloudKitItemsViewController: UIViewController {
     private var viewModel = CloudKitImageService()
@@ -20,6 +21,17 @@ class CloudKitItemsViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
+    }()
+    
+    private let infoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "As fotos são sincronizadas com sua galeria todas as vezes que seu app é aberto"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.backgroundColor = .systemGray6
+        label.textColor = .black
+        return label
     }()
     
     override func viewDidLoad() {
@@ -46,6 +58,7 @@ class CloudKitItemsViewController: UIViewController {
         
         // Registrar a classe da célula customizada
         collectionView.register(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
+        collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView")
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -106,12 +119,28 @@ extension CloudKitItemsViewController: UICollectionViewDelegate {
     }
 }
 
+extension CloudKitItemsViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionElementKindSectionHeader {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! CollectionHeaderView
+            return headerView
+        }
+        
+        return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 100) // Ajuste a altura conforme necessário
+    }
+}
+
 class ItemCollectionViewCell: UICollectionViewCell {
     let itemImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill // ajusta o modo de conteúdo
         imageView.clipsToBounds = true // corta a imagem para preencher o espaço
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -119,12 +148,36 @@ class ItemCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(itemImageView)
         
-        NSLayoutConstraint.activate([
-            itemImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            itemImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            itemImageView.topAnchor.constraint(equalTo: topAnchor),
-            itemImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        itemImageView.snp.makeConstraints { make in
+            make.leading.equalTo(self.snp.leading)
+            make.trailing.equalTo(self.snp.trailing)
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class CollectionHeaderView: UICollectionReusableView {
+    let label: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "As fotos são sincronizadas com sua galeria todas as vezes que o app é iniciado e existe conexão wifi"
+        label.textColor = .lightGray
+        label.textAlignment = .center
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(label)
+        label.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.bottom.equalToSuperview().inset(8)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
