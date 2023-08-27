@@ -4,6 +4,7 @@ import SnapKit
 
 class CloudKitItemsViewController: UIViewController {
     private var viewModel = CloudKitImageService()
+    lazy var alert = LoadingAlert(in: self)
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -39,10 +40,8 @@ class CloudKitItemsViewController: UIViewController {
         setupUI()
     }
     
-    var alert = LoadingAlert()
-    
     override func viewDidAppear(_ animated: Bool) {
-        alert.startLoading(in: self)
+        alert.startLoading()
         CloudKitImageService.fetchImages { _, _ in
             self.alert.stopLoading {
                 self.collectionView.reloadData()
@@ -97,7 +96,7 @@ extension CloudKitItemsViewController: UICollectionViewDelegate {
 
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
             let (itemName, _) = CloudKitImageService.images[indexPath.row]
-            self.alert.startLoading(in: self)
+            self.alert.startLoading()
             CloudKitImageService.deleteImage(name: itemName) { success, error in
                 self.alert.stopLoading()
                 if success {

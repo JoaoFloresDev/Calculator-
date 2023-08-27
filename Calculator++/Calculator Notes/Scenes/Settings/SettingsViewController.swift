@@ -30,7 +30,6 @@ import CloudKit
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - IBOutlet
-
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var recoverLabel: UILabel!
     @IBOutlet weak var chooseProtectionLabel: UILabel!
@@ -79,6 +78,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         SKStoreReviewController.requestReview()
     }
 
+    lazy var loadingAlert = LoadingAlert(in: self)
+    
     var backupIsActivated = false {
         didSet {
             DispatchQueue.main.async {
@@ -160,8 +161,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // MARK: - Backup
-    var loadingAlert = LoadingAlert()
-
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
         if Defaults.getBool(.iCloudPurchased) {
             let vc = BackupModalViewController(backupIsActivated: backupIsActivated, delegate: self)
@@ -179,7 +178,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func fetchCloudKitPassword() {
-        loadingAlert.startLoading(in: self)
+        loadingAlert.startLoading()
         CloudKitPasswordService.fetchAllPasswords { password, error in
             self.loadingAlert.stopLoading {
                 if let password = password {
@@ -205,7 +204,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func checkBackupData() {
-        loadingAlert.startLoading(in: self)
+        loadingAlert.startLoading()
         BackupService.hasDataInCloudKit { hasData, _, items  in
             self.loadingAlert.stopLoading {
                 if let items = items, !items.isEmpty, hasData {
@@ -226,7 +225,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func startLoadingForBackupRestore(backupItems: [(String, UIImage)]) {
-        loadingAlert.startLoading(in: self)
+        loadingAlert.startLoading()
         restoreBackup(backupItems: backupItems)
     }
 

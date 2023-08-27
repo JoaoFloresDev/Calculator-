@@ -338,11 +338,12 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 group.leave()
             }
         }
-        self.loadingAlert.startLoading()
-        group.notify(queue: .main) {
-            self.modelData.append(contentsOf: tempModelData)
-            self.collectionView?.reloadSections(IndexSet(integer: 1))
-            self.loadingAlert.stopLoading()
+        self.loadingAlert.startLoading {
+            group.notify(queue: .main) {
+                self.modelData.append(contentsOf: tempModelData)
+                self.collectionView?.reloadSections(IndexSet(integer: 1))
+                self.loadingAlert.stopLoading()
+            }
         }
     }
     
