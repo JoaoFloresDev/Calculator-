@@ -1,0 +1,79 @@
+premiumVersion = "Versión premium";
+noProtection = "Sin protección";
+hideRecoverButton = "Eliminar botón de recuperar contraseña";
+chooseProtectionMode = "Elige el modo de protección";
+
+settings = "Configuraciones";
+gallery = "Galería";
+video = "Video";
+notes = "Notas";
+
+instructionFirstStepCalc = "Crea una contraseña y haz clic en el botón '='";
+instructionSecondStepCalc = "Contraseña: *****. Repite la contraseña y confirma con '='";
+
+instructionFirstStepBank = "Crea una contraseña y haz clic en 'enter'";
+instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
+
+bankModeHasBeenActivated = "Modo seguro activado";
+calcModeHasBeenActivated = "Modo calculadora activado";
+
+welcomeInstructionBank = "Introduce tu contraseña";
+
+done = "Hecho";
+edit = "Editar";
+
+premiumToolTitle = "Herramienta premium";
+premiumToolMessage = "El soporte de video solo se ofrece para usuarios premium. Consulta las mejoras en la sección Configuraciones";
+
+save = "Guardar";
+cancel = "Cancelar";
+ok = "Confirmar";
+see = "Ver";
+
+errorTitle = "Error inesperado";
+errorMessage = "Intenta de nuevo más tarde";
+deleteFiles = "¿Eliminar archivo?";
+
+incorrectPassword = "Contraseña incorrecta";
+tryAgain = "Intentar de nuevo";
+
+// Purchase
+products = "Productos";
+loading = "Cargando...";
+close = "Cerrar";
+restore = "Restaurar";
+buy = "Comprar";
+
+// folder
+folderTitle = "Nombre de la carpeta";
+createActionTitle = "Crear";
+cancelTitle = "Cancelar";
+inputPlaceholder = "Introduce el nombre de la nueva carpeta";
+folderNameAlreadyUsedTitle = "Nombre ya utilizado";
+folderNameAlreadyUsedText = "Elige otro nombre para la carpeta";
+deleteConfirmationTitle = "¿Eliminar archivos?";
+
+// Show All
+hideAllVideos = "Ocultar todos los videos guardados";
+showAllVideos = "Ver todos los videos guardados";
+hideAllPhotos = "Ocultar todas las fotos guardadas";
+showAllPhotos = "Ver todas las fotos guardadas";
+wouldLikeSetProtection = "¿Te gustaría agregar protección a tu galería?";
+
+// backup
+askToRestoreBackupTitle = "Recuperar copia de seguridad";
+askToRestoreBackupMessage = "¿Te gustaría recuperar tu última copia de seguridad?";
+backupSuccessTitle = "Copia de seguridad realizada";
+backupSuccessMessage = "Tu copia de seguridad se ha recuperado con éxito";
+backupErrorTitle = "Error en la copia de seguridad";
+backupErrorMessage = "No se encontraron datos para la copia de seguridad";
+incorrectPasswordTitle = "Contraseña incorrecta";
+incorrectPasswordMessage = "La contraseña proporcionada no es compatible, intenta de nuevo";
+insertPasswordTitle = "Introduce tu contraseña";
+insertPasswordMessage = "Introduce la contraseña que se usaba para abrir la calculadora";
+yes = "Sí";
+no = "No";
+enableiCloudTitle = "Acción requerida";
+enableiCloudSubtitle = "\n1. Haz clic en iCloud\n\n2.Busca la app Calc+ en la lista\n\n3. Habilita iCloud";
+enableiCloudAction = "Ir a configuraciones";
+premiumTooliCloudMessage = "El soporte para copias de seguridad es una función premium. Presentaremos los detalles del producto";
