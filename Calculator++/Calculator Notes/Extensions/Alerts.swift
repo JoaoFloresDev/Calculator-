@@ -23,17 +23,17 @@ struct Alerts {
     
     // Errors
     static func showError(title: String, text: String, controller: UIViewController, completion: @escaping () -> Void) {
-        let alert = createAlert(title: title, message: text, actions: [createAction(title: "OK", handler: { _ in completion() })])
+        let alert = createAlert(title: title, message: text, actions: [createAction(title: Text.ok.localized(), handler: { _ in completion() })])
         presentAlert(alert, on: controller)
     }
     
     static func showGenericError(controller: UIViewController) {
-        let alert = createAlert(title: Text.errorTitle.localized(), message: Text.errorMessage.localized(), actions: [createAction(title: "OK")])
+        let alert = createAlert(title: Text.errorTitle.localized(), message: Text.errorMessage.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
     
     // Folders
-    static func showInputDialog(title: String? = nil,
+    static func showInputDialog(title: String?,
                                 subtitle: String? = nil,
                                 controller: UIViewController,
                                 actionTitle: String?,
@@ -43,7 +43,7 @@ struct Alerts {
                                 cancelHandler: ((UIAlertAction) -> Void)? = nil,
                                 actionHandler: ((_ text: String?) -> Void)? = nil) {
         
-        let alert = UIAlertController(title: title ?? "", message: subtitle, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: cancelTitle, style: .default, handler: cancelHandler)
         alert.addAction(cancelAction)
@@ -64,47 +64,47 @@ struct Alerts {
     
     // Edition
     static func showConfirmationDelete(controller: UIViewController, completion: @escaping () -> Void) {
-        let alert = createAlert(title: Text.deleteConfirmationTitle.localized(), message: nil, actions: [createAction(title: "OK", handler: { _ in completion() })])
+        let alert = createAlert(title: Text.deleteConfirmationTitle.localized(), message: nil, actions: [createAction(title: Text.ok.localized(), handler: { _ in completion() })])
         presentAlert(alert, on: controller)
     }
     
     // Premium
     static func showBePremiumToUse(controller: UIViewController, completion: @escaping () -> Void) {
-        let alert = createAlert(title: Text.premiumToolTitle.localized(), message: Text.premiumToolMessage.localized(), actions: [createAction(title: "OK", handler: { _ in completion() })])
+        let alert = createAlert(title: Text.premiumToolTitle.localized(), message: Text.premiumToolMessage.localized(), actions: [createAction(title: Text.ok.localized(), handler: { _ in completion() })])
         presentAlert(alert, on: controller)
     }
     
     // First use
     static func showSetProtectionAsk(controller: UIViewController, completion: @escaping (Bool) -> Void) {
-        let alert = createAlert(title: Text.wouldLikeSetProtection.localized(), message: nil, actions: [createAction(title: "Cancelar", handler: { _ in completion(false) }), createAction(title: "OK", handler: { _ in completion(true) })])
+        let alert = createAlert(title: Text.wouldLikeSetProtection.localized(), message: nil, actions: [createAction(title: Text.cancel.localized(), handler: { _ in completion(false) }), createAction(title: Text.ok.localized(), handler: { _ in completion(true) })])
         presentAlert(alert, on: controller)
     }
     
     // Backup
     static func askUserToRestoreBackup(on viewController: UIViewController, completion: @escaping (Bool) -> Void) {
-        let alert = createAlert(title: Text.askToRestoreBackupTitle.localized(), message: Text.askToRestoreBackupMessage.localized(), actions: [createAction(title: "Não", handler: { _ in completion(false) }), createAction(title: "Sim", handler: { _ in completion(true) })])
+        let alert = createAlert(title: Text.askToRestoreBackupTitle.localized(), message: Text.askToRestoreBackupMessage.localized(), actions: [createAction(title: Text.no.localized(), handler: { _ in completion(false) }), createAction(title: Text.yes.localized(), handler: { _ in completion(true) })])
         presentAlert(alert, on: viewController)
     }
     
     static func showBackupSuccess(controller: UIViewController) {
-        let alert = createAlert(title: Text.backupSuccessTitle.localized(), message: Text.backupSuccessMessage.localized(), actions: [createAction(title: "OK")])
+        let alert = createAlert(title: Text.backupSuccessTitle.localized(), message: Text.backupSuccessMessage.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
     
     static func showBackupError(controller: UIViewController) {
-        let alert = createAlert(title: Text.backupErrorTitle.localized(), message: Text.backupErrorMessage.localized(), actions: [createAction(title: "OK")])
+        let alert = createAlert(title: Text.backupErrorTitle.localized(), message: Text.backupErrorMessage.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
     
     static func showPasswordError(controller: UIViewController) {
-        let alert = createAlert(title: Text.incorrectPasswordTitle.localized(), message: Text.incorrectPasswordMessage.localized(), actions: [createAction(title: "OK")])
+        let alert = createAlert(title: Text.incorrectPasswordTitle.localized(), message: Text.incorrectPasswordMessage.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
     
     static func insertPassword(controller: UIViewController, completion: @escaping (String?) -> Void) {
         var alert: UIAlertController!
         
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .default) { _ in
+        let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .default) { _ in
             completion(nil)
         }
         
@@ -112,7 +112,7 @@ struct Alerts {
                                   message: Text.insertPasswordMessage.localized(),
                                   preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: "Confirmar", style: .default) { _ in
+        let confirmAction = UIAlertAction(title: Text.ok.localized(), style: .default) { _ in
             completion(alert.textFields?.first?.text)
         }
         
@@ -127,12 +127,12 @@ struct Alerts {
     }
     
     static func showBePremiumToUseBackup(controller: UIViewController, completion: ((UIAlertAction) -> Void)?) {
-        let alert = createAlert(title: Text.premiumToolTitle.localized(), message: "O suporte para backup é um recurso premium. Apresentaremos os detalhes do produto", actions: [createAction(title: "OK", handler: completion)])
+        let alert = createAlert(title: Text.premiumToolTitle.localized(), message: Text.premiumTooliCloudMessage.localized(), actions: [createAction(title: Text.ok.localized(), handler: completion)])
         presentAlert(alert, on: controller)
     }
     
     static func showGoToSettingsToEnbaleCloud(controller: UIViewController, completion: ((UIAlertAction) -> Void)?) {
-        let alert = createAlert(title: "Ação Requerida", message: "\n1. Clique em iCloud\n\n2.Procure o app Calc+ na lista\n\n3. Habilite o iCloud", actions: [createAction(title: "Ir para configurações", handler: completion)])
+        let alert = createAlert(title: Text.enableiCloudTitle.localized(), message: Text.enableiCloudSubtitle.localized(), actions: [createAction(title: Text.enableiCloudAction.localized(), handler: completion)])
         presentAlert(alert, on: controller)
     }
 }

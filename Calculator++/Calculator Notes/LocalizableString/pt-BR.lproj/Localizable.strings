@@ -81,3 +81,7 @@ insertPasswordTitle = "Insira sua senha";
 insertPasswordMessage = "Insira a senha que era utilizada para abrir a calculadora";
 yes = "Sim";
 no = "Não";
+enableiCloudTitle = "Ação Requerida";
+enableiCloudSubtitle = "\n1. Clique em iCloud\n\n2.Procure o app Calc+ na lista\n\n3. Habilite o iCloud";
+enableiCloudAction = "Ir para configurações";
+premiumTooliCloudMessage = "O suporte para backup é um recurso premium. Apresentaremos os detalhes do produto";
