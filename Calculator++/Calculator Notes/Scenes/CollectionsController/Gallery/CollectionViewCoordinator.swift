@@ -10,6 +10,7 @@ protocol CollectionViewCoordinatorProtocol: AnyObject {
     func navigateToSettingsTab()
     func shareImage(modelData: [Photo])
     func addPhotoButtonTapped()
+    func presentWelcomeController()
 }
 
 class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
@@ -65,6 +66,16 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         picker.pickerConfig = AssetsPickerConfig()
         picker.pickerDelegate = viewController
         viewController?.present(picker, animated: true)
+    }
+    
+    func presentWelcomeController() {
+        guard let viewController = viewController else {
+            return
+        }
+        let controller = WelcomeViewController(delegate: viewController)
+        controller.view.backgroundColor = UIColor.clear
+        controller.modalPresentationStyle = .overCurrentContext
+        viewController.present(controller, animated: false)
     }
     
     // MARK: - Helper Methods

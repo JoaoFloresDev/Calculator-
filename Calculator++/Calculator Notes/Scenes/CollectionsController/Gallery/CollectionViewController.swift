@@ -21,7 +21,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Variables
     var modelData: [Photo] = []
     var folders: [Folder] = []
-    var loadingAlert = LoadingAlert()
+    lazy var loadingAlert = LoadingAlert(in: self)
     var coordinator: CollectionViewCoordinatorProtocol?
     
     var isEditMode = false {
@@ -36,6 +36,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        coordinator = CollectionViewCoordinator(self)
         setupData()
         configureNavigationBar()
         setupAds()
@@ -43,7 +44,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         handleInitialLaunch()
         monitorWiFiAndPerformActions()
-        coordinator = CollectionViewCoordinator(self)
     }
     
     func deselectAllFoldersObjects() {
@@ -61,9 +61,48 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
 
 // MARK: - EditLeftBarButtonItemDelegate
 extension CollectionViewController: EditLeftBarButtonItemDelegate {
+    
     func selectImagesButtonTapped() {
-        self.deselectAllFoldersObjects()
-        self.deselectAllFileObjects()
+        handleSelectImagesButton()
+    }
+    
+    func shareImageButtonTapped() {
+        handleShareImageButton()
+    }
+    
+    func deleteButtonTapped() {
+        handleDeleteButton()
+    }
+    
+    // MARK: - Helper Functions
+    
+    private func handleSelectImagesButton() {
+        deselectAllItems()
+        toggleEditModeAndReloadData()
+    }
+    
+    private func handleShareImageButton() {
+        coordinator?.shareImage(modelData: modelData)
+    }
+    
+    private func handleDeleteButton() {
+        Alerts.showConfirmationDelete(controller: self) { [weak self] in
+            self?.performDeletionTasks()
+        }
+    }
+    
+    private func performDeletionTasks() {
+        deleteSelectedFolders()
+        deleteSelectedPhotos()
+        reloadCollectionViewSections()
+    }
+    
+    private func deselectAllItems() {
+        deselectAllFoldersObjects()
+        deselectAllFileObjects()
+    }
+    
+    private func toggleEditModeAndReloadData() {
         if isEditMode {
             collectionView?.reloadData()
             SKStoreReviewController.requestReview()
@@ -71,44 +110,32 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
         isEditMode.toggle()
     }
     
-    func shareImageButtonTapped() {
-        coordinator?.shareImage(modelData: modelData)
-    }
-    
-    func deleteButtonTapped() {
-        Alerts.showConfirmationDelete(controller: self) { [weak self] in
-            guard let self = self else { return }
-            
-            self.deleteSelectedFolders()
-            self.deleteSelectedPhotos()
-            
-            self.reloadCollectionViewSections()
-        }
-    }
-    
     private func deleteSelectedFolders() {
-        folders.removeAll { folder in
-            folder.isSelected
-        }
-        if folders.isEmpty {
-            filesIsExpanded = true
-        }
+        folders.removeAll { $0.isSelected }
+        updateFilesIsExpanded()
         deselectAllFoldersObjects()
     }
     
     private func deleteSelectedPhotos() {
-        modelData.removeAll { photo in
-            photo.isSelected
-        }
-        modelData.forEach { photo in
-            ModelController.deleteImageObject(name: photo.name, basePath: basePath)
-        }
+        modelData.removeAll { $0.isSelected }
+        deleteImagesFromModel()
         deselectAllFileObjects()
     }
     
+    private func deleteImagesFromModel() {
+        modelData.forEach { photo in
+            ModelController.deleteImageObject(name: photo.name, basePath: basePath)
+        }
+    }
+    
+    private func updateFilesIsExpanded() {
+        if folders.isEmpty {
+            filesIsExpanded = true
+        }
+    }
+    
     private func reloadCollectionViewSections() {
-        collectionView?.reloadSections(IndexSet(integer: 0))
-        collectionView?.reloadSections(IndexSet(integer: 1))
+        collectionView?.reloadSections(IndexSet(integersIn: 0...1))
     }
 }
 
@@ -168,11 +195,7 @@ extension CollectionViewController {
         case 0:
             return folders.count
         default:
-            if filesIsExpanded {
-                return modelData.count
-            } else {
-                return 0
-            }
+            return filesIsExpanded ? modelData.count : .zero
         }
     }
     
@@ -212,15 +235,24 @@ extension CollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isEditMode {
-            updateSelectedPhotos(indexPath: indexPath)
-        } else {
-            switch indexPath.section {
-            case 0:
-                coordinator?.navigateToFolderViewController(indexPath: indexPath, folders: folders, basePath: basePath)
-            default:
-                coordinator?.presentImageGallery(for: indexPath.item)
-            }
+        isEditMode ? handleEditModeSelection(at: indexPath) : handleNormalModeSelection(at: indexPath)
+    }
+    
+    private func handleEditModeSelection(at indexPath: IndexPath) {
+        updateSelectedPhotos(indexPath: indexPath)
+    }
+    
+    private func handleNormalModeSelection(at indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            coordinator?.navigateToFolderViewController(
+                indexPath: indexPath,
+                folders: folders,
+                basePath: basePath
+            )
+            
+        default:
+            coordinator?.presentImageGallery(for: indexPath.item)
         }
     }
     
@@ -288,9 +320,7 @@ extension CollectionViewController {
         
         return footerView
     }
-    
 }
-
 
 // MARK: - AssetsPickerViewControllerDelegate
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
@@ -298,8 +328,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         var tempModelData: [Photo] = []
         
         let group = DispatchGroup()
-        
-        loadingAlert.startLoading(in: self)
         
         for asset in assets {
             group.enter()
@@ -310,14 +338,14 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 group.leave()
             }
         }
-        
+        self.loadingAlert.startLoading()
         group.notify(queue: .main) {
             self.modelData.append(contentsOf: tempModelData)
             self.collectionView?.reloadSections(IndexSet(integer: 1))
             self.loadingAlert.stopLoading()
         }
     }
-
+    
     func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
         if asset.mediaType != .image {
             completion(nil)
@@ -344,16 +372,19 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         let option = PHImageRequestOptions()
         option.isSynchronous = false
         option.isNetworkAccessAllowed = true
-
+        
         manager.requestImage(for: asset,
                              targetSize: CGSize(width: 1500, height: 1500),
                              contentMode: .aspectFit,
                              options: option) { (result, info) in
-
-            guard let info = info else { return }
-
+            
+            guard let info = info else {
+                completion(nil)
+                return
+            }
+            
             let isDegraded = (info[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
-
+            
             if !isDegraded, let result = result {
                 completion(result)
             } else if !isDegraded {
@@ -371,6 +402,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         return true
     }
 }
+
 
 // MARK: - Extension Viewer Image
 extension CollectionViewController: GalleryItemsDataSource {
@@ -391,10 +423,7 @@ extension CollectionViewController {
     private func setupFirstUse() {
         if !Defaults.getBool(.notFirstUse) {
             Defaults.setBool(.notFirstUse, true)
-            let controller = WelcomeViewController(delegate: self)
-            controller.view.backgroundColor = UIColor.clear
-            controller.modalPresentationStyle = .overCurrentContext
-            self.present(controller, animated: false)
+            coordinator?.presentWelcomeController()
         }
     }
     
