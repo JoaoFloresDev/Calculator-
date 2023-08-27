@@ -66,7 +66,6 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
         self.deselectAllFileObjects()
         if isEditMode {
             collectionView?.reloadData()
-        } else {
             SKStoreReviewController.requestReview()
         }
         isEditMode.toggle()
@@ -296,47 +295,65 @@ extension CollectionViewController {
 // MARK: - AssetsPickerViewControllerDelegate
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
+        var tempModelData: [Photo] = []
+        
+        let group = DispatchGroup()
+        
+        loadingAlert.startLoading(in: self)
+        
         for asset in assets {
-            addImage(asset: asset)
+            group.enter()
+            addImage(asset: asset) { photo in
+                if let photo = photo {
+                    tempModelData.append(photo)
+                }
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.modelData.append(contentsOf: tempModelData)
+            self.collectionView?.reloadSections(IndexSet(integer: 1))
+            self.loadingAlert.stopLoading()
         }
     }
-    
-    func addImage(asset: PHAsset) {
+
+    func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
         if asset.mediaType != .image {
+            completion(nil)
             return
         }
         
         getAssetThumbnail(asset: asset) { image in
             if let image = image {
                 if let photo = ModelController.saveImageObject(image: image, basePath: self.basePath) {
-                    self.modelData.append(photo)
-                    DispatchQueue.main.async {
-                        self.collectionView?.reloadSections(IndexSet(integer: 1))
-                    }
+                    completion(photo)
                 } else {
                     print("Erro ao salvar a imagem.")
+                    completion(nil)
                 }
             } else {
                 print("Falha ao carregar a miniatura do asset.")
+                completion(nil)
             }
         }
     }
-
+    
     func getAssetThumbnail(asset: PHAsset, completion: @escaping (UIImage?) -> Void) {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
         option.isSynchronous = false
         option.isNetworkAccessAllowed = true
-        
+
         manager.requestImage(for: asset,
                              targetSize: CGSize(width: 1500, height: 1500),
                              contentMode: .aspectFit,
                              options: option) { (result, info) in
-                             
+
             guard let info = info else { return }
 
             let isDegraded = (info[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
-            
+
             if !isDegraded, let result = result {
                 completion(result)
             } else if !isDegraded {
@@ -374,82 +391,10 @@ extension CollectionViewController {
     private func setupFirstUse() {
         if !Defaults.getBool(.notFirstUse) {
             Defaults.setBool(.notFirstUse, true)
-            performFirstUseSetup()
-        }
-    }
-    
-    private func performFirstUseSetup() {
-        loadingAlert.startLoading(in: self)
-        CloudKitPasswordService.fetchAllPasswords { [weak self] password, error in
-            guard let self = self, let password = password, error == nil else {
-                self?.loadingAlert.stopLoading {
-                    self?.showSetProtectionOrNavigateToSettings()
-                }
-                return
-            }
-            self.loadingAlert.stopLoading {
-                self.handleFirstUseCompletion(with: password)
-            }
-        }
-    }
-    
-    private func handleFirstUseCompletion(with password: [String]) {
-        Alerts.askUserToRestoreBackup(on: self) { [weak self] restoreBackup in
-            if restoreBackup {
-                self?.handleRestoreBackup(password: password)
-            } else {
-                self?.showSetProtectionOrNavigateToSettings()
-            }
-        }
-    }
-    
-    private func handleRestoreBackup(password: [String]) {
-        Alerts.insertPassword(controller: self) { [weak self] insertedPassword in
-            guard let self = self, let insertedPassword = insertedPassword else {
-                return
-            }
-            if password.contains(insertedPassword) {
-                self.loadingAlert.startLoading(in: self)
-                BackupService.hasDataInCloudKit { [weak self] hasData, _, items in
-                    self?.loadingAlert.stopLoading {
-                        guard let self = self, let items = items, !items.isEmpty, hasData else {
-                            self?.showSetProtectionOrNavigateToSettings()
-                            return
-                        }
-                        self.restoreBackupAndReloadData(photos: items)
-                    }
-                }
-            } else {
-                Alerts.showPasswordError(controller: self)
-            }
-        }
-    }
-    
-    private func showSetProtectionOrNavigateToSettings() {
-        Alerts.showSetProtectionAsk(controller: self) { [weak self] createProtection in
-            if createProtection {
-                self?.coordinator?.presentChangePasswordCalcMode()
-            } else {
-                self?.coordinator?.navigateToSettingsTab()
-            }
-        }
-    }
-    
-    private func restoreBackupAndReloadData(photos: [(String, UIImage)]) {
-        loadingAlert.startLoading(in: self)
-        BackupService.restoreBackup(photos: photos) { [weak self] success, _ in
-                if success {
-                    self?.setupData()
-                    self?.collectionView?.reloadData()
-                    self?.loadingAlert.stopLoading {
-                        self?.showSetProtectionOrNavigateToSettings()
-                    }
-                } else {
-                    guard let strongSelf = self else {
-                        return
-                    }
-                    Alerts.showBackupError(controller: strongSelf)
-                }
+            let controller = WelcomeViewController(delegate: self)
+            controller.view.backgroundColor = UIColor.clear
+            controller.modalPresentationStyle = .overCurrentContext
+            self.present(controller, animated: false)
         }
     }
     
@@ -546,5 +491,20 @@ extension CollectionViewController {
         adsHandler.setupAds(controller: self,
                             bannerDelegate: self,
                             interstitialDelegate: self)
+    }
+}
+
+extension CollectionViewController: WelcomeViewControllerDelegate {
+    func navigateToSettingsTab() {
+        coordinator?.navigateToSettingsTab()
+    }
+    
+    func presentChangePasswordCalcMode() {
+        coordinator?.presentChangePasswordCalcMode()
+    }
+    
+    func backupDone() {
+        self.setupData()
+        self.collectionView?.reloadData()
     }
 }

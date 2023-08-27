@@ -61,12 +61,17 @@ struct Alerts {
         
         controller.present(alert, animated: true)
     }
-    
+
     // Edition
     static func showConfirmationDelete(controller: UIViewController, completion: @escaping () -> Void) {
-        let alert = createAlert(title: Text.deleteConfirmationTitle.localized(), message: nil, actions: [createAction(title: Text.ok.localized(), handler: { _ in completion() })])
+        let cancelAction = createAction(title: Text.cancel.localized(), style: .default, handler: nil)
+        let okAction = createAction(title: Text.ok.localized(), handler: { _ in completion() })
+        
+        let alert = createAlert(title: Text.deleteConfirmationTitle.localized(), message: nil, actions: [cancelAction, okAction])
+        
         presentAlert(alert, on: controller)
     }
+
     
     // Premium
     static func showBePremiumToUse(controller: UIViewController, completion: @escaping () -> Void) {
