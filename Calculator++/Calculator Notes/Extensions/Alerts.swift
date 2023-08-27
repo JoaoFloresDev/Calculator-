@@ -65,7 +65,7 @@ struct Alerts {
     // Edition
     static func showConfirmationDelete(controller: UIViewController, completion: @escaping () -> Void) {
         let cancelAction = createAction(title: Text.cancel.localized(), style: .default, handler: nil)
-        let okAction = createAction(title: Text.ok.localized(), handler: { _ in completion() })
+        let okAction = createAction(title: Text.delete.localized(), handler: { _ in completion() })
         
         let alert = createAlert(title: Text.deleteConfirmationTitle.localized(), message: nil, actions: [cancelAction, okAction])
         
@@ -81,7 +81,7 @@ struct Alerts {
     
     // First use
     static func showSetProtectionAsk(controller: UIViewController, completion: @escaping (Bool) -> Void) {
-        let alert = createAlert(title: Text.wouldLikeSetProtection.localized(), message: nil, actions: [createAction(title: Text.cancel.localized(), handler: { _ in completion(false) }), createAction(title: Text.ok.localized(), handler: { _ in completion(true) })])
+        let alert = createAlert(title: Text.wouldLikeSetProtection.localized(), message: nil, actions: [createAction(title: Text.no.localized(), handler: { _ in completion(false) }), createAction(title: Text.yes.localized(), handler: { _ in completion(true) })])
         presentAlert(alert, on: controller)
     }
     

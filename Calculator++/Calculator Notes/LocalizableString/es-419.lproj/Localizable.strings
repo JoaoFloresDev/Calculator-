@@ -1,79 +1,83 @@
+// Versión premium
 premiumVersion = "Versión premium";
 noProtection = "Sin protección";
-hideRecoverButton = "Eliminar botón de recuperar contraseña";
-chooseProtectionMode = "Elige el modo de protección";
+hideRecoverButton = "Ocultar botón de recuperar contraseña";
+chooseProtectionMode = "Elegir modo de protección";
 
-settings = "Configuraciones";
+// Configuración y otros
+settings = "Configuración";
 gallery = "Galería";
-video = "Video";
+video = "Vídeo";
 notes = "Notas";
 
-instructionFirstStepCalc = "Crea una contraseña y haz clic en el botón '='";
-instructionSecondStepCalc = "Contraseña: *****. Repite la contraseña y confirma con '='";
+// Instrucciones
+instructionFirstStepCalc = "Cree una contraseña y haga clic en el botón '='";
+instructionSecondStepCalc = "Contraseña: *****. Repita la contraseña y confirme con '='";
+instructionFirstStepBank = "Cree una contraseña y haga clic en 'Enter'";
+instructionSecondStepBank = "Contraseña: *****. Repita la contraseña y confirme con 'Enter'";
 
-instructionFirstStepBank = "Crea una contraseña y haz clic en 'enter'";
-instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
+// Modos y bienvenida
+bankModeHasBeenActivated = "Modo de bóveda activado";
+calcModeHasBeenActivated = "Modo de calculadora activado";
+welcomeInstructionBank = "Ingrese su contraseña";
 
-bankModeHasBeenActivated = "Modo seguro activado";
-calcModeHasBeenActivated = "Modo calculadora activado";
-
-welcomeInstructionBank = "Introduce tu contraseña";
-
+// Botones
 done = "Hecho";
 edit = "Editar";
-
 premiumToolTitle = "Herramienta premium";
-premiumToolMessage = "El soporte de video solo se ofrece para usuarios premium. Consulta las mejoras en la sección Configuraciones";
-
+premiumToolMessage = "El soporte para videos solo está disponible para usuarios premium. Consulte las actualizaciones en la sección de Configuración";
 save = "Guardar";
 cancel = "Cancelar";
 ok = "Confirmar";
 see = "Ver";
 
+// Errores y compra
 errorTitle = "Error inesperado";
-errorMessage = "Intenta de nuevo más tarde";
+errorMessage = "Intente nuevamente más tarde";
 deleteFiles = "¿Eliminar archivo?";
-
 incorrectPassword = "Contraseña incorrecta";
-tryAgain = "Intentar de nuevo";
-
-// Purchase
+tryAgain = "Intente de nuevo";
 products = "Productos";
 loading = "Cargando...";
 close = "Cerrar";
 restore = "Restaurar";
 buy = "Comprar";
 
-// folder
+// Carpetas y más
 folderTitle = "Nombre de la carpeta";
 createActionTitle = "Crear";
 cancelTitle = "Cancelar";
-inputPlaceholder = "Introduce el nombre de la nueva carpeta";
+inputPlaceholder = "Ingrese el nombre de la nueva carpeta";
 folderNameAlreadyUsedTitle = "Nombre ya utilizado";
-folderNameAlreadyUsedText = "Elige otro nombre para la carpeta";
+folderNameAlreadyUsedText = "Elija otro nombre para la carpeta";
 deleteConfirmationTitle = "¿Eliminar archivos?";
 
-// Show All
+// Mostrar todo
 hideAllVideos = "Ocultar todos los videos guardados";
 showAllVideos = "Ver todos los videos guardados";
 hideAllPhotos = "Ocultar todas las fotos guardadas";
 showAllPhotos = "Ver todas las fotos guardadas";
-wouldLikeSetProtection = "¿Te gustaría agregar protección a tu galería?";
+wouldLikeSetProtection = "¿Le gustaría agregar protección a su galería?";
 
-// backup
+// Copias de seguridad
 askToRestoreBackupTitle = "Recuperar copia de seguridad";
-askToRestoreBackupMessage = "¿Te gustaría recuperar tu última copia de seguridad?";
-backupSuccessTitle = "Copia de seguridad realizada";
-backupSuccessMessage = "Tu copia de seguridad se ha recuperado con éxito";
-backupErrorTitle = "Error en la copia de seguridad";
+askToRestoreBackupMessage = "¿Le gustaría recuperar su última copia de seguridad?";
+backupSuccessTitle = "Copia de seguridad realizada con éxito";
+backupSuccessMessage = "Su copia de seguridad se ha recuperado con éxito";
+backupErrorTitle = "Error al realizar la copia de seguridad";
 backupErrorMessage = "No se encontraron datos para la copia de seguridad";
 incorrectPasswordTitle = "Contraseña incorrecta";
-incorrectPasswordMessage = "La contraseña proporcionada no es compatible, intenta de nuevo";
-insertPasswordTitle = "Introduce tu contraseña";
-insertPasswordMessage = "Introduce la contraseña que se usaba para abrir la calculadora";
+incorrectPasswordMessage = "La contraseña proporcionada no es válida, intente nuevamente";
+insertPasswordTitle = "Ingrese su contraseña";
+insertPasswordMessage = "Ingrese la contraseña que se utilizaba para abrir la calculadora";
 yes = "Sí";
 no = "No";
 enableiCloudTitle = "Acción requerida";
-enableiCloudSubtitle = "\n1. Haz clic en iCloud\n\n2.Busca la app Calc+ en la lista\n\n3. Habilita iCloud";
-enableiCloudAction = "Ir a configuraciones";
-premiumTooliCloudMessage = "El soporte para copias de seguridad es una función premium. Presentaremos los detalles del producto";
+enableiCloudSubtitle = "\n1. Haga clic en iCloud\n\n2. Busque la aplicación Calc+ en la lista\n\n3. Habilite iCloud";
+enableiCloudAction = "Ir a configuración";
+premiumTooliCloudMessage = "El soporte para copias de seguridad es una característica premium. Ver detalles del producto";
+
+// Eliminar y copias de seguridad
+delete = "Eliminar";
+backupNavigationTitle = "Mis artículos en la copia de seguridad";
+backupNavigationSubtitle = "Las fotos se sincronizan con su galería cada vez que se inicia la aplicación y hay conexión wifi. Su copia de seguridad es segura y la única forma de ver las fotos es dentro de la aplicación";

@@ -3,6 +3,13 @@ import CloudKit
 import SnapKit
 
 class CloudKitItemsViewController: UIViewController {
+    private let closeBarButtonTitle = "Fechar"
+    private let deleteItemTitle = "Delete Item"
+    private let deleteItemMessage = "Are you sure you want to delete this item?"
+    private let deleteActionTitle = "Delete"
+    private let cancelActionTitle = "Cancel"
+    private let navigationTitle = "Meus itens no Backup"
+    
     private var viewModel = CloudKitImageService()
     lazy var alert = LoadingAlert(in: self)
     
@@ -22,17 +29,6 @@ class CloudKitItemsViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
-    }()
-    
-    private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.text = "As fotos são sincronizadas com sua galeria todas as vezes que seu app é aberto"
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.backgroundColor = .systemGray6
-        label.textColor = .black
-        return label
     }()
     
     override func viewDidLoad() {
@@ -67,7 +63,7 @@ class CloudKitItemsViewController: UIViewController {
         closeButton.tintColor = .systemBlue
         navigationItem.leftBarButtonItem = closeButton
         
-        navigationItem.title = "Meus itens no Backup"
+        navigationItem.title = Text.backupNavigationTitle.localized()
     }
     
     @objc private func closeButtonTapped() {
@@ -92,9 +88,9 @@ extension CloudKitItemsViewController: UICollectionViewDataSource {
 extension CloudKitItemsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let alertController = UIAlertController(title: "Delete Item", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: Text.deleteFiles.localized(), message: String(), preferredStyle: .alert)
 
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+        let deleteAction = UIAlertAction(title: Text.delete.localized(), style: .destructive) { _ in
             let (itemName, _) = CloudKitImageService.images[indexPath.row]
             self.alert.startLoading()
             CloudKitImageService.deleteImage(name: itemName) { success, error in
@@ -109,7 +105,7 @@ extension CloudKitItemsViewController: UICollectionViewDelegate {
             }
         }
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .cancel, handler: nil)
 
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
@@ -164,7 +160,7 @@ class CollectionHeaderView: UICollectionReusableView {
     let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "As fotos são sincronizadas com sua galeria todas as vezes que o app é iniciado e existe conexão wifi"
+        label.text = Text.backupNavigationSubtitle.localized()
         label.textColor = .lightGray
         label.textAlignment = .center
         return label

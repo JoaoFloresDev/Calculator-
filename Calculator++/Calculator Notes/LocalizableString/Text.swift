@@ -87,6 +87,11 @@ enum Text: String {
     case enableiCloudSubtitle
     case enableiCloudAction
     
+    case delete
+    case backupNavigationTitle
+    case backupNavigationSubtitle
+    
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

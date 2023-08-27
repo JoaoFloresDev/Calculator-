@@ -85,3 +85,7 @@ enableiCloudTitle = "Ação Requerida";
 enableiCloudSubtitle = "\n1. Clique em iCloud\n\n2.Procure o app Calc+ na lista\n\n3. Habilite o iCloud";
 enableiCloudAction = "Ir para configurações";
 premiumTooliCloudMessage = "O suporte para backup é um recurso premium. Apresentaremos os detalhes do produto";
+
+delete = "Deletar";
+backupNavigationTitle = "Meus itens no Backup";
+backupNavigationSubtitle = "As fotos são sincronizadas com sua galeria todas as vezes que o app é iniciado e existe conexão wifi. Seu backup é seguro e a unica maneira de ver as fotos é dentro do app";
