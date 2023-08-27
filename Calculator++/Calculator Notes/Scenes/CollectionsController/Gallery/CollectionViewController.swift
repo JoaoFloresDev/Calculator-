@@ -419,6 +419,8 @@ extension CollectionViewController {
                         self.restoreBackupAndReloadData(photos: items)
                     }
                 }
+            } else {
+                Alerts.showPasswordError(controller: self)
             }
         }
     }
@@ -436,18 +438,18 @@ extension CollectionViewController {
     private func restoreBackupAndReloadData(photos: [(String, UIImage)]) {
         loadingAlert.startLoading(in: self)
         BackupService.restoreBackup(photos: photos) { [weak self] success, _ in
-            self?.loadingAlert.stopLoading {
                 if success {
                     self?.setupData()
                     self?.collectionView?.reloadData()
-                    self?.showSetProtectionOrNavigateToSettings()
+                    self?.loadingAlert.stopLoading {
+                        self?.showSetProtectionOrNavigateToSettings()
+                    }
                 } else {
                     guard let strongSelf = self else {
                         return
                     }
                     Alerts.showBackupError(controller: strongSelf)
                 }
-            }
         }
     }
     

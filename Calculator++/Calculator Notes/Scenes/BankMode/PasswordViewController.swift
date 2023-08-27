@@ -16,7 +16,7 @@ class PasswordViewController: UIViewController {
     var arrayPassword = [Int]()
     var arrayCircles = [UIImageView]()
     var captureKey = 0
-    var keyCurret = UserDefaults.standard.string(forKey: "Key") ?? ""
+    var keyCurret = Defaults.getString(.password)
     let keyRecovery = "314159"
     
     //    MARK: - IBOutlets
@@ -32,7 +32,7 @@ class PasswordViewController: UIViewController {
     //    MARK: - IBAction
     @IBOutlet weak var buttonFaceID: UIButton!
     @IBAction func useFaceID(_ sender: UIButton) {
-        if (UserDefaults.standard.string(forKey: "Key") == nil) {
+        if Defaults.getString(.password) == "" {
             let alert = UIAlertController(title: "First create Passcode", message: "It is only possible to recover the password after creating it", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -50,7 +50,7 @@ class PasswordViewController: UIViewController {
                             if success {
                                 DispatchQueue.main.async {
                                     self.instructionsLabel.text = "Key: "
-                                    self.instructionsLabel.text! += UserDefaults.standard.string(forKey: "Key") ?? "314159"
+                                    self.instructionsLabel.text! += Defaults.getString(.password) ?? "314159"
                                     self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                                     let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")

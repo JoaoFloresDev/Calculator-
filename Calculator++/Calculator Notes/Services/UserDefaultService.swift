@@ -41,7 +41,7 @@ enum IntKey: String {
 }
 
 enum StringKey: String {
-    case password
+    case password = "Key"
     
     func set(_ value: String) {
         userDefaults.set(value, forKey: rawValue)

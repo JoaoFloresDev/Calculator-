@@ -19,7 +19,7 @@ class BaseCalculatorViewController: UIViewController {
     var rightValue = ""
     var result = ""
     var currentOperation: Operation = .NULL
-    var key = UserDefaults.standard.string(forKey: "Key") ?? ""
+    var key = Defaults.getString(.password)
     let recoveryKey = "314159"
     
     // MARK: - IBOutlets
