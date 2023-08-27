@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        NotificationCenter.default.addObserver(self, selector: #selector(alertWillBePresented), name: NSNotification.Name("alertWillBePresented"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(alertHasBeenDismissed), name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
@@ -43,12 +45,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    var isAlertBeingPresented = false
+    
+    @objc func alertWillBePresented() {
+        isAlertBeingPresented = true
+    }
+
+    @objc func alertHasBeenDismissed() {
+        isAlertBeingPresented = false
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         if isShieldViewController() {
             return
         }
         
         if UserDefaultService().getTypeProtection() == .noProtection {
+            return
+        }
+        
+        if isAlertBeingPresented {
             return
         }
         

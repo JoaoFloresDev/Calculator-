@@ -1,83 +1,79 @@
-/*
-  Localizable.strings
-  Calculator Notes
+premiumVersion = "Versión premium";
+noProtection = "Sin protección";
+hideRecoverButton = "Eliminar botón de recuperar contraseña";
+chooseProtectionMode = "Elige el modo de protección";
 
-  Created by Joao Victor Flores da Costa on 06/02/22.
-  Copyright © 2022 MakeSchool. Todos los derechos reservados.
-*/
+settings = "Configuraciones";
+gallery = "Galería";
+video = "Video";
+notes = "Notas";
 
-"premiumVersion" = "Versión Premium";
-"noProtection" = "Sin Protección";
-"hideRecoverButton" = "Esconder recuperar contraseña";
-"chooseProtectionMode" = "Elegir modo de protección";
+instructionFirstStepCalc = "Crea una contraseña y haz clic en el botón '='";
+instructionSecondStepCalc = "Contraseña: *****. Repite la contraseña y confirma con '='";
 
-"settings" = "Configuración";
-"gallery" = "Galería";
-"video" = "Video";
-"notes" = "Notas";
+instructionFirstStepBank = "Crea una contraseña y haz clic en 'enter'";
+instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
 
-"instructionFirstStepCalc" = "Crea una contraseña y pulsa el botón '='";
-"instructionSecondStepCalc" = "Contraseña: *****. Repite la contraseña y confirma con '='";
+bankModeHasBeenActivated = "Modo seguro activado";
+calcModeHasBeenActivated = "Modo calculadora activado";
 
-"instructionFirstStepBank" = "Crea una contraseña y pulsa 'Enter'";
-"instructionSecondStepBank" = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
+welcomeInstructionBank = "Introduce tu contraseña";
 
-"bankModeHasBeenActivated" = "Modo Caja Fuerte Activado";
-"calcModeHasBeenActivated" = "Modo Calculadora Activado";
+done = "Hecho";
+edit = "Editar";
 
-"welcomeInstructionBank" = "Ingresa tu contraseña";
+premiumToolTitle = "Herramienta premium";
+premiumToolMessage = "El soporte de video solo se ofrece para usuarios premium. Consulta las mejoras en la sección Configuraciones";
 
-"done" = "Hecho";
-"edit" = "Editar";
+save = "Guardar";
+cancel = "Cancelar";
+ok = "Confirmar";
+see = "Ver";
 
-"premiumToolTitle" = "Herramienta Premium";
-"premiumToolMessage" = "El soporte de video solo está disponible para usuarios premium. Consulta las actualizaciones en la sección de Configuración";
+errorTitle = "Error inesperado";
+errorMessage = "Intenta de nuevo más tarde";
+deleteFiles = "¿Eliminar archivo?";
 
-"save" = "Guardar";
-"cancel" = "Cancelar";
-"ok" = "Confirmar";
-"see" = "Ver";
-
-"errorTitle" = "Error Inesperado";
-"errorMessage" = "Por favor, inténtalo nuevamente más tarde";
-"deleteFiles" = "¿Eliminar archivo?";
-
-"incorrectPassword" = "Contraseña incorrecta";
-"tryAgain" = "Intentar de nuevo";
+incorrectPassword = "Contraseña incorrecta";
+tryAgain = "Intentar de nuevo";
 
 // Purchase
-"products" = "Productos";
-"loading" = "Cargando...";
-"close" = "Cerrar";
-"restore" = "Restaurar";
-"buy" = "Comprar";
+products = "Productos";
+loading = "Cargando...";
+close = "Cerrar";
+restore = "Restaurar";
+buy = "Comprar";
 
 // folder
-"folderTitle" = "Nombre de Carpeta";
-"createActionTitle" = "Crear";
-"cancelTitle" = "Cancelar";
-"inputPlaceholder" = "Ingresa el nombre de la nueva carpeta";
-"folderNameAlreadyUsedTitle" = "Nombre Ya Utilizado";
-"folderNameAlreadyUsedText" = "Elige otro nombre para la carpeta";
-"deleteConfirmationTitle" = "¿Eliminar Archivos?";
+folderTitle = "Nombre de la carpeta";
+createActionTitle = "Crear";
+cancelTitle = "Cancelar";
+inputPlaceholder = "Introduce el nombre de la nueva carpeta";
+folderNameAlreadyUsedTitle = "Nombre ya utilizado";
+folderNameAlreadyUsedText = "Elige otro nombre para la carpeta";
+deleteConfirmationTitle = "¿Eliminar archivos?";
 
 // Show All
-"hideAllVideos" = "Ocultar Todos los Videos Guardados";
-"showAllVideos" = "Mostrar Todos los Videos Guardados";
-"hideAllPhotos" = "Ocultar Todas las Fotos Guardadas";
-"showAllPhotos" = "Mostrar Todas las Fotos Guardadas";
-"wouldLikeSetProtection" = "¿Deseas añadir protección a tu galería?";
+hideAllVideos = "Ocultar todos los videos guardados";
+showAllVideos = "Ver todos los videos guardados";
+hideAllPhotos = "Ocultar todas las fotos guardadas";
+showAllPhotos = "Ver todas las fotos guardadas";
+wouldLikeSetProtection = "¿Te gustaría agregar protección a tu galería?";
 
-//backup
-askToRestoreBackupTitle = "Restaurar Backup";
-askToRestoreBackupMessage = "¿Desea restaurar su última copia de seguridad?";
-backupSuccessTitle = "Copia de Seguridad Exitosa";
-backupSuccessMessage = "Su copia de seguridad se ha restaurado con éxito.";
-backupErrorTitle = "Error de Copia de Seguridad";
-backupErrorMessage = "No se encontraron datos para la copia de seguridad.";
-incorrectPasswordTitle = "Contraseña Incorrecta";
-incorrectPasswordMessage = "La contraseña proporcionada no es compatible, inténtelo nuevamente.";
-insertPasswordTitle = "Ingrese su Contraseña";
-insertPasswordMessage = "Por favor, ingrese la contraseña que se utilizó para abrir la calculadora.";
-yes = "Si";
+// backup
+askToRestoreBackupTitle = "Recuperar copia de seguridad";
+askToRestoreBackupMessage = "¿Te gustaría recuperar tu última copia de seguridad?";
+backupSuccessTitle = "Copia de seguridad realizada";
+backupSuccessMessage = "Tu copia de seguridad se ha recuperado con éxito";
+backupErrorTitle = "Error en la copia de seguridad";
+backupErrorMessage = "No se encontraron datos para la copia de seguridad";
+incorrectPasswordTitle = "Contraseña incorrecta";
+incorrectPasswordMessage = "La contraseña proporcionada no es compatible, intenta de nuevo";
+insertPasswordTitle = "Introduce tu contraseña";
+insertPasswordMessage = "Introduce la contraseña que se usaba para abrir la calculadora";
+yes = "Sí";
 no = "No";
+enableiCloudTitle = "Acción requerida";
+enableiCloudSubtitle = "\n1. Haz clic en iCloud\n\n2.Busca la app Calc+ en la lista\n\n3. Habilita iCloud";
+enableiCloudAction = "Ir a configuraciones";
+premiumTooliCloudMessage = "El soporte para copias de seguridad es una función premium. Presentaremos los detalles del producto";

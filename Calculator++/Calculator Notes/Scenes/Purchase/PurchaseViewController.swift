@@ -137,7 +137,6 @@ class PurchaseViewController: UIViewController {
                 self.buyLabel.text = "   ✓✓✓"
                 Defaults.setBool(.premiumPurchased, true)
                 Defaults.setBool(.iCloudPurchased, true)
-                Defaults.setBool(.iCloudEnabled, true)
             }
         }
     }
