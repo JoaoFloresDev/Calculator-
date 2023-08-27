@@ -1,19 +1,21 @@
-/* 
+/*
   Localizable.strings
   Calculator Notes
 
-  Created by Joao Victor Flores da Costa on 06/02/22.
-  Copyright © 2022 MakeSchool. All rights reserved.
+  Criado por Joao Victor Flores da Costa em 06/02/22.
+  Copyright © 2022 MakeSchool. Todos os direitos reservados.
 */
 
-premiumVersion = "Versão premium";
+// Versão Premium
+premiumVersion = "Versão Premium";
 noProtection = "Sem proteção";
-hideRecoverButton = "Remover botão recuperar senha";
+hideRecoverButton = "Ocultar Botão de Recuperação de Senha";
 chooseProtectionMode = "Escolha o modo de proteção";
 
+// Configurações e Outros
 settings = "Configurações";
 gallery = "Galeria";
-video = "Video";
+video = "Vídeo";
 notes = "Notas";
 
 instructionFirstStepCalc = "Crie uma senha e clique no botão '='";
@@ -30,7 +32,7 @@ welcomeInstructionBank = "Digite sua senha";
 done = "Pronto";
 edit = "Editar";
 
-premiumToolTitle = "Ferramenta premium";
+premiumToolTitle = "Recurso premium";
 premiumToolMessage = "O suporte para vídeo é apenas oferecido para usuários premium. Veja os upgrades na seção Configurações";
 
 save = "Salvar";
@@ -38,54 +40,56 @@ cancel = "Cancelar";
 ok = "Confirmar";
 see = "Ver";
 
-errorTitle = "Erro inesperado";
+// Mensagens de Erro
+errorTitle = "Erro Inesperado";
 errorMessage = "Tente novamente mais tarde";
-deleteFiles = "Deletar arquivo?";
+deleteFiles = "Excluir Arquivo?";
 
-incorrectPassword = "Senha incorreta";
-tryAgain = "Tente";
+incorrectPassword = "Senha Incorreta";
+tryAgain = "Tentar Novamente";
 
-// Purchase
-products = "Produtos";
+// Compra
+products = "Produtos Disponíveis";
 loading = "Carregando...";
 close = "Fechar";
-restore = "Restaurar";
+restore = "Restaurar Compras";
 buy = "Comprar";
 
-// folder
-folderTitle = "Nome da Pasta";
+// Pastas
+folderTitle = "Título da Pasta";
 createActionTitle = "Criar";
 cancelTitle = "Cancelar";
-inputPlaceholder = "Digite o nome da nova pasta";
-folderNameAlreadyUsedTitle = "Nome Já Utilizado";
-folderNameAlreadyUsedText = "Escolha outro nome para a pasta";
+inputPlaceholder = "Insira o Nome da Nova Pasta";
+folderNameAlreadyUsedTitle = "Nome de Pasta Já Utilizado";
+folderNameAlreadyUsedText = "Escolha um Nome Diferente para a Pasta";
 deleteConfirmationTitle = "Excluir Arquivos?";
 
-// Show All
-hideAllVideos = "Ocultar todos os videos salvos";
-showAllVideos = "Ver todos os videos salvos";
-hideAllPhotos = "Ocultar todas as fotos salvas";
-showAllPhotos = "Ver todas as fotos salvas";
-wouldLikeSetProtection = "Gostaria de adicionar proteção à sua galeria?";
+// Mostrar Tudo
+hideAllVideos = "Ocultar Todos os Vídeos Salvos";
+showAllVideos = "Mostrar Todos os Vídeos Salvos";
+hideAllPhotos = "Ocultar Todas as Fotos Salvas";
+showAllPhotos = "Mostrar Todas as Fotos Salvas";
+wouldLikeSetProtection = "Deseja Adicionar Proteção à Sua Galeria?";
 
-// backup
-askToRestoreBackupTitle = "Recuperar Backup";
-askToRestoreBackupMessage = "Você gostaria de recuperar seu último backup?";
-backupSuccessTitle = "Backup realizado";
-backupSuccessMessage = "Seu backup foi recuperado com sucesso";
-backupErrorTitle = "Falha ao realizar backup";
-backupErrorMessage = "Não foram encontrados dados para backup";
-incorrectPasswordTitle = "Senha incorreta";
-incorrectPasswordMessage = "A senha fornecida não é compatível, tente novamente";
-insertPasswordTitle = "Insira sua senha";
-insertPasswordMessage = "Insira a senha que era utilizada para abrir a calculadora";
+// Backup
+askToRestoreBackupTitle = "Restaurar Backup";
+askToRestoreBackupMessage = "Deseja restaurar seu último backup?";
+backupSuccessTitle = "Backup Realizado com Sucesso";
+backupSuccessMessage = "Seu backup foi restaurado com sucesso";
+backupErrorTitle = "Erro ao Efetuar Backup";
+backupErrorMessage = "Nenhum dado encontrado para backup";
+incorrectPasswordTitle = "Senha Incorreta";
+incorrectPasswordMessage = "A senha fornecida não é válida. Tente novamente.";
+insertPasswordTitle = "Digite sua Senha";
+insertPasswordMessage = "Digite a senha anteriormente usada para abrir o aplicativo";
 yes = "Sim";
 no = "Não";
-enableiCloudTitle = "Ação Requerida";
-enableiCloudSubtitle = "\n1. Clique em iCloud\n\n2.Procure o app Calc+ na lista\n\n3. Habilite o iCloud";
-enableiCloudAction = "Ir para configurações";
-premiumTooliCloudMessage = "O suporte para backup é um recurso premium. Apresentaremos os detalhes do produto";
+enableiCloudTitle = "Ação Necessária";
+enableiCloudSubtitle = "\n1. Clique em iCloud\n\n2. Localize o aplicativo Calc+ na lista\n\n3. Ative o iCloud";
+enableiCloudAction = "Ir para Configurações";
+premiumTooliCloudMessage = "O recurso de backup é exclusivo para usuários Premium. Detalhes do produto serão apresentados";
 
-delete = "Deletar";
-backupNavigationTitle = "Meus itens no Backup";
-backupNavigationSubtitle = "As fotos são sincronizadas com sua galeria todas as vezes que o app é iniciado e existe conexão wifi. Seu backup é seguro e a unica maneira de ver as fotos é dentro do app";
+// Deletar e Backup
+delete = "Excluir";
+backupNavigationTitle = "Itens Salvos no Backup";
+backupNavigationSubtitle = "As fotos são sincronizadas com as fotos adicionadas toda vez que o aplicativo é aberto e há conexão Wi-Fi. Seu backup é seguro e a única forma de visualizar as fotos é dentro do aplicativo";
