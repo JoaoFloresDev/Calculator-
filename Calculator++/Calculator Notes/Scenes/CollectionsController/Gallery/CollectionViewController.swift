@@ -104,27 +104,36 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
     
     private func toggleEditModeAndReloadData() {
         if isEditMode {
-            collectionView?.reloadData()
-            SKStoreReviewController.requestReview()
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+                SKStoreReviewController.requestReview()
+            }
         }
         isEditMode.toggle()
     }
     
     private func deleteSelectedFolders() {
+        for folder in folders where folder.isSelected {
+            foldersService.delete(folder: folder.name, basePath: basePath)
+        }
+        
         folders.removeAll { $0.isSelected }
+        
         updateFilesIsExpanded()
         deselectAllFoldersObjects()
     }
     
     private func deleteSelectedPhotos() {
-        modelData.removeAll { $0.isSelected }
         deleteImagesFromModel()
+        modelData.removeAll { $0.isSelected }
         deselectAllFileObjects()
     }
     
     private func deleteImagesFromModel() {
         modelData.forEach { photo in
-            ModelController.deleteImageObject(name: photo.name, basePath: basePath)
+            if photo.isSelected {
+                ModelController.deleteImageObject(name: photo.name, basePath: basePath)
+            }
         }
     }
     

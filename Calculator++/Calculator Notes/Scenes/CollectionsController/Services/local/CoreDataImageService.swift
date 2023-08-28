@@ -62,17 +62,26 @@ struct CoreDataImageService {
     }
 
     static func fetchImage(imageName: String) -> UIImage? {
-        let imagePath = documentsPath.appendingPathComponent(imageName).path
-        print("Loading image from path:", imagePath)
-        guard fileManager.fileExists(atPath: imagePath) else {
-            print("Image does not exist at path: \(imagePath)")
+        // Verificar se o nome da imagem é válido
+        guard !imageName.isEmpty else {
+            print("Erro: Nome da imagem é inválido ou vazio.")
             return nil
         }
-
+        
+        let imagePath = documentsPath.appendingPathComponent(imageName).path
+        
+        // Verificar se o arquivo existe no diretório
+        guard fileManager.fileExists(atPath: imagePath) else {
+            print("Erro: A imagem não existe no caminho: \(imagePath)")
+            return nil
+        }
+        
+        // Tente carregar a imagem do arquivo
         if let imageData = UIImage(contentsOfFile: imagePath) {
+            print("Carregando imagem do caminho:", imagePath)
             return imageData
         } else {
-            print("UIImage could not be created.")
+            print("Erro: UIImage não pôde ser criada.")
             return nil
         }
     }

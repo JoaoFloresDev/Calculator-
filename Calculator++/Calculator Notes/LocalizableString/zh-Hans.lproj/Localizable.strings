@@ -1,83 +1,95 @@
-// Premium Version
-premiumVersion = "Premium Version";
-noProtection = "No Protection";
-hideRecoverButton = "Hide Recover Button";
-chooseProtectionMode = "Choose Protection Mode";
+/*
+  Localizable.strings
+  Calculator Notes
 
-// Settings and Others
-settings = "Settings";
-gallery = "Gallery";
-video = "Video";
-notes = "Notes";
+  由 Joao Victor Flores da Costa 创建于 2022/02/06。
+  版权所有 © 2022 MakeSchool。保留所有权利。
+*/
 
-// Instructions
-instructionFirstStepCalc = "Create a password and click the '=' button";
-instructionSecondStepCalc = "Password: *****. Repeat the password and confirm with '='";
-instructionFirstStepBank = "Create a password and click 'Enter'";
-instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'Enter'";
+// 高级版
+premiumVersion = "高级版本";
+noProtection = "无保护";
+hideRecoverButton = "隐藏密码恢复按钮";
+chooseProtectionMode = "选择保护模式";
 
-// Modes and Welcome
-bankModeHasBeenActivated = "Bank Mode Activated";
-calcModeHasBeenActivated = "Calculator Mode Activated";
-welcomeInstructionBank = "Enter your password";
+// 设置与其他
+settings = "设置";
+gallery = "相册";
+video = "视频";
+notes = "笔记";
 
-// Buttons
-done = "Done";
-edit = "Edit";
-premiumToolTitle = "Premium Tool";
-premiumToolMessage = "Video support is only offered for premium users. See upgrades in Settings section";
-save = "Save";
-cancel = "Cancel";
-ok = "Confirm";
-see = "View";
+instructionFirstStepCalc = "创建密码并点击 '=' 按钮";
+instructionSecondStepCalc = "密码：*****。请重复密码并点击 '=' 确认";
 
-// Errors and Purchase
-errorTitle = "Unexpected Error";
-errorMessage = "Please try again later";
-deleteFiles = "Delete file?";
-incorrectPassword = "Incorrect Password";
-tryAgain = "Try Again";
-products = "Products";
-loading = "Loading...";
-close = "Close";
-restore = "Restore";
-buy = "Buy";
+instructionFirstStepBank = "创建密码并点击 'enter'";
+instructionSecondStepBank = "密码：*****。请重复密码并点击 'Enter' 确认";
 
-// Folders and More
-folderTitle = "Folder Name";
-createActionTitle = "Create";
-cancelTitle = "Cancel";
-inputPlaceholder = "Enter the name for the new folder";
-folderNameAlreadyUsedTitle = "Name Already Used";
-folderNameAlreadyUsedText = "Choose another name for the folder";
-deleteConfirmationTitle = "Delete Files?";
+bankModeHasBeenActivated = "保险箱模式已激活";
+calcModeHasBeenActivated = "计算器模式已激活";
 
-// Show All
-hideAllVideos = "Hide all saved videos";
-showAllVideos = "Show all saved videos";
-hideAllPhotos = "Hide all saved photos";
-showAllPhotos = "Show all saved photos";
-wouldLikeSetProtection = "Would you like to add protection to your gallery?";
+welcomeInstructionBank = "请输入您的密码";
 
-// Backup
-askToRestoreBackupTitle = "Restore Backup";
-askToRestoreBackupMessage = "Would you like to restore your last backup?";
-backupSuccessTitle = "Backup Successful";
-backupSuccessMessage = "Your backup was successfully restored";
-backupErrorTitle = "Backup Failed";
-backupErrorMessage = "No data found for backup";
-incorrectPasswordTitle = "Incorrect Password";
-incorrectPasswordMessage = "The provided password is not compatible, try again";
-insertPasswordTitle = "Insert your password";
-insertPasswordMessage = "Insert the password that was used to open the calculator";
-yes = "Yes";
-no = "No";
-enableiCloudTitle = "Action Required";
-enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Look for the Calc+ app in the list\n\n3. Enable iCloud";
-enableiCloudAction = "Go to Settings";
-premiumTooliCloudMessage = "Backup support is a premium feature. Product details will be presented";
+done = "完成";
+edit = "编辑";
 
-// Delete and Backup
-delete = "Delete";
-backupNavigationTitle = "My Backup Items";
-backupNavigationSubtitle = "Photos are synced with your gallery every time the app is launched and there is wifi connection. Your backup is secure and the only way to see the photos is inside the app";
+premiumToolTitle = "高级工具";
+premiumToolMessage = "视频支持仅限高级用户。请在设置中查看升级选项";
+
+save = "保存";
+cancel = "取消";
+ok = "确认";
+see = "查看";
+
+// 错误消息
+errorTitle = "意外错误";
+errorMessage = "请稍后再试";
+deleteFiles = "删除文件？";
+
+incorrectPassword = "密码错误";
+tryAgain = "再试一次";
+
+// 购买
+products = "可用产品";
+loading = "加载中...";
+close = "关闭";
+restore = "恢复购买";
+buy = "购买";
+
+// 文件夹
+folderTitle = "文件夹名称";
+createActionTitle = "创建";
+cancelTitle = "取消";
+inputPlaceholder = "输入新文件夹的名称";
+folderNameAlreadyUsedTitle = "文件夹名称已使用";
+folderNameAlreadyUsedText = "请为文件夹选择一个不同的名称";
+deleteConfirmationTitle = "删除文件？";
+
+// 显示全部
+hideAllVideos = "隐藏所有保存的视频";
+showAllVideos = "显示所有保存的视频";
+hideAllPhotos = "隐藏所有保存的照片";
+showAllPhotos = "显示所有保存的照片";
+wouldLikeSetProtection = "您希望为您的相册添加保护吗？";
+
+// 备份
+askToRestoreBackupTitle = "恢复备份";
+askToRestoreBackupMessage = "您是否想恢复最近的备份？";
+backupSuccessTitle = "备份成功";
+backupSuccessMessage = "您的备份已成功恢复";
+backupErrorTitle = "备份错误";
+backupErrorMessage = "找不到备份数据";
+incorrectPasswordTitle = "密码错误";
+incorrectPasswordMessage = "提供的密码无效。请重试。";
+insertPasswordTitle = "请输入您的密码";
+insertPasswordMessage = "输入之前用于打开应用的密码";
+yes = "是";
+no = "否";
+enableiCloudTitle = "需要操作";
+enableiCloudSubtitle = "\n1. 点击 iCloud\n\n2. 在列表中找到 Calc+ 应用\n\n3. 启用 iCloud";
+enableiCloudAction = "前往设置";
+premiumTooliCloudMessage = "备份功能仅限高级用户。产品详情将被显示";
+
+// 删除与备份
+delete = "删除";
+backupNavigationTitle = "备份中保存的项目";
+backupNavigationSubtitle = "每次打开应用并有 Wi-Fi 连接时，照片会与添加的照片同步。您的备份是安全的，唯一可以查看照片的方式是在应用内";

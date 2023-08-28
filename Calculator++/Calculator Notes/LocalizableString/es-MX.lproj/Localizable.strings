@@ -1,7 +1,7 @@
 // Versión Premium
 premiumVersion = "Versión Premium";
 noProtection = "Sin Protección";
-hideRecoverButton = "Ocultar Botón de Recuperación";
+hideRecoverButton = "Ocultar Botón Face ID";
 chooseProtectionMode = "Elige el Modo de Protección";
 
 // Configuración y Otros

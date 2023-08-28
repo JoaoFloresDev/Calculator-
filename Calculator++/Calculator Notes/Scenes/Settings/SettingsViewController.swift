@@ -75,7 +75,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        SKStoreReviewController.requestReview()
+        DispatchQueue.main.async {
+            SKStoreReviewController.requestReview()
+        }
     }
 
     lazy var loadingAlert = LoadingAlert(in: self)

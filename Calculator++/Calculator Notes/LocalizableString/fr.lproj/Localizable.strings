@@ -1,83 +1,87 @@
-// Premium Version
-premiumVersion = "Premium Version";
-noProtection = "No Protection";
-hideRecoverButton = "Hide Recover Button";
-chooseProtectionMode = "Choose Protection Mode";
+// Version Premium
+premiumVersion = "Version Premium";
+noProtection = "Pas de protection";
+hideRecoverButton = "Masquer le bouton de récupération de mot de passe";
+chooseProtectionMode = "Choisissez le mode de protection";
 
-// Settings and Others
-settings = "Settings";
-gallery = "Gallery";
-video = "Video";
+// Paramètres et Autres
+settings = "Paramètres";
+gallery = "Galerie";
+video = "Vidéo";
 notes = "Notes";
 
-// Instructions
-instructionFirstStepCalc = "Create a password and click the '=' button";
-instructionSecondStepCalc = "Password: *****. Repeat the password and confirm with '='";
-instructionFirstStepBank = "Create a password and click 'Enter'";
-instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'Enter'";
+instructionFirstStepCalc = "Créez un mot de passe et cliquez sur le bouton '='";
+instructionSecondStepCalc = "Mot de passe : *****. Répétez le mot de passe et confirmez avec '='";
 
-// Modes and Welcome
-bankModeHasBeenActivated = "Bank Mode Activated";
-calcModeHasBeenActivated = "Calculator Mode Activated";
-welcomeInstructionBank = "Enter your password";
+instructionFirstStepBank = "Créez un mot de passe et cliquez sur 'Entrée'";
+instructionSecondStepBank = "Mot de passe : *****. Répétez le mot de passe et confirmez avec 'Entrée'";
 
-// Buttons
-done = "Done";
-edit = "Edit";
-premiumToolTitle = "Premium Tool";
-premiumToolMessage = "Video support is only offered for premium users. See upgrades in Settings section";
-save = "Save";
-cancel = "Cancel";
-ok = "Confirm";
-see = "View";
+bankModeHasBeenActivated = "Mode banque activé";
+calcModeHasBeenActivated = "Mode calculatrice activé";
 
-// Errors and Purchase
-errorTitle = "Unexpected Error";
-errorMessage = "Please try again later";
-deleteFiles = "Delete file?";
-incorrectPassword = "Incorrect Password";
-tryAgain = "Try Again";
-products = "Products";
-loading = "Loading...";
-close = "Close";
-restore = "Restore";
-buy = "Buy";
+welcomeInstructionBank = "Entrez votre mot de passe";
 
-// Folders and More
-folderTitle = "Folder Name";
-createActionTitle = "Create";
-cancelTitle = "Cancel";
-inputPlaceholder = "Enter the name for the new folder";
-folderNameAlreadyUsedTitle = "Name Already Used";
-folderNameAlreadyUsedText = "Choose another name for the folder";
-deleteConfirmationTitle = "Delete Files?";
+done = "Terminé";
+edit = "Éditer";
 
-// Show All
-hideAllVideos = "Hide all saved videos";
-showAllVideos = "Show all saved videos";
-hideAllPhotos = "Hide all saved photos";
-showAllPhotos = "Show all saved photos";
-wouldLikeSetProtection = "Would you like to add protection to your gallery?";
+premiumToolTitle = "Fonction Premium";
+premiumToolMessage = "Le support vidéo est seulement disponible pour les utilisateurs premium. Voir les mises à niveau dans la section Paramètres";
 
-// Backup
-askToRestoreBackupTitle = "Restore Backup";
-askToRestoreBackupMessage = "Would you like to restore your last backup?";
-backupSuccessTitle = "Backup Successful";
-backupSuccessMessage = "Your backup was successfully restored";
-backupErrorTitle = "Backup Failed";
-backupErrorMessage = "No data found for backup";
-incorrectPasswordTitle = "Incorrect Password";
-incorrectPasswordMessage = "The provided password is not compatible, try again";
-insertPasswordTitle = "Insert your password";
-insertPasswordMessage = "Insert the password that was used to open the calculator";
-yes = "Yes";
-no = "No";
-enableiCloudTitle = "Action Required";
-enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Look for the Calc+ app in the list\n\n3. Enable iCloud";
-enableiCloudAction = "Go to Settings";
-premiumTooliCloudMessage = "Backup support is a premium feature. Product details will be presented";
+save = "Sauvegarder";
+cancel = "Annuler";
+ok = "Confirmer";
+see = "Voir";
 
-// Delete and Backup
-delete = "Delete";
-backupNavigationTitle = "My Backup Items";
-backupNavigationSubtitle = "Photos are synced with your gallery every time the app is launched and there is wifi connection. Your backup is secure and the only way to see the photos is inside the app";
+// Messages d'Erreur
+errorTitle = "Erreur Inattendue";
+errorMessage = "Réessayez plus tard";
+deleteFiles = "Supprimer le fichier ?";
+
+incorrectPassword = "Mot de passe incorrect";
+tryAgain = "Réessayer";
+
+// Achat
+products = "Produits disponibles";
+loading = "Chargement...";
+close = "Fermer";
+restore = "Restaurer les achats";
+buy = "Acheter";
+
+// Dossiers
+folderTitle = "Nom du dossier";
+createActionTitle = "Créer";
+cancelTitle = "Annuler";
+inputPlaceholder = "Entrez le nom du nouveau dossier";
+folderNameAlreadyUsedTitle = "Nom de dossier déjà utilisé";
+folderNameAlreadyUsedText = "Choisissez un nom de dossier différent";
+deleteConfirmationTitle = "Supprimer les fichiers ?";
+
+// Tout montrer
+hideAllVideos = "Masquer toutes les vidéos enregistrées";
+showAllVideos = "Afficher toutes les vidéos enregistrées";
+hideAllPhotos = "Masquer toutes les photos enregistrées";
+showAllPhotos = "Afficher toutes les photos enregistrées";
+wouldLikeSetProtection = "Souhaitez-vous ajouter une protection à votre galerie ?";
+
+// Sauvegarde
+askToRestoreBackupTitle = "Restaurer la sauvegarde";
+askToRestoreBackupMessage = "Voulez-vous restaurer votre dernière sauvegarde ?";
+backupSuccessTitle = "Sauvegarde réussie";
+backupSuccessMessage = "Votre sauvegarde a été restaurée avec succès";
+backupErrorTitle = "Erreur de sauvegarde";
+backupErrorMessage = "Aucune donnée trouvée pour la sauvegarde";
+incorrectPasswordTitle = "Mot de passe incorrect";
+incorrectPasswordMessage = "Le mot de passe fourni n'est pas valide. Essayez à nouveau.";
+insertPasswordTitle = "Entrez votre mot de passe";
+insertPasswordMessage = "Entrez le mot de passe précédemment utilisé pour ouvrir l'application";
+yes = "Oui";
+no = "Non";
+enableiCloudTitle = "Action nécessaire";
+enableiCloudSubtitle = "\n1. Cliquez sur iCloud\n\n2. Localisez l'application Calc+ dans la liste\n\n3. Activez iCloud";
+enableiCloudAction = "Aller aux paramètres";
+premiumTooliCloudMessage = "La fonction de sauvegarde est exclusive aux utilisateurs Premium. Les détails du produit seront affichés";
+
+// Supprimer et Sauvegarde
+delete = "Supprimer";
+backupNavigationTitle = "Éléments sauvegardés dans la sauvegarde";
+backupNavigationSubtitle = "Les photos sont synchronisées avec les photos ajoutées à chaque fois que l'application est ouverte et qu'il y a une connexion Wi-Fi. Votre sauvegarde est sécurisée et le seul moyen de visualiser les photos est dans l'application";

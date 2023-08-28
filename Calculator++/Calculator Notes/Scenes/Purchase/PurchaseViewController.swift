@@ -32,6 +32,14 @@ class PurchaseViewController: UIViewController {
         setupLocalizedText()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         reloadAndCheckPurchaseStatus()

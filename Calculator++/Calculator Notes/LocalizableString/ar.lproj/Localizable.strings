@@ -1,83 +1,90 @@
-// Premium Version
-premiumVersion = "Premium Version";
-noProtection = "No Protection";
-hideRecoverButton = "Hide Recover Button";
-chooseProtectionMode = "Choose Protection Mode";
+/*
+  Localizable.strings
+  Calculator Notes
 
-// Settings and Others
-settings = "Settings";
-gallery = "Gallery";
-video = "Video";
-notes = "Notes";
+  أنشأه Joao Victor Flores da Costa في 06/02/22.
+  حقوق النشر © 2022 MakeSchool. جميع الحقوق محفوظة.
+*/
 
-// Instructions
-instructionFirstStepCalc = "Create a password and click the '=' button";
-instructionSecondStepCalc = "Password: *****. Repeat the password and confirm with '='";
-instructionFirstStepBank = "Create a password and click 'Enter'";
-instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'Enter'";
+// النسخة المميزة
+premiumVersion = "النسخة المميزة";
+noProtection = "بدون حماية";
+hideRecoverButton = "إخفاء زر استعادة كلمة المرور";
+chooseProtectionMode = "اختر وضع الحماية";
 
-// Modes and Welcome
-bankModeHasBeenActivated = "Bank Mode Activated";
-calcModeHasBeenActivated = "Calculator Mode Activated";
-welcomeInstructionBank = "Enter your password";
+// الإعدادات والمزيد
+settings = "الإعدادات";
+gallery = "المعرض";
+video = "فيديو";
+notes = "ملاحظات";
 
-// Buttons
-done = "Done";
-edit = "Edit";
-premiumToolTitle = "Premium Tool";
-premiumToolMessage = "Video support is only offered for premium users. See upgrades in Settings section";
-save = "Save";
-cancel = "Cancel";
-ok = "Confirm";
-see = "View";
+instructionFirstStepCalc = "قم بإنشاء كلمة مرور واضغط على زر '='";
+instructionSecondStepCalc = "كلمة المرور: *****. أعد كتابة كلمة المرور وتأكيد بـ '='";
 
-// Errors and Purchase
-errorTitle = "Unexpected Error";
-errorMessage = "Please try again later";
-deleteFiles = "Delete file?";
-incorrectPassword = "Incorrect Password";
-tryAgain = "Try Again";
-products = "Products";
-loading = "Loading...";
-close = "Close";
-restore = "Restore";
-buy = "Buy";
+instructionFirstStepBank = "قم بإنشاء كلمة مرور واضغط على 'enter'";
+instructionSecondStepBank = "كلمة المرور: *****. أعد كتابة كلمة المرور وتأكيد بـ 'Enter'";
 
-// Folders and More
-folderTitle = "Folder Name";
-createActionTitle = "Create";
-cancelTitle = "Cancel";
-inputPlaceholder = "Enter the name for the new folder";
-folderNameAlreadyUsedTitle = "Name Already Used";
-folderNameAlreadyUsedText = "Choose another name for the folder";
-deleteConfirmationTitle = "Delete Files?";
+bankModeHasBeenActivated = "تم تنشيط وضع الخزنة";
+calcModeHasBeenActivated = "تم تنشيط وضع الآلة الحاسبة";
 
-// Show All
-hideAllVideos = "Hide all saved videos";
-showAllVideos = "Show all saved videos";
-hideAllPhotos = "Hide all saved photos";
-showAllPhotos = "Show all saved photos";
-wouldLikeSetProtection = "Would you like to add protection to your gallery?";
+welcomeInstructionBank = "أدخل كلمة المرور الخاصة بك";
 
-// Backup
-askToRestoreBackupTitle = "Restore Backup";
-askToRestoreBackupMessage = "Would you like to restore your last backup?";
-backupSuccessTitle = "Backup Successful";
-backupSuccessMessage = "Your backup was successfully restored";
-backupErrorTitle = "Backup Failed";
-backupErrorMessage = "No data found for backup";
-incorrectPasswordTitle = "Incorrect Password";
-incorrectPasswordMessage = "The provided password is not compatible, try again";
-insertPasswordTitle = "Insert your password";
-insertPasswordMessage = "Insert the password that was used to open the calculator";
-yes = "Yes";
-no = "No";
-enableiCloudTitle = "Action Required";
-enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Look for the Calc+ app in the list\n\n3. Enable iCloud";
-enableiCloudAction = "Go to Settings";
-premiumTooliCloudMessage = "Backup support is a premium feature. Product details will be presented";
+done = "تم";
+edit = "تعديل";
 
-// Delete and Backup
-delete = "Delete";
-backupNavigationTitle = "My Backup Items";
-backupNavigationSubtitle = "Photos are synced with your gallery every time the app is launched and there is wifi connection. Your backup is secure and the only way to see the photos is inside the app";
+premiumToolTitle = "أداة مميزة";
+premiumToolMessage = "الدعم للفيديو متاح فقط للمستخدمين المميزين. راجع الترقيات في قسم الإعدادات";
+
+save = "حفظ";
+cancel = "إلغاء";
+ok = "تأكيد";
+see = "عرض";
+
+// رسائل الخطأ
+errorTitle = "خطأ غير متوقع";
+errorMessage = "حاول مرة أخرى لاحقًا";
+deleteFiles = "حذف الملف؟";
+
+incorrectPassword = "كلمة المرور غير صحيحة";
+tryAgain = "حاول مرة أخرى";
+
+// الشراء
+products = "المنتجات المتاحة";
+loading = "جار التحميل...";
+close = "إغلاق";
+restore = "استعادة الشراء";
+buy = "شراء";
+
+// المجلدات
+folderTitle = "اسم المجلد";
+createActionTitle = "إنشاء";
+cancelTitle = "إلغاء";
+inputPlaceholder = "أدخل اسم المجلد الجديد";
+folderNameAlreadyUsedTitle = "اسم المجلد مستخدم بالفعل";
+folderNameAlreadyUsedText = "اختر اسمًا مختلفًا للمجلد";
+deleteConfirmationTitle = "حذف الملفات؟";
+
+// عرض الكل
+hideAllVideos = "إخفاء جميع الفيديوهات المحفوظة";
+showAllVideos = "عرض جميع الفيديوهات المحفوظة";
+hideAllPhotos = "إخفاء جميع الصور المحفوظة";
+showAllPhotos = "عرض جميع الصور المحفوظة";
+wouldLikeSetProtection = "هل ترغب في إضافة حماية لمعرضك؟";
+
+// النسخ الاحتياطي
+askToRestoreBackupTitle = "استعادة النسخ الاحتياطي";
+askToRestoreBackupMessage = "هل ترغب في استعادة آخر نسخة احتياطية؟";
+backupSuccessTitle = "نجح النسخ الاحتياطي";
+backupSuccessMessage = "تم استعادة النسخ الاحتياطي بنجاح";
+backupErrorTitle = "خطأ في النسخ الاحتياطي";
+backupErrorMessage = "لم يتم العثور على بيانات للنسخ الاحتياطي";
+incorrectPasswordTitle = "كلمة المرور غير صحيحة";
+incorrectPasswordMessage = "كلمة المرور المقدمة غير صالحة. حاول مرة أخرى.";
+insertPasswordTitle = "أدخل كلمتك السرية";
+insertPasswordMessage = "أدخل كلمة المرور التي تم استخدامها سابقًا لفتح التطبيق";
+yes = "نعم";
+no = "لا";
+enableiCloudTitle = "تفعيل iCloud مطلوب";
+enableiCloudSubtitle = "1. انقر على iCloud\n2. ابحث عن التطبيق Calc+ في القائمة\n3. تفعيل iCloud";
+enableiCloudAction = "اذهب إلى الإعدادات";
+premiumTooliCloudMessage = "ميزة النسخ الاحتياطي متاحة فقط للمستخدمين المميزين. ستظهر تفاصيل المنتج";
