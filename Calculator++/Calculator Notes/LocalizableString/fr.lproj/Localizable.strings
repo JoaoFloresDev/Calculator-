@@ -44,7 +44,7 @@ tryAgain = "Réessayer";
 products = "Produits disponibles";
 loading = "Chargement...";
 close = "Fermer";
-restore = "Restaurer les achats";
+restore = "Restaurer";
 buy = "Acheter";
 
 // Dossiers
