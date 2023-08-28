@@ -502,7 +502,7 @@ extension CollectionViewController {
             Defaults.setInt(.launchCounter, launchCounter + 1)
             
             let disableRecoveryButtonCounter = Defaults.getInt(.disableRecoveryButtonCounter)
-            Defaults.setInt(.launchCounter, disableRecoveryButtonCounter + 1)
+            Defaults.setInt(.disableRecoveryButtonCounter, disableRecoveryButtonCounter + 1)
         }
     }
     
@@ -539,6 +539,7 @@ extension CollectionViewController {
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         adsHandler.interstitialDidDismissScreen(delegate: self)
+        NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
     }
     
     private func setupAds() {
