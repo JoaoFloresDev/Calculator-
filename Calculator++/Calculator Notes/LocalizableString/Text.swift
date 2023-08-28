@@ -34,6 +34,7 @@ enum Text: String {
     
     case premiumToolTitle
     case premiumToolMessage
+    case premiumTooliCloudMessage
     
     case save
     case cancel
@@ -82,6 +83,14 @@ enum Text: String {
     case incorrectPasswordMessage
     case insertPasswordTitle
     case insertPasswordMessage
+    case enableiCloudTitle
+    case enableiCloudSubtitle
+    case enableiCloudAction
+    
+    case delete
+    case backupNavigationTitle
+    case backupNavigationSubtitle
+    
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

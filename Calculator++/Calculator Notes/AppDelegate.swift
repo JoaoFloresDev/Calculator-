@@ -1,100 +1,91 @@
-//
-//  AppDelegate.swift
-//  Calculator Notes
-//
-//  Created by Joao Flores on 08/04/20.
-//  Copyright © 2020 Joao Flores. All rights reserved.
-//
-
 import UIKit
 import CoreData
 import GoogleMobileAds
 import WLEmptyState
 
 @UIApplicationMain
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var isAlertBeingPresented = false
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        
+    // MARK: - App Life Cycle
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setupNotifications()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-
-        if UserDefaultService().getTypeProtection() == ProtectionMode.noProtection {
-                return true
-        }
-        
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        if UserDefaultService().getTypeProtection() == ProtectionMode.calculator {
-            let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
-            
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        } else {
-            let storyboard = UIStoryboard(name: "BankMode", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        }
-        
         WLEmptyState.configure()
+        
+        if shouldInitializeWindow() {
+            initializeWindow()
+        }
+        
         return true
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
-        if isShieldViewController() {
-            return
-        }
-        
-        if UserDefaultService().getTypeProtection() == .noProtection {
-            return
-        }
-        
+    // MARK: - Setup Functions
+    
+    private func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(alertWillBePresented), name: NSNotification.Name("alertWillBePresented"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(alertHasBeenDismissed), name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
+    }
+    
+    private func shouldInitializeWindow() -> Bool {
+        return UserDefaultService().getTypeProtection() != ProtectionMode.noProtection
+    }
+    
+    private func initializeWindow() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        if (UserDefaultService().getTypeProtection() == .calculator) {
-            let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "CalcMode")
-            
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        } else {
-            let storyboard = UIStoryboard(name: "BankMode", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "BankMode")
-            
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        }
+        let storyboardName = UserDefaultService().getTypeProtection() == ProtectionMode.calculator ? "CalculatorMode" : "BankMode"
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let viewControllerID = storyboardName == "CalculatorMode" ? "CalcMode" : "BankMode"
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: viewControllerID)
         
-        if let rootViewController = window?.rootViewController as? CalculatorViewController,
-           let presentedViewController = rootViewController.presentedViewController{
-            presentedViewController.dismiss(animated: false, completion: nil)
-        }
-        
-        else if let rootViewController = window?.rootViewController as? PasswordViewController,
-                let presentedViewController = rootViewController.presentedViewController{
-            presentedViewController.dismiss(animated: false, completion: nil)
-        }
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
     }
     
-    func isShieldViewController() -> Bool {
-        if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
-            var currentViewController = rootViewController
-            
-            while let presentedViewController = currentViewController.presentedViewController {
-                currentViewController = presentedViewController
-            }
-            return currentViewController is PasswordViewController ||
-            currentViewController is ChangePasswordViewController ||
-            currentViewController is CalculatorViewController ||
-            currentViewController is ChangeCalculatorViewController
-        }
-        
-        return false
+    // MARK: - Notification Actions
+    
+    @objc private func alertWillBePresented() {
+        isAlertBeingPresented = true
     }
     
-    // MARK: - Core Data stack
+    @objc private func alertHasBeenDismissed() {
+        isAlertBeingPresented = false
+    }
+    
+    // MARK: - App State Handling
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        guard !isShieldViewController(),
+              UserDefaultService().getTypeProtection() != .noProtection,
+              !isAlertBeingPresented else {
+            return
+        }
+        
+        initializeWindow()
+    }
+    
+    // MARK: - Utility Functions
+    
+    private func isShieldViewController() -> Bool {
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+            return false
+        }
+        
+        var currentViewController = rootViewController
+        while let presentedViewController = currentViewController.presentedViewController {
+            currentViewController = presentedViewController
+        }
+        
+        return currentViewController is PasswordViewController ||
+               currentViewController is ChangePasswordViewController ||
+               currentViewController is CalculatorViewController ||
+               currentViewController is ChangeCalculatorViewController
+    }
+    
+    // MARK: - Core Data Stack
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MakeSchoolNotes")
@@ -106,9 +97,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
-    // MARK: - Core Data Saving support
+    // MARK: - Core Data Saving Support
     
-    func saveContext () {
+    func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -119,6 +110,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
 }
-

@@ -45,8 +45,6 @@
 	<string>This application will use the camera for Augmented Reality.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>We will use authentication to show you the password for the app </string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Photo Library Additions access will be used to save images from the app in your iPhone</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Gallery access will be used to save images and videos within the app</string>
 	<key>UILaunchStoryboardName</key>

@@ -1,0 +1,87 @@
+// Version Premium
+premiumVersion = "Version Premium";
+noProtection = "Pas de protection";
+hideRecoverButton = "Masquer le bouton de récupération de mot de passe";
+chooseProtectionMode = "Choisissez le mode de protection";
+
+// Paramètres et Autres
+settings = "Paramètres";
+gallery = "Galerie";
+video = "Vidéo";
+notes = "Notes";
+
+instructionFirstStepCalc = "Créez un mot de passe et cliquez sur le bouton '='";
+instructionSecondStepCalc = "Mot de passe : *****. Répétez le mot de passe et confirmez avec '='";
+
+instructionFirstStepBank = "Créez un mot de passe et cliquez sur 'Entrée'";
+instructionSecondStepBank = "Mot de passe : *****. Répétez le mot de passe et confirmez avec 'Entrée'";
+
+bankModeHasBeenActivated = "Mode banque activé";
+calcModeHasBeenActivated = "Mode calculatrice activé";
+
+welcomeInstructionBank = "Entrez votre mot de passe";
+
+done = "Terminé";
+edit = "Éditer";
+
+premiumToolTitle = "Fonction Premium";
+premiumToolMessage = "Le support vidéo est seulement disponible pour les utilisateurs premium. Voir les mises à niveau dans la section Paramètres";
+
+save = "Sauvegarder";
+cancel = "Annuler";
+ok = "Confirmer";
+see = "Voir";
+
+// Messages d'Erreur
+errorTitle = "Erreur Inattendue";
+errorMessage = "Réessayez plus tard";
+deleteFiles = "Supprimer le fichier ?";
+
+incorrectPassword = "Mot de passe incorrect";
+tryAgain = "Réessayer";
+
+// Achat
+products = "Produits disponibles";
+loading = "Chargement...";
+close = "Fermer";
+restore = "Restaurer les achats";
+buy = "Acheter";
+
+// Dossiers
+folderTitle = "Nom du dossier";
+createActionTitle = "Créer";
+cancelTitle = "Annuler";
+inputPlaceholder = "Entrez le nom du nouveau dossier";
+folderNameAlreadyUsedTitle = "Nom de dossier déjà utilisé";
+folderNameAlreadyUsedText = "Choisissez un nom de dossier différent";
+deleteConfirmationTitle = "Supprimer les fichiers ?";
+
+// Tout montrer
+hideAllVideos = "Masquer toutes les vidéos enregistrées";
+showAllVideos = "Afficher toutes les vidéos enregistrées";
+hideAllPhotos = "Masquer toutes les photos enregistrées";
+showAllPhotos = "Afficher toutes les photos enregistrées";
+wouldLikeSetProtection = "Souhaitez-vous ajouter une protection à votre galerie ?";
+
+// Sauvegarde
+askToRestoreBackupTitle = "Restaurer la sauvegarde";
+askToRestoreBackupMessage = "Voulez-vous restaurer votre dernière sauvegarde ?";
+backupSuccessTitle = "Sauvegarde réussie";
+backupSuccessMessage = "Votre sauvegarde a été restaurée avec succès";
+backupErrorTitle = "Erreur de sauvegarde";
+backupErrorMessage = "Aucune donnée trouvée pour la sauvegarde";
+incorrectPasswordTitle = "Mot de passe incorrect";
+incorrectPasswordMessage = "Le mot de passe fourni n'est pas valide. Essayez à nouveau.";
+insertPasswordTitle = "Entrez votre mot de passe";
+insertPasswordMessage = "Entrez le mot de passe précédemment utilisé pour ouvrir l'application";
+yes = "Oui";
+no = "Non";
+enableiCloudTitle = "Action nécessaire";
+enableiCloudSubtitle = "\n1. Cliquez sur iCloud\n\n2. Localisez l'application Calc+ dans la liste\n\n3. Activez iCloud";
+enableiCloudAction = "Aller aux paramètres";
+premiumTooliCloudMessage = "La fonction de sauvegarde est exclusive aux utilisateurs Premium. Les détails du produit seront affichés";
+
+// Supprimer et Sauvegarde
+delete = "Supprimer";
+backupNavigationTitle = "Éléments sauvegardés dans la sauvegarde";
+backupNavigationSubtitle = "Les photos sont synchronisées avec les photos ajoutées à chaque fois que l'application est ouverte et qu'il y a une connexion Wi-Fi. Votre sauvegarde est sécurisée et le seul moyen de visualiser les photos est dans l'application";

@@ -202,7 +202,7 @@ extension VideoCollectionViewController {
         switch indexPath.section {
         case 0:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell {
-                if let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath.value()).last {
+                if let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath).last {
                     cell.setup(name: folderName)
                     cell.isSelectedCell = folders[indexPath.row].isSelected
                 }

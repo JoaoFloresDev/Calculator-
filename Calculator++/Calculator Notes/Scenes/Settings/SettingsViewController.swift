@@ -8,11 +8,28 @@
 
 import UIKit
 import StoreKit
+import Network
+import UIKit
+import Photos
+import AssetsPickerViewController
+import DTPhotoViewerController
+import CoreData
+import NYTPhotoViewer
+import ImageViewer
+import StoreKit
+import GoogleMobileAds
+import SceneKit
+import simd
+import Photos
+import StoreKit
+import Foundation
+import AVFoundation
+import AVKit
+import CloudKit
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - IBOutlet
-
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var recoverLabel: UILabel!
     @IBOutlet weak var chooseProtectionLabel: UILabel!
@@ -58,9 +75,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        SKStoreReviewController.requestReview()
+        DispatchQueue.main.async {
+            SKStoreReviewController.requestReview()
+        }
     }
 
+    lazy var loadingAlert = LoadingAlert(in: self)
+    
     var backupIsActivated = false {
         didSet {
             DispatchQueue.main.async {
@@ -75,6 +96,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         setupUI()
         setupGestures()
         loadData()
+        if Defaults.getString(.password) != Constants.recoverPassword {
+            restoreBackup.isHidden = true
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -86,8 +110,43 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
                 self.backupIsActivated = isEnabled
             }
         }
+        monitorWiFiAndPerformActions()
     }
 
+    private func monitorWiFiAndPerformActions() {
+        guard Defaults.getBool(.iCloudPurchased) else {
+            return
+        }
+        
+        isConnectedToWiFi { isConnected in
+            if isConnected {
+                BackupService.updateBackup()
+                if Defaults.getBool(.needSavePasswordInCloud) {
+                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
+                        if success && error == nil {
+                            Defaults.setBool(.needSavePasswordInCloud, false)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
+        let monitor = NWPathMonitor()
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+    }
+    
     // MARK: - UI
     private func setupTexts() {
         self.title = Text.settings.localized()
@@ -107,8 +166,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // MARK: - Backup
-    var loadingAlert = LoadingAlert()
-
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
         if Defaults.getBool(.iCloudPurchased) {
             let vc = BackupModalViewController(backupIsActivated: backupIsActivated, delegate: self)
@@ -126,7 +183,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func fetchCloudKitPassword() {
-        loadingAlert.startLoading(in: self)
+        loadingAlert.startLoading()
         CloudKitPasswordService.fetchAllPasswords { password, error in
             self.loadingAlert.stopLoading {
                 if let password = password {
@@ -143,20 +200,16 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             guard let insertedPassword = insertedPassword else {
                 return
             }
-            if password.contains(insertedPassword) || insertedPassword == "314159" {
-                self.startLoadingForBackupCheck()
+            if password.contains(insertedPassword) || insertedPassword == Constants.recoverPassword {
+                self.checkBackupData()
             } else {
                 Alerts.showPasswordError(controller: self)
             }
         }
     }
 
-    private func startLoadingForBackupCheck() {
-        loadingAlert.startLoading(in: self)
-        checkBackupData()
-    }
-
     private func checkBackupData() {
+        loadingAlert.startLoading()
         BackupService.hasDataInCloudKit { hasData, _, items  in
             self.loadingAlert.stopLoading {
                 if let items = items, !items.isEmpty, hasData {
@@ -177,7 +230,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func startLoadingForBackupRestore(backupItems: [(String, UIImage)]) {
-        loadingAlert.startLoading(in: self)
+        loadingAlert.startLoading()
         restoreBackup(backupItems: backupItems)
     }
 
@@ -185,7 +238,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         BackupService.restoreBackup(photos: backupItems) { success, _ in
             self.loadingAlert.stopLoading {
                 if success {
-                    self.dismiss(animated: true)
                     Alerts.showBackupSuccess(controller: self)
                     let controllers = self.tabBarController?.viewControllers
                     let navigation = controllers?[0] as? UINavigationController

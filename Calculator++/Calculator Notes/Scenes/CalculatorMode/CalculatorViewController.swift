@@ -33,7 +33,7 @@ class CalculatorViewController: BaseCalculatorViewController {
                 if success {
                     DispatchQueue.main.async {
                         var instructionText = Text.instructionSecondStepCalc.localized()
-                        let key = UserDefaults.standard.string(forKey: "Key") ?? "314159"
+                        let key = Defaults.getString(.password)
                         instructionText = instructionText.replacingOccurrences(of: "*****", with: key)
                         self.instructionsLabel.text = instructionText
                         self.instructionsLabel.font = UIFont.boldSystemFont(ofSize: 22.0)
@@ -71,11 +71,9 @@ class CalculatorViewController: BaseCalculatorViewController {
             key = String(runningNumber)
             captureKey = 2
             keyTemp = key
-            
             clear()
-            
         } else if(captureKey == 2 && String(runningNumber) == keyTemp && runningNumber.count <= 6 && runningNumber.count >= 1) {
-            UserDefaults.standard.set (key, forKey: "Key")
+            Defaults.setString(.password, key)
             captureKey = 0
         }
         else if((String(runningNumber) == key && captureKey == 0) || runningNumber == recoveryKey) {

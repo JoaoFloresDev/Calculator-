@@ -1,0 +1,87 @@
+// Versión Premium
+premiumVersion = "Versión Premium";
+noProtection = "Sin Protección";
+hideRecoverButton = "Ocultar Botón Face ID";
+chooseProtectionMode = "Elija el Modo de Protección";
+
+// Configuración y Otros
+settings = "Configuración";
+gallery = "Galería";
+video = "Vídeo";
+notes = "Notas";
+
+instructionFirstStepCalc = "Crea una contraseña y pulsa el botón '='";
+instructionSecondStepCalc = "Contraseña: *****. Repite la contraseña y confirma con '='";
+
+instructionFirstStepBank = "Crea una contraseña y pulsa 'enter'";
+instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
+
+bankModeHasBeenActivated = "Modo caja fuerte activado";
+calcModeHasBeenActivated = "Modo calculadora activado";
+
+welcomeInstructionBank = "Introduce tu contraseña";
+
+done = "Hecho";
+edit = "Editar";
+
+premiumToolTitle = "Herramienta Premium";
+premiumToolMessage = "El soporte para vídeo solo está disponible para usuarios premium. Consulta las mejoras en la sección Configuración";
+
+save = "Guardar";
+cancel = "Cancelar";
+ok = "Confirmar";
+see = "Ver";
+
+// Mensajes de Error
+errorTitle = "Error Inesperado";
+errorMessage = "Inténtalo de nuevo más tarde";
+deleteFiles = "¿Eliminar Archivo?";
+
+incorrectPassword = "Contraseña Incorrecta";
+tryAgain = "Intentar de Nuevo";
+
+// Compra
+products = "Productos Disponibles";
+loading = "Cargando...";
+close = "Cerrar";
+restore = "Restaurar Compras";
+buy = "Comprar";
+
+// Carpetas
+folderTitle = "Nombre de la Carpeta";
+createActionTitle = "Crear";
+cancelTitle = "Cancelar";
+inputPlaceholder = "Introduce el Nombre de la Nueva Carpeta";
+folderNameAlreadyUsedTitle = "Nombre de Carpeta Ya Utilizado";
+folderNameAlreadyUsedText = "Elige un Nombre Diferente para la Carpeta";
+deleteConfirmationTitle = "¿Eliminar Archivos?";
+
+// Mostrar Todo
+hideAllVideos = "Ocultar Todos los Vídeos Guardados";
+showAllVideos = "Mostrar Todos los Vídeos Guardados";
+hideAllPhotos = "Ocultar Todas las Fotos Guardadas";
+showAllPhotos = "Mostrar Todas las Fotos Guardadas";
+wouldLikeSetProtection = "¿Desea Añadir Protección a su Galería?";
+
+// Backup
+askToRestoreBackupTitle = "Restaurar Copia de Seguridad";
+askToRestoreBackupMessage = "¿Deseas restaurar tu última copia de seguridad?";
+backupSuccessTitle = "Copia de Seguridad Realizada con Éxito";
+backupSuccessMessage = "Tu copia de seguridad se ha restaurado con éxito";
+backupErrorTitle = "Error al Realizar la Copia de Seguridad";
+backupErrorMessage = "No se han encontrado datos para la copia de seguridad";
+incorrectPasswordTitle = "Contraseña Incorrecta";
+incorrectPasswordMessage = "La contraseña proporcionada no es válida. Inténtalo de nuevo.";
+insertPasswordTitle = "Introduce tu Contraseña";
+insertPasswordMessage = "Introduce la contraseña usada previamente para abrir la aplicación";
+yes = "Sí";
+no = "No";
+enableiCloudTitle = "Acción Necesaria";
+enableiCloudSubtitle = "\n1. Haz clic en iCloud\n\n2. Localiza la aplicación Calc+ en la lista\n\n3. Activa iCloud";
+enableiCloudAction = "Ir a Configuración";
+premiumTooliCloudMessage = "La función de copia de seguridad es exclusiva para usuarios Premium. Detalles del producto serán presentados";
+
+// Eliminar y Copia de Seguridad
+delete = "Eliminar";
+backupNavigationTitle = "Elementos Guardados en la Copia de Seguridad";
+backupNavigationSubtitle = "Las fotos se sincronizan con las fotos añadidas cada vez que se abre la aplicación y hay conexión Wi-Fi. Tu copia de seguridad está segura y la única forma de ver las fotos es dentro de la aplicación";

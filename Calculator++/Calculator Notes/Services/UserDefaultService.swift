@@ -41,7 +41,7 @@ enum IntKey: String {
 }
 
 enum StringKey: String {
-    case password
+    case password = "Key"
     
     func set(_ value: String) {
         userDefaults.set(value, forKey: rawValue)
@@ -124,4 +124,9 @@ struct UserDefaultService {
     func setTypeProtection(protectionMode: ProtectionMode) {
         UserDefaults.standard.set(protectionMode.rawValue, forKey: protectionModeKey)
     }
+}
+
+struct Constants {
+    static let deepSeparatorPath = "@"
+    static let recoverPassword = "314159"
 }

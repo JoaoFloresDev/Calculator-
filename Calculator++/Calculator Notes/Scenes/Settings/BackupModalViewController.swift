@@ -87,6 +87,35 @@ class BackupModalViewController: UIViewController {
         return restoreBackupView
     }()
     
+    lazy var viewBackup: UIView = {
+        let label = UILabel()
+        label.text = "Ver meu backup"
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        let viewBackupView = UIView()
+        viewBackupView.backgroundColor = .systemGray5
+        viewBackupView.addSubview(label)
+        
+        label.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalToSuperview().inset(8)
+            make.leading.equalToSuperview().inset(16)
+        }
+        
+        viewBackupView.snp.makeConstraints { make in
+            make.height.equalTo(50) // Definindo a altura desejada
+        }
+        
+        // Adicionar o gesture recognizer para tornar a view clicável
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewBackupTapped))
+        viewBackupView.addGestureRecognizer(tapGesture)
+        
+        return viewBackupView
+    }()
+
+    @objc func viewBackupTapped() {
+        let navigation = UINavigationController(rootViewController: CloudKitItemsViewController())
+        present(navigation, animated: true)
+    }
+    
     @objc func restoreBackupTapped() {
         self.dismiss(animated: false) {
             self.delegate?.restoreBackupTapped()
@@ -95,7 +124,7 @@ class BackupModalViewController: UIViewController {
 
     lazy var contentStackView: UIStackView = {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [backupStatus, restoreBackup, spacer])
+        let stackView = UIStackView(arrangedSubviews: [backupStatus, restoreBackup, viewBackup, spacer])
         stackView.axis = .vertical
         stackView.spacing = 1
         return stackView
@@ -139,8 +168,15 @@ class BackupModalViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupConstraints()
+        
+        // Adiciona um gesto de tap para fechar o modal
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
         dimmedView.addGestureRecognizer(tapGesture)
+        
+        // Adiciona um gesto de swipe para baixo
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeDown))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
     }
     
     @objc func handleCloseAction() {
@@ -188,6 +224,12 @@ class BackupModalViewController: UIViewController {
         // Activate constraints
         containerViewHeightConstraint?.activate()
         containerViewBottomConstraint?.activate()
+    }
+    
+    @objc func handleSwipeDown(_ gesture: UISwipeGestureRecognizer) {
+        // Aqui você coloca a lógica que deseja executar quando o usuário fizer o swipe para baixo
+        print("Swipe para baixo detectado")
+        animateDismissView()  // Por exemplo, você pode fechar o modal
     }
     
     func animateContainerHeight(_ height: CGFloat) {

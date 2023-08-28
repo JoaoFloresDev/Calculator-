@@ -146,9 +146,11 @@ extension AssetsManager {
         if PHPhotoLibrary.authorizationStatus() == .authorized {
             completion(true)
         } else {
+            NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
             if #available(iOS 14, *) {
-                PHPhotoLibrary.requestAuthorization(for: .addOnly, handler: { (status) in
+                PHPhotoLibrary.requestAuthorization(for: .readWrite, handler: { (status) in
                     DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
                         switch status {
                         case .authorized:
                             completion(true)
@@ -160,6 +162,7 @@ extension AssetsManager {
             } else {
                 PHPhotoLibrary.requestAuthorization { (status) in
                     DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
                         switch status {
                         case .authorized:
                             completion(true)

@@ -21,7 +21,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Variables
     var modelData: [Photo] = []
     var folders: [Folder] = []
-    var loadingAlert = LoadingAlert()
+    lazy var loadingAlert = LoadingAlert(in: self)
     var coordinator: CollectionViewCoordinatorProtocol?
     
     var isEditMode = false {
@@ -36,6 +36,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        coordinator = CollectionViewCoordinator(self)
         setupData()
         configureNavigationBar()
         setupAds()
@@ -43,7 +44,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         handleInitialLaunch()
         monitorWiFiAndPerformActions()
-        coordinator = CollectionViewCoordinator(self)
     }
     
     func deselectAllFoldersObjects() {
@@ -61,53 +61,90 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
 
 // MARK: - EditLeftBarButtonItemDelegate
 extension CollectionViewController: EditLeftBarButtonItemDelegate {
+    
     func selectImagesButtonTapped() {
-        self.deselectAllFoldersObjects()
-        self.deselectAllFileObjects()
+        handleSelectImagesButton()
+    }
+    
+    func shareImageButtonTapped() {
+        handleShareImageButton()
+    }
+    
+    func deleteButtonTapped() {
+        handleDeleteButton()
+    }
+    
+    // MARK: - Helper Functions
+    
+    private func handleSelectImagesButton() {
+        deselectAllItems()
+        toggleEditModeAndReloadData()
+    }
+    
+    private func handleShareImageButton() {
+        coordinator?.shareImage(modelData: modelData)
+    }
+    
+    private func handleDeleteButton() {
+        Alerts.showConfirmationDelete(controller: self) { [weak self] in
+            self?.performDeletionTasks()
+        }
+    }
+    
+    private func performDeletionTasks() {
+        deleteSelectedFolders()
+        deleteSelectedPhotos()
+        reloadCollectionViewSections()
+    }
+    
+    private func deselectAllItems() {
+        deselectAllFoldersObjects()
+        deselectAllFileObjects()
+    }
+    
+    private func toggleEditModeAndReloadData() {
         if isEditMode {
-            collectionView?.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+                SKStoreReviewController.requestReview()
+            }
         }
         isEditMode.toggle()
     }
     
-    func shareImageButtonTapped() {
-        coordinator?.shareImage(modelData: modelData)
-    }
-    
-    func deleteButtonTapped() {
-        Alerts.showConfirmationDelete(controller: self) { [weak self] in
-            guard let self = self else { return }
-            
-            self.deleteSelectedFolders()
-            self.deleteSelectedPhotos()
-            
-            self.reloadCollectionViewSections()
-        }
-    }
-    
     private func deleteSelectedFolders() {
-        folders.removeAll { folder in
-            folder.isSelected
+        for folder in folders where folder.isSelected {
+            foldersService.delete(folder: folder.name, basePath: basePath)
         }
-        if folders.isEmpty {
-            filesIsExpanded = true
-        }
+        
+        folders.removeAll { $0.isSelected }
+        
+        updateFilesIsExpanded()
         deselectAllFoldersObjects()
     }
     
     private func deleteSelectedPhotos() {
-        modelData.removeAll { photo in
-            photo.isSelected
-        }
-        modelData.forEach { photo in
-            ModelController.deleteImageObject(name: photo.name, basePath: basePath)
-        }
+        deleteImagesFromModel()
+        modelData.removeAll { $0.isSelected }
         deselectAllFileObjects()
     }
     
+    private func deleteImagesFromModel() {
+        modelData.forEach { photo in
+            if photo.isSelected {
+                ModelController.deleteImageObject(name: photo.name, basePath: basePath)
+            }
+        }
+    }
+    
+    private func updateFilesIsExpanded() {
+        if folders.isEmpty {
+            filesIsExpanded = true
+        }
+    }
+    
     private func reloadCollectionViewSections() {
-        collectionView?.reloadSections(IndexSet(integer: 0))
-        collectionView?.reloadSections(IndexSet(integer: 1))
+        collectionView?.reloadSections(IndexSet(integersIn: 0...1))
     }
 }
 
@@ -167,11 +204,7 @@ extension CollectionViewController {
         case 0:
             return folders.count
         default:
-            if filesIsExpanded {
-                return modelData.count
-            } else {
-                return 0
-            }
+            return filesIsExpanded ? modelData.count : .zero
         }
     }
     
@@ -189,7 +222,7 @@ extension CollectionViewController {
             return UICollectionViewCell()
         }
         
-        let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath.value()).last ?? ""
+        let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath).last ?? ""
         cell.setup(name: folderName)
         cell.isSelectedCell = folders[indexPath.row].isSelected
         
@@ -211,15 +244,24 @@ extension CollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isEditMode {
-            updateSelectedPhotos(indexPath: indexPath)
-        } else {
-            switch indexPath.section {
-            case 0:
-                coordinator?.navigateToFolderViewController(indexPath: indexPath, folders: folders, basePath: basePath)
-            default:
-                coordinator?.presentImageGallery(for: indexPath.item)
-            }
+        isEditMode ? handleEditModeSelection(at: indexPath) : handleNormalModeSelection(at: indexPath)
+    }
+    
+    private func handleEditModeSelection(at indexPath: IndexPath) {
+        updateSelectedPhotos(indexPath: indexPath)
+    }
+    
+    private func handleNormalModeSelection(at indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            coordinator?.navigateToFolderViewController(
+                indexPath: indexPath,
+                folders: folders,
+                basePath: basePath
+            )
+            
+        default:
+            coordinator?.presentImageGallery(for: indexPath.item)
         }
     }
     
@@ -287,37 +329,94 @@ extension CollectionViewController {
         
         return footerView
     }
-    
 }
-
 
 // MARK: - AssetsPickerViewControllerDelegate
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
+        guard let collectionView = self.collectionView else {
+            print("Erro: collectionView não está inicializado.")
+            return
+        }
+        
         for asset in assets {
-            if(asset.mediaType.rawValue != 2) {
-                image = getAssetThumbnail(asset: asset)
-                guard let image = image else {
+            addImage(asset: asset) { [weak self] photo in
+                guard let self = self else {
+                    print("Erro: self foi desalocado.")
                     return
                 }
-                if let photo = ModelController.saveImageObject(image: image,
-                                                               basePath: basePath) {
-                    modelData.append(photo)
-                    collectionView?.reloadSections(IndexSet(integer: 1))
+                
+                if let photo = photo {
+                    DispatchQueue.main.async {
+                        self.modelData.append(photo)
+                        
+                        let lastItemIndex = self.modelData.count - 1
+                        
+                        // Verificar se o índice é válido antes de inserir o item
+                        if lastItemIndex >= 0 && lastItemIndex < self.modelData.count {
+                            let indexPath = IndexPath(item: lastItemIndex, section: 1)
+                            
+                            // Atualizar somente a nova célula adicionada
+                            collectionView.performBatchUpdates({
+                                collectionView.insertItems(at: [indexPath])
+                            }, completion: nil)
+                        } else {
+                            print("Erro: Índice inválido.")
+                        }
+                    }
+                } else {
+                    print("Erro: Falha ao adicionar imagem.")
                 }
             }
         }
     }
     
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+    func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
+        if asset.mediaType != .image {
+            completion(nil)
+            return
+        }
+        
+        getAssetThumbnail(asset: asset) { image in
+            if let image = image {
+                if let photo = ModelController.saveImageObject(image: image, basePath: self.basePath) {
+                    completion(photo)
+                } else {
+                    print("Erro ao salvar a imagem.")
+                    completion(nil)
+                }
+            } else {
+                print("Falha ao carregar a miniatura do asset.")
+                completion(nil)
+            }
+        }
+    }
+    
+    func getAssetThumbnail(asset: PHAsset, completion: @escaping (UIImage?) -> Void) {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 1500, height: 1500), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result ?? UIImage()
-        })
-        return thumbnail
+        option.isSynchronous = false
+        option.isNetworkAccessAllowed = true
+        
+        manager.requestImage(for: asset,
+                             targetSize: CGSize(width: 1500, height: 1500),
+                             contentMode: .aspectFit,
+                             options: option) { (result, info) in
+            
+            guard let info = info else {
+                completion(nil)
+                return
+            }
+            
+            let isDegraded = (info[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
+            
+            if !isDegraded, let result = result {
+                completion(result)
+            } else if !isDegraded {
+                print("Não foi possível obter a imagem.")
+                completion(nil)
+            }
+        }
     }
     
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
@@ -328,6 +427,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         return true
     }
 }
+
 
 // MARK: - Extension Viewer Image
 extension CollectionViewController: GalleryItemsDataSource {
@@ -348,80 +448,7 @@ extension CollectionViewController {
     private func setupFirstUse() {
         if !Defaults.getBool(.notFirstUse) {
             Defaults.setBool(.notFirstUse, true)
-            performFirstUseSetup()
-        }
-    }
-    
-    private func performFirstUseSetup() {
-        loadingAlert.startLoading(in: self)
-        CloudKitPasswordService.fetchAllPasswords { [weak self] password, error in
-            guard let self = self, let password = password, error == nil else {
-                self?.loadingAlert.stopLoading {
-                    self?.showSetProtectionOrNavigateToSettings()
-                }
-                return
-            }
-            self.loadingAlert.stopLoading {
-                self.handleFirstUseCompletion(with: password)
-            }
-        }
-    }
-    
-    private func handleFirstUseCompletion(with password: [String]) {
-        Alerts.askUserToRestoreBackup(on: self) { [weak self] restoreBackup in
-            if restoreBackup {
-                self?.handleRestoreBackup(password: password)
-            } else {
-                self?.showSetProtectionOrNavigateToSettings()
-            }
-        }
-    }
-    
-    private func handleRestoreBackup(password: [String]) {
-        Alerts.insertPassword(controller: self) { [weak self] insertedPassword in
-            guard let self = self, let insertedPassword = insertedPassword else {
-                return
-            }
-            if password.contains(insertedPassword) {
-                self.loadingAlert.startLoading(in: self)
-                BackupService.hasDataInCloudKit { [weak self] hasData, _, items in
-                    self?.loadingAlert.stopLoading {
-                        guard let self = self, let items = items, !items.isEmpty, hasData else {
-                            self?.showSetProtectionOrNavigateToSettings()
-                            return
-                        }
-                        self.restoreBackupAndReloadData(photos: items)
-                    }
-                }
-            }
-        }
-    }
-    
-    private func showSetProtectionOrNavigateToSettings() {
-        Alerts.showSetProtectionAsk(controller: self) { [weak self] createProtection in
-            if createProtection {
-                self?.coordinator?.presentChangePasswordCalcMode()
-            } else {
-                self?.coordinator?.navigateToSettingsTab()
-            }
-        }
-    }
-    
-    private func restoreBackupAndReloadData(photos: [(String, UIImage)]) {
-        loadingAlert.startLoading(in: self)
-        BackupService.restoreBackup(photos: photos) { [weak self] success, _ in
-            self?.loadingAlert.stopLoading {
-                if success {
-                    self?.setupData()
-                    self?.collectionView?.reloadData()
-                    self?.showSetProtectionOrNavigateToSettings()
-                } else {
-                    guard let strongSelf = self else {
-                        return
-                    }
-                    Alerts.showBackupError(controller: strongSelf)
-                }
-            }
+            coordinator?.presentWelcomeController()
         }
     }
     
@@ -470,7 +497,7 @@ extension CollectionViewController {
     }
     
     private func handleInitialLaunch() {
-        if basePath == Constants.deepSeparatorPath.value() {
+        if basePath == Constants.deepSeparatorPath {
             let launchCounter = Defaults.getInt(.launchCounter)
             Defaults.setInt(.launchCounter, launchCounter + 1)
             
@@ -518,5 +545,20 @@ extension CollectionViewController {
         adsHandler.setupAds(controller: self,
                             bannerDelegate: self,
                             interstitialDelegate: self)
+    }
+}
+
+extension CollectionViewController: WelcomeViewControllerDelegate {
+    func navigateToSettingsTab() {
+        coordinator?.navigateToSettingsTab()
+    }
+    
+    func presentChangePasswordCalcMode() {
+        coordinator?.presentChangePasswordCalcMode()
+    }
+    
+    func backupDone() {
+        self.setupData()
+        self.collectionView?.reloadData()
     }
 }

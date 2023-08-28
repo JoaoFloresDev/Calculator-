@@ -1,0 +1,95 @@
+/*
+  Localizable.strings
+  Calculator Notes
+
+  Erstellt von João Victor Flores da Costa am 06.02.22.
+  Urheberrecht © 2022 MakeSchool. Alle Rechte vorbehalten.
+*/
+
+// Premium-Version
+premiumVersion = "Premium-Version";
+noProtection = "Kein Schutz";
+hideRecoverButton = "Passwort-Wiederherstellungsbutton ausblenden";
+chooseProtectionMode = "Schutzmodus auswählen";
+
+// Einstellungen und andere
+settings = "Einstellungen";
+gallery = "Galerie";
+video = "Video";
+notes = "Notizen";
+
+instructionFirstStepCalc = "Erstellen Sie ein Passwort und klicken Sie auf den '=' Button";
+instructionSecondStepCalc = "Passwort: *****. Wiederholen Sie das Passwort und bestätigen Sie mit '='";
+
+instructionFirstStepBank = "Erstellen Sie ein Passwort und klicken Sie auf 'Enter'";
+instructionSecondStepBank = "Passwort: *****. Wiederholen Sie das Passwort und bestätigen Sie mit 'Enter'";
+
+bankModeHasBeenActivated = "Bankmodus wurde aktiviert";
+calcModeHasBeenActivated = "Rechnermodus wurde aktiviert";
+
+welcomeInstructionBank = "Geben Sie Ihr Passwort ein";
+
+done = "Fertig";
+edit = "Bearbeiten";
+
+premiumToolTitle = "Premium-Funktion";
+premiumToolMessage = "Video-Support ist nur für Premium-Nutzer verfügbar. Sehen Sie Upgrades im Einstellungsmenü";
+
+save = "Speichern";
+cancel = "Abbrechen";
+ok = "OK";
+see = "Sehen";
+
+// Fehlermeldungen
+errorTitle = "Unerwarteter Fehler";
+errorMessage = "Versuchen Sie es später erneut";
+deleteFiles = "Datei löschen?";
+
+incorrectPassword = "Falsches Passwort";
+tryAgain = "Erneut versuchen";
+
+// Kauf
+products = "Verfügbare Produkte";
+loading = "Laden...";
+close = "Schließen";
+restore = "Käufe wiederherstellen";
+buy = "Kaufen";
+
+// Ordner
+folderTitle = "Ordnername";
+createActionTitle = "Erstellen";
+cancelTitle = "Abbrechen";
+inputPlaceholder = "Geben Sie den Namen des neuen Ordners ein";
+folderNameAlreadyUsedTitle = "Ordnername bereits vergeben";
+folderNameAlreadyUsedText = "Wählen Sie einen anderen Ordnernamen";
+deleteConfirmationTitle = "Dateien löschen?";
+
+// Alles anzeigen
+hideAllVideos = "Alle gespeicherten Videos ausblenden";
+showAllVideos = "Alle gespeicherten Videos anzeigen";
+hideAllPhotos = "Alle gespeicherten Fotos ausblenden";
+showAllPhotos = "Alle gespeicherten Fotos anzeigen";
+wouldLikeSetProtection = "Möchten Sie Ihrer Galerie Schutz hinzufügen?";
+
+// Backup
+askToRestoreBackupTitle = "Backup wiederherstellen";
+askToRestoreBackupMessage = "Möchten Sie Ihr letztes Backup wiederherstellen?";
+backupSuccessTitle = "Backup erfolgreich";
+backupSuccessMessage = "Ihr Backup wurde erfolgreich wiederhergestellt";
+backupErrorTitle = "Fehler beim Backup";
+backupErrorMessage = "Keine Daten zum Backup gefunden";
+incorrectPasswordTitle = "Falsches Passwort";
+incorrectPasswordMessage = "Das angegebene Passwort ist nicht gültig. Versuchen Sie es erneut.";
+insertPasswordTitle = "Geben Sie Ihr Passwort ein";
+insertPasswordMessage = "Geben Sie das zuvor verwendete Passwort ein, um die App zu öffnen";
+yes = "Ja";
+no = "Nein";
+enableiCloudTitle = "Aktion erforderlich";
+enableiCloudSubtitle = "\n1. Klicken Sie auf iCloud\n\n2. Suchen Sie die App Calc+ in der Liste\n\n3. Aktivieren Sie iCloud";
+enableiCloudAction = "Zu den Einstellungen gehen";
+premiumTooliCloudMessage = "Die Backup-Funktion ist exklusiv für Premium-Nutzer. Produktdetails werden angezeigt";
+
+// Löschen und Backup
+delete = "Löschen";
+backupNavigationTitle = "In Backup gespeicherte Elemente";
+backupNavigationSubtitle = "Fotos werden mit den hinzugefügten Fotos synchronisiert, jedes Mal wenn die App geöffnet wird und eine WLAN-Verbindung besteht. Ihr Backup ist sicher und die einzige Möglichkeit, die Fotos anzusehen, ist innerhalb der App";
