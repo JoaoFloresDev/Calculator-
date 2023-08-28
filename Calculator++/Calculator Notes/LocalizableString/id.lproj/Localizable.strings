@@ -1,0 +1,95 @@
+/*
+  Localizable.strings
+  Calculator Notes
+
+  Dibuat oleh João Victor Flores da Costa pada 06/02/22.
+  Hak cipta © 2022 MakeSchool. Semua hak dilindungi.
+*/
+
+// Versi Premium
+premiumVersion = "Versi Premium";
+noProtection = "Tidak Ada Perlindungan";
+hideRecoverButton = "Sembunyikan Tombol Pemulihan Sandi";
+chooseProtectionMode = "Pilih Mode Perlindungan";
+
+// Pengaturan dan lain-lain
+settings = "Pengaturan";
+gallery = "Galeri";
+video = "Video";
+notes = "Catatan";
+
+instructionFirstStepCalc = "Buat kata sandi dan klik tombol '='";
+instructionSecondStepCalc = "Kata sandi: *****. Ulangi kata sandi dan konfirmasi dengan '='";
+
+instructionFirstStepBank = "Buat kata sandi dan klik 'masuk'";
+instructionSecondStepBank = "Kata sandi: *****. Ulangi kata sandi dan konfirmasi dengan 'masuk'";
+
+bankModeHasBeenActivated = "Mode bank telah diaktifkan";
+calcModeHasBeenActivated = "Mode kalkulator telah diaktifkan";
+
+welcomeInstructionBank = "Masukkan kata sandi Anda";
+
+done = "Selesai";
+edit = "Ubah";
+
+premiumToolTitle = "Fitur Premium";
+premiumToolMessage = "Dukungan untuk video hanya untuk pengguna premium. Lihat upgrade di bagian pengaturan";
+
+save = "Simpan";
+cancel = "Batal";
+ok = "Oke";
+see = "Lihat";
+
+// Pesan kesalahan
+errorTitle = "Kesalahan Tidak Terduga";
+errorMessage = "Coba lagi nanti";
+deleteFiles = "Hapus file?";
+
+incorrectPassword = "Kata sandi salah";
+tryAgain = "Coba lagi";
+
+// Pembelian
+products = "Produk yang tersedia";
+loading = "Memuat...";
+close = "Tutup";
+restore = "Pulihkan Pembelian";
+buy = "Beli";
+
+// Folder
+folderTitle = "Nama folder";
+createActionTitle = "Buat";
+cancelTitle = "Batal";
+inputPlaceholder = "Masukkan nama folder baru";
+folderNameAlreadyUsedTitle = "Nama folder sudah digunakan";
+folderNameAlreadyUsedText = "Pilih nama lain untuk folder";
+deleteConfirmationTitle = "Hapus file?";
+
+// Tampilkan semua
+hideAllVideos = "Sembunyikan semua video yang disimpan";
+showAllVideos = "Tampilkan semua video yang disimpan";
+hideAllPhotos = "Sembunyikan semua foto yang disimpan";
+showAllPhotos = "Tampilkan semua foto yang disimpan";
+wouldLikeSetProtection = "Ingin menambahkan perlindungan ke galeri Anda?";
+
+// Backup
+askToRestoreBackupTitle = "Pulihkan Cadangan";
+askToRestoreBackupMessage = "Apakah Anda ingin memulihkan cadangan terakhir Anda?";
+backupSuccessTitle = "Cadangan Berhasil";
+backupSuccessMessage = "Cadangan Anda telah berhasil dipulihkan";
+backupErrorTitle = "Kesalahan Membuat Cadangan";
+backupErrorMessage = "Tidak ada data untuk cadangan";
+incorrectPasswordTitle = "Kata Sandi Salah";
+incorrectPasswordMessage = "Kata sandi yang diberikan tidak valid. Coba lagi.";
+insertPasswordTitle = "Masukkan kata sandi Anda";
+insertPasswordMessage = "Masukkan kata sandi yang digunakan sebelumnya untuk membuka aplikasi";
+yes = "Ya";
+no = "Tidak";
+enableiCloudTitle = "Tindakan Diperlukan";
+enableiCloudSubtitle = "\n1. Klik pada iCloud\n\n2. Cari aplikasi Calc+ dalam daftar\n\n3. Aktifkan iCloud";
+enableiCloudAction = "Pergi ke Pengaturan";
+premiumTooliCloudMessage = "Fitur cadangan hanya untuk pengguna premium. Deskripsi produk akan ditampilkan";
+
+// Hapus dan Cadangan
+delete = "Hapus";
+backupNavigationTitle = "Item yang disimpan di cadangan";
+backupNavigationSubtitle = "Foto ditambahkan setiap kali membuka aplikasi Foto dan saat koneksi Wi-Fi. Cadangan Anda aman dan satu-satunya cara untuk melihat foto adalah dari dalam aplikasi";

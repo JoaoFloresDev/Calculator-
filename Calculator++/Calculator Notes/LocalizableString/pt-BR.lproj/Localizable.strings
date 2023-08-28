@@ -56,7 +56,7 @@ restore = "Restaurar Compras";
 buy = "Comprar";
 
 // Pastas
-folderTitle = "Título da Pasta";
+folderTitle = "Nome da Pasta";
 createActionTitle = "Criar";
 cancelTitle = "Cancelar";
 inputPlaceholder = "Insira o Nome da Nova Pasta";

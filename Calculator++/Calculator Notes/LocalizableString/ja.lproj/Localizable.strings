@@ -1,0 +1,87 @@
+// プレミアムバージョン
+premiumVersion = "プレミアムバージョン";
+noProtection = "保護なし";
+hideRecoverButton = "パスワード回復ボタンを隠す";
+chooseProtectionMode = "保護モードを選択";
+
+// 設定とその他
+settings = "設定";
+gallery = "ギャラリー";
+video = "ビデオ";
+notes = "ノート";
+
+instructionFirstStepCalc = "パスワードを作成して'='ボタンをクリック";
+instructionSecondStepCalc = "パスワード：*****。 パスワードを再入力して'='で確認";
+
+instructionFirstStepBank = "パスワードを作成して'Enter'をクリック";
+instructionSecondStepBank = "パスワード：*****。 パスワードを再入力して'Enter'で確認";
+
+bankModeHasBeenActivated = "セーフモードが有効になりました";
+calcModeHasBeenActivated = "電卓モードが有効になりました";
+
+welcomeInstructionBank = "パスワードを入力してください";
+
+done = "完了";
+edit = "編集";
+
+premiumToolTitle = "プレミアム機能";
+premiumToolMessage = "ビデオサポートはプレミアムユーザーのみに提供されます。設定セクションでアップグレードを確認してください";
+
+save = "保存";
+cancel = "キャンセル";
+ok = "確認";
+see = "見る";
+
+// エラーメッセージ
+errorTitle = "予期せぬエラー";
+errorMessage = "後でもう一度お試しください";
+deleteFiles = "ファイルを削除しますか？";
+
+incorrectPassword = "パスワードが間違っています";
+tryAgain = "もう一度試してください";
+
+// 購入
+products = "利用可能な製品";
+loading = "読み込み中...";
+close = "閉じる";
+restore = "購入を復元";
+buy = "購入";
+
+// フォルダ
+folderTitle = "フォルダ名";
+createActionTitle = "作成";
+cancelTitle = "キャンセル";
+inputPlaceholder = "新しいフォルダの名前を入力してください";
+folderNameAlreadyUsedTitle = "フォルダ名は既に使用されています";
+folderNameAlreadyUsedText = "フォルダに別の名前を選択してください";
+deleteConfirmationTitle = "ファイルを削除しますか？";
+
+// すべて表示
+hideAllVideos = "保存されたすべてのビデオを非表示";
+showAllVideos = "保存されたすべてのビデオを表示";
+hideAllPhotos = "保存されたすべての写真を非表示";
+showAllPhotos = "保存されたすべての写真を表示";
+wouldLikeSetProtection = "ギャラリーに保護を追加しますか？";
+
+// バックアップ
+askToRestoreBackupTitle = "バックアップを復元";
+askToRestoreBackupMessage = "最後のバックアップを復元しますか？";
+backupSuccessTitle = "バックアップ成功";
+backupSuccessMessage = "バックアップは正常に復元されました";
+backupErrorTitle = "バックアップエラー";
+backupErrorMessage = "バックアップ用のデータが見つかりません";
+incorrectPasswordTitle = "パスワードが間違っています";
+incorrectPasswordMessage = "提供されたパスワードは無効です。もう一度お試しください。";
+insertPasswordTitle = "パスワードを入力してください";
+insertPasswordMessage = "アプリを開くために以前に使用したパスワードを入力してください";
+yes = "はい";
+no = "いいえ";
+enableiCloudTitle = "必要なアクション";
+enableiCloudSubtitle = "\n1. iCloudをクリック\n\n2. リストからCalc+アプリを見つける\n\n3. iCloudを有効にする";
+enableiCloudAction = "設定へ移動";
+premiumTooliCloudMessage = "バックアップ機能はプレミアムユーザー専用です。製品の詳細が表示されます";
+
+// 削除とバックアップ
+delete = "削除";
+backupNavigationTitle = "バックアップに保存されたアイテム";
+backupNavigationSubtitle = "アプリが開かれるたびにWi-Fiが接続されている場合、写真は同期されます。バックアップは安全であり、写真を表示する唯一の方法はアプリ内です";

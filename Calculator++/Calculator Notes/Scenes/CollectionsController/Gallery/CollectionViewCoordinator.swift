@@ -43,8 +43,8 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
               indexPath.row < folders.count else {
             return
         }
-        controller.basePath = basePath + folders[indexPath.row].name + Constants.deepSeparatorPath.value()
-        controller.navigationTitle = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath.value()).last
+        controller.basePath = basePath + folders[indexPath.row].name + Constants.deepSeparatorPath
+        controller.navigationTitle = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath).last
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }
     

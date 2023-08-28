@@ -1,0 +1,87 @@
+// Versão Premium
+premiumVersion = "Премиум Версия";
+noProtection = "Без Защиты";
+hideRecoverButton = "Скрыть Кнопку Восстановления Пароля";
+chooseProtectionMode = "Выберите Режим Защиты";
+
+// Configurações e Outros
+settings = "Настройки";
+gallery = "Галерея";
+video = "Видео";
+notes = "Заметки";
+
+instructionFirstStepCalc = "Создайте пароль и нажмите кнопку '='";
+instructionSecondStepCalc = "Пароль: *****. Повторите пароль и подтвердите '='";
+
+instructionFirstStepBank = "Создайте пароль и нажмите 'enter'";
+instructionSecondStepBank = "Пароль: *****. Повторите пароль и подтвердите 'Enter'";
+
+bankModeHasBeenActivated = "Режим сейфа активирован";
+calcModeHasBeenActivated = "Режим калькулятора активирован";
+
+welcomeInstructionBank = "Введите Ваш пароль";
+
+done = "Готово";
+edit = "Редактировать";
+
+premiumToolTitle = "Премиум Инструмент";
+premiumToolMessage = "Поддержка видео доступна только для премиум пользователей. Посмотрите апгрейды в разделе Настройки";
+
+save = "Сохранить";
+cancel = "Отмена";
+ok = "Подтвердить";
+see = "Смотреть";
+
+// Mensagens de Erro
+errorTitle = "Неожиданная Ошибка";
+errorMessage = "Попробуйте снова позже";
+deleteFiles = "Удалить Файл?";
+
+incorrectPassword = "Неверный Пароль";
+tryAgain = "Попробуйте Снова";
+
+// Compra
+products = "Доступные Продукты";
+loading = "Загрузка...";
+close = "Закрыть";
+restore = "Восстановить Покупки";
+buy = "Купить";
+
+// Pastas
+folderTitle = "Название Папки";
+createActionTitle = "Создать";
+cancelTitle = "Отмена";
+inputPlaceholder = "Введите Название Новой Папки";
+folderNameAlreadyUsedTitle = "Имя Папки Уже Использовано";
+folderNameAlreadyUsedText = "Выберите Другое Имя для Папки";
+deleteConfirmationTitle = "Удалить Файлы?";
+
+// Mostrar Tudo
+hideAllVideos = "Скрыть Все Сохраненные Видео";
+showAllVideos = "Показать Все Сохраненные Видео";
+hideAllPhotos = "Скрыть Все Сохраненные Фото";
+showAllPhotos = "Показать Все Сохраненные Фото";
+wouldLikeSetProtection = "Хотите Добавить Защиту к Вашей Галерее?";
+
+// Backup
+askToRestoreBackupTitle = "Восстановить Резервную Копию";
+askToRestoreBackupMessage = "Хотите восстановить вашу последнюю резервную копию?";
+backupSuccessTitle = "Успешное Резервное Копирование";
+backupSuccessMessage = "Ваша резервная копия была успешно восстановлена";
+backupErrorTitle = "Ошибка Резервного Копирования";
+backupErrorMessage = "Данные для резервной копии не найдены";
+incorrectPasswordTitle = "Неверный Пароль";
+incorrectPasswordMessage = "Предоставленный пароль недействителен. Попробуйте снова.";
+insertPasswordTitle = "Введите Ваш Пароль";
+insertPasswordMessage = "Введите ранее использованный пароль для открытия приложения";
+yes = "Да";
+no = "Нет";
+enableiCloudTitle = "Требуется Действие";
+enableiCloudSubtitle = "\n1. Нажмите на iCloud\n\n2. Найдите приложение Calc+ в списке\n\n3. Включите iCloud";
+enableiCloudAction = "Перейти к Настройкам";
+premiumTooliCloudMessage = "Функция резервного копирования доступна только для премиум пользователей. Детали продукта будут представлены";
+
+// Deletar e Backup
+delete = "Удалить";
+backupNavigationTitle = "Элементы, Сохраненные в Резервной Копии";
+backupNavigationSubtitle = "Фотографии синхронизируются с добавленными фотографиями каждый раз, когда приложение открывается и есть Wi-Fi соединение. Ваша резервная копия находится в безопасности, и единственный способ просмотреть фотографии - внутри приложения";

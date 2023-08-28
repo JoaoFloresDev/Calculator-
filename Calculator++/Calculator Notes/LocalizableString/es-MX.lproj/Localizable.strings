@@ -1,83 +1,87 @@
-// Versión premium
-premiumVersion = "Versión premium";
-noProtection = "Sin protección";
-hideRecoverButton = "Ocultar botón de recuperar contraseña";
-chooseProtectionMode = "Elegir modo de protección";
+// Versión Premium
+premiumVersion = "Versión Premium";
+noProtection = "Sin Protección";
+hideRecoverButton = "Ocultar Botón de Recuperación";
+chooseProtectionMode = "Elige el Modo de Protección";
 
-// Configuración y otros
+// Configuración y Otros
 settings = "Configuración";
 gallery = "Galería";
-video = "Vídeo";
+video = "Video";
 notes = "Notas";
 
-// Instrucciones
-instructionFirstStepCalc = "Cree una contraseña y haga clic en el botón '='";
-instructionSecondStepCalc = "Contraseña: *****. Repita la contraseña y confirme con '='";
-instructionFirstStepBank = "Cree una contraseña y haga clic en 'Enter'";
-instructionSecondStepBank = "Contraseña: *****. Repita la contraseña y confirme con 'Enter'";
+instructionFirstStepCalc = "Crea una contraseña y presiona el botón '='";
+instructionSecondStepCalc = "Contraseña: *****. Repite la contraseña y confirma con '='";
 
-// Modos y bienvenida
-bankModeHasBeenActivated = "Modo de bóveda activado";
-calcModeHasBeenActivated = "Modo de calculadora activado";
-welcomeInstructionBank = "Ingrese su contraseña";
+instructionFirstStepBank = "Crea una contraseña y presiona 'enter'";
+instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
 
-// Botones
-done = "Hecho";
+bankModeHasBeenActivated = "Modo caja fuerte activado";
+calcModeHasBeenActivated = "Modo calculadora activado";
+
+welcomeInstructionBank = "Ingresa tu contraseña";
+
+done = "Listo";
 edit = "Editar";
-premiumToolTitle = "Herramienta premium";
-premiumToolMessage = "El soporte para videos solo está disponible para usuarios premium. Consulte las actualizaciones en la sección de Configuración";
+
+premiumToolTitle = "Herramienta Premium";
+premiumToolMessage = "El soporte para video sólo está disponible para usuarios premium. Consulta las mejoras en la sección Configuración";
+
 save = "Guardar";
 cancel = "Cancelar";
 ok = "Confirmar";
 see = "Ver";
 
-// Errores y compra
-errorTitle = "Error inesperado";
-errorMessage = "Intente nuevamente más tarde";
-deleteFiles = "¿Eliminar archivo?";
-incorrectPassword = "Contraseña incorrecta";
-tryAgain = "Intente de nuevo";
-products = "Productos";
+// Mensajes de Error
+errorTitle = "Error Inesperado";
+errorMessage = "Inténtalo de nuevo más tarde";
+deleteFiles = "¿Eliminar Archivo?";
+
+incorrectPassword = "Contraseña Incorrecta";
+tryAgain = "Intentar de Nuevo";
+
+// Compra
+products = "Productos Disponibles";
 loading = "Cargando...";
 close = "Cerrar";
-restore = "Restaurar";
+restore = "Restaurar Compras";
 buy = "Comprar";
 
-// Carpetas y más
-folderTitle = "Nombre de la carpeta";
+// Carpetas
+folderTitle = "Nombre de la Carpeta";
 createActionTitle = "Crear";
 cancelTitle = "Cancelar";
-inputPlaceholder = "Ingrese el nombre de la nueva carpeta";
-folderNameAlreadyUsedTitle = "Nombre ya utilizado";
-folderNameAlreadyUsedText = "Elija otro nombre para la carpeta";
-deleteConfirmationTitle = "¿Eliminar archivos?";
+inputPlaceholder = "Ingresa el Nombre de la Nueva Carpeta";
+folderNameAlreadyUsedTitle = "Nombre de Carpeta Ya Utilizado";
+folderNameAlreadyUsedText = "Elige un Nombre Diferente para la Carpeta";
+deleteConfirmationTitle = "¿Eliminar Archivos?";
 
-// Mostrar todo
-hideAllVideos = "Ocultar todos los videos guardados";
-showAllVideos = "Ver todos los videos guardados";
-hideAllPhotos = "Ocultar todas las fotos guardadas";
-showAllPhotos = "Ver todas las fotos guardadas";
-wouldLikeSetProtection = "¿Le gustaría agregar protección a su galería?";
+// Mostrar Todo
+hideAllVideos = "Ocultar Todos los Videos Guardados";
+showAllVideos = "Mostrar Todos los Videos Guardados";
+hideAllPhotos = "Ocultar Todas las Fotos Guardadas";
+showAllPhotos = "Mostrar Todas las Fotos Guardadas";
+wouldLikeSetProtection = "¿Deseas Añadir Protección a tu Galería?";
 
-// Copias de seguridad
-askToRestoreBackupTitle = "Recuperar copia de seguridad";
-askToRestoreBackupMessage = "¿Le gustaría recuperar su última copia de seguridad?";
-backupSuccessTitle = "Copia de seguridad realizada con éxito";
-backupSuccessMessage = "Su copia de seguridad se ha recuperado con éxito";
-backupErrorTitle = "Error al realizar la copia de seguridad";
-backupErrorMessage = "No se encontraron datos para la copia de seguridad";
-incorrectPasswordTitle = "Contraseña incorrecta";
-incorrectPasswordMessage = "La contraseña proporcionada no es válida, intente nuevamente";
-insertPasswordTitle = "Ingrese su contraseña";
-insertPasswordMessage = "Ingrese la contraseña que se utilizaba para abrir la calculadora";
+// Respaldo
+askToRestoreBackupTitle = "Restaurar Respaldo";
+askToRestoreBackupMessage = "¿Deseas restaurar tu último respaldo?";
+backupSuccessTitle = "Respaldo Realizado con Éxito";
+backupSuccessMessage = "Tu respaldo se ha restaurado con éxito";
+backupErrorTitle = "Error al Realizar el Respaldo";
+backupErrorMessage = "No se encontraron datos para el respaldo";
+incorrectPasswordTitle = "Contraseña Incorrecta";
+incorrectPasswordMessage = "La contraseña proporcionada no es válida. Inténtalo de nuevo.";
+insertPasswordTitle = "Ingresa tu Contraseña";
+insertPasswordMessage = "Ingresa la contraseña que usaste previamente para abrir la aplicación";
 yes = "Sí";
 no = "No";
-enableiCloudTitle = "Acción requerida";
-enableiCloudSubtitle = "\n1. Haga clic en iCloud\n\n2. Busque la aplicación Calc+ en la lista\n\n3. Habilite iCloud";
-enableiCloudAction = "Ir a configuración";
-premiumTooliCloudMessage = "El soporte para copias de seguridad es una característica premium. Ver detalles del producto";
+enableiCloudTitle = "Acción Necesaria";
+enableiCloudSubtitle = "\n1. Presiona en iCloud\n\n2. Localiza la aplicación Calc+ en la lista\n\n3. Activa iCloud";
+enableiCloudAction = "Ir a Configuración";
+premiumTooliCloudMessage = "La función de respaldo es exclusiva para usuarios Premium. Detalles del producto serán presentados";
 
-// Eliminar y copias de seguridad
+// Eliminar y Respaldo
 delete = "Eliminar";
-backupNavigationTitle = "Mis artículos en la copia de seguridad";
-backupNavigationSubtitle = "Las fotos se sincronizan con su galería cada vez que se inicia la aplicación y hay conexión wifi. Su copia de seguridad es segura y la única forma de ver las fotos es dentro de la aplicación";
+backupNavigationTitle = "Elementos Guardados en el Respaldo";
+backupNavigationSubtitle = "Las fotos se sincronizan con las fotos añadidas cada vez que se abre la aplicación y hay conexión Wi-Fi. Tu respaldo está seguro y la única forma de ver las fotos es dentro de la aplicación";

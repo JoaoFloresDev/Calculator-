@@ -213,7 +213,7 @@ extension CollectionViewController {
             return UICollectionViewCell()
         }
         
-        let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath.value()).last ?? ""
+        let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath).last ?? ""
         cell.setup(name: folderName)
         cell.isSelectedCell = folders[indexPath.row].isSelected
         
@@ -325,24 +325,39 @@ extension CollectionViewController {
 // MARK: - AssetsPickerViewControllerDelegate
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
-        var tempModelData: [Photo] = []
-        
-        let group = DispatchGroup()
+        guard let collectionView = self.collectionView else {
+            print("Erro: collectionView não está inicializado.")
+            return
+        }
         
         for asset in assets {
-            group.enter()
-            addImage(asset: asset) { photo in
-                if let photo = photo {
-                    tempModelData.append(photo)
+            addImage(asset: asset) { [weak self] photo in
+                guard let self = self else {
+                    print("Erro: self foi desalocado.")
+                    return
                 }
-                group.leave()
-            }
-        }
-        self.loadingAlert.startLoading {
-            group.notify(queue: .main) {
-                self.modelData.append(contentsOf: tempModelData)
-                self.collectionView?.reloadSections(IndexSet(integer: 1))
-                self.loadingAlert.stopLoading()
+                
+                if let photo = photo {
+                    DispatchQueue.main.async {
+                        self.modelData.append(photo)
+                        
+                        let lastItemIndex = self.modelData.count - 1
+                        
+                        // Verificar se o índice é válido antes de inserir o item
+                        if lastItemIndex >= 0 && lastItemIndex < self.modelData.count {
+                            let indexPath = IndexPath(item: lastItemIndex, section: 1)
+                            
+                            // Atualizar somente a nova célula adicionada
+                            collectionView.performBatchUpdates({
+                                collectionView.insertItems(at: [indexPath])
+                            }, completion: nil)
+                        } else {
+                            print("Erro: Índice inválido.")
+                        }
+                    }
+                } else {
+                    print("Erro: Falha ao adicionar imagem.")
+                }
             }
         }
     }
@@ -473,7 +488,7 @@ extension CollectionViewController {
     }
     
     private func handleInitialLaunch() {
-        if basePath == Constants.deepSeparatorPath.value() {
+        if basePath == Constants.deepSeparatorPath {
             let launchCounter = Defaults.getInt(.launchCounter)
             Defaults.setInt(.launchCounter, launchCounter + 1)
             

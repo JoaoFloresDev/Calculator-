@@ -1,0 +1,87 @@
+// Versão Premium
+premiumVersion = "Premium Sürüm";
+noProtection = "Koruma Yok";
+hideRecoverButton = "Parola Kurtarma Düğmesini Gizle";
+chooseProtectionMode = "Koruma Modunu Seçin";
+
+// Configurações e Outros
+settings = "Ayarlar";
+gallery = "Galeri";
+video = "Video";
+notes = "Notlar";
+
+instructionFirstStepCalc = "Bir şifre oluşturun ve '=' düğmesine tıklayın";
+instructionSecondStepCalc = "Şifre: *****. Şifreyi tekrarlayın ve '=' ile onaylayın";
+
+instructionFirstStepBank = "Bir şifre oluşturun ve 'enter'a tıklayın";
+instructionSecondStepBank = "Şifre: *****. Şifreyi tekrarlayın ve 'Enter' ile onaylayın";
+
+bankModeHasBeenActivated = "Kasa modu etkinleştirildi";
+calcModeHasBeenActivated = "Hesap makinesi modu etkinleştirildi";
+
+welcomeInstructionBank = "Şifrenizi Girin";
+
+done = "Tamam";
+edit = "Düzenle";
+
+premiumToolTitle = "Premium Özellik";
+premiumToolMessage = "Video desteği sadece premium kullanıcılar içindir. Ayarlar bölümünden yükseltmeleri görün";
+
+save = "Kaydet";
+cancel = "İptal";
+ok = "Onayla";
+see = "Gör";
+
+// Mensagens de Erro
+errorTitle = "Beklenmeyen Hata";
+errorMessage = "Daha sonra tekrar deneyin";
+deleteFiles = "Dosyayı Sil?";
+
+incorrectPassword = "Yanlış Şifre";
+tryAgain = "Tekrar Deneyin";
+
+// Compra
+products = "Kullanılabilir Ürünler";
+loading = "Yükleniyor...";
+close = "Kapat";
+restore = "Alışverişleri Geri Yükle";
+buy = "Satın Al";
+
+// Pastas
+folderTitle = "Klasör Adı";
+createActionTitle = "Oluştur";
+cancelTitle = "İptal";
+inputPlaceholder = "Yeni Klasörün Adını Girin";
+folderNameAlreadyUsedTitle = "Klasör Adı Zaten Kullanılmış";
+folderNameAlreadyUsedText = "Klasör için Farklı bir Ad Seçin";
+deleteConfirmationTitle = "Dosyaları Sil?";
+
+// Mostrar Tudo
+hideAllVideos = "Tüm Kaydedilmiş Videoları Gizle";
+showAllVideos = "Tüm Kaydedilmiş Videoları Göster";
+hideAllPhotos = "Tüm Kaydedilmiş Fotoğrafları Gizle";
+showAllPhotos = "Tüm Kaydedilmiş Fotoğrafları Göster";
+wouldLikeSetProtection = "Galerinize Koruma Eklemek İster misiniz?";
+
+// Backup
+askToRestoreBackupTitle = "Yedeği Geri Yükle";
+askToRestoreBackupMessage = "Son yedeğinizi geri yüklemek istiyor musunuz?";
+backupSuccessTitle = "Yedekleme Başarıyla Tamamlandı";
+backupSuccessMessage = "Yedeğiniz başarıyla geri yüklendi";
+backupErrorTitle = "Yedekleme Hatası";
+backupErrorMessage = "Yedek için hiçbir veri bulunamadı";
+incorrectPasswordTitle = "Yanlış Şifre";
+incorrectPasswordMessage = "Sağlanan şifre geçerli değil. Tekrar deneyin.";
+insertPasswordTitle = "Şifrenizi Girin";
+insertPasswordMessage = "Uygulamayı açmak için daha önce kullanılan şifreyi girin";
+yes = "Evet";
+no = "Hayır";
+enableiCloudTitle = "Eylem Gerekli";
+enableiCloudSubtitle = "\n1. iCloud'a tıklayın\n\n2. Uygulamalar listesinden Calc+ uygulamasını bulun\n\n3. iCloud'u etkinleştirin";
+enableiCloudAction = "Ayarlar'a Git";
+premiumTooliCloudMessage = "Yedekleme özelliği sadece Premium kullanıcılar içindir. Ürün detayları gösterilecektir";
+
+// Deletar e Backup
+delete = "Sil";
+backupNavigationTitle = "Yedekte Kaydedilmiş Öğeler";
+backupNavigationSubtitle = "Uygulama açıldığında ve Wi-Fi bağlantısı olduğunda fotoğraflar fotoğraflarla senkronize edilir. Yedeğiniz güvendedir ve fotoğrafları görmek için tek yol uygulama içindedir";
