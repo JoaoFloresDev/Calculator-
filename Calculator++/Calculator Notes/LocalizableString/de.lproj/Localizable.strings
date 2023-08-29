@@ -52,7 +52,7 @@ tryAgain = "Erneut versuchen";
 products = "Verfügbare Produkte";
 loading = "Laden...";
 close = "Schließen";
-restore = "Käufe wiederherstellen";
+restore = "Käufe";
 buy = "Kaufen";
 
 // Ordner

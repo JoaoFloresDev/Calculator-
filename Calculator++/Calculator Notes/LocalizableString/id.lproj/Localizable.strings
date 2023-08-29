@@ -52,7 +52,7 @@ tryAgain = "Coba lagi";
 products = "Produk yang tersedia";
 loading = "Memuat...";
 close = "Tutup";
-restore = "Pulihkan Pembelian";
+restore = "Pulihkan";
 buy = "Beli";
 
 // Folder

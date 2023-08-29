@@ -44,7 +44,7 @@ tryAgain = "Tekrar Deneyin";
 products = "Kullanılabilir Ürünler";
 loading = "Yükleniyor...";
 close = "Kapat";
-restore = "Alışverişleri Geri Yükle";
+restore = "Alışverişleri";
 buy = "Satın Al";
 
 // Pastas

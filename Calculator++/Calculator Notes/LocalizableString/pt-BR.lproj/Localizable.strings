@@ -52,7 +52,7 @@ tryAgain = "Tentar Novamente";
 products = "Produtos Disponíveis";
 loading = "Carregando...";
 close = "Fechar";
-restore = "Restaurar Compras";
+restore = "Restaurar";
 buy = "Comprar";
 
 // Pastas

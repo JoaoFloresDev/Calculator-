@@ -44,7 +44,7 @@ tryAgain = "Intentar de Nuevo";
 products = "Productos Disponibles";
 loading = "Cargando...";
 close = "Cerrar";
-restore = "Restaurar Compras";
+restore = "Restaurar";
 buy = "Comprar";
 
 // Carpetas
