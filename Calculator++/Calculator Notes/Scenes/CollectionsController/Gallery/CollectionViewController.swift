@@ -453,7 +453,8 @@ extension CollectionViewController {
     }
     
     private func monitorWiFiAndPerformActions() {
-        guard Defaults.getBool(.iCloudPurchased) else {
+        guard Defaults.getBool(.iCloudPurchased),
+              FeatureFlags.iCloudEnabled else {
             return
         }
         

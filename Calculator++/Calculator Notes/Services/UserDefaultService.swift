@@ -125,8 +125,3 @@ struct UserDefaultService {
         UserDefaults.standard.set(protectionMode.rawValue, forKey: protectionModeKey)
     }
 }
-
-struct Constants {
-    static let deepSeparatorPath = "@"
-    static let recoverPassword = "314159"
-}

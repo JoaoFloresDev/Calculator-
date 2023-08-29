@@ -4,6 +4,7 @@ import MobileCoreServices
 import Photos
 import CoreData
 import os.log
+import SnapKit
 
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate {
     
@@ -41,10 +42,24 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         setupFolders()
         self.title = Text.video.localized()
         
+        setupPlaceholderView()
+        
         if let navigationTitle = navigationTitle {
             self.title = navigationTitle
         } else {
             self.title = Text.video.localized()
+        }
+    }
+    lazy var placeholderView = UIView()
+    
+    func setupPlaceholderView() {
+        placeholderView = UIView()
+        placeholderView.backgroundColor = .green
+        placeholderView.isHidden = true // Inicialmente oculta
+        self.view.addSubview(placeholderView)
+        
+        placeholderView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     

@@ -105,19 +105,18 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillAppear(animated)
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
-        if Defaults.getBool(.iCloudPurchased) {
-            CloudKitImageService.isICloudEnabled { isEnabled in
-                self.backupIsActivated = isEnabled
-            }
+        guard Defaults.getBool(.iCloudPurchased),
+              FeatureFlags.iCloudEnabled else {
+            return
+        }
+        
+        CloudKitImageService.isICloudEnabled { isEnabled in
+            self.backupIsActivated = isEnabled
         }
         monitorWiFiAndPerformActions()
     }
 
     private func monitorWiFiAndPerformActions() {
-        guard Defaults.getBool(.iCloudPurchased) else {
-            return
-        }
-        
         isConnectedToWiFi { isConnected in
             if isConnected {
                 BackupService.updateBackup()
