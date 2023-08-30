@@ -1,11 +1,3 @@
-//
-//  BaseCalculatorViewController.swift
-//  Calculator Notes
-//
-//  Created by Joao Victor Flores da Costa on 14/08/22.
-//  Copyright © 2022 MakeSchool. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -25,9 +17,15 @@ class BaseCalculatorViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var outputLbl: UILabel!
     
+    // MARK: - Lifecycle Methods
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Operations
+    
+    /// Limpa todas as variáveis e define o estado inicial da calculadora
     func clear() {
-        
         runningNumber = ""
         leftValue = ""
         rightValue = ""
@@ -36,36 +34,16 @@ class BaseCalculatorViewController: UIViewController {
         outputLbl.text = "0 "
     }
     
+    /// Realiza a operação especificada
     func operation(operation: Operation) {
         if currentOperation != .NULL {
-            if runningNumber != "" {
-                rightValue = runningNumber
-                runningNumber = ""
-                
-                if currentOperation == .Add {
-                    result = "\((Double(leftValue) ?? Double(0)) + (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Subtract {
-                    result = "\((Double(leftValue) ?? Double(0)) - (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Multiply {
-                    result = "\((Double(leftValue) ?? Double(0)) * (Double(rightValue) ?? Double(0)))"
-                } else if currentOperation == .Divide {
-                    result = "\((Double(leftValue) ?? Double(0)) / (Double(rightValue) ?? Double(0)))"
-                }
-                
-                leftValue = result
-                if ((Double(result) ?? Double(0)).truncatingRemainder(dividingBy: 1) == 0) {
-                    result = "\((Int(Double(result) ?? Double(0))))"
-                }
-                outputLbl.text = result
-            }
-            currentOperation = operation
+            completeOperation()
         } else {
-            leftValue = runningNumber
-            runningNumber = ""
-            currentOperation = operation
+            startOperation(operation: operation)
         }
     }
     
+    /// Adiciona um ponto decimal ao número atual, se possível
     func dotPressed() {
         if runningNumber.count <= 8 {
             runningNumber += "."
@@ -73,8 +51,64 @@ class BaseCalculatorViewController: UIViewController {
         }
     }
     
-    //    MARK: - Style
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    // MARK: - Private Helpers
+    
+    /// Começa uma nova operação
+    private func startOperation(operation: Operation) {
+        leftValue = runningNumber
+        runningNumber = ""
+        currentOperation = operation
+    }
+    
+    /// Completa a operação atual e atualiza `leftValue` e `result`
+    private func completeOperation() {
+        if runningNumber.isEmpty { return }
+        
+        rightValue = runningNumber
+        runningNumber = ""
+        
+        switch currentOperation {
+        case .Add:
+            performAddition()
+        case .Subtract:
+            performSubtraction()
+        case .Multiply:
+            performMultiplication()
+        case .Divide:
+            performDivision()
+        default:
+            break
+        }
+        
+        updateUI()
+    }
+    
+    /// Realiza a operação de adição
+    private func performAddition() {
+        result = "\((Double(leftValue) ?? 0) + (Double(rightValue) ?? 0))"
+    }
+    
+    /// Realiza a operação de subtração
+    private func performSubtraction() {
+        result = "\((Double(leftValue) ?? 0) - (Double(rightValue) ?? 0))"
+    }
+    
+    /// Realiza a operação de multiplicação
+    private func performMultiplication() {
+        result = "\((Double(leftValue) ?? 0) * (Double(rightValue) ?? 0))"
+    }
+    
+    /// Realiza a operação de divisão
+    private func performDivision() {
+        result = "\((Double(leftValue) ?? 0) / (Double(rightValue) ?? 0))"
+    }
+    
+    /// Atualiza a interface do usuário
+    private func updateUI() {
+        leftValue = result
+        if (Double(result)?.truncatingRemainder(dividingBy: 1) == 0) {
+            result = "\(Int(Double(result) ?? 0))"
+        }
+        outputLbl.text = result
     }
 }

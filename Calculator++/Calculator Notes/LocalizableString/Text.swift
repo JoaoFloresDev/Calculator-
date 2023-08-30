@@ -8,6 +8,7 @@
 
 import Foundation
 
+// ASSETS
 enum Text: String {
     case premiumVersion
     case noProtection
@@ -100,6 +101,9 @@ enum Text: String {
     case emptyNotesTitle
     case emptyNotesSubtitle
     case seeMore
+    case backupSettings
+    case backupStatus
+    case seeMyBackup
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
@@ -118,4 +122,14 @@ enum Img: String {
     case placeholderVideo
     case placeholderNotes
     case keyFill
+    case folder
+    case leftarrow
+    case emptyGalleryIcon
+    case emptyVideoIcon
+    case premiumIcon
+    case emptyNotesIcon
+    
+    func name() -> String {
+        self.rawValue
+    }
 }

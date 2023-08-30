@@ -15,7 +15,7 @@ class BackupModalViewController: UIViewController {
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         let titleLabel = UILabel()
-        titleLabel.text = "Configurações de Backup"
+        titleLabel.text = Text.backupSettings.localized()
         titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         titleLabel.textColor = .black
         
@@ -41,7 +41,7 @@ class BackupModalViewController: UIViewController {
         stackView.spacing = 8
         
         let leftLabel = UILabel()
-        leftLabel.text = "Backup Criptografado"
+        leftLabel.text = Text.backupStatus.localized()
         leftLabel.font = UIFont.boldSystemFont(ofSize: 17)
         
         stackView.addArrangedSubview(leftLabel)
@@ -89,7 +89,7 @@ class BackupModalViewController: UIViewController {
     
     lazy var viewBackup: UIView = {
         let label = UILabel()
-        label.text = "Ver meu backup"
+        label.text = Text.seeMyBackup.localized()
         label.font = UIFont.boldSystemFont(ofSize: 17)
         let viewBackupView = UIView()
         viewBackupView.backgroundColor = .systemGray5
@@ -227,9 +227,7 @@ class BackupModalViewController: UIViewController {
     }
     
     @objc func handleSwipeDown(_ gesture: UISwipeGestureRecognizer) {
-        // Aqui você coloca a lógica que deseja executar quando o usuário fizer o swipe para baixo
-        print("Swipe para baixo detectado")
-        animateDismissView()  // Por exemplo, você pode fechar o modal
+        animateDismissView()
     }
     
     func animateContainerHeight(_ height: CGFloat) {

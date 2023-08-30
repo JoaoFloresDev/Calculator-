@@ -102,6 +102,9 @@ emptyGalleryTitle = "Sem fotos";
 emptyGallerySubtitle = "Adicione suas fotos clicando no botão +";
 
 emptyNotesTitle = "Sem anotações";
-emptyNotesSubtitle = "adicione suas anotações clicando no botão +";
+emptyNotesSubtitle = "Adicione suas anotações clicando no botão +";
 
 seeMore = "Ver mais";
+backupSettings = "Configurações de Backup";
+backupStatus = "Backup Criptografado";
+seeMyBackup = "Ver meu backup";

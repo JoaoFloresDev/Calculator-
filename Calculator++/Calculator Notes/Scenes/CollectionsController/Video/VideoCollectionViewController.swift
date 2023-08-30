@@ -29,13 +29,13 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             return CustomStackedView(
                 title: Text.emptyVideosTitle.localized(),
                 subtitle: Text.emptyVideosSubtitle.localized(),
-                image: UIImage(named: "emptyVideoIcon")
+                image: UIImage(named: Img.emptyVideoIcon.name())
             )
         } else {
             return CustomStackedView(
                 title: Text.premiumToolTitle.localized(),
                 subtitle: Text.premiumVideosSubtitle.localized(),
-                image: UIImage(named: "premiumIcon"), buttonText: Text.seeMore.localized()
+                image: UIImage(named: Img.premiumIcon.name()), buttonText: Text.seeMore.localized()
             ) {
                 let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
                 let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
@@ -51,7 +51,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             self.placeholderView.update(
                 title: Text.emptyVideosTitle.localized(),
                 subtitle: Text.emptyVideosSubtitle.localized(),
-                image: UIImage(named: "emptyVideoIcon"),
+                image: UIImage(named: Img.emptyVideoIcon.name()),
                 buttonText: nil,
                 buttonAction: nil
             )

@@ -39,7 +39,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     lazy var placeholderView = CustomStackedView(
         title: Text.emptyGalleryTitle.localized(),
         subtitle: Text.emptyGallerySubtitle.localized(),
-        image: UIImage(named: "emptyGalleryIcon")
+        image: UIImage(named: Img.emptyGalleryIcon.name())
     )
     
     // MARK: - Life Cycle
@@ -520,11 +520,8 @@ extension CollectionViewController {
     
     private func handleInitialLaunch() {
         if basePath == Constants.deepSeparatorPath {
-            let launchCounter = Defaults.getInt(.launchCounter)
-            Defaults.setInt(.launchCounter, launchCounter + 1)
-            
-            let disableRecoveryButtonCounter = Defaults.getInt(.disableRecoveryButtonCounter)
-            Defaults.setInt(.disableRecoveryButtonCounter, disableRecoveryButtonCounter + 1)
+            Defaults.incrementInt(.launchCounter)
+            Defaults.incrementInt(.disableRecoveryButtonCounter)
         }
     }
     

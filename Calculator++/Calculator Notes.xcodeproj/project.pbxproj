@@ -34,6 +34,7 @@
 		73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B102A886C310067B269 /* CloudUpdateManager.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
+		73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D12AA01A0100546566 /* PlaceholderView.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
 		73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4D27B096F600499F66 /* BankMode.storyboard */; };
 		73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D5F27B09A1B00499F66 /* Localizable.strings */; };
@@ -52,7 +53,6 @@
 		73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */; };
 		73C563552A9BE1330043DC78 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563542A9BE1320043DC78 /* WelcomeViewController.swift */; };
 		73C563632A9D706E0043DC78 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563622A9D706E0043DC78 /* Constants.swift */; };
-		73C563652A9D7F380043DC78 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563642A9D7F380043DC78 /* PlaceholderView.swift */; };
 		7C3FA5C5BF2A31D52DE69779 /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377C09316D877D274D20C923 /* Pods_Calculator_Notes.framework */; };
 		848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */; };
 		BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3244412A4B692C00A782CA /* BasicModels.swift */; };
@@ -129,6 +129,7 @@
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		73ABC0F2284F25CB00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		73B053D12AA01A0100546566 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalculatorMode.storyboard; sourceTree = "<group>"; };
 		73B54D4D27B096F600499F66 /* BankMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankMode.storyboard; sourceTree = "<group>"; };
 		73B54D5927B0995600499F66 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -163,7 +164,6 @@
 		73C563602A9CE9020043DC78 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73C563612A9CE9030043DC78 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73C563622A9D706E0043DC78 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../../Constants.swift; sourceTree = "<group>"; };
-		73C563642A9D7F380043DC78 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaceholderView.swift; path = ../../../../../../../PlaceholderView.swift; sourceTree = "<group>"; };
 		848490D21D68F5610043C60B /* MakeSchoolNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MakeSchoolNotes.xcdatamodel; sourceTree = "<group>"; };
 		BA3244412A4B692C00A782CA /* BasicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModels.swift; sourceTree = "<group>"; };
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -335,6 +335,7 @@
 				730438792A34467B001EF25B /* FolderCollectionViewCell.swift */,
 				7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */,
 				7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */,
+				73B053D12AA01A0100546566 /* PlaceholderView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -412,7 +413,6 @@
 			children = (
 				C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */,
 				C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */,
-				73C563642A9D7F380043DC78 /* PlaceholderView.swift */,
 				C467BCC224A9B1880039D237 /* VideoModelController.swift */,
 			);
 			path = Video;
@@ -703,7 +703,7 @@
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
-				73C563652A9D7F380043DC78 /* PlaceholderView.swift in Sources */,
+				73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */,
 				73C563632A9D706E0043DC78 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -871,7 +871,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 120;
+				CURRENT_PROJECT_VERSION = 123;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -882,7 +882,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 120;
+				MARKETING_VERSION = 123;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -902,7 +902,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 120;
+				CURRENT_PROJECT_VERSION = 123;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -913,7 +913,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 120;
+				MARKETING_VERSION = 123;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";

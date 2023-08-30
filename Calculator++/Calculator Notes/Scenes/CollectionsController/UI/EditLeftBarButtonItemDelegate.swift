@@ -45,7 +45,7 @@ class EditLeftBarButtonItem: UIBarButtonItem {
 
     private func createBackButton() -> UIButton {
         let backButton = UIButton()
-        backButton.setImage(UIImage(named: "leftarrow"), for: .normal)
+        backButton.setImage(UIImage(named: Img.leftarrow.name()), for: .normal)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         backButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 10)
         return backButton
