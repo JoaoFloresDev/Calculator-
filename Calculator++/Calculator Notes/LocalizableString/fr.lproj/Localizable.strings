@@ -94,3 +94,4 @@ emptyNotesSubtitle = "Ajoutez vos notes en cliquant sur le bouton +";
 emptyVideosTitle = "Pas de vidéos";
 emptyVideosSubtitle = "Ajoutez vos vidéos en cliquant sur le bouton +";
 premiumVideosSubtitle = "Le support vidéo est une fonctionnalité premium";
+seeMore = "Voir plus";

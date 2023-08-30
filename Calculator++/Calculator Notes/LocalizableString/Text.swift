@@ -99,6 +99,7 @@ enum Text: String {
     case emptyGallerySubtitle
     case emptyNotesTitle
     case emptyNotesSubtitle
+    case seeMore
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

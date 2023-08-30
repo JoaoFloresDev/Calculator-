@@ -35,7 +35,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             return CustomStackedView(
                 title: Text.premiumToolTitle.localized(),
                 subtitle: Text.premiumVideosSubtitle.localized(),
-                image: UIImage(named: "premiumIcon"), buttonText: "Ver mais"
+                image: UIImage(named: "premiumIcon"), buttonText: Text.seeMore.localized()
             ) {
                 let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
                 let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")

@@ -93,3 +93,4 @@ emptyNotesSubtitle = "Notlarınızı '+' düğmesine tıklayarak ekleyin";
 emptyVideosTitle = "Video Yok";
 emptyVideosSubtitle = "+ düğmesine tıklayarak videolarınızı ekleyin";
 premiumVideosSubtitle = "Video desteği premium bir özelliktir";
+seeMore = "Daha fazla göster";

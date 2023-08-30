@@ -19,7 +19,13 @@ import CloudKit
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     // MARK: - Variables
-    var modelData: [Photo] = []
+    var modelData: [Photo] = [] {
+        didSet {
+            if modelData.count == 1 {
+                collectionView?.reloadData()
+            }
+        }
+    }
     var folders: [Folder] = []
     lazy var loadingAlert = LoadingAlert(in: self)
     var coordinator: CollectionViewCoordinatorProtocol?
