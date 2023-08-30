@@ -98,3 +98,8 @@ emptyGallerySubtitle = "点击+按钮添加您的照片";
 
 emptyNotesTitle = "没有笔记";
 emptyNotesSubtitle = "点击+按钮添加您的笔记";
+
+emptyVideosTitle = "没有视频";
+emptyVideosSubtitle = "点击 + 按钮添加您的视频";
+premiumVideosSubtitle = "视频支持是高级功能";
+

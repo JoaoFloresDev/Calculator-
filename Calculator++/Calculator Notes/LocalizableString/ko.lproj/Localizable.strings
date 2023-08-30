@@ -90,3 +90,6 @@ emptyGallerySubtitle = "+ 버튼을 클릭하여 사진을 추가하세요";
 
 emptyNotesTitle = "메모 없음";
 emptyNotesSubtitle = "+ 버튼을 클릭하여 메모를 추가하세요";
+emptyVideosTitle = "비디오 없음";
+emptyVideosSubtitle = "+ 버튼을 클릭하여 비디오를 추가하세요";
+premiumVideosSubtitle = "비디오 지원은 프리미엄 기능입니다";

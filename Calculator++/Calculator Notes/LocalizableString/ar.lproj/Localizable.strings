@@ -93,3 +93,7 @@ emptyGallerySubtitle = "أضف صورك بالنقر على زر +";
 
 emptyNotesTitle = "لا توجد ملاحظات";
 emptyNotesSubtitle = "أضف ملاحظاتك بالنقر على زر +";
+
+emptyVideosTitle = "لا توجد فيديوهات";
+emptyVideosSubtitle = "أضف فيديوهاتك بالنقر على زر +";
+premiumVideosSubtitle = "دعم الفيديو هو ميزة متميزة";

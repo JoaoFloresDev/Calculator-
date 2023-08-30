@@ -98,3 +98,7 @@ emptyGallerySubtitle = "Tambahkan foto Anda dengan mengklik tombol +";
 
 emptyNotesTitle = "Tanpa catatan";
 emptyNotesSubtitle = "Tambahkan catatan Anda dengan mengklik tombol +";
+
+emptyVideosTitle = "Tidak ada video";
+emptyVideosSubtitle = "Tambahkan video Anda dengan mengklik tombol +";
+premiumVideosSubtitle = "Dukungan video adalah fitur premium";

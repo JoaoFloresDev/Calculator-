@@ -98,3 +98,7 @@ emptyGallerySubtitle = "F체gen Sie Ihre Fotos hinzu, indem Sie auf die Schaltfl�
 
 emptyNotesTitle = "Keine Notizen";
 emptyNotesSubtitle = "F체gen Sie Ihre Notizen hinzu, indem Sie auf die Schaltfl채che + klicken";
+
+emptyVideosTitle = "Keine Videos";
+emptyVideosSubtitle = "F체gen Sie Ihre Videos hinzu, indem Sie auf die + Taste klicken";
+premiumVideosSubtitle = "Video-Unterst체tzung ist eine Premium-Funktion";

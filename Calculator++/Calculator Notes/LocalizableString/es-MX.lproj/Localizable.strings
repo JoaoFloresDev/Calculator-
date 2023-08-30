@@ -90,3 +90,6 @@ emptyGallerySubtitle = "Añada sus fotos haciendo clic en el botón +";
 
 emptyNotesTitle = "Sin notas";
 emptyNotesSubtitle = "añada sus notas haciendo clic en el botón +";
+emptyVideosTitle = "Sin videos";
+emptyVideosSubtitle = "Agrega tus videos haciendo clic en el botón +";
+premiumVideosSubtitle = "El soporte de video es una función premium";

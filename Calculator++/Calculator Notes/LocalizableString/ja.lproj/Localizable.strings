@@ -90,3 +90,7 @@ emptyGallerySubtitle = "+ ボタンをクリックして写真を追加してく
 
 emptyNotesTitle = "メモなし";
 emptyNotesSubtitle = "+ ボタンをクリックしてメモを追加してください";
+
+emptyVideosTitle = "ビデオなし";
+emptyVideosSubtitle = "+ ボタンをクリックしてビデオを追加してください";
+premiumVideosSubtitle = "ビデオサポートはプレミアム機能です";
