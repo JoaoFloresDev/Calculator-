@@ -30,8 +30,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
-    // MARK: - IBOutlet
-    @IBOutlet weak var placeHolderImage: UIImageView!
+    lazy var placeholderView = CustomStackedView(title: "Sem fotos", subtitle: "Adicione suas fotos clicando no botão +", image: UIImage(named: "emptyGalleryIcon"))
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -44,6 +43,18 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         handleInitialLaunch()
         monitorWiFiAndPerformActions()
+        setupPlaceholderView()
+    }
+    
+    func setupPlaceholderView() {
+        view.addSubview(placeholderView)
+        
+        placeholderView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.left.equalTo(view.safeAreaLayoutGuide.snp.left)
+            make.right.equalTo(view.safeAreaLayoutGuide.snp.right)
+        }
     }
     
     func deselectAllFoldersObjects() {
@@ -199,7 +210,7 @@ extension CollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
-        placeHolderImage.isHidden = !presentPlaceHolderImage
+        placeholderView.isHidden = !presentPlaceHolderImage
         switch section {
         case 0:
             return folders.count

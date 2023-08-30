@@ -24,16 +24,32 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    lazy var placeholderView = CustomStackedView(title: "Recurso Premium", subtitle: "O suporte para vídeo está disponível somente para usuários premium", image: UIImage(named: "premiumIcon"), buttonText: "Ver mais") {
-        let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
-        self.present(changePasswordCalcMode, animated: true)
-    }
+    lazy var placeholderView: CustomStackedView = {
+        if isPremium {
+            return CustomStackedView(
+                title: "Sem vídeos",
+                subtitle: "Adicione seus vídeos clicando no botão +",
+                image: UIImage(named: "emptyVideoIcon")
+            )
+        } else {
+            return CustomStackedView(title: "Recurso Premium", subtitle: "O suporte para vídeo é um recurso premium", image: UIImage(named: "premiumIcon"), buttonText: "Ver mais") {
+                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                self.present(changePasswordCalcMode, animated: true)
+            }
+        }
+    }()
     
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        placeholderImage.image = isPremium ? UIImage(named: "placeholderVideo") : UIImage(named: "placeholderPremium")
+        if isPremium {
+            self.placeholderView.update(
+                title: "Sem vídeos",
+                subtitle: "Adicione seus vídeos clicando no botão +",
+                image: UIImage(named: "emptyVideoIcon")
+            )
+        }
     }
     
     override func viewDidLoad() {
