@@ -27,12 +27,16 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     lazy var placeholderView: CustomStackedView = {
         if isPremium {
             return CustomStackedView(
-                title: "Sem vídeos",
-                subtitle: "Adicione seus vídeos clicando no botão +",
+                title: Text.emptyVideosTitle.localized(),
+                subtitle: Text.emptyVideosSubtitle.localized(),
                 image: UIImage(named: "emptyVideoIcon")
             )
         } else {
-            return CustomStackedView(title: "Recurso Premium", subtitle: "O suporte para vídeo é um recurso premium", image: UIImage(named: "premiumIcon"), buttonText: "Ver mais") {
+            return CustomStackedView(
+                title: Text.premiumToolTitle.localized(),
+                subtitle: Text.premiumVideosSubtitle.localized(),
+                image: UIImage(named: "premiumIcon"), buttonText: "Ver mais"
+            ) {
                 let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
                 let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
                 self.present(changePasswordCalcMode, animated: true)
@@ -45,8 +49,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         super.viewWillAppear(animated)
         if isPremium {
             self.placeholderView.update(
-                title: "Sem vídeos",
-                subtitle: "Adicione seus vídeos clicando no botão +",
+                title: Text.emptyVideosTitle.localized(),
+                subtitle: Text.emptyVideosSubtitle.localized(),
                 image: UIImage(named: "emptyVideoIcon")
             )
         }

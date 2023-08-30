@@ -91,6 +91,9 @@ enum Text: String {
     case backupNavigationTitle
     case backupNavigationSubtitle
     
+    case emptyVideosTitle
+    case emptyVideosSubtitle
+    case premiumVideosSubtitle
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

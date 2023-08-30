@@ -93,3 +93,7 @@ premiumTooliCloudMessage = "O recurso de backup é exclusivo para usuários Prem
 delete = "Excluir";
 backupNavigationTitle = "Itens Salvos no Backup";
 backupNavigationSubtitle = "As fotos são sincronizadas com as fotos adicionadas toda vez que o aplicativo é aberto e há conexão Wi-Fi. Seu backup é seguro e a única forma de visualizar as fotos é dentro do aplicativo";
+
+emptyVideosTitle: "Sem vídeos";
+emptyVideosSubtitle: "Adicione seus vídeos clicando no botão +";
+premiumVideosSubtitle: "O suporte para vídeo é um recurso premium";
