@@ -24,13 +24,16 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    // MARK: - IBOutlet
-    @IBOutlet weak var placeholderImage: UIImageView!
+    lazy var placeholderView = CustomStackedView(title: "Recurso Premium", subtitle: "O suporte para vídeo está disponível somente para usuários premium", image: UIImage(named: "premiumIcon"), buttonText: "Ver mais") {
+        let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+        self.present(changePasswordCalcMode, animated: true)
+    }
     
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        placeholderImage.image = isPremium ? UIImage(named: "placeholderVideo") : UIImage(named: "placeholderPremium")
+//        placeholderImage.image = isPremium ? UIImage(named: "placeholderVideo") : UIImage(named: "placeholderPremium")
     }
     
     override func viewDidLoad() {
@@ -50,16 +53,15 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             self.title = Text.video.localized()
         }
     }
-    lazy var placeholderView = UIView()
     
     func setupPlaceholderView() {
-        placeholderView = UIView()
-        placeholderView.backgroundColor = .green
-        placeholderView.isHidden = true // Inicialmente oculta
-        self.view.addSubview(placeholderView)
+        view.addSubview(placeholderView)
         
         placeholderView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.left.equalTo(view.safeAreaLayoutGuide.snp.left)
+            make.right.equalTo(view.safeAreaLayoutGuide.snp.right)
         }
     }
     
@@ -199,7 +201,7 @@ extension VideoCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
-        placeholderImage.isHidden = !presentPlaceHolderImage
+        placeholderView.isHidden = !presentPlaceHolderImage
         
         switch section {
         case 0:

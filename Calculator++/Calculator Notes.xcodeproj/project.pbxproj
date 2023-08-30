@@ -52,6 +52,7 @@
 		73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */; };
 		73C563552A9BE1330043DC78 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563542A9BE1320043DC78 /* WelcomeViewController.swift */; };
 		73C563632A9D706E0043DC78 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563622A9D706E0043DC78 /* Constants.swift */; };
+		73C563652A9D7F380043DC78 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563642A9D7F380043DC78 /* PlaceholderView.swift */; };
 		7C3FA5C5BF2A31D52DE69779 /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377C09316D877D274D20C923 /* Pods_Calculator_Notes.framework */; };
 		848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */; };
 		BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3244412A4B692C00A782CA /* BasicModels.swift */; };
@@ -162,6 +163,7 @@
 		73C563602A9CE9020043DC78 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73C563612A9CE9030043DC78 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73C563622A9D706E0043DC78 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../../Constants.swift; sourceTree = "<group>"; };
+		73C563642A9D7F380043DC78 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaceholderView.swift; path = ../../../../../../../PlaceholderView.swift; sourceTree = "<group>"; };
 		848490D21D68F5610043C60B /* MakeSchoolNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MakeSchoolNotes.xcdatamodel; sourceTree = "<group>"; };
 		BA3244412A4B692C00A782CA /* BasicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModels.swift; sourceTree = "<group>"; };
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			children = (
 				C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */,
 				C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */,
+				73C563642A9D7F380043DC78 /* PlaceholderView.swift */,
 				C467BCC224A9B1880039D237 /* VideoModelController.swift */,
 			);
 			path = Video;
@@ -700,6 +703,7 @@
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
+				73C563652A9D7F380043DC78 /* PlaceholderView.swift in Sources */,
 				73C563632A9D706E0043DC78 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

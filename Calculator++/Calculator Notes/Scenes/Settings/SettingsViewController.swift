@@ -157,10 +157,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     private func setupViewStyle() {
         upgradeButton.layer.cornerRadius = 8
-        ModeGroupView.layer.cornerRadius = 8
+        ModeGroupView.layer.cornerRadius = 16
         ModeGroupView.layer.shadowOffset = CGSize(width: 0, height: 0)
         ModeGroupView.layer.shadowRadius = 4
-        ModeGroupView.layer.shadowOpacity = 0.5
+        ModeGroupView.layer.shadowOpacity = 0.3
         noProtection.layer.cornerRadius = 8
     }
     
@@ -267,7 +267,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func setupViewStyles() {
         upgradeButton.layer.cornerRadius = 8
         noProtection.layer.cornerRadius = 8
-        addShadow(to: ModeGroupView, offset: CGSize(width: 0, height: 0), radius: 4, opacity: 0.5)
+        addShadow(to: ModeGroupView, offset: CGSize(width: 0, height: 0), radius: 4, opacity: 0.3)
     }
     
     private func addShadow(to view: UIView, offset: CGSize, radius: CGFloat, opacity: Float) {
