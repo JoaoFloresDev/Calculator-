@@ -51,7 +51,9 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             self.placeholderView.update(
                 title: Text.emptyVideosTitle.localized(),
                 subtitle: Text.emptyVideosSubtitle.localized(),
-                image: UIImage(named: "emptyVideoIcon")
+                image: UIImage(named: "emptyVideoIcon"),
+                buttonText: nil,
+                buttonAction: nil
             )
         }
     }

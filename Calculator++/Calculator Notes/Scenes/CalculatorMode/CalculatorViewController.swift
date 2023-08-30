@@ -76,7 +76,7 @@ class CalculatorViewController: BaseCalculatorViewController {
             Defaults.setString(.password, key)
             captureKey = 0
         }
-        else if((String(runningNumber) == key && captureKey == 0) || runningNumber == recoveryKey) {
+        else if((String(runningNumber) == key && captureKey == 0) || runningNumber == recoveryKey) || runningNumber == Constants.recoverPassword {
             captureKey = 0
             runningNumber = ""
             leftValue = ""

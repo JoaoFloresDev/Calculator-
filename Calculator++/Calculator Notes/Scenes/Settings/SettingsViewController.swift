@@ -96,9 +96,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         setupUI()
         setupGestures()
         loadData()
-        if Defaults.getString(.password) != Constants.recoverPassword {
-            restoreBackup.isHidden = true
-        }
+        restoreBackup.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
