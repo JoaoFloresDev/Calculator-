@@ -41,7 +41,11 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         self.navigationController?.setup()
         notes = CoreDataHelper.retrieveNote()
         tableView.backgroundView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        let placeholderView = CustomStackedView(title: "Sem anotações", subtitle: "adicione suas anotações clicando no botão +", image: UIImage(named: "emptyNotesIcon"))
+        let placeholderView = CustomStackedView(
+            title: Text.emptyNotesTitle.localized(),
+            subtitle: Text.emptyNotesSubtitle.localized(),
+            image: UIImage(named: "emptyNotesIcon")
+        )
         placeholderView.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height / 2) - (UIScreen.main.bounds.width * 0.4), width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.8)
         tableView.backgroundView?.addSubview(placeholderView)
         

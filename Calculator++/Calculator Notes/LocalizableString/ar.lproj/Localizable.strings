@@ -88,3 +88,8 @@ enableiCloudTitle = "تفعيل iCloud مطلوب";
 enableiCloudSubtitle = "1. انقر على iCloud\n2. ابحث عن التطبيق Calc+ في القائمة\n3. تفعيل iCloud";
 enableiCloudAction = "اذهب إلى الإعدادات";
 premiumTooliCloudMessage = "ميزة النسخ الاحتياطي متاحة فقط للمستخدمين المميزين. ستظهر تفاصيل المنتج";
+emptyGalleryTitle = "لا توجد صور";
+emptyGallerySubtitle = "أضف صورك بالنقر على زر +";
+
+emptyNotesTitle = "لا توجد ملاحظات";
+emptyNotesSubtitle = "أضف ملاحظاتك بالنقر على زر +";

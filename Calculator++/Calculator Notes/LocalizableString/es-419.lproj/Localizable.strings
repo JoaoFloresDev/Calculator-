@@ -81,3 +81,8 @@ premiumTooliCloudMessage = "El soporte para copias de seguridad es una caracter�
 delete = "Eliminar";
 backupNavigationTitle = "Mis artículos en la copia de seguridad";
 backupNavigationSubtitle = "Las fotos se sincronizan con su galería cada vez que se inicia la aplicación y hay conexión wifi. Su copia de seguridad es segura y la única forma de ver las fotos es dentro de la aplicación";
+emptyGalleryTitle = "Sin fotos";
+emptyGallerySubtitle = "Añada sus fotos haciendo clic en el botón +";
+
+emptyNotesTitle = "Sin notas";
+emptyNotesSubtitle = "añada sus notas haciendo clic en el botón +";

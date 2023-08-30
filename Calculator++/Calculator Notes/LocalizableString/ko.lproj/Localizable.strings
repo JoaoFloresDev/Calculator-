@@ -85,3 +85,8 @@ premiumTooliCloudMessage = "백업 기능은 프리미엄 사용자만을 위해
 delete = "삭제";
 backupNavigationTitle = "백업에 저장된 항목";
 backupNavigationSubtitle = "앱이 열릴 때마다 Wi-Fi가 연결되어 있으면 사진이 동기화됩니다. 백업은 안전하며 사진을 볼 수 있는 유일한 방법은 앱 내부입니다";
+emptyGalleryTitle = "사진 없음";
+emptyGallerySubtitle = "+ 버튼을 클릭하여 사진을 추가하세요";
+
+emptyNotesTitle = "메모 없음";
+emptyNotesSubtitle = "+ 버튼을 클릭하여 메모를 추가하세요";

@@ -85,3 +85,8 @@ premiumTooliCloudMessage = "La fonction de sauvegarde est exclusive aux utilisat
 delete = "Supprimer";
 backupNavigationTitle = "Éléments sauvegardés dans la sauvegarde";
 backupNavigationSubtitle = "Les photos sont synchronisées avec les photos ajoutées à chaque fois que l'application est ouverte et qu'il y a une connexion Wi-Fi. Votre sauvegarde est sécurisée et le seul moyen de visualiser les photos est dans l'application";
+emptyGalleryTitle = "Pas de photos";
+emptyGallerySubtitle = "Ajoutez vos photos en cliquant sur le bouton +";
+
+emptyNotesTitle = "Pas de notes";
+emptyNotesSubtitle = "Ajoutez vos notes en cliquant sur le bouton +";

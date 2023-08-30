@@ -93,3 +93,8 @@ premiumTooliCloudMessage = "備份功能僅對高級用戶開放。產品詳情�
 delete = "刪除";
 backupNavigationTitle = "備份中保存的項目";
 backupNavigationSubtitle = "每次打開應用程序並有 Wi-Fi 連接時，照片都會與添加的照片同步。您的備份是安全的，查看照片的唯一方法是在應用程序中";
+emptyGalleryTitle = "沒有照片";
+emptyGallerySubtitle = "點擊+按鈕添加您的照片";
+
+emptyNotesTitle = "沒有筆記";
+emptyNotesSubtitle = "點擊+按鈕添加您的筆記";

@@ -1,3 +1,11 @@
+/*
+  Localizable.strings
+  Calculator Notes
+
+  Created by Joao Victor Flores da Costa on 06/02/22.
+  Copyright © 2022 MakeSchool. All rights reserved.
+*/
+
 // Premium Version
 premiumVersion = "Premium Version";
 noProtection = "No Protection";
@@ -10,74 +18,88 @@ gallery = "Gallery";
 video = "Video";
 notes = "Notes";
 
-// Instructions
 instructionFirstStepCalc = "Create a password and click the '=' button";
 instructionSecondStepCalc = "Password: *****. Repeat the password and confirm with '='";
+
 instructionFirstStepBank = "Create a password and click 'Enter'";
 instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'Enter'";
 
-// Modes and Welcome
-bankModeHasBeenActivated = "Bank Mode Activated";
-calcModeHasBeenActivated = "Calculator Mode Activated";
+bankModeHasBeenActivated = "Safe mode activated";
+calcModeHasBeenActivated = "Calculator mode activated";
+
 welcomeInstructionBank = "Enter your password";
 
-// Buttons
 done = "Done";
 edit = "Edit";
-premiumToolTitle = "Premium Tool";
-premiumToolMessage = "Video support is only offered for premium users. See upgrades in Settings section";
+
+premiumToolTitle = "Premium Feature";
+premiumToolMessage = "Video support is only available for premium users. See upgrades in the Settings section";
+
 save = "Save";
 cancel = "Cancel";
 ok = "Confirm";
-see = "View";
+see = "See";
 
-// Errors and Purchase
+// Error Messages
 errorTitle = "Unexpected Error";
 errorMessage = "Please try again later";
-deleteFiles = "Delete file?";
+deleteFiles = "Delete File?";
+
 incorrectPassword = "Incorrect Password";
 tryAgain = "Try Again";
-products = "Products";
+
+// Purchase
+products = "Available Products";
 loading = "Loading...";
 close = "Close";
 restore = "Restore";
 buy = "Buy";
 
-// Folders and More
+// Folders
 folderTitle = "Folder Name";
 createActionTitle = "Create";
 cancelTitle = "Cancel";
-inputPlaceholder = "Enter the name for the new folder";
-folderNameAlreadyUsedTitle = "Name Already Used";
-folderNameAlreadyUsedText = "Choose another name for the folder";
+inputPlaceholder = "Enter the Name of the New Folder";
+folderNameAlreadyUsedTitle = "Folder Name Already Used";
+folderNameAlreadyUsedText = "Choose a Different Folder Name";
 deleteConfirmationTitle = "Delete Files?";
 
 // Show All
-hideAllVideos = "Hide all saved videos";
-showAllVideos = "Show all saved videos";
-hideAllPhotos = "Hide all saved photos";
-showAllPhotos = "Show all saved photos";
-wouldLikeSetProtection = "Would you like to add protection to your gallery?";
+hideAllVideos = "Hide All Saved Videos";
+showAllVideos = "Show All Saved Videos";
+hideAllPhotos = "Hide All Saved Photos";
+showAllPhotos = "Show All Saved Photos";
+wouldLikeSetProtection = "Would you like to Add Protection to Your Gallery?";
 
 // Backup
 askToRestoreBackupTitle = "Restore Backup";
 askToRestoreBackupMessage = "Would you like to restore your last backup?";
-backupSuccessTitle = "Backup Successful";
-backupSuccessMessage = "Your backup was successfully restored";
-backupErrorTitle = "Backup Failed";
+backupSuccessTitle = "Backup Successfully Completed";
+backupSuccessMessage = "Your backup has been successfully restored";
+backupErrorTitle = "Backup Error";
 backupErrorMessage = "No data found for backup";
 incorrectPasswordTitle = "Incorrect Password";
-incorrectPasswordMessage = "The provided password is not compatible, try again";
-insertPasswordTitle = "Insert your password";
-insertPasswordMessage = "Insert the password that was used to open the calculator";
+incorrectPasswordMessage = "The supplied password is not valid. Try again.";
+insertPasswordTitle = "Enter Your Password";
+insertPasswordMessage = "Enter the password previously used to open the app";
 yes = "Yes";
 no = "No";
 enableiCloudTitle = "Action Required";
-enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Look for the Calc+ app in the list\n\n3. Enable iCloud";
+enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Locate the Calc+ app in the list\n\n3. Activate iCloud";
 enableiCloudAction = "Go to Settings";
-premiumTooliCloudMessage = "Backup support is a premium feature. Product details will be presented";
+premiumTooliCloudMessage = "The backup feature is exclusive to premium users. Product details will be displayed";
 
 // Delete and Backup
 delete = "Delete";
-backupNavigationTitle = "My Backup Items";
-backupNavigationSubtitle = "Photos are synced with your gallery every time the app is launched and there is wifi connection. Your backup is secure and the only way to see the photos is inside the app";
+backupNavigationTitle = "Items Saved in Backup";
+backupNavigationSubtitle = "Photos are synced with added photos every time the app is opened and there is a Wi-Fi connection. Your backup is secure and the only way to view the photos is within the app";
+
+emptyVideosTitle = "No videos";
+emptyVideosSubtitle = "Add your videos by clicking the + button";
+premiumVideosSubtitle = "Video support is a premium feature";
+
+emptyGalleryTitle = "No photos";
+emptyGallerySubtitle = "Add your photos by clicking the + button";
+
+emptyNotesTitle = "No notes";
+emptyNotesSubtitle = "add your notes by clicking the + button";

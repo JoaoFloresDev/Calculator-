@@ -85,3 +85,8 @@ premiumTooliCloudMessage = "La función de copia de seguridad es exclusiva para 
 delete = "Eliminar";
 backupNavigationTitle = "Elementos Guardados en la Copia de Seguridad";
 backupNavigationSubtitle = "Las fotos se sincronizan con las fotos añadidas cada vez que se abre la aplicación y hay conexión Wi-Fi. Tu copia de seguridad está segura y la única forma de ver las fotos es dentro de la aplicación";
+emptyGalleryTitle = "Sin fotos";
+emptyGallerySubtitle = "Añada sus fotos haciendo clic en el botón +";
+
+emptyNotesTitle = "Sin notas";
+emptyNotesSubtitle = "añada sus notas haciendo clic en el botón +";

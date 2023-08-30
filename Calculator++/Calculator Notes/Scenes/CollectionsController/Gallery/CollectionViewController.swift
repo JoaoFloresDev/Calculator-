@@ -30,7 +30,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
-    lazy var placeholderView = CustomStackedView(title: "Sem fotos", subtitle: "Adicione suas fotos clicando no botão +", image: UIImage(named: "emptyGalleryIcon"))
+    lazy var placeholderView = CustomStackedView(
+        title: Text.emptyGalleryTitle.localized(),
+        subtitle: Text.emptyGallerySubtitle.localized(),
+        image: UIImage(named: "emptyGalleryIcon")
+    )
     
     // MARK: - Life Cycle
     override func viewDidLoad() {

@@ -11,10 +11,10 @@ video = "Video";
 notes = "Notlar";
 
 instructionFirstStepCalc = "Bir şifre oluşturun ve '=' düğmesine tıklayın";
-instructionSecondStepCalc = "Şifre: *****. Şifreyi tekrarlayın ve '=' ile onaylayın";
+instructionSecondStepCalc = "Şifre = *****. Şifreyi tekrarlayın ve '=' ile onaylayın";
 
 instructionFirstStepBank = "Bir şifre oluşturun ve 'enter'a tıklayın";
-instructionSecondStepBank = "Şifre: *****. Şifreyi tekrarlayın ve 'Enter' ile onaylayın";
+instructionSecondStepBank = "Şifre = *****. Şifreyi tekrarlayın ve 'Enter' ile onaylayın";
 
 bankModeHasBeenActivated = "Kasa modu etkinleştirildi";
 calcModeHasBeenActivated = "Hesap makinesi modu etkinleştirildi";
@@ -85,3 +85,8 @@ premiumTooliCloudMessage = "Yedekleme özelliği sadece Premium kullanıcılar i
 delete = "Sil";
 backupNavigationTitle = "Yedekte Kaydedilmiş Öğeler";
 backupNavigationSubtitle = "Uygulama açıldığında ve Wi-Fi bağlantısı olduğunda fotoğraflar fotoğraflarla senkronize edilir. Yedeğiniz güvendedir ve fotoğrafları görmek için tek yol uygulama içindedir";
+emptyGalleryTitle = "Foto Yok";
+emptyGallerySubtitle = "Fotoğraflarınızı '+' düğmesine tıklayarak ekleyin";
+
+emptyNotesTitle = "Not Yok";
+emptyNotesSubtitle = "Notlarınızı '+' düğmesine tıklayarak ekleyin";

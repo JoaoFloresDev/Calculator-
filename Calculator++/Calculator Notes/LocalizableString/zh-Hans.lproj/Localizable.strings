@@ -93,3 +93,8 @@ premiumTooliCloudMessage = "备份功能仅限高级用户。产品详情将被�
 delete = "删除";
 backupNavigationTitle = "备份中保存的项目";
 backupNavigationSubtitle = "每次打开应用并有 Wi-Fi 连接时，照片会与添加的照片同步。您的备份是安全的，唯一可以查看照片的方式是在应用内";
+emptyGalleryTitle = "没有照片";
+emptyGallerySubtitle = "点击+按钮添加您的照片";
+
+emptyNotesTitle = "没有笔记";
+emptyNotesSubtitle = "点击+按钮添加您的笔记";

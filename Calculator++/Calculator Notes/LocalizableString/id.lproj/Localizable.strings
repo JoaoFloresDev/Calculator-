@@ -93,3 +93,8 @@ premiumTooliCloudMessage = "Fitur cadangan hanya untuk pengguna premium. Deskrip
 delete = "Hapus";
 backupNavigationTitle = "Item yang disimpan di cadangan";
 backupNavigationSubtitle = "Foto ditambahkan setiap kali membuka aplikasi Foto dan saat koneksi Wi-Fi. Cadangan Anda aman dan satu-satunya cara untuk melihat foto adalah dari dalam aplikasi";
+emptyGalleryTitle = "Tanpa foto";
+emptyGallerySubtitle = "Tambahkan foto Anda dengan mengklik tombol +";
+
+emptyNotesTitle = "Tanpa catatan";
+emptyNotesSubtitle = "Tambahkan catatan Anda dengan mengklik tombol +";

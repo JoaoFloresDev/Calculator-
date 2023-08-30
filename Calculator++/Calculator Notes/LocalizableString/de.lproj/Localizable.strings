@@ -93,3 +93,8 @@ premiumTooliCloudMessage = "Die Backup-Funktion ist exklusiv für Premium-Nutzer
 delete = "Löschen";
 backupNavigationTitle = "In Backup gespeicherte Elemente";
 backupNavigationSubtitle = "Fotos werden mit den hinzugefügten Fotos synchronisiert, jedes Mal wenn die App geöffnet wird und eine WLAN-Verbindung besteht. Ihr Backup ist sicher und die einzige Möglichkeit, die Fotos anzusehen, ist innerhalb der App";
+emptyGalleryTitle = "Keine Fotos";
+emptyGallerySubtitle = "Fügen Sie Ihre Fotos hinzu, indem Sie auf die Schaltfläche + klicken";
+
+emptyNotesTitle = "Keine Notizen";
+emptyNotesSubtitle = "Fügen Sie Ihre Notizen hinzu, indem Sie auf die Schaltfläche + klicken";
