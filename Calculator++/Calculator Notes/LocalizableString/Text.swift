@@ -8,6 +8,7 @@
 
 import Foundation
 
+// ASSETS
 enum Text: String {
     case premiumVersion
     case noProtection
@@ -118,4 +119,14 @@ enum Img: String {
     case placeholderVideo
     case placeholderNotes
     case keyFill
+    case folder
+    case leftarrow
+    case emptyGalleryIcon
+    case emptyVideoIcon
+    case premiumIcon
+    case emptyNotesIcon
+    
+    func name() -> String {
+        self.rawValue
+    }
 }

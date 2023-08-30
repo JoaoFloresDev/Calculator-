@@ -15,7 +15,7 @@ class FolderCollectionViewCell: UICollectionViewCell {
     }
     
     func setup(name: String) {
-        imageCell.image = UIImage(named: "folder")
+        imageCell.image = UIImage(named: Img.folder.name())
         titleLabel.text = name
     }
 }

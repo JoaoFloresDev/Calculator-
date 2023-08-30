@@ -44,7 +44,7 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         let placeholderView = CustomStackedView(
             title: Text.emptyNotesTitle.localized(),
             subtitle: Text.emptyNotesSubtitle.localized(),
-            image: UIImage(named: "emptyNotesIcon")
+            image: UIImage(named: Img.emptyNotesIcon.name())
         )
         placeholderView.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height / 2) - (UIScreen.main.bounds.width * 0.4), width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.8)
         tableView.backgroundView?.addSubview(placeholderView)

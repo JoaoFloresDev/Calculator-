@@ -39,7 +39,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     lazy var placeholderView = CustomStackedView(
         title: Text.emptyGalleryTitle.localized(),
         subtitle: Text.emptyGallerySubtitle.localized(),
-        image: UIImage(named: "emptyGalleryIcon")
+        image: UIImage(named: Img.emptyGalleryIcon.name())
     )
     
     // MARK: - Life Cycle
