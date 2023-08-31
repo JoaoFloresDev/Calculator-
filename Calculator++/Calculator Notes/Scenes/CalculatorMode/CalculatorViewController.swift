@@ -24,7 +24,7 @@ class CalculatorViewController: BaseCalculatorViewController {
     @IBAction func useFaceID(_ sender: UIButton) {
         
         let myContext = LAContext()
-        let myLocalizedReasonString = Text.faceIDReasin.localized()
+        let myLocalizedReasonString = "We will use authentication to show you the password for the app"
         
         var authError: NSError?
         
