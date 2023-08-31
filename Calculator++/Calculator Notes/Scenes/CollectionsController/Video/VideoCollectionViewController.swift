@@ -94,7 +94,9 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         if folders.isEmpty {
             filesIsExpanded = true
         } else {
-            self.collectionView?.reloadSections(IndexSet(integer: .zero))
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView?.reloadSections(IndexSet(integer: .zero))
+            }
         }
     }
     
@@ -116,7 +118,9 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
         self.deselectAllFoldersObjects()
         self.deselectAllFileObjects()
         if isEditMode {
-            collectionView?.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView?.reloadData()
+            }
         }
         isEditMode.toggle()
     }
@@ -150,8 +154,6 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
                 self.filesIsExpanded = true
             }
             self.deselectAllFoldersObjects()
-            self.collectionView?.reloadSections(IndexSet(integer: 0))
-            
             for video in self.modelData where video.isSelected == true {
                 VideoModelController.deleteImageObject(name: video.name, basePath: self.basePath)
                 if let index = self.modelData.firstIndex(where: { $0.name == video.name }) {
@@ -159,7 +161,9 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
                 }
             }
             self.deselectAllFileObjects()
-            self.collectionView?.reloadSections(IndexSet(integer: 1))
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView?.reloadData()
+            }
         }
     }
 }
@@ -216,7 +220,13 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
                 return Folder(name: folderName, isSelected: false)
             }
             if folders.count  > 0 {
-                collectionView?.insertItems(at: [IndexPath(item: folders.count - 1, section: 0)])
+                DispatchQueue.main.async { [weak self] in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    
+                    self?.collectionView?.insertItems(at: [IndexPath(item: strongSelf.folders.count - 1, section: 0)])
+                }
             } else  {
                 collectionView?.reloadSections(IndexSet(integer: .zero))
             }

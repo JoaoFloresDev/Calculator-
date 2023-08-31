@@ -24,7 +24,8 @@ class AdsHandler {
     }
     
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        guard Defaults.getInt(.launchCounter) > 5 else {
+        guard Defaults.getInt(.launchCounter) > 5,
+              !Defaults.getBool(.premiumPurchased) else {
             return
         }
         
