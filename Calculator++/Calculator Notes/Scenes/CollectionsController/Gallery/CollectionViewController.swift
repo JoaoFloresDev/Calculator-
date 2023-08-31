@@ -47,11 +47,13 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         coordinator = CollectionViewCoordinator(self)
         setupData()
         configureNavigationBar()
-        setupAds()
         setupFirstUse()
         setupTabBars()
         handleInitialLaunch()
         setupPlaceholderView()
+        if !Defaults.getBool(.premiumPurchased) {
+            setupAds()
+        }
     }
     
     func setupPlaceholderView() {

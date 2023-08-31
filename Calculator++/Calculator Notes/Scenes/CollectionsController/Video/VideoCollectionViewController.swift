@@ -186,28 +186,51 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     }
     
     func addFolder() {
-        Alerts.showInputDialog(title: Text.folderTitle.localized(),
-                               controller: self,
-                               actionTitle: Text.createActionTitle.localized(),
-                               cancelTitle: Text.cancelTitle.localized(),
-                               inputPlaceholder: Text.inputPlaceholder.localized(),
-                               actionHandler: { (input: String?) in
-            if let input = input {
-                if !self.foldersService.checkAlreadyExist(folder: input, basePath: self.basePath) {
-                    self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { folderName in
-                        return Folder(name: folderName, isSelected: false)
-                    }
-                    self.collectionView?.reloadSections(IndexSet(integer: .zero))
-                } else {
-                    Alerts.showError(title: Text.folderNameAlreadyUsedTitle.localized(),
-                                     text: Text.folderNameAlreadyUsedText.localized(), controller: self,
-                                     completion: {
-                        self.addFolder()
-                    })
-                }
+            showAddFolderDialog()
+        }
+
+        private func showAddFolderDialog() {
+            Alerts.showInputDialog(
+                title: Text.folderTitle.localized(),
+                controller: self,
+                actionTitle: Text.createActionTitle.localized(),
+                cancelTitle: Text.cancelTitle.localized(),
+                inputPlaceholder: Text.inputPlaceholder.localized()
+            ) { [weak self] input in
+                self?.handleAddFolderInput(input)
             }
-        })
-    }
+        }
+
+        private func handleAddFolderInput(_ input: String?) {
+            guard let input = input else { return }
+
+            if foldersService.checkAlreadyExist(folder: input, basePath: basePath) {
+                showFolderAlreadyExistsError()
+            } else {
+                addNewFolder(input)
+            }
+        }
+
+        private func addNewFolder(_ folderName: String) {
+            folders = foldersService.add(folder: folderName, basePath: basePath).map { folderName in
+                return Folder(name: folderName, isSelected: false)
+            }
+            if folders.count  > 0 {
+                collectionView?.insertItems(at: [IndexPath(item: folders.count - 1, section: 0)])
+            } else  {
+                collectionView?.reloadSections(IndexSet(integer: .zero))
+            }
+        }
+
+        private func showFolderAlreadyExistsError() {
+            Alerts.showError(
+                title: Text.folderNameAlreadyUsedTitle.localized(),
+                text: Text.folderNameAlreadyUsedText.localized(),
+                controller: self
+            ) { [weak self] in
+                self?.showAddFolderDialog()
+            }
+        }
 }
 
 // Collection view DataSource & Delegate
