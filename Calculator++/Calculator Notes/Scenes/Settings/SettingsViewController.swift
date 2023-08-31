@@ -98,8 +98,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillAppear(animated)
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
-        guard Defaults.getBool(.iCloudPurchased),
-              FeatureFlags.iCloudEnabled else {
+        
+        guard FeatureFlags.iCloudEnabled else {
             return
         }
         
