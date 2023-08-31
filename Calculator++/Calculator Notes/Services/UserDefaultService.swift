@@ -13,7 +13,7 @@ var userDefaults = UserDefaults.standard
 enum BoolKey: String {
     case recoveryStatus
     case needSavePasswordInCloud
-    case notFirstUse
+    case notFirstUse = "firstUse"
     case iCloudEnabled
     case iCloudPurchased
     case premiumPurchased = "NoAds.Calc"
