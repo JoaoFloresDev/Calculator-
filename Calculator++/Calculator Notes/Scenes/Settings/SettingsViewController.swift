@@ -57,21 +57,15 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @IBAction func showBankMode(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "BankMode", bundle: nil)
-        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordBankMode")
-        present(changePasswordCalcMode, animated: true)
+        coordinator.showBankMode()
     }
 
     @IBAction func showCalculatorMode(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "CalculatorMode", bundle: nil)
-        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordCalcMode")
-        present(changePasswordCalcMode, animated: true)
+        coordinator.showCalculatorMode()
     }
 
     @IBAction func premiumVersionPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
-        present(changePasswordCalcMode, animated: true)
+        coordinator.premiumVersionPressed()
     }
 
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -90,13 +84,14 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    lazy var coordinator = SettingsCoordinator(viewController: self)
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupGestures()
         loadData()
-        restoreBackup.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -164,19 +159,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - Backup
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
-        if Defaults.getBool(.iCloudPurchased) {
-            let vc = BackupModalViewController(backupIsActivated: backupIsActivated, delegate: self)
-            vc.modalPresentationStyle = .overCurrentContext
-            if let tabBarController = self.tabBarController {
-                tabBarController.present(vc, animated: false, completion: nil)
-            }
-        } else {
-            Alerts.showBePremiumToUseBackup(controller: self, completion: {_ in
-                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
-                self.present(changePasswordCalcMode, animated: true)
-            })
-        }
+        coordinator.showBackupOptions(backupIsActivated: self.backupIsActivated, delegate: self)
     }
 
     private func fetchCloudKitPassword() {

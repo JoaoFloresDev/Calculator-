@@ -101,9 +101,11 @@ enum Text: String {
     case emptyNotesTitle
     case emptyNotesSubtitle
     case seeMore
-    case backupSettings
-    case backupStatus
-    case seeMyBackup
+    case backupSettings // "Configurações de Backup"
+    case backupStatus // "Backup Criptografado"
+    case seeMyBackup //"Ver meu backup"
+    case restoreBackup //"Restaurar backup"
+    case updateBackup //"Atualizar backup"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

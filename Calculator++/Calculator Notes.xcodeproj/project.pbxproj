@@ -35,6 +35,8 @@
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D12AA01A0100546566 /* PlaceholderView.swift */; };
+		73B053D42AA01E3B00546566 /* VideoCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D32AA01E3B00546566 /* VideoCollectionCoordinator.swift */; };
+		73B053D62AA0C3D600546566 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D52AA0C3D600546566 /* SettingsCoordinator.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
 		73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4D27B096F600499F66 /* BankMode.storyboard */; };
 		73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D5F27B09A1B00499F66 /* Localizable.strings */; };
@@ -130,6 +132,8 @@
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		73ABC0F2284F25CB00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73B053D12AA01A0100546566 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
+		73B053D32AA01E3B00546566 /* VideoCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoCollectionCoordinator.swift; path = ../../../../../../../VideoCollectionCoordinator.swift; sourceTree = "<group>"; };
+		73B053D52AA0C3D600546566 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsCoordinator.swift; path = ../../../../../../SettingsCoordinator.swift; sourceTree = "<group>"; };
 		73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalculatorMode.storyboard; sourceTree = "<group>"; };
 		73B54D4D27B096F600499F66 /* BankMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankMode.storyboard; sourceTree = "<group>"; };
 		73B54D5927B0995600499F66 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 			children = (
 				C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */,
 				C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */,
+				73B053D32AA01E3B00546566 /* VideoCollectionCoordinator.swift */,
 				C467BCC224A9B1880039D237 /* VideoModelController.swift */,
 			);
 			path = Video;
@@ -424,6 +429,7 @@
 				73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */,
 				736BDAD22A979D7100851BEF /* BackupModalViewController.swift */,
 				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
+				73B053D52AA0C3D600546566 /* SettingsCoordinator.swift */,
 				C480A50724A7757600094FC8 /* Settings.storyboard */,
 			);
 			path = Settings;
@@ -681,6 +687,7 @@
 				C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
+				73B053D62AA0C3D600546566 /* SettingsCoordinator.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
@@ -702,6 +709,7 @@
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
+				73B053D42AA01E3B00546566 /* VideoCollectionCoordinator.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
 				73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */,
 				73C563632A9D706E0043DC78 /* Constants.swift in Sources */,

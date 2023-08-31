@@ -15,7 +15,6 @@ import StoreKit
 import Foundation
 import AVFoundation
 import AVKit
-import CloudKit
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate {
     // MARK: - Variables
@@ -36,7 +35,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
-    lazy var placeholderView = CustomStackedView(
+    lazy var placeholderView = PlaceholderView(
         title: Text.emptyGalleryTitle.localized(),
         subtitle: Text.emptyGallerySubtitle.localized(),
         image: UIImage(named: Img.emptyGalleryIcon.name())
@@ -52,7 +51,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupFirstUse()
         setupTabBars()
         handleInitialLaunch()
-        monitorWiFiAndPerformActions()
         setupPlaceholderView()
     }
     
@@ -471,41 +469,6 @@ extension CollectionViewController {
             Defaults.setBool(.notFirstUse, true)
             coordinator?.presentWelcomeController()
         }
-    }
-    
-    private func monitorWiFiAndPerformActions() {
-        guard Defaults.getBool(.iCloudPurchased),
-              FeatureFlags.iCloudEnabled else {
-            return
-        }
-        
-        isConnectedToWiFi { isConnected in
-            if isConnected {
-                BackupService.updateBackup()
-                if Defaults.getBool(.needSavePasswordInCloud) {
-                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
-                        if success && error == nil {
-                            Defaults.setBool(.needSavePasswordInCloud, false)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
-        let monitor = NWPathMonitor()
-        
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
-        
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        monitor.start(queue: queue)
     }
 }
 

@@ -1,5 +1,23 @@
 import UIKit
 import SnapKit
+import Network
+import Photos
+import AssetsPickerViewController
+import DTPhotoViewerController
+import CoreData
+import NYTPhotoViewer
+import ImageViewer
+import StoreKit
+import GoogleMobileAds
+import SceneKit
+import simd
+import Photos
+import StoreKit
+import Foundation
+import AVFoundation
+import AVKit
+import CloudKit
+
 
 protocol BackupModalViewControllerDelegate {
     func restoreBackupTapped()
@@ -65,7 +83,7 @@ class BackupModalViewController: UIViewController {
 
     lazy var restoreBackup: UIView = {
         let label = UILabel()
-        label.text = "Restaurar backup"
+        label.text = Text.restoreBackup.localized()
         label.font = UIFont.boldSystemFont(ofSize: 17)
         let restoreBackupView = UIView()
         restoreBackupView.backgroundColor = .systemGray5
@@ -82,6 +100,29 @@ class BackupModalViewController: UIViewController {
         
         // Adicionar o gesture recognizer para tornar a view clicável
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.restoreBackupTapped))
+        restoreBackupView.addGestureRecognizer(tapGesture)
+        
+        return restoreBackupView
+    }()
+    
+    lazy var updateBackup: UIView = {
+        let label = UILabel()
+        label.text = Text.updateBackup.localized()
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        let restoreBackupView = UIView()
+        restoreBackupView.backgroundColor = .systemGray5
+        restoreBackupView.addSubview(label)
+        
+        label.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalToSuperview().inset(8)
+            make.leading.equalToSuperview().inset(16)
+        }
+        
+        restoreBackupView.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.updateBackupTapped))
         restoreBackupView.addGestureRecognizer(tapGesture)
         
         return restoreBackupView
@@ -121,10 +162,44 @@ class BackupModalViewController: UIViewController {
             self.delegate?.restoreBackupTapped()
         }
     }
+    
+    @objc func updateBackupTapped() {
+        monitorWiFiAndPerformActions()
+    }
 
+    private func monitorWiFiAndPerformActions() {
+        isConnectedToWiFi { isConnected in
+            if isConnected {
+                BackupService.updateBackup()
+                if Defaults.getBool(.needSavePasswordInCloud) {
+                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
+                        if success && error == nil {
+                            Defaults.setBool(.needSavePasswordInCloud, false)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
+        let monitor = NWPathMonitor()
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+    }
+    
     lazy var contentStackView: UIStackView = {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [backupStatus, restoreBackup, viewBackup, spacer])
+        let stackView = UIStackView(arrangedSubviews: [backupStatus, restoreBackup, updateBackup, viewBackup, spacer])
         stackView.axis = .vertical
         stackView.spacing = 1
         return stackView
@@ -147,8 +222,8 @@ class BackupModalViewController: UIViewController {
     }()
     
     // Constants
-    let defaultHeight: CGFloat = 300
-    var currentContainerHeight: CGFloat = 300
+    let defaultHeight: CGFloat = 360
+    var currentContainerHeight: CGFloat = 360
     
     // Dynamic container constraint
     var containerViewHeightConstraint: Constraint?

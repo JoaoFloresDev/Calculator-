@@ -41,7 +41,7 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
         self.navigationController?.setup()
         notes = CoreDataHelper.retrieveNote()
         tableView.backgroundView  = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        let placeholderView = CustomStackedView(
+        let placeholderView = PlaceholderView(
             title: Text.emptyNotesTitle.localized(),
             subtitle: Text.emptyNotesSubtitle.localized(),
             image: UIImage(named: Img.emptyNotesIcon.name())

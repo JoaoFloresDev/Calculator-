@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class CustomStackedView: UIView {
+class PlaceholderView: UIView {
     
     // Elementos da view
     private let titleLabel: UILabel = {

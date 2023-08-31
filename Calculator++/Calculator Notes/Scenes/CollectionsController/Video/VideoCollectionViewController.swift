@@ -13,6 +13,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     var videoPaths: [String] = []
     var folders: [Folder] = []
     var modelController = VideoModelController()
+    lazy var coordinator = VideoCollectionCoordinator(viewController: self)
     
     var isPremium: Bool {
         return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
@@ -24,22 +25,20 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
-    lazy var placeholderView: CustomStackedView = {
+    lazy var placeholderView: PlaceholderView = {
         if isPremium {
-            return CustomStackedView(
+            return PlaceholderView(
                 title: Text.emptyVideosTitle.localized(),
                 subtitle: Text.emptyVideosSubtitle.localized(),
                 image: UIImage(named: Img.emptyVideoIcon.name())
             )
         } else {
-            return CustomStackedView(
+            return PlaceholderView(
                 title: Text.premiumToolTitle.localized(),
                 subtitle: Text.premiumVideosSubtitle.localized(),
                 image: UIImage(named: Img.premiumIcon.name()), buttonText: Text.seeMore.localized()
             ) {
-                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
-                self.present(changePasswordCalcMode, animated: true)
+                self.coordinator.presentPurshes()
             }
         }
     }()
@@ -171,9 +170,7 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
             presentPickerController()
         } else {
             Alerts.showBePremiumToUse(controller: self) {
-                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
-                self.present(changePasswordCalcMode, animated: true)
+                self.coordinator.presentPurshes()
             }
         }
     }
@@ -183,9 +180,7 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
             addFolder()
         } else {
             Alerts.showBePremiumToUse(controller: self) {
-                let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
-                self.present(changePasswordCalcMode, animated: true)
+                self.coordinator.presentPurshes()
             }
         }
     }
@@ -264,34 +259,19 @@ extension VideoCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditMode {
-            switch indexPath.section {
-            case 0:
-                let storyboard = UIStoryboard(name: "VideoPlayer", bundle: nil)
-                if let controller = storyboard.instantiateViewController(withIdentifier: "VideoCollectionViewController") as? VideoCollectionViewController {
-                    if indexPath.row < folders.count {
-                        controller.basePath = basePath + folders[indexPath.row].name + "@"
-                        controller.navigationTitle = folders[indexPath.row].name.components(separatedBy: "@").last
-                        self.navigationController?.pushViewController(controller, animated: true)
-                    }
-                }
-            default:
-                // Reproduz o vídeo
-                guard let videoURL = videoPaths[safe: indexPath.item],
-                      let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoURL) else {
-                    os_log("Failed to retrieve video URL", log: .default, type: .error)
-                    Alerts.showGenericError(controller: self)
-                    return
-                }
-                
-                let player = AVPlayer(url: path)
-                let playerController = AVPlayerViewController()
-                playerController.player = player
-                present(playerController, animated: true) {
-                    player.play()
-                }
-            }
+            handleNormalModeSelection(for: indexPath)
         } else {
             updateSelectedPhotos(indexPath: indexPath)
+        }
+    }
+
+    // Trata da seleção quando não está em modo de edição
+    private func handleNormalModeSelection(for indexPath: IndexPath) {
+        switch indexPath.section {
+        case .zero:
+            coordinator.navigateToVideoCollectionViewController(for: indexPath, folders: folders, basePath: basePath)
+        default:
+            coordinator.playVideo(videoPaths: videoPaths, indexPath: indexPath)
         }
     }
     
@@ -395,14 +375,6 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
     }
     
     private func presentPickerController() {
-        guard UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) else {
-            Alerts.showGenericError(controller: self)
-            return
-        }
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .savedPhotosAlbum
-        imagePickerController.delegate = self
-        imagePickerController.mediaTypes = [kUTTypeMovie as String]
-        present(imagePickerController, animated: true, completion: nil)
+        coordinator.presentPickerController()
     }
 }
