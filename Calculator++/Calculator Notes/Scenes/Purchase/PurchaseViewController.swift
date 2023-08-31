@@ -83,13 +83,17 @@ class PurchaseViewController: UIViewController {
     }
     
     private func startLoading() {
-        loadingView.alpha = 1
-        loadingView.startAnimating()
+        DispatchQueue.main.async {
+            self.loadingView.alpha = 1
+            self.loadingView.startAnimating()
+        }
     }
     
     private func stopLoading() {
-        loadingView.alpha = 0
-        loadingView.stopAnimating()
+        DispatchQueue.main.async { [self] in
+            self.loadingView.alpha = 0
+            loadingView.stopAnimating()
+        }
     }
     
     @objc private func handlePurchaseNotification(_ notification: Notification) {
@@ -113,9 +117,11 @@ class PurchaseViewController: UIViewController {
         products = []
         RazeFaceProducts.store.requestProducts { [weak self] success, products in
             guard let self = self, let products = products else { return }
-            self.products = products
-            self.updateUI(with: products.first)
-            self.confirmCheckmark()
+            DispatchQueue.main.async {
+                self.products = products
+                self.updateUI(with: products.first)
+                self.confirmCheckmark()
+            }
         }
     }
     

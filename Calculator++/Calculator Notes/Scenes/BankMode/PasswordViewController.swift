@@ -17,7 +17,7 @@ class PasswordViewController: UIViewController {
     var arrayCircles = [UIImageView]()
     var captureKey = 0
     var keyCurret = Defaults.getString(.password)
-    let keyRecovery = "314159"
+    let keyRecovery = Constants.recoverPassword
     
     //    MARK: - IBOutlets
     

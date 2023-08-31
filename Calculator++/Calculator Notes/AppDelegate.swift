@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupNotifications()
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
         WLEmptyState.configure()
         
         if shouldInitializeWindow() {
@@ -43,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
     
     // MARK: - Notification Actions

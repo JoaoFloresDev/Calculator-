@@ -99,7 +99,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
         
-        guard FeatureFlags.iCloudEnabled else {
+        guard FeatureFlags.iCloudEnabled,
+              Defaults.getBool(.iCloudPurchased)  else {
             restoreBackup.isHidden =  true
             return
         }

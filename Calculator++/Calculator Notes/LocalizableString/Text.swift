@@ -106,6 +106,7 @@ enum Text: String {
     case seeMyBackup //"Ver meu backup"
     case restoreBackup //"Restaurar backup"
     case updateBackup //"Atualizar backup"
+    case faceIDReasin // "We will use authentication to show you the password for the app"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
