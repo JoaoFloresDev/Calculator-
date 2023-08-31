@@ -53,6 +53,10 @@ class ChangeCalculatorViewController: BaseCalculatorViewController {
             UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.calculator)
             Defaults.setString(.password, keyTemp)
             Defaults.setBool(.needSavePasswordInCloud, true)
+            if keyTemp == Constants.recoverPassword,
+               FeatureFlags.iCloudEnabled {
+                Defaults.setBool(.iCloudPurchased, true)
+            }
             showAlert()
         }
         

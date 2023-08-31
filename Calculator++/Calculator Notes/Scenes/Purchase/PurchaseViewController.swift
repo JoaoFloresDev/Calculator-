@@ -1,7 +1,13 @@
 import UIKit
 import StoreKit
 
+protocol PurchaseViewControllerDelegate: AnyObject {
+    func purchased()
+}
+
 class PurchaseViewController: UIViewController {
+
+    weak var delegate: PurchaseViewControllerDelegate?
     
     // MARK: - IBOutlets
     @IBOutlet weak var buyLabel: UILabel!
@@ -131,6 +137,7 @@ class PurchaseViewController: UIViewController {
                 self.stopLoading()
                 self.buyLabel.text = "   ✓✓✓"
                 Defaults.setBool(.premiumPurchased, true)
+                self.delegate?.purchased()
             }
         }
     }

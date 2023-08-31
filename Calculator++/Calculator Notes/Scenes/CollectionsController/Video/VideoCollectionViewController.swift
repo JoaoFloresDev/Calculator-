@@ -199,10 +199,9 @@ extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
                 controller: self,
                 actionTitle: Text.createActionTitle.localized(),
                 cancelTitle: Text.cancelTitle.localized(),
-                inputPlaceholder: Text.inputPlaceholder.localized()
-            ) { [weak self] input in
-                self?.handleAddFolderInput(input)
-            }
+                inputPlaceholder: Text.inputPlaceholder.localized(), actionHandler:  { [weak self] input in
+                    self?.handleAddFolderInput(input)
+                })
         }
 
         private func handleAddFolderInput(_ input: String?) {
@@ -409,5 +408,11 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
     
     private func presentPickerController() {
         coordinator.presentPickerController()
+    }
+}
+
+extension VideoCollectionViewController: PurchaseViewControllerDelegate {
+    func purchased() {
+        viewWillAppear(false)
     }
 }
