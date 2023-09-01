@@ -1,10 +1,28 @@
 import UIKit
 
 struct BackupService {
-    static func updateBackup() {
-        CloudKitImageService.saveImages(names: CloudInsertionManager.getNames())
-        CloudKitImageService.deleteImages(names: CloudDeletionManager.getNames())
+    static func updateBackup(completion: @escaping (Bool) -> ()) {
+        let group = DispatchGroup()
+        var saveSuccess = false
+        var deleteSuccess = false
+        
+        group.enter()
+        CloudKitImageService.saveImages(names: CloudInsertionManager.getNames()) { success in
+            saveSuccess = success
+            group.leave()
+        }
+        
+        group.enter()
+        CloudKitImageService.deleteImages(names: CloudDeletionManager.getNames()) { success in
+            deleteSuccess = success
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            completion(saveSuccess && deleteSuccess)
+        }
     }
+
     
     static func hasDataInCloudKit(completion: @escaping (Bool, Error?, [(String, UIImage)]?) -> Void) {
         CloudKitImageService.fetchImages { items, error in

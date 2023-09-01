@@ -116,25 +116,69 @@ class CloudKitImageService: ObservableObject {
         }
     }
     
-    static func deleteImages(names: [String]) {
+    static func deleteImages(names: [String], completion: @escaping (Bool) -> ()) {
+        var totalCompleted = 0
+        var totalSuccess = 0
+        
+        if names.isEmpty {
+            completion(true)
+        }
+        
         for name in names {
             deleteImage(name: name) { success, error in
+                totalCompleted += 1
+                
                 if success && error == nil {
+                    totalSuccess += 1
                     CloudDeletionManager.deleteName(name)
+                }
+                
+                if totalCompleted == names.count {
+                    completion(totalSuccess == names.count)
                 }
             }
         }
     }
     
-    static func saveImages(names: [String]) {
+    static func saveImages(names: [String], completion: @escaping (Bool) -> ()) {
+        let serialQueue = DispatchQueue(label: "com.yourApp.saveImages")
+        var totalCompleted = 0
+        var totalSuccess = 0
+        if names.isEmpty {
+            completion(true)
+        }
         for name in names {
             if let image = CoreDataImageService.fetchImage(imageName: name) {
                 CloudKitImageService.saveImage(name: name, image: image) { success, error in
-                    CloudInsertionManager.deleteName(name)
+                    serialQueue.sync {
+                        totalCompleted += 1
+                        if success {
+                            totalSuccess += 1
+                        }
+                        
+                        CloudInsertionManager.deleteName(name)
+                        
+                        if totalCompleted == names.count {
+                            DispatchQueue.main.async {
+                                completion(totalSuccess == names.count)
+                            }
+                        }
+                    }
+                }
+            } else {
+                serialQueue.sync {
+                    totalCompleted += 1
+                    if totalCompleted == names.count {
+                        DispatchQueue.main.async {
+                            completion(totalSuccess == names.count)
+                        }
+                    }
                 }
             }
         }
     }
+
+
     
     static func deleteAllItems(completion: @escaping (Bool, Error?) -> Void) {
         let query = CKQuery(recordType: recordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)

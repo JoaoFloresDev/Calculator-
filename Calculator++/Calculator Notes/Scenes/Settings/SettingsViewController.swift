@@ -108,37 +108,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         CloudKitImageService.isICloudEnabled { isEnabled in
             self.backupIsActivated = isEnabled
         }
-        monitorWiFiAndPerformActions()
-    }
-
-    private func monitorWiFiAndPerformActions() {
-        isConnectedToWiFi { isConnected in
-            if isConnected {
-                BackupService.updateBackup()
-                if Defaults.getBool(.needSavePasswordInCloud) {
-                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
-                        if success && error == nil {
-                            Defaults.setBool(.needSavePasswordInCloud, false)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
-        let monitor = NWPathMonitor()
-        
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
-        
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        monitor.start(queue: queue)
     }
     
     // MARK: - UI

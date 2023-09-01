@@ -166,15 +166,26 @@ class BackupModalViewController: UIViewController {
     @objc func updateBackupTapped() {
         monitorWiFiAndPerformActions()
     }
+    
+    lazy var loadingAlert = LoadingAlert(in: self)
 
     private func monitorWiFiAndPerformActions() {
         isConnectedToWiFi { isConnected in
             if isConnected {
-                BackupService.updateBackup()
-                if Defaults.getBool(.needSavePasswordInCloud) {
-                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
-                        if success && error == nil {
-                            Defaults.setBool(.needSavePasswordInCloud, false)
+                self.loadingAlert.startLoading {
+                    BackupService.updateBackup(completion: { _ in 
+                        DispatchQueue.main.async {
+                            self.loadingAlert.stopLoading {
+                                Alerts.showBackupSuccess(controller: self)
+                            }
+                        }
+                    })
+
+                    if Defaults.getBool(.needSavePasswordInCloud) {
+                        CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
+                            if success && error == nil {
+                                Defaults.setBool(.needSavePasswordInCloud, false)
+                            }
                         }
                     }
                 }
