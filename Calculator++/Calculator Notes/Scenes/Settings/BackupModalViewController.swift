@@ -46,6 +46,28 @@ class BackupModalViewController: UIViewController {
         return view
     }()
     
+    lazy var modalSubtitleView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 16
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        let titleLabel = UILabel()
+        titleLabel.text = Text.backupNavigationSubtitle.localized()
+        titleLabel.font = UIFont.systemFont(ofSize: 17)
+        titleLabel.textColor = .lightGray
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
+        
+        view.addSubview(titleLabel)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        return view
+    }()
+    
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
         switchControl.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
@@ -173,7 +195,7 @@ class BackupModalViewController: UIViewController {
         isConnectedToWiFi { isConnected in
             if isConnected {
                 self.loadingAlert.startLoading {
-                    BackupService.updateBackup(completion: { _ in 
+                    BackupService.updateBackup(completion: { _ in
                         DispatchQueue.main.async {
                             self.loadingAlert.stopLoading {
                                 Alerts.showBackupSuccess(controller: self)
@@ -233,8 +255,8 @@ class BackupModalViewController: UIViewController {
     }()
     
     // Constants
-    let defaultHeight: CGFloat = 360
-    var currentContainerHeight: CGFloat = 360
+    let defaultHeight: CGFloat = 460
+    var currentContainerHeight: CGFloat = 460
     
     // Dynamic container constraint
     var containerViewHeightConstraint: Constraint?
@@ -284,10 +306,17 @@ class BackupModalViewController: UIViewController {
         view.addSubview(containerView)
         
         containerView.addSubview(modalTitleView)
+        containerView.addSubview(modalSubtitleView)
         
         modalTitleView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().offset(8)
             make.height.equalTo(44)  // Altura da barra de título
+        }
+        
+        modalSubtitleView.snp.makeConstraints { make in
+            make.top.equalTo(modalTitleView.snp.bottom)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().inset(16)
         }
         
         dimmedView.snp.makeConstraints { make in
@@ -302,7 +331,7 @@ class BackupModalViewController: UIViewController {
         
         containerView.addSubview(contentStackView)
         contentStackView.snp.makeConstraints { make in
-            make.top.equalTo(modalTitleView.snp.bottom).offset(8)
+            make.top.equalTo(modalSubtitleView.snp.bottom).offset(24)
             make.bottom.equalTo(containerView.snp.bottom).offset(-20)
             make.leading.trailing.equalTo(containerView)
         }

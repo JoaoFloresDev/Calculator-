@@ -89,7 +89,6 @@ enum Text: String {
     case enableiCloudAction
     
     case delete
-    case backupNavigationTitle
     case backupNavigationSubtitle
     
     case emptyVideosTitle
@@ -101,12 +100,15 @@ enum Text: String {
     case emptyNotesTitle
     case emptyNotesSubtitle
     case seeMore
+    
     case backupSettings // "Configurações de Backup"
     case backupStatus // "Backup Criptografado"
     case seeMyBackup //"Ver meu backup"
     case restoreBackup //"Restaurar backup"
     case updateBackup //"Atualizar backup"
     case faceIDReasin // "We will use authentication to show you the password for the app"
+    case myBackupItens // "Meus itens no Backup"
+    case backupNavigationTitle// "Meu Backup"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

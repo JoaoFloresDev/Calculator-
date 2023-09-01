@@ -3,12 +3,11 @@ import CloudKit
 import SnapKit
 
 class CloudKitItemsViewController: UIViewController {
-    private let closeBarButtonTitle = "Fechar"
-    private let deleteItemTitle = "Delete Item"
-    private let deleteItemMessage = "Are you sure you want to delete this item?"
-    private let deleteActionTitle = "Delete"
-    private let cancelActionTitle = "Cancel"
-    private let navigationTitle = "Meus itens no Backup"
+    private let closeBarButtonTitle = Text.close.localized()
+    private let deleteItemTitle = Text.deleteFiles.localized()
+    private let deleteActionTitle = Text.delete.localized()
+    private let cancelActionTitle = Text.cancel.localized()
+    private let navigationTitle = Text.myBackupItens.localized()
     
     private var viewModel = CloudKitImageService()
     lazy var alert = LoadingAlert(in: self)
@@ -59,7 +58,7 @@ class CloudKitItemsViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        let closeButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(closeButtonTapped))
+        let closeButton = UIBarButtonItem(title: closeBarButtonTitle, style: .plain, target: self, action: #selector(closeButtonTapped))
         closeButton.tintColor = .systemBlue
         navigationItem.leftBarButtonItem = closeButton
         
