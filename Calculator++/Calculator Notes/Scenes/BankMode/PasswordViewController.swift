@@ -207,4 +207,3 @@ class PasswordViewController: UIViewController {
         return .lightContent
     }
 }
-

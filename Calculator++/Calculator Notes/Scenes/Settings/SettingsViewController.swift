@@ -35,8 +35,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var chooseProtectionLabel: UILabel!
     @IBOutlet weak var bankModeView: UIView!
     @IBOutlet weak var bankModeImage: UIImageView!
-    @IBOutlet weak var calcModeView: UIView!
-    @IBOutlet weak var calcModeImage: UIImageView!
+//    @IBOutlet weak var calcModeView: UIView!
+//    @IBOutlet weak var calcModeImage: UIImageView!
     @IBOutlet weak var noProtectionImage: UIImageView!
     @IBOutlet weak var noProtection: UIButton!
     @IBOutlet weak var ModeGroupView: UIView!
@@ -230,13 +230,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     private func loadData() {
         bankModeImage.setImage(.diselectedIndicator)
-        calcModeImage.setImage(.selectedIndicator)
+//        calcModeImage.setImage(.selectedIndicator)
         noProtectionImage.setImage(.diselectedIndicator)
     }
     
     private func showProtectionType(typeProtection: ProtectionMode) {
         bankModeImage.setImage(typeProtection == .bank ? .selectedIndicator : .diselectedIndicator)
-        calcModeImage.setImage(typeProtection == .calculator ? .selectedIndicator : .diselectedIndicator)
+//        calcModeImage.setImage(typeProtection == .calculator ? .selectedIndicator : .diselectedIndicator)
         noProtectionImage.setImage(typeProtection == .noProtection ? .selectedIndicator : .diselectedIndicator)
     }
 }

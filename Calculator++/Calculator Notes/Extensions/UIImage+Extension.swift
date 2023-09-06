@@ -80,3 +80,25 @@ struct UI {
         return image
     }
 }
+
+extension UIColor {
+    /// Inicializa uma nova cor usando um valor hexadecimal.
+    ///
+    /// - Parameters:
+    ///   - hex: Um valor hexadecimal de 6 ou 8 caracteres.
+    ///   - alpha: O valor alfa da cor, entre 0 e 1. O padrão é 1.
+    /// - Returns: Uma instância da cor correspondente.
+    convenience init(hex: String, alpha: CGFloat = 1.0) {
+        let hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        let hexClean = hexSanitized.replacingOccurrences(of: "#", with: "")
+        
+        var rgb: UInt64 = 0
+        Scanner(string: hexClean).scanHexInt64(&rgb)
+        
+        let red = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(rgb & 0x0000FF) / 255.0
+        
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
+    }
+}
