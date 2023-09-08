@@ -33,10 +33,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var recoverLabel: UILabel!
     @IBOutlet weak var chooseProtectionLabel: UILabel!
-    @IBOutlet weak var bankModeView: UIView!
-    @IBOutlet weak var bankModeImage: UIImageView!
-//    @IBOutlet weak var calcModeView: UIView!
-//    @IBOutlet weak var calcModeImage: UIImageView!
     @IBOutlet weak var noProtectionImage: UIImageView!
     @IBOutlet weak var noProtection: UIButton!
     @IBOutlet weak var ModeGroupView: UIView!
@@ -45,7 +41,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var rateApp: UIView!
     @IBOutlet weak var restoreBackup: UIView!
     @IBOutlet weak var backupStatus: UILabel!
-
+    @IBOutlet weak var vaultMode: UIButton!
+    
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Defaults.setBool(.recoveryStatus, sender.isOn)
@@ -58,10 +55,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBAction func showBankMode(_ sender: Any) {
         coordinator.showBankMode()
-    }
-
-    @IBAction func showCalculatorMode(_ sender: Any) {
-        coordinator.showCalculatorMode()
     }
 
     @IBAction func premiumVersionPressed(_ sender: Any) {
@@ -114,6 +107,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func setupTexts() {
         self.title = Text.settings.localized()
         noProtection.setText(.noProtection)
+        vaultMode.setText(.vaultMode)
         upgradeButton.setText(.premiumVersion)
         recoverLabel.setText(.hideRecoverButton)
         chooseProtectionLabel.setText(.chooseProtectionMode)
@@ -229,14 +223,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func loadData() {
-        bankModeImage.setImage(.diselectedIndicator)
-//        calcModeImage.setImage(.selectedIndicator)
         noProtectionImage.setImage(.diselectedIndicator)
     }
     
     private func showProtectionType(typeProtection: ProtectionMode) {
-        bankModeImage.setImage(typeProtection == .bank ? .selectedIndicator : .diselectedIndicator)
-//        calcModeImage.setImage(typeProtection == .calculator ? .selectedIndicator : .diselectedIndicator)
         noProtectionImage.setImage(typeProtection == .noProtection ? .selectedIndicator : .diselectedIndicator)
     }
 }

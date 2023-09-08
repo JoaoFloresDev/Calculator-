@@ -26,13 +26,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     // MARK: - Protocol Methods
     
     func presentChangePasswordCalcMode() {
-//        let changePasswordCalcMode = instantiateViewController(from: "CalculatorMode", withIdentifier: "ChangePasswordCalcMode")
-//        viewController?.present(changePasswordCalcMode, animated: true)
-        
-//        let storyboard = UIStoryboard(name: "BankMode", bundle: nil)
-//        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "ChangePasswordBankMode")
-//        viewController?.present(changePasswordCalcMode, animated: true)
-        let vault = VaultViewController()
+        let vault = VaultViewController(mode: .create)
         vault.modalPresentationStyle = .fullScreen
         viewController?.present(vault, animated: true)
     }

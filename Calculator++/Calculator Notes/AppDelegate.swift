@@ -38,7 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboardName = UserDefaultService().getTypeProtection() == ProtectionMode.calculator ? "CalculatorMode" : "BankMode"
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         let viewControllerID = storyboardName == "CalculatorMode" ? "CalcMode" : "BankMode"
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: viewControllerID)
+        var initialViewController = storyboard.instantiateViewController(withIdentifier: viewControllerID)
+        
+        if UserDefaultService().getTypeProtection() == .vault {
+            initialViewController = VaultViewController(mode: .verify)
+        }
         
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()

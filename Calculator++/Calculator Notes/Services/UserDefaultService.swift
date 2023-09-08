@@ -110,6 +110,7 @@ enum ProtectionMode: String {
     case calculator
     case noProtection
     case bank
+    case vault
 }
 
 struct UserDefaultService {
