@@ -73,7 +73,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         guard let viewController = viewController else {
             return
         }
-        let controller = WelcomeViewController(delegate: viewController)
+        let controller = WelcomeViewController(coordinator: self, delegate: viewController)
         controller.view.backgroundColor = UIColor.clear
         controller.modalPresentationStyle = .overCurrentContext
         viewController.present(controller, animated: false)
