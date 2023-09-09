@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import LocalAuthentication
 import UIKit
 import SnapKit
 
@@ -56,6 +56,7 @@ class ShadowRoundedView: UIView {
 enum VaultMode {
     case verify
     case create
+    case confirmation
 }
 
 class VaultViewController: UIViewController {
@@ -65,7 +66,7 @@ class VaultViewController: UIViewController {
     private var titleLabel = UILabel()
     private var subtitleLabel = UILabel()
     private var numberButtons: [UIView] = []
-    private var faceidImageView = UIImageView()
+    private var faceidImageView = UILabel()
     private var vaultMode: VaultMode
     
     override func viewDidLoad() {
@@ -75,9 +76,16 @@ class VaultViewController: UIViewController {
     
     init(mode: VaultMode) {
         self.vaultMode = mode
+        if vaultMode == .create {
+            subtitleLabel.text = "Crie uma senha e confirme com enter"
+        } else {
+            subtitleLabel.text = "Digite sua senha e confirme com enter"
+        }
         super.init(nibName: nil, bundle: nil)
     }
 
+    var shouldPresentGallery =  false
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -93,7 +101,6 @@ class VaultViewController: UIViewController {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 32)
         
         // Subtítulo
-        subtitleLabel.text = "Digite sua senha e confirme com enter"
         subtitleLabel.numberOfLines = 0
         subtitleLabel.textColor = .white
         subtitleLabel.textAlignment = .center
@@ -113,13 +120,8 @@ class VaultViewController: UIViewController {
         // Configurar displayLabel
         displayLabel.textAlignment = .left
         displayLabel.font = UIFont.systemFont(ofSize: 36)
-        displayLabel.text = "0"
+        displayLabel.text = ""
         displayLabel.textColor = .white
-
-        // Adicionando espaçamento entre as letras
-        let attributedString = NSMutableAttributedString(string: "0")
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: CGFloat(5.0), range: NSRange(location: 0, length: attributedString.length - 1))
-        displayLabel.attributedText = attributedString
         
         // Constraints para displayContainer
         displayContainer.snp.makeConstraints { make in
@@ -204,11 +206,12 @@ class VaultViewController: UIViewController {
         }
         
         self.view.addSubview(faceidImageView)
-        faceidImageView.image = UIImage(named: "faceid")
+        faceidImageView.text = Text.recover.localized()
+        faceidImageView.alpha = 0.8
+        faceidImageView.textColor = .systemBlue
         faceidImageView.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-16)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
-            make.height.width.equalTo(48)
         }
         
         // Tornar faceidImageView "tapável"
@@ -221,8 +224,21 @@ class VaultViewController: UIViewController {
     }
     
     @objc private func faceIDTapped() {
-        // Coloque aqui o código para autenticação FaceID
-        print("FaceID ícone tocado!")
+//        let myContext = LAContext()
+//        let myLocalizedReasonString = "Biometric Authntication"
+//
+//        var authError: NSError?
+//
+//            if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
+//                myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
+//
+//            }
+        
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                self.present(homeViewController, animated: true)
+            }
     }
 
 
@@ -234,22 +250,78 @@ class VaultViewController: UIViewController {
         return button
     }
 
-    private var inputSequence = ""
+    private var inputSequence: String = "" {
+        didSet {
+            let attributedString = NSMutableAttributedString(string: inputSequence)
+            attributedString.addAttribute(NSAttributedString.Key.kern, value: CGFloat(15.0), range: NSRange(location: 0, length: attributedString.length))
+            DispatchQueue.main.async {
+                self.displayLabel.attributedText = attributedString
+            }
+        }
+    }
     
     @objc private func numberButtonPressed(_ sender: UIButton) {
         guard let number = sender.titleLabel?.text else { return }
 
         if number == "Clear" {
             inputSequence.removeAll()
-            displayLabel.text = inputSequence
+        } else if number == "Enter" {
+            traitOpenGallery()
         } else {
-            inputSequence.append(number)
-            
-            // Atualizar displayLabel com espaçamento entre as letras
-            let attributedString = NSMutableAttributedString(string: inputSequence)
-            attributedString.addAttribute(NSAttributedString.Key.kern, value: CGFloat(5.0), range: NSRange(location: 0, length: attributedString.length - 1))
-            displayLabel.attributedText = attributedString
+            if inputSequence.count > 6 {
+                inputSequence.removeAll()
+            } else {
+                inputSequence.append(number)
+            }
         }
+    }
+    
+    func traitOpenGallery() {
+        if vaultMode == .create {
+            Defaults.setString(.password, inputSequence)
+            subtitleLabel.text = "Digite a senha novamente:\n\(inputSequence)"
+            inputSequence.removeAll()
+            vaultMode = .confirmation
+        } else if vaultMode ==  .confirmation {
+            if inputSequence == Defaults.getString(.password) || inputSequence == Constants.recoverPassword {
+                
+                showAlert()
+            } else {
+                let alert = UIAlertController(title: Text.incorrectPassword.localized(),
+                                              message: Text.tryAgain.localized(),
+                                              preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                    self.inputSequence.removeAll()
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else {
+            if inputSequence == Defaults.getString(.password) || inputSequence == Constants.recoverPassword {
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                    self.present(homeViewController, animated: true)
+                }
+            } else {
+                let alert = UIAlertController(title: Text.incorrectPassword.localized(),
+                                              message: Text.tryAgain.localized(),
+                                              preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                    self.inputSequence.removeAll()
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func showAlert() {
+        let refreshAlert = UIAlertController(title: Text.done.localized(), message: Text.calcModeHasBeenActivated.localized(), preferredStyle: UIAlertControllerStyle.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+
+        present(refreshAlert, animated: true, completion: nil)
     }
     
     private func setupButtonConstraints(button: UIButton, in roundedView: RoundedShadowView) {

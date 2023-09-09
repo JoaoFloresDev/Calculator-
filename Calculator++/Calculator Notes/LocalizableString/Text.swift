@@ -110,6 +110,7 @@ enum Text: String {
     case myBackupItens // "Meus itens no Backup"
     case backupNavigationTitle// "Meu Backup"
     case vaultMode// "Modo cofre"
+    case recover// "Recuperar"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

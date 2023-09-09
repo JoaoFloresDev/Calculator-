@@ -37,6 +37,8 @@
 		73862C822AAD1894005D9D25 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C812AAD1894005D9D25 /* WelcomeViewController.swift */; };
 		73862C842AAD18BC005D9D25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C832AAD18BC005D9D25 /* Constants.swift */; };
 		73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C852AAD19CA005D9D25 /* VaultViewController.swift */; };
+		73862C882AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */; };
+		73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D12AA01A0100546566 /* PlaceholderView.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
@@ -131,6 +133,8 @@
 		73862C812AAD1894005D9D25 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		73862C832AAD18BC005D9D25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		73862C852AAD19CA005D9D25 /* VaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultViewController.swift; sourceTree = "<group>"; };
+		73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionCoordinator.swift; sourceTree = "<group>"; };
+		73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -382,6 +386,7 @@
 		73B54D5227B097B400499F66 /* BankMode */ = {
 			isa = PBXGroup;
 			children = (
+				73862C852AAD19CA005D9D25 /* VaultViewController.swift */,
 				C41F8483249F271F0015F134 /* PasswordViewController.swift */,
 				C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */,
 				73B54D4D27B096F600499F66 /* BankMode.storyboard */,
@@ -419,6 +424,7 @@
 				C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */,
 				C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */,
 				C467BCC224A9B1880039D237 /* VideoModelController.swift */,
+				73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -426,9 +432,9 @@
 		73B54D5627B097D300499F66 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				73862C852AAD19CA005D9D25 /* VaultViewController.swift */,
 				73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */,
 				736BDAD22A979D7100851BEF /* BackupModalViewController.swift */,
+				73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */,
 				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
 				C480A50724A7757600094FC8 /* Settings.storyboard */,
 			);
@@ -671,6 +677,7 @@
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,
 				73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */,
 				73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */,
+				73862C882AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift in Sources */,
 				73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
@@ -691,6 +698,7 @@
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
+				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
 				73741B022A87D06B0067B269 /* CloudKitImageService.swift in Sources */,

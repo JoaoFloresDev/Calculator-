@@ -50,7 +50,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="o5V-VC-7Bp">
             <objects>
-                <tabBarController storyboardIdentifier="Home" modalPresentationStyle="fullScreen" id="8ez-Al-Xfm" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Home" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8ez-Al-Xfm" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cvh-nA-JKi"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M4W-bt-GPM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
