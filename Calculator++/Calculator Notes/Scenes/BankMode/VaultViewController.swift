@@ -85,6 +85,10 @@ class VaultViewController: UIViewController {
         setupUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("aqui!!")
+    }
+    
     init(mode: VaultMode) {
         self.vaultMode = mode
         if vaultMode != .verify {
@@ -96,8 +100,6 @@ class VaultViewController: UIViewController {
         }
         super.init(nibName: nil, bundle: nil)
     }
-
-    var shouldPresentGallery =  false
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -141,7 +143,7 @@ class VaultViewController: UIViewController {
             make.top.equalTo(titleStack.snp.bottom).offset(24)
             make.left.equalToSuperview().offset(32)
             make.right.equalToSuperview().offset(-32)
-            make.height.equalTo(80)
+            make.height.equalTo(96)
         }
         
         // Constraints para displayLabel
@@ -207,7 +209,7 @@ class VaultViewController: UIViewController {
 
         // Constraints
         titleStack.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
             make.height.equalTo(104)
@@ -217,7 +219,7 @@ class VaultViewController: UIViewController {
             make.top.equalTo(displayContainer.snp.bottom).offset(40)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-64)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-48)
         }
         
         self.view.addSubview(faceidImageView)
@@ -238,28 +240,28 @@ class VaultViewController: UIViewController {
     }
     
     @objc private func faceIDTapped() {
-        if vaultMode == .verify {
-            let myContext = LAContext()
-            let myLocalizedReasonString = "Biometric Authntication"
-            
-            var authError: NSError?
-            
-            if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
-                myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
-                    
+        let faceIDManager = FaceIDManager()
+
+        if faceIDManager.isFaceIDAvailable() {
+            faceIDManager.requestFaceIDAuthentication { success, error in
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appDelegate.window?.rootViewController = homeViewController
+                    }
                 }
             }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        } else {
+            DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                self.present(homeViewController, animated: true)
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.window?.rootViewController = homeViewController
+                }
             }
-        } else {
-            self.dismiss(animated: true)
         }
     }
-
 
     private func createButton(title: String) -> UIButton {
         let button = UIButton(type: .system)
@@ -345,5 +347,33 @@ class VaultViewController: UIViewController {
         }
         
         button.addTarget(self, action: #selector(numberButtonPressed(_:)), for: .touchUpInside)
+    }
+}
+
+
+import LocalAuthentication
+
+class FaceIDManager {
+    
+    private let context = LAContext()
+    
+    // Verifica se o Face ID está disponível no dispositivo
+    func isFaceIDAvailable() -> Bool {
+        var error: NSError?
+        return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+    }
+    
+    // Solicita a autenticação via Face ID
+    func requestFaceIDAuthentication(completion: @escaping (Bool, Error?) -> Void) {
+        guard isFaceIDAvailable() else {
+            completion(false, NSError(domain: "FaceID", code: -1, userInfo: [NSLocalizedDescriptionKey: "Face ID não está disponível"]))
+            return
+        }
+        
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Por favor, autentique-se para continuar") { success, error in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                completion(success, error)
+            }
+        }
     }
 }
