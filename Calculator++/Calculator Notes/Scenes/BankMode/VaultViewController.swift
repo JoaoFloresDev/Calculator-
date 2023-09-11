@@ -68,6 +68,17 @@ class VaultViewController: UIViewController {
     private var numberButtons: [UIView] = []
     private var faceidImageView = UILabel()
     private var vaultMode: VaultMode
+    private var inputSequenceConfirmation: String = ""
+    
+    private var inputSequence: String = "" {
+        didSet {
+            let attributedString = NSMutableAttributedString(string: inputSequence)
+            attributedString.addAttribute(NSAttributedString.Key.kern, value: CGFloat(15.0), range: NSRange(location: 0, length: attributedString.length))
+            DispatchQueue.main.async {
+                self.displayLabel.attributedText = attributedString
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,10 +87,12 @@ class VaultViewController: UIViewController {
     
     init(mode: VaultMode) {
         self.vaultMode = mode
-        if vaultMode == .create {
+        if vaultMode != .verify {
             subtitleLabel.text = "Crie uma senha e confirme com enter"
+            faceidImageView.text = Text.cancel.localized()
         } else {
             subtitleLabel.text = "Digite sua senha e confirme com enter"
+            faceidImageView.text = Text.recover.localized()
         }
         super.init(nibName: nil, bundle: nil)
     }
@@ -128,6 +141,7 @@ class VaultViewController: UIViewController {
             make.top.equalTo(titleStack.snp.bottom).offset(24)
             make.left.equalToSuperview().offset(32)
             make.right.equalToSuperview().offset(-32)
+            make.height.equalTo(80)
         }
         
         // Constraints para displayLabel
@@ -196,17 +210,17 @@ class VaultViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
+            make.height.equalTo(104)
         }
 
         allNumberStack.snp.makeConstraints { make in
-            make.top.equalTo(displayContainer.snp.bottom).offset(32)
+            make.top.equalTo(displayContainer.snp.bottom).offset(40)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-64)
         }
         
         self.view.addSubview(faceidImageView)
-        faceidImageView.text = Text.recover.localized()
         faceidImageView.alpha = 0.8
         faceidImageView.textColor = .systemBlue
         faceidImageView.snp.makeConstraints { make in
@@ -224,21 +238,26 @@ class VaultViewController: UIViewController {
     }
     
     @objc private func faceIDTapped() {
-//        let myContext = LAContext()
-//        let myLocalizedReasonString = "Biometric Authntication"
-//
-//        var authError: NSError?
-//
-//            if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
-//                myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
-//
-//            }
-        
+        if vaultMode == .verify {
+            let myContext = LAContext()
+            let myLocalizedReasonString = "Biometric Authntication"
+            
+            var authError: NSError?
+            
+            if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
+                myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
+                    
+                }
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
                 self.present(homeViewController, animated: true)
             }
+        } else {
+            self.dismiss(animated: true)
+        }
     }
 
 
@@ -248,16 +267,6 @@ class VaultViewController: UIViewController {
         button.tintColor = .white
         button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
         return button
-    }
-
-    private var inputSequence: String = "" {
-        didSet {
-            let attributedString = NSMutableAttributedString(string: inputSequence)
-            attributedString.addAttribute(NSAttributedString.Key.kern, value: CGFloat(15.0), range: NSRange(location: 0, length: attributedString.length))
-            DispatchQueue.main.async {
-                self.displayLabel.attributedText = attributedString
-            }
-        }
     }
     
     @objc private func numberButtonPressed(_ sender: UIButton) {
@@ -278,14 +287,16 @@ class VaultViewController: UIViewController {
     
     func traitOpenGallery() {
         if vaultMode == .create {
-            Defaults.setString(.password, inputSequence)
             subtitleLabel.text = "Digite a senha novamente:\n\(inputSequence)"
+            inputSequenceConfirmation = inputSequence
             inputSequence.removeAll()
             vaultMode = .confirmation
         } else if vaultMode ==  .confirmation {
-            if inputSequence == Defaults.getString(.password) || inputSequence == Constants.recoverPassword {
-                
+            if inputSequence == inputSequenceConfirmation {
                 showAlert()
+                Defaults.setString(.password, inputSequence)
+                UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.vault)
+                Defaults.setBool(.needSavePasswordInCloud, true)
             } else {
                 let alert = UIAlertController(title: Text.incorrectPassword.localized(),
                                               message: Text.tryAgain.localized(),

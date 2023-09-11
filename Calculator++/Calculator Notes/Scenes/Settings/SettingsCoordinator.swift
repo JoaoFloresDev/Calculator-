@@ -18,7 +18,9 @@ class SettingsCoordinator {
     }
     
     func showBankMode() {
-        viewController?.present(VaultViewController(mode: .create), animated: true)
+        let vaultViewController = VaultViewController(mode: .create)
+        vaultViewController.modalPresentationStyle = .fullScreen
+        viewController?.present(vaultViewController, animated: true)
     }
     
     func showCalculatorMode() {
