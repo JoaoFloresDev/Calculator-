@@ -33,6 +33,8 @@
 		73741B022A87D06B0067B269 /* CloudKitImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B012A87D06B0067B269 /* CloudKitImageService.swift */; };
 		73741B092A880B3C0067B269 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B062A880A590067B269 /* BackupService.swift */; };
 		73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B102A886C310067B269 /* CloudUpdateManager.swift */; };
+		737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */; };
+		737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		73862C822AAD1894005D9D25 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C812AAD1894005D9D25 /* WelcomeViewController.swift */; };
 		73862C842AAD18BC005D9D25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C832AAD18BC005D9D25 /* Constants.swift */; };
@@ -129,6 +131,8 @@
 		73741B012A87D06B0067B269 /* CloudKitImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitImageService.swift; sourceTree = "<group>"; };
 		73741B062A880A590067B269 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
 		73741B102A886C310067B269 /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUpdateManager.swift; sourceTree = "<group>"; };
+		737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
+		737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		73862C812AAD1894005D9D25 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		73862C832AAD18BC005D9D25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -334,6 +338,26 @@
 			path = local;
 			sourceTree = "<group>";
 		};
+		737D66A12AB0AA7E00806C98 /* Protections */ = {
+			isa = PBXGroup;
+			children = (
+				737D66A22AB0AB0A00806C98 /* Vault */,
+				73B54D5227B097B400499F66 /* BankMode */,
+				73B54D5127B097A900499F66 /* CalculatorMode */,
+			);
+			path = Protections;
+			sourceTree = "<group>";
+		};
+		737D66A22AB0AB0A00806C98 /* Vault */ = {
+			isa = PBXGroup;
+			children = (
+				73862C852AAD19CA005D9D25 /* VaultViewController.swift */,
+				737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */,
+				737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */,
+			);
+			path = Vault;
+			sourceTree = "<group>";
+		};
 		7396A17A293AB2D1006D6ED4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,8 +390,7 @@
 				73B54D5727B097F200499F66 /* Main */,
 				73B54D5627B097D300499F66 /* Settings */,
 				73B54D5327B097BD00499F66 /* Notes */,
-				73B54D5227B097B400499F66 /* BankMode */,
-				73B54D5127B097A900499F66 /* CalculatorMode */,
+				737D66A12AB0AA7E00806C98 /* Protections */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -386,7 +409,6 @@
 		73B54D5227B097B400499F66 /* BankMode */ = {
 			isa = PBXGroup;
 			children = (
-				73862C852AAD19CA005D9D25 /* VaultViewController.swift */,
 				C41F8483249F271F0015F134 /* PasswordViewController.swift */,
 				C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */,
 				73B54D4D27B096F600499F66 /* BankMode.storyboard */,
@@ -669,6 +691,7 @@
 				2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */,
 				730438652A315B17001EF25B /* AdsService.swift in Sources */,
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
+				737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
@@ -697,6 +720,7 @@
 				C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
+				737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
 				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,

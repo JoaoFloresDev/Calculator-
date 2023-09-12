@@ -57,7 +57,21 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         
         if !photoArray.isEmpty {
             let activityVC = UIActivityViewController(activityItems: photoArray, applicationActivities: nil)
-            viewController?.present(activityVC, animated: true)
+            
+            activityVC.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+                if completed {
+                    print("Compartilhamento concluído.")
+                } else {
+                    print("Compartilhamento cancelado.")
+                }
+                if let shareError = error {
+                    print("Erro durante o compartilhamento: \(shareError.localizedDescription)")
+                }
+            }
+
+            viewController?.present(activityVC, animated: true, completion: {
+                print("aqui")
+            })
         }
     }
     

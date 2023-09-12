@@ -100,6 +100,8 @@ enum Text: String {
     case emptyNotesTitle
     case emptyNotesSubtitle
     case seeMore
+    case AC
+    case Enter
     
     case backupSettings // "Configurações de Backup"
     case backupStatus // "Backup Criptografado"
@@ -111,6 +113,11 @@ enum Text: String {
     case backupNavigationTitle// "Meu Backup"
     case vaultMode// "Modo cofre"
     case recover// "Recuperar"
+    
+    case createPassword // "Crie uma senha e confirme com enter"
+    case insertCreatedPasswordAgain // "Digite a senha novamente"
+    case insertPassword //  "Digite sua senha e confirme com enter"
+    case faceidreason // "Usaremos a autenticação por Face ID para abrir a galeria"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

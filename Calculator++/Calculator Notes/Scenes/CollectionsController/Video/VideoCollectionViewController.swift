@@ -57,6 +57,10 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
         }
     }
     
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        print("aqui")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         modelData = VideoModelController.fetchImageObjectsInit(basePath: basePath)
@@ -126,18 +130,21 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     }
     
     func shareImageButtonTapped() {
-        var fileURLs = [String]()
+        var fileURLs = [URL]()
+        
         for video in modelData where video.isSelected == true {
             if let index = self.modelData.firstIndex(where: { $0.name == video.name }),
-               let fileURL = videoPaths[safe: index] {
-                fileURLs.append(fileURL)
+               let fileURL = videoPaths[safe: index],
+               let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileURL) {
+                
+                fileURLs.append(path)
             }
         }
         
         if !fileURLs.isEmpty {
             let activityController = UIActivityViewController(activityItems: fileURLs, applicationActivities: nil)
-            activityController.popoverPresentationController?.sourceView = view
-            activityController.popoverPresentationController?.sourceRect = view.frame
+            activityController.popoverPresentationController?.sourceView = self.view
+            activityController.popoverPresentationController?.sourceRect = self.view.frame
             
             present(activityController, animated: true, completion: nil)
         }

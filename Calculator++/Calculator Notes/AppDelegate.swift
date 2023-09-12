@@ -86,7 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return currentViewController is PasswordViewController ||
                currentViewController is ChangePasswordViewController ||
                currentViewController is CalculatorViewController ||
-               currentViewController is ChangeCalculatorViewController
+               currentViewController is ChangeCalculatorViewController ||
+               currentViewController is VaultViewController
     }
     
     // MARK: - Core Data Stack

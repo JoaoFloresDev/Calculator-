@@ -11,48 +11,6 @@ import LocalAuthentication
 import UIKit
 import SnapKit
 
-class RoundedShadowView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = 4
-        self.layer.shadowOpacity = 0.2
-        self.backgroundColor = UIColor(hex: "#383B3F", alpha: 1)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.layer.cornerRadius = self.frame.width / 2
-        self.layer.masksToBounds = false // Não corta a sombra
-    }
-}
-
-class ShadowRoundedView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = 4
-        self.layer.shadowOpacity = 0.2
-        self.layer.cornerRadius = 12
-        self.backgroundColor = UIColor(hex: "#383B3F", alpha: 1)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.layer.masksToBounds = false // Não corta a sombra
-    }
-}
-
 enum VaultMode {
     case verify
     case create
@@ -88,10 +46,10 @@ class VaultViewController: UIViewController {
     init(mode: VaultMode) {
         self.vaultMode = mode
         if vaultMode != .verify {
-            subtitleLabel.text = "Crie uma senha e confirme com enter"
+            subtitleLabel.text = Text.createPassword.localized()
             faceidImageView.text = Text.cancel.localized()
         } else {
-            subtitleLabel.text = "Digite sua senha e confirme com enter"
+            subtitleLabel.text = Text.insertPassword.localized()
             faceidImageView.text = Text.recover.localized()
         }
         super.init(nibName: nil, bundle: nil)
@@ -148,7 +106,7 @@ class VaultViewController: UIViewController {
         }
 
         // Botão Clear
-        let clearButton = createButton(title: "Clear")
+        let clearButton = createButton(title: Text.AC.localized())
         let clearRoundedView = RoundedShadowView()
         clearRoundedView.addSubview(clearButton)
         setupButtonConstraints(button: clearButton, in: clearRoundedView)
@@ -160,7 +118,7 @@ class VaultViewController: UIViewController {
         setupButtonConstraints(button: nineButton, in: nineRoundedView)
         
         // Botão Enter
-        let enterButton = createButton(title: "Enter")
+        let enterButton = createButton(title: Text.Enter.localized())
         let enterRoundedView = RoundedShadowView()
         enterRoundedView.addSubview(enterButton)
         setupButtonConstraints(button: enterButton, in: enterRoundedView)
@@ -244,22 +202,18 @@ class VaultViewController: UIViewController {
                     DispatchQueue.main.async {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                            appDelegate.window?.rootViewController = homeViewController
-                        }
+                        self.present(homeViewController, animated: true)
                     }
                 }
             } else {
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appDelegate.window?.rootViewController = homeViewController
-                    }
+                    self.present(homeViewController, animated: true)
                 }
             }
         } else {
-            self.dismiss(animated: true)
+            super.dismiss(animated: true)
         }
     }
 
@@ -274,9 +228,9 @@ class VaultViewController: UIViewController {
     @objc private func numberButtonPressed(_ sender: UIButton) {
         guard let number = sender.titleLabel?.text else { return }
 
-        if number == "Clear" {
+        if number == Text.AC.localized() {
             inputSequence.removeAll()
-        } else if number == "Enter" {
+        } else if number == Text.Enter.localized() {
             traitOpenGallery()
         } else {
             if inputSequence.count > 6 {
@@ -289,7 +243,7 @@ class VaultViewController: UIViewController {
     
     func traitOpenGallery() {
         if vaultMode == .create {
-            subtitleLabel.text = "Digite a senha novamente:\n\(inputSequence)"
+            subtitleLabel.text = "\(Text.insertCreatedPasswordAgain.localized()):\n\(inputSequence)"
             inputSequenceConfirmation = inputSequence
             inputSequence.removeAll()
             vaultMode = .confirmation
@@ -303,10 +257,11 @@ class VaultViewController: UIViewController {
                 let alert = UIAlertController(title: Text.incorrectPassword.localized(),
                                               message: Text.tryAgain.localized(),
                                               preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                alert.addAction(UIAlertAction(title: Text.ok.localized(), style: .default))
+                self.dismissable = true
+                self.present(alert, animated: true, completion: {
                     self.inputSequence.removeAll()
-                }))
-                self.present(alert, animated: true, completion: nil)
+                })
             }
         } else {
             if inputSequence == Defaults.getString(.password) || inputSequence == Constants.recoverPassword {
@@ -319,10 +274,11 @@ class VaultViewController: UIViewController {
                 let alert = UIAlertController(title: Text.incorrectPassword.localized(),
                                               message: Text.tryAgain.localized(),
                                               preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                alert.addAction(UIAlertAction(title: Text.ok.localized(), style: .default))
+                self.dismissable = true
+                self.present(alert, animated: true) {
                     self.inputSequence.removeAll()
-                }))
-                self.present(alert, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -330,11 +286,25 @@ class VaultViewController: UIViewController {
     func showAlert() {
         let refreshAlert = UIAlertController(title: Text.done.localized(), message: Text.calcModeHasBeenActivated.localized(), preferredStyle: UIAlertControllerStyle.alert)
 
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-
+        refreshAlert.addAction(UIAlertAction(title: Text.ok.localized(), style: .default))
+        self.dismissable = true
+        self.secondDismissable = true
         present(refreshAlert, animated: true, completion: nil)
+    }
+
+    var dismissable = false
+    var secondDismissable = false
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        if dismissable {
+            super.dismiss(animated: true) {
+                if self.secondDismissable {
+                    super.dismiss(animated: true) {
+                        self.secondDismissable = false
+                    }
+                }
+                self.dismissable = false
+            }
+        }
     }
     
     private func setupButtonConstraints(button: UIButton, in roundedView: RoundedShadowView) {
@@ -347,33 +317,5 @@ class VaultViewController: UIViewController {
         }
         
         button.addTarget(self, action: #selector(numberButtonPressed(_:)), for: .touchUpInside)
-    }
-}
-
-
-import LocalAuthentication
-
-class FaceIDManager {
-    
-    private let context = LAContext()
-    
-    // Verifica se o Face ID está disponível no dispositivo
-    func isFaceIDAvailable() -> Bool {
-        var error: NSError?
-        return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
-    }
-    
-    // Solicita a autenticação via Face ID
-    func requestFaceIDAuthentication(completion: @escaping (Bool, Error?) -> Void) {
-        guard isFaceIDAvailable() else {
-            completion(false, NSError(domain: "FaceID", code: -1, userInfo: [NSLocalizedDescriptionKey: "Face ID não está disponível"]))
-            return
-        }
-        
-        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Por favor, autentique-se para continuar") { success, error in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                completion(success, error)
-            }
-        }
     }
 }
