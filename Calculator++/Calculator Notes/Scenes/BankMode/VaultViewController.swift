@@ -85,10 +85,6 @@ class VaultViewController: UIViewController {
         setupUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("aqui!!")
-    }
-    
     init(mode: VaultMode) {
         self.vaultMode = mode
         if vaultMode != .verify {
@@ -240,10 +236,20 @@ class VaultViewController: UIViewController {
     }
     
     @objc private func faceIDTapped() {
-        let faceIDManager = FaceIDManager()
+        if vaultMode == .verify {
+            let faceIDManager = FaceIDManager()
 
-        if faceIDManager.isFaceIDAvailable() {
-            faceIDManager.requestFaceIDAuthentication { success, error in
+            if faceIDManager.isFaceIDAvailable() {
+                faceIDManager.requestFaceIDAuthentication { success, error in
+                    DispatchQueue.main.async {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                            appDelegate.window?.rootViewController = homeViewController
+                        }
+                    }
+                }
+            } else {
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
@@ -253,13 +259,7 @@ class VaultViewController: UIViewController {
                 }
             }
         } else {
-            DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appDelegate.window?.rootViewController = homeViewController
-                }
-            }
+            self.dismiss(animated: true)
         }
     }
 

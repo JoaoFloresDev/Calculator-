@@ -24,7 +24,6 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     }
     
     // MARK: - Protocol Methods
-    
     func presentChangePasswordCalcMode() {
         let vault = VaultViewController(mode: .create)
         vault.modalPresentationStyle = .fullScreen

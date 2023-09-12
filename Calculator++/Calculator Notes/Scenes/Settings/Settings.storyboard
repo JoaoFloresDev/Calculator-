@@ -260,6 +260,7 @@
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>
                         <outlet property="vaultMode" destination="Kfz-ls-3Mi" id="4nr-OC-5uz"/>
+                        <outlet property="vaultModeImage" destination="9tC-jP-Scp" id="oXB-IG-k9h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGj-2x-F75" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

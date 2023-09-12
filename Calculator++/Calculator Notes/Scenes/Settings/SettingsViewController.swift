@@ -42,6 +42,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var restoreBackup: UIView!
     @IBOutlet weak var backupStatus: UILabel!
     @IBOutlet weak var vaultMode: UIButton!
+    @IBOutlet weak var vaultModeImage: UIImageView!
     
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
@@ -228,6 +229,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     private func showProtectionType(typeProtection: ProtectionMode) {
         noProtectionImage.setImage(typeProtection == .noProtection ? .selectedIndicator : .diselectedIndicator)
+        vaultModeImage.setImage(typeProtection == .vault ? .selectedIndicator : .diselectedIndicator)
     }
 }
 

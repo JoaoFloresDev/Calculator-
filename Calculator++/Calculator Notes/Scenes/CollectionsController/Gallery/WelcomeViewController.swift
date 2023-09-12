@@ -59,10 +59,7 @@ class WelcomeViewController: UIViewController {
 
 extension WelcomeViewController {
     private func setupFirstUse() {
-        if !Defaults.getBool(.notFirstUse) {
-            Defaults.setBool(.notFirstUse, true)
-            performFirstUseSetup()
-        }
+        showSetProtectionOrNavigateToSettings()
     }
     
     private func performFirstUseSetup() {
@@ -117,7 +114,9 @@ extension WelcomeViewController {
             if createProtection {
                 self?.coordinator?.presentChangePasswordCalcMode()
             } else {
-                self?.coordinator?.navigateToSettingsTab()
+                self?.dismiss(animated: false) {
+                    self?.coordinator?.navigateToSettingsTab()
+                }
             }
         }
     }
