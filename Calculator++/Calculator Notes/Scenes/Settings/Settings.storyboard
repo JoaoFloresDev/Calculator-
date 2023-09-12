@@ -139,7 +139,6 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="noProtectionPressed:" destination="bO4-RD-LXC" eventType="touchUpInside" id="Ykl-Mx-C8q"/>
                                                             <action selector="showBankMode:" destination="bO4-RD-LXC" eventType="touchUpInside" id="u3J-JI-6NT"/>
                                                         </connections>
                                                     </button>
@@ -252,6 +251,7 @@
                         <outlet property="backupStatus" destination="LdF-BV-bhT" id="AZN-ni-Gm1"/>
                         <outlet property="chooseProtectionLabel" destination="iZ2-Cu-Jza" id="JKq-gE-ARf"/>
                         <outlet property="customTabBar" destination="hh2-yq-auE" id="Fgj-8r-Zdu"/>
+                        <outlet property="faceIDView" destination="HT7-x9-f8c" id="ED4-RH-aKe"/>
                         <outlet property="noProtection" destination="7Fd-wC-954" id="B81-vR-pED"/>
                         <outlet property="noProtectionImage" destination="5PD-4q-NZj" id="dbc-wh-VXn"/>
                         <outlet property="rateApp" destination="ert-Ym-P1Q" id="Sbs-qT-fHv"/>

@@ -9,7 +9,13 @@ import SnapKit
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate {
     
     // MARK: -  Variables
-    var modelData: [Video] = []
+    var modelData: [Video] = [] {
+        didSet {
+            if modelData.count == 1 {
+                collectionView?.reloadData()
+            }
+        }
+    }
     var videoPaths: [String] = []
     var folders: [Folder] = []
     var modelController = VideoModelController()
@@ -55,10 +61,6 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 buttonAction: nil
             )
         }
-    }
-    
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        print("aqui")
     }
     
     override func viewDidLoad() {

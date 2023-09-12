@@ -43,6 +43,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var backupStatus: UILabel!
     @IBOutlet weak var vaultMode: UIButton!
     @IBOutlet weak var vaultModeImage: UIImageView!
+    @IBOutlet weak var faceIDView: UIView!
     
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
@@ -73,7 +74,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var backupIsActivated = false {
         didSet {
             DispatchQueue.main.async {
-                self.backupStatus.text = self.backupIsActivated ? "Ativado" : "Desativado"
+                self.backupStatus.text = self.backupIsActivated ? Text.backupEnabled.localized() : Text.backupDisabled.localized()
             }
         }
     }
@@ -85,7 +86,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         setupUI()
         setupGestures()
-        loadData()
+        faceIDView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -221,10 +222,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         view.layer.shadowOffset = offset
         view.layer.shadowRadius = radius
         view.layer.shadowOpacity = opacity
-    }
-    
-    private func loadData() {
-        noProtectionImage.setImage(.diselectedIndicator)
     }
     
     private func showProtectionType(typeProtection: ProtectionMode) {

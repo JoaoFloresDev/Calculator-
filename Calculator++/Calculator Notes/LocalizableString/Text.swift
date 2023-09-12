@@ -118,6 +118,8 @@ enum Text: String {
     case insertCreatedPasswordAgain // "Digite a senha novamente"
     case insertPassword //  "Digite sua senha e confirme com enter"
     case faceidreason // "Usaremos a autenticação por Face ID para abrir a galeria"
+    case backupEnabled // "Ativado"
+    case backupDisabled // "Desativado"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
