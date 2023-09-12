@@ -95,3 +95,15 @@ emptyVideosTitle = "Pas de vidéos";
 emptyVideosSubtitle = "Ajoutez vos vidéos en cliquant sur le bouton +";
 premiumVideosSubtitle = "Le support vidéo est une fonctionnalité premium";
 seeMore = "Voir plus";
+
+backupSettings = "Paramètres de Sauvegarde";
+backupStatus = "Sauvegarde Chiffrée";
+seeMyBackup = "Voir ma Sauvegarde";
+restoreBackup = "Restaurer la Sauvegarde";
+updateBackup = "Mettre à jour la Sauvegarde";
+faceIDReason = "Nous utiliserons l'authentification pour ouvrir votre galerie";
+myBackupItems = "Mes éléments dans la Sauvegarde";
+backupNavigationTitle = "Ma Sauvegarde";
+vaultMode = "Mode Coffre";
+recover = "Récupérer";
+seeMore = "Voir plus";

@@ -94,3 +94,15 @@ emptyVideosTitle = "Нет видео";
 emptyVideosSubtitle = "Добавьте свои видео, нажав на кнопку +";
 premiumVideosSubtitle = "Поддержка видео является премиум-функцией";
 seeMore = "Показать еще";
+
+backupSettings = "Настройки Резервного Копирования";
+backupStatus = "Зашифрованный Резерв";
+seeMyBackup = "Посмотреть мою резервную копию";
+restoreBackup = "Восстановить Резерв";
+updateBackup = "Обновить Резерв";
+faceIDReason = "Мы будем использовать аутентификацию для открытия вашей галереи";
+myBackupItems = "Мои элементы в резерве";
+backupNavigationTitle = "Моя Резервная Копия";
+vaultMode = "Режим Сейфа";
+recover = "Восстановить";
+seeMore = "Посмотреть больше";

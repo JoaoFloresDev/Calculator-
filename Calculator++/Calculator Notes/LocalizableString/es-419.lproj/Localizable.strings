@@ -91,3 +91,15 @@ emptyGallerySubtitle = "Añada sus fotos haciendo clic en el botón +";
 emptyNotesTitle = "Sin notas";
 emptyNotesSubtitle = "Añada sus notas haciendo clic en el botón +";
 seeMore = "Ver más";
+
+backupSettings = "Configuraciones de Respaldo";
+backupStatus = "Respaldo Cifrado";
+seeMyBackup = "Ver mi respaldo";
+restoreBackup = "Restaurar respaldo";
+updateBackup = "Actualizar respaldo";
+faceIDReason = "Vamos a utilizar autenticación para abrir tu galería";
+myBackupItems = "Mis artículos en el Respaldo";
+backupNavigationTitle = "Mi Respaldo";
+vaultMode = "Modo Bóveda";
+recover = "Recuperar";
+seeMore = "Ver más";

@@ -104,3 +104,14 @@ emptyVideosSubtitle = "+ बटन पर क्लिक करके अपन
 premiumVideosSubtitle = "वीडियो समर्थन एक प्रीमियम सुविधा है";
 seeMore = "और देखें";
 
+backupSettings = "बैकअप सेटिंग्स";
+backupStatus = "एन्क्रिप्टेड बैकअप";
+seeMyBackup = "मेरा बैकअप देखें";
+restoreBackup = "बैकअप बहाल करें";
+updateBackup = "बैकअप अपडेट करें";
+faceIDReason = "हम आपके गैलरी को खोलने के लिए प्रमाणीकरण का उपयोग करेंगे";
+myBackupItems = "मेरे बैकअप में आइटम्स";
+backupNavigationTitle = "मेरा बैकअप";
+vaultMode = "वॉल्ट मोड";
+recover = "पुनर्प्राप्त करें";
+seeMore = "और देखें";

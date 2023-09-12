@@ -103,3 +103,15 @@ emptyVideosTitle = "Tidak ada video";
 emptyVideosSubtitle = "Tambahkan video Anda dengan mengklik tombol +";
 premiumVideosSubtitle = "Dukungan video adalah fitur premium";
 seeMore = "Lihat lebih banyak";
+
+backupSettings = "Pengaturan Cadangan";
+backupStatus = "Cadangan Terenkripsi";
+seeMyBackup = "Lihat Cadangan Saya";
+restoreBackup = "Pulihkan Cadangan";
+updateBackup = "Perbarui Cadangan";
+faceIDReason = "Kami akan menggunakan otentikasi untuk membuka galeri Anda";
+myBackupItems = "Item Saya di Cadangan";
+backupNavigationTitle = "Cadangan Saya";
+vaultMode = "Mode Vault";
+recover = "Pulihkan";
+seeMore = "Lihat lebih banyak";

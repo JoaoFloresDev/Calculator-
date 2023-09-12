@@ -98,3 +98,15 @@ emptyVideosTitle = "لا توجد فيديوهات";
 emptyVideosSubtitle = "أضف فيديوهاتك بالنقر على زر +";
 premiumVideosSubtitle = "دعم الفيديو هو ميزة متميزة";
 seeMore = "عرض المزيد";
+
+backupSettings = "إعدادات النسخ الاحتياطي";
+backupStatus = "نسخ احتياطي مشفر";
+seeMyBackup = "عرض النسخ الاحتياطي الخاص بي";
+restoreBackup = "استعادة النسخ الاحتياطي";
+updateBackup = "تحديث النسخ الاحتياطي";
+faceIDReason = "سنستخدم المصادقة لفتح معرض الصور الخاص بك";
+myBackupItems = "العناصر في النسخ الاحتياطي الخاص بي";
+backupNavigationTitle = "نسخي الاحتياطي";
+vaultMode = "وضع الخزنة";
+recover = "استعادة";
+seeMore = "عرض المزيد";

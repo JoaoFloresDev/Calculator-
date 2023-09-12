@@ -103,3 +103,15 @@ emptyVideosTitle = "Keine Videos";
 emptyVideosSubtitle = "Fügen Sie Ihre Videos hinzu, indem Sie auf die + Taste klicken";
 premiumVideosSubtitle = "Video-Unterstützung ist eine Premium-Funktion";
 seeMore = "Mehr sehen";
+
+backupSettings = "Backup-Einstellungen";
+backupStatus = "Verschlüsseltes Backup";
+seeMyBackup = "Mein Backup ansehen";
+restoreBackup = "Backup wiederherstellen";
+updateBackup = "Backup aktualisieren";
+faceIDReason = "Wir verwenden die Authentifizierung, um Ihre Galerie zu öffnen";
+myBackupItems = "Meine Elemente im Backup";
+backupNavigationTitle = "Mein Backup";
+vaultMode = "Tresormodus";
+recover = "Wiederherstellen";
+seeMore = "Mehr sehen";

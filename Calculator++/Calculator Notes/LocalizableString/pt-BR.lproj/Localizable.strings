@@ -108,3 +108,15 @@ seeMore = "Ver mais";
 backupSettings = "Configurações de Backup";
 backupStatus = "Backup Criptografado";
 seeMyBackup = "Ver meu backup";
+
+backupSettings = "Configurações de Backup";
+backupStatus = "Backup Criptografado";
+seeMyBackup = "Ver meu backup";
+restoreBackup = "Restaurar backup";
+updateBackup = "Atualizar backup";
+faceIDReason = "Vamos usar a autenticação para mostrar abrir sua galeria";
+myBackupItems = "Meus itens no Backup";
+backupNavigationTitle = "Meu Backup";
+vaultMode = "Modo cofre";
+recover = "Recuperar";
+seeMore = "Ver mais";

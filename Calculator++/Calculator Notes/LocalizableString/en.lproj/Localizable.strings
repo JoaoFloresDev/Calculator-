@@ -104,3 +104,15 @@ emptyGallerySubtitle = "Add your photos by clicking the + button";
 emptyNotesTitle = "No notes";
 emptyNotesSubtitle = "Add your notes by clicking the + button";
 seeMore = "See More";
+
+backupSettings = "Backup Settings";
+backupStatus = "Encrypted Backup";
+seeMyBackup = "View my backup";
+restoreBackup = "Restore backup";
+updateBackup = "Update backup";
+faceIDReason = "We will use authentication to open your gallery";
+myBackupItems = "My items in Backup";
+backupNavigationTitle = "My Backup";
+vaultMode = "Vault Mode";
+recover = "Recover";
+seeMore = "See more";

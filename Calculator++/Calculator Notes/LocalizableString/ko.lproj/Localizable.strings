@@ -94,3 +94,15 @@ emptyVideosTitle = "비디오 없음";
 emptyVideosSubtitle = "+ 버튼을 클릭하여 비디오를 추가하세요";
 premiumVideosSubtitle = "비디오 지원은 프리미엄 기능입니다";
 seeMore = "더 보기";
+
+backupSettings = "백업 설정";
+backupStatus = "암호화된 백업";
+seeMyBackup = "내 백업 보기";
+restoreBackup = "백업 복원";
+updateBackup = "백업 업데이트";
+faceIDReason = "갤러리를 열기 위해 인증을 사용할 것입니다";
+myBackupItems = "백업에 있는 내 항목들";
+backupNavigationTitle = "나의 백업";
+vaultMode = "금고 모드";
+recover = "복구";
+seeMore = "더 보기";

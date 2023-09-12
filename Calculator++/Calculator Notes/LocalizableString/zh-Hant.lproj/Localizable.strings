@@ -103,3 +103,15 @@ emptyVideosTitle = "沒有視頻";
 emptyVideosSubtitle = "點擊 + 按鈕添加您的視頻";
 premiumVideosSubtitle = "視頻支持是高級功能";
 seeMore = "查看更多";
+
+backupSettings = "備份設定";
+backupStatus = "加密備份";
+seeMyBackup = "查看我的備份";
+restoreBackup = "恢復備份";
+updateBackup = "更新備份";
+faceIDReason = "我們將使用認證來打開您的畫廊";
+myBackupItems = "我的備份項目";
+backupNavigationTitle = "我的備份";
+vaultMode = "保險箱模式";
+recover = "恢復";
+seeMore = "查看更多";

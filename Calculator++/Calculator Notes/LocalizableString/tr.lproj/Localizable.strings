@@ -94,3 +94,15 @@ emptyVideosTitle = "Video Yok";
 emptyVideosSubtitle = "+ düğmesine tıklayarak videolarınızı ekleyin";
 premiumVideosSubtitle = "Video desteği premium bir özelliktir";
 seeMore = "Daha fazla göster";
+
+backupSettings = "Yedekleme Ayarları";
+backupStatus = "Şifreli Yedek";
+seeMyBackup = "Yedeğimi Gör";
+restoreBackup = "Yedeği Geri Yükle";
+updateBackup = "Yedeği Güncelle";
+faceIDReason = "Galerinizi açmak için kimlik doğrulama kullanacağız";
+myBackupItems = "Yedekteki Öğelerim";
+backupNavigationTitle = "Benim Yedeğim";
+vaultMode = "Kasa Modu";
+recover = "Kurtar";
+seeMore = "Daha Fazla";

@@ -104,3 +104,14 @@ emptyVideosSubtitle = "点击 + 按钮添加您的视频";
 premiumVideosSubtitle = "视频支持是高级功能";
 seeMore = "查看更多";
 
+backupSettings = "备份设置";
+backupStatus = "加密备份";
+seeMyBackup = "查看我的备份";
+restoreBackup = "恢复备份";
+updateBackup = "更新备份";
+faceIDReason = "我们将使用认证来打开您的画廊";
+myBackupItems = "我的备份项目";
+backupNavigationTitle = "我的备份";
+vaultMode = "保险箱模式";
+recover = "恢复";
+seeMore = "查看更多";

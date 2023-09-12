@@ -94,3 +94,15 @@ emptyVideosTitle = "Sin videos";
 emptyVideosSubtitle = "Agrega tus videos haciendo clic en el botón +";
 premiumVideosSubtitle = "El soporte de video es una función premium";
 seeMore = "Ver más";
+
+backupSettings = "Configuraciones de Respaldo";
+backupStatus = "Respaldo Cifrado";
+seeMyBackup = "Ver mi respaldo";
+restoreBackup = "Restaurar respaldo";
+updateBackup = "Actualizar respaldo";
+faceIDReason = "Usaremos autenticación para abrir tu galería";
+myBackupItems = "Mis artículos en el Respaldo";
+backupNavigationTitle = "Mi Respaldo";
+vaultMode = "Modo Bóveda";
+recover = "Recuperar";
+seeMore = "Ver más";
