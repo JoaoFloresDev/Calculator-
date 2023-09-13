@@ -109,4 +109,10 @@ myBackupItems = "العناصر في النسخ الاحتياطي الخاص ب
 backupNavigationTitle = "نسخي الاحتياطي";
 vaultMode = "وضع الخزنة";
 recover = "استعادة";
-seeMore = "عرض المزيد";
+createPassword = "أنشئ كلمة مرور وأكدها بالضغط على Enter";
+insertCreatedPasswordAgain = "أدخل كلمة المرور مرة أخرى";
+insertPassword = "أدخل كلمة المرور الخاصة بك وأكدها بالضغط على Enter";
+faceidreason = "سنستخدم مصادقة Face ID لفتح المعرض";
+backupEnabled = "مفعل";
+backupDisabled = "معطل";
+

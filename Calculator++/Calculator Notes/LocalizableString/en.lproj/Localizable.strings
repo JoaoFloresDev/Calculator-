@@ -115,4 +115,10 @@ myBackupItems = "My items in Backup";
 backupNavigationTitle = "My Backup";
 vaultMode = "Vault Mode";
 recover = "Recover";
-seeMore = "See more";
+
+createPassword = "Create a password and confirm with enter";
+insertCreatedPasswordAgain = "Re-enter the password";
+insertPassword = "Enter your password and confirm with enter";
+faceidreason = "We will use Face ID authentication to open the gallery";
+backupEnabled = "Enabled";
+backupDisabled = "Disabled";

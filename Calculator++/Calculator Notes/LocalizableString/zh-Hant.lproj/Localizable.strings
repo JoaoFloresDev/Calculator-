@@ -114,4 +114,10 @@ myBackupItems = "我的備份項目";
 backupNavigationTitle = "我的備份";
 vaultMode = "保險箱模式";
 recover = "恢復";
-seeMore = "查看更多";
+
+createPassword = "創建密碼並按回車確認";
+insertCreatedPasswordAgain = "再次輸入密碼";
+insertPassword = "輸入您的密碼並按回車確認";
+faceidreason = "我們將使用Face ID認證來打開相冊";
+backupEnabled = "已啟用";
+backupDisabled = "已禁用";

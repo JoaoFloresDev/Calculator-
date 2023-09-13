@@ -119,4 +119,10 @@ myBackupItems = "Meus itens no Backup";
 backupNavigationTitle = "Meu Backup";
 vaultMode = "Modo cofre";
 recover = "Recuperar";
-seeMore = "Ver mais";
+
+createPassword = "Crie uma senha e confirme com enter";
+insertCreatedPasswordAgain = "Digite a senha novamente";
+insertPassword = "Digite sua senha e confirme com enter";
+faceidreason = "Usaremos a autenticação por Face ID para abrir a galeria";
+backupEnabled = "Ativado";
+backupDisabled = "Desativado";

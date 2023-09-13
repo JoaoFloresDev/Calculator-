@@ -114,4 +114,10 @@ myBackupItems = "मेरे बैकअप में आइटम्स";
 backupNavigationTitle = "मेरा बैकअप";
 vaultMode = "वॉल्ट मोड";
 recover = "पुनर्प्राप्त करें";
-seeMore = "और देखें";
+
+createPassword = "एक पासवर्ड बनाएं और एंटर के साथ पुष्टि करें";
+insertCreatedPasswordAgain = "पासवर्ड फिर से दर्ज करें";
+insertPassword = "अपना पासवर्ड दर्ज करें और एंटर के साथ पुष्टि करें";
+faceidreason = "हम गैलरी को खोलने के लिए Face ID प्रमाणीकरण का उपयोग करेंगे";
+backupEnabled = "सक्रिय";
+backupDisabled = "निष्क्रिय";

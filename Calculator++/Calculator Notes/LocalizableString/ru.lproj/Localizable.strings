@@ -105,4 +105,10 @@ myBackupItems = "Мои элементы в резерве";
 backupNavigationTitle = "Моя Резервная Копия";
 vaultMode = "Режим Сейфа";
 recover = "Восстановить";
-seeMore = "Посмотреть больше";
+
+createPassword = "Создайте пароль и подтвердите его, нажав enter";
+insertCreatedPasswordAgain = "Введите пароль ещё раз";
+insertPassword = "Введите ваш пароль и подтвердите его, нажав enter";
+faceidreason = "Мы будем использовать аутентификацию через Face ID для открытия галереи";
+backupEnabled = "Включено";
+backupDisabled = "Отключено";

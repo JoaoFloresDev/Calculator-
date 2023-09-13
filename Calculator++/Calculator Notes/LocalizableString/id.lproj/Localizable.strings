@@ -114,4 +114,10 @@ myBackupItems = "Item Saya di Cadangan";
 backupNavigationTitle = "Cadangan Saya";
 vaultMode = "Mode Vault";
 recover = "Pulihkan";
-seeMore = "Lihat lebih banyak";
+
+createPassword = "Buat kata sandi dan konfirmasi dengan enter";
+insertCreatedPasswordAgain = "Masukkan kata sandi lagi";
+insertPassword = "Masukkan kata sandi Anda dan konfirmasi dengan enter";
+faceidreason = "Kami akan menggunakan otentikasi Face ID untuk membuka galeri";
+backupEnabled = "Diaktifkan";
+backupDisabled = "Dinonaktifkan";

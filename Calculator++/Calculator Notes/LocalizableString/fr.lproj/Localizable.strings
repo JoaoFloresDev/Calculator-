@@ -106,4 +106,10 @@ myBackupItems = "Mes éléments dans la Sauvegarde";
 backupNavigationTitle = "Ma Sauvegarde";
 vaultMode = "Mode Coffre";
 recover = "Récupérer";
-seeMore = "Voir plus";
+
+createPassword = "Créez un mot de passe et confirmez avec Entrée";
+insertCreatedPasswordAgain = "Ressaisissez le mot de passe";
+insertPassword = "Entrez votre mot de passe et confirmez avec Entrée";
+faceidreason = "Nous utiliserons l'authentification Face ID pour ouvrir la galerie";
+backupEnabled = "Activé";
+backupDisabled = "Désactivé";

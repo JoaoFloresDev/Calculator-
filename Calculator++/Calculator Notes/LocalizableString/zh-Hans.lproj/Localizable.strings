@@ -114,4 +114,10 @@ myBackupItems = "我的备份项目";
 backupNavigationTitle = "我的备份";
 vaultMode = "保险箱模式";
 recover = "恢复";
-seeMore = "查看更多";
+createPassword = "创建密码并按回车确认";
+insertCreatedPasswordAgain = "再次输入密码";
+insertPassword = "输入您的密码并按回车确认";
+faceidreason = "我们将使用Face ID认证来打开相册";
+backupEnabled = "已启用";
+backupDisabled = "已禁用";
+

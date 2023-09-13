@@ -20,7 +20,8 @@ enum VaultMode {
 class VaultViewController: UIViewController {
 
     private var displayLabel = UILabel()
-    private var displayContainer = ShadowRoundedView()
+    private var displayContainer = UIView()
+    private var displayShadow = ShadowRoundedView()
     private var titleLabel = UILabel()
     private var subtitleLabel = UILabel()
     private var numberButtons: [UIView] = []
@@ -67,13 +68,13 @@ class VaultViewController: UIViewController {
         titleLabel.text = "Calc+"
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 32)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         
         // Subtítulo
         subtitleLabel.numberOfLines = 0
         subtitleLabel.textColor = .white
         subtitleLabel.textAlignment = .center
-        subtitleLabel.font = UIFont.systemFont(ofSize: 20)
+        subtitleLabel.font = UIFont.systemFont(ofSize: 16)
 
         // Agrupar título e subtítulo
         let titleStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
@@ -84,11 +85,12 @@ class VaultViewController: UIViewController {
         self.view.addSubview(displayContainer)
 
         // Adicionar a displayLabel à displayContainer
-        displayContainer.addSubview(displayLabel)
+        displayContainer.addSubview(displayShadow)
+        displayShadow.addSubview(displayLabel)
         
         // Configurar displayLabel
         displayLabel.textAlignment = .left
-        displayLabel.font = UIFont.systemFont(ofSize: 36)
+        displayLabel.font = UIFont.systemFont(ofSize: 32)
         displayLabel.text = ""
         displayLabel.textColor = .white
         
@@ -97,7 +99,12 @@ class VaultViewController: UIViewController {
             make.top.equalTo(titleStack.snp.bottom).offset(24)
             make.left.equalToSuperview().offset(32)
             make.right.equalToSuperview().offset(-32)
-            make.height.equalTo(96)
+        }
+        
+        displayShadow.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.height.equalTo(100)
         }
         
         // Constraints para displayLabel
@@ -157,23 +164,22 @@ class VaultViewController: UIViewController {
         let allNumberStack = UIStackView(arrangedSubviews: numberStacks +  [additionalStack])
         allNumberStack.axis = .vertical
         allNumberStack.distribution = .fillEqually
-        allNumberStack.spacing = 40
+        allNumberStack.spacing = 24
 
         self.view.addSubview(allNumberStack)
 
         // Constraints
         titleStack.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
-            make.height.equalTo(104)
         }
 
         allNumberStack.snp.makeConstraints { make in
-            make.top.equalTo(displayContainer.snp.bottom).offset(40)
+            make.top.equalTo(displayContainer.snp.bottom).offset(32)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-48)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-32)
         }
         
         self.view.addSubview(faceidImageView)

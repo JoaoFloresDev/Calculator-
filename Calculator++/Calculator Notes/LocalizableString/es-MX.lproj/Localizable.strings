@@ -105,4 +105,11 @@ myBackupItems = "Mis artículos en el Respaldo";
 backupNavigationTitle = "Mi Respaldo";
 vaultMode = "Modo Bóveda";
 recover = "Recuperar";
-seeMore = "Ver más";
+
+createPassword = "Crea una contraseña y confirma con enter";
+insertCreatedPasswordAgain = "Ingresa la contraseña nuevamente";
+insertPassword = "Ingresa tu contraseña y confirma con enter";
+faceidreason = "Usaremos la autenticación de Face ID para abrir la galería";
+backupEnabled = "Activado";
+backupDisabled = "Desactivado";
+

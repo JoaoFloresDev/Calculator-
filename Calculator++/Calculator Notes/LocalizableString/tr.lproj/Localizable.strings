@@ -105,4 +105,10 @@ myBackupItems = "Yedekteki Öğelerim";
 backupNavigationTitle = "Benim Yedeğim";
 vaultMode = "Kasa Modu";
 recover = "Kurtar";
-seeMore = "Daha Fazla";
+
+createPassword = "Bir şifre oluşturun ve enter ile onaylayın";
+insertCreatedPasswordAgain = "Şifreyi tekrar girin";
+insertPassword = "Şifrenizi girin ve enter ile onaylayın";
+faceidreason = "Galeriyi açmak için Face ID kimlik doğrulamasını kullanacağız";
+backupEnabled = "Etkin";
+backupDisabled = "Devre Dışı";
