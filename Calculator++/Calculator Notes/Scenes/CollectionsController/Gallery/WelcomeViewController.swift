@@ -115,7 +115,7 @@ extension WelcomeViewController {
                 self?.coordinator?.presentChangePasswordCalcMode()
             } else {
                 self?.dismiss(animated: false) {
-                    self?.coordinator?.navigateToSettingsTab()
+//                    self?.coordinator?.navigateToSettingsTab()
                 }
             }
         }
