@@ -1,6 +1,6 @@
 import UIKit
 
-struct CloudDeletionManager {
+struct ImageCloudDeletionManager {
     static func addName(_ name: String) {
         var savedNames = getNames()
         savedNames.append(name)
@@ -20,7 +20,7 @@ struct CloudDeletionManager {
     }
 }
 
-struct CloudInsertionManager {
+struct ImageCloudInsertionManager {
     static func addName(_ name: String) {
         var savedNames = getNames()
         savedNames.append(name)
@@ -37,6 +37,46 @@ struct CloudInsertionManager {
     
     static func getNames() -> [String] {
         Defaults.getStringArray(.imagesToUpload) ?? []
+    }
+}
+
+struct VideoCloudDeletionManager {
+    static func addName(_ name: String) {
+        var savedNames = getNames()
+        savedNames.append(name)
+        Defaults.setStringArray(.videoToDelete, savedNames)
+    }
+    
+    static func deleteName(_ name: String) {
+        var savedNames = getNames()
+        if let index = savedNames.firstIndex(of: name) {
+            savedNames.remove(at: index)
+            Defaults.setStringArray(.videoToDelete, savedNames)
+        }
+    }
+    
+    static func getNames() -> [String] {
+        return Defaults.getStringArray(.videoToDelete) ?? []
+    }
+}
+
+struct VideoCloudInsertionManager {
+    static func addName(_ name: String) {
+        var savedNames = getNames()
+        savedNames.append(name)
+        Defaults.setStringArray(.videoToUpload, savedNames)
+    }
+    
+    static func deleteName(_ name: String) {
+        var savedNames = getNames()
+        if let index = savedNames.firstIndex(of: name) {
+            savedNames.remove(at: index)
+            Defaults.setStringArray(.videoToUpload, savedNames)
+        }
+    }
+    
+    static func getNames() -> [String] {
+        Defaults.getStringArray(.videoToUpload) ?? []
     }
 }
 

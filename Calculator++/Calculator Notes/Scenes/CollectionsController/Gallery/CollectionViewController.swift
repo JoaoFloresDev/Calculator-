@@ -55,18 +55,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         if !Defaults.getBool(.premiumPurchased) {
             setupAds()
         }
-        
-        if MFMailComposeViewController.canSendMail() {
-            let mailComposer = MFMailComposeViewController()
-            mailComposer.mailComposeDelegate = self
-            mailComposer.setToRecipients(["joaofcosta1998@gmail.com"])
-            mailComposer.setSubject("Assunto do E-mail")
-            mailComposer.setMessageBody("Corpo do e-mail.", isHTML: false)
-            
-            present(mailComposer, animated: true, completion: nil)
-        } else {
-            print("Este dispositivo não pode enviar e-mails.")
-        }
     }
     
     func setupPlaceholderView() {

@@ -386,6 +386,17 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
                 self.modelData.append(Video(image: image, name: imageName))
                 self.videoPaths.append(pathVideo)
                 self.collectionView?.reloadSections(IndexSet(integer: 1))
+                
+                CloudKitImageService.saveVideo(name: "bbb", videoData: videoData, thumbnailImage: image) { success, error in
+                    print("foi?", success, error)
+                    print("foi?", success, error)
+                    CloudKitImageService.fetchVideos { result, error in
+                        print("----")
+                        print(result)
+                        print(error)
+                        print("----")
+                    }
+                }
             }
         }
     }

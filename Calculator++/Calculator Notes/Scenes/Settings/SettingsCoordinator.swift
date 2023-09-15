@@ -46,5 +46,5 @@ class SettingsCoordinator {
 }
 
 struct FeatureFlags {
-    static let iCloudEnabled  = false
+    static let iCloudEnabled  = true
 }

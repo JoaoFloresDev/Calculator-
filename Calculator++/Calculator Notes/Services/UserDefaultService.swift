@@ -59,6 +59,9 @@ enum StringArrayKey: String {
     case imagesToUpload
     case imagesToDelete
     
+    case videoToUpload
+    case videoToDelete
+    
     func set(_ value: [String]) {
         userDefaults.set(value, forKey: rawValue)
     }

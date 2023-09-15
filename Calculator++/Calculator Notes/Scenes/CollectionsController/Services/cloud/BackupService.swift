@@ -7,13 +7,13 @@ struct BackupService {
         var deleteSuccess = false
         
         group.enter()
-        CloudKitImageService.saveImages(names: CloudInsertionManager.getNames()) { success in
+        CloudKitImageService.saveImages(names: ImageCloudInsertionManager.getNames()) { success in
             saveSuccess = success
             group.leave()
         }
         
         group.enter()
-        CloudKitImageService.deleteImages(names: CloudDeletionManager.getNames()) { success in
+        CloudKitImageService.deleteImages(names: ImageCloudDeletionManager.getNames()) { success in
             deleteSuccess = success
             group.leave()
         }

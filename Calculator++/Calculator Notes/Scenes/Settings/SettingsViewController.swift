@@ -86,7 +86,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         setupUI()
         setupGestures()
-        faceIDView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,8 +93,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
         
-        guard FeatureFlags.iCloudEnabled,
-              Defaults.getBool(.iCloudPurchased)  else {
+        guard FeatureFlags.iCloudEnabled else {
             restoreBackup.isHidden =  true
             return
         }
@@ -122,6 +120,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         ModeGroupView.layer.shadowRadius = 4
         ModeGroupView.layer.shadowOpacity = 0.3
         noProtection.layer.cornerRadius = 8
+        vaultMode.layer.cornerRadius = 8
     }
     
     // MARK: - Backup
