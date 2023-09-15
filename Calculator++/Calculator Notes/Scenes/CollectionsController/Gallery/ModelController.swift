@@ -94,9 +94,14 @@ struct ModelController {
                 
                 // Exclui a imagem associada ao objeto
                 if let imageName = imageName {
-                    CoreDataImageService.deleteImage(imageName: imageName)
+                    let result = CoreDataImageService.deleteImage(imageName: imageName)
+                    switch result {
+                    case .success():
+                        ImageCloudDeletionManager.addName(imageName)
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
-                
                 // Remove o objeto de imagem e a foto associada da matriz
                 if let index = imageIndex {
                     savedObjects.remove(at: index)

@@ -23,6 +23,7 @@ protocol BackupModalViewControllerDelegate {
     func restoreBackupTapped()
     func enableBackupToggled(status: Bool)
 }
+
 class BackupModalViewController: UIViewController {
     var delegate: BackupModalViewControllerDelegate?
     

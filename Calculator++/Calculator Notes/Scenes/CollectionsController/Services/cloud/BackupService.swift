@@ -2,27 +2,65 @@ import UIKit
 
 struct BackupService {
     static func updateBackup(completion: @escaping (Bool) -> ()) {
+        print(VideoCloudDeletionManager.getNames())
+        print(VideoCloudInsertionManager.getNames())
+        
+        for name in VideoCloudInsertionManager.getNames() {
+            switch getVideoData(videoPath: name) {
+            case .success(let videoData):
+                CloudKitVideoService.saveVideo(name: name, videoData: videoData) { success, error in
+                    VideoCloudInsertionManager.deleteName(name)
+                }
+            case .failure(let error):
+                print("deu erro")
+            }
+        }
+        
+        for name in VideoCloudDeletionManager.getNames() {
+            CloudKitVideoService.deleteVideoByName(name: name) { success, error in
+                if success {
+                    VideoCloudDeletionManager.deleteName(name)
+                }
+            }
+        }
+        
         let group = DispatchGroup()
         var saveSuccess = false
         var deleteSuccess = false
-        
+
         group.enter()
         CloudKitImageService.saveImages(names: ImageCloudInsertionManager.getNames()) { success in
             saveSuccess = success
             group.leave()
         }
-        
+
         group.enter()
         CloudKitImageService.deleteImages(names: ImageCloudDeletionManager.getNames()) { success in
             deleteSuccess = success
             group.leave()
         }
-        
+
         group.notify(queue: .main) {
             completion(saveSuccess && deleteSuccess)
         }
     }
 
+    static let fileManager = FileManager.default
+    
+    // Retorna o Data do vídeo com base no caminho fornecido
+    static func getVideoData(videoPath: String) -> Result<Data, Error> {
+        
+        guard let path = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoPath) else {
+            return .failure(NSError(domain: "Failed to retrieve video URL", code: 404, userInfo: nil))
+        }
+        
+        do {
+            let videoData = try Data(contentsOf: path)
+            return .success(videoData)
+        } catch let error {
+            return .failure(error)
+        }
+    }
     
     static func hasDataInCloudKit(completion: @escaping (Bool, Error?, [(String, UIImage)]?) -> Void) {
         CloudKitImageService.fetchImages { items, error in

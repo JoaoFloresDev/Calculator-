@@ -94,7 +94,7 @@ struct VideoModelController {
         }
         
         let imageName = CoreDataImageService.saveImage(image: image, basePath: basePath)
-        let videoName = CoreDataImageService.saveVideo(videoData: video, basePath: basePath)
+        let videoName = saveVideo(videoData: video, basePath: basePath)
         
         if let imageName = imageName, let videoName = videoName {
             guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else {
@@ -155,6 +155,9 @@ struct VideoModelController {
                     savedObjects.remove(at: index)
                 }
                 os_log("Image object was deleted.", log: OSLog(subsystem: subsystem, category: category), type: .info)
+                if let imageName = imageObjectToDelete.imageName {
+                    VideoCloudDeletionManager.addName(imageName)
+                }
             } catch let error as NSError {
                 os_log("Could not delete image object: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
             }
@@ -175,5 +178,23 @@ struct VideoModelController {
             }
         }
         return count
+    }
+    
+    static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+    static func saveVideo(videoData: Data, basePath: String) -> String? {
+        let date = String(Date.timeIntervalSinceReferenceDate)
+        let videoName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".mp4"
+
+        let filePath = documentsPath.appendingPathComponent(videoName)
+        do {
+            try videoData.write(to: filePath)
+            print("\(videoName) was saved at \(filePath).")
+            VideoCloudInsertionManager.addName(videoName)
+            return videoName
+        } catch let error as NSError {
+            print("\(videoName) could not be saved: \(error)")
+            return nil
+        }
     }
 }

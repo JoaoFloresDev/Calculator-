@@ -14,15 +14,6 @@ class CloudKitImageService: ObservableObject {
         static let image = "userImage"
     }
     
-    
-    static let videoRecordTypeIdentifier = "Video"
-
-    struct VideoRecordKeys {
-        static let name = "name"
-        static let image = "image"
-        static let video = "video"
-    }
-    
     struct PredicateFormats {
         static let nameEqual = "name == %@"
         static let alwaysTrue = NSPredicate(value: true)
@@ -76,7 +67,6 @@ class CloudKitImageService: ObservableObject {
                 }
                 
                 DispatchQueue.main.async {
-                    images = fetchedItems
                     print("! \(fetchedItems) !")
                     completion(fetchedItems, nil)
                 }
@@ -284,74 +274,5 @@ class CloudKitImageService: ObservableObject {
             }
         }
     }
-    
-    static func saveVideo(name: String, videoData: Data, thumbnailImage: UIImage, completion: @escaping (Bool, Error?) -> Void) {
-        let record = CKRecord(recordType: videoRecordTypeIdentifier)
-        record.setValue(name, forKey: VideoRecordKeys.name)
-        
-        // Salvando o vídeo
-        let tempDirectory = FileManager.default.temporaryDirectory
-        let videoFileURL = tempDirectory.appendingPathComponent(UUID().uuidString + ".mp4")
-        try? videoData.write(to: videoFileURL)
-        let videoAsset = CKAsset(fileURL: videoFileURL)
-        record.setValue(videoAsset, forKey: VideoRecordKeys.video)
-        
-        // Salvando a imagem (thumbnail)
-        if let imageData = UIImageJPEGRepresentation(thumbnailImage, 0.8) {
-            let imageFileURL = tempDirectory.appendingPathComponent(UUID().uuidString + ".jpg")
-            try? imageData.write(to: imageFileURL)
-            let imageAsset = CKAsset(fileURL: imageFileURL)
-            record.setValue(imageAsset, forKey: VideoRecordKeys.image)
-        }
-        
-        database.save(record) { record, error in
-            if record != nil, error == nil {
-                print(Notifications.itemSaved)
-                completion(true, nil)
-            } else {
-                print(Notifications.errorSavingItem, error.debugDescription)
-                completion(false, error)
-            }
-        }
-    }
-
-    // A função fetchVideos foi atualizada para também buscar uma imagem.
-    static func fetchVideos(completion: @escaping ([(String, Data, UIImage?)]?, Error?) -> Void) {
-        let query = CKQuery(recordType: videoRecordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)
-        
-        database.perform(query, inZoneWith: nil) { records, error in
-            if let error = error {
-                print("\(Notifications.errorFetchingItems) \(error.localizedDescription)")
-                completion(nil, error)
-                return
-            }
-            
-            if let records = records {
-                var fetchedItems = [(String, Data, UIImage?)]()
-                
-                for record in records {
-                    if let videoName = record[VideoRecordKeys.name] as? String,
-                       let videoAsset = record[VideoRecordKeys.video] as? CKAsset,
-                       let videoData = try? Data(contentsOf: videoAsset.fileURL) {
-                        
-                        var thumbnailImage: UIImage?
-                        if let imageAsset = record[VideoRecordKeys.image] as? CKAsset,
-                           let imageData = try? Data(contentsOf: imageAsset.fileURL),
-                           let img = UIImage(data: imageData) {
-                            thumbnailImage = img
-                        }
-                        
-                        fetchedItems.append((videoName, videoData, thumbnailImage))
-                    }
-                }
-                
-                DispatchQueue.main.async {
-                    print("! \(fetchedItems) !")
-                    completion(fetchedItems, nil)
-                }
-            }
-        }
-    }
-
 }
 

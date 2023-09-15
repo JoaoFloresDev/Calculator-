@@ -8,12 +8,6 @@
 
 import UIKit
 
-struct Video {
-    var image: UIImage
-    var name: String
-    var isSelected: Bool = false
-}
-
 struct Folder {
     var name: String
     var isSelected = false

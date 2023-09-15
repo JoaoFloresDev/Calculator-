@@ -25,6 +25,7 @@
 		7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
+		73632E022AB4D79E004AC14A /* CloudKitVideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73632E012AB4D79E004AC14A /* CloudKitVideoService.swift */; };
 		736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD02A979BC100851BEF /* LoadingAlert.swift */; };
 		736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD22A979D7100851BEF /* BackupModalViewController.swift */; };
 		736BDAD52A979DA400851BEF /* CloudKitPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD42A979DA400851BEF /* CloudKitPasswordService.swift */; };
@@ -122,6 +123,7 @@
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calculator Notes.entitlements"; sourceTree = "<group>"; };
+		73632E012AB4D79E004AC14A /* CloudKitVideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitVideoService.swift; sourceTree = "<group>"; };
 		736BDAD02A979BC100851BEF /* LoadingAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
 		736BDAD22A979D7100851BEF /* BackupModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupModalViewController.swift; sourceTree = "<group>"; };
 		736BDAD42A979DA400851BEF /* CloudKitPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPasswordService.swift; sourceTree = "<group>"; };
@@ -305,6 +307,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		73632E032AB4E67F004AC14A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C46AD0FE24416D8E00EF0236 /* CoreDataImageService.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		73632E062AB4E7C9004AC14A /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */,
+				736BDAD22A979D7100851BEF /* BackupModalViewController.swift */,
+			);
+			path = Backup;
+			sourceTree = "<group>";
+		};
 		73741B052A880A4E0067B269 /* cloud */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +331,7 @@
 				736BDAD42A979DA400851BEF /* CloudKitPasswordService.swift */,
 				73741B102A886C310067B269 /* CloudUpdateManager.swift */,
 				73741B012A87D06B0067B269 /* CloudKitImageService.swift */,
+				73632E012AB4D79E004AC14A /* CloudKitVideoService.swift */,
 				73741B062A880A590067B269 /* BackupService.swift */,
 			);
 			path = cloud;
@@ -329,7 +349,7 @@
 		73741B082A880A760067B269 /* local */ = {
 			isa = PBXGroup;
 			children = (
-				C46AD0FE24416D8E00EF0236 /* CoreDataImageService.swift */,
+				73632E032AB4E67F004AC14A /* CoreData */,
 				730438622A315B02001EF25B /* FoldersService.swift */,
 			);
 			path = local;
@@ -385,6 +405,7 @@
 				730438742A344585001EF25B /* CollectionsController */,
 				73ABC0ED284F187F00E5C3A4 /* Purchase */,
 				73B54D5727B097F200499F66 /* Main */,
+				73632E062AB4E7C9004AC14A /* Backup */,
 				73B54D5627B097D300499F66 /* Settings */,
 				73B54D5327B097BD00499F66 /* Notes */,
 				737D66A12AB0AA7E00806C98 /* Protections */,
@@ -451,8 +472,6 @@
 		73B54D5627B097D300499F66 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */,
-				736BDAD22A979D7100851BEF /* BackupModalViewController.swift */,
 				73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */,
 				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
 				C480A50724A7757600094FC8 /* Settings.storyboard */,
@@ -726,6 +745,7 @@
 				736BDAD52A979DA400851BEF /* CloudKitPasswordService.swift in Sources */,
 				736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
+				73632E022AB4D79E004AC14A /* CloudKitVideoService.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				73862C842AAD18BC005D9D25 /* Constants.swift in Sources */,
