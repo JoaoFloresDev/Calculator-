@@ -87,7 +87,7 @@ struct VideoModelController {
     }
     
     // MARK: - Saving and Deleting
-    static func saveImageObject(image: UIImage, video: Data, basePath: String) -> (String?, String?) {
+    static func saveVideoObject(image: UIImage, video: Data, basePath: String = "") -> (String?, String?) {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
             return (nil, nil)

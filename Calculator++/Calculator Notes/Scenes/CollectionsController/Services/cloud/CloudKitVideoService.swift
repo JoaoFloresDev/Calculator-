@@ -42,7 +42,36 @@ class CloudKitVideoService: ObservableObject {
         }
     }
 
-    static func fetchVideos(completion: @escaping ([(String, UIImage)]?, Error?) -> Void) {
+    static func fetchVideos(completion: @escaping ([(String, Data)]?, Error?) -> Void) {
+        let query = CKQuery(recordType: CloudKitVideoService.videoRecordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)
+        
+        CloudKitVideoService.database.perform(query, inZoneWith: nil) { records, error in
+            if let error = error {
+                print("\(Notifications.errorFetchingItems) \(error.localizedDescription)")
+                completion(nil, error)
+                return
+            }
+            
+            if let records = records {
+                var fetchedItems = [(String, Data)]()
+                
+                for record in records {
+                    if let videoName = record[VideoRecordKeys.name] as? String,
+                       let videoAsset = record[VideoRecordKeys.video] as? CKAsset,
+                       let videoData = try? Data(contentsOf: videoAsset.fileURL) {
+                        fetchedItems.append((videoName, videoData))
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    print("! \(fetchedItems) !")
+                    completion(fetchedItems, nil)
+                }
+            }
+        }
+    }
+    
+    static func fetchVideosPlaceholders(completion: @escaping ([(String, UIImage)]?, Error?) -> Void) {
         let query = CKQuery(recordType: CloudKitVideoService.videoRecordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)
         
         CloudKitVideoService.database.perform(query, inZoneWith: nil) { records, error in

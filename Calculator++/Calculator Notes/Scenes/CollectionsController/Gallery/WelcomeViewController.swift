@@ -59,55 +59,8 @@ class WelcomeViewController: UIViewController {
 
 extension WelcomeViewController {
     private func setupFirstUse() {
-//        showSetProtectionOrNavigateToSettings()
-        performFirstUseSetup()
-    }
-    
-    private func performFirstUseSetup() {
-        loadingAlert.startLoading()
-        CloudKitPasswordService.fetchAllPasswords { [weak self] password, error in
-            guard let self = self, let password = password, error == nil else {
-                self?.loadingAlert.stopLoading {
-                    self?.showSetProtectionOrNavigateToSettings()
-                }
-                return
-            }
-            self.loadingAlert.stopLoading {
-                self.handleFirstUseCompletion(with: password)
-            }
-        }
-    }
-    
-    private func handleFirstUseCompletion(with password: [String]) {
-        Alerts.askUserToRestoreBackup(on: self) { [weak self] restoreBackup in
-            if restoreBackup {
-                self?.handleRestoreBackup(password: password)
-            } else {
-                self?.showSetProtectionOrNavigateToSettings()
-            }
-        }
-    }
-    
-    private func handleRestoreBackup(password: [String]) {
-        Alerts.insertPassword(controller: self) { [weak self] insertedPassword in
-            guard let self = self, let insertedPassword = insertedPassword else {
-                return
-            }
-            if password.contains(insertedPassword) {
-                self.loadingAlert.startLoading()
-                BackupService.hasDataInCloudKit { [weak self] hasData, _, items in
-                    self?.loadingAlert.stopLoading {
-                        guard let self = self, let items = items, !items.isEmpty, hasData else {
-                            self?.showSetProtectionOrNavigateToSettings()
-                            return
-                        }
-                        self.restoreBackupAndReloadData(photos: items)
-                    }
-                }
-            } else {
-                Alerts.showPasswordError(controller: self)
-            }
-        }
+        showSetProtectionOrNavigateToSettings()
+//        performFirstUseSetup()
     }
     
     private func showSetProtectionOrNavigateToSettings() {
@@ -122,54 +75,101 @@ extension WelcomeViewController {
         }
     }
     
-    private func restoreBackupAndReloadData(photos: [(String, UIImage)]) {
-        loadingAlert.startLoading()
-        BackupService.restoreBackup(photos: photos) { [weak self] success, _ in
-                if success {
-                    self?.delegate?.backupDone()
-                    self?.loadingAlert.stopLoading {
-                        self?.showSetProtectionOrNavigateToSettings()
-                    }
-                } else {
-                    guard let strongSelf = self else {
-                        return
-                    }
-                    Alerts.showBackupError(controller: strongSelf)
-                }
-        }
-    }
-    
-    private func monitorWiFiAndPerformActions() {
-        guard Defaults.getBool(.iCloudPurchased) else {
-            return
-        }
-        
-        isConnectedToWiFi { isConnected in
-            if isConnected {
-                BackupService.updateBackup(completion: {_ in })
-                if Defaults.getBool(.needSavePasswordInCloud) {
-                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
-                        if success && error == nil {
-                            Defaults.setBool(.needSavePasswordInCloud, false)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
-        let monitor = NWPathMonitor()
-        
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
-        
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        monitor.start(queue: queue)
-    }
+//    private func performFirstUseSetup() {
+//        loadingAlert.startLoading()
+//        CloudKitPasswordService.fetchAllPasswords { [weak self] password, error in
+//            guard let self = self, let password = password, error == nil else {
+//                self?.loadingAlert.stopLoading {
+//                    self?.showSetProtectionOrNavigateToSettings()
+//                }
+//                return
+//            }
+//            self.loadingAlert.stopLoading {
+//                self.handleFirstUseCompletion(with: password)
+//            }
+//        }
+//    }
+//    
+//    private func handleFirstUseCompletion(with password: [String]) {
+//        Alerts.askUserToRestoreBackup(on: self) { [weak self] restoreBackup in
+//            if restoreBackup {
+//                self?.handleRestoreBackup(password: password)
+//            } else {
+//                self?.showSetProtectionOrNavigateToSettings()
+//            }
+//        }
+//    }
+//    
+//    private func handleRestoreBackup(password: [String]) {
+//        Alerts.insertPassword(controller: self) { [weak self] insertedPassword in
+//            guard let self = self, let insertedPassword = insertedPassword else {
+//                return
+//            }
+//            if password.contains(insertedPassword) {
+//                self.loadingAlert.startLoading()
+//                BackupService.hasDataInCloudKit { [weak self] hasData, _, items in
+//                    self?.loadingAlert.stopLoading {
+//                        guard let self = self, let items = items, !items.isEmpty, hasData else {
+//                            self?.showSetProtectionOrNavigateToSettings()
+//                            return
+//                        }
+//                        self.restoreBackupAndReloadData(photos: items)
+//                    }
+//                }
+//            } else {
+//                Alerts.showPasswordError(controller: self)
+//            }
+//        }
+//    }
+//    
+//    private func restoreBackupAndReloadData(photos: [MediaItem]?) {
+//        loadingAlert.startLoading()
+//        BackupService.restoreBackup(photos: photos) { [weak self] success, _ in
+//                if success {
+//                    self?.delegate?.backupDone()
+//                    self?.loadingAlert.stopLoading {
+//                        self?.showSetProtectionOrNavigateToSettings()
+//                    }
+//                } else {
+//                    guard let strongSelf = self else {
+//                        return
+//                    }
+//                    Alerts.showBackupError(controller: strongSelf)
+//                }
+//        }
+//    }
+//
+//    private func monitorWiFiAndPerformActions() {
+//        guard Defaults.getBool(.iCloudPurchased) else {
+//            return
+//        }
+//
+//        isConnectedToWiFi { isConnected in
+//            if isConnected {
+//                BackupService.updateBackup(completion: {_ in })
+//                if Defaults.getBool(.needSavePasswordInCloud) {
+//                    CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
+//                        if success && error == nil {
+//                            Defaults.setBool(.needSavePasswordInCloud, false)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
+//        let monitor = NWPathMonitor()
+//
+//        monitor.pathUpdateHandler = { path in
+//            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
+//                completion(true)
+//            } else {
+//                completion(false)
+//            }
+//        }
+//
+//        let queue = DispatchQueue(label: "NetworkMonitor")
+//        monitor.start(queue: queue)
+//    }
 }

@@ -177,7 +177,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    private func askUserToRestoreBackup(backupItems: [(String, UIImage)]) {
+    private func askUserToRestoreBackup(backupItems: [MediaItem]) {
         Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
             if restoreBackup {
                 self.startLoadingForBackupRestore(backupItems: backupItems)
@@ -185,13 +185,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    private func startLoadingForBackupRestore(backupItems: [(String, UIImage)]) {
+    private func startLoadingForBackupRestore(backupItems: [MediaItem]) {
         loadingAlert.startLoading()
         restoreBackup(backupItems: backupItems)
     }
 
-    private func restoreBackup(backupItems: [(String, UIImage)]) {
-        BackupService.restoreBackup(photos: backupItems) { success, _ in
+    private func restoreBackup(backupItems: [MediaItem]) {
+        BackupService.restoreBackup(items: backupItems) { success, _ in
             self.loadingAlert.stopLoading {
                 if success {
                     Alerts.showBackupSuccess(controller: self)

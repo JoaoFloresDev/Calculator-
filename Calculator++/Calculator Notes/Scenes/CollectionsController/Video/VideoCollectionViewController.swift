@@ -386,7 +386,7 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
         
         self.getThumbnailImageFromVideoUrl(url: videoURL) { thumbImage in
             guard let image = thumbImage else { return }
-            let result = VideoModelController.saveImageObject(image: image, video: videoData, basePath: self.basePath)
+            let result = VideoModelController.saveVideoObject(image: image, video: videoData, basePath: self.basePath)
             if let pathVideo = result.0,
                let imageName = result.1 {
                 self.modelData.append(Video(image: image, name: imageName))

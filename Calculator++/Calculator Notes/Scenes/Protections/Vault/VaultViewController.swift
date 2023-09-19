@@ -208,17 +208,13 @@ class VaultViewController: UIViewController {
 
             if faceIDManager.isFaceIDAvailable() {
                 faceIDManager.requestFaceIDAuthentication { success, error in
-                    DispatchQueue.main.async {
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                        self.present(homeViewController, animated: true)
+                    if success {
+                        DispatchQueue.main.async {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                            self.present(homeViewController, animated: true)
+                        }
                     }
-                }
-            } else {
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                    self.present(homeViewController, animated: true)
                 }
             }
         } else {

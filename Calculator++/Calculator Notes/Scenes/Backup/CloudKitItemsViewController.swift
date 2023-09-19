@@ -45,7 +45,7 @@ class CloudKitItemsViewController: UIViewController {
                 self.collectionView.reloadData()
             }
             
-            CloudKitVideoService.fetchVideos { fetchedItems, error in
+            CloudKitVideoService.fetchVideosPlaceholders { fetchedItems, error in
                 self.collectionView.reloadData()
             }
         }
