@@ -114,14 +114,24 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func setupViewStyle() {
-        upgradeButton.layer.cornerRadius = 8
-        ModeGroupView.layer.cornerRadius = 16
-        ModeGroupView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        ModeGroupView.layer.shadowRadius = 4
-        ModeGroupView.layer.shadowOpacity = 0.3
-        noProtection.layer.cornerRadius = 8
-        vaultMode.layer.cornerRadius = 8
+        DispatchQueue.main.async {
+            self.upgradeButton.layer.cornerRadius = 8
+            self.upgradeButton.clipsToBounds = true
+
+            self.ModeGroupView.layer.cornerRadius = 16
+            self.ModeGroupView.layer.shadowOffset = CGSize(width: 0, height: 0)
+            self.ModeGroupView.layer.shadowRadius = 4
+            self.ModeGroupView.layer.shadowOpacity = 0.3
+            self.ModeGroupView.clipsToBounds = true
+
+            self.noProtection.layer.cornerRadius = 8
+            self.noProtection.clipsToBounds = true
+
+            self.vaultMode.layer.cornerRadius = 8
+            self.vaultMode.clipsToBounds = true
+        }
     }
+
     
     // MARK: - Backup
     @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {

@@ -89,7 +89,6 @@ enum Text: String {
     case enableiCloudAction
     
     case delete
-    case backupNavigationSubtitle
     
     case emptyVideosTitle
     case emptyVideosSubtitle
@@ -120,6 +119,8 @@ enum Text: String {
     case faceidreason // "Usaremos a autenticação por Face ID para abrir a galeria"
     case backupEnabled // "Ativado"
     case backupDisabled // "Desativado"
+    
+    case backupNavigationSubtitle // "Clique em  "recuperar backup" no menu de anterior para importar as fotos para sua galeria"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

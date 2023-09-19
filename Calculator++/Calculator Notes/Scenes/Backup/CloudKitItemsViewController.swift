@@ -1,6 +1,7 @@
 import UIKit
 import CloudKit
 import SnapKit
+import AVFoundation
 
 class CloudKitItemsViewController: UIViewController {
     private let closeBarButtonTitle = Text.close.localized()
@@ -36,9 +37,15 @@ class CloudKitItemsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         alert.startLoading()
         CloudKitImageService.fetchImages { _, _ in
             self.alert.stopLoading {
+                self.collectionView.reloadData()
+            }
+            
+            CloudKitVideoService.fetchVideos { fetchedItems, error in
                 self.collectionView.reloadData()
             }
         }
@@ -71,62 +78,88 @@ class CloudKitItemsViewController: UIViewController {
 }
 
 extension CloudKitItemsViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CloudKitImageService.images.count
+        switch section {
+        case 0:
+            return CloudKitImageService.images.count
+            
+        default:
+            return CloudKitVideoService.videos.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemCollectionViewCell
-        let (_, userImage) = CloudKitImageService.images[indexPath.row]
-        cell.itemImageView.image = userImage
-        cell.itemImageView.contentMode = .scaleAspectFit
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemCollectionViewCell
+            let (_, userImage) = CloudKitImageService.images[indexPath.row]
+            cell.itemImageView.image = userImage
+            cell.itemImageView.contentMode = .scaleAspectFit
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemCollectionViewCell
+            let (_, userImage) = CloudKitVideoService.videos[indexPath.row]
+            cell.itemImageView.image = userImage
+            cell.itemImageView.contentMode = .scaleAspectFit
+            return cell
+        }
     }
 }
 
 extension CloudKitItemsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        let alertController = UIAlertController(title: Text.deleteFiles.localized(), message: String(), preferredStyle: .alert)
+        switch indexPath.section {
+        case 0:
+            collectionView.deselectItem(at: indexPath, animated: true)
+            let alertController = UIAlertController(title: Text.deleteFiles.localized(), message: String(), preferredStyle: .alert)
 
-        let deleteAction = UIAlertAction(title: Text.delete.localized(), style: .destructive) { _ in
-            let (itemName, _) = CloudKitImageService.images[indexPath.row]
-            self.alert.startLoading()
-            CloudKitImageService.deleteImage(name: itemName) { success, error in
-                self.alert.stopLoading()
-                if success {
-                    CloudKitImageService.fetchImages { _, _ in
-                        self.collectionView.reloadData()
+            let deleteAction = UIAlertAction(title: Text.delete.localized(), style: .destructive) { _ in
+                let (itemName, _) = CloudKitImageService.images[indexPath.row]
+                self.alert.startLoading()
+                CloudKitImageService.deleteImage(name: itemName) { success, error in
+                    self.alert.stopLoading()
+                    if success {
+                        CloudKitImageService.fetchImages { _, _ in
+                            self.collectionView.reloadData()
+                        }
+                    } else {
+                        // Handle error here
                     }
-                } else {
-                    // Handle error here
                 }
             }
+
+            let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .cancel, handler: nil)
+
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+
+            present(alertController, animated: true, completion: nil)
+        default:
+            collectionView.deselectItem(at: indexPath, animated: true)
+            let alertController = UIAlertController(title: Text.deleteFiles.localized(), message: String(), preferredStyle: .alert)
+
+            let deleteAction = UIAlertAction(title: Text.delete.localized(), style: .destructive) { _ in
+                let (itemName, _) = CloudKitVideoService.videos[indexPath.row]
+                self.alert.startLoading()
+                CloudKitVideoService.deleteVideoByName(name: itemName) { success, error in
+                    CloudKitVideoService.fetchVideos { success, error in
+                        self.alert.stopLoading()
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+
+            let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .cancel, handler: nil)
+
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+
+            present(alertController, animated: true, completion: nil)
         }
-
-        let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .cancel, handler: nil)
-
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-
-        present(alertController, animated: true, completion: nil)
-    }
-}
-
-extension CloudKitItemsViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        if kind == UICollectionElementKindSectionHeader {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! CollectionHeaderView
-            return headerView
-        }
-        
-        return UICollectionReusableView()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 100) // Ajuste a altura conforme necessário
     }
 }
 

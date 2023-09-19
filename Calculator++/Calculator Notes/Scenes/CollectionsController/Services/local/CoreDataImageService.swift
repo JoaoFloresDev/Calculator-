@@ -19,7 +19,6 @@ struct CoreDataImageService {
         do {
             try imageData.write(to: filePath)
             print("\(imageName) was saved.")
-            ImageCloudInsertionManager.addName(imageName)
             return imageName
         } catch let error as NSError {
             print("\(imageName) could not be saved: \(error)")

@@ -67,6 +67,7 @@ class CloudKitImageService: ObservableObject {
                 }
                 
                 DispatchQueue.main.async {
+                    images = fetchedItems
                     print("! \(fetchedItems) !")
                     completion(fetchedItems, nil)
                 }

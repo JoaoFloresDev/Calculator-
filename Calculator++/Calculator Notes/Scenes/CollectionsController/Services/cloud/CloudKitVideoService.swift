@@ -1,9 +1,12 @@
 import CloudKit
 import UIKit
+import AVFoundation
 
 class CloudKitVideoService: ObservableObject {
     private static let identifier = "iCloud.calculatorNotes"
     private static let database = CKContainer(identifier: identifier).publicCloudDatabase
+
+    static var videos = [(String, UIImage)]()
     
     static let videoRecordTypeIdentifier = "Video"
 
@@ -39,10 +42,10 @@ class CloudKitVideoService: ObservableObject {
         }
     }
 
-    static func fetchVideos(completion: @escaping ([(String, Data)]?, Error?) -> Void) {
-        let query = CKQuery(recordType: videoRecordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)
+    static func fetchVideos(completion: @escaping ([(String, UIImage)]?, Error?) -> Void) {
+        let query = CKQuery(recordType: CloudKitVideoService.videoRecordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)
         
-        database.perform(query, inZoneWith: nil) { records, error in
+        CloudKitVideoService.database.perform(query, inZoneWith: nil) { records, error in
             if let error = error {
                 print("\(Notifications.errorFetchingItems) \(error.localizedDescription)")
                 completion(nil, error)
@@ -50,21 +53,72 @@ class CloudKitVideoService: ObservableObject {
             }
             
             if let records = records {
-                var fetchedItems = [(String, Data)]()
+                var fetchedItems = [(String, UIImage)]()
                 
                 for record in records {
                     if let videoName = record[VideoRecordKeys.name] as? String,
                        let videoAsset = record[VideoRecordKeys.video] as? CKAsset,
                        let videoData = try? Data(contentsOf: videoAsset.fileURL) {
-                        fetchedItems.append((videoName, videoData))
+                        CloudKitVideoService.getThumbnailImageFromVideoData(videoData: videoData) { image in
+                            guard let image = image else {
+                                return
+                            }
+                            fetchedItems.append((videoName, image))
+                        }
                     }
                 }
                 
                 DispatchQueue.main.async {
+                    self.videos = fetchedItems
                     print("! \(fetchedItems) !")
                     completion(fetchedItems, nil)
                 }
             }
+        }
+    }
+    
+    static func getThumbnailImageFromVideoData(videoData: Data, completion: @escaping (UIImage?) -> Void) {
+        guard let tempURL = saveTempFile(videoData: videoData) else {
+            completion(nil)
+            return
+        }
+        
+        let asset = AVURLAsset(url: tempURL)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
+        
+        let time = CMTimeMake(1, 60)
+        
+        do {
+            let cgImage = try imageGenerator.copyCGImage(at: time, actualTime: nil)
+            let uiImage = UIImage(cgImage: cgImage)
+            completion(uiImage)
+        } catch {
+            print("Erro ao gerar imagem do vídeo: \(error)")
+            completion(nil)
+        }
+        
+        // Remova o arquivo temporário, se necessário
+        removeTempFile(url: tempURL)
+    }
+    
+    private static func saveTempFile(videoData: Data) -> URL? {
+        let tempDirectory = FileManager.default.temporaryDirectory
+        let tempURL = tempDirectory.appendingPathComponent(UUID().uuidString + ".mp4")
+        do {
+            try videoData.write(to: tempURL)
+            return tempURL
+        } catch {
+            print("Erro ao salvar arquivo temporário: \(error)")
+            return nil
+        }
+    }
+    
+    private static func removeTempFile(url: URL) {
+        do {
+            try FileManager.default.removeItem(at: url)
+        } catch {
+            print("Erro ao remover arquivo temporário: \(error)")
         }
     }
     

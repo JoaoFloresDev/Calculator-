@@ -63,6 +63,7 @@ struct ModelController {
             do {
                 try managedContext.save()
                 print("\(imageName) was saved in new object.")
+                ImageCloudInsertionManager.addName(imageName)
                 return Photo(name: imageName, image: image)
             } catch let error as NSError {
                 print("Could not save new image object: \(error)")
@@ -181,6 +182,7 @@ extension ModelController {
             do {
                 try managedContext.save()
                 print("\(imageName) was saved in new object.")
+                ImageCloudInsertionManager.addName(imageName)
                 return Photo(name: imageName, image: image)
             } catch let error as NSError {
                 print("Could not save new image object: \(error)")

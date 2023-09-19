@@ -307,14 +307,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		73632E032AB4E67F004AC14A /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				C46AD0FE24416D8E00EF0236 /* CoreDataImageService.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		73632E062AB4E7C9004AC14A /* Backup */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,7 +341,7 @@
 		73741B082A880A760067B269 /* local */ = {
 			isa = PBXGroup;
 			children = (
-				73632E032AB4E67F004AC14A /* CoreData */,
+				C46AD0FE24416D8E00EF0236 /* CoreDataImageService.swift */,
 				730438622A315B02001EF25B /* FoldersService.swift */,
 			);
 			path = local;
