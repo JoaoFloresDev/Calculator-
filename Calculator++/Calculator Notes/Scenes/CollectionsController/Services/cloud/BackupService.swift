@@ -2,9 +2,6 @@ import UIKit
 
 struct BackupService {
     static func updateBackup(completion: @escaping (Bool) -> ()) {
-        print(VideoCloudDeletionManager.getNames())
-        print(VideoCloudInsertionManager.getNames())
-        
         for name in VideoCloudInsertionManager.getNames() {
             switch getVideoData(videoPath: name) {
             case .success(let videoData):

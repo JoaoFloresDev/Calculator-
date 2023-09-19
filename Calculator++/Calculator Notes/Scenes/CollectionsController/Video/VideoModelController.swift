@@ -145,6 +145,7 @@ struct VideoModelController {
             
             if let videoName = imageObjectToDelete.pathURL {
                 CoreDataImageService.deleteImage(imageName: videoName)
+                VideoCloudDeletionManager.addName(videoName)
             }
             
             managedContext.delete(imageObjectToDelete)
@@ -155,9 +156,6 @@ struct VideoModelController {
                     savedObjects.remove(at: index)
                 }
                 os_log("Image object was deleted.", log: OSLog(subsystem: subsystem, category: category), type: .info)
-                if let imageName = imageObjectToDelete.imageName {
-                    VideoCloudDeletionManager.addName(imageName)
-                }
             } catch let error as NSError {
                 os_log("Could not delete image object: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
             }
