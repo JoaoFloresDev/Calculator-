@@ -8,7 +8,36 @@ enum MediaItem {
 }
 
 struct BackupService {
+    
+    static let fileManager = FileManager.default
+    
+    // MARK: - Public Methods
+    
     static func updateBackup(completion: @escaping (Bool) -> ()) {
+        updateVideos()
+        updateImages(completion: completion)
+    }
+
+    static func hasDataInCloudKit(completion: @escaping (Bool, Error?, [MediaItem]?) -> Void) {
+        fetchCloudKitMediaItems(completion: completion)
+    }
+    
+    static func restoreBackup(items: [MediaItem]?, completion: @escaping (Bool, Error?) -> Void) {
+        guard let items = items else {
+            completion(false, nil)
+            return
+        }
+        
+        for item in items {
+            processMediaItem(item)
+        }
+        
+        completion(true, nil)
+    }
+    
+    // MARK: - Private Helpers
+    
+    private static func updateVideos() {
         for name in VideoCloudInsertionManager.getNames() {
             switch getVideoData(videoPath: name) {
             case .success(let videoData):
@@ -16,7 +45,7 @@ struct BackupService {
                     VideoCloudInsertionManager.deleteName(name)
                 }
             case .failure(let error):
-                print("deu erro")
+                os_log("Failed to get video data: %@", log: .default, type: .error, error.localizedDescription)
             }
         }
         
@@ -27,46 +56,31 @@ struct BackupService {
                 }
             }
         }
-        
+    }
+    
+    private static func updateImages(completion: @escaping (Bool) -> ()) {
         let group = DispatchGroup()
         var saveSuccess = false
         var deleteSuccess = false
-
+        
         group.enter()
         CloudKitImageService.saveImages(names: ImageCloudInsertionManager.getNames()) { success in
             saveSuccess = success
             group.leave()
         }
-
+        
         group.enter()
         CloudKitImageService.deleteImages(names: ImageCloudDeletionManager.getNames()) { success in
             deleteSuccess = success
             group.leave()
         }
-
+        
         group.notify(queue: .main) {
             completion(saveSuccess && deleteSuccess)
         }
     }
-
-    static let fileManager = FileManager.default
     
-    // Retorna o Data do vídeo com base no caminho fornecido
-    static func getVideoData(videoPath: String) -> Result<Data, Error> {
-        
-        guard let path = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoPath) else {
-            return .failure(NSError(domain: "Failed to retrieve video URL", code: 404, userInfo: nil))
-        }
-        
-        do {
-            let videoData = try Data(contentsOf: path)
-            return .success(videoData)
-        } catch let error {
-            return .failure(error)
-        }
-    }
-    
-    static func hasDataInCloudKit(completion: @escaping (Bool, Error?, [MediaItem]?) -> Void) {
+    private static func fetchCloudKitMediaItems(completion: @escaping (Bool, Error?, [MediaItem]?) -> Void) {
         var imageItems: [(String, UIImage)]?
         var videoItems: [(String, Data)]?
         
@@ -96,52 +110,33 @@ struct BackupService {
             var mediaItems: [MediaItem] = []
             
             if let imageItems = imageItems {
-                for (name, image) in imageItems {
-                    mediaItems.append(.image(name: name, data: image))
-                }
+                mediaItems.append(contentsOf: imageItems.map { .image(name: $0.0, data: $0.1) })
             }
             
             if let videoItems = videoItems {
-                for (name, data) in videoItems {
-                    mediaItems.append(.video(name: name, data: data))
-                }
+                mediaItems.append(contentsOf: videoItems.map { .video(name: $0.0, data: $0.1) })
             }
             
-            if !mediaItems.isEmpty {
-                completion(true, nil, mediaItems)
-            } else {
-                completion(false, nil, nil)
-            }
+            completion(!mediaItems.isEmpty, nil, mediaItems)
         }
     }
     
-    static func restoreBackup(items: [MediaItem]?, completion: @escaping (Bool, Error?) -> Void) {
-        guard let items = items else {
-            completion(false, nil) // ou alguma Error personalizada
-            return
-        }
-        
-        for item in items {
-            switch item {
-            case .image(let name, let image):
-                ModelController.saveImageObject(image: image, path: name)
-                
-                if name.filter({ $0 == "@" }).count > 1 {
-                    handleFolderCreation(path: name, type: .image)
-                }
-                
-            case .video(let name, let data):
-                getThumbnailImageFromVideoData(videoData: data) { thumbImage in
-                    let result = VideoModelController.saveVideoObject(image: thumbImage ?? UIImage(), video: data)
-                }
-                
-                if name.filter({ $0 == "@" }).count > 1 {
-                    handleFolderCreation(path: name, type: .video)
-                }
+    private static func processMediaItem(_ item: MediaItem) {
+        switch item {
+        case .image(let name, let image):
+            ModelController.saveImageObject(image: image, path: name)
+            handleFolderCreation(path: name, type: .image)
+            
+        case .video(let name, let data):
+            // Seu código para salvar o objeto de vídeo aqui.
+            getThumbnailImageFromVideoData(videoData: data) { thumbImage in
+                _ = VideoModelController.saveVideoObject(image: thumbImage ?? UIImage(), video: data)
+            }
+
+            if name.filter({ $0 == "@" }).count > 1 {
+                handleFolderCreation(path: name, type: .video)
             }
         }
-        
-        completion(true, nil)
     }
 
     static func getThumbnailImageFromVideoData(videoData: Data, completion: @escaping (UIImage?) -> Void) {
@@ -149,13 +144,13 @@ struct BackupService {
             completion(nil)
             return
         }
-        
+
         let asset = AVURLAsset(url: tempURL)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         imageGenerator.appliesPreferredTrackTransform = true
-        
+
         let time = CMTimeMake(1, 60)
-        
+
         do {
             let cgImage = try imageGenerator.copyCGImage(at: time, actualTime: nil)
             let uiImage = UIImage(cgImage: cgImage)
@@ -164,7 +159,7 @@ struct BackupService {
             print("Erro ao gerar imagem do vídeo: \(error)")
             completion(nil)
         }
-        
+
         // Remova o arquivo temporário, se necessário
         removeTempFile(url: tempURL)
     }
@@ -180,7 +175,7 @@ struct BackupService {
             return nil
         }
     }
-    
+
     private static func removeTempFile(url: URL) {
         do {
             try FileManager.default.removeItem(at: url)
@@ -189,6 +184,20 @@ struct BackupService {
         }
     }
     
+    // Método para obter dados do vídeo com base no caminho fornecido
+    static func getVideoData(videoPath: String) -> Result<Data, Error> {
+        guard let path = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoPath) else {
+            return .failure(NSError(domain: "Failed to retrieve video URL", code: 404, userInfo: nil))
+        }
+        
+        do {
+            let videoData = try Data(contentsOf: path)
+            return .success(videoData)
+        } catch let error {
+            return .failure(error)
+        }
+    }
+
     // Função auxiliar para lidar com a criação de pastas
     static func handleFolderCreation(path: String, type: FoldersService.AssetType) {
         var outputArray = convertStringToArray(input: path)
@@ -201,7 +210,8 @@ struct BackupService {
             }
         }
     }
-    
+
+    // Função para concatenar strings até um índice específico
     static func concatenateStringsUpToIndex(array: [String], index: Int) -> String {
         var result = ""
         for i in 0..<index {
@@ -209,7 +219,8 @@ struct BackupService {
         }
         return result
     }
-    
+
+    // Função para converter uma string em um array com base em um delimitador
     static func convertStringToArray(input: String) -> [String] {
         let components = input.components(separatedBy: "@")
         let filteredComponents = components.filter { !$0.isEmpty }

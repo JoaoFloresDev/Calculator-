@@ -343,6 +343,8 @@
 			children = (
 				C46AD0FE24416D8E00EF0236 /* CoreDataImageService.swift */,
 				730438622A315B02001EF25B /* FoldersService.swift */,
+				C467BCC224A9B1880039D237 /* VideoModelController.swift */,
+				C46AD1002441708400EF0236 /* ModelController.swift */,
 			);
 			path = local;
 			sourceTree = "<group>";
@@ -444,7 +446,6 @@
 				73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */,
 				C4148D892440F45E00225706 /* CollectionViewController.swift */,
 				73862C812AAD1894005D9D25 /* WelcomeViewController.swift */,
-				C46AD1002441708400EF0236 /* ModelController.swift */,
 				C480A50524A7752F00094FC8 /* Gallery.storyboard */,
 			);
 			path = Gallery;
@@ -455,7 +456,6 @@
 			children = (
 				C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */,
 				C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */,
-				C467BCC224A9B1880039D237 /* VideoModelController.swift */,
 				73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */,
 			);
 			path = Video;
