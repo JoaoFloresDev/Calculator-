@@ -52,7 +52,6 @@ enum Text: String {
     case close
     case restore
     case buy
-    case products
     
     case folderTitle
     case createActionTitle
@@ -121,6 +120,8 @@ enum Text: String {
     case backupDisabled // "Desativado"
     
     case backupNavigationSubtitle // "Clique em  "recuperar backup" no menu de anterior para importar as fotos para sua galeria"
+    case products // premium
+    case continueText //  Continuar
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
@@ -145,6 +146,10 @@ enum Img: String {
     case emptyVideoIcon
     case premiumIcon
     case emptyNotesIcon
+    case iconMrk
+    case noads
+    case videosupport
+    case unlimited
     
     func name() -> String {
         self.rawValue

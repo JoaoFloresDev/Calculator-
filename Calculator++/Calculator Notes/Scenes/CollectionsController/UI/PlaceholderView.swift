@@ -32,7 +32,7 @@ class PlaceholderView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(red: 0/255.0, green: 175/255.0, blue: 232/255.0, alpha: 1.0)
         button.layer.cornerRadius = 10
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.clipsToBounds = true
         return button
     }()

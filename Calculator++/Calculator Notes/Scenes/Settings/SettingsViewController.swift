@@ -224,6 +224,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func setupViewStyles() {
         upgradeButton.layer.cornerRadius = 8
         noProtection.layer.cornerRadius = 8
+        vaultMode.layer.cornerRadius = 8
         addShadow(to: ModeGroupView, offset: CGSize(width: 0, height: 0), radius: 4, opacity: 0.3)
     }
     

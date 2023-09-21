@@ -25,6 +25,9 @@
 		7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
+		7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA342ABB95DB004FD07C /* DiamondView.swift */; };
+		7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */; };
+		7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA382ABBC0DA004FD07C /* PurchaseHeaderView.swift */; };
 		73632E022AB4D79E004AC14A /* CloudKitVideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73632E012AB4D79E004AC14A /* CloudKitVideoService.swift */; };
 		736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD02A979BC100851BEF /* LoadingAlert.swift */; };
 		736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD22A979D7100851BEF /* BackupModalViewController.swift */; };
@@ -123,6 +126,9 @@
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calculator Notes.entitlements"; sourceTree = "<group>"; };
+		7342CA342ABB95DB004FD07C /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
+		7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseBenetList.swift; sourceTree = "<group>"; };
+		7342CA382ABBC0DA004FD07C /* PurchaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHeaderView.swift; sourceTree = "<group>"; };
 		73632E012AB4D79E004AC14A /* CloudKitVideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitVideoService.swift; sourceTree = "<group>"; };
 		736BDAD02A979BC100851BEF /* LoadingAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
 		736BDAD22A979D7100851BEF /* BackupModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupModalViewController.swift; sourceTree = "<group>"; };
@@ -388,6 +394,9 @@
 			isa = PBXGroup;
 			children = (
 				C480A50124A770E500094FC8 /* PurchaseViewController.swift */,
+				7342CA342ABB95DB004FD07C /* DiamondView.swift */,
+				7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */,
+				7342CA382ABBC0DA004FD07C /* PurchaseHeaderView.swift */,
 				73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */,
 			);
 			path = Purchase;
@@ -713,6 +722,7 @@
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */,
+				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,
 				7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* CoreDataImageService.swift in Sources */,
 				731436442A48D6B000B9842E /* FooterView.swift in Sources */,
@@ -728,6 +738,7 @@
 				C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
+				7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */,
 				737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
 				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
@@ -746,6 +757,7 @@
 				736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */,
 				7304387A2A34467C001EF25B /* FolderCollectionViewCell.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
+				7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */,
 				73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
 				73862C822AAD1894005D9D25 /* WelcomeViewController.swift in Sources */,

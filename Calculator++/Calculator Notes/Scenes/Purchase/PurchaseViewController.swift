@@ -1,5 +1,6 @@
 import UIKit
 import StoreKit
+import SnapKit
 
 protocol PurchaseViewControllerDelegate: AnyObject {
     func purchased()
@@ -10,12 +11,6 @@ class PurchaseViewController: UIViewController {
     weak var delegate: PurchaseViewControllerDelegate?
     
     // MARK: - IBOutlets
-    @IBOutlet weak var buyLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var teste: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var buyButton: UIButton!
-    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var customNavigator: UINavigationItem!
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var restoreButton: UIBarButtonItem!
@@ -36,6 +31,51 @@ class PurchaseViewController: UIViewController {
         super.viewDidLoad()
         setupObservers()
         setupLocalizedText()
+        setupUI()
+    }
+    
+    lazy var headerView = PurchaseHeaderView()
+    lazy var purchaseBenetList = PurchaseBenetList()
+    
+    lazy var actionButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(red: 0/255.0, green: 175/255.0, blue: 232/255.0, alpha: 1.0)
+        button.layer.cornerRadius = 10
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        button.clipsToBounds = true
+        button.setTitle("Continuar", for: .normal)
+        
+        // Adicionando a ação ao botão
+        button.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func didTapActionButton() {
+        performPurchase(product: products.first)
+    }
+    
+    func setupUI() {
+        view.addSubview(headerView)
+        headerView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(56)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        view.addSubview(purchaseBenetList)
+        purchaseBenetList.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom).offset(250)
+            make.centerX.equalToSuperview().multipliedBy(1.05)
+            make.width.equalTo(240)
+        }
+        
+        view.addSubview(actionButton)
+        actionButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().inset(16)
+            make.height.equalTo(48)
+            make.top.equalTo(purchaseBenetList.snp.bottom).offset(38)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,13 +98,8 @@ class PurchaseViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    @IBAction func buyPressed(_ sender: Any) {
-        performPurchase(product: products.first)
-    }
-    
     @IBAction func restorePressed(_ sender: Any) {
         RazeFaceProducts.store.restorePurchases()
-        startLoading(with: 1)
         confirmCheckmark()
     }
     
@@ -77,29 +112,8 @@ class PurchaseViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(name), object: nil)
     }
     
-    private func startLoading(with interval: TimeInterval) {
-        startLoading()
-        timerLoad = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { _ in
-            self.stopLoading()
-        }
-    }
-    
     private func setupNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseNotification(_:)), name: .IAPHelperPurchaseNotification, object: nil)
-    }
-    
-    private func startLoading() {
-        DispatchQueue.main.async {
-            self.loadingView.alpha = 1
-            self.loadingView.startAnimating()
-        }
-    }
-    
-    private func stopLoading() {
-        DispatchQueue.main.async { [self] in
-            self.loadingView.alpha = 0
-            loadingView.stopAnimating()
-        }
     }
     
     @objc private func handlePurchaseNotification(_ notification: Notification) {
@@ -110,7 +124,6 @@ class PurchaseViewController: UIViewController {
     private func performPurchase(product: SKProduct?) {
         guard let product = product else { return }
         RazeFaceProducts.store.buyProduct(product)
-        startLoading(with: 30)
         confirmCheckmark()
     }
     
@@ -134,8 +147,9 @@ class PurchaseViewController: UIViewController {
     private func confirmCheckmark() {
         DispatchQueue.main.async {
             if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
-                self.stopLoading()
-                self.buyLabel.text = "   ✓✓✓"
+                self.actionButton.setTitle("✓✓✓", for: .normal)
+                self.actionButton.backgroundColor  = .systemGreen
+                self.actionButton.isUserInteractionEnabled = false
                 Defaults.setBool(.premiumPurchased, true)
                 self.delegate?.purchased()
             }
@@ -144,17 +158,15 @@ class PurchaseViewController: UIViewController {
     
     private func updateUI(with product: SKProduct?) {
         guard let product = product else { return }
-        teste.text = product.localizedTitle
-        descriptionLabel.text = product.localizedDescription
+        headerView.title.text  = product.localizedTitle
+        headerView.subtitle.text = product.localizedDescription
         priceFormatter.locale = product.priceLocale
-        priceLabel.text = priceFormatter.string(from: product.price)
+        headerView.price.text = priceFormatter.string(from: product.price)
     }
     
     private func setupLocalizedText() {
         customNavigator.title = Text.products.localized()
         closeButton.title = Text.close.localized()
         restoreButton.title = Text.restore.localized()
-        buyLabel.text = Text.buy.localized()
-        priceLabel.text  = Text.loading.localized()
     }
 }
