@@ -86,9 +86,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         guard let viewController = viewController else {
             return
         }
-        let controller = WelcomeViewController(coordinator: self, delegate: viewController)
-        controller.view.backgroundColor = UIColor.clear
-        controller.modalPresentationStyle = .overCurrentContext
+        
+        let controller = UINavigationController(rootViewController: OnboardingWelcomeViewController())
+        controller.modalPresentationStyle = .fullScreen
         viewController.present(controller, animated: false)
     }
     
@@ -108,5 +108,39 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     
     private func selectedImages(from modelData: [Photo]) -> [UIImage] {
         return modelData.filter { $0.isSelected }.map { $0.image }
+    }
+}
+
+import UIKit
+
+class SlideAndFadePushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 1
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let toViewController = transitionContext.viewController(forKey: .to) else {
+            return
+        }
+        
+        let finalFrame = transitionContext.finalFrame(for: toViewController)
+        let containerView = transitionContext.containerView
+        let duration = transitionDuration(using: transitionContext)
+        
+        // Configurações iniciais para o estado de "toViewController"
+        toViewController.view.frame = finalFrame.offsetBy(dx: finalFrame.width, dy: 0)
+        toViewController.view.alpha = 0.0
+        
+        // Adiciona a view no containerView
+        containerView.addSubview(toViewController.view)
+        
+        // Animação
+        UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.8, options: [], animations: {
+            toViewController.view.frame = finalFrame
+            toViewController.view.alpha = 1.0
+        }) { (finished) in
+            transitionContext.completeTransition(finished)
+        }
     }
 }

@@ -64,7 +64,7 @@ class PurchaseViewController: UIViewController {
         
         view.addSubview(purchaseBenetList)
         purchaseBenetList.snp.makeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom).offset(250)
+            make.top.equalTo(headerView.snp.bottom).offset(255)
             make.centerX.equalToSuperview().multipliedBy(1.05)
             make.width.equalTo(240)
         }
@@ -74,7 +74,7 @@ class PurchaseViewController: UIViewController {
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
-            make.top.equalTo(purchaseBenetList.snp.bottom).offset(38)
+            make.top.equalTo(purchaseBenetList.snp.bottom).offset(35)
         }
     }
     

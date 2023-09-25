@@ -46,9 +46,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     override func viewDidLoad() {
         super.viewDidLoad()
         coordinator = CollectionViewCoordinator(self)
+        coordinator?.presentWelcomeController()
         setupData()
         configureNavigationBar()
-        setupFirstUse()
         setupTabBars()
         handleInitialLaunch()
         setupPlaceholderView()
@@ -465,16 +465,6 @@ extension CollectionViewController: GalleryItemsDataSource {
     }
 }
 
-// MARK: - First use
-extension CollectionViewController {
-    private func setupFirstUse() {
-        if !Defaults.getBool(.notFirstUse) {
-            Defaults.setBool(.notFirstUse, true)
-            coordinator?.presentWelcomeController()
-        }
-    }
-}
-
 extension CollectionViewController {
     private func configureNavigationBar() {
         if let navigationTitle = navigationTitle {
@@ -531,20 +521,5 @@ extension CollectionViewController {
         adsHandler.setupAds(controller: self,
                             bannerDelegate: self,
                             interstitialDelegate: self)
-    }
-}
-
-extension CollectionViewController: WelcomeViewControllerDelegate {
-    func navigateToSettingsTab() {
-        coordinator?.navigateToSettingsTab()
-    }
-    
-    func presentChangePasswordCalcMode() {
-        coordinator?.presentChangePasswordCalcMode()
-    }
-    
-    func backupDone() {
-        self.setupData()
-        self.collectionView?.reloadData()
     }
 }

@@ -55,6 +55,7 @@
 		73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6C27B0A89800499F66 /* UIButton+Extension.swift */; };
 		73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6E27B0AC7A00499F66 /* Alerts.swift */; };
 		73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */; };
+		73B860592AC1FB330023441A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B860582AC1FB330023441A /* OnboardingView.swift */; };
 		73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */; };
 		73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5022A49CF8900963BA2 /* BaseCalculatorViewController.swift */; };
 		73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5042A49D79B00963BA2 /* UIView+extension.swift */; };
@@ -162,6 +163,7 @@
 		73B54D6E27B0AC7A00499F66 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		73B54D7227B0BE2600499F66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73B860582AC1FB330023441A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCoordinator.swift; sourceTree = "<group>"; };
 		73C2C5022A49CF8900963BA2 /* BaseCalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalculatorViewController.swift; sourceTree = "<group>"; };
 		73C2C5042A49D79B00963BA2 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 		73B54D5027B0979B00499F66 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				73B860572AC1D5560023441A /* Onboarding */,
 				730438742A344585001EF25B /* CollectionsController */,
 				73ABC0ED284F187F00E5C3A4 /* Purchase */,
 				73B54D5727B097F200499F66 /* Main */,
@@ -454,7 +457,6 @@
 			children = (
 				73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */,
 				C4148D892440F45E00225706 /* CollectionViewController.swift */,
-				73862C812AAD1894005D9D25 /* WelcomeViewController.swift */,
 				C480A50524A7752F00094FC8 /* Gallery.storyboard */,
 			);
 			path = Gallery;
@@ -495,6 +497,15 @@
 				73B54D6727B09DF100499F66 /* Text.swift */,
 			);
 			path = LocalizableString;
+			sourceTree = "<group>";
+		};
+		73B860572AC1D5560023441A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				73862C812AAD1894005D9D25 /* WelcomeViewController.swift */,
+				73B860582AC1FB330023441A /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		BA3244402A4B690A00A782CA /* Models */ = {
@@ -767,6 +778,7 @@
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
+				73B860592AC1FB330023441A /* OnboardingView.swift in Sources */,
 				73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
