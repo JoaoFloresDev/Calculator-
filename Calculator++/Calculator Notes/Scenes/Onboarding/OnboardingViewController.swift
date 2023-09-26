@@ -20,13 +20,14 @@ import AVFoundation
 import AVKit
 import MessageUI
 
+// MARK: - FIRST SCREEN
 class OnboardingWelcomeViewController: UIViewController, UINavigationControllerDelegate {
 
     lazy var onboardingView = OnboardingView(
-        title: "Bem-vindo ao Secret Gallery",
-        subtitle: "Proteja suas fotos e vídeos com segurança",
-        startButtonTitle: "Começar",
-        skipButtonTitle: "Ao clicar em ”Começar”, você concorda com a politica de privacidade e os termos de uso",
+        title: Text.welcomeOnboarding_title.localized(),
+        subtitle: Text.welcomeOnboarding_subtitle.localized(),
+        startButtonTitle: Text.welcomeOnboarding_startButtonTitle.localized(),
+        skipButtonTitle: Text.welcomeOnboarding_skipButtonTitle.localized(),
         delegate: self
     )
 
@@ -60,16 +61,15 @@ extension OnboardingWelcomeViewController: OnboardingViewDelegate {
     }
 }
 
-// ------------------------------------
-
+// MARK: - SECOND SCREEN
 class OnboardingCreateCodeViewController: UIViewController {
     var slideAndFadeAnimator: SlideAndFadePresentAnimator?
     
     lazy var onboardingView = OnboardingView(
-        title: "Crie um código de acesso",
-        subtitle: "Crie uma senha para acessar suas fotos guardadas",
-        startButtonTitle: "Continuar",
-        skipButtonTitle: "Agora não",
+        title: Text.createCodeOnboarding_title.localized(),
+        subtitle: Text.createCodeOnboarding_subtitle.localized(),
+        startButtonTitle: Text.createCodeOnboarding_startButtonTitle.localized(),
+        skipButtonTitle: Text.createCodeOnboarding_skipButtonTitle.localized(),
         delegate: self
     )
 
@@ -106,15 +106,15 @@ extension OnboardingCreateCodeViewController: OnboardingViewDelegate {
     }
 }
 
-// ------------------------------------
-
+// MARK: - THIRTY SCREEN
 class OnboardingAddPhotosViewController: UIViewController {
+    var slideAndFadeAnimator: SlideAndFadePresentAnimator?
     
     lazy var onboardingView = OnboardingView(
-        title: "Adicione suas fotos",
-        subtitle: "Adicione as fotos que deseja guardar de forma segura",
-        startButtonTitle: "Continuar",
-        skipButtonTitle: "Agora não",
+        title: Text.addPhotosOnboarding_title.localized(),
+        subtitle: Text.addPhotosOnboarding_subtitle.localized(),
+        startButtonTitle: Text.addPhotosOnboarding_startButtonTitle.localized(),
+        skipButtonTitle: Text.addPhotosOnboarding_skipButtonTitle.localized(),
         delegate: self
     )
     
@@ -123,6 +123,7 @@ class OnboardingAddPhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Defaults.setBool(.notFirstUse, true)
         
         view.addSubview(onboardingView)
         navigationController?.navigationBar.isHidden = true
@@ -143,7 +144,12 @@ extension OnboardingAddPhotosViewController: OnboardingViewDelegate, AssetsPicke
     }
     
     func didTapSecondaryButton() {
-        self.dismiss(animated: true)
+        slideAndFadeAnimator = SlideAndFadePresentAnimator()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+        homeViewController.modalPresentationStyle = .fullScreen
+        homeViewController.transitioningDelegate = slideAndFadeAnimator
+        self.present(homeViewController, animated: true)
     }
     
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
@@ -158,7 +164,12 @@ extension OnboardingAddPhotosViewController: OnboardingViewDelegate, AssetsPicke
                 }
                 self.processedAssets += 1
                 if self.processedAssets == self.totalAssets {
-                    self.dismiss(animated: true)
+                    slideAndFadeAnimator = SlideAndFadePresentAnimator()
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                    homeViewController.modalPresentationStyle = .fullScreen
+                    homeViewController.transitioningDelegate = slideAndFadeAnimator
+                    self.present(homeViewController, animated: true)
                 }
             }
         }

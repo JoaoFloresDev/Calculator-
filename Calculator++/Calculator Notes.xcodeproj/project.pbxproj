@@ -39,7 +39,7 @@
 		737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */; };
 		737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
-		73862C822AAD1894005D9D25 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C812AAD1894005D9D25 /* WelcomeViewController.swift */; };
+		73862C822AAD1894005D9D25 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C812AAD1894005D9D25 /* OnboardingViewController.swift */; };
 		73862C842AAD18BC005D9D25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C832AAD18BC005D9D25 /* Constants.swift */; };
 		73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C852AAD19CA005D9D25 /* VaultViewController.swift */; };
 		73862C882AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */; };
@@ -141,7 +141,7 @@
 		737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
-		73862C812AAD1894005D9D25 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		73862C812AAD1894005D9D25 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		73862C832AAD18BC005D9D25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		73862C852AAD19CA005D9D25 /* VaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultViewController.swift; sourceTree = "<group>"; };
 		73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionCoordinator.swift; sourceTree = "<group>"; };
@@ -502,7 +502,7 @@
 		73B860572AC1D5560023441A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				73862C812AAD1894005D9D25 /* WelcomeViewController.swift */,
+				73862C812AAD1894005D9D25 /* OnboardingViewController.swift */,
 				73B860582AC1FB330023441A /* OnboardingView.swift */,
 			);
 			path = Onboarding;
@@ -771,7 +771,7 @@
 				7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */,
 				73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
-				73862C822AAD1894005D9D25 /* WelcomeViewController.swift in Sources */,
+				73862C822AAD1894005D9D25 /* OnboardingViewController.swift in Sources */,
 				C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */,
 				73B54D6627B09D9800499F66 /* String+Localized.swift in Sources */,
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,

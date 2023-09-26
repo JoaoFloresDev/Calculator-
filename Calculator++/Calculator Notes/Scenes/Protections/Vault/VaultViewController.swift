@@ -65,7 +65,7 @@ class VaultViewController: UIViewController {
         self.view.backgroundColor = UIColor(hex: "#23272C")
 
         // Título
-        titleLabel.text = "Calc+"
+        titleLabel.text = "SG"
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)

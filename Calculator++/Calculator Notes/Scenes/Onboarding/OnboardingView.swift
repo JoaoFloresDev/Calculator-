@@ -39,7 +39,7 @@ class OnboardingView: UIView {
         let label = UILabel()
         label.textColor = .white
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 24)
+        label.font = UIFont.systemFont(ofSize: 18)
         label.textAlignment = .center
         return label
     }()
@@ -57,6 +57,7 @@ class OnboardingView: UIView {
         let button = UIButton(type: .system)
         button.titleLabel?.numberOfLines = 0
         button.tintColor = .white
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return button
     }()
     
@@ -94,7 +95,7 @@ class OnboardingView: UIView {
         }
         
         subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(24)
             make.left.equalToSuperview().offset(24)
             make.right.equalToSuperview().inset(24)
         }

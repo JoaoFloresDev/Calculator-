@@ -46,7 +46,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     override func viewDidLoad() {
         super.viewDidLoad()
         coordinator = CollectionViewCoordinator(self)
-        coordinator?.presentWelcomeController()
         setupData()
         configureNavigationBar()
         setupTabBars()

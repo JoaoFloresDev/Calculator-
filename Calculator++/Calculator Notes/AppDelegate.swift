@@ -30,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func shouldInitializeWindow() -> Bool {
-        return UserDefaultService().getTypeProtection() != ProtectionMode.noProtection
+        return UserDefaultService().getTypeProtection() != ProtectionMode.noProtection ||
+               !Defaults.getBool(.notFirstUse)
     }
     
     private func initializeWindow() {
@@ -44,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             initialViewController = VaultViewController(mode: .verify)
         }
         
+        if !Defaults.getBool(.notFirstUse) {
+            initialViewController = UINavigationController(rootViewController: OnboardingWelcomeViewController())
+        }
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
         GADMobileAds.sharedInstance().start(completionHandler: nil)

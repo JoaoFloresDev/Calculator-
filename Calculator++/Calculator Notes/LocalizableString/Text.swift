@@ -121,7 +121,22 @@ enum Text: String {
     
     case backupNavigationSubtitle // "Clique em  "recuperar backup" no menu de anterior para importar as fotos para sua galeria"
     case products // premium
-    case continueText //  Continuar
+    case continueText // Continuar
+    
+    case welcomeOnboarding_title // "Bem-vindo ao Secret Gallery"
+    case welcomeOnboarding_subtitle // "Proteja suas fotos e vídeos com segurança"
+    case welcomeOnboarding_startButtonTitle // "Começar"
+    case welcomeOnboarding_skipButtonTitle // "Ao clicar em ”Começar”, você concorda com a politica de privacidade e os termos de uso"
+    
+    case createCodeOnboarding_title // "Crie um código de acesso"
+    case createCodeOnboarding_subtitle // "Crie uma senha para acessar suas fotos guardadas"
+    case createCodeOnboarding_startButtonTitle // "Continuar"
+    case createCodeOnboarding_skipButtonTitle // "Agora não"
+    
+    case addPhotosOnboarding_title // "Adicione suas fotos"
+    case addPhotosOnboarding_subtitle // "Adicione as fotos que deseja guardar de forma segura"
+    case addPhotosOnboarding_startButtonTitle // "Continuar"
+    case addPhotosOnboarding_skipButtonTitle // "Agora não"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
