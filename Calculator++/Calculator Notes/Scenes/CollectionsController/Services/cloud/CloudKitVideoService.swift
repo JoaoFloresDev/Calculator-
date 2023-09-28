@@ -3,6 +3,7 @@ import UIKit
 import AVFoundation
 
 class CloudKitVideoService: ObservableObject {
+    
     private static let identifier = "iCloud.calculatorNotes"
     private static let database = CKContainer(identifier: identifier).publicCloudDatabase
 
@@ -13,6 +14,13 @@ class CloudKitVideoService: ObservableObject {
     struct VideoRecordKeys {
         static let name = "name"
         static let video = "video"
+        static let uploadedBy = "uploadedBy" // Campo de referência ao usuário
+    }
+
+    static let userRecordTypeIdentifier = "Users"
+    
+    struct UserRecordKeys {
+        static let userID = "___recordID"
     }
     
     struct PredicateFormats {
@@ -24,26 +32,48 @@ class CloudKitVideoService: ObservableObject {
         let record = CKRecord(recordType: videoRecordTypeIdentifier)
         record.setValue(name, forKey: VideoRecordKeys.name)
         
-        // Salvando o vídeo
-        let tempDirectory = FileManager.default.temporaryDirectory
-        let videoFileURL = tempDirectory.appendingPathComponent(UUID().uuidString + ".mp4")
-        try? videoData.write(to: videoFileURL)
-        let videoAsset = CKAsset(fileURL: videoFileURL)
-        record.setValue(videoAsset, forKey: VideoRecordKeys.video)
-        
-        database.save(record) { record, error in
-            if record != nil, error == nil {
-                print(Notifications.itemSaved)
-                completion(true, nil)
-            } else {
-                print(Notifications.errorSavingItem, error.debugDescription)
+        // Recupere o ID do usuário atual
+        CKContainer.default().fetchUserRecordID { (userRecordID, error) in
+            if let error = error {
+                print("Erro ao recuperar o ID do usuário atual: \(error)")
                 completion(false, error)
+                return
+            }
+            
+            if let userRecordID = userRecordID {
+                let reference = CKRecord.Reference(recordID: userRecordID, action: .none)
+                record.setValue(reference, forKey: VideoRecordKeys.uploadedBy)
+                
+                let record = CKRecord(recordType: videoRecordTypeIdentifier)
+                record.setValue(name, forKey: VideoRecordKeys.name)
+                
+                // Salvando o vídeo
+                let tempDirectory = FileManager.default.temporaryDirectory
+                let videoFileURL = tempDirectory.appendingPathComponent(UUID().uuidString + ".mp4")
+                try? videoData.write(to: videoFileURL)
+                let videoAsset = CKAsset(fileURL: videoFileURL)
+                record.setValue(videoAsset, forKey: VideoRecordKeys.video)
+                
+                database.save(record) { record, error in
+                    if record != nil, error == nil {
+                        print(Notifications.itemSaved)
+                        completion(true, nil)
+                    } else {
+                        print(Notifications.errorSavingItem, error.debugDescription)
+                        completion(false, error)
+                    }
+                }
+            } else {
+                print("ID do usuário atual não encontrado")
+                completion(false, nil)
             }
         }
     }
 
     static func fetchVideos(completion: @escaping ([(String, Data)]?, Error?) -> Void) {
-        let query = CKQuery(recordType: CloudKitVideoService.videoRecordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)
+        let currentUserRecordID = CKCurrentUserDefaultName
+        let predicate = NSPredicate(format: "uploadedBy == %@", currentUserRecordID)
+        let query = CKQuery(recordType: videoRecordTypeIdentifier, predicate: predicate)
         
         CloudKitVideoService.database.perform(query, inZoneWith: nil) { records, error in
             if let error = error {

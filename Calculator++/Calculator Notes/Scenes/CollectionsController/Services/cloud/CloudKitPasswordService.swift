@@ -8,15 +8,11 @@ class CloudKitPasswordService {
         static let hasBackup = "HasBackup"
     }
     
-    private struct RecordKeys {
-        static let password = "password"
-    }
-    
     private struct ErrorMessarge {
         static let savePassword = "Error saving password:"
         static let fetchPassword = "Error fetching password:"
         static let deletePassword = "Error deleting password:"
-        static let noPasswordFound = "No password found."
+        static let noPasswordFound = "No passwor found."
         static let cloudKitError = "CloudKit error:"
     }
     
@@ -35,21 +31,34 @@ class CloudKitPasswordService {
         }
     }
     
-    static func fetchAllPasswords(completion: @escaping ([String]?, Error?) -> Void) {
-        let query = CKQuery(recordType: RecordType.hasBackup, predicate: NSPredicate(value: true))
+    private struct RecordKeys {
+        static let password = "password"
+        static let createdBy = "___createdBy"
+    }
+    static func fetchUserPasswords(completion: @escaping ([String]?, Error?) -> Void) {
+        let currentUserRecordID = CKCurrentUserDefaultName
         
-        database.perform(query, inZoneWith: nil) { records, error in
-            if let error = error {
-                print("Error fetching passwords:", error.localizedDescription)
-                completion(nil, error)
-            } else if let passwordRecords = records {
-                let passwords = passwordRecords.compactMap { record in
-                    return record[RecordKeys.password] as? String
+        // Verificar se o usuário está autenticado (a string não está vazia)
+        if !currentUserRecordID.isEmpty {
+            let predicate = NSPredicate(format: "\(RecordKeys.createdBy) == %@", currentUserRecordID)
+            let query = CKQuery(recordType: RecordType.hasBackup, predicate: predicate)
+            
+            database.perform(query, inZoneWith: nil) { records, error in
+                if let error = error {
+                    print("Error fetching passwords:", error.localizedDescription)
+                    completion(nil, error)
+                } else if let passwordRecords = records {
+                    let passwords = passwordRecords.compactMap { record in
+                        return record[RecordKeys.password] as? String
+                    }
+                    completion(passwords, nil)
+                } else {
+                    completion(nil, nil)
                 }
-                completion(passwords, nil)
-            } else {
-                completion(nil, nil)
             }
+        } else {
+            // Handle the case where the current user is not authenticated
+            completion(nil, nil)
         }
     }
     

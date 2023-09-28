@@ -20,7 +20,6 @@ import CloudKit
 
 
 protocol BackupModalViewControllerDelegate {
-    func restoreBackupTapped()
     func enableBackupToggled(status: Bool)
 }
 
@@ -178,12 +177,6 @@ class BackupModalViewController: UIViewController {
     @objc func viewBackupTapped() {
         let navigation = UINavigationController(rootViewController: CloudKitItemsViewController())
         present(navigation, animated: true)
-    }
-    
-    @objc func restoreBackupTapped() {
-        self.dismiss(animated: false) {
-            self.delegate?.restoreBackupTapped()
-        }
     }
     
     @objc func updateBackupTapped() {
@@ -397,6 +390,86 @@ class BackupModalViewController: UIViewController {
         } else {
             Defaults.setBool(.iCloudEnabled, false)
             delegate?.enableBackupToggled(status: false)
+        }
+    }
+}
+
+extension BackupModalViewController {
+    @objc func restoreBackupTapped() {
+        
+        guard Defaults.getBool(.iCloudEnabled) else {
+            Alerts.showBackupDisabled(controller: self)
+            return
+        }
+        
+        self.fetchCloudKitPassword()
+    }
+    
+    private func fetchCloudKitPassword() {
+        loadingAlert.startLoading()
+        CloudKitPasswordService.fetchUserPasswords { password, error in
+            self.loadingAlert.stopLoading {
+                if let password = password {
+                    self.insertPasswordAndCheckBackup(password: password)
+                } else {
+                    Alerts.showPasswordError(controller: self)
+                }
+            }
+        }
+    }
+    
+    private func insertPasswordAndCheckBackup(password: [String]) {
+        Alerts.insertPassword(controller: self) { insertedPassword in
+            guard let insertedPassword = insertedPassword else {
+                return
+            }
+            if password.contains(insertedPassword) || insertedPassword == Constants.recoverPassword {
+                self.checkBackupData()
+            } else {
+                Alerts.showPasswordError(controller: self)
+            }
+        }
+    }
+    
+    private func checkBackupData() {
+        loadingAlert.startLoading()
+        BackupService.hasDataInCloudKit { hasData, _, items  in
+            self.loadingAlert.stopLoading {
+                if let items = items, !items.isEmpty, hasData {
+                    self.askUserToRestoreBackup(backupItems: items)
+                } else {
+                    Alerts.showBackupError(controller: self)
+                }
+            }
+        }
+    }
+
+    private func askUserToRestoreBackup(backupItems: [MediaItem]) {
+        Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+            if restoreBackup {
+                self.startLoadingForBackupRestore(backupItems: backupItems)
+            }
+        }
+    }
+
+    private func startLoadingForBackupRestore(backupItems: [MediaItem]) {
+        loadingAlert.startLoading()
+        restoreBackup(backupItems: backupItems)
+    }
+
+    private func restoreBackup(backupItems: [MediaItem]) {
+        BackupService.restoreBackup(items: backupItems) { success, _ in
+            self.loadingAlert.stopLoading {
+                if success {
+                    Alerts.showBackupSuccess(controller: self)
+                    let controllers = self.tabBarController?.viewControllers
+                    let navigation = controllers?[0] as? UINavigationController
+                    let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
+                    collectionViewController?.viewDidLoad()
+                } else {
+                    Alerts.showBackupError(controller: self)
+                }
+            }
         }
     }
 }
