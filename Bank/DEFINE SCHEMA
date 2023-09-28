@@ -1,0 +1,69 @@
+DEFINE SCHEMA
+
+    RECORD TYPE HasBackup (
+        HasBackup       STRING QUERYABLE SEARCHABLE SORTABLE,
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        name            STRING QUERYABLE SEARCHABLE SORTABLE,
+        password        STRING QUERYABLE SEARCHABLE SORTABLE,
+        userImage       ASSET,
+        GRANT READ, WRITE TO "_creator",
+        GRANT CREATE TO "_icloud"
+    );
+
+    RECORD TYPE ItemItem (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        image           ASSET,
+        name            STRING QUERYABLE SEARCHABLE SORTABLE,
+        userImage       ASSET,
+        GRANT READ, WRITE TO "_creator",
+        GRANT CREATE TO "_icloud"
+    );
+
+    RECORD TYPE Photos (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        name            STRING QUERYABLE SEARCHABLE SORTABLE,
+        userImage       ASSET,
+        GRANT READ, WRITE TO "_creator",
+        GRANT CREATE TO "_icloud"
+    );
+
+    RECORD TYPE Users (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        password        STRING QUERYABLE SEARCHABLE SORTABLE,
+        roles           LIST<INT64>,
+        GRANT READ, WRITE TO "_creator"
+    );
+
+    RECORD TYPE Video (
+        "___createTime" TIMESTAMP,
+        "___createdBy"  REFERENCE,
+        "___etag"       STRING,
+        "___modTime"    TIMESTAMP,
+        "___modifiedBy" REFERENCE,
+        "___recordID"   REFERENCE QUERYABLE,
+        image           ASSET,
+        name            STRING QUERYABLE SEARCHABLE SORTABLE,
+        video           ASSET,
+        GRANT READ, WRITE TO "_creator",
+        GRANT CREATE TO "_icloud"
+    );
