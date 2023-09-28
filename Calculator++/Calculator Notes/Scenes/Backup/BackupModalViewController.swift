@@ -410,7 +410,7 @@ extension BackupModalViewController {
         CloudKitPasswordService.fetchUserPasswords { password, error in
             self.loadingAlert.stopLoading {
                 if let password = password {
-                    self.insertPasswordAndCheckBackup(password: password)
+                self.insertPasswordAndCheckBackup(password: password)
                 } else {
                     Alerts.showPasswordError(controller: self)
                 }

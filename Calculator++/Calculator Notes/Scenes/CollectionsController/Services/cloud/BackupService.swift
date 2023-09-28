@@ -83,9 +83,9 @@ struct BackupService {
     private static func fetchCloudKitMediaItems(completion: @escaping (Bool, Error?, [MediaItem]?) -> Void) {
         var imageItems: [(String, UIImage)]?
         var videoItems: [(String, Data)]?
-        
+
         let dispatchGroup = DispatchGroup()
-        
+
         dispatchGroup.enter()
         CloudKitVideoService.fetchVideos { fetchedVideos, error in
             if let error = error {
@@ -95,7 +95,7 @@ struct BackupService {
             videoItems = fetchedVideos
             dispatchGroup.leave()
         }
-        
+
         dispatchGroup.enter()
         CloudKitImageService.fetchImages { fetchedImages, error in
             if let error = error {
@@ -105,21 +105,22 @@ struct BackupService {
             imageItems = fetchedImages
             dispatchGroup.leave()
         }
-        
+
         dispatchGroup.notify(queue: .main) {
             var mediaItems: [MediaItem] = []
-            
+
             if let imageItems = imageItems {
                 mediaItems.append(contentsOf: imageItems.map { .image(name: $0.0, data: $0.1) })
             }
-            
+
             if let videoItems = videoItems {
                 mediaItems.append(contentsOf: videoItems.map { .video(name: $0.0, data: $0.1) })
             }
-            
+
             completion(!mediaItems.isEmpty, nil, mediaItems)
         }
     }
+
     
     private static func processMediaItem(_ item: MediaItem) {
         switch item {

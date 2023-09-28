@@ -71,32 +71,45 @@ class CloudKitVideoService: ObservableObject {
     }
 
     static func fetchVideos(completion: @escaping ([(String, Data)]?, Error?) -> Void) {
-        let currentUserRecordID = CKCurrentUserDefaultName
-        let predicate = NSPredicate(format: "uploadedBy == %@", currentUserRecordID)
-        let query = CKQuery(recordType: videoRecordTypeIdentifier, predicate: predicate)
-        
-        CloudKitVideoService.database.perform(query, inZoneWith: nil) { records, error in
+        // Recupere o ID do usuário atual
+        CKContainer.default().fetchUserRecordID { (userRecordID, error) in
             if let error = error {
-                print("\(Notifications.errorFetchingItems) \(error.localizedDescription)")
+                print("Erro ao recuperar o ID do usuário atual: \(error)")
                 completion(nil, error)
                 return
             }
             
-            if let records = records {
-                var fetchedItems = [(String, Data)]()
+            if let userRecordID = userRecordID {
+                let predicate = NSPredicate(format: "uploadedBy == %@", userRecordID)
+                let query = CKQuery(recordType: videoRecordTypeIdentifier, predicate: predicate)
                 
-                for record in records {
-                    if let videoName = record[VideoRecordKeys.name] as? String,
-                       let videoAsset = record[VideoRecordKeys.video] as? CKAsset,
-                       let videoData = try? Data(contentsOf: videoAsset.fileURL) {
-                        fetchedItems.append((videoName, videoData))
+                database.perform(query, inZoneWith: nil) { records, error in
+                    if let error = error {
+                        print("\(Notifications.errorFetchingItems) \(error.localizedDescription)")
+                        completion(nil, error)
+                        return
+                    }
+                    
+                    if let records = records {
+                        var fetchedItems = [(String, Data)]()
+                        
+                        for record in records {
+                            if let videoName = record[VideoRecordKeys.name] as? String,
+                               let videoAsset = record[VideoRecordKeys.video] as? CKAsset,
+                               let videoData = try? Data(contentsOf: videoAsset.fileURL) {
+                                fetchedItems.append((videoName, videoData))
+                            }
+                        }
+                        
+                        DispatchQueue.main.async {
+                            print("! \(fetchedItems) !")
+                            completion(fetchedItems, nil)
+                        }
                     }
                 }
-                
-                DispatchQueue.main.async {
-                    print("! \(fetchedItems) !")
-                    completion(fetchedItems, nil)
-                }
+            } else {
+                print("ID do usuário atual não encontrado")
+                completion(nil, nil)
             }
         }
     }

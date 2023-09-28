@@ -35,25 +35,33 @@ class CloudKitPasswordService {
         static let password = "password"
         static let createdBy = "___createdBy"
     }
+    
     static func fetchUserPasswords(completion: @escaping ([String]?, Error?) -> Void) {
         let currentUserRecordID = CKCurrentUserDefaultName
         
         // Verificar se o usuário está autenticado (a string não está vazia)
         if !currentUserRecordID.isEmpty {
-            let predicate = NSPredicate(format: "\(RecordKeys.createdBy) == %@", currentUserRecordID)
-            let query = CKQuery(recordType: RecordType.hasBackup, predicate: predicate)
-            
-            database.perform(query, inZoneWith: nil) { records, error in
+            CKContainer(identifier: "iCloud.calculatorNotes").fetchUserRecordID { userRecordID, error in
                 if let error = error {
-                    print("Error fetching passwords:", error.localizedDescription)
+                    print("Error fetching user record ID:", error.localizedDescription)
                     completion(nil, error)
-                } else if let passwordRecords = records {
-                    let passwords = passwordRecords.compactMap { record in
-                        return record[RecordKeys.password] as? String
+                } else if let userRecordID = userRecordID {
+                    let predicate = NSPredicate(format: "___createdBy == %@", userRecordID)
+                    let query = CKQuery(recordType: RecordType.hasBackup, predicate: predicate)
+                    
+                    database.perform(query, inZoneWith: nil) { records, error in
+                        if let error = error {
+                            print("Error fetching passwords:", error.localizedDescription)
+                            completion(nil, error)
+                        } else if let passwordRecords = records {
+                            let passwords = passwordRecords.compactMap { record in
+                                return record[RecordKeys.password] as? String
+                            }
+                            completion(passwords, nil)
+                        } else {
+                            completion(nil, nil)
+                        }
                     }
-                    completion(passwords, nil)
-                } else {
-                    completion(nil, nil)
                 }
             }
         } else {
