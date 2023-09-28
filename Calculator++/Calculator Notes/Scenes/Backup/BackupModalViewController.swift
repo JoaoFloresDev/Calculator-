@@ -187,13 +187,12 @@ class BackupModalViewController: UIViewController {
     }
     
     @objc func updateBackupTapped() {
-        monitorWiFiAndPerformActions()
-    }
-    
-    lazy var loadingAlert = LoadingAlert(in: self)
-
-    private func monitorWiFiAndPerformActions() {
         isConnectedToWiFi { isConnected in
+            guard Defaults.getBool(.iCloudEnabled) else {
+                Alerts.showBackupDisabled(controller: self)
+                return
+            }
+            
             if isConnected {
                 self.loadingAlert.startLoading {
                     BackupService.updateBackup(completion: { _ in
@@ -212,9 +211,13 @@ class BackupModalViewController: UIViewController {
                         }
                     }
                 }
+            } else {
+                Alerts.showBackupErrorWifi(controller: self)
             }
         }
     }
+    
+    lazy var loadingAlert = LoadingAlert(in: self)
     
     func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
         let monitor = NWPathMonitor()

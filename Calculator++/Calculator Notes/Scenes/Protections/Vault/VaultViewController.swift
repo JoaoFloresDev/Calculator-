@@ -52,6 +52,9 @@ class VaultViewController: UIViewController {
         } else {
             subtitleLabel.text = Text.insertPassword.localized()
             faceidImageView.text = Text.recover.localized()
+            if Defaults.getBool(.recoveryStatus) {
+                faceidImageView.isHidden = true
+            }
         }
         super.init(nibName: nil, bundle: nil)
     }
@@ -69,19 +72,17 @@ class VaultViewController: UIViewController {
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        titleLabel.snp.makeConstraints { make in
-            make.height.equalTo(20)
-        }
+        
         // Subtítulo
         subtitleLabel.numberOfLines = 0
         subtitleLabel.textColor = .white
         subtitleLabel.textAlignment = .center
-        subtitleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        subtitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
         // Agrupar título e subtítulo
         let titleStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         titleStack.axis = .vertical
-        titleStack.spacing = 16
+        titleStack.spacing = 8
         self.view.addSubview(titleStack)
         
         self.view.addSubview(displayContainer)
@@ -98,7 +99,7 @@ class VaultViewController: UIViewController {
         
         // Constraints para displayContainer
         displayContainer.snp.makeConstraints { make in
-            make.top.equalTo(titleStack.snp.bottom).offset(24)
+            make.top.equalTo(titleStack.snp.bottom).offset(12)
             make.left.equalToSuperview().offset(32)
             make.right.equalToSuperview().offset(-32)
         }
@@ -106,7 +107,7 @@ class VaultViewController: UIViewController {
         displayShadow.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.right.equalToSuperview()
-            make.height.equalTo(90)
+            make.height.equalTo(110)
         }
         
         // Constraints para displayLabel
@@ -175,7 +176,6 @@ class VaultViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
-            make.height.equalTo(86)
         }
 
         allNumberStack.snp.makeConstraints { make in
@@ -190,7 +190,7 @@ class VaultViewController: UIViewController {
         faceidImageView.textColor = .systemBlue
         faceidImageView.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-16)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
         }
         
         // Tornar faceidImageView "tapável"
@@ -217,8 +217,6 @@ class VaultViewController: UIViewController {
                     }
                 }
             }
-        } else {
-            super.dismiss(animated: true)
         }
     }
 

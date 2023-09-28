@@ -34,6 +34,7 @@ class OnboardingWelcomeViewController: UIViewController, UINavigationControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(onboardingView)
+        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
         self.navigationController?.delegate = self
         onboardingView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -123,7 +124,7 @@ class OnboardingAddPhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Defaults.setBool(.notFirstUse, true)
+        Defaults.setBool(.notFirstUse, true)
         
         view.addSubview(onboardingView)
         navigationController?.navigationBar.isHidden = true
@@ -131,6 +132,10 @@ class OnboardingAddPhotosViewController: UIViewController {
         onboardingView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    override  func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
     }
 }
 
@@ -234,7 +239,7 @@ class ScrollableTextViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .systemGray6
         // Configura a UIScrollView
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)

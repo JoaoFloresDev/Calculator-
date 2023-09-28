@@ -44,7 +44,3 @@ class SettingsCoordinator {
         }
     }
 }
-
-struct FeatureFlags {
-    static let iCloudEnabled  = true
-}

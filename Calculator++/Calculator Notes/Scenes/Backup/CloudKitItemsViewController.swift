@@ -192,7 +192,7 @@ class CollectionHeaderView: UICollectionReusableView {
     let label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = Text.backupNavigationSubtitle.localized()
+        label.text = Text.myBackupNavigationSubtitle.localized()
         label.textColor = .lightGray
         label.textAlignment = .center
         return label

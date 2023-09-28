@@ -140,4 +140,18 @@ struct Alerts {
         let alert = createAlert(title: Text.enableiCloudTitle.localized(), message: Text.enableiCloudSubtitle.localized(), actions: [createAction(title: Text.enableiCloudAction.localized(), handler: completion)])
         presentAlert(alert, on: controller)
     }
+    
+    static func showBackupErrorWifi(controller: UIViewController) {
+        let alert = createAlert(title: "Conecte-se ao wifi",
+                                message: "Conecte-se ao wifi para prosseguir",
+                                actions: [createAction(title: Text.ok.localized())])
+        presentAlert(alert, on: controller)
+    }
+    
+    static func showBackupDisabled(controller: UIViewController) {
+        let alert = createAlert(title: "Habilite o backup",
+                                message: "Seu backup está desabilitado, habilite a função para prosseguir",
+                                actions: [createAction(title: Text.ok.localized())])
+        presentAlert(alert, on: controller)
+    }
 }

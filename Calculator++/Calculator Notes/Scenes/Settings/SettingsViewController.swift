@@ -242,6 +242,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
 extension  SettingsViewController: BackupModalViewControllerDelegate {
     func restoreBackupTapped() {
+        guard Defaults.getBool(.iCloudEnabled) else {
+            Alerts.showBackupDisabled(controller: self)
+            return
+        }
+        
         self.fetchCloudKitPassword()
     }
     

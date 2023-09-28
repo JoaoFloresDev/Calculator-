@@ -54,10 +54,6 @@ class ChangeCalculatorViewController: BaseCalculatorViewController {
             Defaults.setString(.password, keyTemp)
             Defaults.setBool(.needSavePasswordInCloud, true)
             
-            if keyTemp == "314159314",
-               FeatureFlags.iCloudEnabled {
-                Defaults.setBool(.iCloudPurchased, true)
-            }
             showAlert()
         }
         

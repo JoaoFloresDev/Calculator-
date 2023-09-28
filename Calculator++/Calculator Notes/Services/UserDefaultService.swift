@@ -15,7 +15,6 @@ enum BoolKey: String {
     case needSavePasswordInCloud
     case notFirstUse = "firstUse"
     case iCloudEnabled
-    case iCloudPurchased
     case premiumPurchased = "NoAds.Calc"
     
     func set(_ value: Bool) {
@@ -129,3 +128,8 @@ struct UserDefaultService {
         UserDefaults.standard.set(protectionMode.rawValue, forKey: protectionModeKey)
     }
 }
+
+struct FeatureFlags {
+    static let iCloudEnabled  = true
+}
+

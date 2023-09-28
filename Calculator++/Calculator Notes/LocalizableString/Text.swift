@@ -120,7 +120,6 @@ enum Text: String {
     case backupDisabled // "Desativado"
     
     case backupNavigationSubtitle // "Clique em  "recuperar backup" no menu de anterior para importar as fotos para sua galeria"
-    case products // premium
     case continueText // Continuar
     
     case welcomeOnboarding_title // "Bem-vindo ao Secret Gallery"
@@ -137,6 +136,7 @@ enum Text: String {
     case addPhotosOnboarding_subtitle // "Adicione as fotos que deseja guardar de forma segura"
     case addPhotosOnboarding_startButtonTitle // "Continuar"
     case addPhotosOnboarding_skipButtonTitle // "Agora não"
+    case myBackupNavigationSubtitle
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

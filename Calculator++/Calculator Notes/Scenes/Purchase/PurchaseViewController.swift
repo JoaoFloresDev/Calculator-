@@ -165,7 +165,7 @@ class PurchaseViewController: UIViewController {
     }
     
     private func setupLocalizedText() {
-        customNavigator.title = Text.products.localized()
+        customNavigator.title = String()
         closeButton.title = Text.close.localized()
         restoreButton.title = Text.restore.localized()
     }

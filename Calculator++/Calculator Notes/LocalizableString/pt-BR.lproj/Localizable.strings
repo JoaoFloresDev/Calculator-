@@ -92,7 +92,6 @@ premiumTooliCloudMessage = "O recurso de backup é exclusivo para usuários Prem
 // Deletar e Backup
 delete = "Excluir";
 backupNavigationTitle = "Meu Backup";
-backupNavigationSubtitle = "As fotos são sincronizadas com as fotos adicionadas toda vez que o aplicativo é aberto e há conexão Wi-Fi. Seu backup é seguro e a única forma de visualizar as fotos é dentro do aplicativo";
 
 emptyVideosTitle = "Sem vídeos";
 emptyVideosSubtitle = "Adicione seus vídeos clicando no botão +";
@@ -106,11 +105,7 @@ emptyNotesSubtitle = "Adicione suas anotações clicando no botão +";
 
 seeMore = "Ver mais";
 backupSettings = "Configurações de Backup";
-backupStatus = "Backup Criptografado";
-seeMyBackup = "Ver meu backup";
-
-backupSettings = "Configurações de Backup";
-backupStatus = "Backup Criptografado";
+backupStatus = "Backup Seguro";
 seeMyBackup = "Ver meu backup";
 restoreBackup = "Restaurar backup";
 updateBackup = "Atualizar backup";
@@ -123,6 +118,25 @@ recover = "Recuperar";
 createPassword = "Crie uma senha e confirme com enter";
 insertCreatedPasswordAgain = "Digite a senha novamente";
 insertPassword = "Digite sua senha e confirme com enter";
-faceidreason = "Usaremos a autenticação por Face ID para abrir a galeria";
 backupEnabled = "Ativado";
 backupDisabled = "Desativado";
+
+backupNavigationSubtitle = "As fotos são sincronizadas com as fotos adicionadas toda vez que o aplicativo é aberto e há conexão Wi-Fi. Seu backup é seguro e a única forma de visualizar as fotos é dentro do aplicativo";
+
+myBackupNavigationSubtitle = "Clique em  'recuperar backup' no menu de anterior para importar as fotos para sua galeria";
+continueText = "Continuar";
+
+welcomeOnboarding_title = "Bem-vindo ao Secret Gallery";
+welcomeOnboarding_subtitle = "Proteja suas fotos e vídeos com segurança";
+welcomeOnboarding_startButtonTitle = "Começar";
+welcomeOnboarding_skipButtonTitle = "Ao clicar em ”Começar”, você concorda com a politica de privacidade e os termos de uso";
+
+createCodeOnboarding_title = "Crie um código de acesso";
+createCodeOnboarding_subtitle = "Crie uma senha para acessar suas fotos guardadas";
+createCodeOnboarding_startButtonTitle = "Continuar";
+createCodeOnboarding_skipButtonTitle = "Agora não";
+
+addPhotosOnboarding_title = "Adicione suas fotos";
+addPhotosOnboarding_subtitle = "Adicione as fotos que deseja guardar de forma segura";
+addPhotosOnboarding_startButtonTitle = "Continuar";
+addPhotosOnboarding_skipButtonTitle = "Agora não";
