@@ -2,7 +2,7 @@
   Localizable.strings
   Calculator Notes
 
-  Created by Joao Victor Flores da Costa on 06/02/22.
+  Created by Joao Victor Flores da Costa on 02/06/22.
   Copyright © 2022 MakeSchool. All rights reserved.
 */
 
@@ -24,8 +24,8 @@ instructionSecondStepCalc = "Password: *****. Repeat the password and confirm wi
 instructionFirstStepBank = "Create a password and click 'Enter'";
 instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'Enter'";
 
-bankModeHasBeenActivated = "Safe mode activated";
-calcModeHasBeenActivated = "Calculator mode activated";
+bankModeHasBeenActivated = "Vault Mode Activated";
+calcModeHasBeenActivated = "Calculator Mode Activated";
 
 welcomeInstructionBank = "Enter your password";
 
@@ -59,9 +59,9 @@ buy = "Buy";
 folderTitle = "Folder Name";
 createActionTitle = "Create";
 cancelTitle = "Cancel";
-inputPlaceholder = "Enter the Name of the New Folder";
+inputPlaceholder = "Enter New Folder Name";
 folderNameAlreadyUsedTitle = "Folder Name Already Used";
-folderNameAlreadyUsedText = "Choose a Different Folder Name";
+folderNameAlreadyUsedText = "Choose a Different Name for the Folder";
 deleteConfirmationTitle = "Delete Files?";
 
 // Show All
@@ -69,56 +69,74 @@ hideAllVideos = "Hide All Saved Videos";
 showAllVideos = "Show All Saved Videos";
 hideAllPhotos = "Hide All Saved Photos";
 showAllPhotos = "Show All Saved Photos";
-wouldLikeSetProtection = "Would you like to Add Protection to Your Gallery?";
+wouldLikeSetProtection = "Would you like to add protection to your gallery?";
 
 // Backup
 askToRestoreBackupTitle = "Restore Backup";
-askToRestoreBackupMessage = "Would you like to restore your last backup?";
-backupSuccessTitle = "Backup Successfully Completed";
+askToRestoreBackupMessage = "Do you want to restore your last backup?";
+backupSuccessTitle = "Backup Successful";
 backupSuccessMessage = "Your backup has been successfully restored";
-backupErrorTitle = "Backup Error";
+backupErrorTitle = "Error While Backing Up";
 backupErrorMessage = "No data found for backup";
 incorrectPasswordTitle = "Incorrect Password";
-incorrectPasswordMessage = "The supplied password is not valid. Try again.";
+incorrectPasswordMessage = "The provided password is not valid. Please try again.";
 insertPasswordTitle = "Enter Your Password";
-insertPasswordMessage = "Enter the password previously used to open the app";
+insertPasswordMessage = "Enter the previously used password to open the app";
 yes = "Yes";
 no = "No";
 enableiCloudTitle = "Action Required";
-enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Locate the Calc+ app in the list\n\n3. Activate iCloud";
+enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Locate the Calc+ app in the list\n\n3. Enable iCloud";
 enableiCloudAction = "Go to Settings";
-premiumTooliCloudMessage = "The backup feature is exclusive to premium users. Product details will be displayed";
+premiumTooliCloudMessage = "The backup feature is exclusive to Premium users. Product details will be presented";
 
 // Delete and Backup
 delete = "Delete";
-backupNavigationTitle = "Items Saved in Backup";
-backupNavigationSubtitle = "Photos are synced with added photos every time the app is opened and there is a Wi-Fi connection. Your backup is secure and the only way to view the photos is within the app";
+backupNavigationTitle = "My Backup";
 
-emptyVideosTitle = "No videos";
+emptyVideosTitle = "No Videos";
 emptyVideosSubtitle = "Add your videos by clicking the + button";
 premiumVideosSubtitle = "Video support is a premium feature";
 
-emptyGalleryTitle = "No photos";
+emptyGalleryTitle = "No Photos";
 emptyGallerySubtitle = "Add your photos by clicking the + button";
 
-emptyNotesTitle = "No notes";
+emptyNotesTitle = "No Notes";
 emptyNotesSubtitle = "Add your notes by clicking the + button";
-seeMore = "See More";
 
+seeMore = "See More";
 backupSettings = "Backup Settings";
-backupStatus = "Encrypted Backup";
-seeMyBackup = "View my backup";
-restoreBackup = "Restore backup";
-updateBackup = "Update backup";
-faceIDReason = "We will use authentication to open your gallery";
-myBackupItems = "My items in Backup";
+backupStatus = "Secure Backup";
+seeMyBackup = "See My Backup";
+restoreBackup = "Restore Backup";
+updateBackup = "Update Backup";
+faceIDReason = "We'll use authentication to securely open your gallery";
+myBackupItems = "My Backup Items";
 backupNavigationTitle = "My Backup";
 vaultMode = "Vault Mode";
 recover = "Recover";
 
-createPassword = "Create a password and confirm with enter";
-insertCreatedPasswordAgain = "Re-enter the password";
-insertPassword = "Enter your password and confirm with enter";
-faceidreason = "We will use Face ID authentication to open the gallery";
+createPassword = "Create a password and confirm with Enter";
+insertCreatedPasswordAgain = "Enter the password again";
+insertPassword = "Enter your password and confirm with Enter";
 backupEnabled = "Enabled";
 backupDisabled = "Disabled";
+
+backupNavigationSubtitle = "Photos are synchronized with newly added photos every time the app is opened and there is a Wi-Fi connection. Your backup is secure, and the only way to view photos is within the app";
+
+myBackupNavigationSubtitle = "Click 'restore backup' in the previous menu to import the photos into your gallery";
+continueText = "Continue";
+
+welcomeOnboarding_title = "Welcome to Secret Gallery";
+welcomeOnboarding_subtitle = "Securely protect your photos and videos";
+welcomeOnboarding_startButtonTitle = "Get Started";
+welcomeOnboarding_skipButtonTitle = "By clicking 'Get Started', you agree to the privacy policy and terms of use";
+
+createCodeOnboarding_title = "Create an Access Code";
+createCodeOnboarding_subtitle = "Create a password to access your saved photos";
+createCodeOnboarding_startButtonTitle = "Continue";
+createCodeOnboarding_skipButtonTitle = "Not now";
+
+addPhotosOnboarding_title = "Add Your Photos";
+addPhotosOnboarding_subtitle = "Add the photos you want to securely save";
+addPhotosOnboarding_startButtonTitle = "Continue";
+addPhotosOnboarding_skipButtonTitle = "Not now";
