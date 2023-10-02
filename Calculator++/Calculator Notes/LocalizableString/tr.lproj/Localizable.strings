@@ -1,114 +1,140 @@
-// Versão Premium
+/*
+  Localizable.strings
+  Calculator Notes
+
+  Oluşturan: Joao Victor Flores da Costa, 06/02/22.
+  Telif Hakkı © 2022 MakeSchool. Tüm hakları saklıdır.
+*/
+
+// Premium Sürüm
 premiumVersion = "Premium Sürüm";
 noProtection = "Koruma Yok";
-hideRecoverButton = "Parola Kurtarma Düğmesini Gizle";
+hideRecoverButton = "Yüz Kimliği Düğmesini Gizle";
 chooseProtectionMode = "Koruma Modunu Seçin";
 
-// Configurações e Outros
+// Ayarlar ve Diğerleri
 settings = "Ayarlar";
 gallery = "Galeri";
 video = "Video";
 notes = "Notlar";
 
 instructionFirstStepCalc = "Bir şifre oluşturun ve '=' düğmesine tıklayın";
-instructionSecondStepCalc = "Şifre = *****. Şifreyi tekrarlayın ve '=' ile onaylayın";
+instructionSecondStepCalc = "Şifre: *****. Şifreyi tekrarlayın ve '=' ile onaylayın";
 
-instructionFirstStepBank = "Bir şifre oluşturun ve 'enter'a tıklayın";
-instructionSecondStepBank = "Şifre = *****. Şifreyi tekrarlayın ve 'Enter' ile onaylayın";
+instructionFirstStepBank = "Bir şifre oluşturun ve 'enter' tuşuna basın";
+instructionSecondStepBank = "Şifre: *****. Şifreyi tekrarlayın ve 'Enter' ile onaylayın";
 
-bankModeHasBeenActivated = "Kasa modu etkinleştirildi";
-calcModeHasBeenActivated = "Hesap makinesi modu etkinleştirildi";
+bankModeHasBeenActivated = "Kasa Modu etkinleştirildi";
+calcModeHasBeenActivated = "Hesap Makinesi Modu etkinleştirildi";
 
-welcomeInstructionBank = "Şifrenizi Girin";
+welcomeInstructionBank = "Şifrenizi girin";
 
-done = "Tamam";
+done = "Tamamlandı";
 edit = "Düzenle";
 
 premiumToolTitle = "Premium Özellik";
-premiumToolMessage = "Video desteği sadece premium kullanıcılar içindir. Ayarlar bölümünden yükseltmeleri görün";
+premiumToolMessage = "Video desteği sadece premium kullanıcılara sunulur. Ayarlar bölümünde güncellemelere bakın";
 
 save = "Kaydet";
 cancel = "İptal";
 ok = "Onayla";
 see = "Gör";
 
-// Mensagens de Erro
+// Hata Mesajları
 errorTitle = "Beklenmeyen Hata";
-errorMessage = "Daha sonra tekrar deneyin";
+errorMessage = "Lütfen daha sonra tekrar deneyin";
 deleteFiles = "Dosyayı Sil?";
 
 incorrectPassword = "Yanlış Şifre";
 tryAgain = "Tekrar Deneyin";
 
-// Compra
+// Satın Alma
 products = "Kullanılabilir Ürünler";
 loading = "Yükleniyor...";
 close = "Kapat";
-restore = "Alışverişleri";
+restore = "Geri Yükle";
 buy = "Satın Al";
 
-// Pastas
+// Klasörler
 folderTitle = "Klasör Adı";
 createActionTitle = "Oluştur";
 cancelTitle = "İptal";
 inputPlaceholder = "Yeni Klasörün Adını Girin";
-folderNameAlreadyUsedTitle = "Klasör Adı Zaten Kullanılmış";
-folderNameAlreadyUsedText = "Klasör için Farklı bir Ad Seçin";
+folderNameAlreadyUsedTitle = "Klasör Adı Zaten Kullanıldı";
+folderNameAlreadyUsedText = "Klasör için farklı bir ad seçin";
 deleteConfirmationTitle = "Dosyaları Sil?";
 
-// Mostrar Tudo
-hideAllVideos = "Tüm Kaydedilmiş Videoları Gizle";
-showAllVideos = "Tüm Kaydedilmiş Videoları Göster";
-hideAllPhotos = "Tüm Kaydedilmiş Fotoğrafları Gizle";
-showAllPhotos = "Tüm Kaydedilmiş Fotoğrafları Göster";
-wouldLikeSetProtection = "Galerinize Koruma Eklemek İster misiniz?";
+// Tümünü Göster
+hideAllVideos = "Tüm Kaydedilen Videoları Gizle";
+showAllVideos = "Tüm Kaydedilen Videoları Göster";
+hideAllPhotos = "Tüm Kaydedilen Fotoğrafları Gizle";
+showAllPhotos = "Tüm Kaydedilen Fotoğrafları Göster";
+wouldLikeSetProtection = "Galerinize Koruma Eklemek İster Misiniz?";
 
-// Backup
+// Yedekleme
 askToRestoreBackupTitle = "Yedeği Geri Yükle";
 askToRestoreBackupMessage = "Son yedeğinizi geri yüklemek istiyor musunuz?";
-backupSuccessTitle = "Yedekleme Başarıyla Tamamlandı";
+backupSuccessTitle = "Yedekleme Başarılı";
 backupSuccessMessage = "Yedeğiniz başarıyla geri yüklendi";
 backupErrorTitle = "Yedekleme Hatası";
-backupErrorMessage = "Yedek için hiçbir veri bulunamadı";
+backupErrorMessage = "Yedekleme için veri bulunamadı";
 incorrectPasswordTitle = "Yanlış Şifre";
-incorrectPasswordMessage = "Sağlanan şifre geçerli değil. Tekrar deneyin.";
+incorrectPasswordMessage = "Sağlanan şifre geçerli değil. Lütfen yeniden deneyin.";
 insertPasswordTitle = "Şifrenizi Girin";
 insertPasswordMessage = "Uygulamayı açmak için daha önce kullanılan şifreyi girin";
 yes = "Evet";
 no = "Hayır";
-enableiCloudTitle = "Eylem Gerekli";
-enableiCloudSubtitle = "\n1. iCloud'a tıklayın\n\n2. Uygulamalar listesinden Calc+ uygulamasını bulun\n\n3. iCloud'u etkinleştirin";
+enableiCloudTitle = "Gerekli Eylem";
+enableiCloudSubtitle = "\n1. iCloud'a tıklayın\n\n2. Calc+ uygulamasını listede bulun\n\n3. iCloud'ü etkinleştirin";
 enableiCloudAction = "Ayarlar'a Git";
-premiumTooliCloudMessage = "Yedekleme özelliği sadece Premium kullanıcılar içindir. Ürün detayları gösterilecektir";
+premiumTooliCloudMessage = "Yedekleme özelliği yalnızca Premium kullanıcılarına özeldir. Ürün ayrıntıları sunulacaktır";
 
-// Deletar e Backup
+// Sil ve Yedekleme
 delete = "Sil";
-backupNavigationTitle = "Yedekte Kaydedilmiş Öğeler";
-backupNavigationSubtitle = "Uygulama açıldığında ve Wi-Fi bağlantısı olduğunda fotoğraflar fotoğraflarla senkronize edilir. Yedeğiniz güvendedir ve fotoğrafları görmek için tek yol uygulama içindedir";
-emptyGalleryTitle = "Foto Yok";
-emptyGallerySubtitle = "Fotoğraflarınızı '+' düğmesine tıklayarak ekleyin";
+backupNavigationTitle = "Benim Yedeklemem";
 
-emptyNotesTitle = "Not Yok";
-emptyNotesSubtitle = "Notlarınızı '+' düğmesine tıklayarak ekleyin";
-emptyVideosTitle = "Video Yok";
-emptyVideosSubtitle = "+ düğmesine tıklayarak videolarınızı ekleyin";
+emptyVideosTitle = "Videolar Yok";
+emptyVideosSubtitle = "Artı düğmesine tıklayarak videolarınızı ekleyin";
 premiumVideosSubtitle = "Video desteği premium bir özelliktir";
-seeMore = "Daha fazla göster";
 
+emptyGalleryTitle = "Fotoğraflar Yok";
+emptyGallerySubtitle = "Artı düğmesine tıklayarak fotoğraflarınızı ekleyin";
+
+emptyNotesTitle = "Notlar Yok";
+emptyNotesSubtitle = "Artı düğmesine tıklayarak notlarınızı ekleyin";
+
+seeMore = "Daha Fazla Görüntüle";
 backupSettings = "Yedekleme Ayarları";
-backupStatus = "Şifreli Yedek";
-seeMyBackup = "Yedeğimi Gör";
-restoreBackup = "Yedeği Geri Yükle";
-updateBackup = "Yedeği Güncelle";
+backupStatus = "Güvenli Yedekleme";
+seeMyBackup = "Yedeklememi Görüntüle";
+restoreBackup = "Yedeklemeyi Geri Yükle";
+updateBackup = "Yedeklemeyi Güncelle";
 faceIDReason = "Galerinizi açmak için kimlik doğrulama kullanacağız";
-myBackupItems = "Yedekteki Öğelerim";
-backupNavigationTitle = "Benim Yedeğim";
+myBackupItems = "Yedeğimdeki Öğeler";
+backupNavigationTitle = "Benim Yedeklemem";
 vaultMode = "Kasa Modu";
 recover = "Kurtar";
 
-createPassword = "Bir şifre oluşturun ve enter ile onaylayın";
+createPassword = "Bir şifre oluşturun ve 'enter' tuşuna basarak onaylayın";
 insertCreatedPasswordAgain = "Şifreyi tekrar girin";
-insertPassword = "Şifrenizi girin ve enter ile onaylayın";
-faceidreason = "Galeriyi açmak için Face ID kimlik doğrulamasını kullanacağız";
+insertPassword = "Şifrenizi girin ve 'enter' tuşuna basarak onaylayın";
 backupEnabled = "Etkin";
 backupDisabled = "Devre Dışı";
+backupNavigationSubtitle = "Fotoğraflar, uygulama açıldığında ve Wi-Fi bağlantısı olduğunda eklenen fotoğraflarla senkronize edilir. Yedeğiniz güvende ve fotoğrafları görüntülemenin tek yolu uygulama içindedir";
+myBackupNavigationSubtitle = "Önceki menüdeki 'Yedeğimi Geri Yükle'ye tıklayarak fotoğrafları galerinize içe aktarmak için 'Yedeğimi Geri Yükle'ye tıklayın";
+continueText = "Devam Et";
+
+welcomeOnboarding_title = "Secret Gallery'e Hoş Geldiniz";
+welcomeOnboarding_subtitle = "Fotoğraflarınızı ve videolarınızı güvenli bir şekilde koruyun";
+welcomeOnboarding_startButtonTitle = "Başla";
+welcomeOnboarding_skipButtonTitle = "'Başla'ya tıkladığınızda, gizlilik politikasını ve kullanım koşullarını kabul etmiş olursunuz";
+
+createCodeOnboarding_title = "Erişim Kodu Oluşturun";
+createCodeOnboarding_subtitle = "Saklanan fotoğraflara erişmek için bir şifre oluşturun";
+createCodeOnboarding_startButtonTitle = "Devam Et";
+createCodeOnboarding_skipButtonTitle = "Şimdi Değil";
+
+addPhotosOnboarding_title = "Fotoğraflarınızı Ekleyin";
+addPhotosOnboarding_subtitle = "Güvenli bir şekilde saklamak istediğiniz fotoğrafları ekleyin";
+addPhotosOnboarding_startButtonTitle = "Devam Et";
+addPhotosOnboarding_skipButtonTitle = "Şimdi Değil";

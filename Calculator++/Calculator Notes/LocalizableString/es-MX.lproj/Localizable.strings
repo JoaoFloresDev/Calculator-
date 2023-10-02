@@ -1,19 +1,27 @@
+/*
+  Localizable.strings
+  Calculator Notes
+
+  Creado por Joao Victor Flores da Costa el 06/02/22.
+  Copyright © 2022 MakeSchool. Todos los derechos reservados.
+*/
+
 // Versión Premium
 premiumVersion = "Versión Premium";
-noProtection = "Sin Protección";
+noProtection = "Sin protección";
 hideRecoverButton = "Ocultar Botón Face ID";
-chooseProtectionMode = "Elige el Modo de Protección";
+chooseProtectionMode = "Elige el modo de protección";
 
-// Configuración y Otros
+// Configuración y otros
 settings = "Configuración";
 gallery = "Galería";
 video = "Video";
 notes = "Notas";
 
-instructionFirstStepCalc = "Crea una contraseña y presiona el botón '='";
+instructionFirstStepCalc = "Crea una contraseña y haz clic en el botón '='";
 instructionSecondStepCalc = "Contraseña: *****. Repite la contraseña y confirma con '='";
 
-instructionFirstStepBank = "Crea una contraseña y presiona 'enter'";
+instructionFirstStepBank = "Crea una contraseña y haz clic en 'enter'";
 instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
 
 bankModeHasBeenActivated = "Modo caja fuerte activado";
@@ -21,95 +29,114 @@ calcModeHasBeenActivated = "Modo calculadora activado";
 
 welcomeInstructionBank = "Ingresa tu contraseña";
 
-done = "Listo";
+done = "Hecho";
 edit = "Editar";
 
-premiumToolTitle = "Herramienta Premium";
-premiumToolMessage = "El soporte para video sólo está disponible para usuarios premium. Consulta las mejoras en la sección Configuración";
+premiumToolTitle = "Función premium";
+premiumToolMessage = "El soporte para video solo está disponible para usuarios premium. Consulta las actualizaciones en la sección de Configuraciones";
 
 save = "Guardar";
 cancel = "Cancelar";
 ok = "Confirmar";
 see = "Ver";
 
-// Mensajes de Error
-errorTitle = "Error Inesperado";
-errorMessage = "Inténtalo de nuevo más tarde";
-deleteFiles = "¿Eliminar Archivo?";
+// Mensajes de error
+errorTitle = "Error inesperado";
+errorMessage = "Inténtalo nuevamente más tarde";
+deleteFiles = "¿Eliminar archivo?";
 
-incorrectPassword = "Contraseña Incorrecta";
-tryAgain = "Intentar de Nuevo";
+incorrectPassword = "Contraseña incorrecta";
+tryAgain = "Intenta nuevamente";
 
 // Compra
-products = "Productos Disponibles";
+products = "Productos disponibles";
 loading = "Cargando...";
 close = "Cerrar";
 restore = "Restaurar";
 buy = "Comprar";
 
 // Carpetas
-folderTitle = "Nombre de la Carpeta";
+folderTitle = "Nombre de carpeta";
 createActionTitle = "Crear";
 cancelTitle = "Cancelar";
-inputPlaceholder = "Ingresa el Nombre de la Nueva Carpeta";
-folderNameAlreadyUsedTitle = "Nombre de Carpeta Ya Utilizado";
-folderNameAlreadyUsedText = "Elige un Nombre Diferente para la Carpeta";
-deleteConfirmationTitle = "¿Eliminar Archivos?";
+inputPlaceholder = "Ingresa el nombre de la nueva carpeta";
+folderNameAlreadyUsedTitle = "Nombre de carpeta ya utilizado";
+folderNameAlreadyUsedText = "Elige un nombre diferente para la carpeta";
+deleteConfirmationTitle = "¿Eliminar archivos?";
 
-// Mostrar Todo
-hideAllVideos = "Ocultar Todos los Videos Guardados";
-showAllVideos = "Mostrar Todos los Videos Guardados";
-hideAllPhotos = "Ocultar Todas las Fotos Guardadas";
-showAllPhotos = "Mostrar Todas las Fotos Guardadas";
-wouldLikeSetProtection = "¿Deseas Añadir Protección a tu Galería?";
+// Mostrar todo
+hideAllVideos = "Ocultar todos los videos guardados";
+showAllVideos = "Mostrar todos los videos guardados";
+hideAllPhotos = "Ocultar todas las fotos guardadas";
+showAllPhotos = "Mostrar todas las fotos guardadas";
+wouldLikeSetProtection = "¿Deseas agregar protección a tu galería?";
 
-// Respaldo
-askToRestoreBackupTitle = "Restaurar Respaldo";
-askToRestoreBackupMessage = "¿Deseas restaurar tu último respaldo?";
-backupSuccessTitle = "Respaldo Realizado con Éxito";
-backupSuccessMessage = "Tu respaldo se ha restaurado con éxito";
-backupErrorTitle = "Error al Realizar el Respaldo";
-backupErrorMessage = "No se encontraron datos para el respaldo";
-incorrectPasswordTitle = "Contraseña Incorrecta";
-incorrectPasswordMessage = "La contraseña proporcionada no es válida. Inténtalo de nuevo.";
-insertPasswordTitle = "Ingresa tu Contraseña";
-insertPasswordMessage = "Ingresa la contraseña que usaste previamente para abrir la aplicación";
+// Copia de seguridad
+askToRestoreBackupTitle = "Restaurar copia de seguridad";
+askToRestoreBackupMessage = "¿Deseas restaurar tu última copia de seguridad?";
+backupSuccessTitle = "Copia de seguridad realizada con éxito";
+backupSuccessMessage = "Tu copia de seguridad se ha restaurado con éxito";
+backupErrorTitle = "Error al realizar la copia de seguridad";
+backupErrorMessage = "No se encontraron datos para la copia de seguridad";
+incorrectPasswordTitle = "Contraseña incorrecta";
+incorrectPasswordMessage = "La contraseña proporcionada no es válida. Inténtalo nuevamente.";
+insertPasswordTitle = "Ingresa tu contraseña";
+insertPasswordMessage = "Ingresa la contraseña anteriormente utilizada para abrir la aplicación";
 yes = "Sí";
 no = "No";
-enableiCloudTitle = "Acción Necesaria";
-enableiCloudSubtitle = "\n1. Presiona en iCloud\n\n2. Localiza la aplicación Calc+ en la lista\n\n3. Activa iCloud";
-enableiCloudAction = "Ir a Configuración";
-premiumTooliCloudMessage = "La función de respaldo es exclusiva para usuarios Premium. Detalles del producto serán presentados";
+enableiCloudTitle = "Acción necesaria";
+enableiCloudSubtitle = "\n1. Haz clic en iCloud\n\n2. Encuentra la aplicación Calc+ en la lista\n\n3. Activa iCloud";
+enableiCloudAction = "Ir a Configuraciones";
+premiumTooliCloudMessage = "La función de copia de seguridad es exclusiva para usuarios premium. Los detalles del producto se presentarán";
 
-// Eliminar y Respaldo
+// Eliminar y copia de seguridad
 delete = "Eliminar";
-backupNavigationTitle = "Elementos Guardados en el Respaldo";
-backupNavigationSubtitle = "Las fotos se sincronizan con las fotos añadidas cada vez que se abre la aplicación y hay conexión Wi-Fi. Tu respaldo está seguro y la única forma de ver las fotos es dentro de la aplicación";
-emptyGalleryTitle = "Sin fotos";
-emptyGallerySubtitle = "Añada sus fotos haciendo clic en el botón +";
+backupNavigationTitle = "Mi copia de seguridad";
 
-emptyNotesTitle = "Sin notas";
-emptyNotesSubtitle = "Añada sus notas haciendo clic en el botón +";
 emptyVideosTitle = "Sin videos";
 emptyVideosSubtitle = "Agrega tus videos haciendo clic en el botón +";
-premiumVideosSubtitle = "El soporte de video es una función premium";
-seeMore = "Ver más";
+premiumVideosSubtitle = "El soporte para video es una función premium";
 
-backupSettings = "Configuraciones de Respaldo";
-backupStatus = "Respaldo Cifrado";
-seeMyBackup = "Ver mi respaldo";
-restoreBackup = "Restaurar respaldo";
-updateBackup = "Actualizar respaldo";
-faceIDReason = "Usaremos autenticación para abrir tu galería";
-myBackupItems = "Mis artículos en el Respaldo";
-backupNavigationTitle = "Mi Respaldo";
-vaultMode = "Modo Bóveda";
+emptyGalleryTitle = "Sin fotos";
+emptyGallerySubtitle = "Agrega tus fotos haciendo clic en el botón +";
+
+emptyNotesTitle = "Sin anotaciones";
+emptyNotesSubtitle = "Agrega tus anotaciones haciendo clic en el botón +";
+
+seeMore = "Ver más";
+backupSettings = "Configuraciones de copia de seguridad";
+backupStatus = "Copia de seguridad segura";
+seeMyBackup = "Ver mi copia de seguridad";
+restoreBackup = "Restaurar copia de seguridad";
+updateBackup = "Actualizar copia de seguridad";
+faceIDReason = "Usaremos la autenticación para abrir tu galería de manera segura";
+myBackupItems = "Mis elementos en la copia de seguridad";
+backupNavigationTitle = "Mi copia de seguridad";
+vaultMode = "Modo caja fuerte";
 recover = "Recuperar";
 
 createPassword = "Crea una contraseña y confirma con enter";
 insertCreatedPasswordAgain = "Ingresa la contraseña nuevamente";
 insertPassword = "Ingresa tu contraseña y confirma con enter";
-faceidreason = "Usaremos la autenticación de Face ID para abrir la galería";
 backupEnabled = "Activado";
 backupDisabled = "Desactivado";
 
+backupNavigationSubtitle = "Las fotos se sincronizan con las fotos agregadas cada vez que se abre la aplicación y hay conexión Wi-Fi. Tu copia de seguridad es segura y la única forma de ver las fotos es dentro de la aplicación";
+
+myBackupNavigationSubtitle = "Haz clic en 'Recuperar copia de seguridad' en el menú anterior para importar las fotos a tu galería";
+continueText = "Continuar";
+
+welcomeOnboarding_title = "Bienvenido a Secret Gallery";
+welcomeOnboarding_subtitle = "Protege tus fotos y videos de manera segura";
+welcomeOnboarding_startButtonTitle = "Comenzar";
+welcomeOnboarding_skipButtonTitle = "Al hacer clic en 'Comenzar', aceptas la política de privacidad y los términos de uso";
+
+createCodeOnboarding_title = "Crea un código de acceso";
+createCodeOnboarding_subtitle = "Crea una contraseña para acceder a tus fotos guardadas";
+createCodeOnboarding_startButtonTitle = "Continuar";
+createCodeOnboarding_skipButtonTitle = "Ahora no";
+
+addPhotosOnboarding_title = "Agrega tus fotos";
+addPhotosOnboarding_subtitle = "Agrega las fotos que deseas guardar de manera segura";
+addPhotosOnboarding_startButtonTitle = "Continuar";
+addPhotosOnboarding_skipButtonTitle = "Ahora no";

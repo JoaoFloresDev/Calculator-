@@ -2,38 +2,38 @@
   Localizable.strings
   Calculator Notes
 
-  أنشأه Joao Victor Flores da Costa في 06/02/22.
+  تم إنشاؤه بواسطة جواو فيكتور فلوريس دا كوستا في 06/02/22.
   حقوق النشر © 2022 MakeSchool. جميع الحقوق محفوظة.
 */
 
-// النسخة المميزة
-premiumVersion = "النسخة المميزة";
+// الإصدار المميز
+premiumVersion = "الإصدار المميز";
 noProtection = "بدون حماية";
-hideRecoverButton = "إخفاء زر استعادة كلمة المرور";
+hideRecoverButton = "إخفاء زر Face ID";
 chooseProtectionMode = "اختر وضع الحماية";
 
 // الإعدادات والمزيد
 settings = "الإعدادات";
 gallery = "المعرض";
-video = "فيديو";
-notes = "ملاحظات";
+video = "الفيديو";
+notes = "الملاحظات";
 
-instructionFirstStepCalc = "قم بإنشاء كلمة مرور واضغط على زر '='";
-instructionSecondStepCalc = "كلمة المرور: *****. أعد كتابة كلمة المرور وتأكيد بـ '='";
+instructionFirstStepCalc = "قم بإنشاء كلمة مرور وانقر على زر '='";
+instructionSecondStepCalc = "كلمة المرور: *****. كرر كلمة المرور واضغط '='";
 
-instructionFirstStepBank = "قم بإنشاء كلمة مرور واضغط على 'enter'";
-instructionSecondStepBank = "كلمة المرور: *****. أعد كتابة كلمة المرور وتأكيد بـ 'Enter'";
+instructionFirstStepBank = "قم بإنشاء كلمة مرور وانقر على 'enter'";
+instructionSecondStepBank = "كلمة المرور: *****. كرر كلمة المرور واضغط 'Enter'";
 
-bankModeHasBeenActivated = "تم تنشيط وضع الخزنة";
-calcModeHasBeenActivated = "تم تنشيط وضع الآلة الحاسبة";
+bankModeHasBeenActivated = "تم تفعيل وضع الخزنة";
+calcModeHasBeenActivated = "تم تفعيل وضع الآلة الحاسبة";
 
 welcomeInstructionBank = "أدخل كلمة المرور الخاصة بك";
 
 done = "تم";
-edit = "تعديل";
+edit = "تحرير";
 
 premiumToolTitle = "أداة مميزة";
-premiumToolMessage = "الدعم للفيديو متاح فقط للمستخدمين المميزين. راجع الترقيات في قسم الإعدادات";
+premiumToolMessage = "دعم الفيديو متاح فقط للمستخدمين المميزين. انظر للترقيات في قسم الإعدادات";
 
 save = "حفظ";
 cancel = "إلغاء";
@@ -42,7 +42,7 @@ see = "عرض";
 
 // رسائل الخطأ
 errorTitle = "خطأ غير متوقع";
-errorMessage = "حاول مرة أخرى لاحقًا";
+errorMessage = "يرجى المحاولة مرة أخرى في وقت لاحق";
 deleteFiles = "حذف الملف؟";
 
 incorrectPassword = "كلمة المرور غير صحيحة";
@@ -52,7 +52,7 @@ tryAgain = "حاول مرة أخرى";
 products = "المنتجات المتاحة";
 loading = "جار التحميل...";
 close = "إغلاق";
-restore = "استعادة الشراء";
+restore = "استعادة";
 buy = "شراء";
 
 // المجلدات
@@ -61,58 +61,82 @@ createActionTitle = "إنشاء";
 cancelTitle = "إلغاء";
 inputPlaceholder = "أدخل اسم المجلد الجديد";
 folderNameAlreadyUsedTitle = "اسم المجلد مستخدم بالفعل";
-folderNameAlreadyUsedText = "اختر اسمًا مختلفًا للمجلد";
+folderNameAlreadyUsedText = "يرجى اختيار اسم مجلد مختلف";
 deleteConfirmationTitle = "حذف الملفات؟";
 
 // عرض الكل
-hideAllVideos = "إخفاء جميع الفيديوهات المحفوظة";
-showAllVideos = "عرض جميع الفيديوهات المحفوظة";
+hideAllVideos = "إخفاء جميع ملفات الفيديو المحفوظة";
+showAllVideos = "عرض جميع ملفات الفيديو المحفوظة";
 hideAllPhotos = "إخفاء جميع الصور المحفوظة";
 showAllPhotos = "عرض جميع الصور المحفوظة";
 wouldLikeSetProtection = "هل ترغب في إضافة حماية لمعرضك؟";
 
 // النسخ الاحتياطي
 askToRestoreBackupTitle = "استعادة النسخ الاحتياطي";
-askToRestoreBackupMessage = "هل ترغب في استعادة آخر نسخة احتياطية؟";
-backupSuccessTitle = "نجح النسخ الاحتياطي";
-backupSuccessMessage = "تم استعادة النسخ الاحتياطي بنجاح";
-backupErrorTitle = "خطأ في النسخ الاحتياطي";
-backupErrorMessage = "لم يتم العثور على بيانات للنسخ الاحتياطي";
+askToRestoreBackupMessage = "هل ترغب في استعادة النسخ الاحتياطي الأخير؟";
+backupSuccessTitle = "تمت النسخ الاحتياطي بنجاح";
+backupSuccessMessage = "تم استعادة النسخ الاحتياطي الخاص بك بنجاح";
+backupErrorTitle = "فشل النسخ الاحتياطي";
+backupErrorMessage = "لم يتم العثور على بيانات النسخ الاحتياطي";
 incorrectPasswordTitle = "كلمة المرور غير صحيحة";
-incorrectPasswordMessage = "كلمة المرور المقدمة غير صالحة. حاول مرة أخرى.";
-insertPasswordTitle = "أدخل كلمتك السرية";
-insertPasswordMessage = "أدخل كلمة المرور التي تم استخدامها سابقًا لفتح التطبيق";
+incorrectPasswordMessage = "كلمة المرور التي قدمتها غير صالحة. يرجى المحاولة مرة أخرى.";
+insertPasswordTitle = "أدخل كلمة المرور الخاصة بك";
+insertPasswordMessage = "الرجاء إدخال كلمة المرور المستخدمة سابقًا لفتح التطبيق";
 yes = "نعم";
 no = "لا";
-enableiCloudTitle = "تفعيل iCloud مطلوب";
-enableiCloudSubtitle = "1. انقر على iCloud\n2. ابحث عن التطبيق Calc+ في القائمة\n3. تفعيل iCloud";
-enableiCloudAction = "اذهب إلى الإعدادات";
-premiumTooliCloudMessage = "ميزة النسخ الاحتياطي متاحة فقط للمستخدمين المميزين. ستظهر تفاصيل المنتج";
+enableiCloudTitle = "إجراء مطلوب";
+enableiCloudSubtitle = "\n1. انقر فوق iCloud\n\n2. ابحث عن تطبيق Calc+ في القائمة\n\n3. قم بتمكين iCloud";
+enableiCloudAction = "الانتقال إلى الإعدادات";
+premiumTooliCloudMessage = "ميزة النسخ الاحتياطي حصرية للمستخدمين المميزين. سيتم عرض تفاصيل المنتج";
+
+// حذف ونسخ احتياطي
+delete = "حذف";
+backupNavigationTitle = "نسختي الاحتياطية";
+
+emptyVideosTitle = "لا توجد مقاطع فيديو";
+emptyVideosSubtitle = "أضف مقاطع الفيديو الخاصة بك بالنقر على زر +";
+premiumVideosSubtitle = "دعم الفيديو هو ميزة مميزة";
+
 emptyGalleryTitle = "لا توجد صور";
 emptyGallerySubtitle = "أضف صورك بالنقر على زر +";
 
 emptyNotesTitle = "لا توجد ملاحظات";
 emptyNotesSubtitle = "أضف ملاحظاتك بالنقر على زر +";
 
-emptyVideosTitle = "لا توجد فيديوهات";
-emptyVideosSubtitle = "أضف فيديوهاتك بالنقر على زر +";
-premiumVideosSubtitle = "دعم الفيديو هو ميزة متميزة";
 seeMore = "عرض المزيد";
-
 backupSettings = "إعدادات النسخ الاحتياطي";
-backupStatus = "نسخ احتياطي مشفر";
-seeMyBackup = "عرض النسخ الاحتياطي الخاص بي";
-restoreBackup = "استعادة النسخ الاحتياطي";
-updateBackup = "تحديث النسخ الاحتياطي";
-faceIDReason = "سنستخدم المصادقة لفتح معرض الصور الخاص بك";
-myBackupItems = "العناصر في النسخ الاحتياطي الخاص بي";
-backupNavigationTitle = "نسخي الاحتياطي";
+backupStatus = "النسخ الاحتياطي آمن";
+seeMyBackup = "عرض نسختي الاحتياطية";
+restoreBackup = "استعادة النسخة الاحتياطية";
+updateBackup = "تحديث النسخة الاحتياطية";
+faceIDReason = "سنستخدم المصادقة لفتح معرضك";
+myBackupItems = "عناصر نسختي الاحتياطية";
+backupNavigationTitle = "نسختي الاحتياطية";
 vaultMode = "وضع الخزنة";
-recover = "استعادة";
-createPassword = "أنشئ كلمة مرور وأكدها بالضغط على Enter";
+recover = "استرداد";
+
+createPassword = "قم بإنشاء كلمة مرور وتأكيدها بالضغط على Enter";
 insertCreatedPasswordAgain = "أدخل كلمة المرور مرة أخرى";
-insertPassword = "أدخل كلمة المرور الخاصة بك وأكدها بالضغط على Enter";
-faceidreason = "سنستخدم مصادقة Face ID لفتح المعرض";
+insertPassword = "أدخل كلمة المرور الخاصة بك وتأكيدها بالضغط على Enter";
 backupEnabled = "مفعل";
 backupDisabled = "معطل";
 
+backupNavigationSubtitle = "يتم مزامنة الصور مع الصور المضافة في كل مرة يتم فيها فتح التطبيق وتوفر الاتصال بالواي فاي. النسخ الاحتياطي الخاص بك آمن والطريقة الوحيدة لعرض الصور هي داخل التطبيق";
+
+myBackupNavigationSubtitle = "انقر على 'استعادة النسخة الاحتياطية' في القائمة السابقة لاستيراد الصور إلى معرضك";
+continueText = "متابعة";
+
+welcomeOnboarding_title = "مرحبًا بك في Secret Gallery";
+welcomeOnboarding_subtitle = "حمي صورك ومقاطع الفيديو بأمان";
+welcomeOnboarding_startButtonTitle = "ابدأ";
+welcomeOnboarding_skipButtonTitle = "بالنقر على 'بدء'، أنت توافق على سياسة الخصوصية وشروط الاستخدام";
+
+createCodeOnboarding_title = "إنشاء رمز الوصول";
+createCodeOnboarding_subtitle = "أنشئ كلمة مرور للوصول إلى صورك المحفوظة";
+createCodeOnboarding_startButtonTitle = "متابعة";
+createCodeOnboarding_skipButtonTitle = "الآن ليس الوقت المناسب";
+
+addPhotosOnboarding_title = "أضف صورك";
+addPhotosOnboarding_subtitle = "أضف الصور التي ترغب في حفظها بأمان";
+addPhotosOnboarding_startButtonTitle = "متابعة";
+addPhotosOnboarding_skipButtonTitle = "الآن ليس الوقت المناسب";

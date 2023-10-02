@@ -2,38 +2,38 @@
   Localizable.strings
   Calculator Notes
 
-  由 Joao Victor Flores da Costa 创建于 2022/02/06。
-  版权所有 © 2022 MakeSchool。保留所有权利。
+  Created by Joao Victor Flores da Costa on 06/02/22.
+  Copyright © 2022 MakeSchool. Todos os direitos reservados.
 */
 
-// 高级版
+// Versão Premium
 premiumVersion = "高级版本";
 noProtection = "无保护";
-hideRecoverButton = "隐藏密码恢复按钮";
+hideRecoverButton = "隐藏 Face ID 按钮";
 chooseProtectionMode = "选择保护模式";
 
-// 设置与其他
+// Configurações e Outros
 settings = "设置";
-gallery = "相册";
+gallery = "图库";
 video = "视频";
 notes = "笔记";
 
-instructionFirstStepCalc = "创建密码并点击 '=' 按钮";
-instructionSecondStepCalc = "密码：*****。请重复密码并点击 '=' 确认";
+instructionFirstStepCalc = "创建密码并单击 '=' 按钮";
+instructionSecondStepCalc = "密码：*****。重复密码并单击 '='";
 
-instructionFirstStepBank = "创建密码并点击 'enter'";
-instructionSecondStepBank = "密码：*****。请重复密码并点击 'Enter' 确认";
+instructionFirstStepBank = "创建密码并单击 'enter' 按钮";
+instructionSecondStepBank = "密码：*****。重复密码并单击 'Enter'";
 
-bankModeHasBeenActivated = "保险箱模式已激活";
-calcModeHasBeenActivated = "计算器模式已激活";
+bankModeHasBeenActivated = "已激活保险柜模式";
+calcModeHasBeenActivated = "已激活计算器模式";
 
-welcomeInstructionBank = "请输入您的密码";
+welcomeInstructionBank = "输入您的密码";
 
 done = "完成";
 edit = "编辑";
 
 premiumToolTitle = "高级工具";
-premiumToolMessage = "视频支持仅限高级用户。请在设置中查看升级选项";
+premiumToolMessage = "视频支持仅提供给高级用户。请在“设置”部分查看升级选项";
 
 save = "保存";
 cancel = "取消";
@@ -42,17 +42,17 @@ see = "查看";
 
 // 错误消息
 errorTitle = "意外错误";
-errorMessage = "请稍后再试";
+errorMessage = "请稍后重试";
 deleteFiles = "删除文件？";
 
 incorrectPassword = "密码错误";
-tryAgain = "再试一次";
+tryAgain = "重试";
 
 // 购买
 products = "可用产品";
 loading = "加载中...";
 close = "关闭";
-restore = "恢复购买";
+restore = "还原";
 buy = "购买";
 
 // 文件夹
@@ -60,64 +60,83 @@ folderTitle = "文件夹名称";
 createActionTitle = "创建";
 cancelTitle = "取消";
 inputPlaceholder = "输入新文件夹的名称";
-folderNameAlreadyUsedTitle = "文件夹名称已使用";
-folderNameAlreadyUsedText = "请为文件夹选择一个不同的名称";
+folderNameAlreadyUsedTitle = "文件夹名称已被使用";
+folderNameAlreadyUsedText = "请选择不同的文件夹名称";
 deleteConfirmationTitle = "删除文件？";
 
-// 显示全部
-hideAllVideos = "隐藏所有保存的视频";
-showAllVideos = "显示所有保存的视频";
-hideAllPhotos = "隐藏所有保存的照片";
-showAllPhotos = "显示所有保存的照片";
-wouldLikeSetProtection = "您希望为您的相册添加保护吗？";
+// 显示所有
+hideAllVideos = "隐藏所有已保存的视频";
+showAllVideos = "显示所有已保存的视频";
+hideAllPhotos = "隐藏所有已保存的照片";
+showAllPhotos = "显示所有已保存的照片";
+wouldLikeSetProtection = "要为您的图库添加保护吗？";
 
 // 备份
-askToRestoreBackupTitle = "恢复备份";
-askToRestoreBackupMessage = "您是否想恢复最近的备份？";
+askToRestoreBackupTitle = "还原备份";
+askToRestoreBackupMessage = "是否要还原上次的备份？";
 backupSuccessTitle = "备份成功";
-backupSuccessMessage = "您的备份已成功恢复";
-backupErrorTitle = "备份错误";
-backupErrorMessage = "找不到备份数据";
+backupSuccessMessage = "您的备份已成功还原";
+backupErrorTitle = "备份失败";
+backupErrorMessage = "未找到备份数据";
 incorrectPasswordTitle = "密码错误";
 incorrectPasswordMessage = "提供的密码无效。请重试。";
-insertPasswordTitle = "请输入您的密码";
-insertPasswordMessage = "输入之前用于打开应用的密码";
+insertPasswordTitle = "输入密码";
+insertPasswordMessage = "请输入先前用于打开应用程序的密码";
 yes = "是";
 no = "否";
 enableiCloudTitle = "需要操作";
-enableiCloudSubtitle = "\n1. 点击 iCloud\n\n2. 在列表中找到 Calc+ 应用\n\n3. 启用 iCloud";
-enableiCloudAction = "前往设置";
-premiumTooliCloudMessage = "备份功能仅限高级用户。产品详情将被显示";
+enableiCloudSubtitle = "\n1. 点击 iCloud\n\n2. 在列表中找到 Calc+ 应用程序\n\n3. 启用 iCloud";
+enableiCloudAction = "转到设置";
+premiumTooliCloudMessage = "备份功能仅适用于高级用户。产品详细信息将显示";
 
-// 删除与备份
+// 删除和备份
 delete = "删除";
-backupNavigationTitle = "备份中保存的项目";
-backupNavigationSubtitle = "每次打开应用并有 Wi-Fi 连接时，照片会与添加的照片同步。您的备份是安全的，唯一可以查看照片的方式是在应用内";
-emptyGalleryTitle = "没有照片";
-emptyGallerySubtitle = "点击+按钮添加您的照片";
-
-emptyNotesTitle = "没有笔记";
-emptyNotesSubtitle = "点击+按钮添加您的笔记";
+backupNavigationTitle = "我的备份";
 
 emptyVideosTitle = "没有视频";
-emptyVideosSubtitle = "点击 + 按钮添加您的视频";
+emptyVideosSubtitle = "单击 + 按钮添加您的视频";
 premiumVideosSubtitle = "视频支持是高级功能";
-seeMore = "查看更多";
 
+emptyGalleryTitle = "没有照片";
+emptyGallerySubtitle = "单击 + 按钮添加您的照片";
+
+emptyNotesTitle = "没有笔记";
+emptyNotesSubtitle = "单击 + 按钮添加您的笔记";
+
+seeMore = "查看更多";
 backupSettings = "备份设置";
-backupStatus = "加密备份";
+backupStatus = "安全备份";
 seeMyBackup = "查看我的备份";
-restoreBackup = "恢复备份";
+restoreBackup = "还原备份";
 updateBackup = "更新备份";
-faceIDReason = "我们将使用认证来打开您的画廊";
+faceIDReason = "我们将使用身份验证来打开您的图库";
 myBackupItems = "我的备份项目";
 backupNavigationTitle = "我的备份";
-vaultMode = "保险箱模式";
+vaultMode = "保险柜模式";
 recover = "恢复";
-createPassword = "创建密码并按回车确认";
-insertCreatedPasswordAgain = "再次输入密码";
-insertPassword = "输入您的密码并按回车确认";
-faceidreason = "我们将使用Face ID认证来打开相册";
+
+createPassword = "创建密码并确认输入";
+insertCreatedPasswordAgain = "重新输入密码";
+insertPassword = "输入密码并确认";
 backupEnabled = "已启用";
 backupDisabled = "已禁用";
 
+backupNavigationSubtitle = "照片会在每次打开应用程序并连接到Wi-Fi时与添加的照片同步。您的备份是安全的，只能在应用程序内查看照片";
+
+myBackupNavigationSubtitle = "在上一个菜单中单击 '还原备份' 以将照片导入到您的图库";
+continueText = "继续";
+
+welcomeOnboarding_title = "欢迎来到秘密图库";
+welcomeOnboarding_subtitle = "以安全方式保护您的照片和视频";
+welcomeOnboarding_startButtonTitle = "开始";
+welcomeOnboarding_skipButtonTitle = "单击“开始”即表示您同意隐私政策和使用条款";
+
+createCodeOnboarding_title = "创建访问代码";
+createCodeOnboarding_subtitle = "创建一个密码以访问您保存的照片";
+createCodeOnboarding_startButtonTitle = "继续";
+createCodeOnboarding_skipButtonTitle = "暂时不要";
+
+addPhotosOnboarding_title = "添加您的照片";
+addPhotosOnboarding_subtitle = "添加您希望安全保存的照片";
+addPhotosOnboarding_startButtonTitle = "继续";
+addPhotosOnboarding_skipButtonTitle = "暂时不要";

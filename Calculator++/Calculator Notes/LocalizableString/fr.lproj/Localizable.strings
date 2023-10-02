@@ -1,46 +1,54 @@
+/*
+  Localizable.strings
+  Calculator Notes
+
+  Créé par Joao Victor Flores da Costa le 06/02/22.
+  Copyright © 2022 MakeSchool. Tous droits réservés.
+*/
+
 // Version Premium
 premiumVersion = "Version Premium";
-noProtection = "Pas de protection";
-hideRecoverButton = "Masquer le bouton de récupération de mot de passe";
+noProtection = "Aucune protection";
+hideRecoverButton = "Masquer le bouton Face ID";
 chooseProtectionMode = "Choisissez le mode de protection";
 
-// Paramètres et Autres
+// Paramètres et autres
 settings = "Paramètres";
 gallery = "Galerie";
 video = "Vidéo";
 notes = "Notes";
 
-instructionFirstStepCalc = "Créez un mot de passe et cliquez sur le bouton '='";
+instructionFirstStepCalc = "Créez un mot de passe et appuyez sur le bouton '='";
 instructionSecondStepCalc = "Mot de passe : *****. Répétez le mot de passe et confirmez avec '='";
 
-instructionFirstStepBank = "Créez un mot de passe et cliquez sur 'Entrée'";
+instructionFirstStepBank = "Créez un mot de passe et appuyez sur 'Entrée'";
 instructionSecondStepBank = "Mot de passe : *****. Répétez le mot de passe et confirmez avec 'Entrée'";
 
-bankModeHasBeenActivated = "Mode banque activé";
+bankModeHasBeenActivated = "Mode coffre activé";
 calcModeHasBeenActivated = "Mode calculatrice activé";
 
-welcomeInstructionBank = "Entrez votre mot de passe";
+welcomeInstructionBank = "Saisissez votre mot de passe";
 
 done = "Terminé";
-edit = "Éditer";
+edit = "Modifier";
 
-premiumToolTitle = "Fonction Premium";
-premiumToolMessage = "Le support vidéo est seulement disponible pour les utilisateurs premium. Voir les mises à niveau dans la section Paramètres";
+premiumToolTitle = "Fonction premium";
+premiumToolMessage = "La prise en charge de la vidéo est uniquement proposée aux utilisateurs premium. Consultez les mises à niveau dans la section Paramètres.";
 
-save = "Sauvegarder";
+save = "Enregistrer";
 cancel = "Annuler";
 ok = "Confirmer";
 see = "Voir";
 
-// Messages d'Erreur
-errorTitle = "Erreur Inattendue";
+// Messages d'erreur
+errorTitle = "Erreur inattendue";
 errorMessage = "Réessayez plus tard";
 deleteFiles = "Supprimer le fichier ?";
 
 incorrectPassword = "Mot de passe incorrect";
-tryAgain = "Réessayer";
+tryAgain = "Réessayez";
 
-// Achat
+// Achats
 products = "Produits disponibles";
 loading = "Chargement...";
 close = "Fermer";
@@ -53,10 +61,10 @@ createActionTitle = "Créer";
 cancelTitle = "Annuler";
 inputPlaceholder = "Entrez le nom du nouveau dossier";
 folderNameAlreadyUsedTitle = "Nom de dossier déjà utilisé";
-folderNameAlreadyUsedText = "Choisissez un nom de dossier différent";
+folderNameAlreadyUsedText = "Choisissez un nom différent pour le dossier";
 deleteConfirmationTitle = "Supprimer les fichiers ?";
 
-// Tout montrer
+// Afficher tout
 hideAllVideos = "Masquer toutes les vidéos enregistrées";
 showAllVideos = "Afficher toutes les vidéos enregistrées";
 hideAllPhotos = "Masquer toutes les photos enregistrées";
@@ -71,45 +79,64 @@ backupSuccessMessage = "Votre sauvegarde a été restaurée avec succès";
 backupErrorTitle = "Erreur de sauvegarde";
 backupErrorMessage = "Aucune donnée trouvée pour la sauvegarde";
 incorrectPasswordTitle = "Mot de passe incorrect";
-incorrectPasswordMessage = "Le mot de passe fourni n'est pas valide. Essayez à nouveau.";
+incorrectPasswordMessage = "Le mot de passe fourni n'est pas valide. Veuillez réessayer.";
 insertPasswordTitle = "Entrez votre mot de passe";
 insertPasswordMessage = "Entrez le mot de passe précédemment utilisé pour ouvrir l'application";
 yes = "Oui";
 no = "Non";
-enableiCloudTitle = "Action nécessaire";
-enableiCloudSubtitle = "\n1. Cliquez sur iCloud\n\n2. Localisez l'application Calc+ dans la liste\n\n3. Activez iCloud";
+enableiCloudTitle = "Action requise";
+enableiCloudSubtitle = "\n1. Cliquez sur iCloud\n\n2. Recherchez l'application Calc+ dans la liste\n\n3. Activez iCloud";
 enableiCloudAction = "Aller aux paramètres";
-premiumTooliCloudMessage = "La fonction de sauvegarde est exclusive aux utilisateurs Premium. Les détails du produit seront affichés";
+premiumTooliCloudMessage = "La fonction de sauvegarde est réservée aux utilisateurs premium. Les détails du produit sont affichés dans la section Produits";
 
-// Supprimer et Sauvegarde
+// Supprimer et sauvegarder
 delete = "Supprimer";
-backupNavigationTitle = "Éléments sauvegardés dans la sauvegarde";
-backupNavigationSubtitle = "Les photos sont synchronisées avec les photos ajoutées à chaque fois que l'application est ouverte et qu'il y a une connexion Wi-Fi. Votre sauvegarde est sécurisée et le seul moyen de visualiser les photos est dans l'application";
+backupNavigationTitle = "Ma sauvegarde";
+
+emptyVideosTitle = "Pas de vidéos";
+emptyVideosSubtitle = "Ajoutez vos vidéos en cliquant sur le bouton +";
+premiumVideosSubtitle = "La prise en charge de la vidéo est une fonction premium";
+
 emptyGalleryTitle = "Pas de photos";
 emptyGallerySubtitle = "Ajoutez vos photos en cliquant sur le bouton +";
 
 emptyNotesTitle = "Pas de notes";
 emptyNotesSubtitle = "Ajoutez vos notes en cliquant sur le bouton +";
 
-emptyVideosTitle = "Pas de vidéos";
-emptyVideosSubtitle = "Ajoutez vos vidéos en cliquant sur le bouton +";
-premiumVideosSubtitle = "Le support vidéo est une fonctionnalité premium";
 seeMore = "Voir plus";
-
-backupSettings = "Paramètres de Sauvegarde";
-backupStatus = "Sauvegarde Chiffrée";
-seeMyBackup = "Voir ma Sauvegarde";
-restoreBackup = "Restaurer la Sauvegarde";
-updateBackup = "Mettre à jour la Sauvegarde";
-faceIDReason = "Nous utiliserons l'authentification pour ouvrir votre galerie";
-myBackupItems = "Mes éléments dans la Sauvegarde";
-backupNavigationTitle = "Ma Sauvegarde";
-vaultMode = "Mode Coffre";
+backupSettings = "Paramètres de sauvegarde";
+backupStatus = "Sauvegarde sécurisée";
+seeMyBackup = "Voir ma sauvegarde";
+restoreBackup = "Restaurer la sauvegarde";
+updateBackup = "Mettre à jour la sauvegarde";
+faceIDReason = "Nous utilisons l'authentification pour ouvrir votre galerie";
+myBackupItems = "Mes éléments de sauvegarde";
+backupNavigationTitle = "Ma sauvegarde";
+vaultMode = "Mode coffre-fort";
 recover = "Récupérer";
 
 createPassword = "Créez un mot de passe et confirmez avec Entrée";
-insertCreatedPasswordAgain = "Ressaisissez le mot de passe";
+insertCreatedPasswordAgain = "Entrez à nouveau le mot de passe";
 insertPassword = "Entrez votre mot de passe et confirmez avec Entrée";
-faceidreason = "Nous utiliserons l'authentification Face ID pour ouvrir la galerie";
 backupEnabled = "Activé";
 backupDisabled = "Désactivé";
+
+backupNavigationSubtitle = "Les photos sont synchronisées chaque fois que l'application est ouverte et qu'une connexion Wi-Fi est disponible. Votre sauvegarde est sécurisée, et les photos ne peuvent être consultées que dans l'application";
+
+myBackupNavigationSubtitle = "Cliquez sur 'Restaurer la sauvegarde' dans le menu précédent pour importer les photos dans votre galerie";
+continueText = "Continuer";
+
+welcomeOnboarding_title = "Bienvenue dans Secret Gallery";
+welcomeOnboarding_subtitle = "Protégez vos photos et vidéos en toute sécurité";
+welcomeOnboarding_startButtonTitle = "Commencer";
+welcomeOnboarding_skipButtonTitle = "En cliquant sur 'Commencer', vous acceptez la politique de confidentialité et les conditions d'utilisation";
+
+createCodeOnboarding_title = "Créez un code d'accès";
+createCodeOnboarding_subtitle = "Créez un mot de passe pour accéder à vos photos sauvegardées";
+createCodeOnboarding_startButtonTitle = "Continuer";
+createCodeOnboarding_skipButtonTitle = "Pas maintenant";
+
+addPhotosOnboarding_title = "Ajoutez vos photos";
+addPhotosOnboarding_subtitle = "Ajoutez les photos que vous souhaitez conserver en toute sécurité";
+addPhotosOnboarding_startButtonTitle = "Continuer";
+addPhotosOnboarding_skipButtonTitle = "Pas maintenant";

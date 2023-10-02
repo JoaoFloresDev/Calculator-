@@ -1,113 +1,142 @@
+/*
+  Localizable.strings
+  Calculator Notes
+
+  Joao Victor Flores da Costa에 의해 작성됨 2022년 02월 06일.
+  저작권 © 2022 MakeSchool. 모든 권리 보유.
+*/
+
 // 프리미엄 버전
 premiumVersion = "프리미엄 버전";
 noProtection = "보호 없음";
-hideRecoverButton = "비밀번호 복구 버튼 숨기기";
+hideRecoverButton = "Face ID 버튼 숨기기";
 chooseProtectionMode = "보호 모드 선택";
 
 // 설정 및 기타
 settings = "설정";
 gallery = "갤러리";
 video = "비디오";
-notes = "노트";
+notes = "메모";
 
-instructionFirstStepCalc = "비밀번호를 생성하고 '=' 버튼을 누르세요";
-instructionSecondStepCalc = "비밀번호: *****. 비밀번호를 다시 입력하고 '='으로 확인하세요";
+instructionFirstStepCalc = "비밀번호를 만들고 '=' 버튼을 클릭하세요.";
+instructionSecondStepCalc = "비밀번호: *****. 비밀번호를 다시 입력하고 '='로 확인하세요.";
 
-instructionFirstStepBank = "비밀번호를 생성하고 'enter'를 누르세요";
-instructionSecondStepBank = "비밀번호: *****. 비밀번호를 다시 입력하고 'Enter'로 확인하세요";
+instructionFirstStepBank = "비밀번호를 만들고 'Enter'를 클릭하세요.";
+instructionSecondStepBank = "비밀번호: *****. 비밀번호를 다시 입력하고 'Enter'로 확인하세요.";
 
-bankModeHasBeenActivated = "금고 모드 활성화됨";
-calcModeHasBeenActivated = "계산기 모드 활성화됨";
+bankModeHasBeenActivated = "뱅크 모드가 활성화되었습니다.";
+calcModeHasBeenActivated = "계산기 모드가 활성화되었습니다.";
 
 welcomeInstructionBank = "비밀번호를 입력하세요";
 
 done = "완료";
 edit = "편집";
 
-premiumToolTitle = "프리미엄 도구";
-premiumToolMessage = "비디오 지원은 프리미엄 사용자만을 위해 제공됩니다. 설정 섹션에서 업그레이드를 확인하세요";
+premiumToolTitle = "프리미엄 기능";
+premiumToolMessage = "비디오 지원은 프리미엄 사용자에게만 제공됩니다. 설정 섹션에서 업그레이드 옵션을 확인하세요.";
 
 save = "저장";
 cancel = "취소";
 ok = "확인";
 see = "보기";
 
-// 에러 메시지
-errorTitle = "예상치 못한 오류";
-errorMessage = "나중에 다시 시도하세요";
-deleteFiles = "파일을 삭제하시겠습니까?";
+// 오류 메시지
+errorTitle = "예기치 않은 오류";
+errorMessage = "나중에 다시 시도하세요.";
+deleteFiles = "파일 삭제?";
 
-incorrectPassword = "비밀번호가 틀림";
-tryAgain = "다시 시도하세요";
+incorrectPassword = "잘못된 비밀번호";
+tryAgain = "다시 시도";
 
 // 구매
 products = "사용 가능한 제품";
 loading = "로딩 중...";
 close = "닫기";
-restore = "구매";
+restore = "복원";
 buy = "구매";
 
 // 폴더
 folderTitle = "폴더 이름";
 createActionTitle = "생성";
 cancelTitle = "취소";
-inputPlaceholder = "새 폴더의 이름을 입력하세요";
-folderNameAlreadyUsedTitle = "폴더 이름이 이미 사용되었습니다";
-folderNameAlreadyUsedText = "폴더에 대한 다른 이름을 선택하세요";
-deleteConfirmationTitle = "파일을 삭제하시겠습니까?";
+inputPlaceholder = "새 폴더 이름을 입력하세요";
+folderNameAlreadyUsedTitle = "폴더 이름 이미 사용 중";
+folderNameAlreadyUsedText = "다른 폴더 이름을 선택하세요";
+deleteConfirmationTitle = "파일 삭제?";
 
 // 모두 보기
-hideAllVideos = "저장된 모든 비디오 숨기기";
-showAllVideos = "저장된 모든 비디오 보이기";
-hideAllPhotos = "저장된 모든 사진 숨기기";
-showAllPhotos = "저장된 모든 사진 보이기";
-wouldLikeSetProtection = "갤러리에 보호를 추가하시겠습니까?";
+hideAllVideos = "모든 저장된 비디오 숨기기";
+showAllVideos = "모든 저장된 비디오 보기";
+hideAllPhotos = "모든 저장된 사진 숨기기";
+showAllPhotos = "모든 저장된 사진 보기";
+wouldLikeSetProtection = "갤러리에 보호 기능을 추가하시겠습니까?";
 
 // 백업
 askToRestoreBackupTitle = "백업 복원";
-askToRestoreBackupMessage = "최근 백업을 복원하시겠습니까?";
-backupSuccessTitle = "백업 성공";
-backupSuccessMessage = "백업이 성공적으로 복원되었습니다";
+askToRestoreBackupMessage = "최신 백업을 복원하시겠습니까?";
+backupSuccessTitle = "백업 완료";
+backupSuccessMessage = "백업이 성공적으로 복원되었습니다.";
 backupErrorTitle = "백업 오류";
-backupErrorMessage = "백업을 위한 데이터를 찾을 수 없습니다";
-incorrectPasswordTitle = "비밀번호가 틀림";
+backupErrorMessage = "백업할 데이터가 없습니다.";
+incorrectPasswordTitle = "잘못된 비밀번호";
 incorrectPasswordMessage = "제공된 비밀번호가 유효하지 않습니다. 다시 시도하세요.";
-insertPasswordTitle = "비밀번호를 입력하세요";
-insertPasswordMessage = "앱을 열 때 이전에 사용한 비밀번호를 입력하세요";
+insertPasswordTitle = "비밀번호 입력";
+insertPasswordMessage = "앱을 열 때 사용한 이전 비밀번호를 입력하세요.";
 yes = "예";
 no = "아니요";
-enableiCloudTitle = "필요한 조치";
-enableiCloudSubtitle = "\n1. iCloud를 누르세요\n\n2. 목록에서 Calc+ 앱을 찾으세요\n\n3. iCloud 활성화";
+enableiCloudTitle = "필요한 작업";
+enableiCloudSubtitle = "\n1. iCloud를 클릭하세요\n\n2. Calc+ 앱을 목록에서 찾으세요\n\n3. iCloud를 활성화하세요";
 enableiCloudAction = "설정으로 이동";
-premiumTooliCloudMessage = "백업 기능은 프리미엄 사용자만을 위해 제공됩니다. 제품 세부 사항이 표시될 것입니다";
+premiumTooliCloudMessage = "백업 기능은 프리미엄 사용자만 이용 가능합니다. 제품 상세 정보는 제공됩니다.";
 
 // 삭제 및 백업
 delete = "삭제";
-backupNavigationTitle = "백업에 저장된 항목";
-backupNavigationSubtitle = "앱이 열릴 때마다 Wi-Fi가 연결되어 있으면 사진이 동기화됩니다. 백업은 안전하며 사진을 볼 수 있는 유일한 방법은 앱 내부입니다";
+backupNavigationTitle = "내 백업";
+
+emptyVideosTitle = "비디오 없음";
+emptyVideosSubtitle = "버튼 +를 클릭하여 비디오를 추가하세요";
+premiumVideosSubtitle = "비디오 지원은 프리미엄 기능입니다";
+
 emptyGalleryTitle = "사진 없음";
-emptyGallerySubtitle = "+ 버튼을 클릭하여 사진을 추가하세요";
+emptyGallerySubtitle = "버튼 +를 클릭하여 사진을 추가하세요";
 
 emptyNotesTitle = "메모 없음";
-emptyNotesSubtitle = "+ 버튼을 클릭하여 메모를 추가하세요";
-emptyVideosTitle = "비디오 없음";
-emptyVideosSubtitle = "+ 버튼을 클릭하여 비디오를 추가하세요";
-premiumVideosSubtitle = "비디오 지원은 프리미엄 기능입니다";
-seeMore = "더 보기";
+emptyNotesSubtitle = "버튼 +를 클릭하여 메모를 추가하세요";
 
+seeMore = "더 보기";
 backupSettings = "백업 설정";
-backupStatus = "암호화된 백업";
+backupStatus = "안전한 백업";
 seeMyBackup = "내 백업 보기";
 restoreBackup = "백업 복원";
 updateBackup = "백업 업데이트";
-faceIDReason = "갤러리를 열기 위해 인증을 사용할 것입니다";
-myBackupItems = "백업에 있는 내 항목들";
-backupNavigationTitle = "나의 백업";
+faceIDReason = "갤러리를 열기 위해 인증을 사용합니다.";
+myBackupItems = "내 백업 항목";
+backupNavigationTitle = "내 백업";
 vaultMode = "금고 모드";
 recover = "복구";
-createPassword = "비밀번호를 생성하고 엔터로 확인하세요";
+
+createPassword = "비밀번호를 만들고 Enter 키로 확인하세요";
 insertCreatedPasswordAgain = "비밀번호를 다시 입력하세요";
-insertPassword = "비밀번호를 입력하고 엔터로 확인하세요";
-faceidreason = "갤러리를 열기 위해 Face ID 인증을 사용할 것입니다";
+insertPassword = "비밀번호를 입력하고 Enter 키로 확인하세요";
 backupEnabled = "활성화됨";
 backupDisabled = "비활성화됨";
+
+backupNavigationSubtitle = "Wi-Fi 연결이 가능한 경우 앱을 열 때마다 추가한 사진이 동기화됩니다. 백업은 안전하며 사진을 볼 수 있는 유일한 방법은 앱 내부입니다.";
+
+myBackupNavigationSubtitle = "이전 메뉴에서 '백업 복원'을 클릭하여 사진을 갤러리로 가져옵니다.";
+continueText = "계속";
+
+welcomeOnboarding_title = "시크릿 갤러리에 오신 것을 환영합니다";
+welcomeOnboarding_subtitle = "사진과 비디오를 안전하게 보호하세요";
+welcomeOnboarding_startButtonTitle = "시작";
+welcomeOnboarding_skipButtonTitle = "‘시작’을 클릭함으로써 개인 정보 보호 정책과 이용 약관에 동의합니다";
+
+createCodeOnboarding_title = "액세스 코드 만들기";
+createCodeOnboarding_subtitle = "보관하려는 사진에 액세스하기 위한 비밀번호를 만드세요";
+createCodeOnboarding_startButtonTitle = "계속";
+createCodeOnboarding_skipButtonTitle = "지금은 안 함";
+
+addPhotosOnboarding_title = "사진 추가";
+addPhotosOnboarding_subtitle = "안전하게 보관하려는 사진을 추가하세요";
+addPhotosOnboarding_startButtonTitle = "계속";
+addPhotosOnboarding_skipButtonTitle = "지금은 안 함";

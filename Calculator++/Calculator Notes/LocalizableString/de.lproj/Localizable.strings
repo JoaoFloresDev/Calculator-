@@ -2,30 +2,30 @@
   Localizable.strings
   Calculator Notes
 
-  Erstellt von João Victor Flores da Costa am 06.02.22.
-  Urheberrecht © 2022 MakeSchool. Alle Rechte vorbehalten.
+  Erstellt von Joao Victor Flores da Costa am 06/02/22.
+  Copyright © 2022 MakeSchool. Alle Rechte vorbehalten.
 */
 
 // Premium-Version
 premiumVersion = "Premium-Version";
 noProtection = "Kein Schutz";
-hideRecoverButton = "Passwort-Wiederherstellungsbutton ausblenden";
+hideRecoverButton = "Face ID-Button ausblenden";
 chooseProtectionMode = "Schutzmodus auswählen";
 
-// Einstellungen und andere
+// Einstellungen und mehr
 settings = "Einstellungen";
 gallery = "Galerie";
 video = "Video";
 notes = "Notizen";
 
-instructionFirstStepCalc = "Erstellen Sie ein Passwort und klicken Sie auf den '=' Button";
+instructionFirstStepCalc = "Erstellen Sie ein Passwort und klicken Sie auf die '='-Taste";
 instructionSecondStepCalc = "Passwort: *****. Wiederholen Sie das Passwort und bestätigen Sie mit '='";
 
-instructionFirstStepBank = "Erstellen Sie ein Passwort und klicken Sie auf 'Enter'";
+instructionFirstStepBank = "Erstellen Sie ein Passwort und drücken Sie 'Enter'";
 instructionSecondStepBank = "Passwort: *****. Wiederholen Sie das Passwort und bestätigen Sie mit 'Enter'";
 
-bankModeHasBeenActivated = "Bankmodus wurde aktiviert";
-calcModeHasBeenActivated = "Rechnermodus wurde aktiviert";
+bankModeHasBeenActivated = "Tresor-Modus aktiviert";
+calcModeHasBeenActivated = "Rechner-Modus aktiviert";
 
 welcomeInstructionBank = "Geben Sie Ihr Passwort ein";
 
@@ -33,12 +33,12 @@ done = "Fertig";
 edit = "Bearbeiten";
 
 premiumToolTitle = "Premium-Funktion";
-premiumToolMessage = "Video-Support ist nur für Premium-Nutzer verfügbar. Sehen Sie Upgrades im Einstellungsmenü";
+premiumToolMessage = "Die Video-Unterstützung wird nur für Premium-Benutzer angeboten. Sehen Sie sich Upgrades im Abschnitt Einstellungen an.";
 
 save = "Speichern";
 cancel = "Abbrechen";
-ok = "OK";
-see = "Sehen";
+ok = "Bestätigen";
+see = "Ansehen";
 
 // Fehlermeldungen
 errorTitle = "Unerwarteter Fehler";
@@ -48,11 +48,11 @@ deleteFiles = "Datei löschen?";
 incorrectPassword = "Falsches Passwort";
 tryAgain = "Erneut versuchen";
 
-// Kauf
+// Einkäufe
 products = "Verfügbare Produkte";
 loading = "Laden...";
 close = "Schließen";
-restore = "Käufe";
+restore = "Wiederherstellen";
 buy = "Kaufen";
 
 // Ordner
@@ -61,10 +61,10 @@ createActionTitle = "Erstellen";
 cancelTitle = "Abbrechen";
 inputPlaceholder = "Geben Sie den Namen des neuen Ordners ein";
 folderNameAlreadyUsedTitle = "Ordnername bereits vergeben";
-folderNameAlreadyUsedText = "Wählen Sie einen anderen Ordnernamen";
+folderNameAlreadyUsedText = "Wählen Sie einen anderen Namen für den Ordner aus";
 deleteConfirmationTitle = "Dateien löschen?";
 
-// Alles anzeigen
+// Alle anzeigen
 hideAllVideos = "Alle gespeicherten Videos ausblenden";
 showAllVideos = "Alle gespeicherten Videos anzeigen";
 hideAllPhotos = "Alle gespeicherten Fotos ausblenden";
@@ -74,51 +74,69 @@ wouldLikeSetProtection = "Möchten Sie Ihrer Galerie Schutz hinzufügen?";
 // Backup
 askToRestoreBackupTitle = "Backup wiederherstellen";
 askToRestoreBackupMessage = "Möchten Sie Ihr letztes Backup wiederherstellen?";
-backupSuccessTitle = "Backup erfolgreich";
+backupSuccessTitle = "Backup erfolgreich durchgeführt";
 backupSuccessMessage = "Ihr Backup wurde erfolgreich wiederhergestellt";
 backupErrorTitle = "Fehler beim Backup";
-backupErrorMessage = "Keine Daten zum Backup gefunden";
+backupErrorMessage = "Keine Daten für das Backup gefunden";
 incorrectPasswordTitle = "Falsches Passwort";
-incorrectPasswordMessage = "Das angegebene Passwort ist nicht gültig. Versuchen Sie es erneut.";
+incorrectPasswordMessage = "Das eingegebene Passwort ist ungültig. Bitte erneut versuchen.";
 insertPasswordTitle = "Geben Sie Ihr Passwort ein";
 insertPasswordMessage = "Geben Sie das zuvor verwendete Passwort ein, um die App zu öffnen";
 yes = "Ja";
 no = "Nein";
-enableiCloudTitle = "Aktion erforderlich";
+enableiCloudTitle = "Erforderliche Aktion";
 enableiCloudSubtitle = "\n1. Klicken Sie auf iCloud\n\n2. Suchen Sie die App Calc+ in der Liste\n\n3. Aktivieren Sie iCloud";
 enableiCloudAction = "Zu den Einstellungen gehen";
-premiumTooliCloudMessage = "Die Backup-Funktion ist exklusiv für Premium-Nutzer. Produktdetails werden angezeigt";
+premiumTooliCloudMessage = "Die Backup-Funktion ist exklusiv für Premium-Benutzer. Produktdetails werden im Abschnitt Produkte angezeigt";
 
 // Löschen und Backup
 delete = "Löschen";
-backupNavigationTitle = "In Backup gespeicherte Elemente";
-backupNavigationSubtitle = "Fotos werden mit den hinzugefügten Fotos synchronisiert, jedes Mal wenn die App geöffnet wird und eine WLAN-Verbindung besteht. Ihr Backup ist sicher und die einzige Möglichkeit, die Fotos anzusehen, ist innerhalb der App";
+backupNavigationTitle = "Mein Backup";
+
+emptyVideosTitle = "Keine Videos";
+emptyVideosSubtitle = "Fügen Sie Ihre Videos hinzu, indem Sie auf die Schaltfläche + klicken";
+premiumVideosSubtitle = "Die Videounterstützung ist eine Premium-Funktion";
+
 emptyGalleryTitle = "Keine Fotos";
 emptyGallerySubtitle = "Fügen Sie Ihre Fotos hinzu, indem Sie auf die Schaltfläche + klicken";
 
 emptyNotesTitle = "Keine Notizen";
 emptyNotesSubtitle = "Fügen Sie Ihre Notizen hinzu, indem Sie auf die Schaltfläche + klicken";
 
-emptyVideosTitle = "Keine Videos";
-emptyVideosSubtitle = "Fügen Sie Ihre Videos hinzu, indem Sie auf die + Taste klicken";
-premiumVideosSubtitle = "Video-Unterstützung ist eine Premium-Funktion";
-seeMore = "Mehr sehen";
-
+seeMore = "Mehr anzeigen";
 backupSettings = "Backup-Einstellungen";
-backupStatus = "Verschlüsseltes Backup";
-seeMyBackup = "Mein Backup ansehen";
+backupStatus = "Sicheres Backup";
+seeMyBackup = "Mein Backup anzeigen";
 restoreBackup = "Backup wiederherstellen";
 updateBackup = "Backup aktualisieren";
 faceIDReason = "Wir verwenden die Authentifizierung, um Ihre Galerie zu öffnen";
-myBackupItems = "Meine Elemente im Backup";
+myBackupItems = "Meine Backup-Elemente";
 backupNavigationTitle = "Mein Backup";
-vaultMode = "Tresormodus";
+vaultMode = "Tresor-Modus";
 recover = "Wiederherstellen";
 
 createPassword = "Erstellen Sie ein Passwort und bestätigen Sie mit Enter";
-insertCreatedPasswordAgain = "Passwort erneut eingeben";
+insertCreatedPasswordAgain = "Geben Sie das Passwort erneut ein";
 insertPassword = "Geben Sie Ihr Passwort ein und bestätigen Sie mit Enter";
-faceidreason = "Wir werden die Face-ID-Authentifizierung verwenden, um die Galerie zu öffnen";
 backupEnabled = "Aktiviert";
 backupDisabled = "Deaktiviert";
 
+backupNavigationSubtitle = "Fotos werden jedes Mal synchronisiert, wenn die App geöffnet ist und eine WLAN-Verbindung besteht. Ihr Backup ist sicher, und Fotos können nur innerhalb der App angezeigt werden";
+
+myBackupNavigationSubtitle = "Klicken Sie im vorherigen Menü auf 'Backup wiederherstellen', um Fotos in Ihre Galerie zu importieren";
+continueText = "Weiter";
+
+welcomeOnboarding_title = "Willkommen bei der Secret Gallery";
+welcomeOnboarding_subtitle = "Schützen Sie Ihre Fotos und Videos sicher";
+welcomeOnboarding_startButtonTitle = "Loslegen";
+welcomeOnboarding_skipButtonTitle = "Durch Klicken auf 'Loslegen' stimmen Sie der Datenschutzrichtlinie und den Nutzungsbedingungen zu";
+
+createCodeOnboarding_title = "Erstellen Sie einen Zugangscode";
+createCodeOnboarding_subtitle = "Erstellen Sie ein Passwort, um auf Ihre gespeicherten Fotos zugreifen zu können";
+createCodeOnboarding_startButtonTitle = "Weiter";
+createCodeOnboarding_skipButtonTitle = "Jetzt nicht";
+
+addPhotosOnboarding_title = "Fügen Sie Ihre Fotos hinzu";
+addPhotosOnboarding_subtitle = "Fügen Sie die Fotos sicher hinzu, die Sie aufbewahren möchten";
+addPhotosOnboarding_startButtonTitle = "Weiter";
+addPhotosOnboarding_skipButtonTitle = "Jetzt nicht";

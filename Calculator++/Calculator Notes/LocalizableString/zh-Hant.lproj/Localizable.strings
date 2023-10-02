@@ -2,30 +2,30 @@
   Localizable.strings
   Calculator Notes
 
-  由 Joao Victor Flores da Costa 在 2022/02/06 創建。
+  由Joao Victor Flores da Costa於06/02/22創建。
   版權所有 © 2022 MakeSchool。保留所有權利。
 */
 
-// 高級版
-premiumVersion = "高級版";
+// 高級版本
+premiumVersion = "高級版本";
 noProtection = "無保護";
-hideRecoverButton = "隱藏恢復密碼按鈕";
+hideRecoverButton = "隱藏Face ID按鈕";
 chooseProtectionMode = "選擇保護模式";
 
-// 設定和其他
-settings = "設定";
-gallery = "畫廊";
+// 設置和其他
+settings = "設置";
+gallery = "圖庫";
 video = "視頻";
 notes = "筆記";
 
-instructionFirstStepCalc = "創建一個密碼，然後點擊 '=' 按鈕";
-instructionSecondStepCalc = "密碼：*****。重複密碼並用 '=' 確認";
+instructionFirstStepCalc = "創建密碼並單擊“=”按鈕";
+instructionSecondStepCalc = "密碼：*****。重複輸入密碼並按“=”確認";
 
-instructionFirstStepBank = "創建一個密碼，然後點擊 'enter'";
-instructionSecondStepBank = "密碼：*****。重複密碼並用 'Enter' 確認";
+instructionFirstStepBank = "創建密碼並按“Enter”鍵";
+instructionSecondStepBank = "密碼：*****。重複輸入密碼並按“Enter”確認";
 
-bankModeHasBeenActivated = "已激活保險箱模式";
-calcModeHasBeenActivated = "已激活計算器模式";
+bankModeHasBeenActivated = "保險櫃模式已啟動";
+calcModeHasBeenActivated = "計算機模式已啟動";
 
 welcomeInstructionBank = "輸入您的密碼";
 
@@ -33,91 +33,110 @@ done = "完成";
 edit = "編輯";
 
 premiumToolTitle = "高級工具";
-premiumToolMessage = "視頻支持僅對高級用戶開放。在設定部分查看升級選項";
+premiumToolMessage = "僅提供高級用戶視頻支持。請在“設置”部分查看升級選項";
 
 save = "保存";
 cancel = "取消";
-ok = "確認";
+ok = "確定";
 see = "查看";
 
 // 錯誤消息
 errorTitle = "意外錯誤";
-errorMessage = "請稍後再試";
-deleteFiles = "刪除檔案？";
+errorMessage = "請稍後重試";
+deleteFiles = "刪除文件？";
 
 incorrectPassword = "密碼不正確";
-tryAgain = "再試一次";
+tryAgain = "重試";
 
 // 購買
 products = "可用產品";
 loading = "加載中...";
 close = "關閉";
-restore = "恢復購買";
+restore = "恢復";
 buy = "購買";
 
-// 文件夾
-folderTitle = "文件夾名稱";
+// 資料夾
+folderTitle = "資料夾名稱";
 createActionTitle = "創建";
 cancelTitle = "取消";
-inputPlaceholder = "輸入新文件夾的名稱";
-folderNameAlreadyUsedTitle = "文件夾名稱已被使用";
-folderNameAlreadyUsedText = "請為文件夾選擇一個不同的名稱";
-deleteConfirmationTitle = "刪除檔案？";
+inputPlaceholder = "輸入新資料夾名稱";
+folderNameAlreadyUsedTitle = "資料夾名稱已使用";
+folderNameAlreadyUsedText = "請選擇不同的資料夾名稱";
+deleteConfirmationTitle = "刪除文件？";
 
 // 顯示全部
-hideAllVideos = "隱藏所有保存的視頻";
-showAllVideos = "顯示所有保存的視頻";
-hideAllPhotos = "隱藏所有保存的照片";
-showAllPhotos = "顯示所有保存的照片";
-wouldLikeSetProtection = "您希望為您的畫廊添加保護嗎？";
+hideAllVideos = "隱藏所有已保存的視頻";
+showAllVideos = "顯示所有已保存的視頻";
+hideAllPhotos = "隱藏所有已保存的照片";
+showAllPhotos = "顯示所有已保存的照片";
+wouldLikeSetProtection = "要對您的圖庫添加保護嗎？";
 
 // 備份
 askToRestoreBackupTitle = "恢復備份";
-askToRestoreBackupMessage = "您想恢復最近的備份嗎？";
+askToRestoreBackupMessage = "是否要恢復您的最近一個備份？";
 backupSuccessTitle = "備份成功";
 backupSuccessMessage = "您的備份已成功恢復";
 backupErrorTitle = "備份錯誤";
-backupErrorMessage = "找不到備份的數據";
+backupErrorMessage = "未找到備份數據";
 incorrectPasswordTitle = "密碼不正確";
 incorrectPasswordMessage = "提供的密碼無效。請重試。";
 insertPasswordTitle = "輸入您的密碼";
-insertPasswordMessage = "輸入先前用於打開應用程序的密碼";
+insertPasswordMessage = "輸入以前用於打開應用程序的密碼";
 yes = "是";
 no = "否";
 enableiCloudTitle = "需要操作";
-enableiCloudSubtitle = "\n1. 點擊 iCloud\n\n2. 在列表中找到 Calc+ 應用程序\n\n3. 啟用 iCloud";
-enableiCloudAction = "前往設定";
-premiumTooliCloudMessage = "備份功能僅對高級用戶開放。產品詳情將顯示";
+enableiCloudSubtitle = "\n1. 點擊iCloud\n\n2. 在列表中找到Calc+應用程序\n\n3. 啟用iCloud";
+enableiCloudAction = "前往設置";
+premiumTooliCloudMessage = "備份功能僅適用於高級用戶。產品詳細信息將顯示在“產品”部分";
 
 // 刪除和備份
 delete = "刪除";
-backupNavigationTitle = "備份中保存的項目";
-backupNavigationSubtitle = "每次打開應用程序並有 Wi-Fi 連接時，照片都會與添加的照片同步。您的備份是安全的，查看照片的唯一方法是在應用程序中";
-emptyGalleryTitle = "沒有照片";
-emptyGallerySubtitle = "點擊+按鈕添加您的照片";
+backupNavigationTitle = "我的備份";
 
-emptyNotesTitle = "沒有筆記";
-emptyNotesSubtitle = "點擊+按鈕添加您的筆記";
-
-emptyVideosTitle = "沒有視頻";
-emptyVideosSubtitle = "點擊 + 按鈕添加您的視頻";
+emptyVideosTitle = "無視頻";
+emptyVideosSubtitle = "單擊+按鈕添加您的視頻";
 premiumVideosSubtitle = "視頻支持是高級功能";
-seeMore = "查看更多";
 
-backupSettings = "備份設定";
-backupStatus = "加密備份";
+emptyGalleryTitle = "無照片";
+emptyGallerySubtitle = "單擊+按鈕添加您的照片";
+
+emptyNotesTitle = "無筆記";
+emptyNotesSubtitle = "單擊+按鈕添加您的筆記";
+
+seeMore = "查看更多";
+backupSettings = "備份設置";
+backupStatus = "安全備份";
 seeMyBackup = "查看我的備份";
 restoreBackup = "恢復備份";
 updateBackup = "更新備份";
-faceIDReason = "我們將使用認證來打開您的畫廊";
+faceIDReason = "我們使用身份驗證以打開您的圖庫";
 myBackupItems = "我的備份項目";
 backupNavigationTitle = "我的備份";
-vaultMode = "保險箱模式";
+vaultMode = "保險櫃模式";
 recover = "恢復";
 
-createPassword = "創建密碼並按回車確認";
+createPassword = "創建密碼並按Enter確認";
 insertCreatedPasswordAgain = "再次輸入密碼";
-insertPassword = "輸入您的密碼並按回車確認";
-faceidreason = "我們將使用Face ID認證來打開相冊";
+insertPassword = "輸入密碼並按Enter確認";
 backupEnabled = "已啟用";
-backupDisabled = "已禁用";
+backupDisabled = "已停用";
+
+backupNavigationSubtitle = "照片會在每次打開應用程序時添加，並且在Wi-Fi連接時進行同步。您的備份是安全的，唯一查看照片的方式是在應用程序中。";
+
+myBackupNavigationSubtitle = "在上一個菜單中單擊“恢復備份”以將照片導入到您的圖庫中";
+continueText = "繼續";
+
+welcomeOnboarding_title = "歡迎使用秘密圖庫";
+welcomeOnboarding_subtitle = "以安全方式保護您的照片和視頻";
+welcomeOnboarding_startButtonTitle = "開始";
+welcomeOnboarding_skipButtonTitle = "單擊“開始”即表示您同意隱私政策和使用條款";
+
+createCodeOnboarding_title = "創建訪問密碼";
+createCodeOnboarding_subtitle = "創建密碼以訪問您的保存照片";
+createCodeOnboarding_startButtonTitle = "繼續";
+createCodeOnboarding_skipButtonTitle = "暫時不要";
+
+addPhotosOnboarding_title = "添加您的照片";
+addPhotosOnboarding_subtitle = "添加您想要安全保留的照片";
+addPhotosOnboarding_startButtonTitle = "繼續";
+addPhotosOnboarding_skipButtonTitle = "暫時不要";

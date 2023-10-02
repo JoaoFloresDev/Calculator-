@@ -2,122 +2,141 @@
   Localizable.strings
   Calculator Notes
 
-  Dibuat oleh João Victor Flores da Costa pada 06/02/22.
-  Hak cipta © 2022 MakeSchool. Semua hak dilindungi.
+  Dibuat oleh Joao Victor Flores da Costa pada 06/02/22.
+  Hak Cipta © 2022 MakeSchool. Semua hak dilindungi.
 */
 
 // Versi Premium
 premiumVersion = "Versi Premium";
-noProtection = "Tidak Ada Perlindungan";
-hideRecoverButton = "Sembunyikan Tombol Pemulihan Sandi";
+noProtection = "Tanpa Perlindungan";
+hideRecoverButton = "Sembunyikan Tombol Face ID";
 chooseProtectionMode = "Pilih Mode Perlindungan";
 
-// Pengaturan dan lain-lain
+// Pengaturan dan Lainnya
 settings = "Pengaturan";
 gallery = "Galeri";
 video = "Video";
 notes = "Catatan";
 
 instructionFirstStepCalc = "Buat kata sandi dan klik tombol '='";
-instructionSecondStepCalc = "Kata sandi: *****. Ulangi kata sandi dan konfirmasi dengan '='";
+instructionSecondStepCalc = "Kata Sandi: *****. Ulangi kata sandi dan konfirmasi dengan '='";
 
-instructionFirstStepBank = "Buat kata sandi dan klik 'masuk'";
-instructionSecondStepBank = "Kata sandi: *****. Ulangi kata sandi dan konfirmasi dengan 'masuk'";
+instructionFirstStepBank = "Buat kata sandi dan klik 'enter'";
+instructionSecondStepBank = "Kata Sandi: *****. Ulangi kata sandi dan konfirmasi dengan 'Enter'";
 
-bankModeHasBeenActivated = "Mode bank telah diaktifkan";
-calcModeHasBeenActivated = "Mode kalkulator telah diaktifkan";
+bankModeHasBeenActivated = "Mode Bank telah diaktifkan";
+calcModeHasBeenActivated = "Mode Kalkulator telah diaktifkan";
 
 welcomeInstructionBank = "Masukkan kata sandi Anda";
 
 done = "Selesai";
-edit = "Ubah";
+edit = "Edit";
 
 premiumToolTitle = "Fitur Premium";
-premiumToolMessage = "Dukungan untuk video hanya untuk pengguna premium. Lihat upgrade di bagian pengaturan";
+premiumToolMessage = "Dukungan untuk video hanya tersedia untuk pengguna premium. Lihat opsi upgrade di bagian Pengaturan";
 
 save = "Simpan";
 cancel = "Batal";
-ok = "Oke";
+ok = "OK";
 see = "Lihat";
 
-// Pesan kesalahan
-errorTitle = "Kesalahan Tidak Terduga";
+// Pesan Kesalahan
+errorTitle = "Kesalahan Tak Terduga";
 errorMessage = "Coba lagi nanti";
-deleteFiles = "Hapus file?";
+deleteFiles = "Hapus File?";
 
-incorrectPassword = "Kata sandi salah";
-tryAgain = "Coba lagi";
+incorrectPassword = "Kata Sandi Salah";
+tryAgain = "Coba Lagi";
 
 // Pembelian
-products = "Produk yang tersedia";
+products = "Produk Tersedia";
 loading = "Memuat...";
 close = "Tutup";
 restore = "Pulihkan";
 buy = "Beli";
 
 // Folder
-folderTitle = "Nama folder";
+folderTitle = "Nama Folder";
 createActionTitle = "Buat";
 cancelTitle = "Batal";
-inputPlaceholder = "Masukkan nama folder baru";
-folderNameAlreadyUsedTitle = "Nama folder sudah digunakan";
-folderNameAlreadyUsedText = "Pilih nama lain untuk folder";
-deleteConfirmationTitle = "Hapus file?";
+inputPlaceholder = "Masukkan Nama Folder Baru";
+folderNameAlreadyUsedTitle = "Nama Folder Sudah Digunakan";
+folderNameAlreadyUsedText = "Pilih Nama Folder yang Berbeda";
+deleteConfirmationTitle = "Hapus File?";
 
-// Tampilkan semua
-hideAllVideos = "Sembunyikan semua video yang disimpan";
-showAllVideos = "Tampilkan semua video yang disimpan";
-hideAllPhotos = "Sembunyikan semua foto yang disimpan";
-showAllPhotos = "Tampilkan semua foto yang disimpan";
-wouldLikeSetProtection = "Ingin menambahkan perlindungan ke galeri Anda?";
+// Tampilkan Semua
+hideAllVideos = "Sembunyikan Semua Video yang Tersimpan";
+showAllVideos = "Tampilkan Semua Video yang Tersimpan";
+hideAllPhotos = "Sembunyikan Semua Foto yang Tersimpan";
+showAllPhotos = "Tampilkan Semua Foto yang Tersimpan";
+wouldLikeSetProtection = "Ingin Menambahkan Perlindungan ke Galeri Anda?";
 
-// Backup
+// Cadangan (Backup)
 askToRestoreBackupTitle = "Pulihkan Cadangan";
-askToRestoreBackupMessage = "Apakah Anda ingin memulihkan cadangan terakhir Anda?";
-backupSuccessTitle = "Cadangan Berhasil";
-backupSuccessMessage = "Cadangan Anda telah berhasil dipulihkan";
-backupErrorTitle = "Kesalahan Membuat Cadangan";
-backupErrorMessage = "Tidak ada data untuk cadangan";
+askToRestoreBackupMessage = "Ingin memulihkan cadangan terakhir Anda?";
+backupSuccessTitle = "Cadangan Berhasil Dilakukan";
+backupSuccessMessage = "Cadangan Anda berhasil dipulihkan dengan sukses";
+backupErrorTitle = "Kesalahan Cadangan";
+backupErrorMessage = "Tidak ada data yang ditemukan untuk cadangan";
 incorrectPasswordTitle = "Kata Sandi Salah";
 incorrectPasswordMessage = "Kata sandi yang diberikan tidak valid. Coba lagi.";
-insertPasswordTitle = "Masukkan kata sandi Anda";
-insertPasswordMessage = "Masukkan kata sandi yang digunakan sebelumnya untuk membuka aplikasi";
+insertPasswordTitle = "Masukkan Kata Sandi Anda";
+insertPasswordMessage = "Masukkan kata sandi yang sebelumnya digunakan untuk membuka aplikasi";
 yes = "Ya";
 no = "Tidak";
 enableiCloudTitle = "Tindakan Diperlukan";
-enableiCloudSubtitle = "\n1. Klik pada iCloud\n\n2. Cari aplikasi Calc+ dalam daftar\n\n3. Aktifkan iCloud";
+enableiCloudSubtitle = "\n1. Klik iCloud\n\n2. Temukan aplikasi Calc+ dalam daftar\n\n3. Aktifkan iCloud";
 enableiCloudAction = "Pergi ke Pengaturan";
-premiumTooliCloudMessage = "Fitur cadangan hanya untuk pengguna premium. Deskripsi produk akan ditampilkan";
+premiumTooliCloudMessage = "Fitur cadangan eksklusif untuk pengguna premium. Detail produk akan ditampilkan";
 
 // Hapus dan Cadangan
 delete = "Hapus";
-backupNavigationTitle = "Item yang disimpan di cadangan";
-backupNavigationSubtitle = "Foto ditambahkan setiap kali membuka aplikasi Foto dan saat koneksi Wi-Fi. Cadangan Anda aman dan satu-satunya cara untuk melihat foto adalah dari dalam aplikasi";
-emptyGalleryTitle = "Tanpa foto";
+backupNavigationTitle = "Cadangan Saya";
+
+emptyVideosTitle = "Tidak ada Video";
+emptyVideosSubtitle = "Tambahkan video Anda dengan mengklik tombol +";
+premiumVideosSubtitle = "Dukungan untuk video adalah fitur premium";
+
+emptyGalleryTitle = "Tidak ada Foto";
 emptyGallerySubtitle = "Tambahkan foto Anda dengan mengklik tombol +";
 
-emptyNotesTitle = "Tanpa catatan";
+emptyNotesTitle = "Tidak ada Catatan";
 emptyNotesSubtitle = "Tambahkan catatan Anda dengan mengklik tombol +";
 
-emptyVideosTitle = "Tidak ada video";
-emptyVideosSubtitle = "Tambahkan video Anda dengan mengklik tombol +";
-premiumVideosSubtitle = "Dukungan video adalah fitur premium";
 seeMore = "Lihat lebih banyak";
-
 backupSettings = "Pengaturan Cadangan";
-backupStatus = "Cadangan Terenkripsi";
-seeMyBackup = "Lihat Cadangan Saya";
-restoreBackup = "Pulihkan Cadangan";
-updateBackup = "Perbarui Cadangan";
-faceIDReason = "Kami akan menggunakan otentikasi untuk membuka galeri Anda";
-myBackupItems = "Item Saya di Cadangan";
+backupStatus = "Cadangan Aman";
+seeMyBackup = "Lihat cadangan saya";
+restoreBackup = "Pulihkan cadangan";
+updateBackup = "Perbarui cadangan";
+faceIDReason = "Kami akan menggunakan autentikasi untuk membuka galeri Anda";
+myBackupItems = "Item Cadangan Saya";
 backupNavigationTitle = "Cadangan Saya";
-vaultMode = "Mode Vault";
+vaultMode = "Mode Brankas";
 recover = "Pulihkan";
 
-createPassword = "Buat kata sandi dan konfirmasi dengan enter";
+createPassword = "Buat kata sandi dan konfirmasi dengan Enter";
 insertCreatedPasswordAgain = "Masukkan kata sandi lagi";
-insertPassword = "Masukkan kata sandi Anda dan konfirmasi dengan enter";
-faceidreason = "Kami akan menggunakan otentikasi Face ID untuk membuka galeri";
+insertPassword = "Masukkan kata sandi Anda dan konfirmasi dengan Enter";
 backupEnabled = "Diaktifkan";
-backupDisabled = "Dinonaktifkan";
+backupDisabled = "Nonaktif";
+
+backupNavigationSubtitle = "Foto disinkronkan dengan foto yang ditambahkan setiap kali aplikasi dibuka dan ada koneksi Wi-Fi. Cadangan Anda aman dan satu-satunya cara untuk melihat foto adalah dalam aplikasi.";
+
+myBackupNavigationSubtitle = "Klik 'Pulihkan cadangan' pada menu sebelumnya untuk mengimpor foto ke galeri Anda";
+continueText = "Lanjutkan";
+
+welcomeOnboarding_title = "Selamat datang di Secret Gallery";
+welcomeOnboarding_subtitle = "Lindungi foto dan video Anda secara aman";
+welcomeOnboarding_startButtonTitle = "Mulai";
+welcomeOnboarding_skipButtonTitle = "Dengan mengklik 'Mulai', Anda menyetujui kebijakan privasi dan syarat penggunaan";
+
+createCodeOnboarding_title = "Buat Kode Akses";
+createCodeOnboarding_subtitle = "Buat kata sandi untuk mengakses foto yang disimpan Anda";
+createCodeOnboarding_startButtonTitle = "Lanjutkan";
+createCodeOnboarding_skipButtonTitle = "Sekarang tidak";
+
+addPhotosOnboarding_title = "Tambahkan Foto Anda";
+addPhotosOnboarding_subtitle = "Tambahkan foto yang ingin Anda simpan dengan aman";
+addPhotosOnboarding_startButtonTitle = "Lanjutkan";
+addPhotosOnboarding_skipButtonTitle = "Sekarang tidak";

@@ -1,7 +1,15 @@
+/*
+  Localizable.strings
+  Calculator Notes
+
+  2022年2月6日にJoao Victor Flores da Costaによって作成。
+  著作権 © 2022 MakeSchool。全著作権所有。
+*/
+
 // プレミアムバージョン
 premiumVersion = "プレミアムバージョン";
 noProtection = "保護なし";
-hideRecoverButton = "パスワード回復ボタンを隠す";
+hideRecoverButton = "Face IDボタンを非表示";
 chooseProtectionMode = "保護モードを選択";
 
 // 設定とその他
@@ -10,14 +18,14 @@ gallery = "ギャラリー";
 video = "ビデオ";
 notes = "ノート";
 
-instructionFirstStepCalc = "パスワードを作成して'='ボタンをクリック";
-instructionSecondStepCalc = "パスワード：*****。 パスワードを再入力して'='で確認";
+instructionFirstStepCalc = "パスワードを作成し、'='ボタンをクリックします。";
+instructionSecondStepCalc = "パスワード: *****。パスワードを再度入力し、'='で確認します。";
 
-instructionFirstStepBank = "パスワードを作成して'Enter'をクリック";
-instructionSecondStepBank = "パスワード：*****。 パスワードを再入力して'Enter'で確認";
+instructionFirstStepBank = "パスワードを作成し、'Enter'をクリックします。";
+instructionSecondStepBank = "パスワード: *****。パスワードを再度入力し、'Enter'で確認します。";
 
-bankModeHasBeenActivated = "セーフモードが有効になりました";
-calcModeHasBeenActivated = "電卓モードが有効になりました";
+bankModeHasBeenActivated = "バンクモードがアクティブ化されました。";
+calcModeHasBeenActivated = "電卓モードがアクティブ化されました。";
 
 welcomeInstructionBank = "パスワードを入力してください";
 
@@ -25,90 +33,110 @@ done = "完了";
 edit = "編集";
 
 premiumToolTitle = "プレミアム機能";
-premiumToolMessage = "ビデオサポートはプレミアムユーザーのみに提供されます。設定セクションでアップグレードを確認してください";
+premiumToolMessage = "ビデオサポートはプレミアムユーザーのみ対応しています。設定セクションでアップグレードオプションをご確認ください。";
 
 save = "保存";
 cancel = "キャンセル";
 ok = "確認";
-see = "見る";
+see = "表示";
 
 // エラーメッセージ
-errorTitle = "予期せぬエラー";
-errorMessage = "後でもう一度お試しください";
+errorTitle = "予期しないエラー";
+errorMessage = "後で再試行してください。";
 deleteFiles = "ファイルを削除しますか？";
 
-incorrectPassword = "パスワードが間違っています";
-tryAgain = "もう一度試してください";
+incorrectPassword = "パスワードが正しくありません";
+tryAgain = "再試行";
 
 // 購入
 products = "利用可能な製品";
 loading = "読み込み中...";
 close = "閉じる";
-restore = "購入を復元";
+restore = "復元";
 buy = "購入";
 
 // フォルダ
 folderTitle = "フォルダ名";
 createActionTitle = "作成";
 cancelTitle = "キャンセル";
-inputPlaceholder = "新しいフォルダの名前を入力してください";
-folderNameAlreadyUsedTitle = "フォルダ名は既に使用されています";
-folderNameAlreadyUsedText = "フォルダに別の名前を選択してください";
+inputPlaceholder = "新しいフォルダ名を入力してください";
+folderNameAlreadyUsedTitle = "既に使用されているフォルダ名";
+folderNameAlreadyUsedText = "異なるフォルダ名を選択してください";
 deleteConfirmationTitle = "ファイルを削除しますか？";
 
 // すべて表示
-hideAllVideos = "保存されたすべてのビデオを非表示";
-showAllVideos = "保存されたすべてのビデオを表示";
-hideAllPhotos = "保存されたすべての写真を非表示";
-showAllPhotos = "保存されたすべての写真を表示";
+hideAllVideos = "すべての保存済みビデオを非表示";
+showAllVideos = "すべての保存済みビデオを表示";
+hideAllPhotos = "すべての保存済み写真を非表示";
+showAllPhotos = "すべての保存済み写真を表示";
 wouldLikeSetProtection = "ギャラリーに保護を追加しますか？";
 
 // バックアップ
 askToRestoreBackupTitle = "バックアップを復元";
-askToRestoreBackupMessage = "最後のバックアップを復元しますか？";
-backupSuccessTitle = "バックアップ成功";
-backupSuccessMessage = "バックアップは正常に復元されました";
+askToRestoreBackupMessage = "最新のバックアップを復元しますか？";
+backupSuccessTitle = "バックアップが成功しました";
+backupSuccessMessage = "バックアップが正常に復元されました";
 backupErrorTitle = "バックアップエラー";
-backupErrorMessage = "バックアップ用のデータが見つかりません";
-incorrectPasswordTitle = "パスワードが間違っています";
+backupErrorMessage = "バックアップ用のデータが見つかりませんでした";
+incorrectPasswordTitle = "パスワードが正しくありません";
 incorrectPasswordMessage = "提供されたパスワードは無効です。もう一度お試しください。";
 insertPasswordTitle = "パスワードを入力してください";
 insertPasswordMessage = "アプリを開くために以前に使用したパスワードを入力してください";
 yes = "はい";
 no = "いいえ";
 enableiCloudTitle = "必要なアクション";
-enableiCloudSubtitle = "\n1. iCloudをクリック\n\n2. リストからCalc+アプリを見つける\n\n3. iCloudを有効にする";
-enableiCloudAction = "設定へ移動";
-premiumTooliCloudMessage = "バックアップ機能はプレミアムユーザー専用です。製品の詳細が表示されます";
+enableiCloudSubtitle = "\n1. iCloudをクリックします\n\n2. Calc+アプリをリストから見つけます\n\n3. iCloudを有効にします";
+enableiCloudAction = "設定に移動";
+premiumTooliCloudMessage = "バックアップ機能はプレミアムユーザー専用です。製品の詳細は表示されます";
 
 // 削除とバックアップ
 delete = "削除";
-backupNavigationTitle = "バックアップに保存されたアイテム";
-backupNavigationSubtitle = "アプリが開かれるたびにWi-Fiが接続されている場合、写真は同期されます。バックアップは安全であり、写真を表示する唯一の方法はアプリ内です";
-emptyGalleryTitle = "写真なし";
-emptyGallerySubtitle = "+ ボタンをクリックして写真を追加してください";
-
-emptyNotesTitle = "メモなし";
-emptyNotesSubtitle = "+ ボタンをクリックしてメモを追加してください";
+backupNavigationTitle = "マイバックアップ";
 
 emptyVideosTitle = "ビデオなし";
-emptyVideosSubtitle = "+ ボタンをクリックしてビデオを追加してください";
+emptyVideosSubtitle = "ボタン+をクリックしてビデオを追加してください";
 premiumVideosSubtitle = "ビデオサポートはプレミアム機能です";
-seeMore = "もっと見る";
 
+emptyGalleryTitle = "写真なし";
+emptyGallerySubtitle = "ボタン+をクリックして写真を追加してください";
+
+emptyNotesTitle = "メモなし";
+emptyNotesSubtitle = "ボタン+をクリックしてメモを追加してください";
+
+seeMore = "もっと見る";
 backupSettings = "バックアップ設定";
-backupStatus = "暗号化されたバックアップ";
-seeMyBackup = "バックアップを見る";
+backupStatus = "セキュアバックアップ";
+seeMyBackup = "マイバックアップを表示";
 restoreBackup = "バックアップを復元";
 updateBackup = "バックアップを更新";
-faceIDReason = "ギャラリーを開くために認証を使用します";
-myBackupItems = "バックアップ内のアイテム";
-backupNavigationTitle = "私のバックアップ";
-vaultMode = "金庫モード";
+faceIDReason = "ギャラリーを開くために認証を使用します。";
+myBackupItems = "マイバックアップアイテム";
+backupNavigationTitle = "マイバックアップ";
+vaultMode = "セーフモード";
 recover = "回復";
-createPassword = "パスワードを作成して、エンターキーで確認してください";
+
+createPassword = "パスワードを作成し、Enterキーで確認してください";
 insertCreatedPasswordAgain = "パスワードを再度入力してください";
-insertPassword = "パスワードを入力して、エンターキーで確認してください";
-faceidreason = "ギャラリーを開くためにFace ID認証を使用します";
+insertPassword = "パスワードを入力し、Enterキーで確認してください";
 backupEnabled = "有効";
 backupDisabled = "無効";
+
+backupNavigationSubtitle = "Wi-Fi接続が可能な場合、アプリを開くたびに追加した写真が同期されます。バックアップは安全で、写真を表示する唯一の方法はアプリ内です。";
+
+myBackupNavigationSubtitle = "前のメニューで 'バックアップを復元' をクリックして写真をギャラリーにインポートします。";
+continueText = "続行";
+
+welcomeOnboarding_title = "Secret Galleryへようこそ";
+welcomeOnboarding_subtitle = "写真とビデオを安全に保護します";
+welcomeOnboarding_startButtonTitle = "開始";
+welcomeOnboarding_skipButtonTitle = "「開始」をクリックすると、プライバシーポリシーと利用規約に同意したことになります";
+
+createCodeOnboarding_title = "アクセスコードを作成";
+createCodeOnboarding_subtitle = "保存したい写真にアクセスするためのパスワードを作成してください";
+createCodeOnboarding_startButtonTitle = "続行";
+createCodeOnboarding_skipButtonTitle = "今はスキップ";
+
+addPhotosOnboarding_title = "写真を追加";
+addPhotosOnboarding_subtitle = "安全に保存したい写真を追加してください";
+addPhotosOnboarding_startButtonTitle = "続行";
+addPhotosOnboarding_skipButtonTitle = "今はスキップ";
