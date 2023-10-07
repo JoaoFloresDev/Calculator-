@@ -29,7 +29,7 @@ protocol VideoCollectionCoordinatorProtocol {
 }
 
 class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
-    typealias Controller = UIViewController & UIImagePickerControllerDelegate & UINavigationControllerDelegate
+    typealias Controller = UIViewController & UIImagePickerControllerDelegate & UINavigationControllerDelegate & PurchaseViewControllerDelegate
     weak var viewController: Controller?
     
     init(viewController: Controller) {
@@ -39,6 +39,9 @@ class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
     func presentPurshes() {
         let storyboard = UIStoryboard(name: "Purchase",bundle: nil)
         let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+        if let changePasswordCalcMode = changePasswordCalcMode as? PurchaseViewController {
+            changePasswordCalcMode.delegate = viewController
+        }
         viewController?.present(changePasswordCalcMode, animated: true)
     }
     

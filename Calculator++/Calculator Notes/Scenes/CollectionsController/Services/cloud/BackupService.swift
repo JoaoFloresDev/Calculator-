@@ -42,7 +42,9 @@ struct BackupService {
             switch getVideoData(videoPath: name) {
             case .success(let videoData):
                 CloudKitVideoService.saveVideo(name: name, videoData: videoData) { success, error in
-                    VideoCloudInsertionManager.deleteName(name)
+                    if success {
+                        VideoCloudInsertionManager.deleteName(name)
+                    }
                 }
             case .failure(let error):
                 os_log("Failed to get video data: %@", log: .default, type: .error, error.localizedDescription)
@@ -109,14 +111,18 @@ struct BackupService {
         dispatchGroup.notify(queue: .main) {
             var mediaItems: [MediaItem] = []
 
+            print(imageItems?.count)
             if let imageItems = imageItems {
                 mediaItems.append(contentsOf: imageItems.map { .image(name: $0.0, data: $0.1) })
             }
+            print(mediaItems.count)
 
+            print(videoItems?.count)
             if let videoItems = videoItems {
                 mediaItems.append(contentsOf: videoItems.map { .video(name: $0.0, data: $0.1) })
             }
 
+            print(mediaItems.count)
             completion(!mediaItems.isEmpty, nil, mediaItems)
         }
     }

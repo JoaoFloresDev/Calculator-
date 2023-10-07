@@ -56,6 +56,10 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        setupData()
+//    }
+//    
     func setupPlaceholderView() {
         view.addSubview(placeholderView)
         
@@ -359,36 +363,33 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             print("Erro: collectionView não está inicializado.")
             return
         }
-        
+
+        let group = DispatchGroup()
+        var newPhotos: [Photo] = []
+
         for asset in assets {
-            addImage(asset: asset) { [weak self] photo in
-                guard let self = self else {
-                    print("Erro: self foi desalocado.")
-                    return
-                }
-                
+            group.enter()
+            addImage(asset: asset) { photo in
                 if let photo = photo {
-                    DispatchQueue.main.async {
-                        self.modelData.append(photo)
-                        
-                        let lastItemIndex = self.modelData.count - 1
-                        
-                        // Verificar se o índice é válido antes de inserir o item
-                        if lastItemIndex >= 0 && lastItemIndex < self.modelData.count {
-                            let indexPath = IndexPath(item: lastItemIndex, section: 1)
-                            
-                            // Atualizar somente a nova célula adicionada
-                            collectionView.performBatchUpdates({
-                                collectionView.insertItems(at: [indexPath])
-                            }, completion: nil)
-                        } else {
-                            print("Erro: Índice inválido.")
-                        }
-                    }
-                } else {
-                    print("Erro: Falha ao adicionar imagem.")
+                    newPhotos.append(photo)
                 }
+                group.leave()
             }
+        }
+
+        group.notify(queue: .main) {
+            self.modelData.append(contentsOf: newPhotos)
+            
+            var indexPaths: [IndexPath] = []
+            for i in 0..<newPhotos.count {
+                let index = self.modelData.count - newPhotos.count + i
+                let indexPath = IndexPath(item: index, section: 1)
+                indexPaths.append(indexPath)
+            }
+
+            collectionView.performBatchUpdates({
+                collectionView.insertItems(at: indexPaths)
+            }, completion: nil)
         }
     }
     

@@ -80,8 +80,8 @@ class CloudKitVideoService: ObservableObject {
             }
             
             if let userRecordID = userRecordID {
-                let predicate = NSPredicate(format: "uploadedBy == %@", userRecordID)
-                let query = CKQuery(recordType: videoRecordTypeIdentifier, predicate: predicate)
+                let predicate = NSPredicate(format: "uploadedBy == %@", CKRecord.Reference(recordID: userRecordID, action: .none))
+                let query = CKQuery(recordType: CloudKitVideoService.videoRecordTypeIdentifier, predicate: PredicateFormats.alwaysTrue)
                 
                 database.perform(query, inZoneWith: nil) { records, error in
                     if let error = error {
