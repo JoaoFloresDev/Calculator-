@@ -2,6 +2,7 @@ import UIKit
 import CoreData
 import GoogleMobileAds
 import WLEmptyState
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupNotifications()
         WLEmptyState.configure()
-        
+        FirebaseApp.configure()
         if shouldInitializeWindow() {
             initializeWindow()
         }
