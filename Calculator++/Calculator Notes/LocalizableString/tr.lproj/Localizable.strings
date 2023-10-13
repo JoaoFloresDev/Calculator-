@@ -138,3 +138,20 @@ addPhotosOnboarding_title = "Fotoğraflarınızı Ekleyin";
 addPhotosOnboarding_subtitle = "Güvenli bir şekilde saklamak istediğiniz fotoğrafları ekleyin";
 addPhotosOnboarding_startButtonTitle = "Devam Et";
 addPhotosOnboarding_skipButtonTitle = "Şimdi Değil";
+
+emailErrorTitle = "Geçersiz E-posta";
+emailErrorDescription = "Eklediğiniz e-postayı kontrol edin ve tekrar deneyin";
+insertEmailTitle = "Kurtarma için kullanılacak e-postayı girin:";
+insertEmailDescription = "E-posta adresinizi girin";
+insertEmailButtonText = "E-postayı Onayla";
+
+emailPopupTitle = "Şifre Kurtarma E-postası Gönderilsin mi?";
+emailmessage = "Şifre kurtarma e-postası göndereceğiz";
+emailCancelButtonTitle = "Hayır";
+emailOkButtonTitle = "Evet";
+emailNotRegisteredTitle = "Kurtarma için bir e-posta kaydetmediniz";
+emailNotRegisteredMessage = "Hesabınıza önceden kaydedilmiş bir e-posta bulunamadı";
+successEmailTitle = "E-posta Gönderme Başarılı";
+successEmailMessage = "Lütfen e-posta kutunuzu kontrol edin. Şifre kurtarma talimatlarını içeren bir e-posta 48 saat içinde alacaksınız.";
+errorEmailTitle = "E-posta Gönderme Hatası";
+errorEmailMessage = "E-posta gönderme konusunda sorun yaşadık. İnternet bağlantınızı kontrol edip tekrar deneyin.";

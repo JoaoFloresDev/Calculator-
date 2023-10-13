@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "Add Your Photos";
 addPhotosOnboarding_subtitle = "Add the photos you want to securely save";
 addPhotosOnboarding_startButtonTitle = "Continue";
 addPhotosOnboarding_skipButtonTitle = "Not now";
+
+emailErrorTitle = "Invalid Email";
+emailErrorDescription = "Check the email you entered and try again";
+insertEmailTitle = "Enter the email to be used for recovery:";
+insertEmailDescription = "Enter your email";
+insertEmailButtonText = "Confirm Email";
+
+emailPopupTitle = "Send password recovery email?";
+emailmessage = "We will send an email with the password recovery instructions to you";
+emailCancelButtonTitle = "No";
+emailOkButtonTitle = "Yes";
+emailNotRegisteredTitle = "You haven't registered an email for recovery";
+emailNotRegisteredMessage = "We couldn't find a pre-registered email for your account";
+successEmailTitle = "Email Sent Successfully";
+successEmailMessage = "Please check your email inbox. You will receive an email with password recovery instructions within 48 hours.";
+errorEmailTitle = "Error Sending Email";
+errorEmailMessage = "We encountered issues sending the email. Please check your internet connection and try again.";

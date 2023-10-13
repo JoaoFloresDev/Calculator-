@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "أضف صورك";
 addPhotosOnboarding_subtitle = "أضف الصور التي ترغب في حفظها بأمان";
 addPhotosOnboarding_startButtonTitle = "متابعة";
 addPhotosOnboarding_skipButtonTitle = "الآن ليس الوقت المناسب";
+
+emailErrorTitle = "بريد إلكتروني غير صالح";
+emailErrorDescription = "يرجى التحقق من عنوان البريد الإلكتروني الذي تم إدخاله وحاول مرة أخرى";
+insertEmailTitle = "أدخل عنوان البريد الإلكتروني الذي سيُستخدم لاستعادة الحساب:";
+insertEmailDescription = "الرجاء إدخال عنوان بريدك الإلكتروني";
+insertEmailButtonText = "تأكيد البريد الإلكتروني";
+
+emailPopupTitle = "إرسال بريد إلكتروني مع كلمة مرور استعادة؟";
+emailmessage = "سنقوم بإرسال بريد إلكتروني يحتوي على كلمة مرور استعادة إليك";
+emailCancelButtonTitle = "لا";
+emailOkButtonTitle = "نعم";
+emailNotRegisteredTitle = "لم تقم بتسجيل عنوان بريد إلكتروني للاستعادة";
+emailNotRegisteredMessage = "لم نعثر على عنوان بريد إلكتروني مسجل مسبقًا لهذا الحساب";
+successEmailTitle = "تم إرسال البريد الإلكتروني بنجاح";
+successEmailMessage = "الرجاء التحقق من صندوق البريد الوارد الخاص بك. ستتلقى بريدًا إلكترونيًا يحتوي على تعليمات استعادة كلمة المرور في غضون 48 ساعة";
+errorEmailTitle = "حدث خطأ أثناء إرسال البريد الإلكتروني";
+errorEmailMessage = "واجهنا مشكلة في إرسال البريد الإلكتروني. يُرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى";

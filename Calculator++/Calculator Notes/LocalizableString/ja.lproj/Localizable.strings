@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "写真を追加";
 addPhotosOnboarding_subtitle = "安全に保存したい写真を追加してください";
 addPhotosOnboarding_startButtonTitle = "続行";
 addPhotosOnboarding_skipButtonTitle = "今はスキップ";
+
+emailErrorTitle = "無効なメールアドレス";
+emailErrorDescription = "入力したメールアドレスを確認し、もう一度試してください";
+insertEmailTitle = "復旧に使用するメールアドレスを入力してください:";
+insertEmailDescription = "メールアドレスを入力してください";
+insertEmailButtonText = "メールアドレスを確認";
+
+emailPopupTitle = "パスワードの復旧用メールを送信しますか？";
+emailmessage = "パスワードの復旧用メールを送信します";
+emailCancelButtonTitle = "いいえ";
+emailOkButtonTitle = "はい";
+emailNotRegisteredTitle = "復旧用のメールアドレスが登録されていません";
+emailNotRegisteredMessage = "アカウントに事前に登録されたメールアドレスが見つかりませんでした";
+successEmailTitle = "メールの送信に成功しました";
+successEmailMessage = "メールボックスをご確認ください。パスワードの復旧手順を含むメールが48時間以内に届きます";
+errorEmailTitle = "メールの送信エラー";
+errorEmailMessage = "メールの送信に問題が発生しました。インターネット接続を確認し、もう一度試してください";

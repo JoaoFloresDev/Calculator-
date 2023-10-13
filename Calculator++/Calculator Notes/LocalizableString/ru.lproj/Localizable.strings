@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "Добавьте свои фотографии";
 addPhotosOnboarding_subtitle = "Добавьте фотографии, которые вы хотите сохранить в безопасности";
 addPhotosOnboarding_startButtonTitle = "Продолжить";
 addPhotosOnboarding_skipButtonTitle = "Сейчас нет";
+
+emailErrorTitle = "Неверный адрес электронной почты";
+emailErrorDescription = "Проверьте введенный адрес электронной почты и попробуйте снова";
+insertEmailTitle = "Введите адрес электронной почты для восстановления:";
+insertEmailDescription = "Введите адрес своей электронной почты";
+insertEmailButtonText = "Подтвердить адрес электронной почты";
+
+emailPopupTitle = "Отправить письмо с восстановлением пароля?";
+emailmessage = "Мы отправим письмо с инструкциями по восстановлению пароля";
+emailCancelButtonTitle = "Нет";
+emailOkButtonTitle = "Да";
+emailNotRegisteredTitle = "Вы не зарегистрировали адрес электронной почты для восстановления";
+emailNotRegisteredMessage = "Мы не нашли предварительно зарегистрированный адрес электронной почты для вашей учетной записи";
+successEmailTitle = "Письмо успешно отправлено";
+successEmailMessage = "Пожалуйста, проверьте свой почтовый ящик. Вы получите письмо с инструкциями по восстановлению пароля в течение 48 часов.";
+errorEmailTitle = "Ошибка отправки письма";
+errorEmailMessage = "У нас возникли проблемы с отправкой письма. Проверьте ваше интернет-соединение и повторите попытку.";

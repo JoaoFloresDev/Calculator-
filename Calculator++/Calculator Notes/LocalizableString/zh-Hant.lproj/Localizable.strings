@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "添加您的照片";
 addPhotosOnboarding_subtitle = "添加您想要安全保留的照片";
 addPhotosOnboarding_startButtonTitle = "繼續";
 addPhotosOnboarding_skipButtonTitle = "暫時不要";
+
+emailErrorTitle = "無效的電子郵件";
+emailErrorDescription = "請檢查輸入的電子郵件地址，然後重試";
+insertEmailTitle = "輸入用於恢復的電子郵件地址：";
+insertEmailDescription = "請輸入您的電子郵件地址";
+insertEmailButtonText = "確認電子郵件";
+
+emailPopupTitle = "發送帶有恢復密碼的電子郵件？";
+emailmessage = "我們將向您發送一封帶有恢復密碼的電子郵件";
+emailCancelButtonTitle = "否";
+emailOkButtonTitle = "是";
+emailNotRegisteredTitle = "您未註冊用於恢復的電子郵件";
+emailNotRegisteredMessage = "我們未找到此帳戶的先前註冊電子郵件地址";
+successEmailTitle = "電子郵件發送成功";
+successEmailMessage = "請檢查您的收件箱。您將在48小時內收到一封帶有恢復密碼說明的電子郵件";
+errorEmailTitle = "發送電子郵件時出錯";
+errorEmailMessage = "我們在發送電子郵件時遇到問題。請檢查您的互聯網連接，然後重試";

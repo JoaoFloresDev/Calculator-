@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "Tambahkan Foto Anda";
 addPhotosOnboarding_subtitle = "Tambahkan foto yang ingin Anda simpan dengan aman";
 addPhotosOnboarding_startButtonTitle = "Lanjutkan";
 addPhotosOnboarding_skipButtonTitle = "Sekarang tidak";
+
+emailErrorTitle = "Email Tidak Valid";
+emailErrorDescription = "Periksa alamat email yang Anda masukkan dan coba lagi";
+insertEmailTitle = "Masukkan alamat email yang akan digunakan untuk pemulihan:";
+insertEmailDescription = "Masukkan alamat email Anda";
+insertEmailButtonText = "Konfirmasi Email";
+
+emailPopupTitle = "Kirim email dengan kata sandi pemulihan?";
+emailmessage = "Kami akan mengirimkan email dengan kata sandi pemulihan kepada Anda";
+emailCancelButtonTitle = "Tidak";
+emailOkButtonTitle = "Ya";
+emailNotRegisteredTitle = "Anda belum mendaftarkan email untuk pemulihan";
+emailNotRegisteredMessage = "Kami tidak menemukan alamat email yang terdaftar sebelumnya untuk akun ini";
+successEmailTitle = "Email Terkirim";
+successEmailMessage = "Silakan cek kotak masuk Anda. Anda akan menerima email dengan petunjuk pemulihan kata sandi dalam 48 jam";
+errorEmailTitle = "Kesalahan Pengiriman Email";
+errorEmailMessage = "Kami mengalami masalah saat mengirim email. Periksa koneksi internet Anda dan coba lagi";

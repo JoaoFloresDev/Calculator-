@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "Adicione suas fotos";
 addPhotosOnboarding_subtitle = "Adicione as fotos que deseja guardar de forma segura";
 addPhotosOnboarding_startButtonTitle = "Continuar";
 addPhotosOnboarding_skipButtonTitle = "Agora não";
+
+emailErrorTitle = "E-mail inválido";
+emailErrorDescription = "Confira o e-mail adicionado e tente novamente";
+insertEmailTitle = "Digite o e-mail que será utilizado para recuperação:";
+insertEmailDescription = "Digite seu e-mail";
+insertEmailButtonText = "Confirmar E-mail";
+
+emailPopupTitle = "Enviar email com senha de recuperação?";
+emailmessage = "Enviaremos um email com a senha de recuperação para você";
+emailCancelButtonTitle = "Não";
+emailOkButtonTitle = "Sim";
+emailNotRegisteredTitle = "Você não cadastrou email para recuperação";
+emailNotRegisteredMessage = "Não encontramos email pré cadastrado para a conta";
+successEmailTitle = "Sucesso no envio do email";
+successEmailMessage = "Confira sua caixa do email, dentro de 48h você receberá um email com a senha de recuperação";
+errorEmailTitle = "Erro ao enviar email";
+errorEmailMessage = "Tivemos problemas para enviar o email, confira a conexão com a internet e tente novamente";

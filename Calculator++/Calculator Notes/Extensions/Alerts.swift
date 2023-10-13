@@ -160,14 +160,4 @@ struct Alerts {
         let alert = createAlert(title: Text.emailErrorTitle.localized(), message: Text.emailErrorDescription.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
-    
-    static func showWouldLikeSendEmail(controller: UIViewController, completion: @escaping (Bool) -> Void) {
-        let alert = createAlert(title: Text.wouldLikeSetProtection.localized(), message: nil, actions: [createAction(title: Text.no.localized(), handler: { _ in completion(false) }), createAction(title: Text.yes.localized(), handler: { _ in completion(true) })])
-        presentAlert(alert, on: controller)
-    }
-    
-    static func showEmailWillSend(controller: UIViewController) {
-        let alert = createAlert(title: Text.emailErrorTitle.localized(), message: Text.emailErrorDescription.localized(), actions: [createAction(title: Text.ok.localized())])
-        presentAlert(alert, on: controller)
-    }
 }

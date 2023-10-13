@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "Ajoutez vos photos";
 addPhotosOnboarding_subtitle = "Ajoutez les photos que vous souhaitez conserver en toute sécurité";
 addPhotosOnboarding_startButtonTitle = "Continuer";
 addPhotosOnboarding_skipButtonTitle = "Pas maintenant";
+
+emailErrorTitle = "Adresse e-mail invalide";
+emailErrorDescription = "Veuillez vérifier l'adresse e-mail saisie et réessayer";
+insertEmailTitle = "Entrez l'adresse e-mail qui sera utilisée pour la récupération :";
+insertEmailDescription = "Entrez votre adresse e-mail";
+insertEmailButtonText = "Confirmer l'adresse e-mail";
+
+emailPopupTitle = "Envoyer un e-mail avec le mot de passe de récupération ?";
+emailmessage = "Nous vous enverrons un e-mail avec le mot de passe de récupération";
+emailCancelButtonTitle = "Non";
+emailOkButtonTitle = "Oui";
+emailNotRegisteredTitle = "Vous n'avez pas enregistré d'adresse e-mail pour la récupération";
+emailNotRegisteredMessage = "Nous n'avons pas trouvé d'adresse e-mail précédemment enregistrée pour ce compte";
+successEmailTitle = "E-mail envoyé avec succès";
+successEmailMessage = "Veuillez vérifier votre boîte de réception. Vous recevrez un e-mail avec des instructions pour la récupération du mot de passe dans les 48 heures";
+errorEmailTitle = "Erreur lors de l'envoi de l'e-mail";
+errorEmailMessage = "Nous avons rencontré des problèmes lors de l'envoi de l'e-mail. Vérifiez votre connexion Internet et réessayez";

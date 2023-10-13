@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "अपनी फ़ोटो जोड़ें";
 addPhotosOnboarding_subtitle = "अपनी सुरक्षित तरीके से रखने की फ़ोटोज़ जोड़ें";
 addPhotosOnboarding_startButtonTitle = "जारी रखें";
 addPhotosOnboarding_skipButtonTitle = "अभी नहीं";
+
+emailErrorTitle = "अमान्य ईमेल";
+emailErrorDescription = "आपने दर्ज किए गए ईमेल पते की जाँच करें और पुनः प्रयास करें";
+insertEmailTitle = "पुनर्प्राप्ति के लिए उपयोग किए जाने वाले ईमेल का पता दर्ज करें:";
+insertEmailDescription = "अपना ईमेल पता दर्ज करें";
+insertEmailButtonText = "ईमेल की पुष्टि करें";
+
+emailPopupTitle = "पासवर्ड पुनर्प्राप्ति के साथ ईमेल भेजें?";
+emailmessage = "हम आपको पासवर्ड पुनर्प्राप्ति के साथ ईमेल भेजेंगे";
+emailCancelButtonTitle = "नहीं";
+emailOkButtonTitle = "हां";
+emailNotRegisteredTitle = "आपने पुनर्प्राप्ति के लिए ईमेल दर्ज नहीं किया है";
+emailNotRegisteredMessage = "हमने इस खाते के लिए पूर्व में दर्ज किए गए ईमेल पते का पता नहीं लगा सके";
+successEmailTitle = "ईमेल भेजा गया";
+successEmailMessage = "कृपया अपने इनबॉक्स की जाँच करें। आपको 48 घंटे के भीतर पासवर्ड पुनर्प्राप्ति के मार्गदर्शन के साथ ईमेल मिलेगा";
+errorEmailTitle = "ईमेल भेजने में त्रुटि";
+errorEmailMessage = "हमें ईमेल भेजने में समस्या आई। कृपया अपना इंटरनेट कनेक्शन जाँचें और पुनः प्रयास करें";

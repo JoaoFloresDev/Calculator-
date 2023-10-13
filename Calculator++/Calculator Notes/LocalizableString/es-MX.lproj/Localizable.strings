@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "Agrega tus fotos";
 addPhotosOnboarding_subtitle = "Agrega las fotos que deseas guardar de manera segura";
 addPhotosOnboarding_startButtonTitle = "Continuar";
 addPhotosOnboarding_skipButtonTitle = "Ahora no";
+
+emailErrorTitle = "Correo electrónico no válido";
+emailErrorDescription = "Verifica el correo electrónico que ingresaste e inténtalo nuevamente";
+insertEmailTitle = "Ingresa el correo electrónico que se utilizará para la recuperación:";
+insertEmailDescription = "Ingresa tu correo electrónico";
+insertEmailButtonText = "Confirmar Correo Electrónico";
+
+emailPopupTitle = "¿Enviar correo electrónico de recuperación de contraseña?";
+emailmessage = "Enviaremos un correo electrónico con las instrucciones para recuperar la contraseña";
+emailCancelButtonTitle = "No";
+emailOkButtonTitle = "Sí";
+emailNotRegisteredTitle = "No has registrado un correo electrónico para la recuperación";
+emailNotRegisteredMessage = "No encontramos un correo electrónico preregistrado para tu cuenta";
+successEmailTitle = "Correo electrónico enviado con éxito";
+successEmailMessage = "Por favor, revisa tu bandeja de entrada de correo electrónico. Recibirás un correo electrónico con instrucciones para recuperar la contraseña en un plazo de 48 horas.";
+errorEmailTitle = "Error al enviar el correo electrónico";
+errorEmailMessage = "Encontramos problemas al enviar el correo electrónico. Por favor, verifica tu conexión a Internet e inténtalo nuevamente.";

@@ -140,3 +140,20 @@ addPhotosOnboarding_title = "Fügen Sie Ihre Fotos hinzu";
 addPhotosOnboarding_subtitle = "Fügen Sie die Fotos sicher hinzu, die Sie aufbewahren möchten";
 addPhotosOnboarding_startButtonTitle = "Weiter";
 addPhotosOnboarding_skipButtonTitle = "Jetzt nicht";
+
+emailErrorTitle = "Ungültige E-Mail";
+emailErrorDescription = "Bitte überprüfen Sie die eingegebene E-Mail-Adresse und versuchen Sie es erneut";
+insertEmailTitle = "Geben Sie die E-Mail-Adresse für die Wiederherstellung ein:";
+insertEmailDescription = "Geben Sie Ihre E-Mail-Adresse ein";
+insertEmailButtonText = "E-Mail bestätigen";
+
+emailPopupTitle = "E-Mail mit Wiederherstellungspasswort senden?";
+emailmessage = "Wir werden Ihnen eine E-Mail mit dem Wiederherstellungspasswort senden";
+emailCancelButtonTitle = "Nein";
+emailOkButtonTitle = "Ja";
+emailNotRegisteredTitle = "Sie haben keine E-Mail für die Wiederherstellung hinterlegt";
+emailNotRegisteredMessage = "Wir haben keine zuvor registrierte E-Mail-Adresse für dieses Konto gefunden";
+successEmailTitle = "E-Mail erfolgreich gesendet";
+successEmailMessage = "Bitte überprüfen Sie Ihren Posteingang. Sie erhalten innerhalb von 48 Stunden eine E-Mail mit Anweisungen zur Wiederherstellung des Passworts";
+errorEmailTitle = "Fehler beim Senden der E-Mail";
+errorEmailMessage = "Wir hatten Probleme beim Senden der E-Mail. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut";

@@ -138,8 +138,8 @@ enum Text: String {
     case addPhotosOnboarding_skipButtonTitle // "Agora não"
     case myBackupNavigationSubtitle
     
-    case emailErrorTitle
-    case emailErrorDescription
+    case emailErrorTitle // E-mail inválido
+    case emailErrorDescription // Confira o e-mail adicionado e tente novamente
     case insertEmailTitle // "Digite o e-mail que será utilizado para recuperação:"
     case insertEmailDescription // "Digite seu e-mail"
     case insertEmailButtonText // "Confirmar E-mail"
