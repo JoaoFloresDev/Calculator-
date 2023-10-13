@@ -10,6 +10,7 @@ import Foundation
 import LocalAuthentication
 import UIKit
 import SnapKit
+import FirebaseFirestore
 
 enum VaultMode {
     case verify
@@ -81,8 +82,8 @@ class VaultViewController: UIViewController {
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
         recoverEmail.text = "Esqueceu sua senha?"
-        subtitleLabel.font = UIFont.boldSystemFont(ofSize: 12)
-        subtitleLabel.textColor = .white
+        recoverEmail.font = UIFont.boldSystemFont(ofSize: 24)
+        recoverEmail.textColor = .white
         
         // Agrupar título e subtítulo
         let titleStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
@@ -214,8 +215,15 @@ class VaultViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-4)
             make.left.equalToSuperview().offset(36)
         }
-        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(recoverEmail))
-        faceidImageView.addGestureRecognizer(tapGesture2)
+        recoverEmail.isUserInteractionEnabled = true
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(recoverEmailTapped))
+        recoverEmail.addGestureRecognizer(tapGesture2)
+    }
+    
+    @objc private func recoverEmailTapped() {
+        self.dismissable = true
+        self.secondDismissable = true
+        showAlert2()
     }
     
     @objc private func faceIDTapped() {
@@ -307,6 +315,74 @@ class VaultViewController: UIViewController {
         self.dismissable = true
         self.secondDismissable = true
         present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    func showAlert2() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .clear
+        
+        // Crie um UIAlertController
+        let alertController = UIAlertController(title: Text.emailPopupTitle.localized(), message: Text.emailmessage.localized(), preferredStyle: .alert)
+
+        // Adicione um botão de ação "Cancelar" com um completion
+        let cancelAction = UIAlertAction(title: Text.emailCancelButtonTitle.localized(), style: .cancel) { _ in
+            vc.dismiss(animated: false)
+        }
+
+        // Adicione um botão de ação "OK" com um completion
+        let okAction = UIAlertAction(title: Text.emailOkButtonTitle.localized(), style: .default) { _ in
+            let email = Defaults.getString(.recoverEmail)
+            guard !email.isEmpty else {
+                let alertController = UIAlertController(title: Text.emailNotRegisteredTitle.localized(), message: Text.emailNotRegisteredMessage.localized(), preferredStyle: .alert)
+
+                // Adicione um botão de ação "Cancelar" com um completion
+                let cancelAction = UIAlertAction(title: Text.ok.localized(), style: .cancel) { _ in
+                    vc.dismiss(animated: false)
+                }
+                
+                alertController.addAction(cancelAction)
+                vc.present(alertController, animated: true, completion: nil)
+                return
+            }
+            // Referência ao Firebase Realtime Database
+            let db = Firestore.firestore()
+            
+            // Crie uma referência à coleção "Textos"
+            let textosCollection = db.collection("Email")
+            
+            // Crie um documento com um ID automático
+            let novoDocumento = textosCollection.document()
+            
+            // Defina os dados do documento
+            novoDocumento.setData(["conteudo": email]) { error in
+                if error != nil {
+                    let alertController = UIAlertController(title: Text.errorEmailTitle.localized(), message: Text.errorEmailMessage.localized(), preferredStyle: .alert)
+
+                    // Adicione um botão de ação "Cancelar" com um completion
+                    let cancelAction = UIAlertAction(title: Text.ok.localized(), style: .cancel) { _ in
+                        vc.dismiss(animated: false)
+                    }
+                    alertController.addAction(cancelAction)
+                    vc.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: Text.successEmailTitle.localized(), message: Text.successEmailMessage.localized(), preferredStyle: .alert)
+
+                    // Adicione um botão de ação "Cancelar" com um completion
+                    let cancelAction = UIAlertAction(title: Text.ok.localized(), style: .cancel) { _ in
+                        vc.dismiss(animated: false)
+                    }
+                    alertController.addAction(cancelAction)
+                    vc.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+
+        // Adicione os botões ao alerta
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        
+        present(vc, animated: false)
+        vc.present(alertController, animated: true, completion: nil)
     }
 
     var dismissable = false

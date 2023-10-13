@@ -144,6 +144,17 @@ enum Text: String {
     case insertEmailDescription // "Digite seu e-mail"
     case insertEmailButtonText // "Confirmar E-mail"
     
+    case emailPopupTitle // "Enviar email com senha de recuperação?"
+    case emailmessage // "Enviaremos um email com a senha de recuperação para você"
+    case emailCancelButtonTitle // "Não"
+    case emailOkButtonTitle // "Sim"
+    case emailNotRegisteredTitle // "Você não cadastrou email para recuperação"
+    case emailNotRegisteredMessage // "Não encontramos email pré cadastrado para a conta"
+    case successEmailTitle // "Sucesso no envio do email"
+    case successEmailMessage // "Confira sua caixa do email, dentro de 48h você receberá um email com a senha de recuperação"
+    case errorEmailTitle // "Erro ao enviar email"
+    case errorEmailMessage // "Tivemos problemas para enviar o email, confira a conexão com a internet e tente novamente"
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",
