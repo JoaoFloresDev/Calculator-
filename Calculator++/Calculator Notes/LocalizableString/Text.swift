@@ -138,6 +138,12 @@ enum Text: String {
     case addPhotosOnboarding_skipButtonTitle // "Agora não"
     case myBackupNavigationSubtitle
     
+    case emailErrorTitle
+    case emailErrorDescription
+    case insertEmailTitle // "Digite o e-mail que será utilizado para recuperação:"
+    case insertEmailDescription // "Digite seu e-mail"
+    case insertEmailButtonText // "Confirmar E-mail"
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

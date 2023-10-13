@@ -154,4 +154,10 @@ struct Alerts {
                                 actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
+    
+    // Email
+    static func showEmailError(controller: UIViewController) {
+        let alert = createAlert(title: Text.emailErrorTitle.localized(), message: Text.emailErrorDescription.localized(), actions: [createAction(title: Text.ok.localized())])
+        presentAlert(alert, on: controller)
+    }
 }

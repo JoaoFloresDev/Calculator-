@@ -177,6 +177,10 @@ class VaultViewController: UIViewController {
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
         }
+        
+        subtitleLabel.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
 
         allNumberStack.snp.makeConstraints { make in
             make.top.equalTo(displayContainer.snp.bottom).offset(24)
@@ -208,12 +212,10 @@ class VaultViewController: UIViewController {
 
             if faceIDManager.isFaceIDAvailable() {
                 faceIDManager.requestFaceIDAuthentication { success, error in
-                    if success {
-                        DispatchQueue.main.async {
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                            self.present(homeViewController, animated: true)
-                        }
+                    DispatchQueue.main.async {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                        self.present(homeViewController, animated: true)
                     }
                 }
             }
