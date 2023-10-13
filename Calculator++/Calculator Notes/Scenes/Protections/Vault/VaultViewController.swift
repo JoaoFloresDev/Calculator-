@@ -24,6 +24,7 @@ class VaultViewController: UIViewController {
     private var displayShadow = ShadowRoundedView()
     private var titleLabel = UILabel()
     private var subtitleLabel = UILabel()
+    private var recoverEmail = UILabel()
     private var numberButtons: [UIView] = []
     private var faceidImageView = UILabel()
     private var vaultMode: VaultMode
@@ -79,6 +80,10 @@ class VaultViewController: UIViewController {
         subtitleLabel.textAlignment = .center
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
+        recoverEmail.text = "Esqueceu sua senha?"
+        subtitleLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        subtitleLabel.textColor = .white
+        
         // Agrupar título e subtítulo
         let titleStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         titleStack.axis = .vertical
@@ -186,7 +191,7 @@ class VaultViewController: UIViewController {
             make.top.equalTo(displayContainer.snp.bottom).offset(24)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-32)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-42)
         }
         
         self.view.addSubview(faceidImageView)
@@ -204,6 +209,13 @@ class VaultViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(faceIDTapped))
         faceidImageView.addGestureRecognizer(tapGesture)
 
+        self.view.addSubview(recoverEmail)
+        recoverEmail.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-4)
+            make.left.equalToSuperview().offset(36)
+        }
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(recoverEmail))
+        faceidImageView.addGestureRecognizer(tapGesture2)
     }
     
     @objc private func faceIDTapped() {
