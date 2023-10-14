@@ -131,6 +131,6 @@ struct UserDefaultService {
 }
 
 struct FeatureFlags {
-    static let iCloudEnabled  = true
+    static let iCloudEnabled  = false
 }
 

@@ -82,7 +82,7 @@ class VaultViewController: UIViewController {
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
         recoverEmail.text = "Esqueceu sua senha?"
-        recoverEmail.font = UIFont.boldSystemFont(ofSize: 24)
+        recoverEmail.font = UIFont.boldSystemFont(ofSize: 12)
         recoverEmail.textColor = .white
         
         // Agrupar título e subtítulo

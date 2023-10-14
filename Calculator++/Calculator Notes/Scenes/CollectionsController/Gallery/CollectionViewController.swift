@@ -55,33 +55,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         if !Defaults.getBool(.premiumPurchased) {
             setupAds()
         }
-        
-        // tentativa de recuperar firebase:
-        let db = Firestore.firestore()
-
-        // Substitua "users" pelo nome da sua coleção e "documentID" pelo ID do documento que deseja recuperar.
-        let documentRef = db.collection("feature_flags").document("186Boi3VkHfYDKaVMutp")
-
-        documentRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                // O documento foi encontrado e existe.
-                // Você pode acessar os dados do documento da seguinte forma:
-                if let data = document.data() {
-                    // Aqui você pode acessar os campos do documento.
-                    if let nome = data["email_enabled"] as? Bool {
-                        print("Nome: \(nome)")
-                    }
-                    // Continue a acessar outros campos conforme necessário.
-                }
-            } else {
-                // O documento não foi encontrado ou ocorreu um erro.
-                if let error = error {
-                    print("Erro ao recuperar documento: \(error)")
-                } else {
-                    print("Documento não encontrado.")
-                }
-            }
-        }
     }
     
     func setupPlaceholderView() {
