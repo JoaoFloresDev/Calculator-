@@ -57,6 +57,28 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if check30DaysPassed() {
+            let controller = PurchaseViewController()
+            let navigation = UINavigationController(rootViewController: controller)
+            present(navigation, animated: true)
+        }
+    }
+    
+    func saveTodayDate() {
+        let now = Date()
+        UserDefaults.standard.set(now, forKey: "LastSavedDate")
+    }
+
+    func check30DaysPassed() -> Bool {
+        if let lastSavedDate = UserDefaults.standard.object(forKey: "LastSavedDate") as? Date {
+            let dayDifference = Calendar.current.dateComponents([.day], from: lastSavedDate, to: Date()).day ?? 0
+            return dayDifference >= 14
+        }
+        saveTodayDate()
+        return false
+    }
+    
     func setupPlaceholderView() {
         view.addSubview(placeholderView)
         

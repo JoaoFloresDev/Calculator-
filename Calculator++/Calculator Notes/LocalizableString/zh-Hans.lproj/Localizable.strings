@@ -85,7 +85,7 @@ insertPasswordMessage = "请输入先前用于打开应用程序的密码";
 yes = "是";
 no = "否";
 enableiCloudTitle = "需要操作";
-enableiCloudSubtitle = "\n1. 点击 iCloud\n\n2. 在列表中找到 Calc+ 应用程序\n\n3. 启用 iCloud";
+enableiCloudSubtitle = "\n1. 点击 iCloud\n\n2. 在列表中找到 SG 应用程序\n\n3. 启用 iCloud";
 enableiCloudAction = "转到设置";
 premiumTooliCloudMessage = "备份功能仅适用于高级用户。产品详细信息将显示";
 
@@ -157,3 +157,4 @@ successEmailTitle = "电子邮件发送成功";
 successEmailMessage = "请检查您的收件箱。您将在48小时内收到一封带有恢复密码说明的电子邮件";
 errorEmailTitle = "发送电子邮件时出错";
 errorEmailMessage = "我们在发送电子邮件时遇到问题。请检查您的互联网连接，然后重试";
+remindMyPasscode = "忘记密码？";

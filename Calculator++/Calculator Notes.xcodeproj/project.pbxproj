@@ -512,8 +512,8 @@
 			isa = PBXGroup;
 			children = (
 				73862C812AAD1894005D9D25 /* OnboardingViewController.swift */,
-				738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */,
 				738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */,
+				738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */,
 				738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */,
 				73B860582AC1FB330023441A /* OnboardingView.swift */,
 			);

@@ -29,7 +29,7 @@ class InsertRecoverEmailViewController: UIViewController {
     // Declare o rótulo explicativo
     let emailExplanationLabel: UILabel = {
         let label = UILabel()
-        label.text = Text.createCodeOnboarding_skipButtonTitle.localized()
+        label.text = Text.insertEmailTitle.localized()
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)

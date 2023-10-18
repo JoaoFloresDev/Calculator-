@@ -85,7 +85,7 @@ insertPasswordMessage = "Uygulamayı açmak için daha önce kullanılan şifrey
 yes = "Evet";
 no = "Hayır";
 enableiCloudTitle = "Gerekli Eylem";
-enableiCloudSubtitle = "\n1. iCloud'a tıklayın\n\n2. Calc+ uygulamasını listede bulun\n\n3. iCloud'ü etkinleştirin";
+enableiCloudSubtitle = "\n1. iCloud'a tıklayın\n\n2. SG uygulamasını listede bulun\n\n3. iCloud'ü etkinleştirin";
 enableiCloudAction = "Ayarlar'a Git";
 premiumTooliCloudMessage = "Yedekleme özelliği yalnızca Premium kullanıcılarına özeldir. Ürün ayrıntıları sunulacaktır";
 
@@ -155,3 +155,4 @@ successEmailTitle = "E-posta Gönderme Başarılı";
 successEmailMessage = "Lütfen e-posta kutunuzu kontrol edin. Şifre kurtarma talimatlarını içeren bir e-posta 48 saat içinde alacaksınız.";
 errorEmailTitle = "E-posta Gönderme Hatası";
 errorEmailMessage = "E-posta gönderme konusunda sorun yaşadık. İnternet bağlantınızı kontrol edip tekrar deneyin.";
+remindMyPasscode = "Şifrenizi mi unuttunuz?";

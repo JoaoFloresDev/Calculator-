@@ -85,7 +85,7 @@ insertPasswordMessage = "Entrez le mot de passe précédemment utilisé pour ouv
 yes = "Oui";
 no = "Non";
 enableiCloudTitle = "Action requise";
-enableiCloudSubtitle = "\n1. Cliquez sur iCloud\n\n2. Recherchez l'application Calc+ dans la liste\n\n3. Activez iCloud";
+enableiCloudSubtitle = "\n1. Cliquez sur iCloud\n\n2. Recherchez l'application SG dans la liste\n\n3. Activez iCloud";
 enableiCloudAction = "Aller aux paramètres";
 premiumTooliCloudMessage = "La fonction de sauvegarde est réservée aux utilisateurs premium. Les détails du produit sont affichés dans la section Produits";
 
@@ -157,3 +157,4 @@ successEmailTitle = "E-mail envoyé avec succès";
 successEmailMessage = "Veuillez vérifier votre boîte de réception. Vous recevrez un e-mail avec des instructions pour la récupération du mot de passe dans les 48 heures";
 errorEmailTitle = "Erreur lors de l'envoi de l'e-mail";
 errorEmailMessage = "Nous avons rencontré des problèmes lors de l'envoi de l'e-mail. Vérifiez votre connexion Internet et réessayez";
+remindMyPasscode = "Mot de passe oublié ?";

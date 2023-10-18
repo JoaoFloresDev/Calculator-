@@ -25,7 +25,6 @@ class VaultViewController: UIViewController {
     private var displayShadow = ShadowRoundedView()
     private var titleLabel = UILabel()
     private var subtitleLabel = UILabel()
-    private var recoverEmail = UILabel()
     private var numberButtons: [UIView] = []
     private var faceidImageView = UILabel()
     private var vaultMode: VaultMode
@@ -80,12 +79,7 @@ class VaultViewController: UIViewController {
         subtitleLabel.textColor = .white
         subtitleLabel.textAlignment = .center
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-
-        recoverEmail.text = "Esqueceu sua senha?"
-        recoverEmail.font = UIFont.boldSystemFont(ofSize: 12)
-        recoverEmail.textColor = .white
         
-        // Agrupar título e subtítulo
         let titleStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         titleStack.axis = .vertical
         titleStack.spacing = 8
@@ -93,17 +87,14 @@ class VaultViewController: UIViewController {
         
         self.view.addSubview(displayContainer)
 
-        // Adicionar a displayLabel à displayContainer
         displayContainer.addSubview(displayShadow)
         displayShadow.addSubview(displayLabel)
         
-        // Configurar displayLabel
         displayLabel.textAlignment = .left
         displayLabel.font = UIFont.systemFont(ofSize: 32)
         displayLabel.text = ""
         displayLabel.textColor = .white
         
-        // Constraints para displayContainer
         displayContainer.snp.makeConstraints { make in
             make.top.equalTo(titleStack.snp.bottom).offset(12)
             make.left.equalToSuperview().offset(32)
@@ -116,30 +107,25 @@ class VaultViewController: UIViewController {
             make.height.equalTo(110)
         }
         
-        // Constraints para displayLabel
         displayLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
         }
 
-        // Botão Clear
         let clearButton = createButton(title: Text.AC.localized())
         let clearRoundedView = RoundedShadowView()
         clearRoundedView.addSubview(clearButton)
         setupButtonConstraints(button: clearButton, in: clearRoundedView)
         
-        // Botão 9
         let nineButton = createButton(title: "0")
         let nineRoundedView = RoundedShadowView()
         nineRoundedView.addSubview(nineButton)
         setupButtonConstraints(button: nineButton, in: nineRoundedView)
         
-        // Botão Enter
         let enterButton = createButton(title: Text.Enter.localized())
         let enterRoundedView = RoundedShadowView()
         enterRoundedView.addSubview(enterButton)
         setupButtonConstraints(button: enterButton, in: enterRoundedView)
         
-        // Nova StackView com botões Clear, 9, e Enter
         let additionalStack = UIStackView(arrangedSubviews: [clearRoundedView, nineRoundedView, enterRoundedView])
         additionalStack.axis = .horizontal
         additionalStack.distribution = .fillEqually
@@ -149,7 +135,7 @@ class VaultViewController: UIViewController {
             let button = createButton(title: "\(i)")
             let roundedView = RoundedShadowView()
             roundedView.addSubview(button)
-            roundedView.clipsToBounds = true // Isso vai cortar o botão para ajustar à view circular
+            roundedView.clipsToBounds = true
             
             roundedView.snp.makeConstraints { make in
                 make.width.equalTo(roundedView.snp.height)
@@ -192,7 +178,7 @@ class VaultViewController: UIViewController {
             make.top.equalTo(displayContainer.snp.bottom).offset(24)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-42)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-32)
         }
         
         self.view.addSubview(faceidImageView)
@@ -203,27 +189,15 @@ class VaultViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
         }
         
-        // Tornar faceidImageView "tapável"
         faceidImageView.isUserInteractionEnabled = true
 
-        // Criar e adicionar UITapGestureRecognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(faceIDTapped))
         faceidImageView.addGestureRecognizer(tapGesture)
-
-        self.view.addSubview(recoverEmail)
-        recoverEmail.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-4)
-            make.left.equalToSuperview().offset(36)
-        }
-        recoverEmail.isUserInteractionEnabled = true
-        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(recoverEmailTapped))
-        recoverEmail.addGestureRecognizer(tapGesture2)
     }
     
     @objc private func recoverEmailTapped() {
         self.dismissable = true
         self.secondDismissable = true
-        showAlert2()
     }
     
     @objc private func faceIDTapped() {
@@ -315,74 +289,6 @@ class VaultViewController: UIViewController {
         self.dismissable = true
         self.secondDismissable = true
         present(refreshAlert, animated: true, completion: nil)
-    }
-    
-    func showAlert2() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .clear
-        
-        // Crie um UIAlertController
-        let alertController = UIAlertController(title: Text.emailPopupTitle.localized(), message: Text.emailmessage.localized(), preferredStyle: .alert)
-
-        // Adicione um botão de ação "Cancelar" com um completion
-        let cancelAction = UIAlertAction(title: Text.emailCancelButtonTitle.localized(), style: .cancel) { _ in
-            vc.dismiss(animated: false)
-        }
-
-        // Adicione um botão de ação "OK" com um completion
-        let okAction = UIAlertAction(title: Text.emailOkButtonTitle.localized(), style: .default) { _ in
-            let email = Defaults.getString(.recoverEmail)
-            guard !email.isEmpty else {
-                let alertController = UIAlertController(title: Text.emailNotRegisteredTitle.localized(), message: Text.emailNotRegisteredMessage.localized(), preferredStyle: .alert)
-
-                // Adicione um botão de ação "Cancelar" com um completion
-                let cancelAction = UIAlertAction(title: Text.ok.localized(), style: .cancel) { _ in
-                    vc.dismiss(animated: false)
-                }
-                
-                alertController.addAction(cancelAction)
-                vc.present(alertController, animated: true, completion: nil)
-                return
-            }
-            // Referência ao Firebase Realtime Database
-            let db = Firestore.firestore()
-            
-            // Crie uma referência à coleção "Textos"
-            let textosCollection = db.collection("Email")
-            
-            // Crie um documento com um ID automático
-            let novoDocumento = textosCollection.document()
-            
-            // Defina os dados do documento
-            novoDocumento.setData(["conteudo": email]) { error in
-                if error != nil {
-                    let alertController = UIAlertController(title: Text.errorEmailTitle.localized(), message: Text.errorEmailMessage.localized(), preferredStyle: .alert)
-
-                    // Adicione um botão de ação "Cancelar" com um completion
-                    let cancelAction = UIAlertAction(title: Text.ok.localized(), style: .cancel) { _ in
-                        vc.dismiss(animated: false)
-                    }
-                    alertController.addAction(cancelAction)
-                    vc.present(alertController, animated: true, completion: nil)
-                } else {
-                    let alertController = UIAlertController(title: Text.successEmailTitle.localized(), message: Text.successEmailMessage.localized(), preferredStyle: .alert)
-
-                    // Adicione um botão de ação "Cancelar" com um completion
-                    let cancelAction = UIAlertAction(title: Text.ok.localized(), style: .cancel) { _ in
-                        vc.dismiss(animated: false)
-                    }
-                    alertController.addAction(cancelAction)
-                    vc.present(alertController, animated: true, completion: nil)
-                }
-            }
-        }
-
-        // Adicione os botões ao alerta
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        
-        present(vc, animated: false)
-        vc.present(alertController, animated: true, completion: nil)
     }
 
     var dismissable = false

@@ -85,7 +85,7 @@ insertPasswordMessage = "アプリを開くために以前に使用したパス�
 yes = "はい";
 no = "いいえ";
 enableiCloudTitle = "必要なアクション";
-enableiCloudSubtitle = "\n1. iCloudをクリックします\n\n2. Calc+アプリをリストから見つけます\n\n3. iCloudを有効にします";
+enableiCloudSubtitle = "\n1. iCloudをクリックします\n\n2. SG アプリをリストから見つけます\n\n3. iCloudを有効にします";
 enableiCloudAction = "設定に移動";
 premiumTooliCloudMessage = "バックアップ機能はプレミアムユーザー専用です。製品の詳細は表示されます";
 
@@ -157,3 +157,4 @@ successEmailTitle = "メールの送信に成功しました";
 successEmailMessage = "メールボックスをご確認ください。パスワードの復旧手順を含むメールが48時間以内に届きます";
 errorEmailTitle = "メールの送信エラー";
 errorEmailMessage = "メールの送信に問題が発生しました。インターネット接続を確認し、もう一度試してください";
+remindMyPasscode = "パスワードを忘れましたか？";

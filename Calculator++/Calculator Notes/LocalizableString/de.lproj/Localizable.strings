@@ -85,7 +85,7 @@ insertPasswordMessage = "Geben Sie das zuvor verwendete Passwort ein, um die App
 yes = "Ja";
 no = "Nein";
 enableiCloudTitle = "Erforderliche Aktion";
-enableiCloudSubtitle = "\n1. Klicken Sie auf iCloud\n\n2. Suchen Sie die App Calc+ in der Liste\n\n3. Aktivieren Sie iCloud";
+enableiCloudSubtitle = "\n1. Klicken Sie auf iCloud\n\n2. Suchen Sie die App SG in der Liste\n\n3. Aktivieren Sie iCloud";
 enableiCloudAction = "Zu den Einstellungen gehen";
 premiumTooliCloudMessage = "Die Backup-Funktion ist exklusiv für Premium-Benutzer. Produktdetails werden im Abschnitt Produkte angezeigt";
 
@@ -157,3 +157,4 @@ successEmailTitle = "E-Mail erfolgreich gesendet";
 successEmailMessage = "Bitte überprüfen Sie Ihren Posteingang. Sie erhalten innerhalb von 48 Stunden eine E-Mail mit Anweisungen zur Wiederherstellung des Passworts";
 errorEmailTitle = "Fehler beim Senden der E-Mail";
 errorEmailMessage = "Wir hatten Probleme beim Senden der E-Mail. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut";
+remindMyPasscode = "Passwort vergessen?";

@@ -85,7 +85,7 @@ insertPasswordMessage = "Masukkan kata sandi yang sebelumnya digunakan untuk mem
 yes = "Ya";
 no = "Tidak";
 enableiCloudTitle = "Tindakan Diperlukan";
-enableiCloudSubtitle = "\n1. Klik iCloud\n\n2. Temukan aplikasi Calc+ dalam daftar\n\n3. Aktifkan iCloud";
+enableiCloudSubtitle = "\n1. Klik iCloud\n\n2. Temukan aplikasi SG dalam daftar\n\n3. Aktifkan iCloud";
 enableiCloudAction = "Pergi ke Pengaturan";
 premiumTooliCloudMessage = "Fitur cadangan eksklusif untuk pengguna premium. Detail produk akan ditampilkan";
 
@@ -157,3 +157,4 @@ successEmailTitle = "Email Terkirim";
 successEmailMessage = "Silakan cek kotak masuk Anda. Anda akan menerima email dengan petunjuk pemulihan kata sandi dalam 48 jam";
 errorEmailTitle = "Kesalahan Pengiriman Email";
 errorEmailMessage = "Kami mengalami masalah saat mengirim email. Periksa koneksi internet Anda dan coba lagi";
+remindMyPasscode = "Lupa kata sandi?";

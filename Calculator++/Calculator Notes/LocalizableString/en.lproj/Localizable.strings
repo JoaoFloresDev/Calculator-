@@ -25,7 +25,6 @@ instructionFirstStepBank = "Create a password and click 'Enter'";
 instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'Enter'";
 
 bankModeHasBeenActivated = "Vault Mode Activated";
-calcModeHasBeenActivated = "Calculator Mode Activated";
 
 welcomeInstructionBank = "Enter your password";
 
@@ -85,7 +84,7 @@ insertPasswordMessage = "Enter the previously used password to open the app";
 yes = "Yes";
 no = "No";
 enableiCloudTitle = "Action Required";
-enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Locate the Calc+ app in the list\n\n3. Enable iCloud";
+enableiCloudSubtitle = "\n1. Click on iCloud\n\n2. Locate the SG app in the list\n\n3. Enable iCloud";
 enableiCloudAction = "Go to Settings";
 premiumTooliCloudMessage = "The backup feature is exclusive to Premium users. Product details will be presented";
 
@@ -157,3 +156,4 @@ successEmailTitle = "Email Sent Successfully";
 successEmailMessage = "Please check your email inbox. You will receive an email with password recovery instructions within 48 hours.";
 errorEmailTitle = "Error Sending Email";
 errorEmailMessage = "We encountered issues sending the email. Please check your internet connection and try again.";
+remindMyPasscode = "Forgot your password?";

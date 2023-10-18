@@ -108,6 +108,6 @@ extension OnboardingCreateCodeViewController: OnboardingViewDelegate {
     }
     
     func presentNextStep() {
-        self.navigationController?.pushViewController(InsertRecoverEmailViewController(), animated: true)
+        self.navigationController?.pushViewController(OnboardingAddPhotosViewController(), animated: true)
     }
 }

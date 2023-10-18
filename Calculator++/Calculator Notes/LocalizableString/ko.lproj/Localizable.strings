@@ -85,7 +85,7 @@ insertPasswordMessage = "앱을 열 때 사용한 이전 비밀번호를 입력�
 yes = "예";
 no = "아니요";
 enableiCloudTitle = "필요한 작업";
-enableiCloudSubtitle = "\n1. iCloud를 클릭하세요\n\n2. Calc+ 앱을 목록에서 찾으세요\n\n3. iCloud를 활성화하세요";
+enableiCloudSubtitle = "\n1. iCloud를 클릭하세요\n\n2. SG 앱을 목록에서 찾으세요\n\n3. iCloud를 활성화하세요";
 enableiCloudAction = "설정으로 이동";
 premiumTooliCloudMessage = "백업 기능은 프리미엄 사용자만 이용 가능합니다. 제품 상세 정보는 제공됩니다.";
 
@@ -157,3 +157,4 @@ successEmailTitle = "이메일 전송 성공";
 successEmailMessage = "이메일함을 확인해주세요. 비밀번호 복구 지침을 포함한 이메일을 48시간 이내로 받게 될 것입니다";
 errorEmailTitle = "이메일 전송 오류";
 errorEmailMessage = "이메일을 전송하는 중 문제가 발생했습니다. 인터넷 연결을 확인하고 다시 시도하세요";
+remindMyPasscode = "비밀번호를 잊으셨나요?";
