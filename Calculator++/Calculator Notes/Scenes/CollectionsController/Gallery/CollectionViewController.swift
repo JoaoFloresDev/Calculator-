@@ -59,9 +59,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     override func viewDidAppear(_ animated: Bool) {
         if check30DaysPassed() {
-            let controller = PurchaseViewController()
-            let navigation = UINavigationController(rootViewController: controller)
-            present(navigation, animated: true)
+            let storyboard = UIStoryboard(name: "Purchase",bundle: nil)
+            let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+            self.present(changePasswordCalcMode, animated: true)
         }
     }
     
