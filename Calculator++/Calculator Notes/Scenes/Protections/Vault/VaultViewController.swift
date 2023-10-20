@@ -29,6 +29,7 @@ class VaultViewController: UIViewController {
     private var faceidImageView = UILabel()
     private var vaultMode: VaultMode
     private var inputSequenceConfirmation: String = ""
+    private var containerView = UIView()
     
     private var inputSequence: String = "" {
         didSet {
@@ -83,10 +84,10 @@ class VaultViewController: UIViewController {
         let titleStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         titleStack.axis = .vertical
         titleStack.spacing = 8
-        self.view.addSubview(titleStack)
         
-        self.view.addSubview(displayContainer)
-
+        self.view.addSubview(containerView)
+        containerView.addSubview(titleStack)
+        containerView.addSubview(displayContainer)
         displayContainer.addSubview(displayShadow)
         displayShadow.addSubview(displayLabel)
         
@@ -94,6 +95,13 @@ class VaultViewController: UIViewController {
         displayLabel.font = UIFont.systemFont(ofSize: 32)
         displayLabel.text = ""
         displayLabel.textColor = .white
+        
+        containerView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.equalTo(350)
+            make.height.equalTo(650)
+        }
         
         displayContainer.snp.makeConstraints { make in
             make.top.equalTo(titleStack.snp.bottom).offset(12)
@@ -121,7 +129,7 @@ class VaultViewController: UIViewController {
         nineRoundedView.addSubview(nineButton)
         setupButtonConstraints(button: nineButton, in: nineRoundedView)
         
-        let enterButton = createButton(title: Text.Enter.localized())
+        let enterButton = createButton(title: "OK")
         let enterRoundedView = RoundedShadowView()
         enterRoundedView.addSubview(enterButton)
         setupButtonConstraints(button: enterButton, in: enterRoundedView)
@@ -161,11 +169,11 @@ class VaultViewController: UIViewController {
         allNumberStack.distribution = .fillEqually
         allNumberStack.spacing = 24
 
-        self.view.addSubview(allNumberStack)
+        containerView.addSubview(allNumberStack)
 
         // Constraints
         titleStack.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
+            make.top.equalToSuperview().offset(24)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
         }
@@ -178,7 +186,7 @@ class VaultViewController: UIViewController {
             make.top.equalTo(displayContainer.snp.bottom).offset(24)
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-32)
+            make.bottom.equalToSuperview().offset(-32)
         }
         
         self.view.addSubview(faceidImageView)
@@ -213,6 +221,8 @@ class VaultViewController: UIViewController {
                     }
                 }
             }
+        } else {
+            super.dismiss(animated: true)
         }
     }
 
@@ -229,7 +239,7 @@ class VaultViewController: UIViewController {
 
         if number == Text.AC.localized() {
             inputSequence.removeAll()
-        } else if number == Text.Enter.localized() {
+        } else if number == "OK" {
             traitOpenGallery()
         } else {
             if inputSequence.count > 6 {
@@ -248,7 +258,6 @@ class VaultViewController: UIViewController {
             vaultMode = .confirmation
         } else if vaultMode ==  .confirmation {
             if inputSequence == inputSequenceConfirmation {
-                showAlert()
                 Defaults.setString(.password, inputSequence)
                 UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.vault)
                 Defaults.setBool(.needSavePasswordInCloud, true)
@@ -280,15 +289,6 @@ class VaultViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    func showAlert() {
-        let refreshAlert = UIAlertController(title: Text.done.localized(), message: Text.calcModeHasBeenActivated.localized(), preferredStyle: UIAlertControllerStyle.alert)
-
-        refreshAlert.addAction(UIAlertAction(title: Text.ok.localized(), style: .default))
-        self.dismissable = true
-        self.secondDismissable = true
-        present(refreshAlert, animated: true, completion: nil)
     }
 
     var dismissable = false

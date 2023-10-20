@@ -115,9 +115,9 @@ backupNavigationTitle = "Моя резервная копия";
 vaultMode = "Режим хранилища";
 recover = "Восстановить";
 
-createPassword = "Создайте пароль и подтвердите клавишей Enter";
+createPassword = "Создайте пароль и подтвердите клавишей 'OK'";
 insertCreatedPasswordAgain = "Введите пароль еще раз";
-insertPassword = "Введите свой пароль и подтвердите клавишей Enter";
+insertPassword = "Введите свой пароль и подтвердите клавишей 'OK'";
 backupEnabled = "Включено";
 backupDisabled = "Отключено";
 

@@ -21,8 +21,8 @@ notes = "Notes";
 instructionFirstStepCalc = "Create a password and click the '=' button";
 instructionSecondStepCalc = "Password: *****. Repeat the password and confirm with '='";
 
-instructionFirstStepBank = "Create a password and click 'Enter'";
-instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'Enter'";
+instructionFirstStepBank = "Create a password and click 'OK'";
+instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'OK'";
 
 bankModeHasBeenActivated = "Vault Mode Activated";
 
@@ -112,11 +112,11 @@ faceIDReason = "We'll use authentication to securely open your gallery";
 myBackupItems = "My Backup Items";
 backupNavigationTitle = "My Backup";
 vaultMode = "Vault Mode";
-recover = "Recover";
+recover = "Enter";
 
-createPassword = "Create a password and confirm with Enter";
+createPassword = "Create a password and confirm with OK";
 insertCreatedPasswordAgain = "Enter the password again";
-insertPassword = "Enter your password and confirm with Enter";
+insertPassword = "Enter your password and confirm with OK";
 backupEnabled = "Enabled";
 backupDisabled = "Disabled";
 

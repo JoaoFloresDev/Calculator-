@@ -115,9 +115,9 @@ backupNavigationTitle = "Benim Yedeklemem";
 vaultMode = "Kasa Modu";
 recover = "Kurtar";
 
-createPassword = "Bir şifre oluşturun ve 'enter' tuşuna basarak onaylayın";
+createPassword = "Bir şifre oluşturun ve 'OK' tuşuna basarak onaylayın";
 insertCreatedPasswordAgain = "Şifreyi tekrar girin";
-insertPassword = "Şifrenizi girin ve 'enter' tuşuna basarak onaylayın";
+insertPassword = "Şifrenizi girin ve 'OK' tuşuna basarak onaylayın";
 backupEnabled = "Etkin";
 backupDisabled = "Devre Dışı";
 backupNavigationSubtitle = "Fotoğraflar, uygulama açıldığında ve Wi-Fi bağlantısı olduğunda eklenen fotoğraflarla senkronize edilir. Yedeğiniz güvende ve fotoğrafları görüntülemenin tek yolu uygulama içindedir";

@@ -21,8 +21,8 @@ notes = "Notas";
 instructionFirstStepCalc = "Crea una contraseña y pulsa el botón '='";
 instructionSecondStepCalc = "Contraseña: *****. Repite la contraseña y confirma con '='";
 
-instructionFirstStepBank = "Crea una contraseña y pulsa 'enter'";
-instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
+instructionFirstStepBank = "Crea una contraseña y pulsa 'OK'";
+instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'OK'";
 
 bankModeHasBeenActivated = "Modo de caja fuerte activado";
 calcModeHasBeenActivated = "Modo calculadora activado";
@@ -115,9 +115,9 @@ backupNavigationTitle = "Mi Respaldo";
 vaultMode = "Modo Caja Fuerte";
 recover = "Recuperar";
 
-createPassword = "Crea una contraseña y confirma con enter";
+createPassword = "Crea una contraseña y confirma con OK";
 insertCreatedPasswordAgain = "Ingresa la contraseña nuevamente";
-insertPassword = "Ingresa tu contraseña y confirma con enter";
+insertPassword = "Ingresa tu contraseña y confirma con OK";
 backupEnabled = "Habilitado";
 backupDisabled = "Deshabilitado";
 backupNavigationSubtitle = "Las fotos se sincronizan con las fotos añadidas cada vez que se abre la aplicación y hay conexión Wi-Fi. Tu respaldo es seguro y la única forma de ver las fotos es dentro de la aplicación";

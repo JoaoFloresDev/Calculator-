@@ -115,9 +115,9 @@ backupNavigationTitle = "Cadangan Saya";
 vaultMode = "Mode Brankas";
 recover = "Pulihkan";
 
-createPassword = "Buat kata sandi dan konfirmasi dengan Enter";
+createPassword = "Buat kata sandi dan konfirmasi dengan OK";
 insertCreatedPasswordAgain = "Masukkan kata sandi lagi";
-insertPassword = "Masukkan kata sandi Anda dan konfirmasi dengan Enter";
+insertPassword = "Masukkan kata sandi Anda dan konfirmasi dengan OK";
 backupEnabled = "Diaktifkan";
 backupDisabled = "Nonaktif";
 

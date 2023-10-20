@@ -115,9 +115,9 @@ backupNavigationTitle = "Mein Backup";
 vaultMode = "Tresor-Modus";
 recover = "Wiederherstellen";
 
-createPassword = "Erstellen Sie ein Passwort und bestätigen Sie mit Enter";
+createPassword = "Erstellen Sie ein Passwort und bestätigen Sie mit OK";
 insertCreatedPasswordAgain = "Geben Sie das Passwort erneut ein";
-insertPassword = "Geben Sie Ihr Passwort ein und bestätigen Sie mit Enter";
+insertPassword = "Geben Sie Ihr Passwort ein und bestätigen Sie mit OK";
 backupEnabled = "Aktiviert";
 backupDisabled = "Deaktiviert";
 

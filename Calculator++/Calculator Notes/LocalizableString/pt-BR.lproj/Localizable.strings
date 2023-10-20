@@ -21,8 +21,8 @@ notes = "Notas";
 instructionFirstStepCalc = "Crie uma senha e clique no botão '='";
 instructionSecondStepCalc = "Senha: *****. Repita a senha e confirme com '='";
 
-instructionFirstStepBank = "Crie uma senha e clique em 'enter'";
-instructionSecondStepBank = "Senha: *****. Repita a senha e confirme com 'Enter'";
+instructionFirstStepBank = "Crie uma senha e clique em 'OK'";
+instructionSecondStepBank = "Senha: *****. Repita a senha e confirme com 'OK'";
 
 bankModeHasBeenActivated = "Modo cofre ativado";
 calcModeHasBeenActivated = "Modo calculadora ativado";
@@ -115,9 +115,9 @@ backupNavigationTitle = "Meu Backup";
 vaultMode = "Modo cofre";
 recover = "Recuperar";
 
-createPassword = "Crie uma senha e confirme com enter";
+createPassword = "Crie uma senha e confirme com OK";
 insertCreatedPasswordAgain = "Digite a senha novamente";
-insertPassword = "Digite sua senha e confirme com enter";
+insertPassword = "Digite sua senha e confirme com OK";
 backupEnabled = "Ativado";
 backupDisabled = "Desativado";
 

@@ -115,9 +115,9 @@ backupNavigationTitle = "Mi copia de seguridad";
 vaultMode = "Modo caja fuerte";
 recover = "Recuperar";
 
-createPassword = "Crea una contraseña y confirma con enter";
+createPassword = "Crea una contraseña y confirma con OK";
 insertCreatedPasswordAgain = "Ingresa la contraseña nuevamente";
-insertPassword = "Ingresa tu contraseña y confirma con enter";
+insertPassword = "Ingresa tu contraseña y confirma con OK";
 backupEnabled = "Activado";
 backupDisabled = "Desactivado";
 
