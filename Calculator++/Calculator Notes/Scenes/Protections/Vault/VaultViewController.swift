@@ -137,7 +137,7 @@ class VaultViewController: UIViewController {
         let additionalStack = UIStackView(arrangedSubviews: [clearRoundedView, nineRoundedView, enterRoundedView])
         additionalStack.axis = .horizontal
         additionalStack.distribution = .fillEqually
-        additionalStack.spacing = 40
+        additionalStack.spacing = 32
         
         for i in 1..<10 {
             let button = createButton(title: "\(i)")
@@ -160,14 +160,14 @@ class VaultViewController: UIViewController {
             let stack = UIStackView(arrangedSubviews: Array(numberButtons[index..<min(index+3, numberButtons.count)]))
             stack.axis = .horizontal
             stack.distribution = .fillEqually
-            stack.spacing = 40
+            stack.spacing = 32
             return stack
         }
 
         let allNumberStack = UIStackView(arrangedSubviews: numberStacks +  [additionalStack])
         allNumberStack.axis = .vertical
         allNumberStack.distribution = .fillEqually
-        allNumberStack.spacing = 24
+        allNumberStack.spacing = 20
 
         containerView.addSubview(allNumberStack)
 
@@ -261,6 +261,7 @@ class VaultViewController: UIViewController {
                 Defaults.setString(.password, inputSequence)
                 UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.vault)
                 Defaults.setBool(.needSavePasswordInCloud, true)
+                super.dismiss(animated: true)
             } else {
                 let alert = UIAlertController(title: Text.incorrectPassword.localized(),
                                               message: Text.tryAgain.localized(),
