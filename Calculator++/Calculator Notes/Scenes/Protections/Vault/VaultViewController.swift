@@ -18,6 +18,34 @@ enum VaultMode {
     case confirmation
 }
 
+import UIKit
+import SnapKit
+
+class SpacerView: UIView {
+    
+    init(height: CGFloat? = nil, width: CGFloat? = nil) {
+        super.init(frame: .zero)
+        
+        if let height = height {
+            self.snp.makeConstraints { make in
+                make.height.equalTo(height)
+            }
+        }
+        
+        if let width = width {
+            self.snp.makeConstraints { make in
+                make.width.equalTo(width)
+            }
+        }
+        
+        self.backgroundColor = .clear
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 class VaultViewController: UIViewController {
 
     private var displayLabel = UILabel()
@@ -46,13 +74,17 @@ class VaultViewController: UIViewController {
         setupUI()
     }
     
+    var viewHeight = 630
+    
     init(mode: VaultMode) {
         self.vaultMode = mode
         if vaultMode != .verify {
             subtitleLabel.text = Text.createPassword.localized()
             faceidImageView.text = Text.cancel.localized()
         } else {
-            subtitleLabel.text = Text.insertPassword.localized()
+            subtitleLabel.isHidden = true
+            titleLabel.isHidden = true
+            viewHeight = 600
             faceidImageView.text = Text.recover.localized()
             if Defaults.getBool(.recoveryStatus) {
                 faceidImageView.isHidden = true
@@ -81,7 +113,8 @@ class VaultViewController: UIViewController {
         subtitleLabel.textAlignment = .center
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
-        let titleStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        let titleStack = UIStackView(arrangedSubviews:[titleLabel, subtitleLabel])
+        
         titleStack.axis = .vertical
         titleStack.spacing = 8
         
@@ -100,7 +133,7 @@ class VaultViewController: UIViewController {
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalTo(350)
-            make.height.equalTo(650)
+            make.height.equalTo(viewHeight)
         }
         
         displayContainer.snp.makeConstraints { make in
@@ -173,7 +206,7 @@ class VaultViewController: UIViewController {
 
         // Constraints
         titleStack.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
+            make.top.equalToSuperview()
             make.left.equalToSuperview().offset(36)
             make.right.equalToSuperview().offset(-36)
         }
@@ -214,10 +247,12 @@ class VaultViewController: UIViewController {
 
             if faceIDManager.isFaceIDAvailable() {
                 faceIDManager.requestFaceIDAuthentication { success, error in
-                    DispatchQueue.main.async {
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                        self.present(homeViewController, animated: true)
+                    if success {
+                        DispatchQueue.main.async {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                            self.present(homeViewController, animated: true)
+                        }
                     }
                 }
             }

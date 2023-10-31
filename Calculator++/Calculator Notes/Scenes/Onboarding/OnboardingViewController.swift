@@ -23,7 +23,7 @@ import FirebaseFirestore
 
 // MARK: - FIRST SCREEN
 class OnboardingWelcomeViewController: UIViewController, UINavigationControllerDelegate {
-
+    var slideAndFadeAnimator: SlideAndFadePresentAnimator?
     lazy var onboardingView = OnboardingView(
         title: Text.welcomeOnboarding_title.localized(),
         subtitle: Text.welcomeOnboarding_subtitle.localized(),
@@ -55,7 +55,22 @@ class OnboardingWelcomeViewController: UIViewController, UINavigationControllerD
 
 extension OnboardingWelcomeViewController: OnboardingViewDelegate {
     func didTapPrimaryButton() {
-        self.navigationController?.pushViewController(OnboardingCreateCodeViewController(), animated: true)
+        apresentarVaultViewController()
+    }
+    
+    func apresentarVaultViewController() {
+        slideAndFadeAnimator = SlideAndFadePresentAnimator()
+        
+        let vaultViewController = VaultViewController(mode: .create)
+        vaultViewController.modalPresentationStyle = .fullScreen
+        vaultViewController.transitioningDelegate = slideAndFadeAnimator
+        self.present(vaultViewController, animated: true) {
+            self.presentNextStep()
+        }
+    }
+    
+    func presentNextStep() {
+        self.navigationController?.pushViewController(OnboardingAddPhotosViewController(), animated: true)
     }
     
     func didTapSecondaryButton() {
