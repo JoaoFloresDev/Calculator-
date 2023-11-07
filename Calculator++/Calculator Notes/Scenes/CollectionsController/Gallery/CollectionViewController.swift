@@ -398,17 +398,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
 
         group.notify(queue: .main) {
             self.modelData.append(contentsOf: newPhotos)
-            
-            var indexPaths: [IndexPath] = []
-            for i in 0..<newPhotos.count {
-                let index = self.modelData.count - newPhotos.count + i
-                let indexPath = IndexPath(item: index, section: 1)
-                indexPaths.append(indexPath)
-            }
-
-            collectionView.performBatchUpdates({
-                collectionView.insertItems(at: indexPaths)
-            }, completion: nil)
+            collectionView.reloadData()
         }
     }
     

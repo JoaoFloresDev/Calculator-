@@ -34,7 +34,7 @@ class BackupModalViewController: UIViewController {
         
         let titleLabel = UILabel()
         titleLabel.text = Text.backupSettings.localized()
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel.textColor = .black
         
         view.addSubview(titleLabel)
@@ -54,7 +54,7 @@ class BackupModalViewController: UIViewController {
         
         let titleLabel = UILabel()
         titleLabel.text = Text.backupNavigationSubtitle.localized()
-        titleLabel.font = UIFont.systemFont(ofSize: 17)
+        titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.textColor = .lightGray
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
@@ -82,7 +82,7 @@ class BackupModalViewController: UIViewController {
         
         let leftLabel = UILabel()
         leftLabel.text = Text.backupStatus.localized()
-        leftLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        leftLabel.font = UIFont.systemFont(ofSize: 14)
         
         stackView.addArrangedSubview(leftLabel)
         stackView.addArrangedSubview(switchControl)
@@ -105,8 +105,8 @@ class BackupModalViewController: UIViewController {
 
     lazy var restoreBackup: UIView = {
         let label = UILabel()
-        label.text = Text.restoreBackup.localized()
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.text = "Restaurar backup"//Text.restoreBackup.localized()
+        label.font = UIFont.systemFont(ofSize: 14)
         let restoreBackupView = UIView()
         restoreBackupView.backgroundColor = .systemGray5
         restoreBackupView.addSubview(label)
@@ -129,8 +129,8 @@ class BackupModalViewController: UIViewController {
     
     lazy var updateBackup: UIView = {
         let label = UILabel()
-        label.text = Text.updateBackup.localized()
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.text = "Atualizar backup"//Text.updateBackup.localized()
+        label.font = UIFont.systemFont(ofSize: 14)
         let restoreBackupView = UIView()
         restoreBackupView.backgroundColor = .systemGray5
         restoreBackupView.addSubview(label)
@@ -152,8 +152,8 @@ class BackupModalViewController: UIViewController {
     
     lazy var viewBackup: UIView = {
         let label = UILabel()
-        label.text = Text.seeMyBackup.localized()
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.text = "Ver meu backup"//Text.seeMyBackup.localized()
+        label.font = UIFont.systemFont(ofSize: 14)
         let viewBackupView = UIView()
         viewBackupView.backgroundColor = .systemGray5
         viewBackupView.addSubview(label)
@@ -173,7 +173,126 @@ class BackupModalViewController: UIViewController {
         
         return viewBackupView
     }()
+    
+    lazy var backupImageQuality: UIView = {
+        let titleLabel = UILabel()
+        titleLabel.text = "Qualidade de imagem"
+        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        let qualitySelector = UISegmentedControl(items: ["Baixa", "Média", "Alta"])
+        qualitySelector.selectedSegmentIndex = setImageSegmentedControlIndex()
+        
+        qualitySelector.addTarget(self, action: #selector(imageQualityChanged), for: .valueChanged)
+        
+        let viewBackupView = UIView()
+        viewBackupView.backgroundColor = .systemGray5
+        viewBackupView.addSubview(titleLabel)
+        viewBackupView.addSubview(qualitySelector)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalToSuperview().inset(8)
+            make.leading.equalToSuperview().inset(16)
+        }
+        
+        qualitySelector.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalToSuperview().inset(8)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
+        viewBackupView.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewBackupTapped))
+        viewBackupView.addGestureRecognizer(tapGesture)
+        
+        return viewBackupView
+    }()
+    
+    func setImageSegmentedControlIndex() -> Int {
+        switch Defaults.getInt(.imageCompressionQuality) {
+        case 3:
+            return 0
+        case 6:
+            return 1
+        case 10:
+            return 2
+        default:
+            return 2
+        }
+    }
+    
+    @objc func imageQualityChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            Defaults.setInt(.imageCompressionQuality, 3)
+        case 1:
+            Defaults.setInt(.imageCompressionQuality, 6)
+        case 2:
+            Defaults.setInt(.imageCompressionQuality, 10)
+        default:
+            break
+        }
+    }
+    
+    lazy var backupVideoQuality: UIView = {
+        let titleLabel = UILabel()
+        titleLabel.text = "Qualidade de video"
+        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        let qualitySelector = UISegmentedControl(items: ["Baixa", "Média", "Alta"])
+        qualitySelector.selectedSegmentIndex = setVideoSegmentedControlIndex()
+        qualitySelector.addTarget(self, action: #selector(videoQualityChanged), for: .valueChanged)
+        
+        let viewBackupView = UIView()
+        viewBackupView.backgroundColor = .systemGray5
+        viewBackupView.addSubview(titleLabel)
+        viewBackupView.addSubview(qualitySelector)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalToSuperview().inset(8)
+            make.leading.equalToSuperview().inset(16)
+        }
+        
+        qualitySelector.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalToSuperview().inset(8)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
+        viewBackupView.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewBackupTapped))
+        viewBackupView.addGestureRecognizer(tapGesture)
+        
+        return viewBackupView
+    }()
 
+    func setVideoSegmentedControlIndex() -> Int {
+        switch Defaults.getInt(.videoCompressionQuality) {
+        case 3:
+            return 0
+        case 6:
+            return 1
+        case 10:
+            return 2
+        default:
+            return 2
+        }
+    }
+    
+    @objc func videoQualityChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            Defaults.setInt(.videoCompressionQuality, 3)
+        case 1:
+            Defaults.setInt(.videoCompressionQuality, 6)
+        case 2:
+            Defaults.setInt(.videoCompressionQuality, 10)
+        default:
+            break
+        }
+    }
+    
     @objc func viewBackupTapped() {
         let navigation = UINavigationController(rootViewController: CloudKitItemsViewController())
         present(navigation, animated: true)
@@ -229,7 +348,7 @@ class BackupModalViewController: UIViewController {
     
     lazy var contentStackView: UIStackView = {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [backupStatus, restoreBackup, updateBackup, viewBackup, spacer])
+        let stackView = UIStackView(arrangedSubviews: [backupStatus, backupImageQuality, backupVideoQuality, restoreBackup, updateBackup, viewBackup, spacer])
         stackView.axis = .vertical
         stackView.spacing = 1
         return stackView
@@ -252,7 +371,7 @@ class BackupModalViewController: UIViewController {
     }()
     
     // Constants
-    let defaultHeight: CGFloat = 460
+    let defaultHeight: CGFloat = 530
     var currentContainerHeight: CGFloat = 460
     
     // Dynamic container constraint

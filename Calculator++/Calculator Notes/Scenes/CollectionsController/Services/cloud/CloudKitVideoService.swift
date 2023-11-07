@@ -29,6 +29,22 @@ class CloudKitVideoService: ObservableObject {
     }
     
     static func saveVideo(name: String, videoData: Data, completion: @escaping (Bool, Error?) -> Void) {
+        let quality = Defaults.getInt(.videoCompressionQuality)
+        var qualityString = AVAssetExportPresetHighestQuality
+        if quality < 4 {
+            qualityString = AVAssetExportPresetLowQuality
+        } else if quality < 7 {
+            qualityString = AVAssetExportPresetMediumQuality
+        }
+        saveVideo2(
+            name: name,
+            videoData: videoData,
+            quality: qualityString,
+            completion: completion
+        )
+    }
+
+    static func saveVideo2(name: String, videoData: Data, quality: String, completion: @escaping (Bool, Error?) -> Void) {
         let record = CKRecord(recordType: videoRecordTypeIdentifier)
         record.setValue(name, forKey: VideoRecordKeys.name)
         
@@ -44,23 +60,49 @@ class CloudKitVideoService: ObservableObject {
                 let reference = CKRecord.Reference(recordID: userRecordID, action: .none)
                 record.setValue(reference, forKey: VideoRecordKeys.uploadedBy)
                 
-                let record = CKRecord(recordType: videoRecordTypeIdentifier)
-                record.setValue(name, forKey: VideoRecordKeys.name)
-                
                 // Salvando o vídeo
                 let tempDirectory = FileManager.default.temporaryDirectory
                 let videoFileURL = tempDirectory.appendingPathComponent(UUID().uuidString + ".mp4")
                 try? videoData.write(to: videoFileURL)
-                let videoAsset = CKAsset(fileURL: videoFileURL)
-                record.setValue(videoAsset, forKey: VideoRecordKeys.video)
                 
-                database.save(record) { record, error in
-                    if record != nil, error == nil {
-                        print(Notifications.itemSaved)
-                        completion(true, nil)
-                    } else {
-                        print(Notifications.errorSavingItem, error.debugDescription)
-                        completion(false, error)
+                // Configurar as opções de exportação
+                let asset = AVURLAsset(url: videoFileURL)
+                let exportSession = AVAssetExportSession(asset: asset, presetName: quality)
+                
+                guard let exportSession = exportSession else {
+                    print("Erro ao criar a sessão de exportação")
+                    completion(false, nil)
+                    return
+                }
+                
+                let compressedVideoURL = tempDirectory.appendingPathComponent(UUID().uuidString + "_compressed.mp4")
+                exportSession.outputFileType = .mp4
+                exportSession.outputURL = compressedVideoURL
+                
+                exportSession.exportAsynchronously {
+                    switch exportSession.status {
+                    case .completed:
+                        let compressedVideoData = try? Data(contentsOf: compressedVideoURL)
+                        let compressedVideoAsset = CKAsset(fileURL: compressedVideoURL)
+                        record.setValue(compressedVideoAsset, forKey: VideoRecordKeys.video)
+                        
+                        database.save(record) { record, error in
+                            if record != nil, error == nil {
+                                print(Notifications.itemSaved)
+                                completion(true, nil)
+                            } else {
+                                print(Notifications.errorSavingItem, error.debugDescription)
+                                completion(false, error)
+                            }
+                        }
+                        
+                    case .failed:
+                        print("Erro ao comprimir o vídeo")
+                        completion(false, exportSession.error)
+                        
+                    default:
+                        print("Exportação do vídeo incompleta ou cancelada")
+                        completion(false, nil)
                     }
                 }
             } else {
@@ -69,7 +111,6 @@ class CloudKitVideoService: ObservableObject {
             }
         }
     }
-
     static func fetchVideos(completion: @escaping ([(String, Data)]?, Error?) -> Void) {
         // Recupere o ID do usuário atual
         CKContainer.default().fetchUserRecordID { (userRecordID, error) in

@@ -29,6 +29,8 @@ enum BoolKey: String {
 enum IntKey: String {
     case launchCounter
     case disableRecoveryButtonCounter
+    case imageCompressionQuality
+    case videoCompressionQuality
     
     func set(_ value: Int) {
         userDefaults.set(value, forKey: rawValue)
@@ -131,6 +133,6 @@ struct UserDefaultService {
 }
 
 struct FeatureFlags {
-    static let iCloudEnabled  = false
+    static let iCloudEnabled  = true
 }
 

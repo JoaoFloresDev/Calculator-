@@ -48,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if !Defaults.getBool(.notFirstUse) {
             initialViewController = UINavigationController(rootViewController: OnboardingWelcomeViewController())
+            Defaults.setInt(.imageCompressionQuality, 10)
+            Defaults.setInt(.videoCompressionQuality, 10)
         }
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
