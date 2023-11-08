@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:storekitcon.storekit">
-   </FileRef>
-   <FileRef
-      location = "group:StoreKitTestCertificate.cer">
-   </FileRef>
-   <FileRef
       location = "group:Calculator Notes.xcodeproj">
    </FileRef>
    <FileRef

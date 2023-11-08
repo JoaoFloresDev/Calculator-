@@ -83,6 +83,14 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             RazeFaceProducts.store.isProductPurchased("calcanual") ||
             RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
             return
+        // coordinator = CollectionViewCoordinator(self)
+        // setupData()
+        // configureNavigationBar()
+        // setupTabBars()
+        // handleInitialLaunch()
+        // setupPlaceholderView()
+        // if !Defaults.getBool(.premiumPurchased) {
+        //     setupAds()
         }
         
         if check30DaysPassed() {
