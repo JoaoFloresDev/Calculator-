@@ -20,6 +20,17 @@ class CloudKitImageService: ObservableObject {
     }
     
     static func saveImage(name: String, image: UIImage, completion: @escaping (Bool, Error?) -> Void) {
+        
+        var image = image
+        switch Defaults.getInt(.imageCompressionQuality) {
+        case let x where x <= 3 :
+            image = image.scale(newWidth: 40)
+        case let x where x <= 6 :
+            image = image.scale(newWidth: 70)
+        default:
+            print("melhor possivel")
+        }
+        
         let record = CKRecord(recordType: recordTypeIdentifier)
         record.setValue(name, forKey: RecordKeys.name)
         

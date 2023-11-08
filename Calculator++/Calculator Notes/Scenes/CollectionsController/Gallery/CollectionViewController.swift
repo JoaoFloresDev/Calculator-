@@ -58,6 +58,16 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        coordinator = CollectionViewCoordinator(self)
+        setupData()
+        configureNavigationBar()
+        setupTabBars()
+        handleInitialLaunch()
+        setupPlaceholderView()
+        if !Defaults.getBool(.premiumPurchased) {
+            setupAds()
+        }
+        
         if check30DaysPassed() {
             let storyboard = UIStoryboard(name: "Purchase",bundle: nil)
             let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
