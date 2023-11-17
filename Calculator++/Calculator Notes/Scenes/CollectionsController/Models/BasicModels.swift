@@ -17,6 +17,7 @@ struct Photo {
     var name: String
     var image: UIImage
     var isSelected: Bool = false
+    var location: String = String()
 }
 
 extension UIImage
