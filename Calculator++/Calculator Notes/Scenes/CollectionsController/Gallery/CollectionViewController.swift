@@ -17,6 +17,7 @@ import AVFoundation
 import AVKit
 import MessageUI
 import FirebaseFirestore
+import MapKit
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate, MFMailComposeViewControllerDelegate {
     // MARK: - Variables
@@ -292,6 +293,7 @@ extension CollectionViewController {
         let image = modelData[indexPath.item]
         cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
         cell.isSelectedCell = modelData[indexPath.item].isSelected
+        cell.locationLabel.text = modelData[indexPath.item].location
         cell.applyshadowWithCorner()
         
         return cell
@@ -408,8 +410,16 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
 
         group.notify(queue: .main) {
             self.modelData.append(contentsOf: newPhotos)
+            self.modelData = self.sortPhotosByLocation(photos: self.modelData)
             collectionView.reloadData()
         }
+    }
+    
+    func sortPhotosByLocation(photos: [Photo]) -> [Photo] {
+        let sortedPhotos = photos.sorted { (photo1, photo2) -> Bool in
+            return photo1.location.localizedCaseInsensitiveCompare(photo2.location) == .orderedAscending
+        }
+        return sortedPhotos
     }
     
     func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
@@ -421,13 +431,54 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         getAssetThumbnail(asset: asset) { image in
             if let image = image {
                 if let photo = ModelController.saveImageObject(image: image, basePath: self.basePath) {
-                    completion(photo)
+                    if let location = asset.location {
+                        // Aqui você tem as coordenadas de latitude e longitude do asset.
+                        let latitude = location.coordinate.latitude
+                        let longitude = location.coordinate.longitude
+                        
+                        self.cityNameFromCoordinates(latitude: latitude, longitude: longitude) { cityName in
+                            print("Latitude: \(latitude), Longitude: \(longitude)")
+                            print(cityName)
+                            print("--------")
+                            var finalphoto = photo
+                            finalphoto.location = cityName ?? ""
+                            completion(finalphoto)
+                        }
+                    } else {
+                        completion(photo)
+                        print("O asset não possui informações de localização.")
+                    }
                 } else {
                     print("Erro ao salvar a imagem.")
                     completion(nil)
                 }
             } else {
                 print("Falha ao carregar a miniatura do asset.")
+                completion(nil)
+            }
+        }
+    }
+    
+    func cityNameFromCoordinates(latitude: Double, longitude: Double, completion: @escaping (String?) -> Void) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        let geocoder = CLGeocoder()
+
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            if let error = error {
+                print("Erro na geocodificação: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+
+            if let placemark = placemarks?.first {
+                if let city = placemark.locality {
+                    completion(city)
+                } else {
+                    print("Não foi possível obter o nome da cidade.")
+                    completion(nil)
+                }
+            } else {
+                print("Nenhum local encontrado para as coordenadas dadas.")
                 completion(nil)
             }
         }
