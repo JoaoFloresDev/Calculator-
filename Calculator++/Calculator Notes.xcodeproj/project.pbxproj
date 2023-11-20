@@ -48,15 +48,6 @@
 		738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */; };
 		738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */; };
 		738B6AF32AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */; };
-		73A1DA2E2B094EBD002B8D17 /* Icon3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA1F2B094EBD002B8D17 /* Icon3@2x.png */; };
-		73A1DA2F2B094EBD002B8D17 /* Icon1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA202B094EBD002B8D17 /* Icon1@3x.png */; };
-		73A1DA302B094EBD002B8D17 /* Icon1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA212B094EBD002B8D17 /* Icon1@2x.png */; };
-		73A1DA312B094EBD002B8D17 /* Icon3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA222B094EBD002B8D17 /* Icon3@3x.png */; };
-		73A1DA332B094EBD002B8D17 /* Icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA242B094EBD002B8D17 /* Icon1.png */; };
-		73A1DA342B094EBD002B8D17 /* Icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA252B094EBD002B8D17 /* Icon3.png */; };
-		73A1DA352B094EBD002B8D17 /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA262B094EBD002B8D17 /* Icon2.png */; };
-		73A1DA392B094EBD002B8D17 /* Icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA2A2B094EBD002B8D17 /* Icon2@2x.png */; };
-		73A1DA3A2B094EBD002B8D17 /* Icon2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A1DA2B2B094EBD002B8D17 /* Icon2@3x.png */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D12AA01A0100546566 /* PlaceholderView.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
@@ -164,15 +155,6 @@
 		738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextViewController.swift; sourceTree = "<group>"; };
 		738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddPhotosViewController.swift; sourceTree = "<group>"; };
 		738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertRecoverEmailViewController.swift; sourceTree = "<group>"; };
-		73A1DA1F2B094EBD002B8D17 /* Icon3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon3@2x.png"; sourceTree = "<group>"; };
-		73A1DA202B094EBD002B8D17 /* Icon1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon1@3x.png"; sourceTree = "<group>"; };
-		73A1DA212B094EBD002B8D17 /* Icon1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon1@2x.png"; sourceTree = "<group>"; };
-		73A1DA222B094EBD002B8D17 /* Icon3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon3@3x.png"; sourceTree = "<group>"; };
-		73A1DA242B094EBD002B8D17 /* Icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon1.png; sourceTree = "<group>"; };
-		73A1DA252B094EBD002B8D17 /* Icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon3.png; sourceTree = "<group>"; };
-		73A1DA262B094EBD002B8D17 /* Icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon2.png; sourceTree = "<group>"; };
-		73A1DA2A2B094EBD002B8D17 /* Icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon2@2x.png"; sourceTree = "<group>"; };
-		73A1DA2B2B094EBD002B8D17 /* Icon2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon2@3x.png"; sourceTree = "<group>"; };
 		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -426,15 +408,6 @@
 		73A1DA1C2B094EBD002B8D17 /* AppIcons */ = {
 			isa = PBXGroup;
 			children = (
-				73A1DA1F2B094EBD002B8D17 /* Icon3@2x.png */,
-				73A1DA202B094EBD002B8D17 /* Icon1@3x.png */,
-				73A1DA212B094EBD002B8D17 /* Icon1@2x.png */,
-				73A1DA222B094EBD002B8D17 /* Icon3@3x.png */,
-				73A1DA242B094EBD002B8D17 /* Icon1.png */,
-				73A1DA252B094EBD002B8D17 /* Icon3.png */,
-				73A1DA262B094EBD002B8D17 /* Icon2.png */,
-				73A1DA2A2B094EBD002B8D17 /* Icon2@2x.png */,
-				73A1DA2B2B094EBD002B8D17 /* Icon2@3x.png */,
 			);
 			path = AppIcons;
 			sourceTree = "<group>";
@@ -675,25 +648,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73A1DA2F2B094EBD002B8D17 /* Icon1@3x.png in Resources */,
 				C480A50424A7746B00094FC8 /* Notes.storyboard in Resources */,
-				73A1DA312B094EBD002B8D17 /* Icon3@3x.png in Resources */,
 				73C2C5092A49D7E700963BA2 /* swiftlint.yml in Resources */,
-				73A1DA3A2B094EBD002B8D17 /* Icon2@3x.png in Resources */,
-				73A1DA2E2B094EBD002B8D17 /* Icon3@2x.png in Resources */,
-				73A1DA392B094EBD002B8D17 /* Icon2@2x.png in Resources */,
 				73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */,
 				73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */,
 				C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */,
 				2E4A079E1C42F3B0007F415F /* LaunchScreen.storyboard in Resources */,
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
-				73A1DA332B094EBD002B8D17 /* Icon1.png in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
-				73A1DA342B094EBD002B8D17 /* Icon3.png in Resources */,
 				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
-				73A1DA352B094EBD002B8D17 /* Icon2.png in Resources */,
 				C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */,
-				73A1DA302B094EBD002B8D17 /* Icon1@2x.png in Resources */,
 				73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */,
 				2E4A079B1C42F3B0007F415F /* Assets.xcassets in Resources */,
 				2E4A07991C42F3B0007F415F /* Main.storyboard in Resources */,
@@ -1024,10 +988,11 @@
 			baseConfigurationReference = 41E732BE49B1015BBBE29594 /* Pods-Calculator Notes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 136;
+				CURRENT_PROJECT_VERSION = 142;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1041,7 +1006,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 137;
+				MARKETING_VERSION = 142;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1058,10 +1023,11 @@
 			baseConfigurationReference = 3E9959DEE321E246C5EC4CA1 /* Pods-Calculator Notes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 136;
+				CURRENT_PROJECT_VERSION = 142;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1075,7 +1041,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 137;
+				MARKETING_VERSION = 142;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
