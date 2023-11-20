@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XoY-UQ-w5v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XoY-UQ-w5v">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -66,23 +66,15 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvF-2r-Bte">
                                                         <rect key="frame" x="0.0" y="49" width="414" height="48"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backup Criptografado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xx-Ks-sjO">
-                                                                <rect key="frame" x="16" y="14" width="172" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Icon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xx-Ks-sjO">
+                                                                <rect key="frame" x="16" y="14" width="98" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Desativado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LdF-BV-bhT">
-                                                                <rect key="frame" x="320.5" y="14.5" width="85.5" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" systemColor="systemGrayColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="LdF-BV-bhT" secondAttribute="trailing" constant="12" id="4a6-MA-Ogx"/>
-                                                            <constraint firstItem="LdF-BV-bhT" firstAttribute="centerY" secondItem="zvF-2r-Bte" secondAttribute="centerY" id="I3X-nl-VC6"/>
                                                             <constraint firstItem="9Xx-Ks-sjO" firstAttribute="leading" secondItem="zvF-2r-Bte" secondAttribute="leading" constant="16" id="RmA-JJ-MS2"/>
                                                             <constraint firstAttribute="height" constant="48" id="XWM-1J-Ykl"/>
                                                             <constraint firstItem="9Xx-Ks-sjO" firstAttribute="centerY" secondItem="zvF-2r-Bte" secondAttribute="centerY" id="vq2-Dl-cqG"/>
@@ -248,7 +240,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="ModeGroupView" destination="pR5-UN-XhX" id="oda-zo-FiX"/>
-                        <outlet property="backupStatus" destination="LdF-BV-bhT" id="AZN-ni-Gm1"/>
+                        <outlet property="changeIcon" destination="zvF-2r-Bte" id="0K7-Fe-N30"/>
                         <outlet property="chooseProtectionLabel" destination="iZ2-Cu-Jza" id="JKq-gE-ARf"/>
                         <outlet property="customTabBar" destination="hh2-yq-auE" id="Fgj-8r-Zdu"/>
                         <outlet property="faceIDView" destination="HT7-x9-f8c" id="ED4-RH-aKe"/>
@@ -256,7 +248,6 @@
                         <outlet property="noProtectionImage" destination="5PD-4q-NZj" id="dbc-wh-VXn"/>
                         <outlet property="rateApp" destination="ert-Ym-P1Q" id="Sbs-qT-fHv"/>
                         <outlet property="recoverLabel" destination="Dac-Ca-htn" id="Txt-1e-RiB"/>
-                        <outlet property="restoreBackup" destination="zvF-2r-Bte" id="Ziw-Jk-3LJ"/>
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>
                         <outlet property="vaultMode" destination="Kfz-ls-3Mi" id="4nr-OC-5uz"/>
@@ -282,9 +273,6 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

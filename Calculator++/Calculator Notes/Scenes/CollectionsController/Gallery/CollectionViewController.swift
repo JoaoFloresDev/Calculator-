@@ -73,7 +73,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     func check30DaysPassed() -> Bool {
         if let lastSavedDate = UserDefaults.standard.object(forKey: "LastSavedDate") as? Date {
             let dayDifference = Calendar.current.dateComponents([.day], from: lastSavedDate, to: Date()).day ?? 0
-            return dayDifference >= 14
+            return dayDifference >= 7
         }
         saveTodayDate()
         return false

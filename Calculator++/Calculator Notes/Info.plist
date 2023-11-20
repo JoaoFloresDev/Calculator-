@@ -8,6 +8,47 @@
 	<string>SG</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+		<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>Icon1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Icon1</string>
+				</array>
+			</dict>
+			<key>Icon2</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Icon2</string>
+				</array>
+			</dict>
+			<key>Icon3</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Icon3</string>
+				</array>
+			</dict>
+			<key>Icon4</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Icon4</string>
+				</array>
+			</dict>
+			<key>Icon5</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Icon5</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

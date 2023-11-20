@@ -39,8 +39,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var upgradeButton: UIButton!
     @IBOutlet weak var customTabBar: UITabBarItem!
     @IBOutlet weak var rateApp: UIView!
-    @IBOutlet weak var restoreBackup: UIView!
-    @IBOutlet weak var backupStatus: UILabel!
+    @IBOutlet weak var changeIcon: UIView!
     @IBOutlet weak var vaultMode: UIButton!
     @IBOutlet weak var vaultModeImage: UIImageView!
     @IBOutlet weak var faceIDView: UIView!
@@ -71,14 +70,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     lazy var loadingAlert = LoadingAlert(in: self)
     
-    var backupIsActivated = false {
-        didSet {
-            DispatchQueue.main.async {
-                self.backupStatus.text = self.backupIsActivated ? Text.backupEnabled.localized() : Text.backupDisabled.localized()
-            }
-        }
-    }
-    
     lazy var coordinator = SettingsCoordinator(viewController: self)
     
     // MARK: - Life Cycle
@@ -92,15 +83,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillAppear(animated)
         let typeProtection = UserDefaultService().getTypeProtection()
         showProtectionType(typeProtection: typeProtection)
-        
-        guard FeatureFlags.iCloudEnabled else {
-            restoreBackup.isHidden =  true
-            return
-        }
-        
-        CloudKitImageService.isICloudEnabled { isEnabled in
-            self.backupIsActivated = isEnabled
-        }
     }
     
     // MARK: - UI
@@ -134,8 +116,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     
     // MARK: - Backup
-    @objc func restoreBackupPressed(_ sender: UITapGestureRecognizer? = nil) {
-        coordinator.showBackupOptions(backupIsActivated: self.backupIsActivated, delegate: self)
+    @objc func changeIconPressed(_ sender: UITapGestureRecognizer? = nil) {
+        let vc = ChangeIconViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        if let tabBarController = self.tabBarController {
+            tabBarController.present(vc, animated: false, completion: nil)
+        }
     }
     
     private func setupUI() {
@@ -148,9 +134,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         rateApp.addGestureRecognizer(tap)
-        
-        let restoreBackupPressed = UITapGestureRecognizer(target: self, action: #selector(restoreBackupPressed(_:)))
-        restoreBackup.addGestureRecognizer(restoreBackupPressed)
+        let changeIconPressed = UITapGestureRecognizer(target: self, action: #selector(changeIconPressed(_:)))
+        changeIcon.addGestureRecognizer(changeIconPressed)
     }
     
     private func setupViewStyles() {
@@ -169,11 +154,5 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func showProtectionType(typeProtection: ProtectionMode) {
         noProtectionImage.setImage(typeProtection == .noProtection ? .selectedIndicator : .diselectedIndicator)
         vaultModeImage.setImage(typeProtection == .vault ? .selectedIndicator : .diselectedIndicator)
-    }
-}
-
-extension  SettingsViewController: BackupModalViewControllerDelegate {
-    func enableBackupToggled(status: Bool) {
-        backupIsActivated = status
     }
 }

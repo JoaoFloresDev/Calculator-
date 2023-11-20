@@ -28,7 +28,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     lazy var coordinator = VideoCollectionCoordinator(viewController: self)
     
     var isPremium: Bool {
-        return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
+        return RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil || modelData.count < 2
     }
     
     var isEditMode = false {
@@ -38,21 +38,11 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     }
     
     lazy var placeholderView: PlaceholderView = {
-        if isPremium {
-            return PlaceholderView(
-                title: Text.emptyVideosTitle.localized(),
-                subtitle: Text.emptyVideosSubtitle.localized(),
-                image: UIImage(named: Img.emptyVideoIcon.name())
-            )
-        } else {
-            return PlaceholderView(
-                title: Text.premiumToolTitle.localized(),
-                subtitle: Text.premiumVideosSubtitle.localized(),
-                image: UIImage(named: Img.premiumIcon.name()), buttonText: Text.seeMore.localized()
-            ) {
-                self.coordinator.presentPurshes()
-            }
-        }
+        return PlaceholderView(
+            title: Text.emptyVideosTitle.localized(),
+            subtitle: Text.emptyVideosSubtitle.localized(),
+            image: UIImage(named: Img.emptyVideoIcon.name())
+        )
     }()
     
     // MARK: - Life Cycle
