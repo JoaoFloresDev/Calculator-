@@ -158,3 +158,4 @@ successEmailMessage = "Bitte überprüfen Sie Ihren Posteingang. Sie erhalten in
 errorEmailTitle = "Fehler beim Senden der E-Mail";
 errorEmailMessage = "Wir hatten Probleme beim Senden der E-Mail. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut";
 remindMyPasscode = "Passwort vergessen?";
+selectNewIcon = "Wählen Sie das gewünschte Symbol aus";

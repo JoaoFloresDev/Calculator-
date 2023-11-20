@@ -158,3 +158,4 @@ successEmailMessage = "Veuillez vérifier votre boîte de réception. Vous recev
 errorEmailTitle = "Erreur lors de l'envoi de l'e-mail";
 errorEmailMessage = "Nous avons rencontré des problèmes lors de l'envoi de l'e-mail. Vérifiez votre connexion Internet et réessayez";
 remindMyPasscode = "Mot de passe oublié ?";
+selectNewIcon = "Sélectionnez l'icône souhaitée";

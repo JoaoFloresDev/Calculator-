@@ -158,3 +158,4 @@ successEmailMessage = "Confira sua caixa do email, dentro de 48h você receberá
 errorEmailTitle = "Erro ao enviar email";
 errorEmailMessage = "Tivemos problemas para enviar o email, confira a conexão com a internet e tente novamente";
 remindMyPasscode = "Esqueceu sua senha?";
+selectNewIcon = "Selecione o icone desejado";

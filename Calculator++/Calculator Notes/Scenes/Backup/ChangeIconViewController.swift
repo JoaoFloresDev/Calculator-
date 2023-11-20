@@ -26,7 +26,7 @@ class ChangeIconViewController: UIViewController {
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         let titleLabel = UILabel()
-        titleLabel.text = "Selecione o icone desejado"
+        titleLabel.text = Text.selectNewIcon.localized()
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textColor = .black
         

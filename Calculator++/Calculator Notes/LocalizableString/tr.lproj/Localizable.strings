@@ -156,3 +156,4 @@ successEmailMessage = "Lütfen e-posta kutunuzu kontrol edin. Şifre kurtarma ta
 errorEmailTitle = "E-posta Gönderme Hatası";
 errorEmailMessage = "E-posta gönderme konusunda sorun yaşadık. İnternet bağlantınızı kontrol edip tekrar deneyin.";
 remindMyPasscode = "Şifrenizi mi unuttunuz?";
+selectNewIcon = "İstenilen simgeyi seçin";

@@ -158,3 +158,4 @@ successEmailMessage = "メールボックスをご確認ください。パスワ
 errorEmailTitle = "メールの送信エラー";
 errorEmailMessage = "メールの送信に問題が発生しました。インターネット接続を確認し、もう一度試してください";
 remindMyPasscode = "パスワードを忘れましたか？";
+selectNewIcon = "希望のアイコンを選択してください";

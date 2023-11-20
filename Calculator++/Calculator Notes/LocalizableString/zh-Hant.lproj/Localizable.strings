@@ -158,3 +158,4 @@ successEmailMessage = "請檢查您的收件箱。您將在48小時內收到一�
 errorEmailTitle = "發送電子郵件時出錯";
 errorEmailMessage = "我們在發送電子郵件時遇到問題。請檢查您的互聯網連接，然後重試";
 remindMyPasscode = "忘記密碼？";
+selectNewIcon = "選擇所需的圖標";
