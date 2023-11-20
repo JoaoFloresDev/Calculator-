@@ -158,3 +158,4 @@ errorEmailTitle = "Error Sending Email";
 errorEmailMessage = "We encountered issues sending the email. Please check your internet connection and try again.";
 remindMyPasscode = "Forgot your password?";
 selectNewIcon = "Select the desired icon";
+changeIconTitle = "Change icon";

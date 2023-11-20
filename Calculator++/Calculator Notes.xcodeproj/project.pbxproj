@@ -69,6 +69,7 @@
 		73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6E27B0AC7A00499F66 /* Alerts.swift */; };
 		73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */; };
 		73B860592AC1FB330023441A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B860582AC1FB330023441A /* OnboardingView.swift */; };
+		73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BD064D2B0B229200205E4B /* VaultViewControllerNew.swift */; };
 		73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */; };
 		73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5022A49CF8900963BA2 /* BaseCalculatorViewController.swift */; };
 		73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5042A49D79B00963BA2 /* UIView+extension.swift */; };
@@ -190,6 +191,7 @@
 		73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		73B54D7227B0BE2600499F66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73B860582AC1FB330023441A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		73BD064D2B0B229200205E4B /* VaultViewControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultViewControllerNew.swift; sourceTree = "<group>"; };
 		73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCoordinator.swift; sourceTree = "<group>"; };
 		73C2C5022A49CF8900963BA2 /* BaseCalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalculatorViewController.swift; sourceTree = "<group>"; };
 		73C2C5042A49D79B00963BA2 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				73862C852AAD19CA005D9D25 /* VaultViewController.swift */,
+				73BD064D2B0B229200205E4B /* VaultViewControllerNew.swift */,
 				737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */,
 				737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */,
 			);
@@ -807,6 +810,7 @@
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */,
+				73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */,
 				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,
 				7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* CoreDataImageService.swift in Sources */,
@@ -1037,7 +1041,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 136;
+				MARKETING_VERSION = 137;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1071,7 +1075,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 136;
+				MARKETING_VERSION = 137;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";

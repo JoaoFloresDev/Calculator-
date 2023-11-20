@@ -159,3 +159,4 @@ errorEmailTitle = "이메일 전송 오류";
 errorEmailMessage = "이메일을 전송하는 중 문제가 발생했습니다. 인터넷 연결을 확인하고 다시 시도하세요";
 remindMyPasscode = "비밀번호를 잊으셨나요?";
 selectNewIcon = "원하는 아이콘 선택";
+changeIconTitle = "아이콘 변경";

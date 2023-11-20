@@ -240,7 +240,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="ModeGroupView" destination="pR5-UN-XhX" id="oda-zo-FiX"/>
-                        <outlet property="changeIcon" destination="zvF-2r-Bte" id="0K7-Fe-N30"/>
+                        <outlet property="changeIcon" destination="zvF-2r-Bte" id="vzl-Bm-4Tl"/>
+                        <outlet property="changeIconLabel" destination="9Xx-Ks-sjO" id="OVL-9n-r5S"/>
                         <outlet property="chooseProtectionLabel" destination="iZ2-Cu-Jza" id="JKq-gE-ARf"/>
                         <outlet property="customTabBar" destination="hh2-yq-auE" id="Fgj-8r-Zdu"/>
                         <outlet property="faceIDView" destination="HT7-x9-f8c" id="ED4-RH-aKe"/>
@@ -266,13 +267,13 @@
             <color red="0.13699999451637268" green="0.15299999713897705" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -159,3 +159,4 @@ errorEmailTitle = "Kesalahan Pengiriman Email";
 errorEmailMessage = "Kami mengalami masalah saat mengirim email. Periksa koneksi internet Anda dan coba lagi";
 remindMyPasscode = "Lupa kata sandi?";
 selectNewIcon = "Pilih ikon yang diinginkan";
+changeIconTitle = "Ubah ikon";

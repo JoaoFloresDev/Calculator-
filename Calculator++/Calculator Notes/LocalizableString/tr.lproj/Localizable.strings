@@ -157,3 +157,4 @@ errorEmailTitle = "E-posta Gönderme Hatası";
 errorEmailMessage = "E-posta gönderme konusunda sorun yaşadık. İnternet bağlantınızı kontrol edip tekrar deneyin.";
 remindMyPasscode = "Şifrenizi mi unuttunuz?";
 selectNewIcon = "İstenilen simgeyi seçin";
+changeIconTitle = "Simgeyi değiştir";

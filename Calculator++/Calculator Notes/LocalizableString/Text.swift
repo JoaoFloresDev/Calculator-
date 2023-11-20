@@ -156,6 +156,7 @@ enum Text: String {
     case errorEmailMessage // "Tivemos problemas para enviar o email, confira a conexão com a internet e tente novamente"
     case remindMyPasscode 
     case selectNewIcon // "Selecione o icone desejado"
+    case changeIconTitle // "Alterar icone"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

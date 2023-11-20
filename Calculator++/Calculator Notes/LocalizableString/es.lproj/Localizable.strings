@@ -159,3 +159,4 @@ errorEmailTitle = "Error al enviar el correo electrónico";
 errorEmailMessage = "Encontramos problemas al enviar el correo electrónico. Por favor, verifica tu conexión a Internet e inténtalo nuevamente.";
 remindMyPasscode = "¿Olvidó su contraseña?";
 selectNewIcon = "Selecciona el icono deseado";
+changeIconTitle = "Cambiar icono";

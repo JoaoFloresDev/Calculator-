@@ -30,6 +30,7 @@ import CloudKit
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - IBOutlet
+    @IBOutlet weak var changeIconLabel: UILabel!
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var recoverLabel: UILabel!
     @IBOutlet weak var chooseProtectionLabel: UILabel!
@@ -93,6 +94,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         upgradeButton.setText(.premiumVersion)
         recoverLabel.setText(.hideRecoverButton)
         chooseProtectionLabel.setText(.chooseProtectionMode)
+        changeIconLabel.setText(.changeIconTitle)
     }
 
     private func setupViewStyle() {

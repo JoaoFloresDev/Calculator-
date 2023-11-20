@@ -159,3 +159,4 @@ errorEmailTitle = "发送电子邮件时出错";
 errorEmailMessage = "我们在发送电子邮件时遇到问题。请检查您的互联网连接，然后重试";
 remindMyPasscode = "忘记密码？";
 selectNewIcon = "选择所需的图标";
+changeIconTitle = "更改图标";
