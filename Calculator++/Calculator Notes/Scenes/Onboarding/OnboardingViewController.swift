@@ -70,7 +70,14 @@ extension OnboardingWelcomeViewController: OnboardingViewDelegate {
     }
     
     func presentNextStep() {
-        self.navigationController?.pushViewController(OnboardingAddPhotosViewController(), animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
+        Defaults.setBool(.notFirstUse, true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+        homeViewController.modalPresentationStyle = .fullScreen
+        homeViewController.transitioningDelegate = slideAndFadeAnimator
+        self.navigationController?.pushViewController(homeViewController, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func didTapSecondaryButton() {

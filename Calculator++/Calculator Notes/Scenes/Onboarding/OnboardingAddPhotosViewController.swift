@@ -46,6 +46,8 @@ class OnboardingAddPhotosViewController: UIViewController {
         onboardingView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        didTapSecondaryButton()
     }
     
     override  func viewDidDisappear(_ animated: Bool) {
@@ -68,7 +70,7 @@ extension OnboardingAddPhotosViewController: OnboardingViewDelegate, AssetsPicke
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
         homeViewController.modalPresentationStyle = .fullScreen
         homeViewController.transitioningDelegate = slideAndFadeAnimator
-        self.present(homeViewController, animated: true)
+        self.present(homeViewController, animated: false)
     }
     
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
