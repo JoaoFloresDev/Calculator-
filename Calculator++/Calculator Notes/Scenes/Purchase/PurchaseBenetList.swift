@@ -27,19 +27,19 @@ class PurchaseBenetList: UIView {
         stackView.addArrangedSubview(createSpacer(height:  12))
         stackView.addArrangedSubview(
             PurchaseBenefitItem(
-                text: "Suporte para vídeos",
+                text: Text.videoSuport.localized(),
                 imageName: Img.videosupport.name())
         )
         stackView.addArrangedSubview(createSpacer(height:  12))
         stackView.addArrangedSubview(
             PurchaseBenefitItem(
-                text: "Sem anúncios",
+                text: Text.noAds.localized(),
                 imageName: Img.noads.name())
         )
         stackView.addArrangedSubview(createSpacer(height:  12))
         stackView.addArrangedSubview(
             PurchaseBenefitItem(
-                text: "Armazenamento ilimitado",
+                text: Text.unlimitedStorage.localized(),
                 imageName: Img.unlimited.name())
         )
         stackView.addArrangedSubview(createSpacer(height:  12))

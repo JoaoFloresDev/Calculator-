@@ -159,3 +159,6 @@ errorEmailMessage = "We encountered issues sending the email. Please check your 
 remindMyPasscode = "Forgot your password?";
 selectNewIcon = "Select the desired icon";
 changeIconTitle = "Change icon";
+unlimitedStorage = "Unlimited storage";
+noAds = "No ads";
+videoSupport = "Video support";

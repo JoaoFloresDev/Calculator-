@@ -158,3 +158,6 @@ errorEmailMessage = "E-posta gönderme konusunda sorun yaşadık. İnternet bağ
 remindMyPasscode = "Şifrenizi mi unuttunuz?";
 selectNewIcon = "İstenilen simgeyi seçin";
 changeIconTitle = "Simgeyi değiştir";
+unlimitedStorage = "Sınırsız depolama";
+noAds = "Reklamsız";
+videoSupport = "Video desteği";

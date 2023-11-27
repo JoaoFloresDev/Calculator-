@@ -160,3 +160,6 @@ errorEmailMessage = "メールの送信に問題が発生しました。イン�
 remindMyPasscode = "パスワードを忘れましたか？";
 selectNewIcon = "希望のアイコンを選択してください";
 changeIconTitle = "アイコンを変更する";
+unlimitedStorage = "無制限のストレージ";
+noAds = "広告なし";
+videoSupport = "ビデオサポート";

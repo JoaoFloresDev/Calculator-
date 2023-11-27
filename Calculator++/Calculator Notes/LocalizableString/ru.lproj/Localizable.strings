@@ -160,3 +160,6 @@ errorEmailMessage = "У нас возникли проблемы с отправ
 remindMyPasscode = "Забыли пароль?";
 selectNewIcon = "Выберите желаемую иконку";
 changeIconTitle = "Изменить иконку";
+unlimitedStorage = "Неограниченное хранение";
+noAds = "Без рекламы";
+videoSupport = "Поддержка видео";

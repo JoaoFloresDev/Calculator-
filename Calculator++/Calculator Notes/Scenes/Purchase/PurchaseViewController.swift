@@ -14,6 +14,7 @@ class PurchaseViewController: UIViewController {
     @IBOutlet weak var customNavigator: UINavigationItem!
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var restoreButton: UIBarButtonItem!
+    lazy var loadingAlert = LoadingAlert(in: self)
     
     // MARK: - Variables
     private var products: [SKProduct] = []
@@ -44,7 +45,7 @@ class PurchaseViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.clipsToBounds = true
-        button.setTitle("Continuar", for: .normal)
+        button.setTitle(Text.continueText.localized(), for: .normal)
         
         // Adicionando a ação ao botão
         button.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
@@ -52,6 +53,11 @@ class PurchaseViewController: UIViewController {
     }()
     
     @objc func didTapActionButton() {
+        loadingAlert.startLoading {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.loadingAlert.stopLoading()
+            }
+        }
         performPurchase(product: products.first)
     }
     
@@ -99,6 +105,11 @@ class PurchaseViewController: UIViewController {
     }
     
     @IBAction func restorePressed(_ sender: Any) {
+        loadingAlert.startLoading {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.loadingAlert.stopLoading()
+            }
+        }
         RazeFaceProducts.store.restorePurchases()
         confirmCheckmark()
     }

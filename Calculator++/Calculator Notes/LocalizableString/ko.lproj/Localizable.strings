@@ -160,3 +160,6 @@ errorEmailMessage = "이메일을 전송하는 중 문제가 발생했습니다.
 remindMyPasscode = "비밀번호를 잊으셨나요?";
 selectNewIcon = "원하는 아이콘 선택";
 changeIconTitle = "아이콘 변경";
+unlimitedStorage = "무제한 저장소";
+noAds = "광고 없음";
+videoSupport = "비디오 지원";

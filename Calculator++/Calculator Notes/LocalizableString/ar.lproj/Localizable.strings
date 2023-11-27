@@ -160,3 +160,6 @@ errorEmailMessage = "واجهنا مشكلة في إرسال البريد الإ
 remindMyPasscode = "هل نسيت كلمة المرور؟";
 selectNewIcon = "اختر الرمز المطلوب";
 changeIconTitle = "تغيير الأيقونة";
+unlimitedStorage = "تخزين غير محدود";
+noAds = "بدون إعلانات";
+videoSupport = "دعم الفيديو";

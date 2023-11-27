@@ -160,3 +160,6 @@ errorEmailMessage = "Wir hatten Probleme beim Senden der E-Mail. Bitte überprü
 remindMyPasscode = "Passwort vergessen?";
 selectNewIcon = "Wählen Sie das gewünschte Symbol aus";
 changeIconTitle = "Icon ändern";
+unlimitedStorage = "Unbegrenzter Speicher";
+noAds = "Keine Werbung";
+videoSupport = "Video-Unterstützung";

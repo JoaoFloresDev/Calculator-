@@ -85,7 +85,7 @@ class ChangeIconViewController: UIViewController {
     }
     
     @objc func metodoExemplo() {
-        setIcon(name: "Icon1")
+        setIcon(name: "icon1")
     }
     
     @objc func metodoExemplo2() {
@@ -93,15 +93,20 @@ class ChangeIconViewController: UIViewController {
     }
     
     @objc func metodoExemplo3() {
-        setIcon(name: "Icon3")
+        setIcon(name: "icon3")
+    }
+    
+    @objc func metodoExemplo4() {
+        setIcon(name: "icon4")
     }
     
     lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
-                createIconImage(UIImage(named: "Icon1"), action: #selector(metodoExemplo)),
-                createIconImage(UIImage(named: "Icon2"), action: #selector(metodoExemplo2)),
-                createIconImage(UIImage(named: "Icon3"), action: #selector(metodoExemplo3))
+                createIconImage(UIImage(named: "calculadora"), action: #selector(metodoExemplo)),
+                createIconImage(UIImage(named: "foguetinho"), action: #selector(metodoExemplo2)),
+                createIconImage(UIImage(named: "iPhotos"), action: #selector(metodoExemplo3)),
+                createIconImage(UIImage(named: "iconeOriginal"), action: #selector(metodoExemplo4))
             ]
         )
         stackView.axis = .horizontal
@@ -187,7 +192,7 @@ class ChangeIconViewController: UIViewController {
         
         contentStackView.snp.makeConstraints { make in
             make.top.equalTo(modalTitleView.snp.bottom).offset(24)
-            make.leading.trailing.equalTo(containerView).inset(24)
+            make.leading.trailing.equalTo(containerView).inset(16)
         }
         
         // Activate constraints

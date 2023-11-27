@@ -158,6 +158,10 @@ enum Text: String {
     case selectNewIcon // "Selecione o icone desejado"
     case changeIconTitle // "Alterar icone"
     
+    case unlimitedStorage // "Armazenamento ilimitado"
+    case noAds // "Sem anúncios"
+    case videoSuport // "Suporte para vídeos"
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

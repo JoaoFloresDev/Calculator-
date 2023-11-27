@@ -160,3 +160,6 @@ errorEmailMessage = "我们在发送电子邮件时遇到问题。请检查您�
 remindMyPasscode = "忘记密码？";
 selectNewIcon = "选择所需的图标";
 changeIconTitle = "更改图标";
+unlimitedStorage = "无限存储";
+noAds = "无广告";
+videoSupport = "视频支持";

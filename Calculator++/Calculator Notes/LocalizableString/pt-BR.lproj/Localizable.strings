@@ -160,3 +160,6 @@ errorEmailMessage = "Tivemos problemas para enviar o email, confira a conexão c
 remindMyPasscode = "Esqueceu sua senha?";
 selectNewIcon = "Selecione o icone desejado";
 changeIconTitle = "Alterar icone";
+unlimitedStorage = "Armazenamento ilimitado";
+noAds = "Sem anúncios";
+videoSuport = "Suporte para vídeos";
