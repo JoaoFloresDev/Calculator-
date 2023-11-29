@@ -44,6 +44,7 @@
 		73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C852AAD19CA005D9D25 /* VaultViewController.swift */; };
 		73862C882AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */; };
 		73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */; };
+		738827C82B1509170051BEF4 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738827C72B1509170051BEF4 /* InAppPurchaseManager.swift */; };
 		738B6AED2AD8C16400EA4B72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 738B6AEC2AD8C16300EA4B72 /* GoogleService-Info.plist */; };
 		738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */; };
 		738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */; };
@@ -87,7 +88,6 @@
 		C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */; };
 		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
-		C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EE24A6C112005023C6 /* ProductCell.swift */; };
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
@@ -151,6 +151,7 @@
 		73862C852AAD19CA005D9D25 /* VaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultViewController.swift; sourceTree = "<group>"; };
 		73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionCoordinator.swift; sourceTree = "<group>"; };
 		73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		738827C72B1509170051BEF4 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		738B6AEC2AD8C16300EA4B72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextViewController.swift; sourceTree = "<group>"; };
 		738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddPhotosViewController.swift; sourceTree = "<group>"; };
@@ -212,7 +213,6 @@
 		C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
-		C4A819EE24A6C112005023C6 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -390,6 +390,14 @@
 			path = Vault;
 			sourceTree = "<group>";
 		};
+		738827C62B1509000051BEF4 /* Assinatura */ = {
+			isa = PBXGroup;
+			children = (
+				738827C72B1509170051BEF4 /* InAppPurchaseManager.swift */,
+			);
+			path = Assinatura;
+			sourceTree = "<group>";
+		};
 		7396A17A293AB2D1006D6ED4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +423,7 @@
 		73ABC0ED284F187F00E5C3A4 /* Purchase */ = {
 			isa = PBXGroup;
 			children = (
+				738827C62B1509000051BEF4 /* Assinatura */,
 				C480A50124A770E500094FC8 /* PurchaseViewController.swift */,
 				7342CA342ABB95DB004FD07C /* DiamondView.swift */,
 				7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */,
@@ -543,7 +552,6 @@
 			isa = PBXGroup;
 			children = (
 				C4A819EC24A6C111005023C6 /* IAPHelper.swift */,
-				C4A819EE24A6C112005023C6 /* ProductCell.swift */,
 				C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */,
 			);
 			path = Purchase;
@@ -787,9 +795,9 @@
 				736BDAD72A979DBE00851BEF /* CloudNotifications.swift in Sources */,
 				730438762A3445EF001EF25B /* FlowLayout.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
+				738827C82B1509170051BEF4 /* InAppPurchaseManager.swift in Sources */,
 				738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */,
 				73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */,
-				C4A819F324A6C113005023C6 /* ProductCell.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
 				7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */,
@@ -992,7 +1000,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1006,7 +1014,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 145;
+				MARKETING_VERSION = 152;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1027,7 +1035,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1041,7 +1049,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 145;
+				MARKETING_VERSION = 152;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -12,11 +12,11 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>Icon1</key>
+			<key>icon1</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Icon1</string>
+					<string>icon1</string>
 				</array>
 			</dict>
 			<key>Icon2</key>
@@ -26,11 +26,18 @@
 					<string>Icon2</string>
 				</array>
 			</dict>
-			<key>Icon3</key>
+			<key>icon3</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>Icon3</string>
+					<string>icon3</string>
+				</array>
+			</dict>
+			<key>icon4</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>icon4</string>
 				</array>
 			</dict>
 		</dict>
