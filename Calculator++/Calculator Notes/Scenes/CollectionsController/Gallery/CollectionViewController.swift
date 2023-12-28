@@ -55,11 +55,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         if !Defaults.getBool(.premiumPurchased) {
             setupAds()
         }
-        
-        InAppPurchaseManager.shared.start()
-        if let product = InAppPurchaseManager.shared.productForId("Calc.noads.mensal") {
-            InAppPurchaseManager.shared.buyProduct(product)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

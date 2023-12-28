@@ -103,8 +103,11 @@ class EditLeftBarButtonItem: UIBarButtonItem {
     private func setupButtonStates(deleteButton: UIButton, shareImageButton: UIButton) {
         deleteButton.isEnabled = false
         deleteButton.tintColor = .darkGray
+        deleteButton.isHidden = true
+        
         shareImageButton.isEnabled = false
         shareImageButton.tintColor = .darkGray
+        shareImageButton.isHidden = true
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -114,9 +117,11 @@ class EditLeftBarButtonItem: UIBarButtonItem {
     func setEditing(_ editing: Bool) {
         deleteButton.isEnabled = editing
         deleteButton.tintColor = editing ? .systemBlue : .darkGray
-
+        deleteButton.isHidden = !editing
+        
         shareImageButton.isEnabled = editing
         shareImageButton.tintColor = editing ? .systemBlue : .darkGray
+        shareImageButton.isHidden = !editing
     }
     
     // Actions dos botões
