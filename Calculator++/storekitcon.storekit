@@ -1,0 +1,158 @@
+{
+  "identifier" : "D5E9E74C",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "12.99",
+      "familyShareable" : false,
+      "internalID" : "1520824362",
+      "localizations" : [
+        {
+          "description" : "Eliminación de anuncios y soporte de video",
+          "displayName" : "Versión premium de por vida",
+          "locale" : "es_MX"
+        },
+        {
+          "description" : "Ad-Free Experience and Unlimited Videos",
+          "displayName" : "Lifetime Premium Package",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Eliminación de anuncios y videos ilimitados",
+          "displayName" : "Paquete Premium de por vida",
+          "locale" : "es_ES"
+        },
+        {
+          "description" : "Remoção de anúncios e vídeos ilimitados",
+          "displayName" : "Pacote Premium Vitalício",
+          "locale" : "pt_BR"
+        }
+      ],
+      "productID" : "NoAds.Calc",
+      "referenceName" : "Lifetime Premium Package",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "1479873340",
+    "_developerTeamID" : "NZC6LC8NWM",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 726703404.01589501,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "20916485",
+      "localizations" : [
+
+      ],
+      "name" : "Calculator Notes Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6473169855",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Removal of ads and unlimited storage",
+              "displayName" : "Secret Gallery Monthly Plan",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "Calc.noads.mensal",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Calc.noads.mensal",
+          "subscriptionGroupID" : "20916485",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "19.99",
+          "familyShareable" : true,
+          "groupNumber" : 1,
+          "internalID" : "6475559660",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "calcanual",
+              "displayName" : "calcanual",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "calcanual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "calcanual",
+          "subscriptionGroupID" : "20916485",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

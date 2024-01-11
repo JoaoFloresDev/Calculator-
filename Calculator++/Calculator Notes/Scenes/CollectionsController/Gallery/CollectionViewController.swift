@@ -55,6 +55,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         if !Defaults.getBool(.premiumPurchased) {
             setupAds()
         }
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
