@@ -16,7 +16,7 @@ target 'Calculator Notes' do
   pod 'SwiftLint'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Firebase/Firestore'
-  Pod 
+
 
 end
 
