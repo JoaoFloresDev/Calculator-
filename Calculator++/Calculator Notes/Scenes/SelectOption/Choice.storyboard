@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Choice View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="Choice" id="Y6W-OH-hqX" customClass="ChoiceViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkI-kn-zkB">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Bxv-g4-KXB"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Plans" id="XHb-O5-MU0">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="VwU-dz-JIj">
+                                            <connections>
+                                                <action selector="closeView:" destination="Y6W-OH-hqX" id="qWa-v5-faw"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciE-Gy-qRR">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xkI-kn-zkB" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5MJ-X6-Oh0"/>
+                            <constraint firstItem="ciE-Gy-qRR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MdN-gc-PFC"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ciE-Gy-qRR" secondAttribute="bottom" id="OKF-sv-TZY"/>
+                            <constraint firstItem="ciE-Gy-qRR" firstAttribute="top" secondItem="xkI-kn-zkB" secondAttribute="bottom" id="ap6-O2-SOB"/>
+                            <constraint firstItem="xkI-kn-zkB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="cwy-UX-yno"/>
+                            <constraint firstItem="xkI-kn-zkB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="o7P-AG-dfX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ciE-Gy-qRR" secondAttribute="trailing" id="peq-Lo-vtq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="close" destination="VwU-dz-JIj" id="522-3n-WLy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-34"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -121,6 +121,12 @@ enum Text: String {
     
     case backupNavigationSubtitle // "Clique em  "recuperar backup" no menu de anterior para importar as fotos para sua galeria"
     case continueText // Continuar
+
+    // MARK: - Here Added Strings
+    case planText // Plans;
+    case monthlyPlanText // Monthly $0.99
+    case yearlyPlanText // Yearly $9.99
+
     
     case welcomeOnboarding_title // "Bem-vindo ao Secret Gallery"
     case welcomeOnboarding_subtitle // "Proteja suas fotos e vídeos com segurança"

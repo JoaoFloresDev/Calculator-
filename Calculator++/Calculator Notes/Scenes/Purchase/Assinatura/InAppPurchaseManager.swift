@@ -1,13 +1,13 @@
 import StoreKit
 
 class InAppPurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    static let shared = InAppPurchaseManager()  // Singleton para facilitar o acesso
+    static let shared = InAppPurchaseManager()
 
     private var products: [String: SKProduct] = [:]
 
     func start() {
         SKPaymentQueue.default().add(self)
-        let request = SKProductsRequest(productIdentifiers: Set(["Calc.noads.mensal"]))
+        let request = SKProductsRequest(productIdentifiers: Set(["NoAds.Calc", "Calc.noads.mensal", "calcanual"]))
         request.delegate = self
         request.start()
     }
@@ -16,7 +16,6 @@ class InAppPurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransa
         for product in response.products {
             products[product.productIdentifier] = product
         }
-        // Notificar que os produtos foram carregados (opcional)
     }
 
     func buyProduct(_ product: SKProduct) {

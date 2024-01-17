@@ -16,7 +16,19 @@ struct AdsService {
     func checkPurchase(bannerView: GADBannerView?,
                        interstitial: inout GADInterstitial,
                        interstitialDelegate: GADInterstitialDelegate) {
-        if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || Defaults.getBool(.premiumPurchased) {
+        if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || Defaults.getBool(.montlyPlanPurchased) {
+            bannerView?.removeFromSuperview()
+        } else {
+            let getAddPhotoCounter = Defaults.getInt(.launchCounter)
+            if getAddPhotoCounter > 5 {
+                let request = GADRequest()
+                interstitial = createAndLoadInterstitial(delegate: interstitialDelegate)
+                interstitial.load(request)
+                interstitial.delegate = interstitialDelegate
+            }
+        }
+        
+        if RazeFaceProducts.store.isProductPurchased("cn_1_1m") || Defaults.getBool(.yearlyPlanPurchased) {
             bannerView?.removeFromSuperview()
         } else {
             let getAddPhotoCounter = Defaults.getInt(.launchCounter)

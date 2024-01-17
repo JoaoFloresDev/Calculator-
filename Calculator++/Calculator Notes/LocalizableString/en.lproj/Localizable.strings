@@ -124,6 +124,10 @@ backupNavigationSubtitle = "Photos are synchronized with newly added photos ever
 
 myBackupNavigationSubtitle = "Click 'restore backup' in the previous menu to import the photos into your gallery";
 continueText = "Continue";
+// MARK: - Here Added Strings
+planText = "Plans";
+monthlyPlanText = "Monthly $0.99";
+yearlyPlanText = "Yearly $9.99";
 
 welcomeOnboarding_title = "Welcome to Secret Gallery";
 welcomeOnboarding_subtitle = "Securely protect your photos and videos";

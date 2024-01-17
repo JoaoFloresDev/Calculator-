@@ -28,8 +28,16 @@ class SettingsCoordinator {
     }
     
     func premiumVersionPressed() {
-        let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+//        let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+//        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+//        viewController?.present(changePasswordCalcMode, animated: true)
+        
+        let storyboard = UIStoryboard(name: "Choice", bundle: nil)
+        let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Choice")
         viewController?.present(changePasswordCalcMode, animated: true)
+        
+        
     }
+    
+    
 }

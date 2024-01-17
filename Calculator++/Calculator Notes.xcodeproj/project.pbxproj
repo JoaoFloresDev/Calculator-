@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0434DE4F2B51BB3E00C7B463 /* Choice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0434DE4E2B51BB3E00C7B463 /* Choice.storyboard */; };
+		0434DE512B51BB4C00C7B463 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434DE502B51BB4C00C7B463 /* ChoiceViewController.swift */; };
 		07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07795D641F06ADCC0018466E /* CoreDataHelper.swift */; };
 		2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A07931C42F3B0007F415F /* AppDelegate.swift */; };
 		2E4A07991C42F3B0007F415F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E4A07971C42F3B0007F415F /* Main.storyboard */; };
@@ -107,6 +109,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0434DE4E2B51BB3E00C7B463 /* Choice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Choice.storyboard; sourceTree = "<group>"; };
+		0434DE502B51BB4C00C7B463 /* ChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		07795D641F06ADCC0018466E /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		2E4A07901C42F3B0007F415F /* Calculator Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E4A07931C42F3B0007F415F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +234,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041550262B51B9F800693024 /* SelectOption */ = {
+			isa = PBXGroup;
+			children = (
+				0434DE4E2B51BB3E00C7B463 /* Choice.storyboard */,
+				0434DE502B51BB4C00C7B463 /* ChoiceViewController.swift */,
+			);
+			path = SelectOption;
+			sourceTree = "<group>";
+		};
 		2E4A07871C42F3B0007F415F = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +449,7 @@
 		73B54D5027B0979B00499F66 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				041550262B51B9F800693024 /* SelectOption */,
 				73B860572AC1D5560023441A /* Onboarding */,
 				730438742A344585001EF25B /* CollectionsController */,
 				73ABC0ED284F187F00E5C3A4 /* Purchase */,
@@ -657,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C480A50424A7746B00094FC8 /* Notes.storyboard in Resources */,
+				0434DE4F2B51BB3E00C7B463 /* Choice.storyboard in Resources */,
 				73C2C5092A49D7E700963BA2 /* swiftlint.yml in Resources */,
 				73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */,
 				73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */,
@@ -790,6 +805,7 @@
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
 				73B54D6B27B09FDA00499F66 /* UILabel+extensions.swift in Sources */,
 				BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */,
+				0434DE512B51BB4C00C7B463 /* ChoiceViewController.swift in Sources */,
 				730438712A341519001EF25B /* AdsHandler.swift in Sources */,
 				730438632A315B02001EF25B /* FoldersService.swift in Sources */,
 				736BDAD72A979DBE00851BEF /* CloudNotifications.swift in Sources */,
@@ -1000,7 +1016,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 153;
+				CURRENT_PROJECT_VERSION = 156;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1014,7 +1030,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 153;
+				MARKETING_VERSION = 156;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1035,7 +1051,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 153;
+				CURRENT_PROJECT_VERSION = 156;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1049,7 +1065,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 153;
+				MARKETING_VERSION = 156;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";

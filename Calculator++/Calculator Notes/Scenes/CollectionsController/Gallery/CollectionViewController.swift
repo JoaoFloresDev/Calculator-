@@ -52,7 +52,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         handleInitialLaunch()
         setupPlaceholderView()
-        if !Defaults.getBool(.premiumPurchased) {
+        if !Defaults.getBool(.montlyPlanPurchased) {
             setupAds()
         }
         
@@ -60,7 +60,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if Defaults.getBool(.premiumPurchased) {
+        if Defaults.getBool(.montlyPlanPurchased) {
             return
         }
         

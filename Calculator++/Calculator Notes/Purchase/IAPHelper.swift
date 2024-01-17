@@ -76,6 +76,8 @@ extension IAPHelper: SKProductsRequestDelegate {
     for p in products {
       print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
     }
+      
+      print("----")
   }
 
   public func request(_ request: SKRequest, didFailWithError error: Error) {

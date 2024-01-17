@@ -161,7 +161,7 @@ class PurchaseViewController: UIViewController {
                 self.actionButton.setTitle("✓✓✓", for: .normal)
                 self.actionButton.backgroundColor  = .systemGreen
                 self.actionButton.isUserInteractionEnabled = false
-                Defaults.setBool(.premiumPurchased, true)
+                Defaults.setBool(.montlyPlanPurchased, true)
                 self.delegate?.purchased()
             }
         }
