@@ -16,6 +16,8 @@ enum BoolKey: String {
     case notFirstUse = "firstUse"
     case iCloudEnabled
     case premiumPurchased = "NoAds.Calc"
+    case monthlyPurchased = "Calc.noads.mensal"
+    case yearlyPurchased = "calcanual"
     
     func set(_ value: Bool) {
         userDefaults.set(value, forKey: rawValue)

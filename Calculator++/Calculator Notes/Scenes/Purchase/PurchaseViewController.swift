@@ -13,7 +13,7 @@ class PurchaseViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var customNavigator: UINavigationItem!
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    @IBOutlet weak var restoreButton: UIBarButtonItem!
+    
     lazy var loadingAlert = LoadingAlert(in: self)
     
     // MARK: - Variables
@@ -38,27 +38,83 @@ class PurchaseViewController: UIViewController {
     lazy var headerView = PurchaseHeaderView()
     lazy var purchaseBenetList = PurchaseBenetList()
     
-    lazy var actionButton: UIButton = {
+    lazy var monthlyButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(red: 0/255.0, green: 175/255.0, blue: 232/255.0, alpha: 1.0)
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.clipsToBounds = true
-        button.setTitle(Text.continueText.localized(), for: .normal)
+        button.setTitle("Monthly", for: .normal)
         
         // Adicionando a ação ao botão
-        button.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapMonthlyButton), for: .touchUpInside)
         return button
     }()
     
-    @objc func didTapActionButton() {
+    lazy var yearlyButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(red: 0/255.0, green: 175/255.0, blue: 232/255.0, alpha: 1.0)
+        button.layer.cornerRadius = 10
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        button.clipsToBounds = true
+        button.setTitle("Yearly", for: .normal)
+        
+        // Adicionando a ação ao botão
+        button.addTarget(self, action: #selector(didTabYearlyButton), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var restore: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(red: 0/255.0, green: 175/255.0, blue: 232/255.0, alpha: 1.0)
+        button.layer.cornerRadius = 10
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        button.clipsToBounds = true
+        button.setTitle("Restore", for: .normal)
+        
+        // Adicionando a ação ao botão
+        button.addTarget(self, action: #selector(didTapRestore), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func didTapMonthlyButton() {
         loadingAlert.startLoading {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 self.loadingAlert.stopLoading()
             }
         }
-        performPurchase(product: products.first)
+        for p in products {
+            if p.productIdentifier == "Calc.noads.mensal" {
+                performPurchase(product: p)
+            }
+        }
+        
+    }
+    
+    @objc func didTabYearlyButton() {
+        loadingAlert.startLoading {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.loadingAlert.stopLoading()
+            }
+        }
+        for p in products {
+            if p.productIdentifier == "calcanual" {
+                performPurchase(product: p)
+            }
+        }
+    }
+    
+    @objc func didTapRestore() {
+        loadingAlert.startLoading {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.loadingAlert.stopLoading()
+            }
+        }
+        RazeFaceProducts.store.restorePurchases()
+        confirmCheckmark()
     }
     
     func setupUI() {
@@ -68,19 +124,28 @@ class PurchaseViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
         
-        view.addSubview(purchaseBenetList)
-        purchaseBenetList.snp.makeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom).offset(255)
-            make.centerX.equalToSuperview().multipliedBy(1.05)
-            make.width.equalTo(240)
-        }
-        
-        view.addSubview(actionButton)
-        actionButton.snp.makeConstraints { make in
+        view.addSubview(monthlyButton)
+        monthlyButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
-            make.top.equalTo(purchaseBenetList.snp.bottom).offset(35)
+            make.top.equalTo(headerView.snp.bottom).offset(250)
+        }
+        
+        view.addSubview(yearlyButton)
+        yearlyButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().inset(16)
+            make.height.equalTo(48)
+            make.top.equalTo(monthlyButton.snp.bottom).offset(16)
+        }
+        
+        view.addSubview(restore)
+        restore.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().inset(16)
+            make.height.equalTo(48)
+            make.top.equalTo(yearlyButton.snp.bottom).offset(16)
         }
     }
     
@@ -130,6 +195,7 @@ class PurchaseViewController: UIViewController {
     @objc private func handlePurchaseNotification(_ notification: Notification) {
         guard let productID = notification.object as? String, products.contains(where: { $0.productIdentifier == productID }) else { return }
         confirmCheckmark()
+        reload()
     }
     
     private func performPurchase(product: SKProduct?) {
@@ -149,7 +215,27 @@ class PurchaseViewController: UIViewController {
             guard let self = self, let products = products else { return }
             DispatchQueue.main.async {
                 self.products = products
-                self.updateUI(with: products.first)
+                
+                if RazeFaceProducts.store.isProductPurchased("calcanual") {
+                    for p in products {
+                        if p.productIdentifier == "calcanual" {
+                            self.updateUI(with: p)
+                        }
+                    }
+                } else if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") {
+                    for p in products {
+                        if p.productIdentifier == "Calc.noads.mensal" {
+                            self.updateUI(with: p)
+                        }
+                    }
+                }  else {
+                    for p in products {
+                        if p.productIdentifier == "Calc.noads.mensal" {
+                            self.updateUI(with: p)
+                        }
+                    }
+                }
+                
                 self.confirmCheckmark()
             }
         }
@@ -157,13 +243,19 @@ class PurchaseViewController: UIViewController {
     
     private func confirmCheckmark() {
         DispatchQueue.main.async {
-            if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
-                self.actionButton.setTitle("✓✓✓", for: .normal)
-                self.actionButton.backgroundColor  = .systemGreen
-                self.actionButton.isUserInteractionEnabled = false
-                Defaults.setBool(.premiumPurchased, true)
-                self.delegate?.purchased()
+            if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") {
+                self.monthlyButton.setTitle("✓✓✓", for: .normal)
+                self.monthlyButton.backgroundColor  = .systemGreen
+                self.monthlyButton.isUserInteractionEnabled = false
+                Defaults.setBool(.monthlyPurchased, true)
             }
+            if RazeFaceProducts.store.isProductPurchased("calcanual") {
+                self.yearlyButton.setTitle("✓✓✓", for: .normal)
+                self.yearlyButton.backgroundColor  = .systemGreen
+                self.yearlyButton.isUserInteractionEnabled = false
+                Defaults.setBool(.yearlyPurchased, true)
+            }
+            self.delegate?.purchased()
         }
     }
     
@@ -173,11 +265,19 @@ class PurchaseViewController: UIViewController {
         headerView.subtitle.text = product.localizedDescription
         priceFormatter.locale = product.priceLocale
         headerView.price.text = priceFormatter.string(from: product.price)
+        
+        for p in products {
+            if p.productIdentifier == "Calc.noads.mensal" {
+                monthlyButton.setTitle("Monthly " + priceFormatter.string(from: p.price)!, for: .normal)
+            }
+            if p.productIdentifier == "calcanual" {
+                yearlyButton.setTitle("Yearly " + priceFormatter.string(from: p.price)!, for: .normal)
+            }
+        }
     }
     
     private func setupLocalizedText() {
         customNavigator.title = String()
         closeButton.title = Text.close.localized()
-        restoreButton.title = Text.restore.localized()
     }
 }
