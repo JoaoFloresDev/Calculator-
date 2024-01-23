@@ -163,3 +163,6 @@ changeIconTitle = "アイコンを変更する";
 unlimitedStorage = "無制限のストレージ";
 noAds = "広告なし";
 videoSuport = "ビデオサポート";
+callToActionPurchase = "私たちのプレミアム体験を知ってください";
+selectImagesToShare = "共有する画像を選択してください";
+selectImagesToDelete = "削除する画像を選択してください";

@@ -163,3 +163,6 @@ changeIconTitle = "تغيير الأيقونة";
 unlimitedStorage = "تخزين غير محدود";
 noAds = "بدون إعلانات";
 videoSuport = "دعم الفيديو";
+callToActionPurchase = "تعرف على تجربتنا المميزة";
+selectImagesToShare = "اختر الصور التي تريد مشاركتها";
+selectImagesToDelete = "اختر الصور التي تريد حذفها";

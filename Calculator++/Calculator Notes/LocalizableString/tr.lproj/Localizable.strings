@@ -161,3 +161,6 @@ changeIconTitle = "Simgeyi değiştir";
 unlimitedStorage = "Sınırsız depolama";
 noAds = "Reklamsız";
 videoSuport = "Video desteği";
+callToActionPurchase = "Premium deneyimimizi keşfedin";
+selectImagesToShare = "Paylaşmak istediğiniz resimleri seçin";
+selectImagesToDelete = "Silmek istediğiniz resimleri seçin";

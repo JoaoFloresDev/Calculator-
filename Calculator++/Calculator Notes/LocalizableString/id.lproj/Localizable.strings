@@ -163,3 +163,6 @@ changeIconTitle = "Ubah ikon";
 unlimitedStorage = "Penyimpanan tak terbatas";
 noAds = "Tanpa iklan";
 videoSuport = "Dukungan video";
+callToActionPurchase = "Temukan pengalaman premium kami";
+selectImagesToShare = "Pilih gambar yang ingin Anda bagikan";
+selectImagesToDelete = "Pilih gambar yang ingin Anda hapus";

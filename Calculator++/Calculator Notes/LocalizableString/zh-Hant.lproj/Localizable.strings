@@ -163,3 +163,6 @@ changeIconTitle = "更改圖標";
 unlimitedStorage = "無限存儲";
 noAds = "無廣告";
 videoSuport = "視頻支持";
+callToActionPurchase = "了解我們的高級體驗";
+selectImagesToShare = "選擇您想要分享的圖片";
+selectImagesToDelete = "選擇您想要刪除的圖片";

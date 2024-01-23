@@ -43,29 +43,30 @@ class PurchaseHeaderView: UIView {
         marketIcon.contentMode = .scaleAspectFit
         marketIcon.image = UIImage(named: Img.iconMrk.name())
         marketIcon.snp.makeConstraints { make in
-            make.height.width.equalTo(70)
+            make.height.width.equalTo(60)
         }
         
         // Configuração do Title
         title.textAlignment = .center
-        title.text = "Loading..."
-        title.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        title.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         
         // Configuração do Subtitle
         subtitle.textAlignment = .center
-        subtitle.text = "Loading..."
-        subtitle.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        subtitle.font = UIFont.systemFont(ofSize: 16, weight: .regular)
 
         price.textAlignment = .center
-        price.text = "Loading..."
         price.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+
+        title.text = "SG PRO"
+        subtitle.text = Text.callToActionPurchase.localized()
+        price.isHidden = true
         
         // Adicionar elementos ao StackView
-        stackView.addArrangedSubview(createSpacer(height:  14))
+        stackView.addArrangedSubview(createSpacer(height:  8))
         stackView.addArrangedSubview(marketIcon)
         stackView.addArrangedSubview(createSpacer(height:  20))
         stackView.addArrangedSubview(title)
-        stackView.addArrangedSubview(createSpacer(height:  12))
+        stackView.addArrangedSubview(createSpacer(height:  8))
         stackView.addArrangedSubview(subtitle)
         stackView.addArrangedSubview(createSpacer(height:  16))
         stackView.addArrangedSubview(price)

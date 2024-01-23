@@ -163,3 +163,6 @@ changeIconTitle = "Изменить иконку";
 unlimitedStorage = "Неограниченное хранение";
 noAds = "Без рекламы";
 videoSuport = "Поддержка видео";
+callToActionPurchase = "Откройте для себя наш премиум-опыт";
+selectImagesToShare = "Выберите изображения, которые вы хотите поделиться";
+selectImagesToDelete = "Выберите изображения, которые вы хотите удалить";

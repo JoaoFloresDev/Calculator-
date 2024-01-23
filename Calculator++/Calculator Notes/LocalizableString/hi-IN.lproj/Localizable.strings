@@ -163,3 +163,6 @@ changeIconTitle = "आइकन बदलें";
 unlimitedStorage = "असीमित संग्रहण";
 noAds = "विज्ञापन नहीं";
 videoSuport = "वीडियो सहायता";
+callToActionPurchase = "हमारे प्रीमियम अनुभव को जानें";
+selectImagesToShare = "साझा करने के लिए चित्र चुनें";
+selectImagesToDelete = "हटाने के लिए चित्र चुनें";

@@ -24,25 +24,25 @@ class PurchaseBenetList: UIView {
         // Configuração do StackView
         stackView.axis = .vertical
         // Adicionar elementos ao StackView
-        stackView.addArrangedSubview(createSpacer(height:  12))
+        stackView.addArrangedSubview(createSpacer(height:  8))
         stackView.addArrangedSubview(
             PurchaseBenefitItem(
                 text: Text.videoSuport.localized(),
                 imageName: Img.videosupport.name())
         )
-        stackView.addArrangedSubview(createSpacer(height:  12))
+        stackView.addArrangedSubview(createSpacer(height:  8))
         stackView.addArrangedSubview(
             PurchaseBenefitItem(
                 text: Text.noAds.localized(),
                 imageName: Img.noads.name())
         )
-        stackView.addArrangedSubview(createSpacer(height:  12))
+        stackView.addArrangedSubview(createSpacer(height:  8))
         stackView.addArrangedSubview(
             PurchaseBenefitItem(
                 text: Text.unlimitedStorage.localized(),
                 imageName: Img.unlimited.name())
         )
-        stackView.addArrangedSubview(createSpacer(height:  12))
+        stackView.addArrangedSubview(createSpacer(height:  8))
         
         stackView.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()

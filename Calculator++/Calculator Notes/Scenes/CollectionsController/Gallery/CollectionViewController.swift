@@ -52,15 +52,15 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         handleInitialLaunch()
         setupPlaceholderView()
-        if !Defaults.getBool(.monthlyPurchased) || !Defaults.getBool(.yearlyPurchased){
+        if !(
+            Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) || RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
+        ) {
             setupAds()
         }
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) {
+        if Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) || RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil {
             return
         }
         
@@ -79,7 +79,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     func check30DaysPassed() -> Bool {
         if let lastSavedDate = UserDefaults.standard.object(forKey: "LastSavedDate") as? Date {
             let dayDifference = Calendar.current.dateComponents([.day], from: lastSavedDate, to: Date()).day ?? 0
-            if dayDifference >= 14 {
+            if dayDifference >= 20 {
                 saveTodayDate()
                 return true
             } else {
@@ -137,10 +137,16 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
     }
     
     private func handleShareImageButton() {
+        if modelData.isEmpty {
+            Alerts.showSelectImagesToShareFirts(controller: self)
+        }
         coordinator?.shareImage(modelData: modelData)
     }
     
     private func handleDeleteButton() {
+        if modelData.isEmpty {
+            Alerts.showSelectImagesToDeleteFirts(controller: self)
+        }
         Alerts.showConfirmationDelete(controller: self) { [weak self] in
             self?.performDeletionTasks()
         }

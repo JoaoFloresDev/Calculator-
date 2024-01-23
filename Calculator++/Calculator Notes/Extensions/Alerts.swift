@@ -160,4 +160,15 @@ struct Alerts {
         let alert = createAlert(title: Text.emailErrorTitle.localized(), message: Text.emailErrorDescription.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
+    
+    // Education
+    static func showSelectImagesToShareFirts(controller: UIViewController) {
+        let alert = createAlert(title: Text.selectImagesToShare.localized(), message: nil, actions: [createAction(title: Text.ok.localized())])
+        presentAlert(alert, on: controller)
+    }
+    
+    static func showSelectImagesToDeleteFirts(controller: UIViewController) {
+        let alert = createAlert(title: Text.selectImagesToDelete.localized(), message: nil, actions: [createAction(title: Text.ok.localized())])
+        presentAlert(alert, on: controller)
+    }
 }

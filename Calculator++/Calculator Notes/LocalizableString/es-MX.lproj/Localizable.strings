@@ -163,3 +163,6 @@ changeIconTitle = "Cambiar icono";
 unlimitedStorage = "Almacenamiento ilimitado";
 noAds = "Sin anuncios";
 videoSuport = "Soporte para videos";
+callToActionPurchase = "Descubre nuestra experiencia premium";
+selectImagesToShare = "Seleccione las imágenes que desea compartir";
+selectImagesToDelete = "Seleccione las imágenes que desea eliminar";

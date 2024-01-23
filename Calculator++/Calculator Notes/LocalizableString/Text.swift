@@ -161,7 +161,9 @@ enum Text: String {
     case unlimitedStorage // "Armazenamento ilimitado"
     case noAds // "Sem anúncios"
     case videoSuport // "Suporte para vídeos"
-    
+    case callToActionPurchase
+    case selectImagesToShare // "Selecione as imagens que deseja compartilhar";
+    case selectImagesToDelete // "Selecione as imagens que deseja deletar";
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

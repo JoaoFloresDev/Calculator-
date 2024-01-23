@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CBW-vj-e0b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CBW-vj-e0b">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +26,11 @@
                                                 <action selector="dismissView:" destination="CBW-vj-e0b" id="azf-8F-0zE"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Restore" hidden="YES" id="03A-bK-ZXw"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Restore" id="BvO-dO-XfL">
+                                            <connections>
+                                                <action selector="restorePressed:" destination="CBW-vj-e0b" id="NVJ-xH-k0a"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -41,8 +45,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="lua-ZU-rAg"/>
                     <connections>
-                        <outlet property="closeButton" destination="nHu-UV-ZYz" id="jT4-je-AUH"/>
+                        <outlet property="closeButton" destination="nHu-UV-ZYz" id="A4o-xK-gfX"/>
                         <outlet property="customNavigator" destination="x5X-se-eEl" id="GKX-n2-T0j"/>
+                        <outlet property="restoreButton" destination="BvO-dO-XfL" id="rxd-Wh-8pb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDi-az-bIF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -52,7 +57,7 @@
     </scenes>
     <resources>
         <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
