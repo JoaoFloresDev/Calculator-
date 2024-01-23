@@ -38,6 +38,7 @@ struct AdsService {
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [testDeviceIdentifier]
         
         let bannerView = GADBannerView(adSize: kGADAdSizeLargeBanner)
+        bannerView.tag = 100
         addBannerViewToView(bannerView, in: controller)
         
         bannerView.adUnitID = bannerAdUnitID

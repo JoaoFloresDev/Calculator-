@@ -71,6 +71,21 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        checkPurchase()
+    }
+    
+//    MARK: - Ads
+    func checkPurchase() {
+        if
+            Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) || RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
+        {
+            if let viewToRemove = self.view.viewWithTag(100) {
+                viewToRemove.removeFromSuperview()
+            }
+        }
+    }
+    
     func saveTodayDate() {
         let now = Date()
         UserDefaults.standard.set(now, forKey: "LastSavedDate")
