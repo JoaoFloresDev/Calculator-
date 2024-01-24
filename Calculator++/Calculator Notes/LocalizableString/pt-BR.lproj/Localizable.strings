@@ -167,3 +167,8 @@ callToActionPurchase = "Conheça nossa experiência premium";
 
 selectImagesToShare = "Selecione as imagens que deseja compartilhar";
 selectImagesToDelete = "Selecione as imagens que deseja deletar";
+
+monthlySubscription = "Assinatura Mensal - ";
+yearlySubscription = "Assinatura Anual - ";
+termsOfUse = "Termos de uso";
+privacyPolice = "Politica de privacidade";

@@ -164,6 +164,13 @@ enum Text: String {
     case callToActionPurchase
     case selectImagesToShare // "Selecione as imagens que deseja compartilhar";
     case selectImagesToDelete // "Selecione as imagens que deseja deletar";
+    
+    case monthlySubscription //    "Assinatura Mensal - "
+    case yearlySubscription //    "Assinatura Anual - "
+    case termsOfUse //    "Termos de uso"
+    case privacyPolice //    "Politica de privacidade"
+    
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

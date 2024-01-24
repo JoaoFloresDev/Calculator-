@@ -24,7 +24,6 @@ class ScrollableTextViewController: UIViewController {
     
     let scrollView = UIScrollView()
     let contentView = UIView()
-    let titleLabel = UILabel()
     let bodyLabel = UILabel()
     
     override func viewDidLoad() {
@@ -36,9 +35,7 @@ class ScrollableTextViewController: UIViewController {
         scrollView.addSubview(contentView)
         
         // Configura o título e o texto
-        titleLabel.text = "Privacy Policy"
-        titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        contentView.addSubview(titleLabel)
+        title = "Privacy Policy"
         
         bodyLabel.text =
         """
@@ -142,17 +139,11 @@ class ScrollableTextViewController: UIViewController {
             make.left.right.equalTo(view)
         }
         
-        // Título
-        titleLabel.snp.makeConstraints { make in
+        // Texto
+        bodyLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(20)
             make.leading.equalTo(contentView).offset(16)
             make.trailing.equalTo(contentView).offset(-16)
-        }
-        
-        // Texto
-        bodyLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.leading.trailing.equalTo(titleLabel)
             make.bottom.equalTo(contentView).offset(-20)
         }
     }

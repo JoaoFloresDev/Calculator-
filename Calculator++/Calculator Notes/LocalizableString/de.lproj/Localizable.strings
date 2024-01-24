@@ -166,3 +166,7 @@ videoSuport = "Video-Unterstützung";
 callToActionPurchase = "Entdecken Sie unsere Premium-Erfahrung";
 selectImagesToShare = "Wählen Sie die Bilder aus, die Sie teilen möchten";
 selectImagesToDelete = "Wählen Sie die Bilder aus, die Sie löschen möchten";
+monthlySubscription = "Monatliches Abonnement - ";
+yearlySubscription = "Jährliches Abonnement - ";
+termsOfUse = "Nutzungsbedingungen";
+privacyPolicy = "Datenschutzrichtlinie";

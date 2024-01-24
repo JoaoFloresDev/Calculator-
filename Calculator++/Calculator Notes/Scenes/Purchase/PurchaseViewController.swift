@@ -244,10 +244,10 @@ class PurchaseViewController: UIViewController {
     private func updateUI(with product: SKProduct?) {
         for p in products {
             if p.productIdentifier == "Calc.noads.mensal" {
-                monthlyButton.setTitle("Monthly " + priceFormatter.string(from: p.price)!, for: .normal)
+                monthlyButton.setTitle(Text.monthlySubscription.localized() + priceFormatter.string(from: p.price)!, for: .normal)
             }
             if p.productIdentifier == "calcanual" {
-                yearlyButton.setTitle("Yearly " + priceFormatter.string(from: p.price)!, for: .normal)
+                yearlyButton.setTitle(Text.yearlySubscription.localized() + priceFormatter.string(from: p.price)!, for: .normal)
             }
         }
     }

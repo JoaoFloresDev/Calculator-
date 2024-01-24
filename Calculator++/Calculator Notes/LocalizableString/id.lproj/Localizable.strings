@@ -166,3 +166,7 @@ videoSuport = "Dukungan video";
 callToActionPurchase = "Temukan pengalaman premium kami";
 selectImagesToShare = "Pilih gambar yang ingin Anda bagikan";
 selectImagesToDelete = "Pilih gambar yang ingin Anda hapus";
+monthlySubscription = "Berlangganan Bulanan - ";
+yearlySubscription = "Berlangganan Tahunan - ";
+termsOfUse = "Syarat Penggunaan";
+privacyPolicy = "Kebijakan Privasi";

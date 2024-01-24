@@ -164,3 +164,7 @@ videoSuport = "Video desteği";
 callToActionPurchase = "Premium deneyimimizi keşfedin";
 selectImagesToShare = "Paylaşmak istediğiniz resimleri seçin";
 selectImagesToDelete = "Silmek istediğiniz resimleri seçin";
+monthlySubscription = "Aylık Abonelik - ";
+yearlySubscription = "Yıllık Abonelik - ";
+termsOfUse = "Kullanım Koşulları";
+privacyPolicy = "Gizlilik Politikası";

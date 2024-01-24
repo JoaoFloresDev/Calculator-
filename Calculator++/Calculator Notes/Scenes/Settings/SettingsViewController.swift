@@ -45,6 +45,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var vaultModeImage: UIImageView!
     @IBOutlet weak var faceIDView: UIView!
     
+    @IBOutlet weak var privacyPolice: UIView!
+    @IBOutlet weak var privacyPoliceLabel: UILabel!
+    
+    @IBOutlet weak var useTerms: UIView!
+    @IBOutlet weak var useTermsLabel: UILabel!
+    
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Defaults.setBool(.recoveryStatus, sender.isOn)
@@ -95,6 +101,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         recoverLabel.setText(.hideRecoverButton)
         chooseProtectionLabel.setText(.chooseProtectionMode)
         changeIconLabel.setText(.changeIconTitle)
+        privacyPoliceLabel.setText(.privacyPolice)
+        useTermsLabel.setText(.termsOfUse)
     }
 
     private func setupViewStyle() {
@@ -118,12 +126,25 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     
     // MARK: - Backup
-    @objc func changeIconPressed(_ sender: UITapGestureRecognizer? = nil) {
+    @objc 
+    func changeIconPressed(_ sender: UITapGestureRecognizer? = nil) {
         let vc = ChangeIconViewController()
         vc.modalPresentationStyle = .overCurrentContext
         if let tabBarController = self.tabBarController {
             tabBarController.present(vc, animated: false, completion: nil)
         }
+    }
+    
+    @objc
+    func useTermsPressed(_ sender: UITapGestureRecognizer? = nil) {
+        let navigation = UINavigationController(rootViewController: UseTermsViewController())
+        self.present(navigation, animated: true)
+    }
+    
+    @objc
+    func privacyPolicePressed(_ sender: UITapGestureRecognizer? = nil) {
+        let navigation = UINavigationController(rootViewController: ScrollableTextViewController())
+        self.present(navigation, animated: true)
     }
     
     private func setupUI() {
@@ -136,8 +157,15 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         rateApp.addGestureRecognizer(tap)
+        
         let changeIconPressed = UITapGestureRecognizer(target: self, action: #selector(changeIconPressed(_:)))
         changeIcon.addGestureRecognizer(changeIconPressed)
+        
+        let privacyPolicePressed = UITapGestureRecognizer(target: self, action: #selector(privacyPolicePressed(_:)))
+        privacyPolice.addGestureRecognizer(privacyPolicePressed)
+        
+        let useTermsPressed = UITapGestureRecognizer(target: self, action: #selector(useTermsPressed(_:)))
+        useTerms.addGestureRecognizer(useTermsPressed)
     }
     
     private func setupViewStyles() {

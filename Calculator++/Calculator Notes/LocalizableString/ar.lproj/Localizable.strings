@@ -166,3 +166,7 @@ videoSuport = "دعم الفيديو";
 callToActionPurchase = "تعرف على تجربتنا المميزة";
 selectImagesToShare = "اختر الصور التي تريد مشاركتها";
 selectImagesToDelete = "اختر الصور التي تريد حذفها";
+monthlySubscription = "الاشتراك الشهري - ";
+yearlySubscription = "الاشتراك السنوي - ";
+termsOfUse = "شروط الاستخدام";
+privacyPolicy = "سياسة الخصوصية";

@@ -166,3 +166,7 @@ videoSuport = "视频支持";
 callToActionPurchase = "了解我们的高级体验";
 selectImagesToShare = "选择您想要分享的图片";
 selectImagesToDelete = "选择您想要删除的图片";
+monthlySubscription = "每月订阅 - ";
+yearlySubscription = "年度订阅 - ";
+termsOfUse = "使用条款";
+privacyPolicy = "隐私政策";

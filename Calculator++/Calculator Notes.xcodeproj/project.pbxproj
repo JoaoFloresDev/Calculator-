@@ -36,6 +36,7 @@
 		73741B022A87D06B0067B269 /* CloudKitImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B012A87D06B0067B269 /* CloudKitImageService.swift */; };
 		73741B092A880B3C0067B269 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B062A880A590067B269 /* BackupService.swift */; };
 		73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B102A886C310067B269 /* CloudUpdateManager.swift */; };
+		737530CF2B60CE6A000B23E3 /* UseTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */; };
 		737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */; };
 		737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
@@ -143,6 +144,7 @@
 		73741B012A87D06B0067B269 /* CloudKitImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitImageService.swift; sourceTree = "<group>"; };
 		73741B062A880A590067B269 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
 		73741B102A886C310067B269 /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUpdateManager.swift; sourceTree = "<group>"; };
+		737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTermsViewController.swift; sourceTree = "<group>"; };
 		737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				73862C812AAD1894005D9D25 /* OnboardingViewController.swift */,
 				738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */,
 				738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */,
+				737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */,
 				738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */,
 				73B860582AC1FB330023441A /* OnboardingView.swift */,
 			);
@@ -789,6 +792,7 @@
 				731436442A48D6B000B9842E /* FooterView.swift in Sources */,
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
 				73B54D6B27B09FDA00499F66 /* UILabel+extensions.swift in Sources */,
+				737530CF2B60CE6A000B23E3 /* UseTermsViewController.swift in Sources */,
 				BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */,
 				730438712A341519001EF25B /* AdsHandler.swift in Sources */,
 				730438632A315B02001EF25B /* FoldersService.swift in Sources */,
@@ -1000,7 +1004,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 153;
+				CURRENT_PROJECT_VERSION = 162;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1014,7 +1018,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 153;
+				MARKETING_VERSION = 162;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1035,7 +1039,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 153;
+				CURRENT_PROJECT_VERSION = 162;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1049,7 +1053,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 153;
+				MARKETING_VERSION = 162;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";

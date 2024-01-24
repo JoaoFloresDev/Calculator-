@@ -166,3 +166,7 @@ videoSuport = "ビデオサポート";
 callToActionPurchase = "私たちのプレミアム体験を知ってください";
 selectImagesToShare = "共有する画像を選択してください";
 selectImagesToDelete = "削除する画像を選択してください";
+monthlySubscription = "月額サブスクリプション - ";
+yearlySubscription = "年間サブスクリプション - ";
+termsOfUse = "利用規約";
+privacyPolicy = "プライバシーポリシー";

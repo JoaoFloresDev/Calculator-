@@ -166,3 +166,7 @@ videoSuport = "Поддержка видео";
 callToActionPurchase = "Откройте для себя наш премиум-опыт";
 selectImagesToShare = "Выберите изображения, которые вы хотите поделиться";
 selectImagesToDelete = "Выберите изображения, которые вы хотите удалить";
+monthlySubscription = "Ежемесячная Подписка - ";
+yearlySubscription = "Ежегодная Подписка - ";
+termsOfUse = "Условия Использования";
+privacyPolicy = "Политика Конфиденциальности";

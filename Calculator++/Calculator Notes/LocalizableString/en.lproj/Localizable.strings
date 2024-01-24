@@ -165,3 +165,7 @@ videoSuport = "Video support";
 callToActionPurchase = "Discover our premium experience";
 selectImagesToShare = "Select the images you want to share";
 selectImagesToDelete = "Select the images you want to delete";
+monthlySubscription = "Monthly Subscription - ";
+yearlySubscription = "Annual Subscription - ";
+termsOfUse = "Terms of Use";
+privacyPolicy = "Privacy Policy";
