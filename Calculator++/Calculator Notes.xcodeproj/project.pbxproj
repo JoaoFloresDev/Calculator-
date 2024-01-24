@@ -37,6 +37,8 @@
 		73741B092A880B3C0067B269 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B062A880A590067B269 /* BackupService.swift */; };
 		73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B102A886C310067B269 /* CloudUpdateManager.swift */; };
 		737530CF2B60CE6A000B23E3 /* UseTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */; };
+		737530D32B60E517000B23E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530D22B60E489000B23E3 /* ViewController.swift */; };
+		737530D42B60E524000B23E3 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 737530D02B60E471000B23E3 /* art.scnassets */; };
 		737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */; };
 		737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
@@ -145,6 +147,8 @@
 		73741B062A880A590067B269 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
 		73741B102A886C310067B269 /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUpdateManager.swift; sourceTree = "<group>"; };
 		737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTermsViewController.swift; sourceTree = "<group>"; };
+		737530D02B60E471000B23E3 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		737530D22B60E489000B23E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 		2E4A07921C42F3B0007F415F /* Calculator Notes */ = {
 			isa = PBXGroup;
 			children = (
+				737530D02B60E471000B23E3 /* art.scnassets */,
 				73A1DA1C2B094EBD002B8D17 /* AppIcons */,
 				738B6AEC2AD8C16300EA4B72 /* GoogleService-Info.plist */,
 				733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */,
@@ -371,6 +376,14 @@
 			path = local;
 			sourceTree = "<group>";
 		};
+		737530D12B60E489000B23E3 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				737530D22B60E489000B23E3 /* ViewController.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
 		737D66A12AB0AA7E00806C98 /* Protections */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +451,7 @@
 		73B54D5027B0979B00499F66 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				737530D12B60E489000B23E3 /* AR */,
 				73B860572AC1D5560023441A /* Onboarding */,
 				730438742A344585001EF25B /* CollectionsController */,
 				73ABC0ED284F187F00E5C3A4 /* Purchase */,
@@ -666,6 +680,7 @@
 				C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */,
 				2E4A079E1C42F3B0007F415F /* LaunchScreen.storyboard in Resources */,
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
+				737530D42B60E524000B23E3 /* art.scnassets in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
 				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
 				C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */,
@@ -827,6 +842,7 @@
 				7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */,
 				73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
+				737530D32B60E517000B23E3 /* ViewController.swift in Sources */,
 				73862C822AAD1894005D9D25 /* OnboardingViewController.swift in Sources */,
 				C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */,
 				73B54D6627B09D9800499F66 /* String+Localized.swift in Sources */,

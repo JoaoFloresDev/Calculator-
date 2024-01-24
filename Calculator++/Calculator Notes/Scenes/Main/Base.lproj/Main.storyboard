@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ez-Al-Xfm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8ez-Al-Xfm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,5 +68,87 @@
             </objects>
             <point key="canvasLocation" x="561" y="279"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="NoT-jM-okf">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6dx-jb-cMs" customClass="ViewController" customModule="iPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fNa-s9-07B"/>
+                        <viewControllerLayoutGuide type="bottom" id="yq3-8j-W5t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IEJ-0Q-KWU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdN-8z-ftW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arscnView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6A-0g-n6m">
+                                <rect key="frame" x="0.0" y="761.5" width="414" height="134.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d01-Tt-mGJ">
+                                        <rect key="frame" x="160" y="20" width="94" height="94.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="d01-Tt-mGJ" secondAttribute="height" multiplier="1:1" id="eLt-EE-aeC"/>
+                                        </constraints>
+                                        <state key="normal" title="Gravar" image="gravar"/>
+                                        <connections>
+                                            <action selector="screenShot:" destination="6dx-jb-cMs" eventType="touchUpInside" id="7e9-pe-W6K"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brI-37-yQo">
+                                        <rect key="frame" x="319" y="34.5" width="66" height="66"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="brI-37-yQo" secondAttribute="height" multiplier="1:1" id="xYs-Wb-Wfa"/>
+                                        </constraints>
+                                        <state key="normal" title="Imagem" image="addImage"/>
+                                        <connections>
+                                            <action selector="changeImage:" destination="6dx-jb-cMs" eventType="touchUpInside" id="CYg-7A-atF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98066894829999995" green="1" blue="0.97859095289999998" alpha="0.49399344449999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="d01-Tt-mGJ" firstAttribute="top" secondItem="y6A-0g-n6m" secondAttribute="top" constant="20" id="6FX-i5-SMw"/>
+                                    <constraint firstItem="brI-37-yQo" firstAttribute="centerY" secondItem="y6A-0g-n6m" secondAttribute="centerY" id="COM-Ti-EHI"/>
+                                    <constraint firstItem="d01-Tt-mGJ" firstAttribute="centerX" secondItem="y6A-0g-n6m" secondAttribute="centerX" id="D2j-82-Yck"/>
+                                    <constraint firstItem="brI-37-yQo" firstAttribute="centerX" secondItem="y6A-0g-n6m" secondAttribute="centerX" multiplier="1.7" id="Vd0-sn-3Ax"/>
+                                    <constraint firstItem="brI-37-yQo" firstAttribute="width" secondItem="d01-Tt-mGJ" secondAttribute="width" multiplier="0.7" id="jiy-ME-eeE"/>
+                                    <constraint firstAttribute="bottom" secondItem="d01-Tt-mGJ" secondAttribute="bottom" constant="20" id="suD-4J-eIy"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybs-Ah-mnf">
+                                <rect key="frame" x="36" y="64" width="67" height="35"/>
+                                <color key="tintColor" white="1" alpha="0.46899009856167218" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                <connections>
+                                    <action selector="backButton:" destination="6dx-jb-cMs" eventType="touchUpInside" id="RfN-Lq-3I2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ybs-Ah-mnf" firstAttribute="top" secondItem="fNa-s9-07B" secondAttribute="bottom" constant="16" id="76C-Yh-czB"/>
+                            <constraint firstItem="ybs-Ah-mnf" firstAttribute="leading" secondItem="IEJ-0Q-KWU" secondAttribute="leadingMargin" constant="16" id="Dh1-cZ-1k9"/>
+                            <constraint firstAttribute="bottom" secondItem="y6A-0g-n6m" secondAttribute="bottom" id="U9v-F8-lUl"/>
+                            <constraint firstItem="y6A-0g-n6m" firstAttribute="leading" secondItem="IEJ-0Q-KWU" secondAttribute="leading" id="XbH-de-L9i"/>
+                            <constraint firstItem="y6A-0g-n6m" firstAttribute="height" secondItem="IEJ-0Q-KWU" secondAttribute="height" multiplier="0.15" id="fVc-pl-8nS"/>
+                            <constraint firstAttribute="trailing" secondItem="y6A-0g-n6m" secondAttribute="trailing" id="vr0-U6-2Im"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="hdN-8z-ftW" id="X6S-XZ-Oyn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFv-hK-XOD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="972"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="addImage" width="512" height="512"/>
+        <image name="gravar" width="512" height="512"/>
+    </resources>
 </document>

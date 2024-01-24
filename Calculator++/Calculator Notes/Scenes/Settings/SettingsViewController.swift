@@ -51,6 +51,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var useTerms: UIView!
     @IBOutlet weak var useTermsLabel: UILabel!
     
+    @IBOutlet weak var augmentedReality: UIView!
+    @IBOutlet weak var augmentedRealityLabel: UILabel!
+    
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Defaults.setBool(.recoveryStatus, sender.isOn)
@@ -103,6 +106,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         changeIconLabel.setText(.changeIconTitle)
         privacyPoliceLabel.setText(.privacyPolice)
         useTermsLabel.setText(.termsOfUse)
+        augmentedRealityLabel.setText(.augmentedReality)
     }
 
     private func setupViewStyle() {
@@ -147,6 +151,14 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         self.present(navigation, animated: true)
     }
     
+    @objc
+    func augmentedRealityPressed(_ sender: UITapGestureRecognizer? = nil) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ViewController")
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: true)
+    }
+    
     private func setupUI() {
         self.navigationController?.setup()
         switchButton.isOn = Defaults.getBool(.recoveryStatus)
@@ -166,6 +178,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         
         let useTermsPressed = UITapGestureRecognizer(target: self, action: #selector(useTermsPressed(_:)))
         useTerms.addGestureRecognizer(useTermsPressed)
+        
+        let augmentedRealityPressed = UITapGestureRecognizer(target: self, action: #selector(augmentedRealityPressed(_:)))
+        augmentedReality.addGestureRecognizer(augmentedRealityPressed)
     }
     
     private func setupViewStyles() {

@@ -169,7 +169,7 @@ enum Text: String {
     case yearlySubscription //    "Assinatura Anual - "
     case termsOfUse //    "Termos de uso"
     case privacyPolice //    "Politica de privacidade"
-    
+    case augmentedReality // "Realidade Aumentada"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

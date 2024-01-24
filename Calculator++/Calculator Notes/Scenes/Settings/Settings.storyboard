@@ -41,10 +41,10 @@
                                 <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfN-Lz-BTp">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="492"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="HSl-dr-OjA">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="244"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="293"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HT7-x9-f8c">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
@@ -89,8 +89,25 @@
                                                             <constraint firstItem="9Xx-Ks-sjO" firstAttribute="centerY" secondItem="zvF-2r-Bte" secondAttribute="centerY" id="vq2-Dl-cqG"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ert-Ym-P1Q">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFY-TQ-Ku4">
                                                         <rect key="frame" x="0.0" y="98" width="414" height="48"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Augmented Reality" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vf-Ia-cWv">
+                                                                <rect key="frame" x="16" y="14" width="147.5" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="bo9-rx-4hX"/>
+                                                            <constraint firstItem="7vf-Ia-cWv" firstAttribute="leading" secondItem="hFY-TQ-Ku4" secondAttribute="leading" constant="16" id="mi5-DP-M6H"/>
+                                                            <constraint firstItem="7vf-Ia-cWv" firstAttribute="centerY" secondItem="hFY-TQ-Ku4" secondAttribute="centerY" id="xn6-5T-abs"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ert-Ym-P1Q">
+                                                        <rect key="frame" x="0.0" y="147" width="414" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9d-kN-wwz">
                                                                 <rect key="frame" x="16" y="14" width="87" height="20.5"/>
@@ -107,7 +124,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7u-6Q-MIA">
-                                                        <rect key="frame" x="0.0" y="147" width="414" height="48"/>
+                                                        <rect key="frame" x="0.0" y="196" width="414" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Politica de privacidade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ra-ad-h2t">
                                                                 <rect key="frame" x="16" y="14" width="176" height="20.5"/>
@@ -124,7 +141,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lK0-9W-0pg">
-                                                        <rect key="frame" x="0.0" y="196" width="414" height="48"/>
+                                                        <rect key="frame" x="0.0" y="245" width="414" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Termos de uso" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVc-pC-6pv">
                                                                 <rect key="frame" x="16" y="14" width="115" height="20.5"/>
@@ -143,7 +160,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pR5-UN-XhX">
-                                                <rect key="frame" x="16" y="266" width="382" height="167"/>
+                                                <rect key="frame" x="16" y="315" width="382" height="167"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose protection mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZ2-Cu-Jza">
                                                         <rect key="frame" x="10" y="10" width="362" height="21"/>
@@ -274,6 +291,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="ModeGroupView" destination="pR5-UN-XhX" id="oda-zo-FiX"/>
+                        <outlet property="augmentedReality" destination="hFY-TQ-Ku4" id="eCo-1E-UaJ"/>
+                        <outlet property="augmentedRealityLabel" destination="7vf-Ia-cWv" id="JnP-7U-7B1"/>
                         <outlet property="changeIcon" destination="zvF-2r-Bte" id="vzl-Bm-4Tl"/>
                         <outlet property="changeIconLabel" destination="9Xx-Ks-sjO" id="OVL-9n-r5S"/>
                         <outlet property="chooseProtectionLabel" destination="iZ2-Cu-Jza" id="JKq-gE-ARf"/>
