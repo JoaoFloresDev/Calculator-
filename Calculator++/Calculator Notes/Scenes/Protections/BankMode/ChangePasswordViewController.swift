@@ -122,7 +122,6 @@ class ChangePasswordViewController: UIViewController {
             clearAll()
             UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.bank)
             Defaults.setString(.password, keyTemp)
-            Defaults.setBool(.needSavePasswordInCloud, true)
             showAlert()
         }
     }

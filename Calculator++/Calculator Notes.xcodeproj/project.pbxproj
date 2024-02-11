@@ -28,14 +28,8 @@
 		7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA342ABB95DB004FD07C /* DiamondView.swift */; };
 		7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */; };
 		7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA382ABBC0DA004FD07C /* PurchaseHeaderView.swift */; };
-		73632E022AB4D79E004AC14A /* CloudKitVideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73632E012AB4D79E004AC14A /* CloudKitVideoService.swift */; };
 		736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD02A979BC100851BEF /* LoadingAlert.swift */; };
 		736BDAD32A979D7200851BEF /* ChangeIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD22A979D7100851BEF /* ChangeIconViewController.swift */; };
-		736BDAD52A979DA400851BEF /* CloudKitPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD42A979DA400851BEF /* CloudKitPasswordService.swift */; };
-		736BDAD72A979DBE00851BEF /* CloudNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD62A979DBE00851BEF /* CloudNotifications.swift */; };
-		73741B022A87D06B0067B269 /* CloudKitImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B012A87D06B0067B269 /* CloudKitImageService.swift */; };
-		73741B092A880B3C0067B269 /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B062A880A590067B269 /* BackupService.swift */; };
-		73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741B102A886C310067B269 /* CloudUpdateManager.swift */; };
 		737530CF2B60CE6A000B23E3 /* UseTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */; };
 		737530D32B60E517000B23E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530D22B60E489000B23E3 /* ViewController.swift */; };
 		737530D42B60E524000B23E3 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 737530D02B60E471000B23E3 /* art.scnassets */; };
@@ -71,7 +65,8 @@
 		73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5062A49D7AE00963BA2 /* TabBarController+Extensions.swift */; };
 		73C2C5092A49D7E700963BA2 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 73C2C5082A49D7E700963BA2 /* swiftlint.yml */; };
 		73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C50A2A49D84000963BA2 /* BasicCollectionViewController.swift */; };
-		73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */; };
+		73CBF8802B6F244500F85B6E /* NewCalc.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CBF87D2B6F1DFB00F85B6E /* NewCalc.storyboard */; };
+		73D1CD9B2B731212007E97CC /* ChangeNewCalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CBF87F2B6F1DFC00F85B6E /* ChangeNewCalcViewController.swift */; };
 		7C3FA5C5BF2A31D52DE69779 /* Pods_Calculator_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 377C09316D877D274D20C923 /* Pods_Calculator_Notes.framework */; };
 		848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */; };
 		BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3244412A4B692C00A782CA /* BasicModels.swift */; };
@@ -138,14 +133,8 @@
 		7342CA342ABB95DB004FD07C /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
 		7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseBenetList.swift; sourceTree = "<group>"; };
 		7342CA382ABBC0DA004FD07C /* PurchaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHeaderView.swift; sourceTree = "<group>"; };
-		73632E012AB4D79E004AC14A /* CloudKitVideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitVideoService.swift; sourceTree = "<group>"; };
 		736BDAD02A979BC100851BEF /* LoadingAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
 		736BDAD22A979D7100851BEF /* ChangeIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIconViewController.swift; sourceTree = "<group>"; };
-		736BDAD42A979DA400851BEF /* CloudKitPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPasswordService.swift; sourceTree = "<group>"; };
-		736BDAD62A979DBE00851BEF /* CloudNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudNotifications.swift; sourceTree = "<group>"; };
-		73741B012A87D06B0067B269 /* CloudKitImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitImageService.swift; sourceTree = "<group>"; };
-		73741B062A880A590067B269 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
-		73741B102A886C310067B269 /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUpdateManager.swift; sourceTree = "<group>"; };
 		737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTermsViewController.swift; sourceTree = "<group>"; };
 		737530D02B60E471000B23E3 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		737530D22B60E489000B23E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +176,6 @@
 		73C2C5062A49D7AE00963BA2 /* TabBarController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TabBarController+Extensions.swift"; sourceTree = "<group>"; };
 		73C2C5082A49D7E700963BA2 /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		73C2C50A2A49D84000963BA2 /* BasicCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewController.swift; sourceTree = "<group>"; };
-		73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitItemsViewController.swift; sourceTree = "<group>"; };
 		73C563532A9BA9560043DC78 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73C563562A9CE8F80043DC78 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73C563572A9CE8FB0043DC78 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -201,6 +189,10 @@
 		73C5635F2A9CE9010043DC78 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73C563602A9CE9020043DC78 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73C563612A9CE9030043DC78 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73CBF87C2B6F1DFB00F85B6E /* BaseNewCalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNewCalcViewController.swift; sourceTree = "<group>"; };
+		73CBF87D2B6F1DFB00F85B6E /* NewCalc.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewCalc.storyboard; sourceTree = "<group>"; };
+		73CBF87E2B6F1DFC00F85B6E /* NewCalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalcViewController.swift; sourceTree = "<group>"; };
+		73CBF87F2B6F1DFC00F85B6E /* ChangeNewCalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewCalcViewController.swift; sourceTree = "<group>"; };
 		848490D21D68F5610043C60B /* MakeSchoolNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MakeSchoolNotes.xcdatamodel; sourceTree = "<group>"; };
 		BA3244412A4B692C00A782CA /* BasicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModels.swift; sourceTree = "<group>"; };
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -329,7 +321,6 @@
 			children = (
 				73741B082A880A760067B269 /* local */,
 				73741B072A880A5E0067B269 /* ads */,
-				73741B052A880A4E0067B269 /* cloud */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -337,23 +328,9 @@
 		73632E062AB4E7C9004AC14A /* Backup */ = {
 			isa = PBXGroup;
 			children = (
-				73C563512A9A8EAD0043DC78 /* CloudKitItemsViewController.swift */,
 				736BDAD22A979D7100851BEF /* ChangeIconViewController.swift */,
 			);
 			path = Backup;
-			sourceTree = "<group>";
-		};
-		73741B052A880A4E0067B269 /* cloud */ = {
-			isa = PBXGroup;
-			children = (
-				736BDAD62A979DBE00851BEF /* CloudNotifications.swift */,
-				736BDAD42A979DA400851BEF /* CloudKitPasswordService.swift */,
-				73741B102A886C310067B269 /* CloudUpdateManager.swift */,
-				73741B012A87D06B0067B269 /* CloudKitImageService.swift */,
-				73632E012AB4D79E004AC14A /* CloudKitVideoService.swift */,
-				73741B062A880A590067B269 /* BackupService.swift */,
-			);
-			path = cloud;
 			sourceTree = "<group>";
 		};
 		73741B072A880A5E0067B269 /* ads */ = {
@@ -389,6 +366,7 @@
 			children = (
 				737D66A22AB0AB0A00806C98 /* Vault */,
 				73B54D5227B097B400499F66 /* BankMode */,
+				73CBF87B2B6F1DFA00F85B6E /* NewCalc */,
 				73B54D5127B097A900499F66 /* CalculatorMode */,
 			);
 			path = Protections;
@@ -557,6 +535,18 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		73CBF87B2B6F1DFA00F85B6E /* NewCalc */ = {
+			isa = PBXGroup;
+			children = (
+				73CBF87E2B6F1DFC00F85B6E /* NewCalcViewController.swift */,
+				73CBF87F2B6F1DFC00F85B6E /* ChangeNewCalcViewController.swift */,
+				73CBF87C2B6F1DFB00F85B6E /* BaseNewCalcViewController.swift */,
+				73CBF87D2B6F1DFB00F85B6E /* NewCalc.storyboard */,
+			);
+			name = NewCalc;
+			path = CalculatorMode/NewCalc;
+			sourceTree = "<group>";
+		};
 		BA3244402A4B690A00A782CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,6 +669,7 @@
 				73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */,
 				C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */,
 				2E4A079E1C42F3B0007F415F /* LaunchScreen.storyboard in Resources */,
+				73CBF8802B6F244500F85B6E /* NewCalc.storyboard in Resources */,
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
 				737530D42B60E524000B23E3 /* art.scnassets in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
@@ -793,7 +784,6 @@
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,
 				738B6AF32AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift in Sources */,
-				73741B112A886C310067B269 /* CloudUpdateManager.swift in Sources */,
 				73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */,
 				73862C882AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift in Sources */,
 				73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */,
@@ -811,7 +801,6 @@
 				BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */,
 				730438712A341519001EF25B /* AdsHandler.swift in Sources */,
 				730438632A315B02001EF25B /* FoldersService.swift in Sources */,
-				736BDAD72A979DBE00851BEF /* CloudNotifications.swift in Sources */,
 				730438762A3445EF001EF25B /* FlowLayout.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
 				738827C82B1509170051BEF4 /* InAppPurchaseManager.swift in Sources */,
@@ -825,26 +814,22 @@
 				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
-				73741B022A87D06B0067B269 /* CloudKitImageService.swift in Sources */,
-				736BDAD52A979DA400851BEF /* CloudKitPasswordService.swift in Sources */,
 				736BDAD32A979D7200851BEF /* ChangeIconViewController.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
-				73632E022AB4D79E004AC14A /* CloudKitVideoService.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				73862C842AAD18BC005D9D25 /* Constants.swift in Sources */,
 				738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */,
 				73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */,
-				73741B092A880B3C0067B269 /* BackupService.swift in Sources */,
 				736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */,
 				7304387A2A34467C001EF25B /* FolderCollectionViewCell.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */,
-				73C563522A9A8EAD0043DC78 /* CloudKitItemsViewController.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
 				737530D32B60E517000B23E3 /* ViewController.swift in Sources */,
 				73862C822AAD1894005D9D25 /* OnboardingViewController.swift in Sources */,
 				C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */,
+				73D1CD9B2B731212007E97CC /* ChangeNewCalcViewController.swift in Sources */,
 				73B54D6627B09D9800499F66 /* String+Localized.swift in Sources */,
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
@@ -1020,7 +1005,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 164;
+				CURRENT_PROJECT_VERSION = 165;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1034,7 +1019,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 164;
+				MARKETING_VERSION = 165;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1055,7 +1040,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 164;
+				CURRENT_PROJECT_VERSION = 165;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1069,7 +1054,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 164;
+				MARKETING_VERSION = 165;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";

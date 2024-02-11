@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q2d-fs-WKk">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Calc View Controller-->
+        <scene sceneID="sdG-7p-JoM">
+            <objects>
+                <viewController storyboardIdentifier="NewCalc" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q2d-fs-WKk" customClass="NewCalcViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="bm5-Ql-cM7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="51n-An-gJz">
+                                <rect key="frame" x="0.0" y="190" width="414" height="672"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Trs-HC-h9n">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="f1S-Hd-1eZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="130.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9u-VJ-HnE" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="309.5" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="AC">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAr-d0-Dwq" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="130.5"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="√">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="dividePressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="uAX-lG-CX8"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="GAr-d0-Dwq" secondAttribute="trailing" id="C4e-4S-h3L"/>
+                                                    <constraint firstItem="GAr-d0-Dwq" firstAttribute="leading" secondItem="L9u-VJ-HnE" secondAttribute="trailing" constant="5" id="FwV-nl-Oyy"/>
+                                                    <constraint firstAttribute="bottom" secondItem="GAr-d0-Dwq" secondAttribute="bottom" id="GJN-Zu-jBu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="L9u-VJ-HnE" secondAttribute="bottom" id="GYe-ol-ZUP"/>
+                                                    <constraint firstItem="L9u-VJ-HnE" firstAttribute="leading" secondItem="f1S-Hd-1eZ" secondAttribute="leading" id="Txi-aw-azl"/>
+                                                    <constraint firstItem="GAr-d0-Dwq" firstAttribute="top" secondItem="f1S-Hd-1eZ" secondAttribute="top" id="mKk-oC-8hl"/>
+                                                    <constraint firstItem="L9u-VJ-HnE" firstAttribute="top" secondItem="f1S-Hd-1eZ" secondAttribute="top" id="sYK-e0-9ZN"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="XIf-HG-SBJ">
+                                                <rect key="frame" x="0.0" y="135.5" width="414" height="130.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mb-Wq-4jW" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <color key="tintColor" red="0.54043549300000004" green="0.98502451179999995" blue="0.36062228680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" title="7">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="YBr-Bt-PEh"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lrx-12-eQR" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="8">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="Hcw-6t-FDa"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZs-DF-USe" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="9">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="Y7m-v5-vUb"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOO-Mk-6Yc" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="130.5"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="∑">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="multiplyPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="ZUE-E3-Vrb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="Lrx-12-eQR" secondAttribute="bottom" id="4y0-BY-RVB"/>
+                                                    <constraint firstItem="YZs-DF-USe" firstAttribute="top" secondItem="XIf-HG-SBJ" secondAttribute="top" id="7eO-Ii-J0C"/>
+                                                    <constraint firstAttribute="bottom" secondItem="6mb-Wq-4jW" secondAttribute="bottom" id="Cpa-PB-tcJ"/>
+                                                    <constraint firstItem="6mb-Wq-4jW" firstAttribute="width" secondItem="YZs-DF-USe" secondAttribute="width" id="K3m-el-DSx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="MOO-Mk-6Yc" secondAttribute="bottom" id="KnI-PE-sAB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="MOO-Mk-6Yc" secondAttribute="trailing" id="QAS-jx-eDa"/>
+                                                    <constraint firstItem="MOO-Mk-6Yc" firstAttribute="leading" secondItem="YZs-DF-USe" secondAttribute="trailing" constant="5" id="SDu-hg-5Fz"/>
+                                                    <constraint firstItem="6mb-Wq-4jW" firstAttribute="top" secondItem="XIf-HG-SBJ" secondAttribute="top" id="Wzy-Vd-XEZ"/>
+                                                    <constraint firstItem="YZs-DF-USe" firstAttribute="leading" secondItem="Lrx-12-eQR" secondAttribute="trailing" constant="5" id="Z5L-xl-GMH"/>
+                                                    <constraint firstItem="Lrx-12-eQR" firstAttribute="top" secondItem="XIf-HG-SBJ" secondAttribute="top" id="eu4-kM-4nE"/>
+                                                    <constraint firstItem="6mb-Wq-4jW" firstAttribute="width" secondItem="Lrx-12-eQR" secondAttribute="width" id="fjc-8d-7hn"/>
+                                                    <constraint firstItem="6mb-Wq-4jW" firstAttribute="leading" secondItem="XIf-HG-SBJ" secondAttribute="leading" id="gU1-4B-0Ve"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YZs-DF-USe" secondAttribute="bottom" id="gww-s2-ZJT"/>
+                                                    <constraint firstItem="6mb-Wq-4jW" firstAttribute="width" secondItem="MOO-Mk-6Yc" secondAttribute="width" id="iiQ-Rt-nag"/>
+                                                    <constraint firstItem="Lrx-12-eQR" firstAttribute="leading" secondItem="6mb-Wq-4jW" secondAttribute="trailing" constant="5" id="orJ-fy-cZG"/>
+                                                    <constraint firstItem="MOO-Mk-6Yc" firstAttribute="top" secondItem="XIf-HG-SBJ" secondAttribute="top" id="tGs-Es-ypr"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="NIx-gH-al9">
+                                                <rect key="frame" x="0.0" y="271" width="414" height="130"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDE-BP-8TT" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="4">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="0Ed-Oh-Vax"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuW-l4-82G" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="130"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="5">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="4Nz-bQ-Y0w"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akw-dr-HuP" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="130"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="6">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="r8r-8y-mff"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JG-YJ-N7E" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="130"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="π">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="substractPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="lzv-Wt-c9P"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="akw-dr-HuP" firstAttribute="top" secondItem="NIx-gH-al9" secondAttribute="top" id="8I7-2T-eML"/>
+                                                    <constraint firstItem="UDE-BP-8TT" firstAttribute="width" secondItem="akw-dr-HuP" secondAttribute="width" id="AcA-eA-K3b"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cuW-l4-82G" secondAttribute="bottom" id="CuE-xG-UZ4"/>
+                                                    <constraint firstItem="6JG-YJ-N7E" firstAttribute="leading" secondItem="akw-dr-HuP" secondAttribute="trailing" constant="5" id="HSn-fT-Pio"/>
+                                                    <constraint firstItem="UDE-BP-8TT" firstAttribute="width" secondItem="cuW-l4-82G" secondAttribute="width" id="KVL-mA-6L5"/>
+                                                    <constraint firstItem="6JG-YJ-N7E" firstAttribute="top" secondItem="NIx-gH-al9" secondAttribute="top" id="LXl-xa-98G"/>
+                                                    <constraint firstItem="cuW-l4-82G" firstAttribute="top" secondItem="NIx-gH-al9" secondAttribute="top" id="OxQ-3K-K3D"/>
+                                                    <constraint firstItem="UDE-BP-8TT" firstAttribute="width" secondItem="6JG-YJ-N7E" secondAttribute="width" id="Rms-8Y-2XK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6JG-YJ-N7E" secondAttribute="trailing" id="RwA-tb-Upp"/>
+                                                    <constraint firstItem="UDE-BP-8TT" firstAttribute="top" secondItem="NIx-gH-al9" secondAttribute="top" id="YP0-ut-MVV"/>
+                                                    <constraint firstAttribute="bottom" secondItem="6JG-YJ-N7E" secondAttribute="bottom" id="dyc-HE-0BE"/>
+                                                    <constraint firstAttribute="bottom" secondItem="akw-dr-HuP" secondAttribute="bottom" id="gxc-dR-qcG"/>
+                                                    <constraint firstItem="UDE-BP-8TT" firstAttribute="leading" secondItem="NIx-gH-al9" secondAttribute="leading" id="oy5-hQ-ziV"/>
+                                                    <constraint firstAttribute="bottom" secondItem="UDE-BP-8TT" secondAttribute="bottom" id="pdy-B4-wkH"/>
+                                                    <constraint firstItem="cuW-l4-82G" firstAttribute="leading" secondItem="UDE-BP-8TT" secondAttribute="trailing" constant="5" id="qVv-4f-Ibp"/>
+                                                    <constraint firstItem="akw-dr-HuP" firstAttribute="leading" secondItem="cuW-l4-82G" secondAttribute="trailing" constant="5" id="rlg-To-0Y2"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="tD4-OA-wPV">
+                                                <rect key="frame" x="0.0" y="406" width="414" height="130.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNt-Oo-NFs" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="1">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="nWI-2F-c3b"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCg-uS-5q7" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="2">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="YY4-Vw-i2J"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngr-C2-rYC" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="3">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="Rrv-SW-F5y"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iN4-Yb-69T" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="130.5"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="x">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="addPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="iVC-xT-S3h"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="ngr-C2-rYC" firstAttribute="top" secondItem="tD4-OA-wPV" secondAttribute="top" id="830-xf-plD"/>
+                                                    <constraint firstItem="VNt-Oo-NFs" firstAttribute="width" secondItem="kCg-uS-5q7" secondAttribute="width" id="E8A-mD-b24"/>
+                                                    <constraint firstItem="VNt-Oo-NFs" firstAttribute="top" secondItem="tD4-OA-wPV" secondAttribute="top" id="MtG-Pu-g61"/>
+                                                    <constraint firstItem="iN4-Yb-69T" firstAttribute="leading" secondItem="ngr-C2-rYC" secondAttribute="trailing" constant="5" id="PAm-Il-BHs"/>
+                                                    <constraint firstAttribute="trailing" secondItem="iN4-Yb-69T" secondAttribute="trailing" id="QlL-ZB-Xbs"/>
+                                                    <constraint firstItem="VNt-Oo-NFs" firstAttribute="leading" secondItem="tD4-OA-wPV" secondAttribute="leading" id="Syg-Yr-Yx0"/>
+                                                    <constraint firstItem="VNt-Oo-NFs" firstAttribute="width" secondItem="ngr-C2-rYC" secondAttribute="width" id="TEN-Xz-TcF"/>
+                                                    <constraint firstItem="kCg-uS-5q7" firstAttribute="leading" secondItem="VNt-Oo-NFs" secondAttribute="trailing" constant="5" id="XW1-VN-d66"/>
+                                                    <constraint firstAttribute="bottom" secondItem="iN4-Yb-69T" secondAttribute="bottom" id="fWz-45-3zs"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ngr-C2-rYC" secondAttribute="bottom" id="ikD-hJ-lYa"/>
+                                                    <constraint firstAttribute="bottom" secondItem="kCg-uS-5q7" secondAttribute="bottom" id="k0z-k5-J6x"/>
+                                                    <constraint firstItem="ngr-C2-rYC" firstAttribute="leading" secondItem="kCg-uS-5q7" secondAttribute="trailing" constant="5" id="kFn-IZ-rZs"/>
+                                                    <constraint firstItem="VNt-Oo-NFs" firstAttribute="width" secondItem="iN4-Yb-69T" secondAttribute="width" id="siH-dr-PwM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="VNt-Oo-NFs" secondAttribute="bottom" id="sw8-CW-YUa"/>
+                                                    <constraint firstItem="kCg-uS-5q7" firstAttribute="top" secondItem="tD4-OA-wPV" secondAttribute="top" id="u9T-g3-5DT"/>
+                                                    <constraint firstItem="iN4-Yb-69T" firstAttribute="top" secondItem="tD4-OA-wPV" secondAttribute="top" id="vUe-LJ-Dsv"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="c7R-5v-ncK">
+                                                <rect key="frame" x="0.0" y="541.5" width="414" height="130.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAL-EA-VF2" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="204.5" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="0">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="6Cq-DD-XWd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9T-5p-scM" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="130.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title=".">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="dotPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="4nC-KX-NuP"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEh-mJ-H1s" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="130.5"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="=">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="equalsPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="13z-tt-Quf"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="XEh-mJ-H1s" secondAttribute="trailing" id="1bL-zW-fQr"/>
+                                                    <constraint firstAttribute="bottom" secondItem="vAL-EA-VF2" secondAttribute="bottom" id="8ar-vr-fjN"/>
+                                                    <constraint firstItem="XEh-mJ-H1s" firstAttribute="top" secondItem="c7R-5v-ncK" secondAttribute="top" id="Dh0-Y9-JCl"/>
+                                                    <constraint firstAttribute="bottom" secondItem="XEh-mJ-H1s" secondAttribute="bottom" id="Guj-2z-Xie"/>
+                                                    <constraint firstItem="vAL-EA-VF2" firstAttribute="leading" secondItem="c7R-5v-ncK" secondAttribute="leading" id="LLj-g7-XJH"/>
+                                                    <constraint firstItem="N9T-5p-scM" firstAttribute="leading" secondItem="vAL-EA-VF2" secondAttribute="trailing" constant="5" id="WOq-Fo-dty"/>
+                                                    <constraint firstItem="XEh-mJ-H1s" firstAttribute="leading" secondItem="N9T-5p-scM" secondAttribute="trailing" constant="5" id="eEe-NK-3fP"/>
+                                                    <constraint firstItem="N9T-5p-scM" firstAttribute="top" secondItem="c7R-5v-ncK" secondAttribute="top" id="iEl-Sb-n7d"/>
+                                                    <constraint firstAttribute="bottom" secondItem="N9T-5p-scM" secondAttribute="bottom" id="s3d-yQ-4SB"/>
+                                                    <constraint firstItem="vAL-EA-VF2" firstAttribute="top" secondItem="c7R-5v-ncK" secondAttribute="top" id="uvq-O3-zxC"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="f1S-Hd-1eZ" firstAttribute="leading" secondItem="Trs-HC-h9n" secondAttribute="leading" id="21g-7Y-xog"/>
+                                            <constraint firstItem="NIx-gH-al9" firstAttribute="top" secondItem="XIf-HG-SBJ" secondAttribute="bottom" constant="5" id="3Ri-48-9wd"/>
+                                            <constraint firstAttribute="bottom" secondItem="c7R-5v-ncK" secondAttribute="bottom" id="8Gj-a3-DEe"/>
+                                            <constraint firstItem="c7R-5v-ncK" firstAttribute="height" secondItem="tD4-OA-wPV" secondAttribute="height" id="H4Q-qE-ZCx"/>
+                                            <constraint firstAttribute="trailing" secondItem="NIx-gH-al9" secondAttribute="trailing" id="I1s-6y-mvE"/>
+                                            <constraint firstItem="f1S-Hd-1eZ" firstAttribute="height" secondItem="XIf-HG-SBJ" secondAttribute="height" id="Izb-dJ-B8q"/>
+                                            <constraint firstItem="N9T-5p-scM" firstAttribute="width" secondItem="iN4-Yb-69T" secondAttribute="width" id="Pwt-eB-mV1"/>
+                                            <constraint firstAttribute="trailing" secondItem="f1S-Hd-1eZ" secondAttribute="trailing" id="So0-jS-Xdi"/>
+                                            <constraint firstItem="XIf-HG-SBJ" firstAttribute="leading" secondItem="Trs-HC-h9n" secondAttribute="leading" id="TsG-kF-17J"/>
+                                            <constraint firstItem="XIf-HG-SBJ" firstAttribute="top" secondItem="f1S-Hd-1eZ" secondAttribute="bottom" constant="5" id="ZBk-vc-ROz"/>
+                                            <constraint firstItem="NIx-gH-al9" firstAttribute="leading" secondItem="Trs-HC-h9n" secondAttribute="leading" id="b7S-js-tMx"/>
+                                            <constraint firstItem="tD4-OA-wPV" firstAttribute="top" secondItem="NIx-gH-al9" secondAttribute="bottom" constant="5" id="dMV-YS-Jva"/>
+                                            <constraint firstAttribute="trailing" secondItem="tD4-OA-wPV" secondAttribute="trailing" id="e1P-cm-pml"/>
+                                            <constraint firstItem="c7R-5v-ncK" firstAttribute="top" secondItem="tD4-OA-wPV" secondAttribute="bottom" constant="5" id="fib-oX-G48"/>
+                                            <constraint firstAttribute="trailing" secondItem="XIf-HG-SBJ" secondAttribute="trailing" id="gXF-Rq-064"/>
+                                            <constraint firstItem="NIx-gH-al9" firstAttribute="height" secondItem="tD4-OA-wPV" secondAttribute="height" id="hTT-2n-q6G"/>
+                                            <constraint firstItem="XIf-HG-SBJ" firstAttribute="height" secondItem="NIx-gH-al9" secondAttribute="height" id="i1V-IF-iwz"/>
+                                            <constraint firstItem="c7R-5v-ncK" firstAttribute="leading" secondItem="Trs-HC-h9n" secondAttribute="leading" id="kDg-cg-5Ii"/>
+                                            <constraint firstItem="tD4-OA-wPV" firstAttribute="leading" secondItem="Trs-HC-h9n" secondAttribute="leading" id="q5f-NK-ZjU"/>
+                                            <constraint firstItem="XEh-mJ-H1s" firstAttribute="width" secondItem="iN4-Yb-69T" secondAttribute="width" id="qWh-sN-may"/>
+                                            <constraint firstAttribute="trailing" secondItem="c7R-5v-ncK" secondAttribute="trailing" id="qmv-3a-Y1x"/>
+                                            <constraint firstItem="f1S-Hd-1eZ" firstAttribute="top" secondItem="Trs-HC-h9n" secondAttribute="top" id="rto-Nx-hLM"/>
+                                            <constraint firstItem="GAr-d0-Dwq" firstAttribute="width" secondItem="MOO-Mk-6Yc" secondAttribute="width" id="ub3-DN-Ypm"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iii-gx-mNJ">
+                                <rect key="frame" x="10" y="93" width="394" height="82"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="60"/>
+                                <color key="textColor" name="Labels"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUd-Uh-she">
+                                <rect key="frame" x="0.0" y="325.5" width="100" height="130.5"/>
+                                <connections>
+                                    <action selector="numberPressed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="sA1-7W-zLd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NT-I5-V0z">
+                                <rect key="frame" x="75" y="48" width="264" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <color key="textColor" name="Labels"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPp-Rn-uMe">
+                                <rect key="frame" x="5" y="48" width="60" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="BLU-hv-TyR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <state key="normal" title="Recover"/>
+                                <connections>
+                                    <action selector="useFaceID:" destination="q2d-fs-WKk" eventType="touchUpInside" id="uq1-Rj-kSN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="f3h-mR-4mJ"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f3h-mR-4mJ" firstAttribute="trailing" secondItem="6NT-I5-V0z" secondAttribute="trailing" constant="75" id="Epo-Ud-99l"/>
+                            <constraint firstItem="Iii-gx-mNJ" firstAttribute="leading" secondItem="f3h-mR-4mJ" secondAttribute="leading" constant="10" id="HAW-BM-7ce"/>
+                            <constraint firstItem="UUd-Uh-she" firstAttribute="centerY" secondItem="6mb-Wq-4jW" secondAttribute="centerY" id="HlK-yD-dYE"/>
+                            <constraint firstItem="bPp-Rn-uMe" firstAttribute="top" secondItem="f3h-mR-4mJ" secondAttribute="top" id="LeX-Iv-JqC"/>
+                            <constraint firstItem="51n-An-gJz" firstAttribute="leading" secondItem="f3h-mR-4mJ" secondAttribute="leading" id="OHv-58-KHf"/>
+                            <constraint firstItem="bPp-Rn-uMe" firstAttribute="leading" secondItem="f3h-mR-4mJ" secondAttribute="leading" constant="5" id="Ptv-5n-9RF"/>
+                            <constraint firstItem="f3h-mR-4mJ" firstAttribute="bottom" secondItem="51n-An-gJz" secondAttribute="bottom" id="UM1-iW-UJ8"/>
+                            <constraint firstItem="f3h-mR-4mJ" firstAttribute="trailing" secondItem="Iii-gx-mNJ" secondAttribute="trailing" constant="10" id="WeO-oN-bfI"/>
+                            <constraint firstItem="51n-An-gJz" firstAttribute="top" secondItem="Iii-gx-mNJ" secondAttribute="bottom" constant="15" id="dc6-1d-cQt"/>
+                            <constraint firstItem="6NT-I5-V0z" firstAttribute="leading" secondItem="f3h-mR-4mJ" secondAttribute="leading" constant="75" id="eHK-5X-OgA"/>
+                            <constraint firstItem="UUd-Uh-she" firstAttribute="centerX" secondItem="6mb-Wq-4jW" secondAttribute="centerX" id="eZA-Dh-PEp"/>
+                            <constraint firstItem="UUd-Uh-she" firstAttribute="width" secondItem="6mb-Wq-4jW" secondAttribute="width" id="gYM-O8-VgQ"/>
+                            <constraint firstItem="6NT-I5-V0z" firstAttribute="top" secondItem="f3h-mR-4mJ" secondAttribute="top" id="hIc-w0-ZfQ"/>
+                            <constraint firstItem="UUd-Uh-she" firstAttribute="height" secondItem="6mb-Wq-4jW" secondAttribute="height" id="jli-Rz-hrJ"/>
+                            <constraint firstItem="f3h-mR-4mJ" firstAttribute="trailing" secondItem="51n-An-gJz" secondAttribute="trailing" id="nI3-bZ-D94"/>
+                            <constraint firstItem="Iii-gx-mNJ" firstAttribute="top" secondItem="f3h-mR-4mJ" secondAttribute="top" constant="45" id="oPx-VQ-tfh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="faceIDButton" destination="bPp-Rn-uMe" id="mAi-lO-Pet"/>
+                        <outlet property="instructionsLabel" destination="6NT-I5-V0z" id="cTS-hV-wlk"/>
+                        <outlet property="outputLbl" destination="Iii-gx-mNJ" id="d75-cL-wrb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Go5-Ym-on0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1588" y="-24"/>
+        </scene>
+        <!--Change New Calc View Controller-->
+        <scene sceneID="Ii3-Vc-ooQ">
+            <objects>
+                <viewController storyboardIdentifier="NewCalcChange" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="53l-fH-LOt" customClass="ChangeNewCalcViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BVT-cW-TbU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="EdA-QS-pPU">
+                                <rect key="frame" x="0.0" y="265" width="414" height="597"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="wOi-vm-cfY">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="597"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="2si-nm-mo0">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="115.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2K-XA-vdt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="309.5" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="AC">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="allClearPerssed:" destination="53l-fH-LOt" eventType="touchUpInside" id="lnz-Gu-Mgz"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0q-sX-hPS">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115.5"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="√">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="h9h-Kd-N3Q"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="s2K-XA-vdt" firstAttribute="leading" secondItem="2si-nm-mo0" secondAttribute="leading" id="6mP-D5-7Lc"/>
+                                                    <constraint firstItem="x0q-sX-hPS" firstAttribute="leading" secondItem="s2K-XA-vdt" secondAttribute="trailing" constant="5" id="Be2-Tc-Efo"/>
+                                                    <constraint firstItem="x0q-sX-hPS" firstAttribute="top" secondItem="2si-nm-mo0" secondAttribute="top" id="CZV-mN-rxP"/>
+                                                    <constraint firstItem="s2K-XA-vdt" firstAttribute="top" secondItem="2si-nm-mo0" secondAttribute="top" id="Okb-BQ-L7J"/>
+                                                    <constraint firstAttribute="trailing" secondItem="x0q-sX-hPS" secondAttribute="trailing" id="QCs-dx-kcO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="x0q-sX-hPS" secondAttribute="bottom" id="jlc-Rd-w1v"/>
+                                                    <constraint firstAttribute="bottom" secondItem="s2K-XA-vdt" secondAttribute="bottom" id="w6E-89-M3n"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="hKe-U2-Jmu">
+                                                <rect key="frame" x="0.0" y="120.5" width="414" height="115.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dB-AH-DmI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <color key="tintColor" red="0.54043549300000004" green="0.98502451179999995" blue="0.36062228680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" title="7">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ia1-xw-zqf">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="8">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="hqY-vm-UIj"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4A-81-G8n">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="9">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="laJ-vf-n35"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqd-6B-PcP">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115.5"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="∑">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="bff-Cc-YbX"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="9dB-AH-DmI" secondAttribute="bottom" id="Cnn-Dq-ldn"/>
+                                                    <constraint firstItem="ia1-xw-zqf" firstAttribute="leading" secondItem="9dB-AH-DmI" secondAttribute="trailing" constant="5" id="Io4-kN-ubo"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fqd-6B-PcP" secondAttribute="bottom" id="NHZ-AM-8Mh"/>
+                                                    <constraint firstItem="9dB-AH-DmI" firstAttribute="width" secondItem="m4A-81-G8n" secondAttribute="width" id="OZa-sL-qLN"/>
+                                                    <constraint firstItem="ia1-xw-zqf" firstAttribute="top" secondItem="hKe-U2-Jmu" secondAttribute="top" id="Oi0-wh-z7a"/>
+                                                    <constraint firstItem="fqd-6B-PcP" firstAttribute="top" secondItem="hKe-U2-Jmu" secondAttribute="top" id="STL-nq-YVo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fqd-6B-PcP" secondAttribute="trailing" id="Uza-Ge-sdx"/>
+                                                    <constraint firstItem="9dB-AH-DmI" firstAttribute="top" secondItem="hKe-U2-Jmu" secondAttribute="top" id="WBB-Am-Yjt"/>
+                                                    <constraint firstItem="9dB-AH-DmI" firstAttribute="width" secondItem="fqd-6B-PcP" secondAttribute="width" id="eES-LU-upr"/>
+                                                    <constraint firstItem="m4A-81-G8n" firstAttribute="top" secondItem="hKe-U2-Jmu" secondAttribute="top" id="fz8-Bk-eqQ"/>
+                                                    <constraint firstItem="m4A-81-G8n" firstAttribute="leading" secondItem="ia1-xw-zqf" secondAttribute="trailing" constant="5" id="hF6-DC-Qig"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ia1-xw-zqf" secondAttribute="bottom" id="hRP-fN-X3g"/>
+                                                    <constraint firstItem="9dB-AH-DmI" firstAttribute="leading" secondItem="hKe-U2-Jmu" secondAttribute="leading" id="pD5-pQ-KGW"/>
+                                                    <constraint firstAttribute="bottom" secondItem="m4A-81-G8n" secondAttribute="bottom" id="pae-LN-Qe4"/>
+                                                    <constraint firstItem="fqd-6B-PcP" firstAttribute="leading" secondItem="m4A-81-G8n" secondAttribute="trailing" constant="5" id="vcP-T4-V2m"/>
+                                                    <constraint firstItem="9dB-AH-DmI" firstAttribute="width" secondItem="ia1-xw-zqf" secondAttribute="width" id="vnP-ni-ZIG"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="4cI-Cu-EwN">
+                                                <rect key="frame" x="0.0" y="241" width="414" height="115"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-Yt-wgq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="115"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="4">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="74g-e3-91G"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTz-WU-sma">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="115"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="5">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="1E8-Cx-scs"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-9P-Tio">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="115"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="6">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="I6E-DU-Z0i"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTh-11-nK8">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="π">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="6s9-Et-hXT"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="b4P-Yt-wgq" secondAttribute="bottom" id="3T3-vn-fHR"/>
+                                                    <constraint firstItem="fe3-9P-Tio" firstAttribute="top" secondItem="4cI-Cu-EwN" secondAttribute="top" id="3fY-Vx-ewN"/>
+                                                    <constraint firstItem="wTz-WU-sma" firstAttribute="leading" secondItem="b4P-Yt-wgq" secondAttribute="trailing" constant="5" id="4F7-IV-TG5"/>
+                                                    <constraint firstItem="fe3-9P-Tio" firstAttribute="leading" secondItem="wTz-WU-sma" secondAttribute="trailing" constant="5" id="4ly-2W-Mam"/>
+                                                    <constraint firstItem="wTz-WU-sma" firstAttribute="top" secondItem="4cI-Cu-EwN" secondAttribute="top" id="6NH-gz-avw"/>
+                                                    <constraint firstItem="b4P-Yt-wgq" firstAttribute="width" secondItem="fe3-9P-Tio" secondAttribute="width" id="AGH-VA-pEd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fe3-9P-Tio" secondAttribute="bottom" id="Ffn-2C-hc5"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hTh-11-nK8" secondAttribute="bottom" id="TVY-24-hez"/>
+                                                    <constraint firstItem="hTh-11-nK8" firstAttribute="leading" secondItem="fe3-9P-Tio" secondAttribute="trailing" constant="5" id="gdo-Eb-FSM"/>
+                                                    <constraint firstItem="b4P-Yt-wgq" firstAttribute="top" secondItem="4cI-Cu-EwN" secondAttribute="top" id="hRu-Ph-yyl"/>
+                                                    <constraint firstItem="b4P-Yt-wgq" firstAttribute="width" secondItem="wTz-WU-sma" secondAttribute="width" id="l6x-lg-MDu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wTz-WU-sma" secondAttribute="bottom" id="mbW-JZ-ZZv"/>
+                                                    <constraint firstItem="hTh-11-nK8" firstAttribute="top" secondItem="4cI-Cu-EwN" secondAttribute="top" id="rRb-om-F3Z"/>
+                                                    <constraint firstItem="b4P-Yt-wgq" firstAttribute="width" secondItem="hTh-11-nK8" secondAttribute="width" id="wfn-5z-ohb"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hTh-11-nK8" secondAttribute="trailing" id="xNc-Kv-GGS"/>
+                                                    <constraint firstItem="b4P-Yt-wgq" firstAttribute="leading" secondItem="4cI-Cu-EwN" secondAttribute="leading" id="ygu-fa-uzB"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="gjs-bh-LvH">
+                                                <rect key="frame" x="0.0" y="361" width="414" height="115.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FB6-y4-bl3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="1">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="N4P-k8-nfg"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-gr-zJ8">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="2">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="Zv4-xe-77f"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yr-lZ-Ifh">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="3">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="Vo6-bc-K9k"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdz-Ha-IAJ">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115.5"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="x">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="n3R-yq-jX1"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="FB6-y4-bl3" secondAttribute="bottom" id="09N-gn-dtq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="3Yr-lZ-Ifh" secondAttribute="bottom" id="4eP-zK-YMU"/>
+                                                    <constraint firstItem="Zdz-Ha-IAJ" firstAttribute="leading" secondItem="3Yr-lZ-Ifh" secondAttribute="trailing" constant="5" id="55H-Jc-I0H"/>
+                                                    <constraint firstItem="Zdz-Ha-IAJ" firstAttribute="top" secondItem="gjs-bh-LvH" secondAttribute="top" id="8ui-cJ-Eln"/>
+                                                    <constraint firstItem="FB6-y4-bl3" firstAttribute="width" secondItem="q1f-gr-zJ8" secondAttribute="width" id="Aqb-Cv-UQy"/>
+                                                    <constraint firstAttribute="bottom" secondItem="q1f-gr-zJ8" secondAttribute="bottom" id="FkY-ZI-Xrq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Zdz-Ha-IAJ" secondAttribute="bottom" id="MIF-QD-hrY"/>
+                                                    <constraint firstItem="FB6-y4-bl3" firstAttribute="top" secondItem="gjs-bh-LvH" secondAttribute="top" id="MTL-mw-VoY"/>
+                                                    <constraint firstItem="FB6-y4-bl3" firstAttribute="width" secondItem="Zdz-Ha-IAJ" secondAttribute="width" id="N60-Y0-x7x"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Zdz-Ha-IAJ" secondAttribute="trailing" id="SzC-w4-baD"/>
+                                                    <constraint firstItem="FB6-y4-bl3" firstAttribute="leading" secondItem="gjs-bh-LvH" secondAttribute="leading" id="X8d-F7-og9"/>
+                                                    <constraint firstItem="FB6-y4-bl3" firstAttribute="width" secondItem="3Yr-lZ-Ifh" secondAttribute="width" id="khS-vQ-WkX"/>
+                                                    <constraint firstItem="q1f-gr-zJ8" firstAttribute="leading" secondItem="FB6-y4-bl3" secondAttribute="trailing" constant="5" id="ocp-mr-PAn"/>
+                                                    <constraint firstItem="3Yr-lZ-Ifh" firstAttribute="leading" secondItem="q1f-gr-zJ8" secondAttribute="trailing" constant="5" id="pMe-wu-MNJ"/>
+                                                    <constraint firstItem="3Yr-lZ-Ifh" firstAttribute="top" secondItem="gjs-bh-LvH" secondAttribute="top" id="qIN-RK-g4g"/>
+                                                    <constraint firstItem="q1f-gr-zJ8" firstAttribute="top" secondItem="gjs-bh-LvH" secondAttribute="top" id="tsu-Ne-mqu"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="D77-h0-FGA">
+                                                <rect key="frame" x="0.0" y="481.5" width="414" height="115.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbF-1O-Qfn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="204.5" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title="0">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="ub6-DJ-Grk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A81-hS-QhJ">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="115.5"/>
+                                                        <color key="backgroundColor" name="FrontColor"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
+                                                        <state key="normal" title=".">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="Hxw-vo-dqd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHy-Sm-l2X">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115.5"/>
+                                                        <color key="backgroundColor" name="Background"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
+                                                        <state key="normal" title="=">
+                                                            <color key="titleColor" name="Labels"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="MLX-xj-83u"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="qbF-1O-Qfn" firstAttribute="leading" secondItem="D77-h0-FGA" secondAttribute="leading" id="9LD-fr-ZOB"/>
+                                                    <constraint firstItem="qbF-1O-Qfn" firstAttribute="top" secondItem="D77-h0-FGA" secondAttribute="top" id="A89-P0-HAa"/>
+                                                    <constraint firstItem="YHy-Sm-l2X" firstAttribute="top" secondItem="D77-h0-FGA" secondAttribute="top" id="Ftt-vE-Grd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="A81-hS-QhJ" secondAttribute="bottom" id="WWp-Oi-vWB"/>
+                                                    <constraint firstItem="A81-hS-QhJ" firstAttribute="leading" secondItem="qbF-1O-Qfn" secondAttribute="trailing" constant="5" id="n2d-9H-zSW"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qbF-1O-Qfn" secondAttribute="bottom" id="par-lB-uO6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YHy-Sm-l2X" secondAttribute="trailing" id="rQY-tE-a2i"/>
+                                                    <constraint firstItem="A81-hS-QhJ" firstAttribute="top" secondItem="D77-h0-FGA" secondAttribute="top" id="spm-IM-ZDm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YHy-Sm-l2X" secondAttribute="bottom" id="wCr-8N-Eh0"/>
+                                                    <constraint firstItem="YHy-Sm-l2X" firstAttribute="leading" secondItem="A81-hS-QhJ" secondAttribute="trailing" constant="5" id="xZV-FN-Leo"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="4cI-Cu-EwN" firstAttribute="leading" secondItem="wOi-vm-cfY" secondAttribute="leading" id="2iN-w2-czC"/>
+                                            <constraint firstItem="hKe-U2-Jmu" firstAttribute="top" secondItem="2si-nm-mo0" secondAttribute="bottom" constant="5" id="3Cz-1V-81z"/>
+                                            <constraint firstAttribute="bottom" secondItem="D77-h0-FGA" secondAttribute="bottom" id="4YQ-JS-Hhy"/>
+                                            <constraint firstAttribute="trailing" secondItem="gjs-bh-LvH" secondAttribute="trailing" id="4qm-mF-dJa"/>
+                                            <constraint firstItem="2si-nm-mo0" firstAttribute="top" secondItem="wOi-vm-cfY" secondAttribute="top" id="5bu-fy-9SC"/>
+                                            <constraint firstItem="x0q-sX-hPS" firstAttribute="width" secondItem="fqd-6B-PcP" secondAttribute="width" id="BKC-ya-K9m"/>
+                                            <constraint firstItem="hKe-U2-Jmu" firstAttribute="leading" secondItem="wOi-vm-cfY" secondAttribute="leading" id="CkL-ZG-5KG"/>
+                                            <constraint firstItem="gjs-bh-LvH" firstAttribute="top" secondItem="4cI-Cu-EwN" secondAttribute="bottom" constant="5" id="Fke-pH-4zb"/>
+                                            <constraint firstItem="hKe-U2-Jmu" firstAttribute="height" secondItem="4cI-Cu-EwN" secondAttribute="height" id="TaW-P4-P6n"/>
+                                            <constraint firstItem="D77-h0-FGA" firstAttribute="leading" secondItem="wOi-vm-cfY" secondAttribute="leading" id="UmP-It-f1B"/>
+                                            <constraint firstAttribute="trailing" secondItem="4cI-Cu-EwN" secondAttribute="trailing" id="V0t-fc-gQP"/>
+                                            <constraint firstItem="2si-nm-mo0" firstAttribute="height" secondItem="hKe-U2-Jmu" secondAttribute="height" id="Zws-FA-H0h"/>
+                                            <constraint firstItem="4cI-Cu-EwN" firstAttribute="top" secondItem="hKe-U2-Jmu" secondAttribute="bottom" constant="5" id="gIs-XM-2ID"/>
+                                            <constraint firstItem="4cI-Cu-EwN" firstAttribute="height" secondItem="gjs-bh-LvH" secondAttribute="height" id="gXY-Jw-aZA"/>
+                                            <constraint firstAttribute="trailing" secondItem="2si-nm-mo0" secondAttribute="trailing" id="h7k-xs-C75"/>
+                                            <constraint firstItem="A81-hS-QhJ" firstAttribute="width" secondItem="Zdz-Ha-IAJ" secondAttribute="width" id="hAW-yj-8ze"/>
+                                            <constraint firstAttribute="trailing" secondItem="D77-h0-FGA" secondAttribute="trailing" id="jbU-rV-Umq"/>
+                                            <constraint firstItem="YHy-Sm-l2X" firstAttribute="width" secondItem="Zdz-Ha-IAJ" secondAttribute="width" id="mIZ-Xg-P3c"/>
+                                            <constraint firstAttribute="trailing" secondItem="hKe-U2-Jmu" secondAttribute="trailing" id="nEZ-xC-b5Q"/>
+                                            <constraint firstItem="D77-h0-FGA" firstAttribute="top" secondItem="gjs-bh-LvH" secondAttribute="bottom" constant="5" id="sbP-Tf-xj6"/>
+                                            <constraint firstItem="D77-h0-FGA" firstAttribute="height" secondItem="gjs-bh-LvH" secondAttribute="height" id="u27-LZ-Cgt"/>
+                                            <constraint firstItem="2si-nm-mo0" firstAttribute="leading" secondItem="wOi-vm-cfY" secondAttribute="leading" id="x70-bf-P9H"/>
+                                            <constraint firstItem="gjs-bh-LvH" firstAttribute="leading" secondItem="wOi-vm-cfY" secondAttribute="leading" id="y9O-l7-K47"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ag-6A-q2n">
+                                <rect key="frame" x="8" y="167" width="398" height="82"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="60"/>
+                                <color key="textColor" name="Labels"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBq-Hg-VBR">
+                                <rect key="frame" x="0.0" y="385.5" width="100" height="115.5"/>
+                                <connections>
+                                    <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="EYa-r6-vRb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a passcode and confirm with '='" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqB-uV-erN">
+                                <rect key="frame" x="16" y="98" width="338" height="53"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" name="Labels"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-8z-0DB">
+                                <rect key="frame" x="16" y="48" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="C6o-x6-Fle"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="dismissView:" destination="53l-fH-LOt" eventType="touchUpInside" id="nej-SQ-HKr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6L7-qt-Va4"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="3ag-6A-q2n" secondAttribute="trailing" constant="8" id="1GP-r3-qky"/>
+                            <constraint firstItem="FqB-uV-erN" firstAttribute="top" secondItem="6L7-qt-Va4" secondAttribute="top" constant="50" id="49d-sX-Sew"/>
+                            <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="FqB-uV-erN" secondAttribute="trailing" constant="60" id="5it-kQ-p7Y"/>
+                            <constraint firstItem="3ag-6A-q2n" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" constant="8" id="9xb-Ln-VdT"/>
+                            <constraint firstItem="FqB-uV-erN" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" constant="16" id="AQe-Si-O19"/>
+                            <constraint firstItem="FqB-uV-erN" firstAttribute="top" secondItem="ntI-8z-0DB" secondAttribute="bottom" constant="20" id="Dd8-Ih-7Sh"/>
+                            <constraint firstItem="EdA-QS-pPU" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" id="IoM-vz-Chd"/>
+                            <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="EdA-QS-pPU" secondAttribute="trailing" id="P0C-1l-M9d"/>
+                            <constraint firstItem="ntI-8z-0DB" firstAttribute="top" secondItem="6L7-qt-Va4" secondAttribute="top" id="Qm8-4r-hcD"/>
+                            <constraint firstItem="IBq-Hg-VBR" firstAttribute="width" secondItem="9dB-AH-DmI" secondAttribute="width" id="SYm-E6-K1o"/>
+                            <constraint firstItem="ntI-8z-0DB" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" constant="16" id="Ufg-Ei-go8"/>
+                            <constraint firstItem="IBq-Hg-VBR" firstAttribute="centerX" secondItem="9dB-AH-DmI" secondAttribute="centerX" id="akX-AP-sp8"/>
+                            <constraint firstItem="3ag-6A-q2n" firstAttribute="top" secondItem="FqB-uV-erN" secondAttribute="bottom" constant="16" id="cnQ-oy-SZH"/>
+                            <constraint firstItem="6L7-qt-Va4" firstAttribute="bottom" secondItem="EdA-QS-pPU" secondAttribute="bottom" id="lMi-cY-RyQ"/>
+                            <constraint firstItem="EdA-QS-pPU" firstAttribute="top" secondItem="3ag-6A-q2n" secondAttribute="bottom" constant="16" id="pai-ZJ-6Mv"/>
+                            <constraint firstItem="IBq-Hg-VBR" firstAttribute="centerY" secondItem="9dB-AH-DmI" secondAttribute="centerY" id="tHc-aA-ft0"/>
+                            <constraint firstItem="IBq-Hg-VBR" firstAttribute="height" secondItem="9dB-AH-DmI" secondAttribute="height" id="xH4-a2-0Ar"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="E5X-0C-Gtr"/>
+                    <connections>
+                        <outlet property="instructionsLabel" destination="FqB-uV-erN" id="LdA-pA-hDt"/>
+                        <outlet property="outputLbl" destination="3ag-6A-q2n" id="lQm-po-s8T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uhi-pO-0am" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-813" y="-24"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.13699999451637268" green="0.15299999713897705" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FrontColor">
+            <color red="0.2196078431372549" green="0.23137254901960785" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Labels">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

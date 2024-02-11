@@ -30,23 +30,13 @@ import CloudKit
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - IBOutlet
-    @IBOutlet weak var changeIconLabel: UILabel!
+    @IBOutlet weak var stackview: UIStackView!
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var recoverLabel: UILabel!
-    @IBOutlet weak var chooseProtectionLabel: UILabel!
-    @IBOutlet weak var noProtectionImage: UIImageView!
-    @IBOutlet weak var noProtection: UIButton!
-    @IBOutlet weak var ModeGroupView: UIView!
     @IBOutlet weak var upgradeButton: UIButton!
     @IBOutlet weak var customTabBar: UITabBarItem!
     @IBOutlet weak var rateApp: UIView!
-    @IBOutlet weak var changeIcon: UIView!
-    @IBOutlet weak var vaultMode: UIButton!
-    @IBOutlet weak var vaultModeImage: UIImageView!
     @IBOutlet weak var faceIDView: UIView!
-    
-    @IBOutlet weak var privacyPolice: UIView!
-    @IBOutlet weak var privacyPoliceLabel: UILabel!
     
     @IBOutlet weak var useTerms: UIView!
     @IBOutlet weak var useTermsLabel: UILabel!
@@ -57,15 +47,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Defaults.setBool(.recoveryStatus, sender.isOn)
-    }
-
-    @IBAction func noProtectionPressed(_ sender: Any) {
-        UserDefaultService().setTypeProtection(protectionMode: .noProtection)
-        showProtectionType(typeProtection: .noProtection)
-    }
-
-    @IBAction func showBankMode(_ sender: Any) {
-        coordinator.showBankMode()
     }
 
     @IBAction func premiumVersionPressed(_ sender: Any) {
@@ -88,46 +69,122 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         setupUI()
         setupGestures()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let typeProtection = UserDefaultService().getTypeProtection()
-        showProtectionType(typeProtection: typeProtection)
-    }
     
     // MARK: - UI
     private func setupTexts() {
         self.title = Text.settings.localized()
-        noProtection.setText(.noProtection)
-        vaultMode.setText(.vaultMode)
         upgradeButton.setText(.premiumVersion)
         recoverLabel.setText(.hideRecoverButton)
-        chooseProtectionLabel.setText(.chooseProtectionMode)
-        changeIconLabel.setText(.changeIconTitle)
-        privacyPoliceLabel.setText(.privacyPolice)
         useTermsLabel.setText(.termsOfUse)
         augmentedRealityLabel.setText(.augmentedReality)
     }
 
-    private func setupViewStyle() {
-        DispatchQueue.main.async {
-            self.upgradeButton.layer.cornerRadius = 8
-            self.upgradeButton.clipsToBounds = true
+    lazy var contentStackView: UIView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                createIconImage(UIImage(named: "calculadora"), action: #selector(metodoExemplo)),
+                createIconImage(UIImage(named: "foguetinho"), action: #selector(metodoExemplo2)),
+                createIconImage(UIImage(named: "iPhotos"), action: #selector(metodoExemplo3)),
+                createIconImage(UIImage(named: "iconeOriginal"), action: #selector(metodoExemplo4))
+            ]
+        )
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        
+        let label = UILabel()
+        label.setText(.changeIconTitle)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        let view = UIView()
+        view.addSubview(stackView)
+        view.addSubview(label)
+        
+        label.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(16)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(label.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-12)
+            make.bottom.equalToSuperview().offset(-16)
+        }
+        
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 3
+        view.layer.shadowOpacity = 0.2
+        view.layer.masksToBounds = false
+        
+        view.backgroundColor = .white
+        return view
+    }()
 
-            self.ModeGroupView.layer.cornerRadius = 16
-            self.ModeGroupView.layer.shadowOffset = CGSize(width: 0, height: 0)
-            self.ModeGroupView.layer.shadowRadius = 4
-            self.ModeGroupView.layer.shadowOpacity = 0.3
-            self.ModeGroupView.clipsToBounds = true
+    
+    func createIconImage(_ image: UIImage?, action: Selector) -> UIView {
+        let view = UIView()
+        let imageView = UIImageView(image: image)
+        
+        view.addSubview(imageView)
+        
+        view.snp.makeConstraints { make in
+            make.width.height.equalTo(80)
+        }
+        
+        imageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
 
-            self.noProtection.layer.cornerRadius = 8
-            self.noProtection.clipsToBounds = true
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 12
+        
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 1
+        
+        // Adiciona interatividade
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: action)
+        imageView.addGestureRecognizer(tapGesture)
 
-            self.vaultMode.layer.cornerRadius = 8
-            self.vaultMode.clipsToBounds = true
+        return view
+    }
+    
+    func setIcon(name: String) {
+        let app = UIApplication.shared
+        if #available(iOS 10.3, *) {
+            if app.supportsAlternateIcons {
+                app.setAlternateIconName(name, completionHandler: { (error) in
+                    if error != nil {
+                        print("error => \(String(describing: error?.localizedDescription))")
+                    } else {
+                        print("Changed Icon Sucessfully.")
+                    }
+                })
+            }
         }
     }
-
+    
+    @objc func metodoExemplo() {
+        setIcon(name: "icon1")
+    }
+    
+    @objc func metodoExemplo2() {
+        setIcon(name: "Icon2")
+    }
+    
+    @objc func metodoExemplo3() {
+        setIcon(name: "icon3")
+    }
+    
+    @objc func metodoExemplo4() {
+        setIcon(name: "icon4")
+    }
     
     // MARK: - Backup
     @objc 
@@ -170,12 +227,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         rateApp.addGestureRecognizer(tap)
         
-        let changeIconPressed = UITapGestureRecognizer(target: self, action: #selector(changeIconPressed(_:)))
-        changeIcon.addGestureRecognizer(changeIconPressed)
-        
-        let privacyPolicePressed = UITapGestureRecognizer(target: self, action: #selector(privacyPolicePressed(_:)))
-        privacyPolice.addGestureRecognizer(privacyPolicePressed)
-        
         let useTermsPressed = UITapGestureRecognizer(target: self, action: #selector(useTermsPressed(_:)))
         useTerms.addGestureRecognizer(useTermsPressed)
         
@@ -185,19 +236,19 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     private func setupViewStyles() {
         upgradeButton.layer.cornerRadius = 8
-        noProtection.layer.cornerRadius = 8
-        vaultMode.layer.cornerRadius = 8
-        addShadow(to: ModeGroupView, offset: CGSize(width: 0, height: 0), radius: 4, opacity: 0.3)
+        upgradeButton.clipsToBounds = true
+
+        view.addSubview(self.contentStackView)
+        contentStackView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+            make.top.equalTo(self.stackview.snp.bottom).offset(24)
+        }
     }
     
     private func addShadow(to view: UIView, offset: CGSize, radius: CGFloat, opacity: Float) {
         view.layer.shadowOffset = offset
         view.layer.shadowRadius = radius
         view.layer.shadowOpacity = opacity
-    }
-    
-    private func showProtectionType(typeProtection: ProtectionMode) {
-        noProtectionImage.setImage(typeProtection == .noProtection ? .selectedIndicator : .diselectedIndicator)
-        vaultModeImage.setImage(typeProtection == .vault ? .selectedIndicator : .diselectedIndicator)
     }
 }

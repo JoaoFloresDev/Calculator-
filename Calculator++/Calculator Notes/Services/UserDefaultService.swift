@@ -12,9 +12,7 @@ var userDefaults = UserDefaults.standard
 
 enum BoolKey: String {
     case recoveryStatus
-    case needSavePasswordInCloud
     case notFirstUse = "firstUse"
-    case iCloudEnabled
     case premiumPurchased = "NoAds.Calc"
     case monthlyPurchased = "Calc.noads.mensal"
     case yearlyPurchased = "calcanual"
@@ -31,8 +29,6 @@ enum BoolKey: String {
 enum IntKey: String {
     case launchCounter
     case disableRecoveryButtonCounter
-    case imageCompressionQuality
-    case videoCompressionQuality
     
     func set(_ value: Int) {
         userDefaults.set(value, forKey: rawValue)
@@ -118,6 +114,7 @@ enum ProtectionMode: String {
     case noProtection
     case bank
     case vault
+    case newCalc
 }
 
 struct UserDefaultService {

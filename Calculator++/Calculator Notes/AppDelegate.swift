@@ -37,24 +37,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initializeWindow() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboardName = UserDefaultService().getTypeProtection() == ProtectionMode.calculator ? "CalculatorMode" : "BankMode"
-        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        let viewControllerID = storyboardName == "CalculatorMode" ? "CalcMode" : "BankMode"
-        var initialViewController = storyboard.instantiateViewController(withIdentifier: viewControllerID)
-        
-        if UserDefaultService().getTypeProtection() == .vault {
-            initialViewController = VaultViewController(mode: .verify)
-        }
-        
-        if !Defaults.getBool(.notFirstUse) {
-            initialViewController = UINavigationController(rootViewController: OnboardingWelcomeViewController())
-            Defaults.setInt(.imageCompressionQuality, 10)
-            Defaults.setInt(.videoCompressionQuality, 10)
-        }
-        self.window?.rootViewController = initialViewController
+        self.window?.rootViewController = determineInitialViewController()
         self.window?.makeKeyAndVisible()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
+
+    private func determineInitialViewController() -> UIViewController {
+        let userDefaultService = UserDefaultService()
+
+        if !Defaults.getBool(.notFirstUse) {
+            return UINavigationController(rootViewController: OnboardingWelcomeViewController())
+        }
+
+        switch userDefaultService.getTypeProtection() {
+        case .calculator:
+            return viewControllerFor(storyboard: "CalculatorMode", withIdentifier: "CalcMode")
+        case .bank:
+            return viewControllerFor(storyboard: "BankMode", withIdentifier: "BankMode")
+        case .vault:
+            return VaultViewController(mode: .verify)
+        case .newCalc:
+            return viewControllerFor(storyboard: "NewCalc", withIdentifier: "NewCalcChange")
+        case .noProtection:
+            return viewControllerFor(storyboard: "Main", withIdentifier: "Home")
+        }
+    }
+
+    private func viewControllerFor(storyboard storyboardName: String, withIdentifier viewControllerID: String) -> UIViewController {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: viewControllerID)
+    }
+
     
     // MARK: - Notification Actions
     

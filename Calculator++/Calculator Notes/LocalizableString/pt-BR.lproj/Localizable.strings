@@ -171,5 +171,5 @@ selectImagesToDelete = "Selecione as imagens que deseja deletar";
 monthlySubscription = "Assinatura Mensal - ";
 yearlySubscription = "Assinatura Anual - ";
 termsOfUse = "Termos de uso";
-privacyPolice = "Politica de privacidade";
+privacyPolicy = "Politica de privacidade";
 augmentedReality = "Realidade Aumentada";

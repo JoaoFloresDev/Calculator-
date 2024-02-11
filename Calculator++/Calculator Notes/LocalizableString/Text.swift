@@ -168,7 +168,7 @@ enum Text: String {
     case monthlySubscription //    "Assinatura Mensal - "
     case yearlySubscription //    "Assinatura Anual - "
     case termsOfUse //    "Termos de uso"
-    case privacyPolice //    "Politica de privacidade"
+    case privacyPolicy //    "Politica de privacidade"
     case augmentedReality // "Realidade Aumentada"
     
     func localized() -> String {

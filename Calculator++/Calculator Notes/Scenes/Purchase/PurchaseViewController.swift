@@ -39,6 +39,53 @@ class PurchaseViewController: UIViewController {
     lazy var headerView = PurchaseHeaderView()
     lazy var purchaseBenetList = PurchaseBenetList()
     
+    lazy var monthlyPromotionLabel: UIView = {
+        let label = UILabel()
+        label.text = "Teste uma semana grátis"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        let view = UIView()
+        view.backgroundColor = .systemGreen
+        view.addSubview(label)
+        
+        // Configura constraints usando SnapKit
+        label.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(4)
+            make.leading.equalToSuperview().offset(6)
+            make.trailing.equalToSuperview().offset(-6)
+            make.bottom.equalToSuperview().offset(-4)
+        }
+        
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        
+        return view
+    }()
+    
+    lazy var yearlyPromotionLabel: UIView = {
+        let label = UILabel()
+        label.text = "Teste uma semana grátis"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        let view = UIView()
+        view.backgroundColor = .systemGreen
+        view.addSubview(label)
+        
+        // Configura constraints usando SnapKit
+        label.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(4)
+            make.leading.equalToSuperview().offset(6)
+            make.trailing.equalToSuperview().offset(-6)
+            make.bottom.equalToSuperview().offset(-4)
+        }
+        
+        // Arredonda as bordas da view
+        view.layer.cornerRadius = 10 // Ajuste este valor conforme necessário para o arredondamento desejado
+        view.clipsToBounds = true
+        
+        return view
+    }()
+    
     lazy var monthlyButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
@@ -112,7 +159,7 @@ class PurchaseViewController: UIViewController {
         view.addSubview(purchaseBenetList)
         purchaseBenetList.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(headerView.snp.bottom).offset(210)
+            make.top.equalTo(headerView.snp.bottom).offset(190)
             make.width.equalTo(240)
         }
         
@@ -121,7 +168,13 @@ class PurchaseViewController: UIViewController {
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
-            make.top.equalTo(purchaseBenetList.snp.bottom).offset(24)
+            make.top.equalTo(purchaseBenetList.snp.bottom).offset(16)
+        }
+        
+        view.addSubview(monthlyPromotionLabel)
+        monthlyPromotionLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(monthlyButton.snp.bottom).offset(20)
+            make.trailing.equalTo(monthlyButton.snp.trailing).offset(-8)
         }
         
         view.addSubview(yearlyButton)
@@ -129,7 +182,13 @@ class PurchaseViewController: UIViewController {
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
-            make.top.equalTo(monthlyButton.snp.bottom).offset(16)
+            make.top.equalTo(monthlyButton.snp.bottom).offset(40)
+        }
+        
+        view.addSubview(yearlyPromotionLabel)
+        yearlyPromotionLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(yearlyButton.snp.bottom).offset(20)
+            make.trailing.equalTo(yearlyButton.snp.trailing).offset(-8)
         }
     }
     
@@ -170,6 +229,7 @@ class PurchaseViewController: UIViewController {
     
     private func postNotification(named name: String) {
         NotificationCenter.default.post(name: NSNotification.Name(name), object: nil)
+        self.confirmCheckmark()
     }
     
     private func setupNotificationObserver() {
@@ -230,11 +290,13 @@ class PurchaseViewController: UIViewController {
             if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") {
                 self.monthlyButton.backgroundColor  = .systemGreen
                 self.monthlyButton.isUserInteractionEnabled = false
+                self.monthlyPromotionLabel.isHidden = true
                 Defaults.setBool(.monthlyPurchased, true)
             }
             if RazeFaceProducts.store.isProductPurchased("calcanual") {
                 self.yearlyButton.backgroundColor  = .systemGreen
                 self.yearlyButton.isUserInteractionEnabled = false
+                self.yearlyPromotionLabel.isHidden = true
                 Defaults.setBool(.yearlyPurchased, true)
             }
             self.delegate?.purchased()
@@ -256,5 +318,22 @@ class PurchaseViewController: UIViewController {
         customNavigator.title = String()
         closeButton.title = Text.close.localized()
         restoreButton.title = Text.restore.localized()
+    }
+}
+
+class PaddingLabel: UILabel {
+    var textInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10) {
+        didSet { invalidateIntrinsicContentSize() }
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + textInsets.left + textInsets.right,
+                      height: size.height + textInsets.top + textInsets.bottom)
+    }
+
+    override func sizeToFit() {
+        super.sizeToFit()
+        self.frame.size = intrinsicContentSize
     }
 }

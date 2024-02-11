@@ -236,11 +236,6 @@ class VaultViewController: UIViewController {
         faceidImageView.addGestureRecognizer(tapGesture)
     }
     
-    @objc private func recoverEmailTapped() {
-        self.dismissable = true
-        self.secondDismissable = true
-    }
-    
     @objc private func faceIDTapped() {
         if vaultMode == .verify {
             let faceIDManager = FaceIDManager()
@@ -295,7 +290,6 @@ class VaultViewController: UIViewController {
             if inputSequence == inputSequenceConfirmation {
                 Defaults.setString(.password, inputSequence)
                 UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.vault)
-                Defaults.setBool(.needSavePasswordInCloud, true)
                 super.dismiss(animated: true)
             } else {
                 let alert = UIAlertController(title: Text.incorrectPassword.localized(),

@@ -57,6 +57,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         ) {
             setupAds()
         }
+        Defaults.setBool(.notFirstUse, true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

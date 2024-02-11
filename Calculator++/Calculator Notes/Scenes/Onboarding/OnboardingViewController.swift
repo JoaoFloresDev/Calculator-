@@ -61,17 +61,26 @@ extension OnboardingWelcomeViewController: OnboardingViewDelegate {
     func apresentarVaultViewController() {
         slideAndFadeAnimator = SlideAndFadePresentAnimator()
         
-        let vaultViewController = VaultViewController(mode: .create)
+        let vaultViewController = viewControllerFor(storyboard: "NewCalc", withIdentifier: "NewCalcChange")
         vaultViewController.modalPresentationStyle = .fullScreen
         vaultViewController.transitioningDelegate = slideAndFadeAnimator
-        self.present(vaultViewController, animated: true) {
+        guard let controller = vaultViewController as? ChangeNewCalcViewController else {
+            self.presentNextStep()
+            return
+        }
+        controller.vaultMode = .create
+        self.present(controller, animated: true) {
             self.presentNextStep()
         }
     }
     
+    private func viewControllerFor(storyboard storyboardName: String, withIdentifier viewControllerID: String) -> UIViewController {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: viewControllerID)
+    }
+    
     func presentNextStep() {
         NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
-        Defaults.setBool(.notFirstUse, true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
         homeViewController.modalPresentationStyle = .fullScreen
