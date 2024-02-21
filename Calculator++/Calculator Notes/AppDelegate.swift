@@ -57,7 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .vault:
             return VaultViewController(mode: .verify)
         case .newCalc:
-            return viewControllerFor(storyboard: "NewCalc", withIdentifier: "NewCalcChange")
+            let controller = viewControllerFor(storyboard: "NewCalc", withIdentifier: "NewCalcChange")
+            return controller
         case .noProtection:
             return viewControllerFor(storyboard: "Main", withIdentifier: "Home")
         }

@@ -173,3 +173,7 @@ yearlySubscription = "Assinatura Anual - ";
 termsOfUse = "Termos de uso";
 privacyPolicy = "Politica de privacidade";
 augmentedReality = "Realidade Aumentada";
+
+createPasswordNewCalc = "Crie uma senha de 4 digitos";
+insertCreatedPasswordAgainNewCalc = "Digite novamente a senha para confirmar";
+oneWeekToTest = "Teste uma semana grátis";

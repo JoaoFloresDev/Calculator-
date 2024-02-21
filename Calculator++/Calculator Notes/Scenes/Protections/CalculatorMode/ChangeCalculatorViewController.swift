@@ -52,7 +52,6 @@ class ChangeCalculatorViewController: BaseCalculatorViewController {
             
             UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.calculator)
             Defaults.setString(.password, keyTemp)
-            
             showAlert()
         }
         

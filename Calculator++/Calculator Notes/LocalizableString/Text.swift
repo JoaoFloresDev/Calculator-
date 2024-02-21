@@ -171,6 +171,10 @@ enum Text: String {
     case privacyPolicy //    "Politica de privacidade"
     case augmentedReality // "Realidade Aumentada"
     
+    case createPasswordNewCalc // "Crie uma senha de 4 digitos"
+    case insertCreatedPasswordAgainNewCalc // "Digite novamente a senha para confirmar"
+    case oneWeekToTest // "Teste uma semana grátis"
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

@@ -69,6 +69,7 @@ extension OnboardingWelcomeViewController: OnboardingViewDelegate {
             return
         }
         controller.vaultMode = .create
+        controller.faceIDButton.isHidden = true
         self.present(controller, animated: true) {
             self.presentNextStep()
         }

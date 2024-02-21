@@ -1,16 +1,25 @@
 import UIKit
+import LocalAuthentication
 
 class ChangeNewCalcViewController: BaseCalculatorViewController {
     var vaultMode: VaultMode = .verify
+    
+    var faceIDButton: UIButton = {
+        let button = UIButton()
+        button.setText(.recover)
+        button.tintColor = .systemBlue
+        button.addTarget(self, action: #selector(faceIDButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc private func faceIDButtonTapped() {
+        useFaceID()
+    }
     
     // MARK: - IBOutlet
     @IBOutlet weak var instructionsLabel: UILabel!
     
     // MARK: - IBAction
-    @IBAction func dismissView(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func numberPressed(_ sender: UIButton) {
         switch sender.tag {
         case 10:
@@ -49,7 +58,7 @@ class ChangeNewCalcViewController: BaseCalculatorViewController {
                 }
             case .create:
                 outputLbl.text = " "
-                instructionsLabel.text = "Digite novamente a senha para confirmar (\(runningNumber))"
+                instructionsLabel.text = "\(Text.insertCreatedPasswordAgainNewCalc.localized()) (\(runningNumber))"
                 runningNumber = ""
                 vaultMode = .confirmation
             case .confirmation:
@@ -71,28 +80,51 @@ class ChangeNewCalcViewController: BaseCalculatorViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        faceIDButton.isHidden = Defaults.getBool(.recoveryStatus)
+        view.addSubview(faceIDButton)
+        faceIDButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10) // Ajuste conforme necessário
+            make.right.equalTo(view.safeAreaLayoutGuide.snp.right).offset(-10) // Ajuste conforme necessário
+            make.height.equalTo(50)
+        }
     }
+    
+    func useFaceID() {
+        let myContext = LAContext()
+        let myLocalizedReasonString = "Biometric Authentication"
+        
+        var authError: NSError?
+        
+        if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
+            myContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: myLocalizedReasonString) { success, evaluateError in
+                if success {
+                    DispatchQueue.main.async {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        if let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home") as? UIViewController {
+                            // Configura homeViewController como rootViewController da janela principal.
+                            UIApplication.shared.delegate?.window??.rootViewController = homeViewController
+                            UIApplication.shared.delegate?.window??.makeKeyAndVisible()
+                        }
+                    }
+                } else if let error = evaluateError {
+                    print(error.localizedDescription)
+                }
+            }
+        } else if let error = authError {
+            print(error.localizedDescription)
+        }
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         switch vaultMode {
         case .create:
             outputLbl.text = " "
-            instructionsLabel.text = "Crie uma senha de 4 digitos"
+            instructionsLabel.text = Text.createPasswordNewCalc.localized()
         default:
             outputLbl.text = "0"
             instructionsLabel.isHidden = true
         }
-    }
-    
-    //    MARK: - Alert
-    func showAlert() {
-        let refreshAlert = UIAlertController(title: Text.done.localized(), message: Text.calcModeHasBeenActivated.localized(), preferredStyle: UIAlertControllerStyle.alert)
-
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-
-        present(refreshAlert, animated: true, completion: nil)
     }
 }
 

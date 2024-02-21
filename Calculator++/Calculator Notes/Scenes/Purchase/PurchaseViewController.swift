@@ -41,7 +41,7 @@ class PurchaseViewController: UIViewController {
     
     lazy var monthlyPromotionLabel: UIView = {
         let label = UILabel()
-        label.text = "Teste uma semana grátis"
+        label.text = Text.oneWeekToTest.localized()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         let view = UIView()
@@ -64,7 +64,7 @@ class PurchaseViewController: UIViewController {
     
     lazy var yearlyPromotionLabel: UIView = {
         let label = UILabel()
-        label.text = "Teste uma semana grátis"
+        label.text = Text.oneWeekToTest.localized()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         let view = UIView()
