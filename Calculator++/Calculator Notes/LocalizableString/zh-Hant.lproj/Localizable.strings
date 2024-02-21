@@ -171,3 +171,6 @@ yearlySubscription = "年度訂閱 - ";
 termsOfUse = "使用條款";
 privacyPolicy = "隱私政策";
 augmentedReality = "擴增實境";
+createPasswordNewCalc = "創建一個4位數的密碼";
+insertCreatedPasswordAgainNewCalc = "再次輸入創建的密碼以確認";
+oneWeekToTest = "免費試用一周";

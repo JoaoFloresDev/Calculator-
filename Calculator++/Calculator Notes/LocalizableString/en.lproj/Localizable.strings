@@ -170,3 +170,7 @@ yearlySubscription = "Annual Subscription - ";
 termsOfUse = "Terms of Use";
 privacyPolicy = "Privacy Policy";
 augmentedReality = "Augmented Reality";
+
+createPasswordNewCalc = "Create a 4-digit password";
+insertCreatedPasswordAgainNewCalc = "Enter the password again to confirm";
+oneWeekToTest = "Test one week for free";

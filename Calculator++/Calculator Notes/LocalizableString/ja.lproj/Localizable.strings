@@ -171,3 +171,6 @@ yearlySubscription = "年間サブスクリプション - ";
 termsOfUse = "利用規約";
 privacyPolicy = "プライバシーポリシー";
 augmentedReality = "拡張現実";
+createPasswordNewCalc = "4桁のパスワードを作成してください";
+insertCreatedPasswordAgainNewCalc = "確認のため、もう一度パスワードを入力してください";
+oneWeekToTest = "無料で1週間お試しください";

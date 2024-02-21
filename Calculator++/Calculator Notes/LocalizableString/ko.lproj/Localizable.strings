@@ -171,3 +171,6 @@ yearlySubscription = "연간 구독 - ";
 termsOfUse = "이용 약관";
 privacyPolicy = "개인정보 보호정책";
 augmentedReality = "증강 현실";
+createPasswordNewCalc = "4자리 비밀번호를 생성하세요";
+insertCreatedPasswordAgainNewCalc = "확인을 위해 생성한 비밀번호를 다시 입력하세요";
+oneWeekToTest = "무료로 일주일간 테스트해보세요";

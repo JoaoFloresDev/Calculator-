@@ -171,3 +171,6 @@ yearlySubscription = "الاشتراك السنوي - ";
 termsOfUse = "شروط الاستخدام";
 privacyPolicy = "سياسة الخصوصية";
 augmentedReality = "الواقع المعزز";
+createPasswordNewCalc = "أنشئ كلمة مرور من 4 أرقام";
+insertCreatedPasswordAgainNewCalc = "أدخل كلمة المرور المُنشأة مرة أخرى للتأكيد";
+oneWeekToTest = "جرب أسبوع مجانًا";

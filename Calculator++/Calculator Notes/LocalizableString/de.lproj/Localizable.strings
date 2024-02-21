@@ -171,3 +171,6 @@ yearlySubscription = "Jährliches Abonnement - ";
 termsOfUse = "Nutzungsbedingungen";
 privacyPolicy = "Datenschutzrichtlinie";
 augmentedReality = "Erweiterte Realität";
+createPasswordNewCalc = "Erstelle ein 4-stelliges Passwort";
+insertCreatedPasswordAgainNewCalc = "Gib das erstellte Passwort zur Bestätigung erneut ein";
+oneWeekToTest = "Teste eine Woche kostenlos";

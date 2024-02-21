@@ -171,3 +171,6 @@ yearlySubscription = "वार्षिक सदस्यता - ";
 termsOfUse = "उपयोग की शर्तें";
 privacyPolicy = "गोपनीयता नीति";
 augmentedReality = "वृद्धित वास्तविकता";
+createPasswordNewCalc = "4 अंकों का पासवर्ड बनाएँ";
+insertCreatedPasswordAgainNewCalc = "पुष्टि के लिए फिर से बनाया गया पासवर्ड दर्ज करें";
+oneWeekToTest = "एक सप्ताह मुफ्त परीक्षण करें";

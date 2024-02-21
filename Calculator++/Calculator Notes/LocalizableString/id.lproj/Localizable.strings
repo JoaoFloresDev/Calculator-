@@ -171,3 +171,6 @@ yearlySubscription = "Berlangganan Tahunan - ";
 termsOfUse = "Syarat Penggunaan";
 privacyPolicy = "Kebijakan Privasi";
 augmentedReality = "Realitas Tertambah";
+createPasswordNewCalc = "Buat sandi 4 digit";
+insertCreatedPasswordAgainNewCalc = "Masukkan kembali sandi yang dibuat untuk konfirmasi";
+oneWeekToTest = "Coba gratis satu minggu";

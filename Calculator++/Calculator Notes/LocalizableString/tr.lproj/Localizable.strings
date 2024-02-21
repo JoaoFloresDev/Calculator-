@@ -169,3 +169,6 @@ yearlySubscription = "Yıllık Abonelik - ";
 termsOfUse = "Kullanım Koşulları";
 privacyPolicy = "Gizlilik Politikası";
 augmentedReality = "Artırılmış Gerçeklik";
+createPasswordNewCalc = "4 haneli bir şifre oluşturun";
+insertCreatedPasswordAgainNewCalc = "Onaylamak için şifreyi tekrar girin";
+oneWeekToTest = "Bir hafta ücretsiz deneyin";

@@ -171,3 +171,6 @@ yearlySubscription = "Ежегодная Подписка - ";
 termsOfUse = "Условия Использования";
 privacyPolicy = "Политика Конфиденциальности";
 augmentedReality = "Дополненная Реальность";
+createPasswordNewCalc = "Создайте четырехзначный пароль";
+insertCreatedPasswordAgainNewCalc = "Введите пароль еще раз для подтверждения";
+oneWeekToTest = "Тестировать одну неделю бесплатно";
