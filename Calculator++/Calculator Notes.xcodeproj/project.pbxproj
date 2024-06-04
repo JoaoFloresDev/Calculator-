@@ -35,6 +35,7 @@
 		737530D42B60E524000B23E3 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 737530D02B60E471000B23E3 /* art.scnassets */; };
 		737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */; };
 		737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */; };
+		737FFF962BACC63E003CBD33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 737FFF982BACC63E003CBD33 /* InfoPlist.strings */; };
 		738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */; };
 		73862C822AAD1894005D9D25 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C812AAD1894005D9D25 /* OnboardingViewController.swift */; };
 		73862C842AAD18BC005D9D25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C832AAD18BC005D9D25 /* Constants.swift */; };
@@ -46,6 +47,8 @@
 		738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */; };
 		738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */; };
 		738B6AF32AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */; };
+		738FB4BE2BADD4C400595F60 /* NewCalc2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738FB4BD2BADD49500595F60 /* NewCalc2.storyboard */; };
+		738FB4BF2BADD4C600595F60 /* ChangeNewCalcViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738FB4BC2BADD49400595F60 /* ChangeNewCalcViewController2.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D12AA01A0100546566 /* PlaceholderView.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
@@ -140,6 +143,10 @@
 		737530D22B60E489000B23E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
+		737FFF972BACC63E003CBD33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		737FFF992BACC646003CBD33 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		737FFF9A2BACC649003CBD33 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		737FFF9B2BACC6BE003CBD33 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		73862C812AAD1894005D9D25 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		73862C832AAD18BC005D9D25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -151,6 +158,8 @@
 		738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextViewController.swift; sourceTree = "<group>"; };
 		738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddPhotosViewController.swift; sourceTree = "<group>"; };
 		738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertRecoverEmailViewController.swift; sourceTree = "<group>"; };
+		738FB4BC2BADD49400595F60 /* ChangeNewCalcViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewCalcViewController2.swift; sourceTree = "<group>"; };
+		738FB4BD2BADD49500595F60 /* NewCalc2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewCalc2.storyboard; sourceTree = "<group>"; };
 		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -263,6 +272,7 @@
 				2E4A079A1C42F3B0007F415F /* Assets.xcassets */,
 				2E4A079C1C42F3B0007F415F /* LaunchScreen.storyboard */,
 				2E4A079F1C42F3B0007F415F /* Info.plist */,
+				737FFF982BACC63E003CBD33 /* InfoPlist.strings */,
 				337061FB27921AA100B1D30D /* Configuration.storekit */,
 				337E0227279244A00081AA27 /* StoreKitTestCertificate.cer */,
 				73C2C5082A49D7E700963BA2 /* swiftlint.yml */,
@@ -364,6 +374,7 @@
 		737D66A12AB0AA7E00806C98 /* Protections */ = {
 			isa = PBXGroup;
 			children = (
+				738FB4BB2BADD46C00595F60 /* NewCalc2 */,
 				737D66A22AB0AB0A00806C98 /* Vault */,
 				73B54D5227B097B400499F66 /* BankMode */,
 				73CBF87B2B6F1DFA00F85B6E /* NewCalc */,
@@ -389,6 +400,15 @@
 				738827C72B1509170051BEF4 /* InAppPurchaseManager.swift */,
 			);
 			path = Assinatura;
+			sourceTree = "<group>";
+		};
+		738FB4BB2BADD46C00595F60 /* NewCalc2 */ = {
+			isa = PBXGroup;
+			children = (
+				738FB4BC2BADD49400595F60 /* ChangeNewCalcViewController2.swift */,
+				738FB4BD2BADD49500595F60 /* NewCalc2.storyboard */,
+			);
+			path = NewCalc2;
 			sourceTree = "<group>";
 		};
 		7396A17A293AB2D1006D6ED4 /* UI */ = {
@@ -668,9 +688,11 @@
 				73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */,
 				73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */,
 				C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */,
+				737FFF962BACC63E003CBD33 /* InfoPlist.strings in Resources */,
 				2E4A079E1C42F3B0007F415F /* LaunchScreen.storyboard in Resources */,
 				73CBF8802B6F244500F85B6E /* NewCalc.storyboard in Resources */,
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
+				738FB4BE2BADD4C400595F60 /* NewCalc2.storyboard in Resources */,
 				737530D42B60E524000B23E3 /* art.scnassets in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
 				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
@@ -811,6 +833,7 @@
 				7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */,
 				737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
+				738FB4BF2BADD4C600595F60 /* ChangeNewCalcViewController2.swift in Sources */,
 				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
@@ -861,6 +884,17 @@
 				73ABC0F1284F25CA00E5C3A4 /* es-419 */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		737FFF982BACC63E003CBD33 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				737FFF972BACC63E003CBD33 /* en */,
+				737FFF992BACC646003CBD33 /* pt-BR */,
+				737FFF9A2BACC649003CBD33 /* es-MX */,
+				737FFF9B2BACC6BE003CBD33 /* es-419 */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		73B54D5F27B09A1B00499F66 /* Localizable.strings */ = {
@@ -1005,7 +1039,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 165;
+				CURRENT_PROJECT_VERSION = 170;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1019,7 +1053,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 165;
+				MARKETING_VERSION = 170;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1040,7 +1074,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calculator Notes/Calculator Notes.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 165;
+				CURRENT_PROJECT_VERSION = 170;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1054,7 +1088,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 165;
+				MARKETING_VERSION = 170;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.CalculatorNotes;
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";

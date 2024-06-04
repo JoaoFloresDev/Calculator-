@@ -53,15 +53,35 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         handleInitialLaunch()
         setupPlaceholderView()
         if !(
-            Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) || RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
+            RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+            RazeFaceProducts.store.isProductPurchased("calcanual") ||
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")
         ) {
             setupAds()
+        } else {
+            checkRevenuePurchases()
         }
+        
         Defaults.setBool(.notFirstUse, true)
+        
+    }
+    
+    func checkRevenuePurchases() {
+        let dataManager = DateManager()
+        Connectivity.shared.checkConnection { isConnected in
+            if isConnected && dataManager.hasDatesBeforeToday() {
+                UserDefaults.standard.set(false, forKey: "calcanual")
+                UserDefaults.standard.set(false, forKey: "Calc.noads.mensal")
+                RazeFaceProducts.store.restorePurchases()
+                dataManager.deleteDatesBeforeToday()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) || RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil {
+        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+            RazeFaceProducts.store.isProductPurchased("calcanual") ||
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
             return
         }
         
@@ -78,8 +98,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
 //    MARK: - Ads
     func checkPurchase() {
-        if
-            Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) || RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
+        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+            RazeFaceProducts.store.isProductPurchased("calcanual") ||
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")
         {
             if let viewToRemove = self.view.viewWithTag(100) {
                 viewToRemove.removeFromSuperview()

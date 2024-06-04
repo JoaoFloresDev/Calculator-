@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="HSl-dr-OjA">
-                                <rect key="frame" x="0.0" y="92" width="414" height="195"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="244"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HT7-x9-f8c">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
@@ -96,8 +96,25 @@
                                             <constraint firstItem="7vf-Ia-cWv" firstAttribute="centerY" secondItem="hFY-TQ-Ku4" secondAttribute="centerY" id="xn6-5T-abs"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ert-Ym-P1Q">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-md-57V">
                                         <rect key="frame" x="0.0" y="98" width="414" height="48"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browser" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvG-Ye-PPs">
+                                                <rect key="frame" x="16" y="14" width="64.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <constraints>
+                                            <constraint firstItem="cvG-Ye-PPs" firstAttribute="centerY" secondItem="hbc-md-57V" secondAttribute="centerY" id="Pe1-cV-KAF"/>
+                                            <constraint firstAttribute="height" constant="48" id="siP-Jq-5UO"/>
+                                            <constraint firstItem="cvG-Ye-PPs" firstAttribute="leading" secondItem="hbc-md-57V" secondAttribute="leading" constant="16" id="u2O-Rf-1pQ"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ert-Ym-P1Q">
+                                        <rect key="frame" x="0.0" y="147" width="414" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9d-kN-wwz">
                                                 <rect key="frame" x="16" y="14" width="87" height="20.5"/>
@@ -114,7 +131,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lK0-9W-0pg">
-                                        <rect key="frame" x="0.0" y="147" width="414" height="48"/>
+                                        <rect key="frame" x="0.0" y="196" width="414" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Termos de uso" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVc-pC-6pv">
                                                 <rect key="frame" x="16" y="14" width="115" height="20.5"/>
@@ -153,6 +170,8 @@
                     <connections>
                         <outlet property="augmentedReality" destination="hFY-TQ-Ku4" id="eCo-1E-UaJ"/>
                         <outlet property="augmentedRealityLabel" destination="7vf-Ia-cWv" id="JnP-7U-7B1"/>
+                        <outlet property="browser" destination="hbc-md-57V" id="pEf-lY-H3E"/>
+                        <outlet property="browserLabel" destination="cvG-Ye-PPs" id="q2H-T1-ZY9"/>
                         <outlet property="customTabBar" destination="hh2-yq-auE" id="Fgj-8r-Zdu"/>
                         <outlet property="faceIDView" destination="HT7-x9-f8c" id="ED4-RH-aKe"/>
                         <outlet property="rateApp" destination="ert-Ym-P1Q" id="Sbs-qT-fHv"/>

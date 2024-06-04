@@ -126,7 +126,7 @@ backupNavigationSubtitle = "Las fotos se sincronizan con las fotos agregadas cad
 myBackupNavigationSubtitle = "Haz clic en 'Recuperar copia de seguridad' en el menú anterior para importar las fotos a tu galería";
 continueText = "Continuar";
 
-welcomeOnboarding_title = "Bienvenido a Secret Gallery";
+welcomeOnboarding_title = "Bienvenido a Calculadora Secreta";
 welcomeOnboarding_subtitle = "Protege tus fotos y videos de manera segura";
 welcomeOnboarding_startButtonTitle = "Comenzar";
 welcomeOnboarding_skipButtonTitle = "Al hacer clic en 'Comenzar', aceptas la política de privacidad y los términos de uso";

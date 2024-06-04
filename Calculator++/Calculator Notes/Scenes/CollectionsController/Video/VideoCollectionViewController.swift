@@ -28,7 +28,9 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
     lazy var coordinator = VideoCollectionCoordinator(viewController: self)
     
     var isPremium: Bool {
-        return Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) || RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil || modelData.count < 2
+        return RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+        RazeFaceProducts.store.isProductPurchased("calcanual") ||
+        RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || modelData.count < 3
     }
     
     var isEditMode = false {

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calculator View Controller-->
+        <!--New Calc View Controller2-->
         <scene sceneID="sdG-7p-JoM">
             <objects>
-                <viewController storyboardIdentifier="CalcMode" modalPresentationStyle="fullScreen" id="q2d-fs-WKk" customClass="CalculatorViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewCalc" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="q2d-fs-WKk" customClass="NewCalcViewController2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="bm5-Ql-cM7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,9 +36,6 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="allClearPerssed:" destination="q2d-fs-WKk" eventType="touchUpInside" id="KZa-7e-iOk"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAr-d0-Dwq" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
                                                         <rect key="frame" x="314.5" y="0.0" width="99.5" height="130.5"/>
@@ -452,25 +449,25 @@
             </objects>
             <point key="canvasLocation" x="-1588" y="-24"/>
         </scene>
-        <!--Change Calculator View Controller-->
+        <!--Change New Calc View Controller2-->
         <scene sceneID="Ii3-Vc-ooQ">
             <objects>
-                <viewController storyboardIdentifier="ChangePasswordCalcMode" modalPresentationStyle="fullScreen" id="53l-fH-LOt" customClass="ChangeCalculatorViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewCalcChange" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="53l-fH-LOt" customClass="ChangeNewCalcViewController2" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BVT-cW-TbU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="EdA-QS-pPU">
-                                <rect key="frame" x="0.0" y="265" width="414" height="597"/>
+                                <rect key="frame" x="0.0" y="227" width="414" height="635"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="wOi-vm-cfY">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="597"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="635"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="2si-nm-mo0">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="115.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2K-XA-vdt" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="309.5" height="115.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2K-XA-vdt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="309.5" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="AC">
@@ -480,11 +477,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="allClearPerssed:" destination="53l-fH-LOt" eventType="touchUpInside" id="Ly0-cM-ToP"/>
+                                                            <action selector="allClearPerssed:" destination="53l-fH-LOt" eventType="touchUpInside" id="lnz-Gu-Mgz"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0q-sX-hPS" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115.5"/>
+                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0q-sX-hPS">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="123"/>
                                                         <color key="backgroundColor" name="Background"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
                                                         <state key="normal" title="÷">
@@ -494,7 +491,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="dividePressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="8T8-cl-eGv"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="h9h-Kd-N3Q"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -509,10 +506,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="hKe-U2-Jmu">
-                                                <rect key="frame" x="0.0" y="120.5" width="414" height="115.5"/>
+                                                <rect key="frame" x="0.0" y="128" width="414" height="123"/>
                                                 <subviews>
-                                                    <button opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dB-AH-DmI" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="115.5"/>
+                                                    <button opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dB-AH-DmI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <color key="tintColor" red="0.54043549300000004" green="0.98502451179999995" blue="0.36062228680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -522,12 +519,9 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="MYA-6s-Mr5"/>
-                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ia1-xw-zqf" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="115.5"/>
+                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ia1-xw-zqf">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="8">
@@ -537,11 +531,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="jWD-dP-cZw"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="hqY-vm-UIj"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4A-81-G8n" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="115.5"/>
+                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4A-81-G8n">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="9">
@@ -551,11 +545,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="VWz-1j-GM9"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="laJ-vf-n35"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqd-6B-PcP" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115.5"/>
+                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqd-6B-PcP">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="123"/>
                                                         <color key="backgroundColor" name="Background"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
                                                         <state key="normal" title="×">
@@ -565,7 +559,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="multiplyPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="kPV-Jp-inu"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="bff-Cc-YbX"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -589,10 +583,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="4cI-Cu-EwN">
-                                                <rect key="frame" x="0.0" y="241" width="414" height="115"/>
+                                                <rect key="frame" x="0.0" y="256" width="414" height="123"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-Yt-wgq" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="115"/>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-Yt-wgq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="4">
@@ -602,11 +596,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="gyd-ss-TBo"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="74g-e3-91G"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTz-WU-sma" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="115"/>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTz-WU-sma">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="5">
@@ -616,11 +610,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="YYf-nP-25y"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="1E8-Cx-scs"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-9P-Tio" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="115"/>
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-9P-Tio">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="6">
@@ -630,11 +624,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="hD3-L1-Ti7"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="I6E-DU-Z0i"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTh-11-nK8" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115"/>
+                                                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTh-11-nK8">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="123"/>
                                                         <color key="backgroundColor" name="Background"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
                                                         <state key="normal" title="-">
@@ -644,7 +638,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="substractPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="oMG-Am-NkI"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="6s9-Et-hXT"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -668,10 +662,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="gjs-bh-LvH">
-                                                <rect key="frame" x="0.0" y="361" width="414" height="115.5"/>
+                                                <rect key="frame" x="0.0" y="384" width="414" height="123"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FB6-y4-bl3" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="115.5"/>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FB6-y4-bl3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="1">
@@ -681,11 +675,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="HK4-ip-XnJ"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="N4P-k8-nfg"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-gr-zJ8" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="115.5"/>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-gr-zJ8">
+                                                        <rect key="frame" x="105" y="0.0" width="99.5" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="2">
@@ -695,11 +689,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="LTc-og-ZAI"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="Zv4-xe-77f"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yr-lZ-Ifh" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="115.5"/>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yr-lZ-Ifh">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="3">
@@ -709,11 +703,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="goQ-4a-Mu5"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="Vo6-bc-K9k"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdz-Ha-IAJ" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115.5"/>
+                                                    <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdz-Ha-IAJ">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="123"/>
                                                         <color key="backgroundColor" name="Background"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
                                                         <state key="normal" title="+">
@@ -723,7 +717,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="addPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="p26-bl-xYY"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="n3R-yq-jX1"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -747,10 +741,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="D77-h0-FGA">
-                                                <rect key="frame" x="0.0" y="481.5" width="414" height="115.5"/>
+                                                <rect key="frame" x="0.0" y="512" width="414" height="123"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbF-1O-Qfn" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="204.5" height="115.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbF-1O-Qfn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="204.5" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title="0">
@@ -760,11 +754,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="Uri-Gg-VGc"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="ub6-DJ-Grk"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A81-hS-QhJ" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="115.5"/>
+                                                    <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A81-hS-QhJ">
+                                                        <rect key="frame" x="209.5" y="0.0" width="100" height="123"/>
                                                         <color key="backgroundColor" name="FrontColor"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="35"/>
                                                         <state key="normal" title=".">
@@ -774,11 +768,11 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="dotPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="mfo-Cg-E3A"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="Hxw-vo-dqd"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHy-Sm-l2X" customClass="RoundButton" customModule="Calculator_Notes" customModuleProvider="target">
-                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="115.5"/>
+                                                    <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHy-Sm-l2X">
+                                                        <rect key="frame" x="314.5" y="0.0" width="99.5" height="123"/>
                                                         <color key="backgroundColor" name="Background"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="45"/>
                                                         <state key="normal" title="=">
@@ -788,7 +782,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="roundButton" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="equalsPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="G8A-z3-aNT"/>
+                                                            <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="MLX-xj-83u"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -835,49 +829,35 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ag-6A-q2n">
-                                <rect key="frame" x="8" y="167" width="398" height="82"/>
+                                <rect key="frame" x="8" y="129" width="398" height="82"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="60"/>
                                 <color key="textColor" name="Labels"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBq-Hg-VBR">
-                                <rect key="frame" x="0.0" y="385.5" width="100" height="115.5"/>
+                                <rect key="frame" x="0.0" y="355" width="100" height="123"/>
                                 <connections>
-                                    <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="u8S-ko-hIC"/>
+                                    <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="EYa-r6-vRb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a passcode and confirm with '='" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqB-uV-erN">
-                                <rect key="frame" x="16" y="98" width="338" height="53"/>
+                                <rect key="frame" x="16" y="60" width="338" height="53"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <color key="textColor" name="Labels"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-8z-0DB">
-                                <rect key="frame" x="16" y="48" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="C6o-x6-Fle"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="dismissView:" destination="53l-fH-LOt" eventType="touchUpInside" id="hD3-AW-YZC"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6L7-qt-Va4"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="3ag-6A-q2n" secondAttribute="trailing" constant="8" id="1GP-r3-qky"/>
-                            <constraint firstItem="FqB-uV-erN" firstAttribute="top" secondItem="6L7-qt-Va4" secondAttribute="top" constant="50" id="49d-sX-Sew"/>
+                            <constraint firstItem="FqB-uV-erN" firstAttribute="top" secondItem="6L7-qt-Va4" secondAttribute="top" constant="12" id="49d-sX-Sew"/>
                             <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="FqB-uV-erN" secondAttribute="trailing" constant="60" id="5it-kQ-p7Y"/>
                             <constraint firstItem="3ag-6A-q2n" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" constant="8" id="9xb-Ln-VdT"/>
                             <constraint firstItem="FqB-uV-erN" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" constant="16" id="AQe-Si-O19"/>
-                            <constraint firstItem="FqB-uV-erN" firstAttribute="top" secondItem="ntI-8z-0DB" secondAttribute="bottom" constant="20" id="Dd8-Ih-7Sh"/>
                             <constraint firstItem="EdA-QS-pPU" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" id="IoM-vz-Chd"/>
                             <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="EdA-QS-pPU" secondAttribute="trailing" id="P0C-1l-M9d"/>
-                            <constraint firstItem="ntI-8z-0DB" firstAttribute="top" secondItem="6L7-qt-Va4" secondAttribute="top" id="Qm8-4r-hcD"/>
                             <constraint firstItem="IBq-Hg-VBR" firstAttribute="width" secondItem="9dB-AH-DmI" secondAttribute="width" id="SYm-E6-K1o"/>
-                            <constraint firstItem="ntI-8z-0DB" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" constant="16" id="Ufg-Ei-go8"/>
                             <constraint firstItem="IBq-Hg-VBR" firstAttribute="centerX" secondItem="9dB-AH-DmI" secondAttribute="centerX" id="akX-AP-sp8"/>
                             <constraint firstItem="3ag-6A-q2n" firstAttribute="top" secondItem="FqB-uV-erN" secondAttribute="bottom" constant="16" id="cnQ-oy-SZH"/>
                             <constraint firstItem="6L7-qt-Va4" firstAttribute="bottom" secondItem="EdA-QS-pPU" secondAttribute="bottom" id="lMi-cY-RyQ"/>
@@ -888,8 +868,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="E5X-0C-Gtr"/>
                     <connections>
-                        <outlet property="instructionsLabel" destination="FqB-uV-erN" id="FOA-Xy-J9b"/>
-                        <outlet property="outputLbl" destination="3ag-6A-q2n" id="YEC-V8-fJ8"/>
+                        <outlet property="instructionsLabel" destination="FqB-uV-erN" id="LdA-pA-hDt"/>
+                        <outlet property="outputLbl" destination="3ag-6A-q2n" id="lQm-po-s8T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uhi-pO-0am" sceneMemberID="firstResponder"/>

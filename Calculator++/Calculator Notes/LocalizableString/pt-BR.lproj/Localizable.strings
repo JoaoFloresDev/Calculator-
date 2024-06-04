@@ -126,7 +126,7 @@ backupNavigationSubtitle = "As fotos são sincronizadas com as fotos adicionadas
 myBackupNavigationSubtitle = "Clique em  'recuperar backup' no menu de anterior para importar as fotos para sua galeria";
 continueText = "Continuar";
 
-welcomeOnboarding_title = "Bem-vindo ao Secret Gallery";
+welcomeOnboarding_title = "Bem-vindo ao Calculadora Secreta";
 welcomeOnboarding_subtitle = "Proteja suas fotos e vídeos com segurança";
 welcomeOnboarding_startButtonTitle = "Começar";
 welcomeOnboarding_skipButtonTitle = "Ao clicar em ”Começar”, você concorda com a politica de privacidade e os termos de uso";
@@ -177,3 +177,4 @@ augmentedReality = "Realidade Aumentada";
 createPasswordNewCalc = "Crie uma senha de 4 digitos";
 insertCreatedPasswordAgainNewCalc = "Digite novamente a senha para confirmar";
 oneWeekToTest = "Teste uma semana grátis";
+"CFBundleDisplayName" = "Meu Aplicativo";

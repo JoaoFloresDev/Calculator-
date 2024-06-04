@@ -115,6 +115,7 @@ enum ProtectionMode: String {
     case bank
     case vault
     case newCalc
+    case newCalc2
 }
 
 struct UserDefaultService {

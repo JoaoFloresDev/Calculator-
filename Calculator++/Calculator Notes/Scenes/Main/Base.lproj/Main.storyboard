@@ -71,7 +71,7 @@
         <!--View Controller-->
         <scene sceneID="NoT-jM-okf">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6dx-jb-cMs" customClass="ViewController" customModule="iPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6dx-jb-cMs" customClass="ViewController" customModule="Calculator_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fNa-s9-07B"/>
                         <viewControllerLayoutGuide type="bottom" id="yq3-8j-W5t"/>

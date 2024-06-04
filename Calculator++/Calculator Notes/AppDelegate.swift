@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if shouldInitializeWindow() {
             initializeWindow()
         }
-        
+        Connectivity.shared.startMonitoring()
         return true
     }
     
@@ -61,6 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return controller
         case .noProtection:
             return viewControllerFor(storyboard: "Main", withIdentifier: "Home")
+        case .newCalc2:
+            let controller = viewControllerFor(storyboard: "NewCalc2", withIdentifier: "NewCalcChange")
+            return controller
         }
     }
 

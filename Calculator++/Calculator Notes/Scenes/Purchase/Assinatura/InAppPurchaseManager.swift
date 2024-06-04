@@ -7,7 +7,7 @@ class InAppPurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransa
 
     func start() {
         SKPaymentQueue.default().add(self)
-        let request = SKProductsRequest(productIdentifiers: Set(["Calc.noads.mensal"]))
+        let request = SKProductsRequest(productIdentifiers: Set(["Calc.noads.mensal", "calcanual"]))
         request.delegate = self
         request.start()
     }
@@ -16,7 +16,6 @@ class InAppPurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransa
         for product in response.products {
             products[product.productIdentifier] = product
         }
-        // Notificar que os produtos foram carregados (opcional)
     }
 
     func buyProduct(_ product: SKProduct) {
@@ -29,10 +28,8 @@ class InAppPurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransa
             for transaction in transactions {
                 switch transaction.transactionState {
                 case .purchased, .restored:
-                    // Desbloquear funcionalidade, validar receita
                     SKPaymentQueue.default().finishTransaction(transaction)
                 case .failed:
-                    // Tratar erro
                     SKPaymentQueue.default().finishTransaction(transaction)
                 default:
                     break

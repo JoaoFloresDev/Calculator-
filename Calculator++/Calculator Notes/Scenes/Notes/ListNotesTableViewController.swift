@@ -60,8 +60,9 @@ class ListNotesTableViewController: UITableViewController, GADBannerViewDelegate
     
 //    MARK: - Ads
     func checkPurchase() {
-        if
-            Defaults.getBool(.monthlyPurchased) || Defaults.getBool(.yearlyPurchased) || RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
+        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+            RazeFaceProducts.store.isProductPurchased("calcanual") ||
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")
         {
                 bannerView?.removeFromSuperview()
         }

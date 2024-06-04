@@ -16,8 +16,9 @@ struct AdsService {
     func checkPurchase(bannerView: GADBannerView?,
                        interstitial: inout GADInterstitial,
                        interstitialDelegate: GADInterstitialDelegate) {
-        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") || Defaults.getBool(.monthlyPurchased) || RazeFaceProducts.store.isProductPurchased("calcanual") || Defaults.getBool(.yearlyPurchased) ||
-            RazeFaceProducts.store.isProductPurchased("NoAds.Calc") || UserDefaults.standard.object(forKey: "NoAds.Calc") != nil
+        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+            RazeFaceProducts.store.isProductPurchased("calcanual") ||
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")
         {
             bannerView?.removeFromSuperview()
         } else {

@@ -44,6 +44,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var augmentedReality: UIView!
     @IBOutlet weak var augmentedRealityLabel: UILabel!
     
+    @IBOutlet weak var browser: UIView!
+    @IBOutlet weak var browserLabel: UILabel!
+    
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Defaults.setBool(.recoveryStatus, sender.isOn)
@@ -216,6 +219,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         self.present(controller, animated: true)
     }
     
+    @objc
+    func browserPressed(_ sender: UITapGestureRecognizer? = nil) {
+        let controller = SafariWrapperViewController()
+        self.present(controller, animated: true)
+    }
+    
     private func setupUI() {
         self.navigationController?.setup()
         switchButton.isOn = Defaults.getBool(.recoveryStatus)
@@ -232,6 +241,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         
         let augmentedRealityPressed = UITapGestureRecognizer(target: self, action: #selector(augmentedRealityPressed(_:)))
         augmentedReality.addGestureRecognizer(augmentedRealityPressed)
+        
+        let browserPressed = UITapGestureRecognizer(target: self, action: #selector(browserPressed(_:)))
+        browser.addGestureRecognizer(browserPressed)
     }
     
     private func setupViewStyles() {
@@ -250,5 +262,35 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         view.layer.shadowOffset = offset
         view.layer.shadowRadius = radius
         view.layer.shadowOpacity = opacity
+    }
+}
+
+import UIKit
+import SafariServices
+
+class SafariWrapperViewController: UIViewController, SFSafariViewControllerDelegate {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let googleURL = URL(string: "https://www.google.com") else { return }
+        let safariVC = SFSafariViewController(url: googleURL)
+        
+        addChildViewController(safariVC)
+        view.addSubview(safariVC.view)
+        
+        safariVC.view.translatesAutoresizingMaskIntoConstraints = false
+        safariVC.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        safariVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        safariVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        safariVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        safariVC.delegate = self
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        print("oi2")
+    }
+    
+    func safariViewController(_ controller: SFSafariViewController, activityItemsFor URL: URL, title: String?) -> [UIActivity] {
+        []
     }
 }

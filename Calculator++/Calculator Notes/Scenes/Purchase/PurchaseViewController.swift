@@ -238,8 +238,8 @@ class PurchaseViewController: UIViewController {
     
     @objc private func handlePurchaseNotification(_ notification: Notification) {
         guard let productID = notification.object as? String, products.contains(where: { $0.productIdentifier == productID }) else { return }
-        confirmCheckmark()
         reload()
+        self.loadingAlert.stopLoading()
     }
     
     private func performPurchase(product: SKProduct?) {

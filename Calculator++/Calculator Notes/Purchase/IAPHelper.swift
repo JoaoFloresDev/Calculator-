@@ -1,4 +1,5 @@
 import StoreKit
+import Network
 
 public typealias ProductIdentifier = String
 public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void
@@ -140,11 +141,115 @@ extension IAPHelper: SKPaymentTransactionObserver {
     SKPaymentQueue.default().finishTransaction(transaction)
   }
 
-  private func deliverPurchaseNotificationFor(identifier: String?) {
-    guard let identifier = identifier else { return }
+    private func deliverPurchaseNotificationFor(identifier: String?) {
+        guard let identifier = identifier else { return }
+        
+        purchasedProductIdentifiers.insert(identifier)
+        UserDefaults.standard.set(true, forKey: identifier)
+        NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: identifier)
+        handleFinishDate(identifier: identifier)
+    }
+    
+    private func handleFinishDate(identifier: String) {
+        let dateManager = DateManager()
+        dateManager.saveDateForEightDaysLater()
+        switch identifier {
+        case "Calc.noads.mensal":
+            dateManager.saveDateForTwoMonthsLater()
+        case "calcanual":
+            dateManager.saveDateForOneYearAndOneMonthLater()
+        default:
+            return
+        }
+    }
+}
 
-    purchasedProductIdentifiers.insert(identifier)
-    UserDefaults.standard.set(true, forKey: identifier)
-    NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: identifier)
-  }
+struct DateManager {
+    private let userDefaultsKey = "savedDates"
+    
+    // Salva a data no UserDefaults
+    func saveDate(_ date: Date) {
+        var dates = getSavedDates()
+        dates.append(date)
+        UserDefaults.standard.set(dates, forKey: userDefaultsKey)
+    }
+    
+    // Busca todas as datas salvas
+    func getSavedDates() -> [Date] {
+        guard let savedDates = UserDefaults.standard.array(forKey: userDefaultsKey) as? [Date] else {
+            return []
+        }
+        return savedDates
+    }
+    
+    // Salvar a data para 8 dias após a data atual
+    func saveDateForEightDaysLater() {
+        let eightDaysLater = Calendar.current.date(byAdding: .day, value: 9, to: Date())!
+        saveDate(eightDaysLater)
+    }
+    
+    // Salvar a data para um ano e um mês após a data atual
+    func saveDateForOneYearAndOneMonthLater() {
+        if let oneYearAndOneMonthLater = Calendar.current.date(byAdding: .month, value: 13, to: Date()) {
+            saveDate(oneYearAndOneMonthLater)
+        }
+    }
+    
+    // Salvar a data para dois meses após a data atual
+    func saveDateForTwoMonthsLater() {
+        let twoMonthsLater = Calendar.current.date(byAdding: .month, value: 2, to: Date())!
+        saveDate(twoMonthsLater)
+    }
+    
+    // Verifica se existem datas salvas anteriores ao dia de hoje
+    func hasDatesBeforeToday() -> Bool {
+        let today = Calendar.current.startOfDay(for: Date())
+        let savedDates = getSavedDates()
+        return savedDates.contains { Calendar.current.startOfDay(for: $0) < today }
+    }
+    
+    // Deleta todas as datas inferiores ao dia de hoje
+    func deleteDatesBeforeToday() {
+        let today = Calendar.current.startOfDay(for: Date())
+        let filteredDates = getSavedDates().filter { Calendar.current.startOfDay(for: $0) >= today }
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(filteredDates), forKey: userDefaultsKey)
+    }
+}
+
+class Connectivity {
+    static let shared = Connectivity()
+    
+    private let monitor: NWPathMonitor
+    private let queue = DispatchQueue(label: "Monitor")
+    
+    private init() {
+        monitor = NWPathMonitor()
+    }
+    
+    func startMonitoring() {
+        monitor.start(queue: queue)
+    }
+    
+    func stopMonitoring() {
+        monitor.cancel()
+    }
+    
+    var isConnected: Bool {
+        return monitor.currentPath.status == .satisfied
+    }
+    
+    func checkConnection(completion: @escaping (Bool) -> Void) {
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                DispatchQueue.main.async {
+                    completion(true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+            }
+        }
+        startMonitoring()
+    }
 }

@@ -1,7 +1,7 @@
 import UIKit
 
 struct LoadingAlert {
-    private var alert: UIAlertController?
+    private var alert: UIAlertController
     private var viewController: UIViewController
     
     // Inicializador que recebe a ViewController
@@ -9,8 +9,8 @@ struct LoadingAlert {
         self.viewController = viewController
         
         alert = UIAlertController(title: String(), message: String(), preferredStyle: .alert)
-        alert?.view.backgroundColor = .clear
-        alert?.view.subviews.forEach({ view in
+        alert.view.backgroundColor = .clear
+        alert.view.subviews.forEach({ view in
             view.removeFromSuperview()
         })
         
@@ -19,18 +19,18 @@ struct LoadingAlert {
         loadingIndicator.color = .systemBlue
         loadingIndicator.startAnimating()
 
-        alert?.view.addSubview(loadingIndicator)
+        alert.view.addSubview(loadingIndicator)
     }
 
     func startLoading(completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
-            viewController.present(alert!, animated: true, completion: completion)
+            viewController.present(alert, animated: true, completion: completion)
         }
     }
     
     func stopLoading(completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
-            self.alert?.dismiss(animated: true, completion: completion)
+            self.alert.dismiss(animated: true, completion: completion)
         }
     }
 }
