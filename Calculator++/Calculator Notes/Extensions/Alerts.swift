@@ -27,6 +27,13 @@ struct Alerts {
         presentAlert(alert, on: controller)
     }
     
+    // Errors
+    static func showAlert(title: String, text: String, controller: UIViewController, completion: (() -> Void)? = nil) {
+        let alert = createAlert(title: title, message: text, actions: [createAction(title: "OK", handler: { _ in completion?() })])
+        presentAlert(alert, on: controller)
+    }
+    
+    
     static func showGenericError(controller: UIViewController) {
         let alert = createAlert(title: Text.errorTitle.localized(), message: Text.errorMessage.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)

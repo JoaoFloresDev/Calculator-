@@ -21,9 +21,59 @@
     }
   ],
   "settings" : {
-    "_compatibilityTimeRate" : 6,
+    "_compatibilityTimeRate" : {
+      "3" : 6
+    },
     "_failTransactionsEnabled" : false,
-    "_storeKitError" : 0,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ],
     "_timeRate" : 15
   },
   "subscriptionGroups" : [
@@ -36,6 +86,9 @@
       "subscriptions" : [
         {
           "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
 
           ],
           "displayPrice" : "0.99",
@@ -60,7 +113,7 @@
     }
   ],
   "version" : {
-    "major" : 1,
-    "minor" : 1
+    "major" : 3,
+    "minor" : 0
   }
 }
