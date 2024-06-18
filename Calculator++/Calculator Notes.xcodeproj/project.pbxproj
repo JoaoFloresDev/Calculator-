@@ -43,7 +43,7 @@
 		73862C882AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */; };
 		73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */; };
 		738827C82B1509170051BEF4 /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738827C72B1509170051BEF4 /* InAppPurchaseManager.swift */; };
-		738B6AED2AD8C16400EA4B72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 738B6AEC2AD8C16300EA4B72 /* GoogleService-Info.plist */; };
+		738B6AED2AD8C16400EA4B72 /* GoogleService-Info2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 738B6AEC2AD8C16300EA4B72 /* GoogleService-Info2.plist */; };
 		738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */; };
 		738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */; };
 		738B6AF32AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */; };
@@ -92,6 +92,13 @@
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
+		C60906F52C18CDFB0066D337 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C60906F42C18CDFB0066D337 /* GoogleService-Info.plist */; };
+		C60906F92C18CED30066D337 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906F72C18CED30066D337 /* SignUpViewController.swift */; };
+		C60906FA2C18CED30066D337 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60906F82C18CED30066D337 /* SignUpViewController.xib */; };
+		C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FB2C18D2D20066D337 /* UIView+Designable.swift */; };
+		C60906FF2C18D2E10066D337 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FD2C18D2E10066D337 /* LoginViewController.swift */; };
+		C60907002C18D2E10066D337 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60906FE2C18D2E10066D337 /* LoginViewController.xib */; };
+		C60907022C18D45A0066D337 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60907012C18D45A0066D337 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -154,7 +161,7 @@
 		73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionCoordinator.swift; sourceTree = "<group>"; };
 		73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		738827C72B1509170051BEF4 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
-		738B6AEC2AD8C16300EA4B72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		738B6AEC2AD8C16300EA4B72 /* GoogleService-Info2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info2.plist"; sourceTree = "<group>"; };
 		738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextViewController.swift; sourceTree = "<group>"; };
 		738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddPhotosViewController.swift; sourceTree = "<group>"; };
 		738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertRecoverEmailViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +230,13 @@
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		C60906F42C18CDFB0066D337 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C60906F72C18CED30066D337 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C60906F82C18CED30066D337 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		C60906FB2C18D2D20066D337 /* UIView+Designable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
+		C60906FD2C18D2E10066D337 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C60906FE2C18D2E10066D337 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C60907012C18D45A0066D337 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,7 +274,8 @@
 			children = (
 				737530D02B60E471000B23E3 /* art.scnassets */,
 				73A1DA1C2B094EBD002B8D17 /* AppIcons */,
-				738B6AEC2AD8C16300EA4B72 /* GoogleService-Info.plist */,
+				738B6AEC2AD8C16300EA4B72 /* GoogleService-Info2.plist */,
+				C60906F42C18CDFB0066D337 /* GoogleService-Info.plist */,
 				733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
 				73B54D6427B09CE000499F66 /* LocalizableString */,
@@ -291,6 +306,7 @@
 		2E4A07AD1C42F4EB007F415F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C60906FB2C18D2D20066D337 /* UIView+Designable.swift */,
 				2E4A07AE1C42F539007F415F /* Date+convertToString.swift */,
 				7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */,
 				73B54D6527B09D9800499F66 /* String+Localized.swift */,
@@ -450,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				737530D12B60E489000B23E3 /* AR */,
+				C60906F62C18CEB60066D337 /* Auth */,
 				73B860572AC1D5560023441A /* Onboarding */,
 				730438742A344585001EF25B /* CollectionsController */,
 				73ABC0ED284F187F00E5C3A4 /* Purchase */,
@@ -593,6 +610,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		C60906F62C18CEB60066D337 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C60906F72C18CED30066D337 /* SignUpViewController.swift */,
+				C60906F82C18CED30066D337 /* SignUpViewController.xib */,
+				C60906FD2C18D2E10066D337 /* LoginViewController.swift */,
+				C60906FE2C18D2E10066D337 /* LoginViewController.xib */,
+				C60907012C18D45A0066D337 /* AuthManager.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		DB0B97AE06385842C7727F5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,6 +714,7 @@
 			files = (
 				C480A50424A7746B00094FC8 /* Notes.storyboard in Resources */,
 				73C2C5092A49D7E700963BA2 /* swiftlint.yml in Resources */,
+				C60906F52C18CDFB0066D337 /* GoogleService-Info.plist in Resources */,
 				73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */,
 				73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */,
 				C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */,
@@ -694,13 +724,15 @@
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
 				738FB4BE2BADD4C400595F60 /* NewCalc2.storyboard in Resources */,
 				737530D42B60E524000B23E3 /* art.scnassets in Resources */,
+				C60907002C18D2E10066D337 /* LoginViewController.xib in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
 				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
 				C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */,
 				73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */,
 				2E4A079B1C42F3B0007F415F /* Assets.xcassets in Resources */,
 				2E4A07991C42F3B0007F415F /* Main.storyboard in Resources */,
-				738B6AED2AD8C16400EA4B72 /* GoogleService-Info.plist in Resources */,
+				C60906FA2C18CED30066D337 /* SignUpViewController.xib in Resources */,
+				738B6AED2AD8C16400EA4B72 /* GoogleService-Info2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,12 +746,21 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/AssetsPickerViewController/AssetsPickerViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/DTPhotoViewerController/DTPhotoViewerController.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreExtension/FirebaseCoreExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseFirestore/FirebaseFirestore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseFirestoreInternal/FirebaseFirestoreInternal.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework",
 				"${BUILT_PRODUCTS_DIR}/NYTPhotoViewer/NYTPhotoViewer.framework",
@@ -727,6 +768,7 @@
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/RecaptchaInterop/RecaptchaInterop.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/VegaScrollFlowLayout/VegaScrollFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/WLEmptyState/WLEmptyState.framework",
@@ -738,12 +780,21 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AssetsPickerViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTPhotoViewerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAppCheckInterop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseFirestore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseFirestoreInternal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSharedSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleSignIn.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageViewer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NYTPhotoViewer.framework",
@@ -751,6 +802,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RecaptchaInterop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VegaScrollFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WLEmptyState.framework",
@@ -795,12 +847,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C467BCAB24A9AABF0039D237 /* VideoCollectionViewController.swift in Sources */,
+				C60907022C18D45A0066D337 /* AuthManager.swift in Sources */,
 				2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */,
 				730438652A315B17001EF25B /* AdsService.swift in Sources */,
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
 				737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
+				C60906F92C18CED30066D337 /* SignUpViewController.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
+				C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */,
 				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
 				73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
@@ -811,6 +866,7 @@
 				73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
+				C60906FF2C18D2E10066D337 /* LoginViewController.swift in Sources */,
 				73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */,
 				73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */,
 				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,
@@ -1041,6 +1097,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 170;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1076,6 +1133,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 170;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

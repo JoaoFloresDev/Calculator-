@@ -47,7 +47,7 @@ extension ExplicitNull: Hashable where Value: Hashable {}
 extension ExplicitNull: Encodable where Value: Encodable {
   public func encode(to encoder: Encoder) throws {
     var container = encoder.singleValueContainer()
-    if let value {
+    if let value = value {
       try container.encode(value)
     } else {
       try container.encodeNil()

@@ -54,6 +54,10 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+    
+    <key>GIDClientID</key>
+    <string>679452084338-hsbf3tarmrufeocsjcgu7b2ma4mcit0m.apps.googleusercontent.com</string>
+    
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -62,6 +66,12 @@
 				<string>fb914123005977122</string>
 			</array>
 		</dict>
+        <dict>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>com.googleusercontent.apps.679452084338-hsbf3tarmrufeocsjcgu7b2ma4mcit0m</string>
+          </array>
+        </dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
