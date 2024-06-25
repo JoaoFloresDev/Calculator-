@@ -2,22 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>497889361998-5tqhhe3rd7ntmohvct409tbutjcqr5am.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.497889361998-5tqhhe3rd7ntmohvct409tbutjcqr5am</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCkc6Lx5-iUT2D06712u9e-hWDGlQ1KL0g</string>
+	<string>AIzaSyCOeL73BSJqqSHbc6exXH_YVI454Tg8Vug</string>
 	<key>GCM_SENDER_ID</key>
-	<string>497889361998</string>
+	<string>679452084338</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.joao.CalculatorNotes</string>
 	<key>PROJECT_ID</key>
-	<string>calculator-af8a3</string>
+	<string>sg-demo-c8b9f</string>
 	<key>STORAGE_BUCKET</key>
-	<string>calculator-af8a3.appspot.com</string>
+	<string>sg-demo-c8b9f.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:497889361998:ios:9115a1ad3c05a7f69e831f</string>
+	<string>1:679452084338:ios:03417ab0af56ee281e9aeb</string>
 </dict>
 </plist>
