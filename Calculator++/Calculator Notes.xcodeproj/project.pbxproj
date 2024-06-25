@@ -92,13 +92,13 @@
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
-		C60906F52C18CDFB0066D337 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C60906F42C18CDFB0066D337 /* GoogleService-Info.plist */; };
 		C60906F92C18CED30066D337 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906F72C18CED30066D337 /* SignUpViewController.swift */; };
 		C60906FA2C18CED30066D337 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60906F82C18CED30066D337 /* SignUpViewController.xib */; };
 		C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FB2C18D2D20066D337 /* UIView+Designable.swift */; };
 		C60906FF2C18D2E10066D337 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FD2C18D2E10066D337 /* LoginViewController.swift */; };
 		C60907002C18D2E10066D337 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60906FE2C18D2E10066D337 /* LoginViewController.xib */; };
 		C60907022C18D45A0066D337 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60907012C18D45A0066D337 /* AuthManager.swift */; };
+		D703A42B2C2B7B06005320CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -230,13 +230,13 @@
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
-		C60906F42C18CDFB0066D337 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C60906F72C18CED30066D337 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C60906F82C18CED30066D337 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		C60906FB2C18D2D20066D337 /* UIView+Designable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
 		C60906FD2C18D2E10066D337 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C60906FE2C18D2E10066D337 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		C60907012C18D45A0066D337 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,7 +275,7 @@
 				737530D02B60E471000B23E3 /* art.scnassets */,
 				73A1DA1C2B094EBD002B8D17 /* AppIcons */,
 				738B6AEC2AD8C16300EA4B72 /* GoogleService-Info2.plist */,
-				C60906F42C18CDFB0066D337 /* GoogleService-Info.plist */,
+				D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */,
 				733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
 				73B54D6427B09CE000499F66 /* LocalizableString */,
@@ -714,7 +714,6 @@
 			files = (
 				C480A50424A7746B00094FC8 /* Notes.storyboard in Resources */,
 				73C2C5092A49D7E700963BA2 /* swiftlint.yml in Resources */,
-				C60906F52C18CDFB0066D337 /* GoogleService-Info.plist in Resources */,
 				73B54D5D27B09A1B00499F66 /* Localizable.strings in Resources */,
 				73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */,
 				C480A50624A7752F00094FC8 /* Gallery.storyboard in Resources */,
@@ -726,13 +725,13 @@
 				737530D42B60E524000B23E3 /* art.scnassets in Resources */,
 				C60907002C18D2E10066D337 /* LoginViewController.xib in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
+				D703A42B2C2B7B06005320CC /* GoogleService-Info.plist in Resources */,
 				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
 				C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */,
 				73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */,
 				2E4A079B1C42F3B0007F415F /* Assets.xcassets in Resources */,
 				2E4A07991C42F3B0007F415F /* Main.storyboard in Resources */,
 				C60906FA2C18CED30066D337 /* SignUpViewController.xib in Resources */,
-				738B6AED2AD8C16400EA4B72 /* GoogleService-Info2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
