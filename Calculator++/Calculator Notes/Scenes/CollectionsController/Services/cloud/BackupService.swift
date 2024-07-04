@@ -7,7 +7,7 @@ enum MediaItem {
     case video(name: String, data: Data)
 }
 
-struct BackupService {
+struct BackupService2 {
     
     static let fileManager = FileManager.default
     

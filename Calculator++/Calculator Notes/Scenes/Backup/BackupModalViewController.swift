@@ -307,7 +307,7 @@ class BackupModalViewController: UIViewController {
             
             if isConnected {
                 self.loadingAlert.startLoading {
-                    BackupService.updateBackup(completion: { _ in
+                    FirebaseBackupService.updateBackup(completion: { _ in
                         DispatchQueue.main.async {
                             self.loadingAlert.stopLoading {
                                 Alerts.showBackupSuccess(controller: self)
@@ -494,18 +494,8 @@ class BackupModalViewController: UIViewController {
     
     @objc func switchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
-            CloudKitImageService.enableICloudSync { success in
-                if success {
-                    self.delegate?.enableBackupToggled(status: true)
-                } else {
-                    DispatchQueue.main.async {
-                        sender.isOn = false
-                    }
-                    Alerts.showGoToSettingsToEnbaleCloud(controller: self) { _ in
-                        CloudKitImageService.redirectToICloudSettings()
-                    }
-                }
-            }
+            Defaults.setBool(.iCloudEnabled, true)
+            self.delegate?.enableBackupToggled(status: true)
         } else {
             Defaults.setBool(.iCloudEnabled, false)
             delegate?.enableBackupToggled(status: false)
@@ -521,7 +511,8 @@ extension BackupModalViewController {
             return
         }
         
-        self.fetchCloudKitPassword()
+        self.checkBackupData()
+        // self.fetchCloudKitPassword()
     }
     
     private func fetchCloudKitPassword() {
@@ -552,7 +543,7 @@ extension BackupModalViewController {
     
     private func checkBackupData() {
         loadingAlert.startLoading()
-        BackupService.hasDataInCloudKit { hasData, _, items  in
+        FirebaseBackupService.hasDataInFirebase { hasData, _, items  in
             self.loadingAlert.stopLoading {
                 if let items = items, !items.isEmpty, hasData {
                     self.askUserToRestoreBackup(backupItems: items)
@@ -577,7 +568,7 @@ extension BackupModalViewController {
     }
 
     private func restoreBackup(backupItems: [MediaItem]) {
-        BackupService.restoreBackup(items: backupItems) { success, _ in
+        FirebaseBackupService.restoreBackup(items: backupItems) { success, _ in
             self.loadingAlert.stopLoading {
                 if success {
                     Alerts.showBackupSuccess(controller: self)

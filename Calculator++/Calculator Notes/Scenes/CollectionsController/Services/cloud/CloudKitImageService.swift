@@ -221,6 +221,14 @@ class CloudKitImageService: ObservableObject {
     }
     
     static func isICloudEnabled(completion: @escaping (Bool) -> Void) {
+        if Defaults.getBool(.iCloudEnabled) {
+            completion(true)
+        } else {
+            completion(false)
+        }
+        
+        return
+        /*
         CKContainer.default().accountStatus { accountStatus, _ in
             switch accountStatus {
             case .available:
@@ -233,7 +241,7 @@ class CloudKitImageService: ObservableObject {
                 completion(false)
                 Defaults.setBool(.iCloudEnabled, false)
             }
-        }
+        }*/
     }
     
     static func enableICloudSync(completion: @escaping (Bool) -> Void) {
