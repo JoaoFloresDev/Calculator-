@@ -1,7 +1,4 @@
-//
-//  BasicCollectionViewController.swift
-//  Calculator Notes
-//
+//2
 //  Created by Joao Victor Flores da Costa on 10/06/23.
 //  Copyright © 2023 MakeSchool. All rights reserved.
 //
