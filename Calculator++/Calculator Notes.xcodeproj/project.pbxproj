@@ -92,6 +92,14 @@
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
+		C60906F92C18CED30066D337 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906F72C18CED30066D337 /* SignUpViewController.swift */; };
+		C60906FA2C18CED30066D337 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60906F82C18CED30066D337 /* SignUpViewController.xib */; };
+		C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FB2C18D2D20066D337 /* UIView+Designable.swift */; };
+		C60906FF2C18D2E10066D337 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FD2C18D2E10066D337 /* LoginViewController.swift */; };
+		C60907002C18D2E10066D337 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60906FE2C18D2E10066D337 /* LoginViewController.xib */; };
+		C60907022C18D45A0066D337 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60907012C18D45A0066D337 /* AuthManager.swift */; };
+		D703A42B2C2B7B06005320CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */; };
+		D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B44A932C366030001255FA /* FirebaseBackupService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -223,6 +231,14 @@
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		C60906F72C18CED30066D337 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C60906F82C18CED30066D337 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		C60906FB2C18D2D20066D337 /* UIView+Designable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
+		C60906FD2C18D2E10066D337 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C60906FE2C18D2E10066D337 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C60907012C18D45A0066D337 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D7B44A932C366030001255FA /* FirebaseBackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBackupService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +277,7 @@
 				737530D02B60E471000B23E3 /* art.scnassets */,
 				73A1DA1C2B094EBD002B8D17 /* AppIcons */,
 				738B6AEC2AD8C16300EA4B72 /* GoogleService-Info.plist */,
+				D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */,
 				733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
 				73B54D6427B09CE000499F66 /* LocalizableString */,
@@ -291,6 +308,7 @@
 		2E4A07AD1C42F4EB007F415F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C60906FB2C18D2D20066D337 /* UIView+Designable.swift */,
 				2E4A07AE1C42F539007F415F /* Date+convertToString.swift */,
 				7382184F2767ECE500E726FE /* NavigationController+Extensions.swift */,
 				73B54D6527B09D9800499F66 /* String+Localized.swift */,
@@ -329,6 +347,7 @@
 		731436452A48D6BC00B9842E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D7B44A902C365F9A001255FA /* firebase */,
 				73741B082A880A760067B269 /* local */,
 				73741B072A880A5E0067B269 /* ads */,
 			);
@@ -450,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				737530D12B60E489000B23E3 /* AR */,
+				C60906F62C18CEB60066D337 /* Auth */,
 				73B860572AC1D5560023441A /* Onboarding */,
 				730438742A344585001EF25B /* CollectionsController */,
 				73ABC0ED284F187F00E5C3A4 /* Purchase */,
@@ -593,6 +613,26 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		C60906F62C18CEB60066D337 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C60906F72C18CED30066D337 /* SignUpViewController.swift */,
+				C60906F82C18CED30066D337 /* SignUpViewController.xib */,
+				C60906FD2C18D2E10066D337 /* LoginViewController.swift */,
+				C60906FE2C18D2E10066D337 /* LoginViewController.xib */,
+				C60907012C18D45A0066D337 /* AuthManager.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D7B44A902C365F9A001255FA /* firebase */ = {
+			isa = PBXGroup;
+			children = (
+				D7B44A932C366030001255FA /* FirebaseBackupService.swift */,
+			);
+			path = firebase;
+			sourceTree = "<group>";
+		};
 		DB0B97AE06385842C7727F5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,13 +734,15 @@
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
 				738FB4BE2BADD4C400595F60 /* NewCalc2.storyboard in Resources */,
 				737530D42B60E524000B23E3 /* art.scnassets in Resources */,
+				C60907002C18D2E10066D337 /* LoginViewController.xib in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
+				D703A42B2C2B7B06005320CC /* GoogleService-Info.plist in Resources */,
 				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
 				C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */,
 				73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */,
 				2E4A079B1C42F3B0007F415F /* Assets.xcassets in Resources */,
 				2E4A07991C42F3B0007F415F /* Main.storyboard in Resources */,
-				738B6AED2AD8C16400EA4B72 /* GoogleService-Info.plist in Resources */,
+				C60906FA2C18CED30066D337 /* SignUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,12 +756,23 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/AssetsPickerViewController/AssetsPickerViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/DTPhotoViewerController/DTPhotoViewerController.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAuthInterop/FirebaseAuthInterop.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreExtension/FirebaseCoreExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseFirestore/FirebaseFirestore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseFirestoreInternal/FirebaseFirestoreInternal.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseStorage/FirebaseStorage.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework",
 				"${BUILT_PRODUCTS_DIR}/NYTPhotoViewer/NYTPhotoViewer.framework",
@@ -727,6 +780,7 @@
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/RecaptchaInterop/RecaptchaInterop.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/VegaScrollFlowLayout/VegaScrollFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/WLEmptyState/WLEmptyState.framework",
@@ -738,12 +792,23 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AssetsPickerViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTPhotoViewerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAppCheckInterop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuthInterop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseFirestore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseFirestoreInternal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSharedSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseStorage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleSignIn.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageViewer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NYTPhotoViewer.framework",
@@ -751,6 +816,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RecaptchaInterop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VegaScrollFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WLEmptyState.framework",
@@ -795,12 +861,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C467BCAB24A9AABF0039D237 /* VideoCollectionViewController.swift in Sources */,
+				C60907022C18D45A0066D337 /* AuthManager.swift in Sources */,
 				2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */,
 				730438652A315B17001EF25B /* AdsService.swift in Sources */,
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
 				737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
+				C60906F92C18CED30066D337 /* SignUpViewController.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
+				C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */,
 				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
 				73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
@@ -811,6 +880,7 @@
 				73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
+				C60906FF2C18D2E10066D337 /* LoginViewController.swift in Sources */,
 				73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */,
 				73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */,
 				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,
@@ -840,6 +910,7 @@
 				736BDAD32A979D7200851BEF /* ChangeIconViewController.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */,
+				D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				73862C842AAD18BC005D9D25 /* Constants.swift in Sources */,
 				738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */,
@@ -1041,6 +1112,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 170;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1058,7 +1130,7 @@
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1076,6 +1148,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 170;
 				DEVELOPMENT_TEAM = NZC6LC8NWM;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1093,7 +1166,7 @@
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

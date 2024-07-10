@@ -15,7 +15,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var selectedItem: UIImageView!
     @IBOutlet weak var checkmarkLabel: UILabel!
     @IBOutlet weak var viewPhoto: UIView!
-    
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var imageCell: UIImageView!
     
     var isSelectedCell: Bool = false {

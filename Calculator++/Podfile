@@ -16,6 +16,9 @@ target 'Calculator Notes' do
   pod 'SwiftLint'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'GoogleSignIn'
 
 
 end

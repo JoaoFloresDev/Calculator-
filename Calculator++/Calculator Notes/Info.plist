@@ -57,9 +57,23 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>URL Types</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb914123005977122</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>URL Types</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.497889361998-5tqhhe3rd7ntmohvct409tbutjcqr5am</string>
 			</array>
 		</dict>
 	</array>
@@ -71,6 +85,8 @@
 	<string>Calculator Notes</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-8858389345934911~5648494185</string>
+	<key>GIDClientID</key>
+	<string>497889361998-5tqhhe3rd7ntmohvct409tbutjcqr5am.apps.googleusercontent.com</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
