@@ -21,7 +21,7 @@ struct FirebaseBackupService {
     // MARK: - Public Methods
    
     static func updateBackup(completion: @escaping (Bool) -> ()) {
-        updateVideos()
+        updateVideos() 
         updateImages(completion: completion)
     }
 
