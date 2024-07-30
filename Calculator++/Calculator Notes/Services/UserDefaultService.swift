@@ -16,6 +16,8 @@ enum BoolKey: String {
     case premiumPurchased = "NoAds.Calc"
     case monthlyPurchased = "Calc.noads.mensal"
     case yearlyPurchased = "calcanual"
+    case needSavePasswordInCloud
+    case iCloudEnabled
     
     func set(_ value: Bool) {
         userDefaults.set(value, forKey: rawValue)
@@ -29,6 +31,8 @@ enum BoolKey: String {
 enum IntKey: String {
     case launchCounter
     case disableRecoveryButtonCounter
+    case imageCompressionQuality
+    case videoCompressionQuality
     
     func set(_ value: Int) {
         userDefaults.set(value, forKey: rawValue)
@@ -133,6 +137,6 @@ struct UserDefaultService {
 }
 
 struct FeatureFlags {
-    static let iCloudEnabled = false
+    static let iCloudEnabled  = true
 }
 

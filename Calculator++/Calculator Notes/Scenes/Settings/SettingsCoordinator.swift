@@ -32,4 +32,15 @@ class SettingsCoordinator {
         let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
         viewController?.present(changePasswordCalcMode, animated: true)
     }
+    
+    func showBackupOptions(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate) {
+        let vc = BackupModalViewController(
+            backupIsActivated: backupIsActivated,
+            delegate: delegate
+        )
+        vc.modalPresentationStyle = .overCurrentContext
+        if let tabBarController = self.tabBarController {
+            tabBarController.present(vc, animated: false, completion: nil)
+        }
+    }
 }

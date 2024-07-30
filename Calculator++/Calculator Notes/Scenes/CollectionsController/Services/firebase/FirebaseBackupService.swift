@@ -12,9 +12,7 @@ import FirebaseStorage
 import os.log
 import AVKit
 import CoreData
-struct MediaItem {
-    
-}
+
 struct FirebaseBackupService {
    
     static let fileManager = FileManager.default
@@ -47,48 +45,48 @@ struct FirebaseBackupService {
     // MARK: - Private Helpers
    
     private static func updateVideos() {
-//        for name in VideoCloudInsertionManager.getNames() {
-//            switch getVideoData(videoPath: name) {
-//            case .success(let videoData):
-//                FirebaseVideoService.saveVideo(name: name, videoData: videoData) { success, error in
-//                    if success {
-//                        VideoCloudInsertionManager.deleteName(name)
-//                    }
-//                }
-//            case .failure(let error):
-//                os_log("Failed to get video data: %@", log: .default, type: .error, error.localizedDescription)
-//            }
-//        }
-//         
-//        for name in VideoCloudDeletionManager.getNames() {
-//            FirebaseVideoService.deleteVideoByName(name: name) { success, error in
-//                if success {
-//                    VideoCloudDeletionManager.deleteName(name)
-//                }
-//            }
-//        }
+        for name in VideoCloudInsertionManager.getNames() {
+            switch getVideoData(videoPath: name) {
+            case .success(let videoData):
+                FirebaseVideoService.saveVideo(name: name, videoData: videoData) { success, error in
+                    if success {
+                        VideoCloudInsertionManager.deleteName(name)
+                    }
+                }
+            case .failure(let error):
+                os_log("Failed to get video data: %@", log: .default, type: .error, error.localizedDescription)
+            }
+        }
+         
+        for name in VideoCloudDeletionManager.getNames() {
+            FirebaseVideoService.deleteVideoByName(name: name) { success, error in
+                if success {
+                    VideoCloudDeletionManager.deleteName(name)
+                }
+            }
+        }
     }
    
     private static func updateImages(completion: @escaping (Bool) -> ()) {
-//        let group = DispatchGroup()
-//        var saveSuccess = false
-//        var deleteSuccess = false
-//         
-//        group.enter()
-//        FirebaseImageService.saveImages(names: ImageCloudInsertionManager.getNames()) { success in
-//            saveSuccess = success
-//            group.leave()
-//        }
-//         
-//        group.enter()
-//        FirebaseImageService.deleteImages(names: ImageCloudDeletionManager.getNames()) { success in
-//            deleteSuccess = success
-//            group.leave()
-//        }
-//         
-//        group.notify(queue: .main) {
-//            completion(saveSuccess && deleteSuccess)
-//        }
+        let group = DispatchGroup()
+        var saveSuccess = false
+        var deleteSuccess = false
+         
+        group.enter()
+        FirebaseImageService.saveImages(names: ImageCloudInsertionManager.getNames()) { success in
+            saveSuccess = success
+            group.leave()
+        }
+         
+        group.enter()
+        FirebaseImageService.deleteImages(names: ImageCloudDeletionManager.getNames()) { success in
+            deleteSuccess = success
+            group.leave()
+        }
+         
+        group.notify(queue: .main) {
+            completion(saveSuccess && deleteSuccess)
+        }
     }
    
     private static func fetchFirebaseMediaItems(completion: @escaping (Bool, Error?, [MediaItem]?) -> Void) {
@@ -117,36 +115,36 @@ struct FirebaseBackupService {
             dispatchGroup.leave()
         }
 
-//        dispatchGroup.notify(queue: .main) {
-//            var mediaItems: [MediaItem] = []
-//
-//            if let imageItems = imageItems {
-//                mediaItems.append(contentsOf: imageItems.map { .image(name: $0.0, data: $0.1) })
-//            }
-//
-//            if let videoItems = videoItems {
-//                mediaItems.append(contentsOf: videoItems.map { .video(name: $0.0, data: $0.1) })
-//            }
-//
-//            completion(!mediaItems.isEmpty, nil, mediaItems)
-//        }
+        dispatchGroup.notify(queue: .main) {
+            var mediaItems: [MediaItem] = []
+
+            if let imageItems = imageItems {
+                mediaItems.append(contentsOf: imageItems.map { .image(name: $0.0, data: $0.1) })
+            }
+
+            if let videoItems = videoItems {
+                mediaItems.append(contentsOf: videoItems.map { .video(name: $0.0, data: $0.1) })
+            }
+
+            completion(!mediaItems.isEmpty, nil, mediaItems)
+        }
     }
 
     private static func processMediaItem(_ item: MediaItem) {
-//        switch item {
-//        case .image(let name, let image):
-//            ModelController.saveImageObject(image: image, path: name)
-//            handleFolderCreation(path: name, type: .image)
-//           
-//        case .video(let name, let data):
-//            getThumbnailImageFromVideoData(videoData: data) { thumbImage in
-//                _ = VideoModelController.saveVideoObject(image: thumbImage ?? UIImage(), video: data)
-//            }
-//
-//            if name.filter({ $0 == "@" }).count > 1 {
-//                handleFolderCreation(path: name, type: .video)
-//            }
-//        }
+        switch item {
+        case .image(let name, let image):
+            ModelController.saveImageObject(image: image, path: name)
+            handleFolderCreation(path: name, type: .image)
+           
+        case .video(let name, let data):
+            getThumbnailImageFromVideoData(videoData: data) { thumbImage in
+                _ = VideoModelController.saveVideoObject(image: thumbImage ?? UIImage(), video: data)
+            }
+
+            if name.filter({ $0 == "@" }).count > 1 {
+                handleFolderCreation(path: name, type: .video)
+            }
+        }
     }
 
     static func getThumbnailImageFromVideoData(videoData: Data, completion: @escaping (UIImage?) -> Void) {
@@ -385,32 +383,32 @@ class FirebaseImageService: ObservableObject {
     }
     
     static func saveImage(name: String, image: UIImage, completion: @escaping (Bool, Error?) -> Void) {
-//        var image = image
-//        switch Defaults.getInt(.imageCompressionQuality) {
-//        case let x where x <= 3 :
-//            image = image.scale(newWidth: 40)
-//        case let x where x <= 6 :
-//            image = image.scale(newWidth: 70)
-//        default:
-//            print("melhor possivel")
-//        }
-//        
-//        if let imageData = UIImageJPEGRepresentation(image, 0.8) {
-//            let storage = storage.reference().child(getUserId()).child(collectionIdentifier)
-//            let storageRef = storage.child("\(UUID().uuidString).jpg")
-//            let metadata = StorageMetadata()
-//            metadata.contentType = "image/jpeg"
-//            
-//            storageRef.putData(imageData, metadata: metadata) { metadata, error in
-//                if let error = error {
-//                    print("Failed to upload image: \(error.localizedDescription)")
-//                    completion(false, error)
-//                    return
-//                }
-//                print("Image saved successfully")
-//                completion(true, nil)
-//            }
-//        }
+        var image = image
+        switch Defaults.getInt(.imageCompressionQuality) {
+        case let x where x <= 3 :
+            image = image.scale(newWidth: 40)
+        case let x where x <= 6 :
+            image = image.scale(newWidth: 70)
+        default:
+            print("melhor possivel")
+        }
+        
+        if let imageData = UIImageJPEGRepresentation(image, 0.8) {
+            let storage = storage.reference().child(getUserId()).child(collectionIdentifier)
+            let storageRef = storage.child("\(UUID().uuidString).jpg")
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            storageRef.putData(imageData, metadata: metadata) { metadata, error in
+                if let error = error {
+                    print("Failed to upload image: \(error.localizedDescription)")
+                    completion(false, error)
+                    return
+                }
+                print("Image saved successfully")
+                completion(true, nil)
+            }
+        }
     }
     
     static func fetchImages(completion: @escaping ([(String, UIImage)]?, Error?) -> Void) {
@@ -466,91 +464,91 @@ class FirebaseImageService: ObservableObject {
     }
     
     static func deleteImages(names: [String], completion: @escaping (Bool) -> ()) {
-//        var totalCompleted = 0
-//        var totalSuccess = 0
-//        
-//        if names.isEmpty {
-//            completion(true)
-//        }
-//        
-//        for name in names {
-//            deleteImage(name: name) { success, error in
-//                totalCompleted += 1
-//                
-//                if success && error == nil {
-//                    totalSuccess += 1
-//                    ImageCloudDeletionManager.deleteName(name)
-//                }
-//                
-//                if totalCompleted == names.count {
-//                    completion(totalSuccess == names.count)
-//                }
-//            }
-//        }
+        var totalCompleted = 0
+        var totalSuccess = 0
+        
+        if names.isEmpty {
+            completion(true)
+        }
+        
+        for name in names {
+            deleteImage(name: name) { success, error in
+                totalCompleted += 1
+                
+                if success && error == nil {
+                    totalSuccess += 1
+                    ImageCloudDeletionManager.deleteName(name)
+                }
+                
+                if totalCompleted == names.count {
+                    completion(totalSuccess == names.count)
+                }
+            }
+        }
     }
     
     static func saveImages(names: [String], completion: @escaping (Bool) -> ()) {
-//        let serialQueue = DispatchQueue(label: "com.yourApp.saveImages")
-//        var totalCompleted = 0
-//        var totalSuccess = 0
-//        if names.isEmpty {
-//            completion(true)
-//        }
-//        for name in names {
-//            if let image = CoreDataImageService.fetchImage(imageName: name) {
-//                FirebaseImageService.saveImage(name: name, image: image) { success, error in
-//                    serialQueue.sync {
-//                        totalCompleted += 1
-//                        if success {
-//                            totalSuccess += 1
-//                        }
-//                        
-//                        ImageCloudInsertionManager.deleteName(name)
-//                        
-//                        if totalCompleted == names.count {
-//                            DispatchQueue.main.async {
-//                                completion(totalSuccess == names.count)
-//                            }
-//                        }
-//                    }
-//                }
-//            } else {
-//                serialQueue.sync {
-//                    totalCompleted += 1
-//                    if totalCompleted == names.count {
-//                        DispatchQueue.main.async {
-//                            completion(totalSuccess == names.count)
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        let serialQueue = DispatchQueue(label: "com.yourApp.saveImages")
+        var totalCompleted = 0
+        var totalSuccess = 0
+        if names.isEmpty {
+            completion(true)
+        }
+        for name in names {
+            if let image = CoreDataImageService.fetchImage(imageName: name) {
+                FirebaseImageService.saveImage(name: name, image: image) { success, error in
+                    serialQueue.sync {
+                        totalCompleted += 1
+                        if success {
+                            totalSuccess += 1
+                        }
+                        
+                        ImageCloudInsertionManager.deleteName(name)
+                        
+                        if totalCompleted == names.count {
+                            DispatchQueue.main.async {
+                                completion(totalSuccess == names.count)
+                            }
+                        }
+                    }
+                }
+            } else {
+                serialQueue.sync {
+                    totalCompleted += 1
+                    if totalCompleted == names.count {
+                        DispatchQueue.main.async {
+                            completion(totalSuccess == names.count)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     static func isICloudEnabled(completion: @escaping (Bool) -> Void) {
         // Replace this with Firebase specific code if needed
-//        let isFirebaseEnabled = Defaults.getBool(.iCloudEnabled)
-//        completion(isFirebaseEnabled)
+        let isFirebaseEnabled = Defaults.getBool(.iCloudEnabled)
+        completion(isFirebaseEnabled)
     }
     
     static func enableICloudSync(completion: @escaping (Bool) -> Void) {
         // Replace this with Firebase specific code if needed
-//        Defaults.setBool(.iCloudEnabled, true)
-//        completion(true)
+        Defaults.setBool(.iCloudEnabled, true)
+        completion(true)
     }
     
     static func disableICloudSync(completion: @escaping (Bool) -> Void) {
         // Replace this with Firebase specific code if needed
-//        Defaults.setBool(.iCloudEnabled, false)
-//        completion(true)
+        Defaults.setBool(.iCloudEnabled, false)
+        completion(true)
     }
     
     static func redirectToICloudSettings() {
-//        if let url = URL(string: "App-prefs:root=CASTLE") {
-//            if UIApplication.shared.canOpenURL(url) {
-//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//            }
-//        }
+        if let url = URL(string: "App-prefs:root=CASTLE") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 }
 
@@ -570,19 +568,19 @@ class FirebaseVideoService: ObservableObject {
     static let userCollection = "users"
     
     static func saveVideo(name: String, videoData: Data, completion: @escaping (Bool, Error?) -> Void) {
-//        let quality = Defaults.getInt(.videoCompressionQuality)
-//        var qualityString = AVAssetExportPresetHighestQuality
-//        if quality < 4 {
-//            qualityString = AVAssetExportPresetLowQuality
-//        } else if quality < 7 {
-//            qualityString = AVAssetExportPresetMediumQuality
-//        }
-//        saveVideo2(
-//            name: name,
-//            videoData: videoData,
-//            quality: qualityString,
-//            completion: completion
-//        )
+        let quality = Defaults.getInt(.videoCompressionQuality)
+        var qualityString = AVAssetExportPresetHighestQuality
+        if quality < 4 {
+            qualityString = AVAssetExportPresetLowQuality
+        } else if quality < 7 {
+            qualityString = AVAssetExportPresetMediumQuality
+        }
+        saveVideo2(
+            name: name,
+            videoData: videoData,
+            quality: qualityString,
+            completion: completion
+        )
     }
     
     static func saveVideo2(name: String, videoData: Data, quality: String, completion: @escaping (Bool, Error?) -> Void) {

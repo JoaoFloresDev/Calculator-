@@ -149,16 +149,30 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCM-ff-zAe">
+                                <rect key="frame" x="80" y="695.5" width="254" height="34.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34.5" id="LAU-Xv-0HS"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="restoreBackup:" destination="bO4-RD-LXC" eventType="touchUpInside" id="ebU-DL-1bb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ctr-Fn-1Wa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HSl-dr-OjA" firstAttribute="trailing" secondItem="Ctr-Fn-1Wa" secondAttribute="trailing" id="74f-cG-NIr"/>
                             <constraint firstItem="Ctr-Fn-1Wa" firstAttribute="trailing" secondItem="J0I-lb-M7L" secondAttribute="trailing" constant="16" id="Brl-rA-M9V"/>
+                            <constraint firstItem="ZCM-ff-zAe" firstAttribute="leading" secondItem="Ctr-Fn-1Wa" secondAttribute="leading" constant="80" id="JGB-O5-osJ"/>
                             <constraint firstItem="Ctr-Fn-1Wa" firstAttribute="bottom" secondItem="J0I-lb-M7L" secondAttribute="bottom" constant="16" id="Ngm-9h-Ne5"/>
                             <constraint firstItem="HSl-dr-OjA" firstAttribute="top" secondItem="Ctr-Fn-1Wa" secondAttribute="top" id="OHF-vx-Evu"/>
                             <constraint firstItem="J0I-lb-M7L" firstAttribute="leading" secondItem="Ctr-Fn-1Wa" secondAttribute="leading" constant="16" id="YrD-gF-tzw"/>
                             <constraint firstItem="HSl-dr-OjA" firstAttribute="leading" secondItem="Ctr-Fn-1Wa" secondAttribute="leading" id="cOA-o1-XR0"/>
+                            <constraint firstItem="Ctr-Fn-1Wa" firstAttribute="trailing" secondItem="ZCM-ff-zAe" secondAttribute="trailing" constant="80" id="oEJ-QR-VO3"/>
+                            <constraint firstItem="J0I-lb-M7L" firstAttribute="top" secondItem="ZCM-ff-zAe" secondAttribute="bottom" constant="23" id="xnE-0j-Sdu"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="hh2-yq-auE">

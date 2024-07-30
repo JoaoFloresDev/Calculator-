@@ -56,6 +56,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         coordinator.premiumVersionPressed()
     }
 
+    @IBAction func restoreBackup(_ sender: Any) {
+        coordinator.showBackupOptions(backupIsActivated: self.backupIsActivated, delegate: self)
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         DispatchQueue.main.async {
             SKStoreReviewController.requestReview()
@@ -65,6 +69,14 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     lazy var loadingAlert = LoadingAlert(in: self)
     
     lazy var coordinator = SettingsCoordinator(viewController: self)
+    
+    var backupIsActivated = false {
+        didSet {
+            DispatchQueue.main.async {
+//                self.backupStatus.text = self.backupIsActivated ? Text.backupEnabled.localized() : Text.backupDisabled.localized()
+            }
+        }
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -292,5 +304,12 @@ class SafariWrapperViewController: UIViewController, SFSafariViewControllerDeleg
     
     func safariViewController(_ controller: SFSafariViewController, activityItemsFor URL: URL, title: String?) -> [UIActivity] {
         []
+    }
+}
+
+
+extension  SettingsViewController: BackupModalViewControllerDelegate {
+    func enableBackupToggled(status: Bool) {
+        backupIsActivated = status
     }
 }
