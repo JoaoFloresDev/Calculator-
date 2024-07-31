@@ -54,6 +54,7 @@
 		738B6AF32AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */; };
 		738FB4BE2BADD4C400595F60 /* NewCalc2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738FB4BD2BADD49500595F60 /* NewCalc2.storyboard */; };
 		738FB4BF2BADD4C600595F60 /* ChangeNewCalcViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738FB4BC2BADD49400595F60 /* ChangeNewCalcViewController2.swift */; };
+		73A8EFDE2C5AA49800601079 /* BackupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8EFDD2C5AA49800601079 /* BackupHeaderView.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D12AA01A0100546566 /* PlaceholderView.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
@@ -179,6 +180,7 @@
 		738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertRecoverEmailViewController.swift; sourceTree = "<group>"; };
 		738FB4BC2BADD49400595F60 /* ChangeNewCalcViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewCalcViewController2.swift; sourceTree = "<group>"; };
 		738FB4BD2BADD49500595F60 /* NewCalc2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewCalc2.storyboard; sourceTree = "<group>"; };
+		73A8EFDD2C5AA49800601079 /* BackupHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupHeaderView.swift; sourceTree = "<group>"; };
 		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 		73632E062AB4E7C9004AC14A /* Backup */ = {
 			isa = PBXGroup;
 			children = (
+				73A8EFDC2C5A9B3500601079 /* Views */,
 				736BDAD22A979D7100851BEF /* ChangeIconViewController.swift */,
 			);
 			path = Backup;
@@ -475,6 +478,14 @@
 			children = (
 			);
 			path = AppIcons;
+			sourceTree = "<group>";
+		};
+		73A8EFDC2C5A9B3500601079 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				73A8EFDD2C5AA49800601079 /* BackupHeaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		73ABC0ED284F187F00E5C3A4 /* Purchase */ = {
@@ -946,6 +957,7 @@
 				73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */,
 				736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */,
 				7304387A2A34467C001EF25B /* FolderCollectionViewCell.swift in Sources */,
+				73A8EFDE2C5AA49800601079 /* BackupHeaderView.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
