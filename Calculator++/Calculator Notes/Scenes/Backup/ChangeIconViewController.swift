@@ -68,6 +68,29 @@ class BackupModalViewController: UIViewController {
         return view
     }()
     
+    
+    lazy var loginTitle: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 16
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Já possui uma conta?"
+        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        titleLabel.textColor = .darkGray
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
+        
+        view.addSubview(titleLabel)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        return view
+    }()
+    
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Login With Google", for: .normal)
@@ -80,6 +103,9 @@ class BackupModalViewController: UIViewController {
         button.imageView?.contentMode = .scaleAspectFit
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         
+        button.layer.cornerRadius = 25
+        button.layer.masksToBounds = true
+        
         button.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
@@ -89,11 +115,6 @@ class BackupModalViewController: UIViewController {
     }()
     
     @objc func loginTapped() {
-        handleGoogleSignIn()
-    }
-    
-    let manager = AuthManager()
-    func handleGoogleSignIn() {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
             guard let result = signInResult else {
                 if (error as? NSError)?.code == -5 {
@@ -118,6 +139,30 @@ class BackupModalViewController: UIViewController {
         }
     }
     
+    let manager = AuthManager()
+
+    lazy var createAccountTitle: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 16
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Ainda não? Crie agora!"
+        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        titleLabel.textColor = .darkGray
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
+        
+        view.addSubview(titleLabel)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        return view
+    }()
+    
     lazy var createAccountButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Up With Google", for: .normal)
@@ -130,6 +175,9 @@ class BackupModalViewController: UIViewController {
         button.imageView?.contentMode = .scaleAspectFit
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         
+        button.layer.cornerRadius = 25
+        button.layer.masksToBounds = true
+        
         button.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
@@ -139,10 +187,6 @@ class BackupModalViewController: UIViewController {
     }()
     
     @objc func createAccountTapped() {
-        handleGoogleSignUp()
-    }
-    
-    func handleGoogleSignUp() {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
             guard let result = signInResult else {
                 if (error as? NSError)?.code == -5 {
@@ -228,7 +272,7 @@ class BackupModalViewController: UIViewController {
     
     lazy var updateBackup: UIView = {
         let label = UILabel()
-        label.text = "Atualizar backup"//Text.updateBackup.localized()
+        label.text = "Atualizar backup"
         label.font = UIFont.systemFont(ofSize: 14)
         let restoreBackupView = UIView()
         restoreBackupView.backgroundColor = .systemGray5
@@ -250,13 +294,13 @@ class BackupModalViewController: UIViewController {
     }()
     
     @objc func updateBackupTapped() {
-        isConnectedToWiFi { isConnected in
+//        isConnectedToWiFi { isConnected in
             guard Defaults.getBool(.iCloudEnabled) else {
                 Alerts.showBackupDisabled(controller: self)
                 return
             }
             
-            if isConnected {
+//            if isConnected {
                 self.loadingAlert.startLoading {
                     FirebaseBackupService.updateBackup(completion: { _ in
                         DispatchQueue.main.async {
@@ -274,28 +318,28 @@ class BackupModalViewController: UIViewController {
                         }
                     }
                 }
-            } else {
-                Alerts.showBackupErrorWifi(controller: self)
-            }
-        }
+//            } else {
+//                Alerts.showBackupErrorWifi(controller: self)
+//            }
+//        }
     }
     
     lazy var loadingAlert = LoadingAlert(in: self)
     
-    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
-        let monitor = NWPathMonitor()
-        
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
-        
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        monitor.start(queue: queue)
-    }
+//    func isConnectedToWiFi(completion: @escaping (Bool) -> Void) {
+//        let monitor = NWPathMonitor()
+//        
+//        monitor.pathUpdateHandler = { path in
+//            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
+//                completion(true)
+//            } else {
+//                completion(false)
+//            }
+//        }
+//        
+//        let queue = DispatchQueue(label: "NetworkMonitor")
+//        monitor.start(queue: queue)
+//    }
     
     lazy var contentStackView: UIStackView = {
         let spacer = UIView()
@@ -402,7 +446,31 @@ class BackupModalViewController: UIViewController {
             make.leading.trailing.equalTo(containerView)
         }
         
-        // Activate constraints
+        containerView.addSubview(loginTitle)
+        containerView.addSubview(loginButton)
+        containerView.addSubview(createAccountTitle)
+        containerView.addSubview(createAccountButton)
+        
+        loginTitle.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(loginButton.snp.top).inset(-12)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(createAccountTitle.snp.top).inset(-24)
+        }
+        
+        createAccountTitle.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(createAccountButton.snp.top).inset(-12)
+        }
+        
+        createAccountButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalToSuperview().inset(24)
+        }
+        
         containerViewHeightConstraint?.activate()
         containerViewBottomConstraint?.activate()
     }

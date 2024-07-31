@@ -120,7 +120,7 @@ insertPassword = "Enter your password and confirm with OK";
 backupEnabled = "Enabled";
 backupDisabled = "Disabled";
 
-backupNavigationSubtitle = "Photos are synchronized with newly added photos every time the app is opened and there is a Wi-Fi connection. Your backup is secure, and the only way to view photos is within the app";
+backupNavigationSubtitle = "Your backup is secure, and the only way to view photos is within the app";
 
 myBackupNavigationSubtitle = "Click 'restore backup' in the previous menu to import the photos into your gallery";
 continueText = "Continue";
