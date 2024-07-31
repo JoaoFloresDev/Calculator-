@@ -19,64 +19,44 @@ import AVKit
 import CloudKit
 import GoogleSignIn
 
-protocol BackupModalViewControllerDelegate {
+protocol BackupModalViewControllerDelegate: AnyObject {
     func enableBackupToggled(status: Bool)
 }
 
 class BackupModalViewController: UIViewController {
-    var delegate: BackupModalViewControllerDelegate?
+    
+    // MARK: - Constants
+    let defaultHeight: CGFloat = 530
+    var currentContainerHeight: CGFloat = 460
+    
+    // MARK: - Variables
+    var containerViewHeightConstraint: Constraint?
+    var containerViewBottomConstraint: Constraint?
+    
+    weak var delegate: BackupModalViewControllerDelegate?
+    
+    // MARK: - Views
+    lazy var loadingAlert = LoadingAlert(in: self)
     
     lazy var backupHeaderView = BackupHeaderView()
-    lazy var loginView = BackupLoginView(controller: self)
     
     lazy var backupStatusView = BackupStatusView(delegate: delegate)
-
+    
     lazy var restoreBackup: UIView = {
-        let label = UILabel()
-        label.text = "Restaurar backup"
-        label.font = UIFont.systemFont(ofSize: 14)
-        let restoreBackupView = UIView()
-        restoreBackupView.backgroundColor = .systemGray5
-        restoreBackupView.addSubview(label)
-        
-        label.snp.makeConstraints { make in
-            make.top.bottom.trailing.equalToSuperview().inset(8)
-            make.leading.equalToSuperview().inset(16)
-        }
-        
-        restoreBackupView.snp.makeConstraints { make in
-            make.height.equalTo(50)
-        }
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.restoreBackupTapped))
-        restoreBackupView.addGestureRecognizer(tapGesture)
-        
-        return restoreBackupView
+        let view = CustomLabelButtonView(text: "Restaurar backup", backgroundColor: .systemGray5)
+        view.setTapAction(target: self, action: #selector(updateBackupTapped))
+        return view
     }()
     
-    lazy var updateBackup: UIView = {
-        let label = UILabel()
-        label.text = "Atualizar backup"
-        label.font = UIFont.systemFont(ofSize: 14)
-        let restoreBackupView = UIView()
-        restoreBackupView.backgroundColor = .systemGray5
-        restoreBackupView.addSubview(label)
-        
-        label.snp.makeConstraints { make in
-            make.top.bottom.trailing.equalToSuperview().inset(8)
-            make.leading.equalToSuperview().inset(16)
-        }
-        
-        restoreBackupView.snp.makeConstraints { make in
-            make.height.equalTo(50)
-        }
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.updateBackupTapped))
-        restoreBackupView.addGestureRecognizer(tapGesture)
-        
-        return restoreBackupView
+    lazy var updateBackup: CustomLabelButtonView = {
+        let view = CustomLabelButtonView(text: "Atualizar backup", backgroundColor: .systemGray5)
+        view.setTapAction(target: self, action: #selector(updateBackupTapped))
+        return view
     }()
     
+    lazy var loginView = BackupLoginView(controller: self)
+    
+    // MARK: - Private Functions
     @objc func updateBackupTapped() {
             guard Defaults.getBool(.iCloudEnabled) else {
                 Alerts.showBackupDisabled(controller: self)
@@ -102,11 +82,9 @@ class BackupModalViewController: UIViewController {
                 }
     }
     
-    lazy var loadingAlert = LoadingAlert(in: self)
-    
     lazy var contentStackView: UIStackView = {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [backupStatusView, restoreBackup, updateBackup, loginView])
+        let stackView = UIStackView(arrangedSubviews: [backupHeaderView, backupStatusView, restoreBackup, updateBackup, loginView])
         stackView.axis = .vertical
         stackView.spacing = 1
         return stackView
@@ -127,12 +105,6 @@ class BackupModalViewController: UIViewController {
         view.alpha = maxDimmedAlpha
         return view
     }()
-    
-    let defaultHeight: CGFloat = 530
-    var currentContainerHeight: CGFloat = 460
-    
-    var containerViewHeightConstraint: Constraint?
-    var containerViewBottomConstraint: Constraint?
     
     init(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
@@ -174,13 +146,6 @@ class BackupModalViewController: UIViewController {
         view.addSubview(backgroundView)
         view.addSubview(containerView)
         
-        containerView.addSubview(backupHeaderView)
-        
-        backupHeaderView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview().offset(8)
-            make.height.equalTo(80)
-        }
-        
         backgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -193,7 +158,7 @@ class BackupModalViewController: UIViewController {
         
         containerView.addSubview(contentStackView)
         contentStackView.snp.makeConstraints { make in
-            make.top.equalTo(backupHeaderView.snp.bottom).offset(24)
+            make.top.equalToSuperview().offset(8)
             make.bottom.equalTo(containerView.snp.bottom).offset(-20)
             make.leading.trailing.equalTo(containerView)
         }
