@@ -47,6 +47,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var browser: UIView!
     @IBOutlet weak var browserLabel: UILabel!
     
+    @IBOutlet weak var backupOptions: UIView!
+    @IBOutlet weak var backupStatus: UILabel!
+    @IBOutlet weak var backupLabel: UILabel!
+    
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Defaults.setBool(.recoveryStatus, sender.isOn)
@@ -73,7 +77,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     var backupIsActivated = false {
         didSet {
             DispatchQueue.main.async {
-//                self.backupStatus.text = self.backupIsActivated ? Text.backupEnabled.localized() : Text.backupDisabled.localized()
+                self.backupStatus.text = self.backupIsActivated ? Text.backupEnabled.localized() : Text.backupDisabled.localized()
             }
         }
     }
@@ -202,15 +206,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // MARK: - Backup
-    @objc 
-    func changeIconPressed(_ sender: UITapGestureRecognizer? = nil) {
-        let vc = ChangeIconViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        if let tabBarController = self.tabBarController {
-            tabBarController.present(vc, animated: false, completion: nil)
-        }
-    }
-    
     @objc
     func useTermsPressed(_ sender: UITapGestureRecognizer? = nil) {
         let navigation = UINavigationController(rootViewController: UseTermsViewController())
@@ -237,6 +232,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         self.present(controller, animated: true)
     }
     
+    @objc
+    func backupPressed(_ sender: UITapGestureRecognizer? = nil) {
+        coordinator.showBackupOptions(backupIsActivated: self.backupIsActivated, delegate: self)
+    }
+    
     private func setupUI() {
         self.navigationController?.setup()
         switchButton.isOn = Defaults.getBool(.recoveryStatus)
@@ -256,6 +256,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         
         let browserPressed = UITapGestureRecognizer(target: self, action: #selector(browserPressed(_:)))
         browser.addGestureRecognizer(browserPressed)
+        
+        let backupPressed = UITapGestureRecognizer(target: self, action: #selector(backupPressed(_:)))
+        backupOptions.addGestureRecognizer(backupPressed)
     }
     
     private func setupViewStyles() {
