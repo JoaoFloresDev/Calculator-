@@ -26,6 +26,8 @@ protocol BackupModalViewControllerDelegate: AnyObject {
 
 extension BackupModalViewController: BackupLoginEvent {
     func refreshBackupLoginStatus() {
+        backupStatusView.switchControl.setOn(Defaults.getBool(.iCloudEnabled), animated: true)
+        self.delegate?.enableBackupToggled(status: isUserLoggedIn())
         setBackupLoginStatus()
     }
 }
@@ -73,16 +75,17 @@ class BackupModalViewController: UIViewController {
     
     lazy var backupHeaderView = BackupHeaderView()
     
-    lazy var backupStatusView = BackupStatusView(delegate: delegate, controller: self)
+    lazy var backupStatusView = BackupStatusView(controller: self)
     
     lazy var restoreBackup: UIView = {
-        let view = CustomLabelButtonView(text: "Restaurar backup", backgroundColor: .systemGray5)
+        let view = CustomLabelButtonView(leftText: "Baixar backup", backgroundColor: .systemGray5)
         view.setTapAction(target: self, action: #selector(restoreBackupTapped))
         return view
     }()
     
     lazy var updateBackup: CustomLabelButtonView = {
-        let view = CustomLabelButtonView(text: "Atualizar backup", backgroundColor: .systemGray5)
+        var date = Defaults.getString(.lastBackupUpdate)
+        let view = CustomLabelButtonView(leftText: "Atualizar backup", rightText: Defaults.getString(.lastBackupUpdate), backgroundColor: .systemGray5)
         view.setTapAction(target: self, action: #selector(updateBackupTapped))
         return view
     }()
@@ -214,10 +217,6 @@ class BackupModalViewController: UIViewController {
         if !isUserLoggedIn() {
             Alerts.showBackupDisabled(controller: self)
         }
-//        guard Defaults.getBool(.iCloudEnabled) else {
-//            Alerts.showBackupDisabled(controller: self)
-//            return
-//        }
         
         loadingAlert.startLoading()
         FirebaseBackupService.hasDataInFirebase { hasData, _, items  in
@@ -235,21 +234,28 @@ class BackupModalViewController: UIViewController {
         if !isUserLoggedIn() {
             Alerts.showBackupDisabled(controller: self)
         }
-//        guard Defaults.getBool(.iCloudEnabled) else {
-//            Alerts.showBackupDisabled(controller: self)
-//            return
-//        }
-//        
+        
         self.loadingAlert.startLoading {
             FirebaseBackupService.updateBackup(completion: { _ in
                 DispatchQueue.main.async {
                     self.loadingAlert.stopLoading {
                         Alerts.showBackupSuccess(controller: self)
+                        Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
+                        self.updateBackup.label.text = Defaults.getString(.lastBackupUpdate)
                     }
                 }
             })
         }
     }
+    
+    func getCurrentDateTimeFormatted() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        let currentDate = Date()
+        return dateFormatter.string(from: currentDate)
+    }
+
     
     // MARK: - Private Functions
     private func askUserToRestoreBackup(backupItems: [MediaItem]) {
@@ -261,17 +267,18 @@ class BackupModalViewController: UIViewController {
     }
     
     private func restoreBackup(backupItems: [MediaItem]) {
-        loadingAlert.startLoading()
-        FirebaseBackupService.restoreBackup(items: backupItems) { success, _ in
-            self.loadingAlert.stopLoading {
-                if success {
-                    Alerts.showBackupSuccess(controller: self)
-                    let controllers = self.tabBarController?.viewControllers
-                    let navigation = controllers?[0] as? UINavigationController
-                    let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
-                    collectionViewController?.viewDidLoad()
-                } else {
-                    Alerts.showBackupError(controller: self)
+        loadingAlert.stopLoading {
+            FirebaseBackupService.restoreBackup(items: backupItems) { success, _ in
+                self.loadingAlert.stopLoading {
+                    if success {
+                        Alerts.showBackupSuccess(controller: self)
+                        let controllers = self.tabBarController?.viewControllers
+                        let navigation = controllers?[0] as? UINavigationController
+                        let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
+                        collectionViewController?.viewDidLoad()
+                    } else {
+                        Alerts.showBackupError(controller: self)
+                    }
                 }
             }
         }

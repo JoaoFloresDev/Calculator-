@@ -111,7 +111,6 @@ enum Text: String {
     case backupNavigationTitle// "Meu Backup"
     case vaultMode// "Modo cofre"
     case recover// "Entrar"
-    
     case createPassword // "Crie uma senha e confirme com enter"
     case insertCreatedPasswordAgain // "Digite a senha novamente"
     case insertPassword //  "Digite sua senha e confirme com enter"

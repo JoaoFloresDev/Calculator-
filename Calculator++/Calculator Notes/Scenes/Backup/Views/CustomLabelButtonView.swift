@@ -1,39 +1,27 @@
 import UIKit
 import SnapKit
-import Network
-import Photos
-import AssetsPickerViewController
-import DTPhotoViewerController
-import CoreData
-import NYTPhotoViewer
-import ImageViewer
-import StoreKit
-import GoogleMobileAds
-import SceneKit
-import simd
-import Photos
-import StoreKit
-import Foundation
-import AVFoundation
-import AVKit
-import CloudKit
-import GoogleSignIn
-import UIKit
-import SnapKit
 
 class CustomLabelButtonView: UIView {
     
-    private let label: UILabel = {
+    private let leftLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     
-    init(text: String, backgroundColor: UIColor) {
+    let label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .gray
+        label.textAlignment = .right
+        return label
+    }()
+    
+    init(leftText: String, rightText: String = "", backgroundColor: UIColor) {
         super.init(frame: .zero)
-        self.label.text = text
+        self.leftLabel.text = leftText
+        self.label.text = rightText
         self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = 8
         self.setupView()
         self.setupConstraints()
     }
@@ -43,13 +31,20 @@ class CustomLabelButtonView: UIView {
     }
     
     private func setupView() {
+        self.addSubview(leftLabel)
         self.addSubview(label)
     }
     
     private func setupConstraints() {
+        leftLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(8)
+            make.leading.equalToSuperview().inset(16)
+        }
+        
         label.snp.makeConstraints { make in
             make.top.bottom.trailing.equalToSuperview().inset(8)
-            make.leading.equalToSuperview().inset(16)
+            make.leading.equalTo(leftLabel.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().inset(16)
         }
         
         self.snp.makeConstraints { make in

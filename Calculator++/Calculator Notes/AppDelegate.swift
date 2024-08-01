@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaultService = UserDefaultService()
 
         if !Defaults.getBool(.notFirstUse) {
+            Defaults.setBool(.recoveryStatus, true)
             return UINavigationController(rootViewController: OnboardingWelcomeViewController())
         }
 

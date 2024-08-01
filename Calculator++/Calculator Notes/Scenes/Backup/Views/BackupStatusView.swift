@@ -23,8 +23,6 @@ import UIKit
 import SnapKit
 
 class BackupStatusView: UIView {
-    var delegate: BackupModalViewControllerDelegate?
-    
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
         switchControl.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
@@ -38,7 +36,7 @@ class BackupStatusView: UIView {
         stackView.spacing = 8
         
         let leftLabel = UILabel()
-        leftLabel.text = Text.backupStatus.localized()
+        leftLabel.text = "Sincronização automática"
         leftLabel.font = UIFont.systemFont(ofSize: 14)
         
         stackView.addArrangedSubview(leftLabel)
@@ -67,21 +65,18 @@ class BackupStatusView: UIView {
     @objc func switchValueChanged(_ sender: UISwitch) {
         if !isUserLoggedIn() {
             Alerts.showBackupDisabled(controller: controller)
-            sender.isOn = false
+            sender.setOn(false, animated: true)
         }
         
         if sender.isOn {
             Defaults.setBool(.iCloudEnabled, true)
-            self.delegate?.enableBackupToggled(status: true)
         } else {
             Defaults.setBool(.iCloudEnabled, false)
-            delegate?.enableBackupToggled(status: false)
         }
     }
     
     let controller: UIViewController
-    init(delegate: BackupModalViewControllerDelegate?, controller: UIViewController) {
-        self.delegate = delegate
+    init(controller: UIViewController) {
         self.controller = controller
         super.init(frame: .zero)
         self.addSubview(backupStatus)

@@ -26,6 +26,7 @@ import Foundation
 import AVFoundation
 import AVKit
 import CloudKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
@@ -83,10 +84,15 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // MARK: - Life Cycle
+    func isUserLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupGestures()
+        backupIsActivated = isUserLoggedIn()
     }
     
     // MARK: - UI

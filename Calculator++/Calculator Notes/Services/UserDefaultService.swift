@@ -47,6 +47,7 @@ enum IntKey: String {
 enum StringKey: String {
     case password = "Key"
     case recoverEmail
+    case lastBackupUpdate
     
     func set(_ value: String) {
         userDefaults.set(value, forKey: rawValue)

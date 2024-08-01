@@ -1,14 +1,25 @@
 import UIKit
 import LocalAuthentication
+import SnapKit
 
 class ChangeNewCalcViewController2: BaseCalculatorViewController {
     var vaultMode: VaultMode = .verify
     
     var faceIDButton: UIButton = {
-        let button = UIButton()
-        button.setText(.recover)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(faceIDButtonTapped), for: .touchUpInside)
+        let button = UIButton(type: .system)
+        let title = "..."
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .right
+        
+        let attributedTitle = NSAttributedString(string: title, attributes: [
+            .foregroundColor: UIColor.systemBlue,
+            .paragraphStyle: paragraphStyle
+        ])
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.contentHorizontalAlignment = .right
+        
+        button.addTarget(ChangeNewCalcViewController2.self, action: #selector(faceIDButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -83,8 +94,8 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         faceIDButton.isHidden = Defaults.getBool(.recoveryStatus) || vaultMode != .verify
         view.addSubview(faceIDButton)
         faceIDButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10) // Ajuste conforme necessário
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10) // Ajuste conforme necessário
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10)
             make.height.equalTo(50)
             make.width.equalTo(120)
         }

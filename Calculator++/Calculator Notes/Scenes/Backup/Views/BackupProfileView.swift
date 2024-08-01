@@ -114,6 +114,7 @@ class BackupProfileView: UIView {
     private func logoutButtonTapped() {
         do {
             try Auth.auth().signOut()
+            Defaults.setBool(.iCloudEnabled, false)
             delegate?.refreshBackupLoginStatus()
         } catch {
             print("deu erro")
