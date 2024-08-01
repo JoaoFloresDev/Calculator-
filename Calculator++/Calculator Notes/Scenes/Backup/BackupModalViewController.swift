@@ -18,16 +18,24 @@ import AVFoundation
 import AVKit
 import CloudKit
 import GoogleSignIn
+import FirebaseAuth
 
 protocol BackupModalViewControllerDelegate: AnyObject {
     func enableBackupToggled(status: Bool)
 }
 
+extension BackupModalViewController: BackupLoginEvent {
+    func refreshBackupLoginStatus() {
+        setBackupLoginStatus()
+    }
+}
+                                        
 class BackupModalViewController: UIViewController {
     
     // MARK: - Constants
     let defaultHeight: CGFloat = 530
     var currentContainerHeight: CGFloat = 460
+    let maxDimmedAlpha: CGFloat = 0.6
     
     // MARK: - Variables
     var containerViewHeightConstraint: Constraint?
@@ -36,58 +44,13 @@ class BackupModalViewController: UIViewController {
     weak var delegate: BackupModalViewControllerDelegate?
     
     // MARK: - Views
-    lazy var loadingAlert = LoadingAlert(in: self)
-    
-    lazy var backupHeaderView = BackupHeaderView()
-    
-    lazy var backupStatusView = BackupStatusView(delegate: delegate)
-    
-    lazy var restoreBackup: UIView = {
-        let view = CustomLabelButtonView(text: "Restaurar backup", backgroundColor: .systemGray5)
-        view.setTapAction(target: self, action: #selector(updateBackupTapped))
+    lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = maxDimmedAlpha
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
+        view.addGestureRecognizer(tapGesture)
         return view
-    }()
-    
-    lazy var updateBackup: CustomLabelButtonView = {
-        let view = CustomLabelButtonView(text: "Atualizar backup", backgroundColor: .systemGray5)
-        view.setTapAction(target: self, action: #selector(updateBackupTapped))
-        return view
-    }()
-    
-    lazy var loginView = BackupLoginView(controller: self)
-    
-    // MARK: - Private Functions
-    @objc func updateBackupTapped() {
-            guard Defaults.getBool(.iCloudEnabled) else {
-                Alerts.showBackupDisabled(controller: self)
-                return
-            }
-            
-                self.loadingAlert.startLoading {
-                    FirebaseBackupService.updateBackup(completion: { _ in
-                        DispatchQueue.main.async {
-                            self.loadingAlert.stopLoading {
-                                Alerts.showBackupSuccess(controller: self)
-                            }
-                        }
-                    })
-
-                    if Defaults.getBool(.needSavePasswordInCloud) {
-                        CloudKitPasswordService.updatePassword(newPassword: Defaults.getString(.password)) { success, error in
-                            if success && error == nil {
-                                Defaults.setBool(.needSavePasswordInCloud, false)
-                            }
-                        }
-                    }
-                }
-    }
-    
-    lazy var contentStackView: UIStackView = {
-        let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [backupHeaderView, backupStatusView, restoreBackup, updateBackup, loginView])
-        stackView.axis = .vertical
-        stackView.spacing = 1
-        return stackView
     }()
     
     lazy var containerView: UIView = {
@@ -98,39 +61,66 @@ class BackupModalViewController: UIViewController {
         return view
     }()
     
-    let maxDimmedAlpha: CGFloat = 0.6
-    lazy var backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black
-        view.alpha = maxDimmedAlpha
+    lazy var contentStackView: UIStackView = {
+        let spacer = UIView()
+        let stackView = UIStackView(arrangedSubviews: [backupHeaderView, backupStatusView, restoreBackup, updateBackup, loginView, profileView])
+        stackView.axis = .vertical
+        stackView.spacing = 1
+        return stackView
+    }()
+    
+    lazy var loadingAlert = LoadingAlert(in: self)
+    
+    lazy var backupHeaderView = BackupHeaderView()
+    
+    lazy var backupStatusView = BackupStatusView(delegate: delegate, controller: self)
+    
+    lazy var restoreBackup: UIView = {
+        let view = CustomLabelButtonView(text: "Restaurar backup", backgroundColor: .systemGray5)
+        view.setTapAction(target: self, action: #selector(restoreBackupTapped))
         return view
     }()
     
+    lazy var updateBackup: CustomLabelButtonView = {
+        let view = CustomLabelButtonView(text: "Atualizar backup", backgroundColor: .systemGray5)
+        view.setTapAction(target: self, action: #selector(updateBackupTapped))
+        return view
+    }()
+    
+    lazy var loginView: BackupLoginView = {
+        let view = BackupLoginView(controller: self, delegate: self)
+        view.isHidden = true
+        return view
+    }()
+    
+    lazy var profileView: BackupProfileView = {
+        let view = BackupProfileView(delegate: self)
+        view.isHidden = true
+        return view
+    }()
+    
+    // MARK: - Life Cycle
     init(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
         backupStatusView.switchControl.isOn = Defaults.getBool(.iCloudEnabled)
+        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
         setupConstraints()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
-        backgroundView.addGestureRecognizer(tapGesture)
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeDown))
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
-    }
-    
-    @objc func handleCloseAction() {
-        animateDismissView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -138,10 +128,7 @@ class BackupModalViewController: UIViewController {
         animatePresentContainer()
     }
     
-    func setupView() {
-        view.backgroundColor = .clear
-    }
-    
+    // MARK: - Layout
     func setupConstraints() {
         view.addSubview(backgroundView)
         view.addSubview(containerView)
@@ -159,18 +146,37 @@ class BackupModalViewController: UIViewController {
         containerView.addSubview(contentStackView)
         contentStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.bottom.equalTo(containerView.snp.bottom).offset(-20)
+            make.bottom.equalTo(containerView.snp.bottom)
             make.leading.trailing.equalTo(containerView)
         }
         
         containerViewHeightConstraint?.activate()
         containerViewBottomConstraint?.activate()
+        
+        setBackupLoginStatus()
     }
     
-    @objc func handleSwipeDown(_ gesture: UISwipeGestureRecognizer) {
-        animateDismissView()
+    func setBackupLoginStatus() {
+        let isLoggedIn = isUserLoggedIn()
+        
+        UIView.animate(withDuration: 0.3) {
+            if isLoggedIn {
+                self.profileView.alpha = 1.0
+                self.loginView.alpha = 0.0
+            } else {
+                self.profileView.alpha = 0.0
+                self.loginView.alpha = 1.0
+            }
+        } completion: { _ in
+            self.profileView.isHidden = !isLoggedIn
+            self.loginView.isHidden = isLoggedIn
+            if isLoggedIn {
+                self.profileView.configure(name: Auth.auth().currentUser?.email)
+            }
+        }
     }
     
+    //MARK: - Animation
     func animateContainerHeight(_ height: CGFloat) {
         UIView.animate(withDuration: 0.4) {
             self.containerViewHeightConstraint?.update(offset: height)
@@ -179,7 +185,6 @@ class BackupModalViewController: UIViewController {
         currentContainerHeight = height
     }
     
-    // MARK: Present and dismiss animation
     func animatePresentContainer() {
         UIView.animate(withDuration: 0.3) {
             self.containerViewBottomConstraint?.update(offset: 0)
@@ -187,7 +192,8 @@ class BackupModalViewController: UIViewController {
         }
     }
     
-    func animateDismissView() {
+    // MARK: - Actions
+    @objc func handleCloseAction() {
         backgroundView.alpha = maxDimmedAlpha
         UIView.animate(withDuration: 0.4) {
             self.backgroundView.alpha = 0
@@ -200,29 +206,19 @@ class BackupModalViewController: UIViewController {
         }
     }
     
-    @objc func switchValueChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            Defaults.setBool(.iCloudEnabled, true)
-            self.delegate?.enableBackupToggled(status: true)
-        } else {
-            Defaults.setBool(.iCloudEnabled, false)
-            delegate?.enableBackupToggled(status: false)
-        }
-    }
-}
-
-extension BackupModalViewController {
-    @objc func restoreBackupTapped() {
-        
-        guard Defaults.getBool(.iCloudEnabled) else {
-            Alerts.showBackupDisabled(controller: self)
-            return
-        }
-        
-        self.checkBackupData()
+    func isUserLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
     }
     
-    private func checkBackupData() {
+    @objc func restoreBackupTapped() {
+        if !isUserLoggedIn() {
+            Alerts.showBackupDisabled(controller: self)
+        }
+//        guard Defaults.getBool(.iCloudEnabled) else {
+//            Alerts.showBackupDisabled(controller: self)
+//            return
+//        }
+        
         loadingAlert.startLoading()
         FirebaseBackupService.hasDataInFirebase { hasData, _, items  in
             self.loadingAlert.stopLoading {
@@ -234,21 +230,38 @@ extension BackupModalViewController {
             }
         }
     }
-
+    
+    @objc func updateBackupTapped() {
+        if !isUserLoggedIn() {
+            Alerts.showBackupDisabled(controller: self)
+        }
+//        guard Defaults.getBool(.iCloudEnabled) else {
+//            Alerts.showBackupDisabled(controller: self)
+//            return
+//        }
+//        
+        self.loadingAlert.startLoading {
+            FirebaseBackupService.updateBackup(completion: { _ in
+                DispatchQueue.main.async {
+                    self.loadingAlert.stopLoading {
+                        Alerts.showBackupSuccess(controller: self)
+                    }
+                }
+            })
+        }
+    }
+    
+    // MARK: - Private Functions
     private func askUserToRestoreBackup(backupItems: [MediaItem]) {
         Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
             if restoreBackup {
-                self.startLoadingForBackupRestore(backupItems: backupItems)
+                self.restoreBackup(backupItems: backupItems)
             }
         }
     }
-
-    private func startLoadingForBackupRestore(backupItems: [MediaItem]) {
-        loadingAlert.startLoading()
-        restoreBackup(backupItems: backupItems)
-    }
-
+    
     private func restoreBackup(backupItems: [MediaItem]) {
+        loadingAlert.startLoading()
         FirebaseBackupService.restoreBackup(items: backupItems) { success, _ in
             self.loadingAlert.stopLoading {
                 if success {
@@ -264,3 +277,4 @@ extension BackupModalViewController {
         }
     }
 }
+

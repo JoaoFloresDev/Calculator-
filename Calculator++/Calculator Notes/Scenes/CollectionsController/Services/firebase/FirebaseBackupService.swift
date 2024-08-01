@@ -1,11 +1,3 @@
-//
-//  FirebaseBackupService.swift
-//  Calculator Notes
-//
-//  Created by Vikram Kumar on 13/06/24.
-//  Copyright © 2024 MakeSchool. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import FirebaseStorage
@@ -97,20 +89,12 @@ struct FirebaseBackupService {
 
         dispatchGroup.enter()
         FirebaseVideoService.fetchVideos { fetchedVideos, error in
-//            if let error = error {
-//                completion(false, error, nil)
-//                return
-//            }
             videoItems = fetchedVideos
             dispatchGroup.leave()
         }
 
         dispatchGroup.enter()
         FirebaseImageService.fetchImages { fetchedImages, error in
-//            if let error = error {
-//                completion(false, error, nil)
-//                return
-//            }
             imageItems = fetchedImages
             dispatchGroup.leave()
         }
@@ -231,147 +215,6 @@ struct FirebaseBackupService {
     }
 }
 
-/*
-struct FirebaseModelController {
-    private static let storage = Storage.storage()
-    private static let db = FirebaseBackupService.getDBPath()
-    private static let subsystem = "com.example.calculatornotes"
-    private static let category = "errors"
-
-    static func listPhotosOf(basePath: String, completion: @escaping ([Photo]) -> Void) {
-        let collectionRef = db.collection("images")
-        collectionRef.getDocuments { snapshot, error in
-            if let error = error {
-                os_log("Failed to fetch documents: %@", log: .default, type: .error, error.localizedDescription)
-                completion([])
-                return
-            }
-            var images = [Photo]()
-            for document in snapshot!.documents {
-                if let imageName = document.data()["imageName"] as? String {
-                    if handleNewImage(basePath: basePath, imageName: imageName) || handleOldImage(basePath: basePath) {
-                        fetchImage(imageName: imageName) { image in
-                            if let image = image {
-                                images.append(Photo(id: <#String#>, name: imageName, image: image))
-                            }
-                            completion(images)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    static func saveImageObject(image: UIImage, basePath: String, completion: @escaping (Photo?) -> Void) {
-        
-        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {
-            os_log("Failed to convert image to data.", log: .default, type: .error)
-            completion(nil)
-            return
-        }
-
-        let imageName = "\(basePath)-\(UUID().uuidString).jpg"
-        let storageRef = storage.reference().child("images/\(imageName)")
-        
-        storageRef.putData(imageData, metadata: nil) { metadata, error in
-            if let error = error {
-                os_log("Failed to upload image: %@", log: .default, type: .error, error.localizedDescription)
-                completion(nil)
-                return
-            }
-            db.collection("images").document(imageName).setData(["imageName": imageName]) { error in
-                if let error = error {
-                    os_log("Failed to save image data to Firestore: %@", log: .default, type: .error, error.localizedDescription)
-                    completion(nil)
-                    return
-                }
-                ImageCloudInsertionManager.addName(imageName)
-                completion(Photo(name: imageName, image: image))
-            }
-        }
-    }
-
-    static func deleteImageObject(name: String, completion: @escaping (Bool) -> Void) {
-        let storageRef = storage.reference().child("images/\(name)")
-        let documentRef = db.collection("images").document(name)
-
-        storageRef.delete { error in
-            if let error = error {
-                os_log("Failed to delete image from storage: %@", log: .default, type: .error, error.localizedDescription)
-                completion(false)
-                return
-            }
-            documentRef.delete { error in
-                if let error = error {
-                    os_log("Failed to delete image document: %@", log: .default, type: .error, error.localizedDescription)
-                    completion(false)
-                    return
-                }
-                ImageCloudDeletionManager.addName(name)
-                completion(true)
-            }
-        }
-    }
-
-    static func listAllPhotos(completion: @escaping ([Photo]) -> Void) {
-        let collectionRef = db.collection("images")
-        collectionRef.getDocuments { snapshot, error in
-            if let error = error {
-                os_log("Failed to fetch documents: %@", log: .default, type: .error, error.localizedDescription)
-                completion([])
-                return
-            }
-            var images = [Photo]()
-            for document in snapshot!.documents {
-                if let imageName = document.data()["imageName"] as? String {
-                    fetchImage(imageName: imageName) { image in
-                        if let image = image {
-                            images.append(Photo(name: imageName, image: image))
-                        }
-                        completion(images)
-                    }
-                }
-            }
-        }
-    }
-
-    private static func fetchImage(imageName: String, completion: @escaping (UIImage?) -> Void) {
-        let storageRef = storage.reference().child("images/\(imageName)")
-        storageRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
-            if let error = error {
-                os_log("Failed to download image data: %@", log: .default, type: .error, error.localizedDescription)
-                completion(nil)
-                return
-            }
-            if let data = data, let image = UIImage(data: data) {
-                completion(image)
-            } else {
-                completion(nil)
-            }
-        }
-    }
-}
-
-
-extension FirebaseModelController {
-    private static func handleNewImage(basePath: String, imageName: String) -> Bool {
-        return imageName.contains(basePath) && samePathDeep(basePath: basePath, imageName: imageName)
-    }
-    
-    private static func samePathDeep(basePath: String, imageName: String) -> Bool {
-        return imageName.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count
-    }
-    
-    private static func handleOldImage(basePath: String) -> Bool {
-        return countOccurrences(of: "@", in: basePath) < 2
-    }
-    
-    private static func countOccurrences(of character: Character, in string: String) -> Int {
-        return string.filter { $0 == character }.count
-    }
-}
-*/
-
 class FirebaseImageService: ObservableObject {
     private static let storage = Storage.storage()
     
@@ -383,16 +226,6 @@ class FirebaseImageService: ObservableObject {
     }
     
     static func saveImage(name: String, image: UIImage, completion: @escaping (Bool, Error?) -> Void) {
-        var image = image
-        switch Defaults.getInt(.imageCompressionQuality) {
-        case let x where x <= 3 :
-            image = image.scale(newWidth: 40)
-        case let x where x <= 6 :
-            image = image.scale(newWidth: 70)
-        default:
-            print("melhor possivel")
-        }
-        
         if let imageData = UIImageJPEGRepresentation(image, 0.8) {
             let storage = storage.reference().child(getUserId()).child(collectionIdentifier)
             let storageRef = storage.child("\(UUID().uuidString).jpg")

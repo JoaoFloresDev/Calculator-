@@ -35,7 +35,7 @@
 		7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */; };
 		7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA382ABBC0DA004FD07C /* PurchaseHeaderView.swift */; };
 		736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD02A979BC100851BEF /* LoadingAlert.swift */; };
-		736BDAD32A979D7200851BEF /* ChangeIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD22A979D7100851BEF /* ChangeIconViewController.swift */; };
+		736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD22A979D7100851BEF /* BackupModalViewController.swift */; };
 		737530CF2B60CE6A000B23E3 /* UseTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */; };
 		737530D32B60E517000B23E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530D22B60E489000B23E3 /* ViewController.swift */; };
 		737530D42B60E524000B23E3 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 737530D02B60E471000B23E3 /* art.scnassets */; };
@@ -55,6 +55,10 @@
 		738FB4BE2BADD4C400595F60 /* NewCalc2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738FB4BD2BADD49500595F60 /* NewCalc2.storyboard */; };
 		738FB4BF2BADD4C600595F60 /* ChangeNewCalcViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738FB4BC2BADD49400595F60 /* ChangeNewCalcViewController2.swift */; };
 		73A8EFDE2C5AA49800601079 /* BackupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8EFDD2C5AA49800601079 /* BackupHeaderView.swift */; };
+		73A8EFE02C5ABE7200601079 /* BackupLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8EFDF2C5ABE7200601079 /* BackupLoginView.swift */; };
+		73A8EFE22C5ABE9800601079 /* BackupStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8EFE12C5ABE9800601079 /* BackupStatusView.swift */; };
+		73A8EFE42C5ABEBB00601079 /* CustomLabelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8EFE32C5ABEBB00601079 /* CustomLabelButtonView.swift */; };
+		73A8EFE62C5ACA3600601079 /* BackupProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8EFE52C5ACA3600601079 /* BackupProfileView.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
 		73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D12AA01A0100546566 /* PlaceholderView.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
@@ -157,7 +161,7 @@
 		7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseBenetList.swift; sourceTree = "<group>"; };
 		7342CA382ABBC0DA004FD07C /* PurchaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHeaderView.swift; sourceTree = "<group>"; };
 		736BDAD02A979BC100851BEF /* LoadingAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
-		736BDAD22A979D7100851BEF /* ChangeIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIconViewController.swift; sourceTree = "<group>"; };
+		736BDAD22A979D7100851BEF /* BackupModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupModalViewController.swift; sourceTree = "<group>"; };
 		737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTermsViewController.swift; sourceTree = "<group>"; };
 		737530D02B60E471000B23E3 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		737530D22B60E489000B23E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,10 @@
 		738FB4BC2BADD49400595F60 /* ChangeNewCalcViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNewCalcViewController2.swift; sourceTree = "<group>"; };
 		738FB4BD2BADD49500595F60 /* NewCalc2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewCalc2.storyboard; sourceTree = "<group>"; };
 		73A8EFDD2C5AA49800601079 /* BackupHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupHeaderView.swift; sourceTree = "<group>"; };
+		73A8EFDF2C5ABE7200601079 /* BackupLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupLoginView.swift; sourceTree = "<group>"; };
+		73A8EFE12C5ABE9800601079 /* BackupStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStatusView.swift; sourceTree = "<group>"; };
+		73A8EFE32C5ABEBB00601079 /* CustomLabelButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabelButtonView.swift; sourceTree = "<group>"; };
+		73A8EFE52C5ACA3600601079 /* BackupProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupProfileView.swift; sourceTree = "<group>"; };
 		73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -385,7 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				73A8EFDC2C5A9B3500601079 /* Views */,
-				736BDAD22A979D7100851BEF /* ChangeIconViewController.swift */,
+				736BDAD22A979D7100851BEF /* BackupModalViewController.swift */,
 			);
 			path = Backup;
 			sourceTree = "<group>";
@@ -484,6 +492,10 @@
 			isa = PBXGroup;
 			children = (
 				73A8EFDD2C5AA49800601079 /* BackupHeaderView.swift */,
+				73A8EFDF2C5ABE7200601079 /* BackupLoginView.swift */,
+				73A8EFE12C5ABE9800601079 /* BackupStatusView.swift */,
+				73A8EFE32C5ABEBB00601079 /* CustomLabelButtonView.swift */,
+				73A8EFE52C5ACA3600601079 /* BackupProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -900,10 +912,12 @@
 				C60907022C18D45A0066D337 /* AuthManager.swift in Sources */,
 				2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */,
 				730438652A315B17001EF25B /* AdsService.swift in Sources */,
+				73A8EFE42C5ABEBB00601079 /* CustomLabelButtonView.swift in Sources */,
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
 				730B2EB62C593F810016FD9E /* BackupService.swift in Sources */,
 				737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
+				73A8EFE02C5ABE7200601079 /* BackupLoginView.swift in Sources */,
 				C60906F92C18CED30066D337 /* SignUpViewController.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */,
@@ -933,8 +947,10 @@
 				730438632A315B02001EF25B /* FoldersService.swift in Sources */,
 				730438762A3445EF001EF25B /* FlowLayout.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
+				73A8EFE22C5ABE9800601079 /* BackupStatusView.swift in Sources */,
 				738827C82B1509170051BEF4 /* InAppPurchaseManager.swift in Sources */,
 				738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */,
+				73A8EFE62C5ACA3600601079 /* BackupProfileView.swift in Sources */,
 				73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
@@ -945,7 +961,7 @@
 				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
-				736BDAD32A979D7200851BEF /* ChangeIconViewController.swift in Sources */,
+				736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */,
 				D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */,

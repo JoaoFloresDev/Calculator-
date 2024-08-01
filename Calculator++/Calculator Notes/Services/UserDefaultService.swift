@@ -18,6 +18,7 @@ enum BoolKey: String {
     case yearlyPurchased = "calcanual"
     case needSavePasswordInCloud
     case iCloudEnabled
+    case recurrentBackupUpdate
     
     func set(_ value: Bool) {
         userDefaults.set(value, forKey: rawValue)
