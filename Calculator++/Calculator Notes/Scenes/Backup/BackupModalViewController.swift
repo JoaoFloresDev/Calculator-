@@ -26,6 +26,10 @@ protocol BackupModalViewControllerDelegate: AnyObject {
 
 extension BackupModalViewController: BackupLoginEvent {
     func refreshBackupLoginStatus() {
+        if !isUserLoggedIn() {
+            Defaults.setString(.lastBackupUpdate, "")
+            self.updateBackup.label.text = "Backup inativo"
+        }
         backupStatusView.switchControl.setOn(Defaults.getBool(.iCloudEnabled), animated: true)
         self.delegate?.enableBackupToggled(status: isUserLoggedIn())
         setBackupLoginStatus()
@@ -85,7 +89,10 @@ class BackupModalViewController: UIViewController {
     
     lazy var updateBackup: CustomLabelButtonView = {
         var date = Defaults.getString(.lastBackupUpdate)
-        let view = CustomLabelButtonView(leftText: "Atualizar backup", rightText: Defaults.getString(.lastBackupUpdate), backgroundColor: .systemGray5)
+        if date == "" {
+            date = "Backup inativo"
+        }
+        let view = CustomLabelButtonView(leftText: "Atualizar backup", rightText: date, backgroundColor: .systemGray5)
         view.setTapAction(target: self, action: #selector(updateBackupTapped))
         return view
     }()
@@ -103,7 +110,7 @@ class BackupModalViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    init(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate) {
+    init(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate?) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
         backupStatusView.switchControl.isOn = Defaults.getBool(.iCloudEnabled)

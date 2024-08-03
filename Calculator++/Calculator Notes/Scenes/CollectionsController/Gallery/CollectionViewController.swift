@@ -257,6 +257,27 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
 
 // MARK: - AdditionsRightBarButtonItemDelegate
 extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
+    func cloudButtonTapped() {
+        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+            RazeFaceProducts.store.isProductPurchased("calcanual") ||
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
+            let vc = BackupModalViewController(
+                backupIsActivated: false,
+                delegate: nil
+            )
+            vc.modalPresentationStyle = .overCurrentContext
+            if let tabBarController = self.tabBarController {
+                tabBarController.present(vc, animated: false, completion: nil)
+            }
+        } else {
+            Alerts.showBePremiumToUseBackup(controller: self) { action in
+                let storyboard = UIStoryboard(name: "Purchase",bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                self.present(changePasswordCalcMode, animated: true)
+            }
+        }
+    }
+    
     func addPhotoButtonTapped() {
         coordinator?.addPhotoButtonTapped()
         self.filesIsExpanded = true
@@ -345,7 +366,7 @@ extension CollectionViewController {
         let image = modelData[indexPath.item]
         cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
         cell.isSelectedCell = modelData[indexPath.item].isSelected
-        cell.locationLabel.text = modelData[indexPath.item].location
+//        cell.locationLabel.text = modelData[indexPath.item].location
         cell.applyshadowWithCorner()
         
         return cell

@@ -10,6 +10,7 @@ import UIKit
 protocol AdditionsRightBarButtonItemDelegate: AnyObject {
     func addPhotoButtonTapped()
     func addFolderButtonTapped()
+    func cloudButtonTapped()
 }
 
 class AdditionsRightBarButtonItem: UIBarButtonItem {
@@ -17,14 +18,16 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
     
     var addPhotoButton = UIButton()
     var addFolderButton = UIButton()
+    var cloudButton = UIButton()
     
     init(delegate: AdditionsRightBarButtonItemDelegate? = nil) {
         super.init()
         self.delegate = delegate
+        cloudButton = createcloudButton()
         addPhotoButton = createAddPhotoButton()
         addFolderButton = createAddFolderButton()
         
-        let stackItems = createStackItems(buttons: [addFolderButton, addPhotoButton])
+        let stackItems = createStackItems(buttons: [cloudButton, addFolderButton, addPhotoButton])
         let stackView = createStackView(arrangedSubviews: stackItems)
         let customView = createCustomView(with: stackView)
         self.customView = customView
@@ -36,6 +39,17 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
         addPhotoButton.addTarget(self, action: #selector(addPhotoButtonTapped), for: .touchUpInside)
         addPhotoButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         return addPhotoButton
+    }
+    
+    private func createcloudButton() -> UIButton {
+        let cloudButton = UIButton()
+        if let cloudImage = UIImage(systemName: "icloud.slash")?.withRenderingMode(.alwaysTemplate) {
+            cloudButton.setImage(cloudImage, for: .normal)
+        }
+        cloudButton.tintColor = .systemGray
+        cloudButton.addTarget(self, action: #selector(cloudButtonTapped), for: .touchUpInside)
+        cloudButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        return cloudButton
     }
 
     private func createAddFolderButton() -> UIButton {
@@ -69,8 +83,11 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
         stackView.bottomAnchor.constraint(equalTo: customView.bottomAnchor).isActive = true
         return customView
     }
-
-    // Actions dos botões
+    
+    @objc func cloudButtonTapped() {
+        delegate?.cloudButtonTapped()
+    }
+    
     @objc func addPhotoButtonTapped() {
         delegate?.addPhotoButtonTapped()
     }

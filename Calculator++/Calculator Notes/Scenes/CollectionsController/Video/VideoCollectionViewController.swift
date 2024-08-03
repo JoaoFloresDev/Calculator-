@@ -176,6 +176,17 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
 }
 
 extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
+    func cloudButtonTapped() {
+        let vc = BackupModalViewController(
+            backupIsActivated: false,
+            delegate: nil
+        )
+        vc.modalPresentationStyle = .overCurrentContext
+        if let tabBarController = self.tabBarController {
+            tabBarController.present(vc, animated: false, completion: nil)
+        }
+    }
+    
     func addPhotoButtonTapped() {
         if isPremium {
             presentPickerController()

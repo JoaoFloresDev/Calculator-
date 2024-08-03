@@ -156,8 +156,8 @@ struct Alerts {
     }
     
     static func showBackupDisabled(controller: UIViewController) {
-        let alert = createAlert(title: "Habilite o backup",
-                                message: "Seu backup está desabilitado, habilite a função para prosseguir",
+        let alert = createAlert(title: "Faça o login para continuar",
+                                message: "Realize o login para habilitar as funcionalidades de backup",
                                 actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
