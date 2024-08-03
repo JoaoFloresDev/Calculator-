@@ -102,11 +102,7 @@
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
-		C60906F92C18CED30066D337 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906F72C18CED30066D337 /* SignUpViewController.swift */; };
-		C60906FA2C18CED30066D337 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60906F82C18CED30066D337 /* SignUpViewController.xib */; };
 		C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FB2C18D2D20066D337 /* UIView+Designable.swift */; };
-		C60906FF2C18D2E10066D337 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FD2C18D2E10066D337 /* LoginViewController.swift */; };
-		C60907002C18D2E10066D337 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C60906FE2C18D2E10066D337 /* LoginViewController.xib */; };
 		C60907022C18D45A0066D337 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60907012C18D45A0066D337 /* AuthManager.swift */; };
 		D703A42B2C2B7B06005320CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */; };
 		D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B44A932C366030001255FA /* FirebaseBackupService.swift */; };
@@ -252,11 +248,7 @@
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
-		C60906F72C18CED30066D337 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		C60906F82C18CED30066D337 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		C60906FB2C18D2D20066D337 /* UIView+Designable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
-		C60906FD2C18D2E10066D337 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C60906FE2C18D2E10066D337 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		C60907012C18D45A0066D337 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7B44A932C366030001255FA /* FirebaseBackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBackupService.swift; sourceTree = "<group>"; };
@@ -664,10 +656,6 @@
 		C60906F62C18CEB60066D337 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				C60906F72C18CED30066D337 /* SignUpViewController.swift */,
-				C60906F82C18CED30066D337 /* SignUpViewController.xib */,
-				C60906FD2C18D2E10066D337 /* LoginViewController.swift */,
-				C60906FE2C18D2E10066D337 /* LoginViewController.xib */,
 				C60907012C18D45A0066D337 /* AuthManager.swift */,
 			);
 			path = Auth;
@@ -782,7 +770,6 @@
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
 				738FB4BE2BADD4C400595F60 /* NewCalc2.storyboard in Resources */,
 				737530D42B60E524000B23E3 /* art.scnassets in Resources */,
-				C60907002C18D2E10066D337 /* LoginViewController.xib in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
 				D703A42B2C2B7B06005320CC /* GoogleService-Info.plist in Resources */,
 				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
@@ -790,7 +777,6 @@
 				73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */,
 				2E4A079B1C42F3B0007F415F /* Assets.xcassets in Resources */,
 				2E4A07991C42F3B0007F415F /* Main.storyboard in Resources */,
-				C60906FA2C18CED30066D337 /* SignUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,7 +904,6 @@
 				737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
 				73A8EFE02C5ABE7200601079 /* BackupLoginView.swift in Sources */,
-				C60906F92C18CED30066D337 /* SignUpViewController.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */,
 				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
@@ -932,7 +917,6 @@
 				73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
-				C60906FF2C18D2E10066D337 /* LoginViewController.swift in Sources */,
 				73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */,
 				73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */,
 				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,

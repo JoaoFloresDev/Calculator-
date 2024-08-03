@@ -146,8 +146,9 @@ class BackupLoginView: UIView {
                         Alerts.showAlert(title: "Error", text: "\(error.localizedDescription)\n\nSe Você ainda não possui uma conta, selecione 'Sign up with google'", controller: self.controller)
                     } else {
                         Defaults.setBool(.iCloudEnabled, true)
-                        self.delegate?.refreshBackupLoginStatus()
-                        Alerts.showAlert(title: "Login efetuado com sucesso!", text: "Suas fotos serão sincronizadas sempre que adicionar novas fotos ou clicar no botão 'atualizar backup'", controller: self.controller)
+                        Alerts.showAlert(title: "Login efetuado com sucesso!", text: "Suas fotos serão sincronizadas sempre que adicionar novas fotos ou clicar no botão 'atualizar backup'", controller: self.controller) {
+                            self.delegate?.refreshBackupLoginStatus()
+                        }
                     }
                 }
             } else {

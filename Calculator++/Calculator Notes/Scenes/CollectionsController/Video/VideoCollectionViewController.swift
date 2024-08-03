@@ -59,6 +59,7 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
                 buttonAction: nil
             )
         }
+        commonViewWillAppear()
     }
     
     override func viewDidLoad() {
@@ -178,8 +179,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
 extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     func cloudButtonTapped() {
         let vc = BackupModalViewController(
-            backupIsActivated: false,
-            delegate: nil
+            delegate: self
         )
         vc.modalPresentationStyle = .overCurrentContext
         if let tabBarController = self.tabBarController {

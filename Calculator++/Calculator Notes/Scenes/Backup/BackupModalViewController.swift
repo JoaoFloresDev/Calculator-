@@ -26,13 +26,24 @@ protocol BackupModalViewControllerDelegate: AnyObject {
 
 extension BackupModalViewController: BackupLoginEvent {
     func refreshBackupLoginStatus() {
-        if !isUserLoggedIn() {
-            Defaults.setString(.lastBackupUpdate, "")
-            self.updateBackup.label.text = "Backup inativo"
-        }
         backupStatusView.switchControl.setOn(Defaults.getBool(.iCloudEnabled), animated: true)
         self.delegate?.enableBackupToggled(status: isUserLoggedIn())
         setBackupLoginStatus()
+        if !isUserLoggedIn() {
+            Defaults.setString(.lastBackupUpdate, "")
+            updateBackup.label.text = "Pendente"
+        } else {
+            loadingAlert.startLoading()
+            FirebaseBackupService.hasDataInFirebase { hasData, _, items  in
+                self.loadingAlert.stopLoading {
+                    if let items = items, !items.isEmpty, hasData {
+                        self.askUserToRestoreBackup(backupItems: items)
+                    } else {
+                        self.updateBackupTapped()
+                    }
+                }
+            }
+        }
     }
 }
                                         
@@ -89,8 +100,8 @@ class BackupModalViewController: UIViewController {
     
     lazy var updateBackup: CustomLabelButtonView = {
         var date = Defaults.getString(.lastBackupUpdate)
-        if date == "" {
-            date = "Backup inativo"
+        if date.isEmpty {
+            date = "Pendente"
         }
         let view = CustomLabelButtonView(leftText: "Atualizar backup", rightText: date, backgroundColor: .systemGray5)
         view.setTapAction(target: self, action: #selector(updateBackupTapped))
@@ -110,7 +121,7 @@ class BackupModalViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    init(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate?) {
+    init(delegate: BackupModalViewControllerDelegate?) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
         backupStatusView.switchControl.isOn = Defaults.getBool(.iCloudEnabled)
@@ -268,13 +279,14 @@ class BackupModalViewController: UIViewController {
     private func askUserToRestoreBackup(backupItems: [MediaItem]) {
         Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
             if restoreBackup {
-                self.restoreBackup(backupItems: backupItems)
+                self.loadingAlert.startLoading() {
+                    self.restoreBackup(backupItems: backupItems)
+                }
             }
         }
     }
     
     private func restoreBackup(backupItems: [MediaItem]) {
-        loadingAlert.stopLoading {
             FirebaseBackupService.restoreBackup(items: backupItems) { success, _ in
                 self.loadingAlert.stopLoading {
                     if success {
@@ -288,7 +300,6 @@ class BackupModalViewController: UIViewController {
                     }
                 }
             }
-        }
     }
 }
 

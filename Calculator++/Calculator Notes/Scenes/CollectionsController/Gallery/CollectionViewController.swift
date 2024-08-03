@@ -1,4 +1,5 @@
 import Network
+import FirebaseAuth
 import UIKit
 import Photos
 import AssetsPickerViewController
@@ -84,14 +85,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             RazeFaceProducts.store.isProductPurchased("calcanual") ||
             RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
             return
-        // coordinator = CollectionViewCoordinator(self)
-        // setupData()
-        // configureNavigationBar()
-        // setupTabBars()
-        // handleInitialLaunch()
-        // setupPlaceholderView()
-        // if !Defaults.getBool(.premiumPurchased) {
-        //     setupAds()
         }
         
         if check30DaysPassed() {
@@ -102,6 +95,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        commonViewWillAppear()
         checkPurchase()
     }
     
@@ -256,14 +250,14 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
 }
 
 // MARK: - AdditionsRightBarButtonItemDelegate
+
 extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
     func cloudButtonTapped() {
         if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
             RazeFaceProducts.store.isProductPurchased("calcanual") ||
             RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
             let vc = BackupModalViewController(
-                backupIsActivated: false,
-                delegate: nil
+                delegate: self
             )
             vc.modalPresentationStyle = .overCurrentContext
             if let tabBarController = self.tabBarController {
@@ -366,7 +360,6 @@ extension CollectionViewController {
         let image = modelData[indexPath.item]
         cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
         cell.isSelectedCell = modelData[indexPath.item].isSelected
-//        cell.locationLabel.text = modelData[indexPath.item].location
         cell.applyshadowWithCorner()
         
         return cell

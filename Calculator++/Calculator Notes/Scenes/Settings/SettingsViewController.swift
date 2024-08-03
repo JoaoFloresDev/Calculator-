@@ -54,7 +54,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
-        Defaults.setBool(.recoveryStatus, sender.isOn)
+        Defaults.setBool(.recoveryStatus, !sender.isOn)
     }
 
     @IBAction func premiumVersionPressed(_ sender: Any) {
@@ -240,12 +240,22 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc
     func backupPressed(_ sender: UITapGestureRecognizer? = nil) {
-        coordinator.showBackupOptions(backupIsActivated: self.backupIsActivated, delegate: self)
+        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+            RazeFaceProducts.store.isProductPurchased("calcanual") ||
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
+            coordinator.showBackupOptions(backupIsActivated: self.backupIsActivated, delegate: self)
+        } else {
+            Alerts.showBePremiumToUseBackup(controller: self) { action in
+                let storyboard = UIStoryboard(name: "Purchase",bundle: nil)
+                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                self.present(changePasswordCalcMode, animated: true)
+            }
+        }
     }
     
     private func setupUI() {
         self.navigationController?.setup()
-        switchButton.isOn = Defaults.getBool(.recoveryStatus)
+        switchButton.isOn = !Defaults.getBool(.recoveryStatus)
         setupTexts()
         setupViewStyles()
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol AdditionsRightBarButtonItemDelegate: AnyObject {
     func addPhotoButtonTapped()
@@ -41,14 +42,26 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
         return addPhotoButton
     }
     
+    func isUserLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
+    }
+    
     private func createcloudButton() -> UIButton {
         let cloudButton = UIButton()
-        if let cloudImage = UIImage(systemName: "icloud.slash")?.withRenderingMode(.alwaysTemplate) {
+        if let cloudImage = UIImage(systemName: "exclamationmark.icloud")?.withRenderingMode(.alwaysTemplate) {
             cloudButton.setImage(cloudImage, for: .normal)
         }
         cloudButton.tintColor = .systemGray
+        
+        if isUserLoggedIn() {
+            if let cloudImage = UIImage(systemName: "icloud.fill")?.withRenderingMode(.alwaysTemplate) {
+                cloudButton.setImage(cloudImage, for: .normal)
+            }
+            cloudButton.tintColor = .systemBlue
+        }
+        
         cloudButton.addTarget(self, action: #selector(cloudButtonTapped), for: .touchUpInside)
-        cloudButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        cloudButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
         return cloudButton
     }
 

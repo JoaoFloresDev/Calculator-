@@ -10,11 +10,11 @@ import Foundation
 
 class SettingsCoordinator {
     weak var viewController: UIViewController?
-    weak var tabBarController: UITabBarController? // Adicione essa linha se o tabBarController não for acessível de outra forma
+    weak var tabBarController: UITabBarController?
     
     init(viewController: UIViewController) {
         self.viewController = viewController
-        self.tabBarController = viewController.tabBarController // Adicione essa linha se necessário
+        self.tabBarController = viewController.tabBarController
     }
     
     func showBankMode() {
@@ -35,7 +35,6 @@ class SettingsCoordinator {
     
     func showBackupOptions(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate) {
         let vc = BackupModalViewController(
-            backupIsActivated: backupIsActivated,
             delegate: delegate
         )
         vc.modalPresentationStyle = .overCurrentContext
