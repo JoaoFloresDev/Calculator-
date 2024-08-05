@@ -61,7 +61,7 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
         }
         
         cloudButton.addTarget(self, action: #selector(cloudButtonTapped), for: .touchUpInside)
-        cloudButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
+        cloudButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return cloudButton
     }
 

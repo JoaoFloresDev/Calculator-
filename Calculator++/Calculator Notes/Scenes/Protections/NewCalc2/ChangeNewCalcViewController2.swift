@@ -19,7 +19,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.contentHorizontalAlignment = .right
         
-        button.addTarget(ChangeNewCalcViewController2.self, action: #selector(faceIDButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(faceIDButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -113,7 +113,6 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                     DispatchQueue.main.async {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         if let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home") as? UIViewController {
-                            // Configura homeViewController como rootViewController da janela principal.
                             UIApplication.shared.delegate?.window??.rootViewController = homeViewController
                             UIApplication.shared.delegate?.window??.makeKeyAndVisible()
                         }

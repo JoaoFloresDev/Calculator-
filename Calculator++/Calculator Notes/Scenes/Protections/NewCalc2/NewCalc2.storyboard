@@ -406,17 +406,6 @@
                                 <color key="textColor" name="Labels"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPp-Rn-uMe">
-                                <rect key="frame" x="5" y="48" width="60" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="BLU-hv-TyR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                                <state key="normal" title="Recover"/>
-                                <connections>
-                                    <action selector="useFaceID:" destination="q2d-fs-WKk" eventType="touchUpInside" id="uq1-Rj-kSN"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="f3h-mR-4mJ"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -424,9 +413,7 @@
                             <constraint firstItem="f3h-mR-4mJ" firstAttribute="trailing" secondItem="6NT-I5-V0z" secondAttribute="trailing" constant="75" id="Epo-Ud-99l"/>
                             <constraint firstItem="Iii-gx-mNJ" firstAttribute="leading" secondItem="f3h-mR-4mJ" secondAttribute="leading" constant="10" id="HAW-BM-7ce"/>
                             <constraint firstItem="UUd-Uh-she" firstAttribute="centerY" secondItem="6mb-Wq-4jW" secondAttribute="centerY" id="HlK-yD-dYE"/>
-                            <constraint firstItem="bPp-Rn-uMe" firstAttribute="top" secondItem="f3h-mR-4mJ" secondAttribute="top" id="LeX-Iv-JqC"/>
                             <constraint firstItem="51n-An-gJz" firstAttribute="leading" secondItem="f3h-mR-4mJ" secondAttribute="leading" id="OHv-58-KHf"/>
-                            <constraint firstItem="bPp-Rn-uMe" firstAttribute="leading" secondItem="f3h-mR-4mJ" secondAttribute="leading" constant="5" id="Ptv-5n-9RF"/>
                             <constraint firstItem="f3h-mR-4mJ" firstAttribute="bottom" secondItem="51n-An-gJz" secondAttribute="bottom" id="UM1-iW-UJ8"/>
                             <constraint firstItem="f3h-mR-4mJ" firstAttribute="trailing" secondItem="Iii-gx-mNJ" secondAttribute="trailing" constant="10" id="WeO-oN-bfI"/>
                             <constraint firstItem="51n-An-gJz" firstAttribute="top" secondItem="Iii-gx-mNJ" secondAttribute="bottom" constant="15" id="dc6-1d-cQt"/>
@@ -440,7 +427,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="faceIDButton" destination="bPp-Rn-uMe" id="mAi-lO-Pet"/>
                         <outlet property="instructionsLabel" destination="6NT-I5-V0z" id="cTS-hV-wlk"/>
                         <outlet property="outputLbl" destination="Iii-gx-mNJ" id="d75-cL-wrb"/>
                     </connections>

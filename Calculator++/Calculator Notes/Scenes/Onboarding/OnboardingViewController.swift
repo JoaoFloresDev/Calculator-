@@ -56,9 +56,6 @@ class OnboardingWelcomeViewController: UIViewController, UINavigationControllerD
 extension OnboardingWelcomeViewController: OnboardingViewDelegate {
     func didTapPrimaryButton() {
          apresentarVaultViewController()
-        
-//        let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func apresentarVaultViewController() {

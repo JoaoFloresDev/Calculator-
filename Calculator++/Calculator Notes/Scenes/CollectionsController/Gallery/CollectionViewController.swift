@@ -250,14 +250,17 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
 }
 
 // MARK: - AdditionsRightBarButtonItemDelegate
-
 extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
     func cloudButtonTapped() {
+        let controllers = self.tabBarController?.viewControllers
+        let navigation = controllers?[0] as? UINavigationController
+        let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
+        
         if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
             RazeFaceProducts.store.isProductPurchased("calcanual") ||
             RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
             let vc = BackupModalViewController(
-                delegate: self
+                delegate: self, rootController: collectionViewController
             )
             vc.modalPresentationStyle = .overCurrentContext
             if let tabBarController = self.tabBarController {
@@ -476,8 +479,40 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
 
         group.notify(queue: .main) {
             self.modelData.append(contentsOf: newPhotos)
-            self.modelData = self.sortPhotosByLocation(photos: self.modelData)
             collectionView.reloadData()
+            self.updateBackupTapped(numberOfNewPhotos: newPhotos.count)
+        }
+    }
+    
+    func getCurrentDateTimeFormatted() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        let currentDate = Date()
+        return dateFormatter.string(from: currentDate)
+    }
+    
+    func updateBackupTapped(numberOfNewPhotos: Int) {
+        if (RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+            RazeFaceProducts.store.isProductPurchased("calcanual") ||
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")) && isUserLoggedIn() {
+            
+            var numberOfPhotos = Defaults.getInt(.numberOfNonSincronizatedPhotos) + numberOfNewPhotos
+            Defaults.setInt(.numberOfNonSincronizatedPhotos, numberOfPhotos)
+            
+            if Defaults.getInt(.numberOfNonSincronizatedPhotos) > 3 {
+                self.loadingAlert.startLoading {
+                    FirebaseBackupService.updateBackup(completion: { _ in
+                        DispatchQueue.main.async {
+                            self.loadingAlert.stopLoading {
+                                Alerts.showBackupSuccess(controller: self)
+                                Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
+                                Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
+                            }
+                        }
+                    })
+                }
+            }
         }
     }
     

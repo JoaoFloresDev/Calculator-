@@ -29,22 +29,14 @@ class CloudKitVideoService: ObservableObject {
     }
     
     static func saveVideo(name: String, videoData: Data, completion: @escaping (Bool, Error?) -> Void) {
-        let quality = Defaults.getInt(.videoCompressionQuality)
-        var qualityString = AVAssetExportPresetHighestQuality
-        if quality < 4 {
-            qualityString = AVAssetExportPresetLowQuality
-        } else if quality < 7 {
-            qualityString = AVAssetExportPresetMediumQuality
-        }
         saveVideo2(
             name: name,
             videoData: videoData,
-            quality: qualityString,
             completion: completion
         )
     }
 
-    static func saveVideo2(name: String, videoData: Data, quality: String, completion: @escaping (Bool, Error?) -> Void) {
+    static func saveVideo2(name: String, videoData: Data, completion: @escaping (Bool, Error?) -> Void) {
         let record = CKRecord(recordType: videoRecordTypeIdentifier)
         record.setValue(name, forKey: VideoRecordKeys.name)
         
@@ -67,7 +59,7 @@ class CloudKitVideoService: ObservableObject {
                 
                 // Configurar as opções de exportação
                 let asset = AVURLAsset(url: videoFileURL)
-                let exportSession = AVAssetExportSession(asset: asset, presetName: quality)
+                let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality)
                 
                 guard let exportSession = exportSession else {
                     print("Erro ao criar a sessão de exportação")

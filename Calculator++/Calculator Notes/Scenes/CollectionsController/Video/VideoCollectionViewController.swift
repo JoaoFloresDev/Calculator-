@@ -178,8 +178,12 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
 
 extension VideoCollectionViewController: AdditionsRightBarButtonItemDelegate {
     func cloudButtonTapped() {
+        let controllers = self.tabBarController?.viewControllers
+        let navigation = controllers?[0] as? UINavigationController
+        let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
+        
         let vc = BackupModalViewController(
-            delegate: self
+            delegate: self, rootController: collectionViewController
         )
         vc.modalPresentationStyle = .overCurrentContext
         if let tabBarController = self.tabBarController {

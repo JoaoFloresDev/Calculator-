@@ -57,7 +57,7 @@ class BackupModalViewController: UIViewController {
     // MARK: - Variables
     var containerViewHeightConstraint: Constraint?
     var containerViewBottomConstraint: Constraint?
-    
+    var rootController: CollectionViewController?
     weak var delegate: BackupModalViewControllerDelegate?
     
     // MARK: - Views
@@ -121,16 +121,13 @@ class BackupModalViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    init(delegate: BackupModalViewControllerDelegate?) {
+    init(delegate: BackupModalViewControllerDelegate?, rootController: CollectionViewController?) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
+        self.rootController = rootController
         backupStatusView.switchControl.isOn = Defaults.getBool(.iCloudEnabled)
-        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
     }
     
-    deinit {
-        NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
-    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -167,7 +164,7 @@ class BackupModalViewController: UIViewController {
         containerView.addSubview(contentStackView)
         contentStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.bottom.equalTo(containerView.snp.bottom)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
             make.leading.trailing.equalTo(containerView)
         }
         
@@ -291,10 +288,7 @@ class BackupModalViewController: UIViewController {
                 self.loadingAlert.stopLoading {
                     if success {
                         Alerts.showBackupSuccess(controller: self)
-                        let controllers = self.tabBarController?.viewControllers
-                        let navigation = controllers?[0] as? UINavigationController
-                        let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
-                        collectionViewController?.viewDidLoad()
+                        self.rootController?.viewDidLoad()
                     } else {
                         Alerts.showBackupError(controller: self)
                     }

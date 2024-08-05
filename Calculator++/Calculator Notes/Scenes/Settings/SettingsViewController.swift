@@ -84,15 +84,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // MARK: - Life Cycle
-    func isUserLoggedIn() -> Bool {
-        return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupGestures()
-        backupIsActivated = isUserLoggedIn()
+        backupIsActivated = isUserLoggedIn() && isPremium()
     }
     
     // MARK: - UI

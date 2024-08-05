@@ -63,12 +63,8 @@ class BasicCollectionViewController: UICollectionViewController {
         }
     }
     
-    func isUserLoggedIn() -> Bool {
-        return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
-    }
-    
     func commonViewWillAppear() {
-        if isUserLoggedIn() {
+        if isUserLoggedIn() && isPremium() {
             if let cloudImage = UIImage(systemName: "icloud.fill")?.withRenderingMode(.alwaysTemplate) {
                 additionsRightBarButtonItem?.cloudButton.setImage(cloudImage, for: .normal)
             }
@@ -103,5 +99,19 @@ extension BasicCollectionViewController: BackupModalViewControllerDelegate {
             }
             additionsRightBarButtonItem?.cloudButton.tintColor = .systemGray
         }
+    }
+}
+
+func isUserLoggedIn() -> Bool {
+    return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
+}
+
+func isPremium() -> Bool {
+    if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+        RazeFaceProducts.store.isProductPurchased("calcanual") ||
+        RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
+        true
+    } else {
+        false
     }
 }

@@ -358,23 +358,23 @@ class FirebaseImageService: ObservableObject {
         }
     }
     
-    static func isICloudEnabled(completion: @escaping (Bool) -> Void) {
-        // Replace this with Firebase specific code if needed
-        let isFirebaseEnabled = Defaults.getBool(.iCloudEnabled)
-        completion(isFirebaseEnabled)
-    }
-    
-    static func enableICloudSync(completion: @escaping (Bool) -> Void) {
-        // Replace this with Firebase specific code if needed
-        Defaults.setBool(.iCloudEnabled, true)
-        completion(true)
-    }
-    
-    static func disableICloudSync(completion: @escaping (Bool) -> Void) {
-        // Replace this with Firebase specific code if needed
-        Defaults.setBool(.iCloudEnabled, false)
-        completion(true)
-    }
+//    static func isICloudEnabled(completion: @escaping (Bool) -> Void) {
+//        // Replace this with Firebase specific code if needed
+//        let isFirebaseEnabled = Defaults.getBool(.iCloudEnabled)
+//        completion(isFirebaseEnabled)
+//    }
+//    
+//    static func enableICloudSync(completion: @escaping (Bool) -> Void) {
+//        // Replace this with Firebase specific code if needed
+//        Defaults.setBool(.iCloudEnabled, true)
+//        completion(true)
+//    }
+//    
+//    static func disableICloudSync(completion: @escaping (Bool) -> Void) {
+//        // Replace this with Firebase specific code if needed
+//        Defaults.setBool(.iCloudEnabled, false)
+//        completion(true)
+//    }
     
     static func redirectToICloudSettings() {
         if let url = URL(string: "App-prefs:root=CASTLE") {
@@ -401,22 +401,14 @@ class FirebaseVideoService: ObservableObject {
     static let userCollection = "users"
     
     static func saveVideo(name: String, videoData: Data, completion: @escaping (Bool, Error?) -> Void) {
-        let quality = Defaults.getInt(.videoCompressionQuality)
-        var qualityString = AVAssetExportPresetHighestQuality
-        if quality < 4 {
-            qualityString = AVAssetExportPresetLowQuality
-        } else if quality < 7 {
-            qualityString = AVAssetExportPresetMediumQuality
-        }
         saveVideo2(
             name: name,
             videoData: videoData,
-            quality: qualityString,
             completion: completion
         )
     }
     
-    static func saveVideo2(name: String, videoData: Data, quality: String, completion: @escaping (Bool, Error?) -> Void) {
+    static func saveVideo2(name: String, videoData: Data, completion: @escaping (Bool, Error?) -> Void) {
         
         let storage = storage.reference().child(getUserId()).child(videoCollection)
         let videoID = UUID().uuidString

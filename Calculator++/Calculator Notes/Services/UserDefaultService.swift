@@ -32,8 +32,7 @@ enum BoolKey: String {
 enum IntKey: String {
     case launchCounter
     case disableRecoveryButtonCounter
-    case imageCompressionQuality
-    case videoCompressionQuality
+    case numberOfNonSincronizatedPhotos
     
     func set(_ value: Int) {
         userDefaults.set(value, forKey: rawValue)

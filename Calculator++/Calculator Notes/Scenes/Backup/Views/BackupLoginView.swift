@@ -130,6 +130,7 @@ class BackupLoginView: UIView {
     }
     
     @objc func loginTapped() {
+        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
         GIDSignIn.sharedInstance.signIn(withPresenting: controller) { signInResult, error in
             guard let result = signInResult else {
                 if (error as? NSError)?.code == -5 {
@@ -154,10 +155,12 @@ class BackupLoginView: UIView {
             } else {
                 Alerts.showAlert(title: "Error", text: "Something went wrong.", controller: self.controller)
             }
+            NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
         }
     }
     
     @objc func createAccountTapped() {
+        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
         GIDSignIn.sharedInstance.signIn(withPresenting: controller) { signInResult, error in
             guard let result = signInResult else {
                 if (error as? NSError)?.code == -5 {
@@ -181,6 +184,7 @@ class BackupLoginView: UIView {
             } else {
                 Alerts.showAlert(title: "Error", text: "Something went wrong.", controller: self.controller)
             }
+            NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
         }
     }
     
