@@ -42,7 +42,16 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         case 13:
             runningNumber += "+"
         case 14:
-            equalPressed()
+            if vaultMode == .verify {
+                if let newValue = evaluate(runningNumber) {
+                    runningNumber = String(newValue)
+                    outputLbl.text = runningNumber
+                } else {
+                    return
+                }
+            } else {
+                return
+            }
         case 15:
             runningNumber += "."
         default:
@@ -66,21 +75,69 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
     }
     
     private func evaluate(_ expression: String) -> String? {
-        var exp = expression.replacingOccurrences(of: " ", with: "")
-        exp = exp.replacingOccurrences(of: "x", with: "*")
-        exp = exp.replacingOccurrences(of: "÷", with: "/")
-        let expr = NSExpression(format: exp)
-        if let result = expr.expressionValue(with: nil, context: nil) as? Double {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.maximumFractionDigits = 10
-            formatter.minimumFractionDigits = 0
-            formatter.usesGroupingSeparator = false
-            
-            return formatter.string(from: NSNumber(value: result))
-        } else {
-            return nil
+        let formattedExpression = expression
+            .replacingOccurrences(of: " ", with: "")
+            .replacingOccurrences(of: "×", with: "*")
+            .replacingOccurrences(of: "÷", with: "/")
+        
+        var operands = [Double]()
+        var operators = [Character]()
+        
+        var currentNumber = ""
+        var previousChar: Character? = nil
+        
+        for char in formattedExpression {
+            if char.isNumber || char == "." || (char == "-" && (previousChar == nil || previousChar == "+" || previousChar == "-" || previousChar == "*" || previousChar == "/")) {
+                currentNumber.append(char)
+            } else {
+                if let number = Double(currentNumber) {
+                    operands.append(number)
+                    currentNumber = ""
+                }
+                operators.append(char)
+            }
+            previousChar = char
         }
+        
+        if let number = Double(currentNumber) {
+            operands.append(number)
+        }
+        
+        while let index = operators.firstIndex(where: { $0 == "*" || $0 == "/" }) {
+            let operatorSymbol = operators.remove(at: index)
+            let leftOperand = operands.remove(at: index)
+            let rightOperand = operands.remove(at: index)
+            let result: Double
+            if operatorSymbol == "*" {
+                result = leftOperand * rightOperand
+            } else {
+                result = leftOperand / rightOperand
+            }
+            operands.insert(result, at: index)
+        }
+        
+        while let index = operators.firstIndex(where: { $0 == "+" || $0 == "-" }) {
+            let operatorSymbol = operators.remove(at: index)
+            let leftOperand = operands.remove(at: index)
+            let rightOperand = operands.remove(at: index)
+            let result: Double
+            if operatorSymbol == "+" {
+                result = leftOperand + rightOperand
+            } else {
+                result = leftOperand - rightOperand
+            }
+            operands.insert(result, at: index)
+        }
+        
+        let result = operands.first ?? 0.0
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 10
+        formatter.minimumFractionDigits = 0
+        formatter.usesGroupingSeparator = false
+        
+        return formatter.string(from: NSNumber(value: result))
     }
     
     func saveKeyIfNeed() {
