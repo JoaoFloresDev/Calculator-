@@ -1,0 +1,24 @@
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "869-kk-5SQ"; */
+"869-kk-5SQ.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "DiB-BP-SoR"; */
+"DiB-BP-SoR.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Imagem"; ObjectID = "brI-37-yQo"; */
+"brI-37-yQo.normalTitle" = "Imagem";
+
+/* Class = "UIButton"; normalTitle = "Gravar"; ObjectID = "d01-Tt-mGJ"; */
+"d01-Tt-mGJ.normalTitle" = "Gravar";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "kET-Rj-Loh"; */
+"kET-Rj-Loh.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "xiV-28-h5k"; */
+"xiV-28-h5k.title" = "Item";
+
+/* Class = "UIButton"; configuration.title = "Close"; ObjectID = "ybs-Ah-mnf"; */
+"ybs-Ah-mnf.configuration.title" = "Close";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ybs-Ah-mnf"; */
+"ybs-Ah-mnf.normalTitle" = "Button";

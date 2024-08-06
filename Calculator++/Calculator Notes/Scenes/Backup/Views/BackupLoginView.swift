@@ -26,7 +26,7 @@ class BackupLoginView: UIView {
     
     lazy var loginTitle: UILabel = {
         let label = UILabel()
-        label.text = "Já possui uma conta?"
+        label.text = Text.hasAccount.localized()//"Já possui uma conta?"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         label.numberOfLines = 0
@@ -56,7 +56,7 @@ class BackupLoginView: UIView {
 
     lazy var createAccountTitle: UILabel = {
         let label = UILabel()
-        label.text = "Ainda não? Crie agora"
+        label.text = Text.notHasAccount.localized()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         label.numberOfLines = 0
@@ -136,7 +136,7 @@ class BackupLoginView: UIView {
                 if (error as? NSError)?.code == -5 {
                     print("User cancelled")
                 } else {
-                    Alerts.showAlert(title: "Error", text: "\(error?.localizedDescription ?? "Something went wrong")\n\nSe você ainda não possui uma conta, selecione 'Sign up with google'", controller: self.controller)
+                    Alerts.showAlert(title: Text.errorTitle.localized(), text: "\(error?.localizedDescription ?? "\(Text.genericLoginError.localized())")\n\n\(Text.createLoginError.localized())", controller: self.controller)
                 }
                 return
             }
@@ -144,16 +144,16 @@ class BackupLoginView: UIView {
             if let googleID = result.user.userID, let email = result.user.profile?.email {
                 self.manager.signInWithEmail(withEmail: email, password: googleID) { error in
                     if let error = error {
-                        Alerts.showAlert(title: "Error", text: "\(error.localizedDescription)\n\nSe Você ainda não possui uma conta, selecione 'Sign up with google'", controller: self.controller)
+                        Alerts.showAlert(title: Text.errorTitle.localized(), text: "\(error.localizedDescription)\n\n\(Text.createLoginError.localized())", controller: self.controller)
                     } else {
                         Defaults.setBool(.iCloudEnabled, true)
-                        Alerts.showAlert(title: "Login efetuado com sucesso!", text: "Suas fotos serão sincronizadas sempre que adicionar novas fotos ou clicar no botão 'atualizar backup'", controller: self.controller) {
+                        Alerts.showAlert(title: Text.successLogin.localized(), text: Text.successLoginDescription.localized(), controller: self.controller) {
                             self.delegate?.refreshBackupLoginStatus()
                         }
                     }
                 }
             } else {
-                Alerts.showAlert(title: "Error", text: "Something went wrong.", controller: self.controller)
+                Alerts.showAlert(title: Text.errorTitle.localized(), text: Text.genericLoginError.localized(), controller: self.controller)
             }
             NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
         }
@@ -166,7 +166,7 @@ class BackupLoginView: UIView {
                 if (error as? NSError)?.code == -5 {
                     print("User cancelled")
                 } else {
-                    Alerts.showAlert(title: "Error", text: error?.localizedDescription ?? "Something went wrong", controller: self.controller)
+                    Alerts.showAlert(title: Text.errorTitle.localized(), text: error?.localizedDescription ?? Text.genericLoginError.localized(), controller: self.controller)
                 }
                 return
             }
@@ -174,11 +174,11 @@ class BackupLoginView: UIView {
             if let googleID = result.user.userID, let email = result.user.profile?.email {
                 self.manager.createAccount(withEmail: email, password: googleID) { error in
                     if let error = error {
-                        Alerts.showAlert(title: "Error", text: error.localizedDescription, controller: self.controller)
+                        Alerts.showAlert(title: Text.errorTitle.localized(), text: error.localizedDescription, controller: self.controller)
                     } else {
                         Defaults.setBool(.iCloudEnabled, true)
                         self.delegate?.refreshBackupLoginStatus()
-                        Alerts.showAlert(title: "Login efetuado com sucesso!", text: "Suas fotos serão sincronizadas sempre que adicionar novas fotos ou clicar no botão 'atualizar backup'", controller: self.controller)
+                        Alerts.showAlert(title: Text.successLogin.localized(), text: Text.successLoginDescription.localized(), controller: self.controller)
                     }
                 }
             } else {

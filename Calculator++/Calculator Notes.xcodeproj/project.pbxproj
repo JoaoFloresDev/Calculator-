@@ -25,11 +25,7 @@
 		7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		730B2EB62C593F810016FD9E /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EB42C593F800016FD9E /* BackupService.swift */; };
-		730B2EB72C593F810016FD9E /* CloudKitImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EB52C593F800016FD9E /* CloudKitImageService.swift */; };
 		730B2EB92C593FD40016FD9E /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EB82C593FD40016FD9E /* CloudUpdateManager.swift */; };
-		730B2EBB2C5940A90016FD9E /* CloudNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EBA2C5940A80016FD9E /* CloudNotifications.swift */; };
-		730B2EBD2C5940CE0016FD9E /* CloudKitPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EBC2C5940CE0016FD9E /* CloudKitPasswordService.swift */; };
-		730B2EBF2C5941710016FD9E /* CloudKitVideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EBE2C5941710016FD9E /* CloudKitVideoService.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
 		7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA342ABB95DB004FD07C /* DiamondView.swift */; };
 		7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */; };
@@ -146,11 +142,7 @@
 		7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLeftBarButtonItemDelegate.swift; sourceTree = "<group>"; };
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		730B2EB42C593F800016FD9E /* BackupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
-		730B2EB52C593F800016FD9E /* CloudKitImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitImageService.swift; sourceTree = "<group>"; };
 		730B2EB82C593FD40016FD9E /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUpdateManager.swift; sourceTree = "<group>"; };
-		730B2EBA2C5940A80016FD9E /* CloudNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudNotifications.swift; sourceTree = "<group>"; };
-		730B2EBC2C5940CE0016FD9E /* CloudKitPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitPasswordService.swift; sourceTree = "<group>"; };
-		730B2EBE2C5941710016FD9E /* CloudKitVideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitVideoService.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calculator Notes.entitlements"; sourceTree = "<group>"; };
 		7342CA342ABB95DB004FD07C /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
@@ -223,6 +215,14 @@
 		73C5635F2A9CE9010043DC78 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73C563602A9CE9020043DC78 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73C563612A9CE9030043DC78 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73CB3AE52C61AF6400743FF6 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		73CB3AE62C61AF6D00743FF6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		73CB3AE72C61AF6F00743FF6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		73CB3AE82C61AF7400743FF6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		73CB3AE92C61B00C00743FF6 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
+		73CB3AEA2C61B00D00743FF6 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		73CB3AEB2C61B00D00743FF6 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		73CB3AEC2C61B00E00743FF6 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		73CBF87C2B6F1DFB00F85B6E /* BaseNewCalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNewCalcViewController.swift; sourceTree = "<group>"; };
 		73CBF87D2B6F1DFB00F85B6E /* NewCalc.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewCalc.storyboard; sourceTree = "<group>"; };
 		73CBF87E2B6F1DFC00F85B6E /* NewCalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalcViewController.swift; sourceTree = "<group>"; };
@@ -361,11 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				730B2EB42C593F800016FD9E /* BackupService.swift */,
-				730B2EB52C593F800016FD9E /* CloudKitImageService.swift */,
 				730B2EB82C593FD40016FD9E /* CloudUpdateManager.swift */,
-				730B2EBA2C5940A80016FD9E /* CloudNotifications.swift */,
-				730B2EBC2C5940CE0016FD9E /* CloudKitPasswordService.swift */,
-				730B2EBE2C5941710016FD9E /* CloudKitVideoService.swift */,
 			);
 			path = cloud;
 			sourceTree = "<group>";
@@ -740,6 +736,7 @@
 				ru,
 				fr,
 				id,
+				"pt-PT",
 			);
 			mainGroup = 2E4A07871C42F3B0007F415F;
 			packageReferences = (
@@ -907,7 +904,6 @@
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */,
 				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
-				730B2EBF2C5941710016FD9E /* CloudKitVideoService.swift in Sources */,
 				73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,
@@ -952,7 +948,6 @@
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				73862C842AAD18BC005D9D25 /* Constants.swift in Sources */,
 				730B2EB92C593FD40016FD9E /* CloudUpdateManager.swift in Sources */,
-				730B2EBB2C5940A90016FD9E /* CloudNotifications.swift in Sources */,
 				738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */,
 				73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */,
 				736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */,
@@ -968,8 +963,6 @@
 				73B54D6627B09D9800499F66 /* String+Localized.swift in Sources */,
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
-				730B2EB72C593F810016FD9E /* CloudKitImageService.swift in Sources */,
-				730B2EBD2C5940CE0016FD9E /* CloudKitPasswordService.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
 				73B860592AC1FB330023441A /* OnboardingView.swift in Sources */,
@@ -986,6 +979,7 @@
 				2E4A07981C42F3B0007F415F /* Base */,
 				73B54D5927B0995600499F66 /* pt-BR */,
 				73ABC0F0284F25CA00E5C3A4 /* es-419 */,
+				73CB3AE92C61B00C00743FF6 /* pt-PT */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -996,6 +990,7 @@
 				2E4A079D1C42F3B0007F415F /* Base */,
 				73B54D5A27B0995600499F66 /* pt-BR */,
 				73ABC0F1284F25CA00E5C3A4 /* es-419 */,
+				73CB3AEA2C61B00D00743FF6 /* pt-PT */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1007,6 +1002,11 @@
 				737FFF992BACC646003CBD33 /* pt-BR */,
 				737FFF9A2BACC649003CBD33 /* es-MX */,
 				737FFF9B2BACC6BE003CBD33 /* es-419 */,
+				73CB3AE52C61AF6400743FF6 /* ar */,
+				73CB3AE62C61AF6D00743FF6 /* de */,
+				73CB3AE72C61AF6F00743FF6 /* fr */,
+				73CB3AE82C61AF7400743FF6 /* es */,
+				73CB3AEC2C61B00E00743FF6 /* pt-PT */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1030,6 +1030,7 @@
 				73C5635F2A9CE9010043DC78 /* zh-Hant */,
 				73C563602A9CE9020043DC78 /* zh-Hans */,
 				73C563612A9CE9030043DC78 /* ar */,
+				73CB3AEB2C61B00D00743FF6 /* pt-PT */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
