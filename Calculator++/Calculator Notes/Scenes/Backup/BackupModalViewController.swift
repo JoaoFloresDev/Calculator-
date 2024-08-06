@@ -50,7 +50,7 @@ extension BackupModalViewController: BackupLoginEvent {
 class BackupModalViewController: UIViewController {
     
     // MARK: - Constants
-    let defaultHeight: CGFloat = 530
+    let defaultHeight: CGFloat = 570
     var currentContainerHeight: CGFloat = 460
     let maxDimmedAlpha: CGFloat = 0.6
     

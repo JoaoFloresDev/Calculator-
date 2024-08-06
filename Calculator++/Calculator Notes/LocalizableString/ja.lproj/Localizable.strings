@@ -174,3 +174,17 @@ augmentedReality = "拡張現実";
 createPasswordNewCalc = "4桁のパスワードを作成してください";
 insertCreatedPasswordAgainNewCalc = "確認のため、もう一度パスワードを入力してください";
 oneWeekToTest = "無料で1週間お試しください";
+
+hasAccount = "すでにアカウントをお持ちですか？";
+notHasAccount = "まだですか？ 今すぐ作成";
+genericLoginError = "問題が発生しました";
+createLoginError = "まだアカウントをお持ちでない場合は、「Googleでサインアップ」を選択してください";
+successLogin = "ログインに成功しました！";
+successLoginDescription = "新しい写真を追加するたび、または「バックアップを更新」ボタンをクリックするたびに、写真が同期されます";
+syncAut = "自動同期";
+logout = "ログアウト";
+pending = "保留中";
+downloadBackup = "バックアップをダウンロード";
+loginWithGoogle = "Googleでログイン";
+signUpWithGoogle = "Googleでサインアップ";
+browser = "インターネットブラウザ";

@@ -174,3 +174,17 @@ augmentedReality = "增强现实";
 createPasswordNewCalc = "创建一个4位数的密码";
 insertCreatedPasswordAgainNewCalc = "重新输入创建的密码以确认";
 oneWeekToTest = "免费试用一周";
+
+hasAccount = "已经有账户了吗？";
+notHasAccount = "还没有？ 现在创建";
+genericLoginError = "出了点问题";
+createLoginError = "如果您还没有账户，请选择'用Google注册'";
+successLogin = "登录成功！";
+successLoginDescription = "每当您添加新照片或点击'更新备份'按钮时，您的照片将会同步";
+syncAut = "自动同步";
+logout = "登出";
+pending = "待处理";
+downloadBackup = "下载备份";
+loginWithGoogle = "用Google登录";
+signUpWithGoogle = "用Google注册";
+browser = "网页浏览器";

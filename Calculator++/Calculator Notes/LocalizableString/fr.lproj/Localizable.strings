@@ -174,3 +174,17 @@ augmentedReality = "Réalité Augmentée";
 createPasswordNewCalc = "Créez un mot de passe de 4 chiffres";
 insertCreatedPasswordAgainNewCalc = "Saisissez de nouveau le mot de passe créé pour confirmer";
 oneWeekToTest = "Testez une semaine gratuitement";
+
+hasAccount = "Vous avez déjà un compte ?";
+notHasAccount = "Pas encore ? Créez-en un maintenant";
+genericLoginError = "Quelque chose a mal tourné";
+createLoginError = "Si vous n'avez pas encore de compte, sélectionnez 'S'inscrire avec Google'";
+successLogin = "Connexion réussie !";
+successLoginDescription = "Vos photos seront synchronisées chaque fois que vous ajouterez de nouvelles photos ou cliquerez sur le bouton 'mettre à jour la sauvegarde'";
+syncAut = "Synchronisation automatique";
+logout = "Déconnexion";
+pending = "En attente";
+downloadBackup = "Télécharger la sauvegarde";
+loginWithGoogle = "Se connecter avec Google";
+signUpWithGoogle = "S'inscrire avec Google";
+browser = "Navigateur Internet";

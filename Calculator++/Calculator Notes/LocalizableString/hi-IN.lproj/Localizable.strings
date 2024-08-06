@@ -174,3 +174,17 @@ augmentedReality = "वृद्धित वास्तविकता";
 createPasswordNewCalc = "4 अंकों का पासवर्ड बनाएँ";
 insertCreatedPasswordAgainNewCalc = "पुष्टि के लिए फिर से बनाया गया पासवर्ड दर्ज करें";
 oneWeekToTest = "एक सप्ताह मुफ्त परीक्षण करें";
+
+hasAccount = "क्या आपके पास पहले से एक खाता है?";
+notHasAccount = "अभी तक नहीं? अभी बनाएं";
+genericLoginError = "कुछ गलत हो गया";
+createLoginError = "यदि आपके पास अभी तक खाता नहीं है, तो 'Google के साथ साइन अप करें' चुनें";
+successLogin = "लॉगिन सफल!";
+successLoginDescription = "नई तस्वीरें जोड़ने पर या 'बैकअप अपडेट करें' बटन पर क्लिक करने पर आपकी तस्वीरें सिंक हो जाएंगी";
+syncAut = "स्वचालित सिंक";
+logout = "लॉग आउट";
+pending = "लंबित";
+downloadBackup = "बैकअप डाउनलोड करें";
+loginWithGoogle = "Google के साथ लॉगिन करें";
+signUpWithGoogle = "Google के साथ साइन अप करें";
+browser = "इंटरनेट ब्राउज़र";

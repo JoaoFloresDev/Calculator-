@@ -174,3 +174,17 @@ augmentedReality = "Дополненная Реальность";
 createPasswordNewCalc = "Создайте четырехзначный пароль";
 insertCreatedPasswordAgainNewCalc = "Введите пароль еще раз для подтверждения";
 oneWeekToTest = "Тестировать одну неделю бесплатно";
+
+hasAccount = "У вас уже есть аккаунт?";
+notHasAccount = "Еще нет? Создайте сейчас";
+genericLoginError = "Что-то пошло не так";
+createLoginError = "Если у вас еще нет аккаунта, выберите 'Зарегистрироваться через Google'";
+successLogin = "Вход выполнен успешно!";
+successLoginDescription = "Ваши фотографии будут синхронизированы каждый раз, когда вы добавляете новые фотографии или нажимаете кнопку 'обновить резервную копию'";
+syncAut = "Автоматическая синхронизация";
+logout = "Выйти";
+pending = "В ожидании";
+downloadBackup = "Скачать резервную копию";
+loginWithGoogle = "Войти через Google";
+signUpWithGoogle = "Зарегистрироваться через Google";
+browser = "Интернет-браузер";

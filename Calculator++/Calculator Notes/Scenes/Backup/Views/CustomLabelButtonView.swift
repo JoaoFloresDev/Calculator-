@@ -5,13 +5,13 @@ class CustomLabelButtonView: UIView {
     
     private let leftLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 17)
         return label
     }()
     
     let label: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = .gray
         label.textAlignment = .right
         return label

@@ -57,7 +57,7 @@ class BackupLoginView: UIView {
     lazy var createAccountTitle: UILabel = {
         let label = UILabel()
         label.text = Text.notHasAccount.localized()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .darkGray
         label.numberOfLines = 0
         label.textAlignment = .center

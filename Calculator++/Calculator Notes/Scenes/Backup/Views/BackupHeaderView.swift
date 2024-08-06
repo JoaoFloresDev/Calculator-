@@ -25,7 +25,7 @@ class BackupHeaderView: UIView {
     lazy var modalTitleView: UIView = {
         let label = UILabel()
         label.text = Text.backupSettings.localized()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 19)
         label.textColor = .black
         label.textAlignment = .center
         
@@ -35,7 +35,7 @@ class BackupHeaderView: UIView {
     lazy var modalSubtitleView: UILabel = {
         let label = UILabel()
         label.text = Text.backupNavigationSubtitle.localized()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = .lightGray
         label.numberOfLines = 0
         label.textAlignment = .center

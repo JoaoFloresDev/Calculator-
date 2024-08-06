@@ -174,3 +174,17 @@ augmentedReality = "Erweiterte Realität";
 createPasswordNewCalc = "Erstelle ein 4-stelliges Passwort";
 insertCreatedPasswordAgainNewCalc = "Gib das erstellte Passwort zur Bestätigung erneut ein";
 oneWeekToTest = "Teste eine Woche kostenlos";
+
+hasAccount = "Haben Sie bereits ein Konto?";
+notHasAccount = "Noch nicht? Jetzt erstellen";
+genericLoginError = "Etwas ist schief gelaufen";
+createLoginError = "Wenn Sie noch kein Konto haben, wählen Sie 'Mit Google anmelden'";
+successLogin = "Erfolgreich eingeloggt!";
+successLoginDescription = "Ihre Fotos werden synchronisiert, wenn Sie neue Fotos hinzufügen oder auf die Schaltfläche 'Backup aktualisieren' klicken";
+syncAut = "Automatische Synchronisierung";
+logout = "Abmelden";
+pending = "Ausstehend";
+downloadBackup = "Backup herunterladen";
+loginWithGoogle = "Mit Google anmelden";
+signUpWithGoogle = "Mit Google registrieren";
+browser = "Internet-Browser";

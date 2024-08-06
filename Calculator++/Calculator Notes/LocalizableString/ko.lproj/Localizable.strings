@@ -174,3 +174,17 @@ augmentedReality = "증강 현실";
 createPasswordNewCalc = "4자리 비밀번호를 생성하세요";
 insertCreatedPasswordAgainNewCalc = "확인을 위해 생성한 비밀번호를 다시 입력하세요";
 oneWeekToTest = "무료로 일주일간 테스트해보세요";
+
+hasAccount = "이미 계정이 있으신가요?";
+notHasAccount = "아직 없으신가요? 지금 만드세요";
+genericLoginError = "문제가 발생했습니다";
+createLoginError = "아직 계정이 없으시다면 'Google로 가입'을 선택하세요";
+successLogin = "로그인 성공!";
+successLoginDescription = "새 사진을 추가하거나 '백업 업데이트' 버튼을 클릭할 때마다 사진이 동기화됩니다";
+syncAut = "자동 동기화";
+logout = "로그아웃";
+pending = "대기 중";
+downloadBackup = "백업 다운로드";
+loginWithGoogle = "Google로 로그인";
+signUpWithGoogle = "Google로 가입";
+browser = "인터넷 브라우저";

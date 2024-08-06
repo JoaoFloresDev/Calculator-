@@ -174,3 +174,17 @@ augmentedReality = "Realitas Tertambah";
 createPasswordNewCalc = "Buat sandi 4 digit";
 insertCreatedPasswordAgainNewCalc = "Masukkan kembali sandi yang dibuat untuk konfirmasi";
 oneWeekToTest = "Coba gratis satu minggu";
+
+hasAccount = "Sudah punya akun?";
+notHasAccount = "Belum punya? Buat sekarang";
+genericLoginError = "Terjadi kesalahan";
+createLoginError = "Jika Anda belum punya akun, pilih 'Daftar dengan Google'";
+successLogin = "Login berhasil!";
+successLoginDescription = "Foto Anda akan disinkronkan setiap kali Anda menambahkan foto baru atau mengklik tombol 'perbarui cadangan'";
+syncAut = "Sinkronisasi otomatis";
+logout = "Keluar";
+pending = "Tertunda";
+downloadBackup = "Unduh cadangan";
+loginWithGoogle = "Masuk dengan Google";
+signUpWithGoogle = "Daftar dengan Google";
+browser = "Peramban internet";

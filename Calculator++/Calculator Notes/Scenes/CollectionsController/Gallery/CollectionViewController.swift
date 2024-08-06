@@ -531,54 +531,13 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         getAssetThumbnail(asset: asset) { image in
             if let image = image {
                 if let photo = ModelController.saveImageObject(image: image, basePath: self.basePath) {
-                    if let location = asset.location {
-                        // Aqui você tem as coordenadas de latitude e longitude do asset.
-                        let latitude = location.coordinate.latitude
-                        let longitude = location.coordinate.longitude
-                        
-                        self.cityNameFromCoordinates(latitude: latitude, longitude: longitude) { cityName in
-                            print("Latitude: \(latitude), Longitude: \(longitude)")
-                            print(cityName)
-                            print("--------")
-                            var finalphoto = photo
-                            finalphoto.location = cityName ?? ""
-                            completion(finalphoto)
-                        }
-                    } else {
-                        completion(photo)
-                        print("O asset não possui informações de localização.")
-                    }
+                    completion(photo)
                 } else {
                     print("Erro ao salvar a imagem.")
                     completion(nil)
                 }
             } else {
                 print("Falha ao carregar a miniatura do asset.")
-                completion(nil)
-            }
-        }
-    }
-    
-    func cityNameFromCoordinates(latitude: Double, longitude: Double, completion: @escaping (String?) -> Void) {
-        let location = CLLocation(latitude: latitude, longitude: longitude)
-        let geocoder = CLGeocoder()
-
-        geocoder.reverseGeocodeLocation(location) { placemarks, error in
-            if let error = error {
-                print("Erro na geocodificação: \(error.localizedDescription)")
-                completion(nil)
-                return
-            }
-
-            if let placemark = placemarks?.first {
-                if let city = placemark.locality {
-                    completion(city)
-                } else {
-                    print("Não foi possível obter o nome da cidade.")
-                    completion(nil)
-                }
-            } else {
-                print("Nenhum local encontrado para as coordenadas dadas.")
                 completion(nil)
             }
         }

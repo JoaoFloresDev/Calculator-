@@ -1,164 +1,3 @@
-///*
-//  Localizable.strings
-//  Calculator Notes
-//
-//  Criado por Joao Victor Flores da Costa em 06/02/22.
-//  Copyright © 2022 MakeSchool. Todos os direitos reservados.
-//*/
-//
-//// Versión Premium
-//premiumVersion = "Versión Premium";
-//noProtection = "Sin protección";
-//hideRecoverButton = "Ocultar botón Face ID";
-//chooseProtectionMode = "Selecciona el modo de protección";
-//
-//// Configuración y otros
-//settings = "Ajustes";
-//gallery = "Galería";
-//video = "Video";
-//notes = "Notas";
-//
-//instructionFirstStepCalc = "Crea una contraseña y pulsa el botón '='";
-//instructionSecondStepCalc = "Contraseña: *****. Repite la contraseña y confirma con '='";
-//
-//instructionFirstStepBank = "Crea una contraseña y pulsa 'enter'";
-//instructionSecondStepBank = "Contraseña: *****. Repite la contraseña y confirma con 'Enter'";
-//
-//bankModeHasBeenActivated = "Modo caja fuerte activado";
-//calcModeHasBeenActivated = "Modo calculadora activado";
-//
-//welcomeInstructionBank = "Ingresa tu contraseña";
-//
-//done = "Hecho";
-//edit = "Editar";
-//
-//premiumToolTitle = "Función Premium";
-//premiumToolMessage = "El soporte para video solo está disponible para usuarios Premium. Consulta las actualizaciones en la sección Ajustes";
-//
-//save = "Guardar";
-//cancel = "Cancelar";
-//ok = "Aceptar";
-//see = "Ver";
-//
-//// Mensajes de error
-//errorTitle = "Error inesperado";
-//errorMessage = "Inténtalo de nuevo más tarde";
-//deleteFiles = "¿Eliminar archivo?";
-//
-//incorrectPassword = "Contraseña incorrecta";
-//tryAgain = "Inténtalo de nuevo";
-//
-//// Compra
-//products = "Productos disponibles";
-//loading = "Cargando...";
-//close = "Cerrar";
-//restore = "Restaurar";
-//buy = "Comprar";
-//
-//// Carpetas
-//folderTitle = "Nombre de carpeta";
-//createActionTitle = "Crear";
-//cancelTitle = "Cancelar";
-//inputPlaceholder = "Ingresa el nombre de la nueva carpeta";
-//folderNameAlreadyUsedTitle = "Nombre de carpeta ya utilizado";
-//folderNameAlreadyUsedText = "Selecciona un nombre diferente para la carpeta";
-//deleteConfirmationTitle = "¿Eliminar archivos?";
-//
-//// Mostrar todo
-//hideAllVideos = "Ocultar todos los videos guardados";
-//showAllVideos = "Mostrar todos los videos guardados";
-//hideAllPhotos = "Ocultar todas las fotos guardadas";
-//showAllPhotos = "Mostrar todas las fotos guardadas";
-//wouldLikeSetProtection = "¿Deseas añadir protección a tu galería?";
-//
-//// Respaldo (Backup)
-//askToRestoreBackupTitle = "Restaurar respaldo";
-//askToRestoreBackupMessage = "¿Deseas restaurar tu último respaldo?";
-//backupSuccessTitle = "Respaldo realizado con éxito";
-//backupSuccessMessage = "Tu respaldo se restauró con éxito";
-//backupErrorTitle = "Error al realizar el respaldo";
-//backupErrorMessage = "No se encontraron datos para el respaldo";
-//incorrectPasswordTitle = "Contraseña incorrecta";
-//incorrectPasswordMessage = "La contraseña proporcionada no es válida. Inténtalo de nuevo.";
-//insertPasswordTitle = "Ingresa tu contraseña";
-//insertPasswordMessage = "Ingresa la contraseña que usaste previamente para abrir la aplicación";
-//yes = "Sí";
-//no = "No";
-//enableiCloudTitle = "Acción necesaria";
-//enableiCloudSubtitle = "\n1. Toca iCloud\n\n2. Encuentra la aplicación SG en la lista\n\n3. Activa iCloud";
-//enableiCloudAction = "Ir a Ajustes";
-//premiumTooliCloudMessage = "La función de respaldo es exclusiva para usuarios Premium. Se presentarán los detalles del producto";
-//
-//// Eliminar y Respaldo (Backup)
-//delete = "Eliminar";
-//backupNavigationTitle = "Mi respaldo";
-//
-//emptyVideosTitle = "Sin videos";
-//emptyVideosSubtitle = "Añade tus videos tocando el botón +";
-//premiumVideosSubtitle = "El soporte para video es una función Premium";
-//
-//emptyGalleryTitle = "Sin fotos";
-//emptyGallerySubtitle = "Añade tus fotos tocando el botón +";
-//
-//emptyNotesTitle = "Sin notas";
-//emptyNotesSubtitle = "Añade tus notas tocando el botón +";
-//
-//seeMore = "Ver más";
-//backupSettings = "Ajustes de respaldo";
-//backupStatus = "Respaldo seguro";
-//seeMyBackup = "Ver mi respaldo";
-//restoreBackup = "Restaurar respaldo";
-//updateBackup = "Actualizar respaldo";
-//faceIDReason = "Utilizaremos la autenticación para mostrar tu galería";
-//myBackupItems = "Mis elementos en el respaldo";
-//backupNavigationTitle = "Mi respaldo";
-//vaultMode = "Modo caja fuerte";
-//recover = "Recuperar";
-//
-//createPassword = "Crea una contraseña y confirma con OK";
-//insertCreatedPasswordAgain = "Ingresa la contraseña nuevamente";
-//insertPassword = "Ingresa tu contraseña y confirma con OK";
-//backupEnabled = "Habilitado";
-//backupDisabled = "Deshabilitado";
-//
-//backupNavigationSubtitle = "Las fotos se sincronizan con las fotos añadidas cada vez que se abre la aplicación y hay conexión Wi-Fi. Tu respaldo es seguro y la única forma de ver las fotos es dentro de la aplicación";
-//
-//myBackupNavigationSubtitle = "Toca 'Restaurar respaldo' en el menú anterior para importar las fotos a tu galería";
-//continueText = "Continuar";
-//
-//welcomeOnboarding_title = "Bienvenido a Secret Gallery";
-//welcomeOnboarding_subtitle = "Protege tus fotos y videos con seguridad";
-//welcomeOnboarding_startButtonTitle = "Empezar";
-//welcomeOnboarding_skipButtonTitle = "Al hacer clic en 'Empezar', aceptas la política de privacidad y los términos de uso";
-//
-//createCodeOnboarding_title = "Crea un código de acceso";
-//createCodeOnboarding_subtitle = "Crea una contraseña para acceder a tus fotos guardadas";
-//createCodeOnboarding_startButtonTitle = "Continuar";
-//createCodeOnboarding_skipButtonTitle = "Ahora no";
-//
-//addPhotosOnboarding_title = "Añade tus fotos";
-//addPhotosOnboarding_subtitle = "Añade las fotos que desees guardar de forma segura";
-//addPhotosOnboarding_startButtonTitle = "Continuar";
-//addPhotosOnboarding_skipButtonTitle = "Ahora no";
-//
-//emailErrorTitle = "Correo electrónico no válido";
-//emailErrorDescription = "Verifica el correo electrónico que ingresaste e inténtalo nuevamente";
-//insertEmailTitle = "Ingresa el correo electrónico que se utilizará para la recuperación:";
-//insertEmailDescription = "Ingresa tu correo electrónico";
-//insertEmailButtonText = "Confirmar Correo Electrónico";
-//
-//emailPopupTitle = "¿Enviar correo electrónico de recuperación de contraseña?";
-//emailmessage = "Enviaremos un correo electrónico con las instrucciones para recuperar la contraseña";
-//emailCancelButtonTitle = "No";
-//emailOkButtonTitle = "Sí";
-//emailNotRegisteredTitle = "No has registrado un correo electrónico para la recuperación";
-//emailNotRegisteredMessage = "No encontramos un correo electrónico preregistrado para tu cuenta";
-//successEmailTitle = "Correo electrónico enviado con éxito";
-//successEmailMessage = "Por favor, revisa tu bandeja de entrada de correo electrónico. Recibirás un correo electrónico con instrucciones para recuperar la contraseña en un plazo de 48 horas.";
-//errorEmailTitle = "Error al enviar el correo electrónico";
-//errorEmailMessage = "Encontramos problemas al enviar el correo electrónico. Por favor, verifica tu conexión a Internet e inténtalo nuevamente.";
-//remindMyPasscode = "¿Olvidó su contraseña?";
-
 /*
   Localizable.strings
   Calculator Notes
@@ -335,3 +174,17 @@ augmentedReality = "Realidad Aumentada";
 createPasswordNewCalc = "Crea una contraseña de 4 dígitos";
 insertCreatedPasswordAgainNewCalc = "Ingresa nuevamente la contraseña para confirmar";
 oneWeekToTest = "Prueba una semana gratis";
+
+hasAccount = "¿Ya tienes una cuenta?";
+notHasAccount = "¿Aún no? Crea una ahora";
+genericLoginError = "Algo salió mal";
+createLoginError = "Si aún no tienes una cuenta, selecciona 'Regístrate con Google'";
+successLogin = "¡Inicio de sesión exitoso!";
+successLoginDescription = "Tus fotos se sincronizarán siempre que agregues nuevas fotos o hagas clic en el botón 'actualizar copia de seguridad'";
+syncAut = "Sincronización automática";
+logout = "Cerrar sesión";
+pending = "Pendiente";
+downloadBackup = "Descargar copia de seguridad";
+loginWithGoogle = "Iniciar sesión con Google";
+signUpWithGoogle = "Regístrate con Google";
+browser = "Navegador de internet";

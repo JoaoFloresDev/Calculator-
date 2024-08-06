@@ -37,7 +37,7 @@ class BackupStatusView: UIView {
         
         let leftLabel = UILabel()
         leftLabel.text = Text.syncAut.localized()
-        leftLabel.font = UIFont.systemFont(ofSize: 14)
+        leftLabel.font = UIFont.systemFont(ofSize: 17)
         
         stackView.addArrangedSubview(leftLabel)
         stackView.addArrangedSubview(switchControl)

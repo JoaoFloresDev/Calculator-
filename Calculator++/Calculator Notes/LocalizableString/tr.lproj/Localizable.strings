@@ -172,3 +172,17 @@ augmentedReality = "Artırılmış Gerçeklik";
 createPasswordNewCalc = "4 haneli bir şifre oluşturun";
 insertCreatedPasswordAgainNewCalc = "Onaylamak için şifreyi tekrar girin";
 oneWeekToTest = "Bir hafta ücretsiz deneyin";
+
+hasAccount = "Zaten bir hesabınız var mı?";
+notHasAccount = "Henüz yok mu? Şimdi oluştur";
+genericLoginError = "Bir şeyler yanlış gitti";
+createLoginError = "Henüz bir hesabınız yoksa, 'Google ile kayıt ol' seçeneğini seçin";
+successLogin = "Başarıyla giriş yapıldı!";
+successLoginDescription = "Yeni fotoğraflar eklediğinizde veya 'yedeklemeyi güncelle' düğmesine tıkladığınızda fotoğraflarınız senkronize edilecektir";
+syncAut = "Otomatik senkronizasyon";
+logout = "Çıkış yap";
+pending = "Beklemede";
+downloadBackup = "Yedeklemeyi indir";
+loginWithGoogle = "Google ile giriş yap";
+signUpWithGoogle = "Google ile kayıt ol";
+browser = "İnternet tarayıcısı";
