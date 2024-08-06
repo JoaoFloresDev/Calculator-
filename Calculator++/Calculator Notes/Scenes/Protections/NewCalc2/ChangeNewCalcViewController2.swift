@@ -18,6 +18,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.contentHorizontalAlignment = .right
+        button.contentVerticalAlignment = .center
         
         button.addTarget(self, action: #selector(faceIDButtonTapped), for: .touchUpInside)
         return button
@@ -178,9 +179,9 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         faceIDButton.isHidden = Defaults.getBool(.recoveryStatus) || vaultMode != .verify
         view.addSubview(faceIDButton)
         faceIDButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(0)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10)
-            make.height.equalTo(50)
+            make.height.equalTo(90)
             make.width.equalTo(120)
         }
     }

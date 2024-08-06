@@ -174,3 +174,17 @@ augmentedReality = "Augmented Reality";
 createPasswordNewCalc = "Create a 4-digit password";
 insertCreatedPasswordAgainNewCalc = "Enter the password again to confirm";
 oneWeekToTest = "Test one week for free";
+
+hasAccount = "Already have an account?";
+notHasAccount = "Not yet? Create one now";
+genericLoginError = "Something went wrong";
+createLoginError = "If you do not have an account yet, select 'Sign up with google'";
+successLogin = "Login successful!";
+successLoginDescription = "Your photos will be synchronized whenever you add new photos or click on the 'update backup' button";
+syncAut = "Automatic synchronization";
+logout = "Logout";
+pending = "Pending";
+downloadBackup = "Download backup";
+loginWithGoogle = "Login With Google";
+signUpWithGoogle = "Sign Up With Google";
+browser = "Internet browser";

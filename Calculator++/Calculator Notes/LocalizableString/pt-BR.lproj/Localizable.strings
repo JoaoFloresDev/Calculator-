@@ -177,4 +177,18 @@ augmentedReality = "Realidade Aumentada";
 createPasswordNewCalc = "Crie uma senha de 4 digitos";
 insertCreatedPasswordAgainNewCalc = "Digite novamente a senha para confirmar";
 oneWeekToTest = "Teste uma semana grátis";
-"CFBundleDisplayName" = "Meu Aplicativo";
+
+hasAccount = "Já possui uma conta?";
+notHasAccount = "Ainda não? Crie agora";
+genericLoginError = "Algo deu errado";
+createLoginError = "Se você ainda não possui uma conta, selecione 'Sign up with google'";
+successLogin = "Login efetuado com sucesso!";
+successLoginDescription = "Suas fotos serão sincronizadas sempre que adicionar novas fotos ou clicar no botão 'atualizar backup'";
+syncAut = "Sincronização automática";
+logout = "Logout";
+pending = "Pendente";
+downloadBackup = "Baixar backup";
+loginWithGoogle = "Login With Google";
+signUpWithGoogle = "Sign Up With Google";
+browser = "Navegador de internet";
+

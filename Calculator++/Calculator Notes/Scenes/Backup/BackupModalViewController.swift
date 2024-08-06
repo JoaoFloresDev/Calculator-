@@ -31,7 +31,7 @@ extension BackupModalViewController: BackupLoginEvent {
         setBackupLoginStatus()
         if !isUserLoggedIn() {
             Defaults.setString(.lastBackupUpdate, "")
-            updateBackup.label.text = "Pendente"
+            updateBackup.label.text = Text.pending.localized()
         } else {
             loadingAlert.startLoading()
             FirebaseBackupService.hasDataInFirebase { hasData, _, items  in
@@ -93,7 +93,7 @@ class BackupModalViewController: UIViewController {
     lazy var backupStatusView = BackupStatusView(controller: self)
     
     lazy var restoreBackup: UIView = {
-        let view = CustomLabelButtonView(leftText: "Baixar backup", backgroundColor: .systemGray5)
+        let view = CustomLabelButtonView(leftText: Text.downloadBackup.localized(), backgroundColor: .systemGray5)
         view.setTapAction(target: self, action: #selector(restoreBackupTapped))
         return view
     }()
@@ -101,9 +101,9 @@ class BackupModalViewController: UIViewController {
     lazy var updateBackup: CustomLabelButtonView = {
         var date = Defaults.getString(.lastBackupUpdate)
         if date.isEmpty {
-            date = "Pendente"
+            date = Text.pending.localized()
         }
-        let view = CustomLabelButtonView(leftText: "Atualizar backup", rightText: date, backgroundColor: .systemGray5)
+        let view = CustomLabelButtonView(leftText: Text.updateBackup.localized(), rightText: date, backgroundColor: .systemGray5)
         view.setTapAction(target: self, action: #selector(updateBackupTapped))
         return view
     }()

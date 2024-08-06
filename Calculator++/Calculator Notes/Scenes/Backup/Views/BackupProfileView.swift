@@ -44,7 +44,7 @@ class BackupProfileView: UIView {
     
     lazy var logoutButton: UIButton = {
         let button = UIButton(type: .system)
-        let title = "Logout"
+        let title = Text.logout.localized()
         let attributedTitle = NSAttributedString(string: title, attributes: [
             .foregroundColor: UIColor.systemBlue,
             .underlineStyle: NSUnderlineStyle.styleSingle.rawValue

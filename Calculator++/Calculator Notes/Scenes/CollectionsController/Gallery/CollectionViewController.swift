@@ -497,7 +497,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             RazeFaceProducts.store.isProductPurchased("calcanual") ||
             RazeFaceProducts.store.isProductPurchased("NoAds.Calc")) && isUserLoggedIn() {
             
-            var numberOfPhotos = Defaults.getInt(.numberOfNonSincronizatedPhotos) + numberOfNewPhotos
+            let numberOfPhotos = Defaults.getInt(.numberOfNonSincronizatedPhotos) + numberOfNewPhotos
             Defaults.setInt(.numberOfNonSincronizatedPhotos, numberOfPhotos)
             
             if Defaults.getInt(.numberOfNonSincronizatedPhotos) > 3 {
@@ -505,7 +505,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                     FirebaseBackupService.updateBackup(completion: { _ in
                         DispatchQueue.main.async {
                             self.loadingAlert.stopLoading {
-                                Alerts.showBackupSuccess(controller: self)
                                 Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
                                 Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
                             }

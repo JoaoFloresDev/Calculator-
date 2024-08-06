@@ -36,7 +36,7 @@ class BackupStatusView: UIView {
         stackView.spacing = 8
         
         let leftLabel = UILabel()
-        leftLabel.text = "Sincronização automática"
+        leftLabel.text = Text.syncAut.localized()
         leftLabel.font = UIFont.systemFont(ofSize: 14)
         
         stackView.addArrangedSubview(leftLabel)

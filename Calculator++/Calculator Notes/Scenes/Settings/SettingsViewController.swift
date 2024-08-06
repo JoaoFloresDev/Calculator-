@@ -98,8 +98,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         recoverLabel.setText(.hideRecoverButton)
         useTermsLabel.setText(.termsOfUse)
         augmentedRealityLabel.setText(.augmentedReality)
+        augmentedReality.isHidden = true
+        backupLabel.setText(.backupStatus)
+        browserLabel.setText(.browser)
     }
-
+    
     lazy var contentStackView: UIView = {
         let stackView = UIStackView(
             arrangedSubviews: [

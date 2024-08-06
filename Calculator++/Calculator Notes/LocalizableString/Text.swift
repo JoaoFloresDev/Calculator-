@@ -104,7 +104,6 @@ enum Text: String {
     case backupSettings // "Configurações de Backup"
     case backupStatus // "Backup Criptografado"
     case seeMyBackup //"Ver meu backup"
-    case restoreBackup //"Restaurar backup"
     case updateBackup //"Atualizar backup"
     case faceIDReasin // "We will use authentication to show you the password for the app"
     case myBackupItens // "Meus itens no Backup"
@@ -180,6 +179,16 @@ enum Text: String {
     case createLoginError // "Se você ainda não possui uma conta, selecione 'Sign up with google'
     case successLogin // "Login efetuado com sucesso!"
     case successLoginDescription // "Suas fotos serão sincronizadas sempre que adicionar novas fotos ou clicar no botão 'atualizar backup'"
+    case syncAut // "Sincronização automática"
+    case logout // "Logout"
+    case pending // "Pendente"
+    case downloadBackup // "Baixar backup"
+    
+    case loginWithGoogle // "Login With Google"
+    case signUpWithGoogle // "Sign Up With Google"
+    
+    case browser // Navegador de internet
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

@@ -37,7 +37,7 @@ class BackupLoginView: UIView {
     
     lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Login With Google", for: .normal)
+        button.setTitle(Text.loginWithGoogle.localized(), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .systemGray6
         
@@ -67,7 +67,7 @@ class BackupLoginView: UIView {
     
     lazy var createAccountButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Sign Up With Google", for: .normal)
+        button.setTitle(Text.signUpWithGoogle.localized(), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .systemGray6
         
@@ -182,7 +182,7 @@ class BackupLoginView: UIView {
                     }
                 }
             } else {
-                Alerts.showAlert(title: "Error", text: "Something went wrong.", controller: self.controller)
+                Alerts.showAlert(title: Text.errorTitle.localized(), text: Text.genericLoginError.localized(), controller: self.controller)
             }
             NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
         }
