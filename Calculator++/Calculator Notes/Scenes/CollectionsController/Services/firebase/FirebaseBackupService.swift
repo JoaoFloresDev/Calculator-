@@ -412,7 +412,7 @@ class FirebaseVideoService: ObservableObject {
         
         let storage = storage.reference().child(getUserId()).child(videoCollection)
         let videoID = UUID().uuidString
-        let videoRef = storage.child("videos/\(videoID).mp4")
+        let videoRef = storage.child("\(videoID).mp4")
         
         videoRef.putData(videoData, metadata: nil) { (metadata, error) in
             if let error = error {
@@ -435,9 +435,9 @@ class FirebaseVideoService: ObservableObject {
                 let dispatchGroup = DispatchGroup()
                 
                 for document in result.items {
+                    dispatchGroup.enter()
                     document.downloadURL { url, err in
                         if let url {
-                            dispatchGroup.enter()
                             
                             URLSession.shared.dataTask(with: url) { (data, response, error) in
                                 if let data = data {
