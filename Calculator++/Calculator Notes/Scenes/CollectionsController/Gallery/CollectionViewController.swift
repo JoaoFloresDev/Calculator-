@@ -253,15 +253,23 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
 extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
     func cloudButtonTapped() {
         let controllers = self.tabBarController?.viewControllers
+        
         let navigation = controllers?[0] as? UINavigationController
         let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
+        
+        let navigation1 = controllers?[1] as? UINavigationController
+        let videosRootController = navigation1?.viewControllers.first as? VideoCollectionViewController
         
         if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
             RazeFaceProducts.store.isProductPurchased("calcanual") ||
             RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
+            
             let vc = BackupModalViewController(
-                delegate: self, rootController: collectionViewController
+                delegate: self,
+                imagesRootController: collectionViewController,
+                videosRootController: videosRootController
             )
+            
             vc.modalPresentationStyle = .overCurrentContext
             if let tabBarController = self.tabBarController {
                 tabBarController.present(vc, animated: false, completion: nil)

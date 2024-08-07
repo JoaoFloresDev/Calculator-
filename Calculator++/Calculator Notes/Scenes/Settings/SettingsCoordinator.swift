@@ -35,11 +35,17 @@ class SettingsCoordinator {
     
     func showBackupOptions(backupIsActivated: Bool, delegate: BackupModalViewControllerDelegate) {
         let controllers = self.tabBarController?.viewControllers
+        
         let navigation = controllers?[0] as? UINavigationController
         let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
         
+        let navigation1 = controllers?[1] as? UINavigationController
+        let videosRootController = navigation1?.viewControllers.first as? VideoCollectionViewController
+        
         let vc = BackupModalViewController(
-            delegate: delegate, rootController: collectionViewController
+            delegate: delegate,
+            imagesRootController: collectionViewController,
+            videosRootController: videosRootController
         )
         vc.modalPresentationStyle = .overCurrentContext
         if let tabBarController = self.tabBarController {

@@ -144,7 +144,13 @@ struct VideoModelController {
             }
             
             if let videoName = imageObjectToDelete.pathURL {
-                CoreDataImageService.deleteImage(imageName: videoName)
+                let result = CoreDataImageService.deleteImage(imageName: videoName)
+                switch result {
+                case .success(_):
+                    VideoCloudDeletionManager.addName(videoName)
+                default:
+                    return
+                }
             }
             
             managedContext.delete(imageObjectToDelete)
@@ -187,6 +193,7 @@ struct VideoModelController {
         do {
             try videoData.write(to: filePath)
             print("\(videoName) was saved at \(filePath).")
+            VideoCloudInsertionManager.addName(videoName)
             return videoName
         } catch let error as NSError {
             print("\(videoName) could not be saved: \(error)")

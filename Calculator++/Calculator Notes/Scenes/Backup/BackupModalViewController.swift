@@ -57,7 +57,8 @@ class BackupModalViewController: UIViewController {
     // MARK: - Variables
     var containerViewHeightConstraint: Constraint?
     var containerViewBottomConstraint: Constraint?
-    var rootController: CollectionViewController?
+    var imagesRootController: CollectionViewController?
+    var videosRootController: VideoCollectionViewController?
     weak var delegate: BackupModalViewControllerDelegate?
     
     // MARK: - Views
@@ -121,10 +122,15 @@ class BackupModalViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    init(delegate: BackupModalViewControllerDelegate?, rootController: CollectionViewController?) {
+    init(
+        delegate: BackupModalViewControllerDelegate?,
+        imagesRootController: CollectionViewController?,
+        videosRootController: VideoCollectionViewController?
+    ) {
         super.init(nibName: nil, bundle: nil)
         self.delegate = delegate
-        self.rootController = rootController
+        self.imagesRootController = imagesRootController
+        self.videosRootController = videosRootController
         backupStatusView.switchControl.isOn = Defaults.getBool(.iCloudEnabled)
     }
     
@@ -288,7 +294,8 @@ class BackupModalViewController: UIViewController {
                 self.loadingAlert.stopLoading {
                     if success {
                         Alerts.showBackupSuccess(controller: self)
-                        self.rootController?.viewDidLoad()
+                        self.imagesRootController?.viewDidLoad()
+                        self.videosRootController?.viewDidLoad()
                     } else {
                         Alerts.showBackupError(controller: self)
                     }
