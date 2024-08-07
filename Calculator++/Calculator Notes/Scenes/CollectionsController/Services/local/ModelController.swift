@@ -63,6 +63,7 @@ struct ModelController {
             do {
                 try managedContext.save()
                 print("\(imageName) was saved in new object.")
+                ImageCloudInsertionManager.addName(imageName)
                 return Photo(name: imageName, image: image)
             } catch let error as NSError {
                 print("Could not save new image object: \(error)")
@@ -95,6 +96,11 @@ struct ModelController {
                 // Exclui a imagem associada ao objeto
                 if let imageName = imageName {
                     let result = CoreDataImageService.deleteImage(imageName: imageName)
+                case .success():
+                    ImageCloudDeletionManager.addName(imageName)
+                case .failure(let error):
+                    print(error)
+
                 }
                 // Remove o objeto de imagem e a foto associada da matriz
                 if let index = imageIndex {
