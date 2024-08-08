@@ -28,6 +28,12 @@ import AVKit
 import CloudKit
 import FirebaseAuth
 
+extension SettingsViewController: PurchaseViewControllerDelegate {
+    func purchased() {
+        backupIsActivated = isUserLoggedIn() && isPremium()
+    }
+}
+
 class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     // MARK: - IBOutlet
@@ -59,10 +65,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBAction func premiumVersionPressed(_ sender: Any) {
         coordinator.premiumVersionPressed()
-    }
-
-    @IBAction func restoreBackup(_ sender: Any) {
-        coordinator.showBackupOptions(backupIsActivated: self.backupIsActivated, delegate: self)
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -247,6 +249,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             Alerts.showBePremiumToUseBackup(controller: self) { action in
                 let storyboard = UIStoryboard(name: "Purchase",bundle: nil)
                 let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+                if let changePasswordCalcMode = changePasswordCalcMode as? PurchaseViewController {
+                    changePasswordCalcMode.delegate = self
+                }
                 self.present(changePasswordCalcMode, animated: true)
             }
         }

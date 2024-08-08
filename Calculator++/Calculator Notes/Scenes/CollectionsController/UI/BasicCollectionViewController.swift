@@ -40,7 +40,13 @@ class BasicCollectionViewController: UICollectionViewController {
         if basePath == Constants.deepSeparatorPath {
             flowLayout.headerReferenceSize = CGSize(width: screenWidth, height: 25)
         }
-        collectionView?.collectionViewLayout = flowLayout
+        if let collectionView = collectionView {
+            if let flow = collectionView.collectionViewLayout as? FlowLayout {
+                
+            } else {
+                collectionView.collectionViewLayout = flowLayout
+            }
+        }
     }
     
     func setupNavigationItems(delegate: BarButtonItemDelegate) {

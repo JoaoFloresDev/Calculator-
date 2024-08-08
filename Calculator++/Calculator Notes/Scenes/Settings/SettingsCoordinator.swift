@@ -9,10 +9,10 @@ import UIKit
 import Foundation
 
 class SettingsCoordinator {
-    weak var viewController: UIViewController?
+    weak var viewController: SettingsViewController?
     weak var tabBarController: UITabBarController?
     
-    init(viewController: UIViewController) {
+    init(viewController: SettingsViewController) {
         self.viewController = viewController
         self.tabBarController = viewController.tabBarController
     }
@@ -30,6 +30,9 @@ class SettingsCoordinator {
     func premiumVersionPressed() {
         let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
         let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
+        if let changePasswordCalcMode = changePasswordCalcMode as? PurchaseViewController {
+            changePasswordCalcMode.delegate = viewController
+        }
         viewController?.present(changePasswordCalcMode, animated: true)
     }
     

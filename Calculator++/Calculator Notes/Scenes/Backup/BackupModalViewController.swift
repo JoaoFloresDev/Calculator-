@@ -37,13 +37,37 @@ extension BackupModalViewController: BackupLoginEvent {
             FirebaseBackupService.hasDataInFirebase { hasData, _, items  in
                 self.loadingAlert.stopLoading {
                     if let items = items, !items.isEmpty, hasData {
-                        self.askUserToRestoreBackup(backupItems: items)
+                        self.askUserToRestoreBackupAfterLogin(backupItems: items)
                     } else {
                         self.updateBackupTapped()
                     }
                 }
             }
         }
+    }
+    
+    private func askUserToRestoreBackupAfterLogin(backupItems: [MediaItem]) {
+        Alerts.askUserToRestoreBackup(on: self) { restoreBackup in
+            if restoreBackup {
+                self.loadingAlert.startLoading() {
+                    self.restoreBackupAfterLogin(backupItems: backupItems)
+                }
+            }
+        }
+    }
+    
+    private func restoreBackupAfterLogin(backupItems: [MediaItem]) {
+            FirebaseBackupService.restoreBackup(items: backupItems) { success, _ in
+                self.loadingAlert.stopLoading {
+                    if success {
+                        self.imagesRootController?.viewDidLoad()
+                        self.videosRootController?.viewDidLoad()
+                        self.updateBackupTapped()
+                    } else {
+                        Alerts.showBackupError(controller: self)
+                    }
+                }
+            }
     }
 }
                                         

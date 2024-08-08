@@ -42,10 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
 
+    func isUserLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
+    }
+    
     private func determineInitialViewController() -> UIViewController {
         let userDefaultService = UserDefaultService()
 
         if !Defaults.getBool(.notFirstUse) {
+            if isUserLoggedIn() {
+                Defaults.setBool(.iCloudEnabled, true)
+            }
             Defaults.setBool(.recoveryStatus, true)
             return UINavigationController(rootViewController: OnboardingWelcomeViewController())
         }
