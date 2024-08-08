@@ -175,3 +175,114 @@ extension OnboardingCreateCodeViewController: OnboardingViewDelegate {
         self.navigationController?.pushViewController(OnboardingAddPhotosViewController(), animated: true)
     }
 }
+
+class SlideAndFadePushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 1
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let toViewController = transitionContext.viewController(forKey: .to) else {
+            return
+        }
+        
+        let finalFrame = transitionContext.finalFrame(for: toViewController)
+        let containerView = transitionContext.containerView
+        let duration = transitionDuration(using: transitionContext)
+        
+        // Configurações iniciais para o estado de "toViewController"
+        toViewController.view.frame = finalFrame.offsetBy(dx: finalFrame.width, dy: 0)
+        toViewController.view.alpha = 0.0
+        
+        // Adiciona a view no containerView
+        containerView.addSubview(toViewController.view)
+        
+        // Animação
+        UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.8, options: [], animations: {
+            toViewController.view.frame = finalFrame
+            toViewController.view.alpha = 1.0
+        }) { (finished) in
+            transitionContext.completeTransition(finished)
+        }
+    }
+}
+
+class SlideAndFadePresentAnimator: NSObject, UIViewControllerTransitioningDelegate {
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideAndFadePresentLikePushAnimator()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideAndFadeDismissLikePushAnimator()
+    }
+}
+
+class SlideAndFadePresentLikePushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 1
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromViewController = transitionContext.viewController(forKey: .from),
+              let toViewController = transitionContext.viewController(forKey: .to) else {
+            return
+        }
+        
+        let finalFrame = transitionContext.finalFrame(for: toViewController)
+        let initialFrame = finalFrame.offsetBy(dx: finalFrame.width, dy: 0)
+        
+        let containerView = transitionContext.containerView
+        let duration = transitionDuration(using: transitionContext)
+        
+        // Configurações iniciais para o estado de "toViewController"
+        toViewController.view.frame = initialFrame
+        
+        // Adiciona a view no containerView
+        containerView.addSubview(toViewController.view)
+        
+        // Animação
+        UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.8, options: [], animations: {
+            toViewController.view.frame = finalFrame
+            fromViewController.view.frame = fromViewController.view.frame.offsetBy(dx: -finalFrame.width, dy: 0)
+        }) { (finished) in
+            transitionContext.completeTransition(finished)
+        }
+    }
+}
+
+
+class SlideAndFadeDismissLikePushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 1
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromViewController = transitionContext.viewController(forKey: .from),
+              let toViewController = transitionContext.viewController(forKey: .to) else {
+            return
+        }
+        
+        let initialFrame = transitionContext.initialFrame(for: fromViewController)
+        let finalFrame = initialFrame.offsetBy(dx: -initialFrame.width, dy: 0)
+        
+        let containerView = transitionContext.containerView
+        let duration = transitionDuration(using: transitionContext)
+        
+        // Coloca o "toViewController" abaixo do "fromViewController"
+        toViewController.view.frame = initialFrame.offsetBy(dx: initialFrame.width, dy: 0)
+        containerView.insertSubview(toViewController.view, belowSubview: fromViewController.view)
+        
+        // Animação
+        UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1, initialSpringVelocity: 0.8, options: [], animations: {
+            fromViewController.view.frame = finalFrame
+            toViewController.view.frame = initialFrame
+        }) { (finished) in
+            transitionContext.completeTransition(finished)
+        }
+    }
+}
+

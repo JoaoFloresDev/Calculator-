@@ -20,7 +20,7 @@ import MessageUI
 import FirebaseFirestore
 import MapKit
 
-class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate, MFMailComposeViewControllerDelegate {
+class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate, MFMailComposeViewControllerDelegate, EditLeftBarButtonItemDelegate, AdditionsRightBarButtonItemDelegate {
     // MARK: - Variables
     var modelData: [Photo] = [] {
         didSet {
@@ -54,21 +54,93 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupTabBars()
         handleInitialLaunch()
         setupPlaceholderView()
-        if !(
-            RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
-            RazeFaceProducts.store.isProductPurchased("calcanual") ||
-            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")
-        ) {
+        handleAdsSetup()
+        Defaults.setBool(.notFirstUse, true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presentPurchaseIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        commonViewWillAppear()
+        checkPurchase()
+    }
+    
+    // MARK: - Purchase Check
+    private func checkPurchase() {
+        if isProductPurchased() {
+            removeAdsView()
+        }
+    }
+
+    private func removeAdsView() {
+        self.view.viewWithTag(100)?.removeFromSuperview()
+    }
+    
+    private func isProductPurchased() -> Bool {
+        return RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+               RazeFaceProducts.store.isProductPurchased("calcanual") ||
+               RazeFaceProducts.store.isProductPurchased("NoAds.Calc")
+    }
+
+    private func saveTodayDate() {
+        let now = Date()
+        UserDefaults.standard.set(now, forKey: "LastSavedDate")
+    }
+
+    private func check30DaysPassed() -> Bool {
+        if let lastSavedDate = UserDefaults.standard.object(forKey: "LastSavedDate") as? Date {
+            let dayDifference = Calendar.current.dateComponents([.day], from: lastSavedDate, to: Date()).day ?? 0
+            if dayDifference >= 30 {
+                saveTodayDate()
+                return true
+            }
+            return false
+        }
+        saveTodayDate()
+        return false
+    }
+    
+    private func presentPurchaseIfNeeded() {
+        if check30DaysPassed() {
+            let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+            let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase")
+            self.present(purchaseViewController, animated: true)
+        }
+    }
+    
+    private func setupPlaceholderView() {
+        view.addSubview(placeholderView)
+        placeholderView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    private func deselectAllFoldersObjects() {
+        for index in folders.indices {
+            folders[index].isSelected = false
+        }
+    }
+    
+    private func deselectAllFileObjects() {
+        for index in modelData.indices {
+            modelData[index].isSelected = false
+        }
+    }
+    
+    // MARK: - Ads Setup
+    private func handleAdsSetup() {
+        if !isProductPurchased() {
             setupAds()
         } else {
             checkRevenuePurchases()
         }
-        
-        Defaults.setBool(.notFirstUse, true)
-        
     }
     
-    func checkRevenuePurchases() {
+    private func checkRevenuePurchases() {
         let dataManager = DateManager()
         Connectivity.shared.checkConnection { isConnected in
             if isConnected && dataManager.hasDatesBeforeToday() {
@@ -79,84 +151,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             }
         }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
-            RazeFaceProducts.store.isProductPurchased("calcanual") ||
-            RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
-            return
-        }
-        
-        if check30DaysPassed() {
-            let storyboard = UIStoryboard(name: "Purchase",bundle: nil)
-            let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
-            self.present(changePasswordCalcMode, animated: true)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        commonViewWillAppear()
-        checkPurchase()
-    }
-    
-//    MARK: - Ads
-    func checkPurchase() {
-        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
-            RazeFaceProducts.store.isProductPurchased("calcanual") ||
-            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")
-        {
-            if let viewToRemove = self.view.viewWithTag(100) {
-                viewToRemove.removeFromSuperview()
-            }
-        }
-    }
-    
-    func saveTodayDate() {
-        let now = Date()
-        UserDefaults.standard.set(now, forKey: "LastSavedDate")
-    }
 
-    func check30DaysPassed() -> Bool {
-        if let lastSavedDate = UserDefaults.standard.object(forKey: "LastSavedDate") as? Date {
-            let dayDifference = Calendar.current.dateComponents([.day], from: lastSavedDate, to: Date()).day ?? 0
-            if dayDifference >= 20 {
-                saveTodayDate()
-                return true
-            } else {
-                return false
-            }
-        }
-        saveTodayDate()
-        return false
-    }
-    
-    func setupPlaceholderView() {
-        view.addSubview(placeholderView)
-        
-        placeholderView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.left.equalTo(view.safeAreaLayoutGuide.snp.left)
-            make.right.equalTo(view.safeAreaLayoutGuide.snp.right)
-        }
-    }
-    
-    func deselectAllFoldersObjects() {
-        for index in 0 ..< folders.count {
-            folders[index].isSelected = false
-        }
-    }
-    
-    func deselectAllFileObjects() {
-        for index in 0 ..< modelData.count {
-            modelData[index].isSelected = false
-        }
-    }
-}
-
-// MARK: - EditLeftBarButtonItemDelegate
-extension CollectionViewController: EditLeftBarButtonItemDelegate {
-    
+    // MARK: - EditLeftBarButtonItemDelegate
     func selectImagesButtonTapped() {
         handleSelectImagesButton()
     }
@@ -169,23 +165,23 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
         handleDeleteButton()
     }
     
-    // MARK: - Helper Functions
-    
     private func handleSelectImagesButton() {
         deselectAllItems()
         toggleEditModeAndReloadData()
     }
     
     private func handleShareImageButton() {
-        if modelData.isEmpty {
+        guard !modelData.isEmpty else {
             Alerts.showSelectImagesToShareFirts(controller: self)
+            return
         }
         coordinator?.shareImage(modelData: modelData)
     }
     
     private func handleDeleteButton() {
-        if modelData.isEmpty {
+        guard !modelData.isEmpty else {
             Alerts.showSelectImagesToDeleteFirts(controller: self)
+            return
         }
         Alerts.showConfirmationDelete(controller: self) { [weak self] in
             self?.performDeletionTasks()
@@ -214,28 +210,20 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
     }
     
     private func deleteSelectedFolders() {
-        for folder in folders where folder.isSelected {
-            foldersService.delete(folder: folder.name, basePath: basePath)
+        folders.filter { $0.isSelected }.forEach {
+            foldersService.delete(folder: $0.name, basePath: basePath)
         }
-        
         folders.removeAll { $0.isSelected }
-        
         updateFilesIsExpanded()
         deselectAllFoldersObjects()
     }
     
     private func deleteSelectedPhotos() {
-        deleteImagesFromModel()
+        modelData.filter { $0.isSelected }.forEach {
+            ModelController.deleteImageObject(name: $0.name, basePath: basePath)
+        }
         modelData.removeAll { $0.isSelected }
         deselectAllFileObjects()
-    }
-    
-    private func deleteImagesFromModel() {
-        modelData.forEach { photo in
-            if photo.isSelected {
-                ModelController.deleteImageObject(name: photo.name, basePath: basePath)
-            }
-        }
     }
     
     private func updateFilesIsExpanded() {
@@ -247,39 +235,43 @@ extension CollectionViewController: EditLeftBarButtonItemDelegate {
     private func reloadCollectionViewSections() {
         collectionView?.reloadSections(IndexSet(integersIn: 0...1))
     }
-}
-
-// MARK: - AdditionsRightBarButtonItemDelegate
-extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
+    
+    // MARK: - AdditionsRightBarButtonItemDelegate
     func cloudButtonTapped() {
-        let controllers = self.tabBarController?.viewControllers
-        
-        let navigation = controllers?[0] as? UINavigationController
-        let collectionViewController = navigation?.viewControllers.first as? CollectionViewController
-        
-        let navigation1 = controllers?[1] as? UINavigationController
-        let videosRootController = navigation1?.viewControllers.first as? VideoCollectionViewController
-        
-        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
-            RazeFaceProducts.store.isProductPurchased("calcanual") ||
-            RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
-            
-            let vc = BackupModalViewController(
-                delegate: self,
-                imagesRootController: collectionViewController,
-                videosRootController: videosRootController
-            )
-            
-            vc.modalPresentationStyle = .overCurrentContext
-            if let tabBarController = self.tabBarController {
-                tabBarController.present(vc, animated: false, completion: nil)
-            }
+        if isProductPurchased() {
+            presentBackupModalViewController()
         } else {
-            Alerts.showBePremiumToUseBackup(controller: self) { action in
-                let storyboard = UIStoryboard(name: "Purchase",bundle: nil)
-                let changePasswordCalcMode = storyboard.instantiateViewController(withIdentifier: "Purchase")
-                self.present(changePasswordCalcMode, animated: true)
-            }
+            presentPurchaseController()
+        }
+    }
+    
+    private func presentBackupModalViewController() {
+        guard let tabBar = self.tabBarController else { return }
+        let vc = BackupModalViewController(
+            delegate: self,
+            imagesRootController: getCollectionViewController(from: tabBar, index: 0),
+            videosRootController: getVideoCollectionViewController(from: tabBar, index: 1)
+        )
+        vc.modalPresentationStyle = .overCurrentContext
+        tabBar.present(vc, animated: false, completion: nil)
+    }
+    
+    private func getCollectionViewController(from tabBar: UITabBarController, index: Int) -> CollectionViewController? {
+        let navigation = tabBar.viewControllers?[index] as? UINavigationController
+        return navigation?.viewControllers.first as? CollectionViewController
+    }
+    
+    private func getVideoCollectionViewController(from tabBar: UITabBarController, index: Int) -> VideoCollectionViewController? {
+        let navigation = tabBar.viewControllers?[index] as? UINavigationController
+        return navigation?.viewControllers.first as? VideoCollectionViewController
+    }
+    
+    private func presentPurchaseController() {
+        Alerts.showBePremiumToUseBackup(controller: self) { [weak self] _ in
+            guard let self = self else { return }
+            let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+            let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase")
+            self.present(purchaseViewController, animated: true)
         }
     }
     
@@ -292,7 +284,7 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
         addFolder()
     }
     
-    func addFolder() {
+    private func addFolder() {
         Alerts.showInputDialog(title: Text.folderTitle.localized(),
                                controller: self,
                                actionTitle: Text.createActionTitle.localized(),
@@ -310,10 +302,8 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
     }
     
     private func createNewFolderAndReloadCollectionView(input: String) {
-        self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { folderName in
-            return Folder(name: folderName, isSelected: false)
-        }
-        self.collectionView?.reloadSections(IndexSet(integer: .zero))
+        self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { Folder(name: $0, isSelected: false) }
+        collectionView?.reloadSections(IndexSet(integer: .zero))
     }
     
     private func showErrorAndPromptForRetry() {
@@ -323,9 +313,8 @@ extension CollectionViewController: AdditionsRightBarButtonItemDelegate {
             self?.addFolder()
         }
     }
-}
-
-extension CollectionViewController {
+    
+    // MARK: - CollectionView DataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -333,46 +322,31 @@ extension CollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let presentPlaceHolderImage = modelData.isEmpty && folders.isEmpty
         placeholderView.isHidden = !presentPlaceHolderImage
-        switch section {
-        case 0:
-            return folders.count
-        default:
-            return filesIsExpanded ? modelData.count : .zero
-        }
+        return section == 0 ? folders.count : (filesIsExpanded ? modelData.count : 0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            return folderCell(collectionView, cellForItemAt: indexPath)
-        default:
-            return photoCell(collectionView, cellForItemAt: indexPath)
-        }
+        return indexPath.section == 0 ? folderCell(collectionView, cellForItemAt: indexPath) : photoCell(collectionView, cellForItemAt: indexPath)
     }
     
     private func folderCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: folderReuseIdentifier, for: indexPath) as? FolderCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
         let folderName = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath).last ?? ""
         cell.setup(name: folderName)
         cell.isSelectedCell = folders[indexPath.row].isSelected
-        
         return cell
     }
     
     private func photoCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell,
-              indexPath.item < modelData.count else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell, indexPath.item < modelData.count else {
             return UICollectionViewCell()
         }
-        
         let image = modelData[indexPath.item]
         cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
         cell.isSelectedCell = modelData[indexPath.item].isSelected
         cell.applyshadowWithCorner()
-        
         return cell
     }
     
@@ -385,55 +359,44 @@ extension CollectionViewController {
     }
     
     private func handleNormalModeSelection(at indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            coordinator?.navigateToFolderViewController(
-                indexPath: indexPath,
-                folders: folders,
-                basePath: basePath
-            )
-            
-        default:
+        if indexPath.section == 0 {
+            coordinator?.navigateToFolderViewController(indexPath: indexPath, folders: folders, basePath: basePath)
+        } else {
             coordinator?.presentImageGallery(for: indexPath.item)
         }
     }
     
     func updateSelectedPhotos(indexPath: IndexPath) {
-        if indexPath.section == .zero {
+        if indexPath.section == 0 {
             folders[indexPath.row].isSelected.toggle()
         } else {
             modelData[indexPath.row].isSelected.toggle()
         }
-        self.collectionView?.reloadItems(at: [indexPath])
+        collectionView?.reloadItems(at: [indexPath])
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionElementKindSectionHeader:
-            return dequeueHeaderView(for: indexPath)
-        case UICollectionElementKindSectionFooter:
-            return dequeueFooterView(for: indexPath)
-        default:
-            return UICollectionReusableView()
-        }
+        return kind == UICollectionElementKindSectionHeader ? dequeueHeaderView(for: indexPath) : dequeueFooterView(for: indexPath)
     }
     
     private func dequeueHeaderView(for indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView?.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? HeaderView else {
             return UICollectionReusableView()
         }
-        
-        if indexPath.section == 0 {
-            configureHeaderViewForFolderSection(headerView)
-        } else if indexPath.section == 1 {
-            configureHeaderViewForPhotoSection(headerView)
-        }
-        
+        configureHeaderView(headerView, for: indexPath.section)
         return headerView
     }
     
+    private func configureHeaderView(_ headerView: HeaderView, for section: Int) {
+        if section == 0 {
+            configureHeaderViewForFolderSection(headerView)
+        } else {
+            configureHeaderViewForPhotoSection(headerView)
+        }
+    }
+    
     private func configureHeaderViewForFolderSection(_ headerView: HeaderView) {
-        headerView.messageLabel.text = String()
+        headerView.messageLabel.text = ""
         headerView.activityIndicatorView.isHidden = true
         headerView.gradientView?.isHidden = false
         headerView.isUserInteractionEnabled = false
@@ -441,13 +404,9 @@ extension CollectionViewController {
     
     private func configureHeaderViewForPhotoSection(_ headerView: HeaderView) {
         if !modelData.isEmpty {
-            if filesIsExpanded {
-                headerView.messageLabel.text = Text.hideAllPhotos.localized()
-            } else {
-                headerView.messageLabel.text = Text.showAllPhotos.localized()
-            }
+            headerView.messageLabel.text = filesIsExpanded ? Text.hideAllPhotos.localized() : Text.showAllPhotos.localized()
         } else {
-            headerView.messageLabel.text = String()
+            headerView.messageLabel.text = ""
         }
         headerView.isUserInteractionEnabled = true
         headerView.activityIndicatorView.isHidden = true
@@ -459,7 +418,6 @@ extension CollectionViewController {
         guard let footerView = collectionView?.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerView", for: indexPath) as? FooterView else {
             return UICollectionReusableView()
         }
-        
         return footerView
     }
 }
@@ -471,10 +429,12 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             print("Erro: collectionView não está inicializado.")
             return
         }
-
+        handleAssetSelection(assets)
+    }
+    
+    private func handleAssetSelection(_ assets: [PHAsset]) {
         let group = DispatchGroup()
         var newPhotos: [Photo] = []
-
         for asset in assets {
             group.enter()
             addImage(asset: asset) { photo in
@@ -484,10 +444,9 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 group.leave()
             }
         }
-
         group.notify(queue: .main) {
             self.modelData.append(contentsOf: newPhotos)
-            collectionView.reloadData()
+            self.collectionView?.reloadData()
             self.updateBackupTapped(numberOfNewPhotos: newPhotos.count)
         }
     }
@@ -496,79 +455,65 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
-        let currentDate = Date()
-        return dateFormatter.string(from: currentDate)
+        return dateFormatter.string(from: Date())
     }
     
     func updateBackupTapped(numberOfNewPhotos: Int) {
-        if (RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
-            RazeFaceProducts.store.isProductPurchased("calcanual") ||
-            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")) && isUserLoggedIn() && Defaults.getBool(.recurrentBackupUpdate) {
-            
+        if isProductPurchased() && isUserLoggedIn() && Defaults.getBool(.recurrentBackupUpdate) {
             let numberOfPhotos = Defaults.getInt(.numberOfNonSincronizatedPhotos) + numberOfNewPhotos
             Defaults.setInt(.numberOfNonSincronizatedPhotos, numberOfPhotos)
-            
-            if Defaults.getInt(.numberOfNonSincronizatedPhotos) > 3 {
-                self.loadingAlert.startLoading {
-                    FirebaseBackupService.updateBackup(completion: { _ in
-                        DispatchQueue.main.async {
-                            self.loadingAlert.stopLoading {
-                                Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
-                                Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
-                            }
-                        }
-                    })
+            if numberOfPhotos > 3 {
+                updateBackup()
+            }
+        }
+    }
+    
+    private func updateBackup() {
+        loadingAlert.startLoading {
+            FirebaseBackupService.updateBackup { _ in
+                DispatchQueue.main.async {
+                    self.loadingAlert.stopLoading {
+                        Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
+                        Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
+                    }
                 }
             }
         }
     }
     
     func sortPhotosByLocation(photos: [Photo]) -> [Photo] {
-        let sortedPhotos = photos.sorted { (photo1, photo2) -> Bool in
-            return photo1.location.localizedCaseInsensitiveCompare(photo2.location) == .orderedAscending
-        }
-        return sortedPhotos
+        return photos.sorted { $0.location.localizedCaseInsensitiveCompare($1.location) == .orderedAscending }
     }
     
-    func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
-        if asset.mediaType != .image {
+    private func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
+        guard asset.mediaType == .image else {
             completion(nil)
             return
         }
-        
         getAssetThumbnail(asset: asset) { image in
-            if let image = image {
-                if let photo = ModelController.saveImageObject(image: image, basePath: self.basePath) {
-                    completion(photo)
-                } else {
-                    print("Erro ao salvar a imagem.")
-                    completion(nil)
-                }
+            if let image = image, let photo = ModelController.saveImageObject(image: image, basePath: self.basePath) {
+                completion(photo)
             } else {
-                print("Falha ao carregar a miniatura do asset.")
+                print("Erro ao salvar a imagem.")
                 completion(nil)
             }
         }
     }
     
-    func getAssetThumbnail(asset: PHAsset, completion: @escaping (UIImage?) -> Void) {
+    private func getAssetThumbnail(asset: PHAsset, completion: @escaping (UIImage?) -> Void) {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
         option.isSynchronous = false
         option.isNetworkAccessAllowed = true
-        
         manager.requestImage(for: asset,
                              targetSize: CGSize(width: 1500, height: 1500),
                              contentMode: .aspectFit,
                              options: option) { (result, info) in
-            
             guard let info = info else {
                 completion(nil)
                 return
             }
-            
             let isDegraded = (info[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
-            
             if !isDegraded, let result = result {
                 completion(result)
             } else if !isDegraded {
@@ -587,7 +532,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     }
 }
 
-
 // MARK: - Extension Viewer Image
 extension CollectionViewController: GalleryItemsDataSource {
     func itemCount() -> Int {
@@ -596,19 +540,14 @@ extension CollectionViewController: GalleryItemsDataSource {
     
     func provideGalleryItem(_ index: Int) -> GalleryItem {
         let imageView = UIImageView(image: modelData[index].image)
-        let galleryItem = GalleryItem.image { $0(imageView.image) }
-        
-        return galleryItem
+        return GalleryItem.image { $0(imageView.image) }
     }
 }
 
+// MARK: - Private Methods
 extension CollectionViewController {
     private func configureNavigationBar() {
-        if let navigationTitle = navigationTitle {
-            self.title = navigationTitle
-        } else {
-            self.title = Text.gallery.localized()
-        }
+        title = navigationTitle ?? Text.gallery.localized()
     }
     
     private func handleInitialLaunch() {
@@ -619,13 +558,11 @@ extension CollectionViewController {
     }
     
     private func setupFolders() {
-        folders = foldersService.getFolders(basePath: basePath).map { folderName in
-            return Folder(name: folderName, isSelected: false)
-        }
+        folders = foldersService.getFolders(basePath: basePath).map { Folder(name: $0, isSelected: false) }
         if folders.isEmpty {
             filesIsExpanded = true
         } else {
-            self.collectionView?.reloadSections(IndexSet(integer: .zero))
+            collectionView?.reloadSections(IndexSet(integer: .zero))
         }
     }
     
@@ -637,14 +574,18 @@ extension CollectionViewController {
     }
     
     private func setupTabBars() {
-        let controllers = self.tabBarController?.viewControllers
-        controllers?[2].title = Text.notes.localized()
-        controllers?[3].title = Text.settings.localized()
+        guard let controllers = tabBarController?.viewControllers else { return }
+        controllers[2].title = Text.notes.localized()
+        controllers[3].title = Text.settings.localized()
     }
-}
-
-// MARK: - GADInterstitialDelegate
-extension CollectionViewController {
+    
+    private func setupAds() {
+        adsHandler.setupAds(controller: self,
+                            bannerDelegate: self,
+                            interstitialDelegate: self)
+    }
+    
+    // MARK: - GADInterstitialDelegate
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
         adsHandler.interstitialDidReceiveAd(ad)
     }
@@ -652,11 +593,5 @@ extension CollectionViewController {
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         adsHandler.interstitialDidDismissScreen(delegate: self)
         NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
-    }
-    
-    private func setupAds() {
-        adsHandler.setupAds(controller: self,
-                            bannerDelegate: self,
-                            interstitialDelegate: self)
     }
 }
