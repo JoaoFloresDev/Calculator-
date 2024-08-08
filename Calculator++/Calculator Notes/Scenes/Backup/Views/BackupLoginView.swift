@@ -146,7 +146,7 @@ class BackupLoginView: UIView {
                     if let error = error {
                         Alerts.showAlert(title: Text.errorTitle.localized(), text: "\(error.localizedDescription)\n\n\(Text.createLoginError.localized())", controller: self.controller)
                     } else {
-                        Defaults.setBool(.iCloudEnabled, true)
+                        Defaults.setBool(.recurrentBackupUpdate, true)
                         Alerts.showAlert(title: Text.successLogin.localized(), text: Text.successLoginDescription.localized(), controller: self.controller) {
                             self.delegate?.refreshBackupLoginStatus()
                         }
@@ -176,7 +176,7 @@ class BackupLoginView: UIView {
                     if let error = error {
                         Alerts.showAlert(title: Text.errorTitle.localized(), text: error.localizedDescription, controller: self.controller)
                     } else {
-                        Defaults.setBool(.iCloudEnabled, true)
+                        Defaults.setBool(.recurrentBackupUpdate, true)
                         self.delegate?.refreshBackupLoginStatus()
                         Alerts.showAlert(title: Text.successLogin.localized(), text: Text.successLoginDescription.localized(), controller: self.controller)
                     }

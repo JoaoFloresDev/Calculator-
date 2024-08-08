@@ -69,9 +69,9 @@ class BackupStatusView: UIView {
         }
         
         if sender.isOn {
-            Defaults.setBool(.iCloudEnabled, true)
+            Defaults.setBool(.recurrentBackupUpdate, true)
         } else {
-            Defaults.setBool(.iCloudEnabled, false)
+            Defaults.setBool(.recurrentBackupUpdate, false)
         }
     }
     

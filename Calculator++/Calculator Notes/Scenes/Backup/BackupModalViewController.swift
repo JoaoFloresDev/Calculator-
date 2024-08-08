@@ -26,7 +26,7 @@ protocol BackupModalViewControllerDelegate: AnyObject {
 
 extension BackupModalViewController: BackupLoginEvent {
     func refreshBackupLoginStatus() {
-        backupStatusView.switchControl.setOn(Defaults.getBool(.iCloudEnabled), animated: true)
+        backupStatusView.switchControl.setOn(Defaults.getBool(.recurrentBackupUpdate), animated: true)
         self.delegate?.enableBackupToggled(status: isUserLoggedIn())
         setBackupLoginStatus()
         if !isUserLoggedIn() {
@@ -155,7 +155,7 @@ class BackupModalViewController: UIViewController {
         self.delegate = delegate
         self.imagesRootController = imagesRootController
         self.videosRootController = videosRootController
-        backupStatusView.switchControl.isOn = Defaults.getBool(.iCloudEnabled)
+        backupStatusView.switchControl.isOn = Defaults.getBool(.recurrentBackupUpdate)
     }
     
     required init?(coder: NSCoder) {

@@ -503,7 +503,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func updateBackupTapped(numberOfNewPhotos: Int) {
         if (RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
             RazeFaceProducts.store.isProductPurchased("calcanual") ||
-            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")) && isUserLoggedIn() {
+            RazeFaceProducts.store.isProductPurchased("NoAds.Calc")) && isUserLoggedIn() && Defaults.getBool(.recurrentBackupUpdate) {
             
             let numberOfPhotos = Defaults.getInt(.numberOfNonSincronizatedPhotos) + numberOfNewPhotos
             Defaults.setInt(.numberOfNonSincronizatedPhotos, numberOfPhotos)

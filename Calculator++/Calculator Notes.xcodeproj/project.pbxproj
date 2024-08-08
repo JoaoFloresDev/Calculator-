@@ -24,8 +24,7 @@
 		7304387A2A34467C001EF25B /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438792A34467B001EF25B /* FolderCollectionViewCell.swift */; };
 		7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
-		730B2EB62C593F810016FD9E /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EB42C593F800016FD9E /* BackupService.swift */; };
-		730B2EB92C593FD40016FD9E /* CloudUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EB82C593FD40016FD9E /* CloudUpdateManager.swift */; };
+		730B2EB92C593FD40016FD9E /* BackupUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EB82C593FD40016FD9E /* BackupUpdateManager.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
 		7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA342ABB95DB004FD07C /* DiamondView.swift */; };
 		7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */; };
@@ -56,6 +55,9 @@
 		73A8EFE42C5ABEBB00601079 /* CustomLabelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8EFE32C5ABEBB00601079 /* CustomLabelButtonView.swift */; };
 		73A8EFE62C5ACA3600601079 /* BackupProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8EFE52C5ACA3600601079 /* BackupProfileView.swift */; };
 		73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ABC0EE284F195B00E5C3A4 /* Purchase.storyboard */; };
+		73AF3C2E2C6515840011FE35 /* FirebaseImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF3C2D2C6515830011FE35 /* FirebaseImageService.swift */; };
+		73AF3C302C6515D30011FE35 /* FirebaseVideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF3C2F2C6515D30011FE35 /* FirebaseVideoService.swift */; };
+		73AF3C322C65162A0011FE35 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF3C312C65162A0011FE35 /* Data+Extension.swift */; };
 		73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B053D12AA01A0100546566 /* PlaceholderView.swift */; };
 		73B54D4C27B096E800499F66 /* CalculatorMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */; };
 		73B54D4E27B096F600499F66 /* BankMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73B54D4D27B096F600499F66 /* BankMode.storyboard */; };
@@ -141,8 +143,7 @@
 		730438792A34467B001EF25B /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewCell.swift; sourceTree = "<group>"; };
 		7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLeftBarButtonItemDelegate.swift; sourceTree = "<group>"; };
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
-		730B2EB42C593F800016FD9E /* BackupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupService.swift; sourceTree = "<group>"; };
-		730B2EB82C593FD40016FD9E /* CloudUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUpdateManager.swift; sourceTree = "<group>"; };
+		730B2EB82C593FD40016FD9E /* BackupUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupUpdateManager.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calculator Notes.entitlements"; sourceTree = "<group>"; };
 		7342CA342ABB95DB004FD07C /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
@@ -181,6 +182,9 @@
 		73ABC0F0284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		73ABC0F1284F25CA00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		73ABC0F2284F25CB00E5C3A4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		73AF3C2D2C6515830011FE35 /* FirebaseImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImageService.swift; sourceTree = "<group>"; };
+		73AF3C2F2C6515D30011FE35 /* FirebaseVideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVideoService.swift; sourceTree = "<group>"; };
+		73AF3C312C65162A0011FE35 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		73B053D12AA01A0100546566 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		73B54D4B27B096E800499F66 /* CalculatorMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalculatorMode.storyboard; sourceTree = "<group>"; };
 		73B54D4D27B096F600499F66 /* BankMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankMode.storyboard; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 				73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */,
 				73C2C5042A49D79B00963BA2 /* UIView+extension.swift */,
 				73C2C5062A49D7AE00963BA2 /* TabBarController+Extensions.swift */,
+				73AF3C312C65162A0011FE35 /* Data+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -360,8 +365,10 @@
 		730B2EB32C593F800016FD9E /* cloud */ = {
 			isa = PBXGroup;
 			children = (
-				730B2EB42C593F800016FD9E /* BackupService.swift */,
-				730B2EB82C593FD40016FD9E /* CloudUpdateManager.swift */,
+				730B2EB82C593FD40016FD9E /* BackupUpdateManager.swift */,
+				D7B44A932C366030001255FA /* FirebaseBackupService.swift */,
+				73AF3C2D2C6515830011FE35 /* FirebaseImageService.swift */,
+				73AF3C2F2C6515D30011FE35 /* FirebaseVideoService.swift */,
 			);
 			path = cloud;
 			sourceTree = "<group>";
@@ -370,7 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				730B2EB32C593F800016FD9E /* cloud */,
-				D7B44A902C365F9A001255FA /* firebase */,
 				73741B082A880A760067B269 /* local */,
 				73741B072A880A5E0067B269 /* ads */,
 			);
@@ -657,14 +663,6 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		D7B44A902C365F9A001255FA /* firebase */ = {
-			isa = PBXGroup;
-			children = (
-				D7B44A932C366030001255FA /* FirebaseBackupService.swift */,
-			);
-			path = firebase;
-			sourceTree = "<group>";
-		};
 		DB0B97AE06385842C7727F5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -897,11 +895,11 @@
 				730438652A315B17001EF25B /* AdsService.swift in Sources */,
 				73A8EFE42C5ABEBB00601079 /* CustomLabelButtonView.swift in Sources */,
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
-				730B2EB62C593F810016FD9E /* BackupService.swift in Sources */,
 				737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
 				73A8EFE02C5ABE7200601079 /* BackupLoginView.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
+				73AF3C302C6515D30011FE35 /* FirebaseVideoService.swift in Sources */,
 				C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */,
 				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
 				73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */,
@@ -947,7 +945,7 @@
 				D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				73862C842AAD18BC005D9D25 /* Constants.swift in Sources */,
-				730B2EB92C593FD40016FD9E /* CloudUpdateManager.swift in Sources */,
+				730B2EB92C593FD40016FD9E /* BackupUpdateManager.swift in Sources */,
 				738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */,
 				73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */,
 				736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */,
@@ -956,12 +954,14 @@
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
 				7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
+				73AF3C322C65162A0011FE35 /* Data+Extension.swift in Sources */,
 				737530D32B60E517000B23E3 /* ViewController.swift in Sources */,
 				73862C822AAD1894005D9D25 /* OnboardingViewController.swift in Sources */,
 				C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */,
 				73D1CD9B2B731212007E97CC /* ChangeNewCalcViewController.swift in Sources */,
 				73B54D6627B09D9800499F66 /* String+Localized.swift in Sources */,
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
+				73AF3C2E2C6515840011FE35 /* FirebaseImageService.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,

@@ -22,6 +22,8 @@ class VideoCollectionViewController: BasicCollectionViewController, UINavigation
             }
         }
     }
+    lazy var loadingAlert = LoadingAlert(in: self)
+    
     var videoPaths: [String] = []
     var folders: [Folder] = []
     var modelController = VideoModelController()
@@ -406,9 +408,28 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
                 self.modelData.append(Video(image: image, name: imageName))
                 self.videoPaths.append(pathVideo)
                 self.collectionView?.reloadSections(IndexSet(integer: 1))
+                self.loadingAlert.startLoading {
+                    FirebaseBackupService.updateBackup(completion: { _ in
+                        DispatchQueue.main.async {
+                            self.loadingAlert.stopLoading {
+                                Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
+                                Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
+                            }
+                        }
+                    })
+                }
             }
         }
     }
+    
+    func getCurrentDateTimeFormatted() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        let currentDate = Date()
+        return dateFormatter.string(from: currentDate)
+    }
+    
     
     func getThumbnailImageFromVideoUrl(url: URL, completion: @escaping ((_ image: UIImage?) -> Void)) {
         DispatchQueue.global().async {

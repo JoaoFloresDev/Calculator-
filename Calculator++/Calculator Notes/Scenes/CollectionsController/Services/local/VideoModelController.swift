@@ -6,11 +6,12 @@ import os.log
 struct VideoModelController {
     static let shared = VideoModelController()
     
+    // MARK: - Properties
     static let entityName = "StoredVideo"
-    
     private static var savedObjects = [StoredVideo]()
     private static var videos = [Video]()
     private static var pathURLs = [String]()
+    static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     private static var managedContext: NSManagedObjectContext? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -22,7 +23,7 @@ struct VideoModelController {
     private static let subsystem = "com.example.calculatornotes"
     private static let category = "errors"
     
-    // MARK: - Fetching
+    // MARK: - Fetching Methods
     static func fetchImageObjectsInit(basePath: String) -> [Video] {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
@@ -33,7 +34,6 @@ struct VideoModelController {
         
         do {
             savedObjects = try managedContext.fetch(imageObjectRequest)
-            
             videos.removeAll()
             
             for imageObject in savedObjects {
@@ -41,10 +41,7 @@ struct VideoModelController {
                     continue
                 }
                 
-                if (imageName.contains(basePath)
-                    && imageName.filter({ $0 == "@" }).count ==
-                    basePath.filter({ $0 == "@" }).count)  || handleOldImage(basePath: basePath){
-                    
+                if (imageName.contains(basePath) && imageName.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count) || handleOldImage(basePath: basePath) {
                     if let storedImage = CoreDataImageService.fetchImage(imageName: imageName) {
                         videos.append(Video(image: storedImage, name: imageName))
                     }
@@ -67,14 +64,11 @@ struct VideoModelController {
         
         do {
             savedObjects = try managedContext.fetch(videoObjectRequest)
-            
             pathURLs.removeAll()
             
             for videoObject in savedObjects {
                 if let path = videoObject.pathURL {
-                    if (path.contains(basePath)
-                        && path.filter({ $0 == "@" }).count ==
-                        basePath.filter({ $0 == "@" }).count) || handleOldImage(basePath: basePath) {
+                    if (path.contains(basePath) && path.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count) || handleOldImage(basePath: basePath) {
                         pathURLs.append(path)
                     }
                 }
@@ -86,7 +80,7 @@ struct VideoModelController {
         return pathURLs
     }
     
-    // MARK: - Saving and Deleting
+    // MARK: - Saving and Deleting Methods
     static func saveVideoObject(image: UIImage, video: Data, basePath: String = "") -> (String?, String?) {
         guard let managedContext = managedContext else {
             os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
@@ -124,10 +118,9 @@ struct VideoModelController {
             return
         }
         
-        _ = fetchImageObjectsInit(basePath: basePath)
-        _ = fetchPathVideosObjectsInit(basePath: basePath)
+        fetchImageObjectsInit(basePath: basePath)
+        fetchPathVideosObjectsInit(basePath: basePath)
         
-        // Procura o objeto com o nome correspondente
         let fetchRequest = NSFetchRequest<StoredVideo>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "imageName == %@", name)
         
@@ -169,34 +162,27 @@ struct VideoModelController {
         }
     }
     
+    // MARK: - Helper Methods
     static func handleOldImage(basePath: String) -> Bool {
-        countOccurrences(of: "@", in: basePath) < 2
+        return countOccurrences(of: "@", in: basePath) < 2
     }
     
     static func countOccurrences(of character: Character, in string: String) -> Int {
-        var count = 0
-        for char in string {
-            if char == character {
-                count += 1
-            }
-        }
-        return count
+        return string.filter { $0 == character }.count
     }
     
-    static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
     static func saveVideo(videoData: Data, basePath: String) -> String? {
         let date = String(Date.timeIntervalSinceReferenceDate)
         let videoName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".mp4"
-
         let filePath = documentsPath.appendingPathComponent(videoName)
+        
         do {
-            try videoData.write(to: filePath)
+            try videoData.write(to: filePath, options: .atomic)
             print("\(videoName) was saved at \(filePath).")
             VideoCloudInsertionManager.addName(videoName)
             return videoName
         } catch let error as NSError {
-            print("\(videoName) could not be saved: \(error)")
+            print("\(videoName) could not be saved: \(error.localizedDescription)")
             return nil
         }
     }

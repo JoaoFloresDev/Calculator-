@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if !Defaults.getBool(.notFirstUse) {
             if isUserLoggedIn() {
-                Defaults.setBool(.iCloudEnabled, true)
+                Defaults.setBool(.recurrentBackupUpdate, true)
             }
             Defaults.setBool(.recoveryStatus, true)
             return UINavigationController(rootViewController: OnboardingWelcomeViewController())

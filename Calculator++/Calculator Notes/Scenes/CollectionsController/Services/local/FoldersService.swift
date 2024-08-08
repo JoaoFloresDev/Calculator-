@@ -1,11 +1,3 @@
-//
-//  GalleryService.swift
-//  Calculator Notes
-//
-//  Created by Joao Victor Flores da Costa on 02/12/22.
-//  Copyright © 2022 MakeSchool. All rights reserved.
-//
-
 import UIKit
 import Photos
 import AssetsPickerViewController
@@ -15,15 +7,13 @@ import NYTPhotoViewer
 import ImageViewer
 import StoreKit
 import GoogleMobileAds
-import UIKit
 import SceneKit
 import ARKit
 import simd
-import Photos
-import StoreKit
-import Foundation
 import AVFoundation
 import AVKit
+
+// MARK: - FoldersService
 
 struct FoldersService {
     enum AssetType {
@@ -31,8 +21,8 @@ struct FoldersService {
         case image
     }
     
-    var folders: [String] = []
-    var type: AssetType = .image
+    private var folders: [String] = []
+    private var type: AssetType
     
     var key: StringArrayKey {
         switch type {
@@ -45,20 +35,16 @@ struct FoldersService {
     
     init(type: AssetType) {
         self.type = type
-        folders = Defaults.getStringArray(key) ?? [String]()
+        self.folders = Defaults.getStringArray(key) ?? []
     }
     
+    // MARK: - Public Methods
+    
     mutating func getFolders(basePath: String) -> [String] {
-        folders = Defaults.getStringArray(key) ?? [String]()
-        var folderInPath: [String] = []
-        for folder in folders {
-            if folder.contains(basePath)
-                && folder.filter({ $0 == "@" }).count ==
-                basePath.filter({ $0 == "@" }).count {
-                folderInPath.append(folder)
-            }
+        updateFolders()
+        return folders.filter { folder in
+            folder.contains(basePath) && folder.filter({ $0 == "@" }).count == basePath.filter({ $0 == "@" }).count
         }
-        return folderInPath
     }
     
     func checkAlreadyExist(folder: String, basePath: String) -> Bool {
@@ -67,16 +53,24 @@ struct FoldersService {
 
     @discardableResult
     mutating func add(folder: String, basePath: String) -> [String] {
-        self.folders.append("\(basePath)\(folder)")
-        Defaults.setStringArray(key, self.folders)
+        folders.append("\(basePath)\(folder)")
+        saveFolders()
         return getFolders(basePath: basePath)
     }
     
-    mutating func delete(folder: String, basePath: String)  -> [String] {
-        folders.removeAll { string in
-            return string.contains(folder)
-        }
-        Defaults.setStringArray(key, self.folders)
+    mutating func delete(folder: String, basePath: String) -> [String] {
+        folders.removeAll { $0.contains(folder) }
+        saveFolders()
         return getFolders(basePath: basePath)
+    }
+    
+    // MARK: - Private Methods
+    
+    private mutating func updateFolders() {
+        folders = Defaults.getStringArray(key) ?? []
+    }
+    
+    private func saveFolders() {
+        Defaults.setStringArray(key, folders)
     }
 }

@@ -5,82 +5,74 @@ import CoreData
 struct CoreDataImageService {
     static let fileManager = FileManager.default
     static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let imageCache = NSCache<NSString, UIImage>()
+    
+    // MARK: - Save Image
     
     static func saveImage(image: UIImage, basePath: String) -> String? {
         let date = String(Date.timeIntervalSinceReferenceDate)
         let imageName = basePath + date.replacingOccurrences(of: ".", with: "-") + ".png"
-
+        return saveImage(image: image, path: imageName)
+    }
+    
+    static func saveImage(image: UIImage, path: String) -> String? {
         guard let imageData = UIImagePNGRepresentation(image) else {
             print("Could not convert UIImage to PNG data.")
             return nil
         }
-
-        let filePath = documentsPath.appendingPathComponent(imageName)
+        
+        let filePath = documentsPath.appendingPathComponent(path)
         do {
-            try imageData.write(to: filePath)
-            print("\(imageName) was saved.")
-            return imageName
-        } catch let error as NSError {
-            print("\(imageName) could not be saved: \(error)")
+            try imageData.write(to: filePath, options: .atomic)
+            imageCache.setObject(image, forKey: path as NSString)
+            print("\(path) was saved.")
+            return path
+        } catch let error {
+            print("\(path) could not be saved: \(error.localizedDescription)")
             return nil
         }
     }
     
-    static func saveImage(image: UIImage, path: String) -> String? {
-        let imageName = path
-
-        guard let imageData = UIImagePNGRepresentation(image) else {
-            print("Could not convert UIImage to PNG data.")
-            return nil
-        }
-
-        let filePath = documentsPath.appendingPathComponent(imageName)
-        do {
-            try imageData.write(to: filePath)
-            print("\(imageName) was saved.")
-            return imageName
-        } catch let error as NSError {
-            print("\(imageName) could not be saved: \(error)")
-            return nil
-        }
-    }
-
+    // MARK: - Fetch Image
+    
     static func fetchImage(imageName: String) -> UIImage? {
-        guard !imageName.isEmpty else {
-            print("Erro: Nome da imagem é inválido ou vazio.")
+        if let cachedImage = imageCache.object(forKey: imageName as NSString) {
+            return cachedImage
+        }
+        
+        let filePath = documentsPath.appendingPathComponent(imageName).path
+        guard fileManager.fileExists(atPath: filePath) else {
+            print("Error: Image does not exist at path: \(filePath)")
             return nil
         }
         
-        let imagePath = documentsPath.appendingPathComponent(imageName).path
-        
-        guard fileManager.fileExists(atPath: imagePath) else {
-            print("Erro: A imagem não existe no caminho: \(imagePath)")
+        guard let imageData = try? Data(contentsOf: URL(fileURLWithPath: filePath)),
+              let image = UIImage(data: imageData) else {
+            print("Error: Could not load image from path: \(filePath)")
             return nil
         }
         
-        if let imageData = UIImage(contentsOfFile: imagePath) {
-            print("Carregando imagem do caminho:", imagePath)
-            return imageData
-        } else {
-            print("Erro: UIImage não pôde ser criada.")
-            return nil
-        }
+        imageCache.setObject(image, forKey: imageName as NSString)
+        print("Loaded image from path:", filePath)
+        return image
     }
-
-    static func deleteImage(imageName: String)  -> Result<Void, Error> {
-        let imagePath = documentsPath.appendingPathComponent(imageName)
-
-        guard fileManager.fileExists(atPath: imagePath.path) else {
-            print("Image does not exist at path: \(imagePath)")
-            return .failure(NSError())
+    
+    // MARK: - Delete Image
+    
+    static func deleteImage(imageName: String) -> Result<Void, Error> {
+        let filePath = documentsPath.appendingPathComponent(imageName)
+        guard fileManager.fileExists(atPath: filePath.path) else {
+            print("Error: Image does not exist at path: \(filePath)")
+            return .failure(NSError(domain: "CoreDataImageService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Image not found"]))
         }
-
+        
         do {
-            try fileManager.removeItem(at: imagePath)
+            try fileManager.removeItem(at: filePath)
+            imageCache.removeObject(forKey: imageName as NSString)
             print("\(imageName) was deleted.")
             return .success(())
-        } catch let error as NSError {
-            print("Could not delete \(imageName): \(error)")
+        } catch let error {
+            print("Could not delete \(imageName): \(error.localizedDescription)")
             return .failure(error)
         }
     }
