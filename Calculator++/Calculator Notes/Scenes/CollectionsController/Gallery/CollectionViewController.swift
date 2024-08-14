@@ -56,6 +56,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupPlaceholderView()
         handleAdsSetup()
         Defaults.setBool(.notFirstUse, true)
+        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -344,7 +345,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             return UICollectionViewCell()
         }
         let image = modelData[indexPath.item]
-        cell.imageCell.image = UI.cropToBounds(image: image.image, width: 200, height: 200)
+        cell.imageCell.image = image.image
+        cell.imageCell.contentMode = .scaleAspectFill
         cell.isSelectedCell = modelData[indexPath.item].isSelected
         cell.applyshadowWithCorner()
         return cell
@@ -425,29 +427,28 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
 // MARK: - AssetsPickerViewControllerDelegate
 extension CollectionViewController: AssetsPickerViewControllerDelegate {
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
-        guard let collectionView = self.collectionView else {
+        guard let _ = self.collectionView else {
             print("Erro: collectionView não está inicializado.")
             return
         }
         handleAssetSelection(assets)
     }
-    
     private func handleAssetSelection(_ assets: [PHAsset]) {
-        let group = DispatchGroup()
-        var newPhotos: [Photo] = []
-        for asset in assets {
-            group.enter()
-            addImage(asset: asset) { photo in
-                if let photo = photo {
-                    newPhotos.append(photo)
+        loadingAlert.startLoading {
+            var newPhotos = 0
+            for asset in assets {
+                self.addImage(asset: asset) { photo in
+                    if let photo = photo {
+                        newPhotos += 1
+                        DispatchQueue.main.async {
+                            self.modelData.append(photo)
+                            self.collectionView?.reloadData()
+                        }
+                    }
                 }
-                group.leave()
             }
-        }
-        group.notify(queue: .main) {
-            self.modelData.append(contentsOf: newPhotos)
-            self.collectionView?.reloadData()
-            self.updateBackupTapped(numberOfNewPhotos: newPhotos.count)
+            self.loadingAlert.stopLoading()
+            self.updateBackupTapped(numberOfNewPhotos: newPhotos)
         }
     }
     
@@ -508,18 +509,12 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         manager.requestImage(for: asset,
                              targetSize: CGSize(width: 1500, height: 1500),
                              contentMode: .aspectFit,
-                             options: option) { (result, info) in
-            guard let info = info else {
+                             options: option) { result, info in
+            guard let info = info, !(info[PHImageResultIsDegradedKey] as? Bool ?? false), let result = result else {
                 completion(nil)
                 return
             }
-            let isDegraded = (info[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
-            if !isDegraded, let result = result {
-                completion(result)
-            } else if !isDegraded {
-                print("Não foi possível obter a imagem.")
-                completion(nil)
-            }
+            completion(result)
         }
     }
     
@@ -531,6 +526,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         return true
     }
 }
+
 
 // MARK: - Extension Viewer Image
 extension CollectionViewController: GalleryItemsDataSource {
