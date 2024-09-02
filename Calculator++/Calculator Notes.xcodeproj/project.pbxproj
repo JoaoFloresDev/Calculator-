@@ -33,7 +33,6 @@
 		736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736BDAD22A979D7100851BEF /* BackupModalViewController.swift */; };
 		737530CF2B60CE6A000B23E3 /* UseTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */; };
 		737530D32B60E517000B23E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737530D22B60E489000B23E3 /* ViewController.swift */; };
-		737530D42B60E524000B23E3 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 737530D02B60E471000B23E3 /* art.scnassets */; };
 		737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */; };
 		737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */; };
 		737FFF962BACC63E003CBD33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 737FFF982BACC63E003CBD33 /* InfoPlist.strings */; };
@@ -152,7 +151,6 @@
 		736BDAD02A979BC100851BEF /* LoadingAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
 		736BDAD22A979D7100851BEF /* BackupModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupModalViewController.swift; sourceTree = "<group>"; };
 		737530CE2B60CE6A000B23E3 /* UseTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTermsViewController.swift; sourceTree = "<group>"; };
-		737530D02B60E471000B23E3 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		737530D22B60E489000B23E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDManager.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 		2E4A07921C42F3B0007F415F /* Calculator Notes */ = {
 			isa = PBXGroup;
 			children = (
-				737530D02B60E471000B23E3 /* art.scnassets */,
 				73A1DA1C2B094EBD002B8D17 /* AppIcons */,
 				738B6AEC2AD8C16300EA4B72 /* GoogleService-Info2.plist */,
 				D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */,
@@ -764,7 +761,6 @@
 				73CBF8802B6F244500F85B6E /* NewCalc.storyboard in Resources */,
 				C480A50824A7757600094FC8 /* Settings.storyboard in Resources */,
 				738FB4BE2BADD4C400595F60 /* NewCalc2.storyboard in Resources */,
-				737530D42B60E524000B23E3 /* art.scnassets in Resources */,
 				337E0228279244A00081AA27 /* StoreKitTestCertificate.cer in Resources */,
 				D703A42B2C2B7B06005320CC /* GoogleService-Info.plist in Resources */,
 				73ABC0EF284F195B00E5C3A4 /* Purchase.storyboard in Resources */,
@@ -1174,7 +1170,7 @@
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1210,7 +1206,7 @@
 				PRODUCT_NAME = "Calculator Notes";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
