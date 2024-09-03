@@ -243,7 +243,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     private func reloadCollectionViewSections() {
         UIView.performWithoutAnimation {
-            collectionView?.reloadSections(IndexSet(integer: .zero))
+            collectionView?.reloadData()
         }
     }
     
@@ -446,10 +446,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         handleAssetSelection(assets)
     }
     private func handleAssetSelection(_ assets: [PHAsset]) {
-        var assets = assets
-        for _ in 0...60 {
-            assets.append(assets.first!)
-        }
         loadingAlert.startLoading {
             var newPhotos = 0
             for asset in assets {
