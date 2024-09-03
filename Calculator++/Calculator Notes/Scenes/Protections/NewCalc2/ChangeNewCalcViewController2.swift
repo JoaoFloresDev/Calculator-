@@ -105,6 +105,10 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         }
         
         while let index = operators.firstIndex(where: { $0 == "*" || $0 == "/" }) {
+            guard index < operands.count - 1 else {
+                return nil
+            }
+            
             let operatorSymbol = operators.remove(at: index)
             let leftOperand = operands.remove(at: index)
             let rightOperand = operands.remove(at: index)
@@ -118,6 +122,10 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         }
         
         while let index = operators.firstIndex(where: { $0 == "+" || $0 == "-" }) {
+            guard index < operands.count - 1 else {
+                return nil
+            }
+            
             let operatorSymbol = operators.remove(at: index)
             let leftOperand = operands.remove(at: index)
             let rightOperand = operands.remove(at: index)
@@ -140,6 +148,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         
         return formatter.string(from: NSNumber(value: result))
     }
+
     
     func saveKeyIfNeed() {
         if runningNumber.count == 4 {
