@@ -6,6 +6,7 @@ struct CoreDataImageService {
     static let fileManager = FileManager.default
     static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     static let imageCache = NSCache<NSString, UIImage>()
+    private static let cacheQueue = DispatchQueue(label: "com.example.CoreDataImageService.cacheQueue", attributes: .concurrent)
     
     // MARK: - Save Image
     
@@ -24,7 +25,11 @@ struct CoreDataImageService {
         let filePath = documentsPath.appendingPathComponent(path)
         do {
             try imageData.write(to: filePath, options: .atomic)
-            imageCache.setObject(image, forKey: path as NSString)
+            
+            cacheQueue.async(flags: .barrier) {
+                imageCache.setObject(image, forKey: path as NSString)
+            }
+            
             print("\(path) was saved.")
             return path
         } catch let error {
@@ -36,7 +41,7 @@ struct CoreDataImageService {
     // MARK: - Fetch Image
     
     static func fetchImage(imageName: String) -> UIImage? {
-        if let cachedImage = imageCache.object(forKey: imageName as NSString) {
+        if let cachedImage = cacheQueue.sync(execute: { imageCache.object(forKey: imageName as NSString) }) {
             return cachedImage
         }
         
@@ -52,7 +57,10 @@ struct CoreDataImageService {
             return nil
         }
         
-        imageCache.setObject(image, forKey: imageName as NSString)
+        cacheQueue.async(flags: .barrier) {
+            imageCache.setObject(image, forKey: imageName as NSString)
+        }
+        
         print("Loaded image from path:", filePath)
         return image
     }
@@ -68,7 +76,11 @@ struct CoreDataImageService {
         
         do {
             try fileManager.removeItem(at: filePath)
-            imageCache.removeObject(forKey: imageName as NSString)
+            
+            cacheQueue.async(flags: .barrier) {
+                imageCache.removeObject(forKey: imageName as NSString)
+            }
+            
             print("\(imageName) was deleted.")
             return .success(())
         } catch let error {

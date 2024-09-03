@@ -165,7 +165,6 @@
 		73862C872AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionCoordinator.swift; sourceTree = "<group>"; };
 		73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		738827C72B1509170051BEF4 /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
-		738B6AEC2AD8C16300EA4B72 /* GoogleService-Info2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info2.plist"; sourceTree = "<group>"; };
 		738B6AEE2AD8C54C00EA4B72 /* ScrollableTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextViewController.swift; sourceTree = "<group>"; };
 		738B6AF02AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAddPhotosViewController.swift; sourceTree = "<group>"; };
 		738B6AF22AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertRecoverEmailViewController.swift; sourceTree = "<group>"; };
@@ -290,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				73A1DA1C2B094EBD002B8D17 /* AppIcons */,
-				738B6AEC2AD8C16300EA4B72 /* GoogleService-Info2.plist */,
 				D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */,
 				733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
@@ -1171,7 +1169,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1207,7 +1205,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

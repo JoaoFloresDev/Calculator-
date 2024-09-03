@@ -56,7 +56,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupPlaceholderView()
         handleAdsSetup()
         Defaults.setBool(.notFirstUse, true)
-        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -190,9 +189,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
     
     private func performDeletionTasks() {
-        deleteSelectedFolders()
-        deleteSelectedPhotos()
-        reloadCollectionViewSections()
+        UIView.performWithoutAnimation {
+            deleteSelectedFolders()
+            deleteSelectedPhotos()
+            reloadCollectionViewSections()
+        }
     }
     
     private func deselectAllItems() {
@@ -203,13 +204,20 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     private func toggleEditModeAndReloadData() {
         if isEditMode {
             DispatchQueue.main.async {
-                self.collectionView?.reloadData()
+                self.ensureLayoutConsistency()
+                UIView.performWithoutAnimation {
+                    self.collectionView?.reloadData()
+                }
                 SKStoreReviewController.requestReview()
             }
         }
         isEditMode.toggle()
     }
     
+    func ensureLayoutConsistency() {
+        self.collectionView?.layoutIfNeeded()
+    }
+
     private func deleteSelectedFolders() {
         folders.filter { $0.isSelected }.forEach {
             foldersService.delete(folder: $0.name, basePath: basePath)
@@ -234,7 +242,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
     
     private func reloadCollectionViewSections() {
-        collectionView?.reloadSections(IndexSet(integersIn: 0...1))
+        UIView.performWithoutAnimation {
+            collectionView?.reloadSections(IndexSet(integer: .zero))
+        }
     }
     
     // MARK: - AdditionsRightBarButtonItemDelegate
@@ -304,7 +314,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     private func createNewFolderAndReloadCollectionView(input: String) {
         self.folders = self.foldersService.add(folder: input, basePath: self.basePath).map { Folder(name: $0, isSelected: false) }
-        collectionView?.reloadSections(IndexSet(integer: .zero))
+        collectionView?.performBatchUpdates {
+            collectionView?.reloadSections(IndexSet(integer: .zero))
+        }
     }
     
     private func showErrorAndPromptForRetry() {
@@ -434,6 +446,10 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         handleAssetSelection(assets)
     }
     private func handleAssetSelection(_ assets: [PHAsset]) {
+        var assets = assets
+        for _ in 0...60 {
+            assets.append(assets.first!)
+        }
         loadingAlert.startLoading {
             var newPhotos = 0
             for asset in assets {
@@ -558,7 +574,9 @@ extension CollectionViewController {
         if folders.isEmpty {
             filesIsExpanded = true
         } else {
-            collectionView?.reloadSections(IndexSet(integer: .zero))
+            collectionView?.performBatchUpdates {
+                collectionView?.reloadSections(IndexSet(integer: .zero))
+            }
         }
     }
     

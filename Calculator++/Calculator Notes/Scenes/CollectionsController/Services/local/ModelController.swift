@@ -107,12 +107,11 @@ struct ModelController {
             return
         }
         
-        listPhotosOf(basePath: basePath)
+        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "imageName == %@", name)
         
-        if let imageObjectToDelete = savedObjects.first(where: { ($0 as? StoredImage)?.imageName == name }) as? StoredImage {
-            let imageIndex = savedObjects.firstIndex(of: imageObjectToDelete)
-            
-            do {
+        do {
+            if let imageObjectToDelete = try managedContext.fetch(fetchRequest).first as? StoredImage {
                 let imageName = imageObjectToDelete.imageName
                 
                 managedContext.delete(imageObjectToDelete)
@@ -125,14 +124,13 @@ struct ModelController {
                     }
                 }
                 
-                if let index = imageIndex {
-                    savedObjects.remove(at: index)
-                }
+                // Atualizar savedObjects
+                savedObjects = try managedContext.fetch(NSFetchRequest<NSManagedObject>(entityName: entityName))
                 
                 os_log("Image object was deleted.", log: OSLog(subsystem: subsystem, category: category), type: .info)
-            } catch let error as NSError {
-                os_log("Could not delete image object: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
             }
+        } catch let error as NSError {
+            os_log("Could not delete image object: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
     }
 

@@ -22,8 +22,11 @@ class BasicCollectionViewController: UICollectionViewController {
     
     var filesIsExpanded = false {
         didSet {
+            guard oldValue != filesIsExpanded else { return }
             DispatchQueue.main.async {
-                self.collectionView?.reloadSections(IndexSet(integer: 1))
+                self.collectionView?.performBatchUpdates({
+                    self.collectionView?.reloadSections(IndexSet(integer: 1))
+                }, completion: nil)
             }
         }
     }
