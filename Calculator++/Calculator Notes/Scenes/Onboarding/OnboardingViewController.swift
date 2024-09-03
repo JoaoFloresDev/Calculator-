@@ -97,7 +97,6 @@ extension OnboardingWelcomeViewController: OnboardingViewDelegate {
         dateComponents.month = 9
         dateComponents.day = 20
         
-        // Gera a data de 1º de abril de 2024
         guard let aprilFirst2024 = calendar.date(from: dateComponents) else {
             print("Erro ao gerar a data de 1º de abril de 2024.")
             return false
