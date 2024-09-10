@@ -156,7 +156,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
         if isEditMode {
             DispatchQueue.main.async { [weak self] in
                 UIView.performWithoutAnimation {
-                    self.collectionView?.reloadData()
+                    self?.collectionView?.reloadData()
                 }
             }
         }
@@ -204,7 +204,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
             self.deselectAllFileObjects()
             DispatchQueue.main.async { [weak self] in
                 UIView.performWithoutAnimation {
-                    self.collectionView?.reloadData()
+                    self?.collectionView?.reloadData()
                 }
             }
         }
@@ -441,15 +441,11 @@ extension VideoCollectionViewController: UIImagePickerControllerDelegate {
                 self.modelData.append(Video(image: image, name: imageName))
                 self.videoPaths.append(pathVideo)
                 self.collectionView?.reloadSections(IndexSet(integer: 1))
-                self.loadingAlert.startLoading {
-                    FirebaseBackupService.updateBackup(completion: { _ in
-                        DispatchQueue.main.async {
-                            self.loadingAlert.stopLoading {
-                                Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
-                                Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
-                            }
-                        }
-                    })
+                DispatchQueue.global().async {
+                    FirebaseBackupService.updateBackup { _ in
+                        Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
+                        Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
+                    }
                 }
             }
         }

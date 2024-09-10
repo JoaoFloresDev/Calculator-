@@ -472,11 +472,9 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     }
     private func handleAssetSelection(_ assets: [PHAsset]) {
         loadingAlert.startLoading {
-            var newPhotos = 0
             for asset in assets {
                 self.addImage(asset: asset) { photo in
                     if let photo = photo {
-                        newPhotos += 1
                         DispatchQueue.main.async {
                             self.modelData.append(photo)
                             UIView.performWithoutAnimation {
@@ -487,7 +485,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 }
             }
             self.loadingAlert.stopLoading()
-            self.updateBackupTapped(numberOfNewPhotos: newPhotos)
+            self.updateBackupTapped(numberOfNewPhotos: assets.count)
         }
     }
     
@@ -509,14 +507,10 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     }
     
     private func updateBackup() {
-        loadingAlert.startLoading {
+        DispatchQueue.global().async {
             FirebaseBackupService.updateBackup { _ in
-                DispatchQueue.main.async {
-                    self.loadingAlert.stopLoading {
-                        Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
-                        Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
-                    }
-                }
+                Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
+                Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
             }
         }
     }

@@ -287,13 +287,14 @@ class PurchaseViewController: UIViewController {
             if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") {
                 self.monthlyButton.backgroundColor  = .systemGreen
                 self.monthlyButton.isUserInteractionEnabled = false
-//                self.monthlyPromotionLabel.isHidden = true
                 Defaults.setBool(.monthlyPurchased, true)
             }
             if RazeFaceProducts.store.isProductPurchased("calcanual") {
                 self.yearlyButton.backgroundColor  = .systemGreen
                 self.yearlyButton.isUserInteractionEnabled = false
-//                self.yearlyPromotionLabel.isHidden = true
+                Defaults.setBool(.yearlyPurchased, true)
+            }
+            if RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
                 Defaults.setBool(.yearlyPurchased, true)
             }
             self.delegate?.purchased()
