@@ -6,6 +6,7 @@ public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products
 
 extension Notification.Name {
   static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
+    static let IAPHelperPurchaseNotificationStopLoading = Notification.Name("IAPHelperPurchaseNotificationStopLoading")
 }
 
 open class IAPHelper: NSObject  {
@@ -103,14 +104,18 @@ extension IAPHelper: SKPaymentTransactionObserver {
         complete(transaction: transaction)
         break
       case .failed:
-        fail(transaction: transaction)
-        break
+          NotificationCenter.default.post(name: .IAPHelperPurchaseNotificationStopLoading, object: nil)
+          fail(transaction: transaction)
+          break
       case .restored:
-        restore(transaction: transaction)
-        break
+          NotificationCenter.default.post(name: .IAPHelperPurchaseNotificationStopLoading, object: nil)
+          restore(transaction: transaction)
+          break
       case .deferred:
+          NotificationCenter.default.post(name: .IAPHelperPurchaseNotificationStopLoading, object: nil)
         break
       case .purchasing:
+          NotificationCenter.default.post(name: .IAPHelperPurchaseNotificationStopLoading, object: nil)
         break
       }
     }

@@ -22,6 +22,7 @@ import FirebaseAuth
 
 protocol BackupModalViewControllerDelegate: AnyObject {
     func enableBackupToggled(status: Bool)
+    func backupExecuted()
 }
 
 extension BackupModalViewController: BackupLoginEvent {
@@ -318,6 +319,7 @@ class BackupModalViewController: UIViewController {
                 self.loadingAlert.stopLoading {
                     if success {
                         Alerts.showBackupSuccess(controller: self)
+                        self.delegate?.backupExecuted()
                         self.imagesRootController?.viewDidLoad()
                         self.videosRootController?.viewDidLoad()
                     } else {

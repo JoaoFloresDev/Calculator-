@@ -95,22 +95,6 @@ extension BasicCollectionViewController: HeaderViewDelegate {
     }
 }
 
-extension BasicCollectionViewController: BackupModalViewControllerDelegate {
-    func enableBackupToggled(status: Bool) {
-        if status {
-            if let cloudImage = UIImage(systemName: "icloud.fill")?.withRenderingMode(.alwaysTemplate) {
-                additionsRightBarButtonItem?.cloudButton.setImage(cloudImage, for: .normal)
-            }
-            additionsRightBarButtonItem?.cloudButton.tintColor = .systemBlue
-        } else {
-            if let cloudImage = UIImage(systemName: "exclamationmark.icloud")?.withRenderingMode(.alwaysTemplate) {
-                additionsRightBarButtonItem?.cloudButton.setImage(cloudImage, for: .normal)
-            }
-            additionsRightBarButtonItem?.cloudButton.tintColor = .systemGray
-        }
-    }
-}
-
 func isUserLoggedIn() -> Bool {
     return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
 }

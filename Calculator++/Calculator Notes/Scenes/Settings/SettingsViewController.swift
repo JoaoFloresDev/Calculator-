@@ -332,6 +332,10 @@ class SafariWrapperViewController: UIViewController, SFSafariViewControllerDeleg
 
 
 extension  SettingsViewController: BackupModalViewControllerDelegate {
+    func backupExecuted() {
+        
+    }
+    
     func enableBackupToggled(status: Bool) {
         backupIsActivated = status
     }

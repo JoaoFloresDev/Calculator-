@@ -39,52 +39,52 @@ class PurchaseViewController: UIViewController {
     lazy var headerView = PurchaseHeaderView()
     lazy var purchaseBenetList = PurchaseBenetList()
     
-    lazy var monthlyPromotionLabel: UIView = {
-        let label = UILabel()
-        label.text = Text.oneWeekToTest.localized()
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        let view = UIView()
-        view.backgroundColor = .systemGreen
-        view.addSubview(label)
-        
-        // Configura constraints usando SnapKit
-        label.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(6)
-            make.trailing.equalToSuperview().offset(-6)
-            make.bottom.equalToSuperview().offset(-4)
-        }
-        
-        view.layer.cornerRadius = 10
-        view.clipsToBounds = true
-        
-        return view
-    }()
+//    lazy var monthlyPromotionLabel: UIView = {
+//        let label = UILabel()
+//        label.text = Text.oneWeekToTest.localized()
+//        label.textColor = .white
+//        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+//        let view = UIView()
+//        view.backgroundColor = .systemGreen
+////        view.addSubview(label)
+////        
+////        // Configura constraints usando SnapKit
+////        label.snp.makeConstraints { make in
+////            make.top.equalToSuperview().offset(4)
+////            make.leading.equalToSuperview().offset(6)
+////            make.trailing.equalToSuperview().offset(-6)
+////            make.bottom.equalToSuperview().offset(-4)
+////        }
+//        
+//        view.layer.cornerRadius = 10
+//        view.clipsToBounds = true
+//        
+//        return view
+//    }()
     
-    lazy var yearlyPromotionLabel: UIView = {
-        let label = UILabel()
-        label.text = Text.oneWeekToTest.localized()
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        let view = UIView()
-        view.backgroundColor = .systemGreen
-        view.addSubview(label)
-        
-        // Configura constraints usando SnapKit
-        label.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(6)
-            make.trailing.equalToSuperview().offset(-6)
-            make.bottom.equalToSuperview().offset(-4)
-        }
-        
-        // Arredonda as bordas da view
-        view.layer.cornerRadius = 10 // Ajuste este valor conforme necessário para o arredondamento desejado
-        view.clipsToBounds = true
-        
-        return view
-    }()
+//    lazy var yearlyPromotionLabel: UIView = {
+//        let label = UILabel()
+//        label.text = Text.oneWeekToTest.localized()
+//        label.textColor = .white
+//        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+//        let view = UIView()
+//        view.backgroundColor = .systemGreen
+////        view.addSubview(label)
+////        
+////        // Configura constraints usando SnapKit
+////        label.snp.makeConstraints { make in
+////            make.top.equalToSuperview().offset(4)
+////            make.leading.equalToSuperview().offset(6)
+////            make.trailing.equalToSuperview().offset(-6)
+////            make.bottom.equalToSuperview().offset(-4)
+////        }
+//        
+//        // Arredonda as bordas da view
+//        view.layer.cornerRadius = 10 // Ajuste este valor conforme necessário para o arredondamento desejado
+//        view.clipsToBounds = true
+//        
+//        return view
+//    }()
     
     lazy var monthlyButton: UIButton = {
         let button = UIButton()
@@ -113,11 +113,7 @@ class PurchaseViewController: UIViewController {
     }()
     
     @objc func didTapMonthlyButton() {
-        loadingAlert.startLoading {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.loadingAlert.stopLoading()
-            }
-        }
+        loadingAlert.startLoading()
         for p in products {
             if p.productIdentifier == "Calc.noads.mensal" {
                 performPurchase(product: p)
@@ -127,11 +123,7 @@ class PurchaseViewController: UIViewController {
     }
     
     @objc func didTabYearlyButton() {
-        loadingAlert.startLoading {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.loadingAlert.stopLoading()
-            }
-        }
+        loadingAlert.startLoading()
         for p in products {
             if p.productIdentifier == "calcanual" {
                 performPurchase(product: p)
@@ -171,11 +163,11 @@ class PurchaseViewController: UIViewController {
             make.top.equalTo(purchaseBenetList.snp.bottom).offset(16)
         }
         
-        view.addSubview(monthlyPromotionLabel)
-        monthlyPromotionLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(monthlyButton.snp.bottom).offset(20)
-            make.trailing.equalTo(monthlyButton.snp.trailing).offset(-8)
-        }
+//        view.addSubview(monthlyPromotionLabel)
+//        monthlyPromotionLabel.snp.makeConstraints { make in
+//            make.bottom.equalTo(monthlyButton.snp.bottom).offset(20)
+//            make.trailing.equalTo(monthlyButton.snp.trailing).offset(-8)
+//        }
         
         view.addSubview(yearlyButton)
         yearlyButton.snp.makeConstraints { make in
@@ -185,11 +177,11 @@ class PurchaseViewController: UIViewController {
             make.top.equalTo(monthlyButton.snp.bottom).offset(40)
         }
         
-        view.addSubview(yearlyPromotionLabel)
-        yearlyPromotionLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(yearlyButton.snp.bottom).offset(20)
-            make.trailing.equalTo(yearlyButton.snp.trailing).offset(-8)
-        }
+//        view.addSubview(yearlyPromotionLabel)
+//        yearlyPromotionLabel.snp.makeConstraints { make in
+//            make.bottom.equalTo(yearlyButton.snp.bottom).offset(20)
+//            make.trailing.equalTo(yearlyButton.snp.trailing).offset(-8)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -234,6 +226,12 @@ class PurchaseViewController: UIViewController {
     
     private func setupNotificationObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(handlePurchaseNotification(_:)), name: .IAPHelperPurchaseNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopLoading), name: .IAPHelperPurchaseNotificationStopLoading, object: nil)
+    }
+    
+    @objc private func stopLoading() {
+        self.loadingAlert.stopLoading()
+        confirmCheckmark()
     }
     
     @objc private func handlePurchaseNotification(_ notification: Notification) {
@@ -245,7 +243,6 @@ class PurchaseViewController: UIViewController {
     private func performPurchase(product: SKProduct?) {
         guard let product = product else { return }
         RazeFaceProducts.store.buyProduct(product)
-        confirmCheckmark()
     }
     
     private func reloadAndCheckPurchaseStatus() {
@@ -290,13 +287,13 @@ class PurchaseViewController: UIViewController {
             if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") {
                 self.monthlyButton.backgroundColor  = .systemGreen
                 self.monthlyButton.isUserInteractionEnabled = false
-                self.monthlyPromotionLabel.isHidden = true
+//                self.monthlyPromotionLabel.isHidden = true
                 Defaults.setBool(.monthlyPurchased, true)
             }
             if RazeFaceProducts.store.isProductPurchased("calcanual") {
                 self.yearlyButton.backgroundColor  = .systemGreen
                 self.yearlyButton.isUserInteractionEnabled = false
-                self.yearlyPromotionLabel.isHidden = true
+//                self.yearlyPromotionLabel.isHidden = true
                 Defaults.setBool(.yearlyPurchased, true)
             }
             self.delegate?.purchased()

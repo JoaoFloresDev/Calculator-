@@ -20,12 +20,37 @@ import MessageUI
 import FirebaseFirestore
 import MapKit
 
+extension CollectionViewController: BackupModalViewControllerDelegate {
+    func backupExecuted() {
+        self.modelData = ModelController.listPhotosOf(basePath: self.basePath)
+        UIView.performWithoutAnimation {
+            self.collectionView?.reloadData()
+        }
+    }
+    
+    func enableBackupToggled(status: Bool) {
+        if status {
+            if let cloudImage = UIImage(systemName: "icloud.fill")?.withRenderingMode(.alwaysTemplate) {
+                additionsRightBarButtonItem?.cloudButton.setImage(cloudImage, for: .normal)
+            }
+            additionsRightBarButtonItem?.cloudButton.tintColor = .systemBlue
+        } else {
+            if let cloudImage = UIImage(systemName: "exclamationmark.icloud")?.withRenderingMode(.alwaysTemplate) {
+                additionsRightBarButtonItem?.cloudButton.setImage(cloudImage, for: .normal)
+            }
+            additionsRightBarButtonItem?.cloudButton.tintColor = .systemGray
+        }
+    }
+}
+
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate, MFMailComposeViewControllerDelegate, EditLeftBarButtonItemDelegate, AdditionsRightBarButtonItemDelegate {
     // MARK: - Variables
     var modelData: [Photo] = [] {
         didSet {
             if modelData.count == 1 {
-                collectionView?.reloadData()
+                UIView.performWithoutAnimation {
+                    self.collectionView?.reloadData()
+                }
             }
         }
     }
@@ -260,7 +285,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         guard let tabBar = self.tabBarController else { return }
         let vc = BackupModalViewController(
             delegate: self,
-            imagesRootController: getCollectionViewController(from: tabBar, index: 0),
+            imagesRootController: self,
             videosRootController: getVideoCollectionViewController(from: tabBar, index: 1)
         )
         vc.modalPresentationStyle = .overCurrentContext
@@ -454,7 +479,9 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                         newPhotos += 1
                         DispatchQueue.main.async {
                             self.modelData.append(photo)
-                            self.collectionView?.reloadData()
+                            UIView.performWithoutAnimation {
+                                self.collectionView?.reloadData()
+                            }
                         }
                     }
                 }

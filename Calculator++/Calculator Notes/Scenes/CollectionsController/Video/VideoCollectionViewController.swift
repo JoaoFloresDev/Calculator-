@@ -12,13 +12,42 @@ struct Video {
     var isSelected: Bool = false
 }
 
+extension VideoCollectionViewController: BackupModalViewControllerDelegate {
+    func backupExecuted() {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.modelData = VideoModelController.fetchImageObjectsInit(basePath: self.basePath)
+            self.videoPaths = VideoModelController.fetchPathVideosObjectsInit(basePath: self.basePath)
+            
+            UIView.performWithoutAnimation {
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
+    func enableBackupToggled(status: Bool) {
+        if status {
+            if let cloudImage = UIImage(systemName: "icloud.fill")?.withRenderingMode(.alwaysTemplate) {
+                additionsRightBarButtonItem?.cloudButton.setImage(cloudImage, for: .normal)
+            }
+            additionsRightBarButtonItem?.cloudButton.tintColor = .systemBlue
+        } else {
+            if let cloudImage = UIImage(systemName: "exclamationmark.icloud")?.withRenderingMode(.alwaysTemplate) {
+                additionsRightBarButtonItem?.cloudButton.setImage(cloudImage, for: .normal)
+            }
+            additionsRightBarButtonItem?.cloudButton.tintColor = .systemGray
+        }
+    }
+}
+
 class VideoCollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate {
     
     // MARK: -  Variables
     var modelData: [Video] = [] {
         didSet {
             if modelData.count == 1 {
-                collectionView?.reloadData()
+                UIView.performWithoutAnimation {
+                    self.collectionView?.reloadData()
+                }
             }
         }
     }
@@ -126,7 +155,9 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
         self.deselectAllFileObjects()
         if isEditMode {
             DispatchQueue.main.async { [weak self] in
-                self?.collectionView?.reloadData()
+                UIView.performWithoutAnimation {
+                    self.collectionView?.reloadData()
+                }
             }
         }
         isEditMode.toggle()
@@ -172,7 +203,9 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
             }
             self.deselectAllFileObjects()
             DispatchQueue.main.async { [weak self] in
-                self?.collectionView?.reloadData()
+                UIView.performWithoutAnimation {
+                    self.collectionView?.reloadData()
+                }
             }
         }
     }
