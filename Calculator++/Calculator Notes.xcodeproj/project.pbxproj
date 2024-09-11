@@ -26,6 +26,89 @@
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		730B2EB92C593FD40016FD9E /* BackupUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EB82C593FD40016FD9E /* BackupUpdateManager.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
+		73172EDE2C91EF9C005D46E1 /* VideoScrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ED22C91E472005D46E1 /* VideoScrubber.swift */; };
+		73172EDF2C91EF9C005D46E1 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB02C91E472005D46E1 /* BlurView.swift */; };
+		73172EE02C91EF9C005D46E1 /* GalleryDisplacedViewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB82C91E472005D46E1 /* GalleryDisplacedViewsDataSource.swift */; };
+		73172EE12C91EF9C005D46E1 /* GallerySwipeToDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EBD2C91E472005D46E1 /* GallerySwipeToDismissTransition.swift */; };
+		73172EE22C91EF9C005D46E1 /* ItemBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC12C91E472005D46E1 /* ItemBaseController.swift */; };
+		73172EE32C91EF9C005D46E1 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB42C91E472005D46E1 /* CGPoint.swift */; };
+		73172EE42C91EF9C005D46E1 /* GalleryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB72C91E472005D46E1 /* GalleryConfiguration.swift */; };
+		73172EE52C91EF9C005D46E1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ECB2C91E472005D46E1 /* UIColor.swift */; };
+		73172EE62C91EF9C005D46E1 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ECD2C91E472005D46E1 /* UIScreen.swift */; };
+		73172EE72C91EF9C005D46E1 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC02C91E472005D46E1 /* ImageViewController.swift */; };
+		73172EE82C91EF9C005D46E1 /* LayoutEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC42C91E472005D46E1 /* LayoutEnums.swift */; };
+		73172EE92C91EF9C005D46E1 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC62C91E472005D46E1 /* ThumbnailCell.swift */; };
+		73172EEA2C91EF9C005D46E1 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC22C91E472005D46E1 /* ItemController.swift */; };
+		73172EEB2C91EF9C005D46E1 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC82C91E472005D46E1 /* UIApplication.swift */; };
+		73172EEC2C91EF9C005D46E1 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB12C91E472005D46E1 /* Bool.swift */; };
+		73172EED2C91EF9C005D46E1 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ED42C91E472005D46E1 /* VideoViewController.swift */; };
+		73172EEE2C91EF9C005D46E1 /* ThumbnailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC72C91E472005D46E1 /* ThumbnailsViewController.swift */; };
+		73172EEF2C91EF9C005D46E1 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB62C91E472005D46E1 /* CGSize.swift */; };
+		73172EF02C91EF9C005D46E1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ED02C91E472005D46E1 /* UIViewController.swift */; };
+		73172EF12C91EF9C005D46E1 /* GalleryPagingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EBC2C91E472005D46E1 /* GalleryPagingDataSource.swift */; };
+		73172EF22C91EF9C005D46E1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ECA2C91E472005D46E1 /* UIButton.swift */; };
+		73172EF32C91EF9C005D46E1 /* ItemControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC32C91E472005D46E1 /* ItemControllerDelegate.swift */; };
+		73172EF42C91EF9C005D46E1 /* AVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EAF2C91E472005D46E1 /* AVPlayer.swift */; };
+		73172EF52C91EF9C005D46E1 /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB22C91E472005D46E1 /* CALayer.swift */; };
+		73172EF62C91EF9C005D46E1 /* ImageFadeInHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EBF2C91E472005D46E1 /* ImageFadeInHandler.swift */; };
+		73172EF72C91EF9C005D46E1 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ED12C91E472005D46E1 /* UtilityFunctions.swift */; };
+		73172EF82C91EF9C005D46E1 /* GalleryItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EBA2C91E472005D46E1 /* GalleryItemsDataSource.swift */; };
+		73172EF92C91EF9C005D46E1 /* GalleryItemsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EBB2C91E472005D46E1 /* GalleryItemsDelegate.swift */; };
+		73172EFA2C91EF9C005D46E1 /* GalleryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB92C91E472005D46E1 /* GalleryItem.swift */; };
+		73172EFB2C91EF9C005D46E1 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EBE2C91E472005D46E1 /* GalleryViewController.swift */; };
+		73172EFC2C91EF9C005D46E1 /* UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC92C91E472005D46E1 /* UIBezierPath.swift */; };
+		73172EFD2C91EF9C005D46E1 /* UISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ECE2C91E472005D46E1 /* UISlider.swift */; };
+		73172EFE2C91EF9C005D46E1 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB52C91E472005D46E1 /* CGRect.swift */; };
+		73172EFF2C91EF9C005D46E1 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ED32C91E472005D46E1 /* VideoView.swift */; };
+		73172F002C91EF9C005D46E1 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EC52C91E472005D46E1 /* Slider.swift */; };
+		73172F012C91EF9C005D46E1 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ECC2C91E472005D46E1 /* UIImageView.swift */; };
+		73172F022C91EF9C005D46E1 /* CAShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172EB32C91E472005D46E1 /* CAShapeLayer.swift */; };
+		73172F032C91EF9C005D46E1 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172ECF2C91E472005D46E1 /* UIView.swift */; };
+		73172F042C91EFAC005D46E1 /* UIColor+AssetsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E902C91E416005D46E1 /* UIColor+AssetsPickerViewController.swift */; };
+		73172F052C91EFAC005D46E1 /* Bundle+AssetsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E872C91E416005D46E1 /* Bundle+AssetsPickerViewController.swift */; };
+		73172F062C91EFAC005D46E1 /* AssetsPhotoViewController+AssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E7B2C91E416005D46E1 /* AssetsPhotoViewController+AssetsManager.swift */; };
+		73172F072C91EFAC005D46E1 /* AssetsPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E772C91E416005D46E1 /* AssetsPhotoCell.swift */; };
+		73172F082C91EFAC005D46E1 /* AssetsAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E6D2C91E416005D46E1 /* AssetsAlbumViewController.swift */; };
+		73172F092C91EFAC005D46E1 /* AssetsPhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E792C91E416005D46E1 /* AssetsPhotoLayout.swift */; };
+		73172F0A2C91EFAC005D46E1 /* AssetsPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E852C91E416005D46E1 /* AssetsPreviewController.swift */; };
+		73172F0B2C91EFAC005D46E1 /* PanoramaIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E8A2C91E416005D46E1 /* PanoramaIconView.swift */; };
+		73172F0C2C91EFAC005D46E1 /* UIFont+AssetsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E912C91E416005D46E1 /* UIFont+AssetsPickerViewController.swift */; };
+		73172F0D2C91EFAC005D46E1 /* AssetsFetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E712C91E416005D46E1 /* AssetsFetchService.swift */; };
+		73172F0E2C91EFAC005D46E1 /* NumberFormatter+AssetsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E892C91E416005D46E1 /* NumberFormatter+AssetsPickerViewController.swift */; };
+		73172F0F2C91EFAC005D46E1 /* TinyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E8E2C91E416005D46E1 /* TinyLog.swift */; };
+		73172F102C91EFAC005D46E1 /* AssetsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E842C91E416005D46E1 /* AssetsPickerViewController.swift */; };
+		73172F112C91EFAC005D46E1 /* AssetsNoPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E762C91E416005D46E1 /* AssetsNoPermissionView.swift */; };
+		73172F122C91EFAC005D46E1 /* LogConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E882C91E416005D46E1 /* LogConfig.swift */; };
+		73172F132C91EFAC005D46E1 /* String+AssetsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E8C2C91E416005D46E1 /* String+AssetsPickerViewController.swift */; };
+		73172F142C91EFAC005D46E1 /* UIView+Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E932C91E416005D46E1 /* UIView+Dimmer.swift */; };
+		73172F152C91EFAC005D46E1 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E942C91E416005D46E1 /* UIView+Fade.swift */; };
+		73172F162C91EFAC005D46E1 /* SSCheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E8B2C91E416005D46E1 /* SSCheckMark.swift */; };
+		73172F172C91EFAC005D46E1 /* AssetsPhotoViewController+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E7E2C91E416005D46E1 /* AssetsPhotoViewController+Model.swift */; };
+		73172F182C91EFAC005D46E1 /* AssetsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E862C91E416005D46E1 /* AssetsUtility.swift */; };
+		73172F192C91EFAC005D46E1 /* SwiftAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E8D2C91E416005D46E1 /* SwiftAlert.swift */; };
+		73172F1A2C91EFAC005D46E1 /* AssetsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E722C91E416005D46E1 /* AssetsFooterView.swift */; };
+		73172F1B2C91EFAC005D46E1 /* AssetsPickerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E822C91E416005D46E1 /* AssetsPickerConfig.swift */; };
+		73172F1C2C91EFAC005D46E1 /* UIColor+ARGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E8F2C91E416005D46E1 /* UIColor+ARGB.swift */; };
+		73172F1D2C91EFAC005D46E1 /* AssetsAlbumHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E6A2C91E416005D46E1 /* AssetsAlbumHeaderView.swift */; };
+		73172F1E2C91EFAC005D46E1 /* AssetsAlbumTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E6C2C91E416005D46E1 /* AssetsAlbumTitleView.swift */; };
+		73172F1F2C91EFAC005D46E1 /* AssetsAlbumLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E6B2C91E416005D46E1 /* AssetsAlbumLayout.swift */; };
+		73172F202C91EFAC005D46E1 /* UIView+KVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E952C91E416005D46E1 /* UIView+KVO.swift */; };
+		73172F212C91EFAC005D46E1 /* AssetsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E702C91E416005D46E1 /* AssetsEmptyView.swift */; };
+		73172F222C91EFAC005D46E1 /* AssetsPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E7A2C91E416005D46E1 /* AssetsPhotoViewController.swift */; };
+		73172F232C91EFAC005D46E1 /* AssetsPhotoViewController+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E7C2C91E416005D46E1 /* AssetsPhotoViewController+Collection.swift */; };
+		73172F242C91EFAC005D46E1 /* AssetsPhotoViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E812C91E416005D46E1 /* AssetsPhotoViewController+UI.swift */; };
+		73172F252C91EFAC005D46E1 /* AssetsPhotoViewController+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E802C91E416005D46E1 /* AssetsPhotoViewController+Setup.swift */; };
+		73172F262C91EFAC005D46E1 /* AssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E742C91E416005D46E1 /* AssetsManager.swift */; };
+		73172F272C91EFAC005D46E1 /* AssetsPickerCustomStringConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E832C91E416005D46E1 /* AssetsPickerCustomStringConfig.swift */; };
+		73172F282C91EFAC005D46E1 /* AssetsCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E6F2C91E416005D46E1 /* AssetsCropViewController.swift */; };
+		73172F292C91EFAC005D46E1 /* AssetsCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E6E2C91E416005D46E1 /* AssetsCameraManager.swift */; };
+		73172F2A2C91EFAC005D46E1 /* AssetsAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E692C91E416005D46E1 /* AssetsAlbumCell.swift */; };
+		73172F2B2C91EFAC005D46E1 /* AssetsManager+Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E752C91E416005D46E1 /* AssetsManager+Sync.swift */; };
+		73172F2C2C91EFAC005D46E1 /* AssetsGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E732C91E416005D46E1 /* AssetsGuideView.swift */; };
+		73172F2D2C91EFAC005D46E1 /* AssetsPhotoCellOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E782C91E416005D46E1 /* AssetsPhotoCellOverlay.swift */; };
+		73172F2E2C91EFAC005D46E1 /* AssetsPhotoViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E7D2C91E416005D46E1 /* AssetsPhotoViewController+Delegate.swift */; };
+		73172F2F2C91EFAC005D46E1 /* AssetsPhotoViewController+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E7F2C91E416005D46E1 /* AssetsPhotoViewController+Selection.swift */; };
+		73172F302C91EFAC005D46E1 /* UIScreen+AssetsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73172E922C91E416005D46E1 /* UIScreen+AssetsPickerViewController.swift */; };
 		7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA342ABB95DB004FD07C /* DiamondView.swift */; };
 		7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */; };
 		7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7342CA382ABBC0DA004FD07C /* PurchaseHeaderView.swift */; };
@@ -144,6 +227,118 @@
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		730B2EB82C593FD40016FD9E /* BackupUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupUpdateManager.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		73172E692C91E416005D46E1 /* AssetsAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumCell.swift; path = AssetsPickerViewController/Classes/Album/View/AssetsAlbumCell.swift; sourceTree = "<group>"; };
+		73172E6A2C91E416005D46E1 /* AssetsAlbumHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumHeaderView.swift; path = AssetsPickerViewController/Classes/Album/View/AssetsAlbumHeaderView.swift; sourceTree = "<group>"; };
+		73172E6B2C91E416005D46E1 /* AssetsAlbumLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumLayout.swift; path = AssetsPickerViewController/Classes/Album/View/AssetsAlbumLayout.swift; sourceTree = "<group>"; };
+		73172E6C2C91E416005D46E1 /* AssetsAlbumTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumTitleView.swift; path = AssetsPickerViewController/Classes/Album/View/AssetsAlbumTitleView.swift; sourceTree = "<group>"; };
+		73172E6D2C91E416005D46E1 /* AssetsAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumViewController.swift; path = AssetsPickerViewController/Classes/Album/Controller/AssetsAlbumViewController.swift; sourceTree = "<group>"; };
+		73172E6E2C91E416005D46E1 /* AssetsCameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsCameraManager.swift; path = AssetsPickerViewController/Classes/Picker/AssetsCameraManager.swift; sourceTree = "<group>"; };
+		73172E6F2C91E416005D46E1 /* AssetsCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsCropViewController.swift; path = AssetsPickerViewController/Classes/Crop/Controller/AssetsCropViewController.swift; sourceTree = "<group>"; };
+		73172E702C91E416005D46E1 /* AssetsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsEmptyView.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsEmptyView.swift; sourceTree = "<group>"; };
+		73172E712C91E416005D46E1 /* AssetsFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsFetchService.swift; path = AssetsPickerViewController/Classes/Common/AssetsFetchService.swift; sourceTree = "<group>"; };
+		73172E722C91E416005D46E1 /* AssetsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsFooterView.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsFooterView.swift; sourceTree = "<group>"; };
+		73172E732C91E416005D46E1 /* AssetsGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsGuideView.swift; path = AssetsPickerViewController/Classes/Picker/View/AssetsGuideView.swift; sourceTree = "<group>"; };
+		73172E742C91E416005D46E1 /* AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsManager.swift; path = AssetsPickerViewController/Classes/Assets/AssetsManager.swift; sourceTree = "<group>"; };
+		73172E752C91E416005D46E1 /* AssetsManager+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsManager+Sync.swift"; path = "AssetsPickerViewController/Classes/Assets/AssetsManager+Sync.swift"; sourceTree = "<group>"; };
+		73172E762C91E416005D46E1 /* AssetsNoPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsNoPermissionView.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsNoPermissionView.swift; sourceTree = "<group>"; };
+		73172E772C91E416005D46E1 /* AssetsPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPhotoCell.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsPhotoCell.swift; sourceTree = "<group>"; };
+		73172E782C91E416005D46E1 /* AssetsPhotoCellOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPhotoCellOverlay.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsPhotoCellOverlay.swift; sourceTree = "<group>"; };
+		73172E792C91E416005D46E1 /* AssetsPhotoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPhotoLayout.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsPhotoLayout.swift; sourceTree = "<group>"; };
+		73172E7A2C91E416005D46E1 /* AssetsPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPhotoViewController.swift; path = AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController.swift; sourceTree = "<group>"; };
+		73172E7B2C91E416005D46E1 /* AssetsPhotoViewController+AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+AssetsManager.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+AssetsManager.swift"; sourceTree = "<group>"; };
+		73172E7C2C91E416005D46E1 /* AssetsPhotoViewController+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Collection.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Collection.swift"; sourceTree = "<group>"; };
+		73172E7D2C91E416005D46E1 /* AssetsPhotoViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Delegate.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Delegate.swift"; sourceTree = "<group>"; };
+		73172E7E2C91E416005D46E1 /* AssetsPhotoViewController+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Model.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Model.swift"; sourceTree = "<group>"; };
+		73172E7F2C91E416005D46E1 /* AssetsPhotoViewController+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Selection.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Selection.swift"; sourceTree = "<group>"; };
+		73172E802C91E416005D46E1 /* AssetsPhotoViewController+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Setup.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Setup.swift"; sourceTree = "<group>"; };
+		73172E812C91E416005D46E1 /* AssetsPhotoViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+UI.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+UI.swift"; sourceTree = "<group>"; };
+		73172E822C91E416005D46E1 /* AssetsPickerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPickerConfig.swift; path = AssetsPickerViewController/Classes/Picker/AssetsPickerConfig.swift; sourceTree = "<group>"; };
+		73172E832C91E416005D46E1 /* AssetsPickerCustomStringConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPickerCustomStringConfig.swift; path = AssetsPickerViewController/Classes/Picker/AssetsPickerCustomStringConfig.swift; sourceTree = "<group>"; };
+		73172E842C91E416005D46E1 /* AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPickerViewController.swift; path = AssetsPickerViewController/Classes/Picker/Controller/AssetsPickerViewController.swift; sourceTree = "<group>"; };
+		73172E852C91E416005D46E1 /* AssetsPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPreviewController.swift; path = AssetsPickerViewController/Classes/Photo/Controller/AssetsPreviewController.swift; sourceTree = "<group>"; };
+		73172E862C91E416005D46E1 /* AssetsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsUtility.swift; path = AssetsPickerViewController/Classes/Assets/AssetsUtility.swift; sourceTree = "<group>"; };
+		73172E872C91E416005D46E1 /* Bundle+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bundle+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/Bundle+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		73172E882C91E416005D46E1 /* LogConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogConfig.swift; path = AssetsPickerViewController/Classes/Picker/LogConfig.swift; sourceTree = "<group>"; };
+		73172E892C91E416005D46E1 /* NumberFormatter+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NumberFormatter+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/NumberFormatter+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		73172E8A2C91E416005D46E1 /* PanoramaIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanoramaIconView.swift; path = AssetsPickerViewController/Classes/Photo/View/PanoramaIconView.swift; sourceTree = "<group>"; };
+		73172E8B2C91E416005D46E1 /* SSCheckMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SSCheckMark.swift; path = AssetsPickerViewController/Classes/Picker/View/SSCheckMark.swift; sourceTree = "<group>"; };
+		73172E8C2C91E416005D46E1 /* String+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/String+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		73172E8D2C91E416005D46E1 /* SwiftAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftAlert.swift; path = AssetsPickerViewController/Classes/Common/SwiftAlert.swift; sourceTree = "<group>"; };
+		73172E8E2C91E416005D46E1 /* TinyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TinyLog.swift; path = AssetsPickerViewController/Classes/Library/TinyLog/TinyLog.swift; sourceTree = "<group>"; };
+		73172E8F2C91E416005D46E1 /* UIColor+ARGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+ARGB.swift"; path = "AssetsPickerViewController/Classes/Library/Extensions/UIColor+ARGB.swift"; sourceTree = "<group>"; };
+		73172E902C91E416005D46E1 /* UIColor+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/UIColor+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		73172E912C91E416005D46E1 /* UIFont+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIFont+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/UIFont+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		73172E922C91E416005D46E1 /* UIScreen+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIScreen+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/UIScreen+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		73172E932C91E416005D46E1 /* UIView+Dimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Dimmer.swift"; path = "AssetsPickerViewController/Classes/Library/Extensions/UIView+Dimmer.swift"; sourceTree = "<group>"; };
+		73172E942C91E416005D46E1 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Fade.swift"; path = "AssetsPickerViewController/Classes/Library/Extensions/UIView+Fade.swift"; sourceTree = "<group>"; };
+		73172E952C91E416005D46E1 /* UIView+KVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+KVO.swift"; path = "AssetsPickerViewController/Classes/Library/Extensions/UIView+KVO.swift"; sourceTree = "<group>"; };
+		73172E962C91E416005D46E1 /* ar.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ar.lproj; path = AssetsPickerViewController/Assets/ar.lproj; sourceTree = "<group>"; };
+		73172E972C91E416005D46E1 /* de.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = de.lproj; path = AssetsPickerViewController/Assets/de.lproj; sourceTree = "<group>"; };
+		73172E982C91E416005D46E1 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en.lproj; path = AssetsPickerViewController/Assets/en.lproj; sourceTree = "<group>"; };
+		73172E992C91E416005D46E1 /* es.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = es.lproj; path = AssetsPickerViewController/Assets/es.lproj; sourceTree = "<group>"; };
+		73172E9A2C91E416005D46E1 /* es-MX.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "es-MX.lproj"; path = "AssetsPickerViewController/Assets/es-MX.lproj"; sourceTree = "<group>"; };
+		73172E9B2C91E416005D46E1 /* fr.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fr.lproj; path = AssetsPickerViewController/Assets/fr.lproj; sourceTree = "<group>"; };
+		73172E9C2C91E416005D46E1 /* hi-IN.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "hi-IN.lproj"; path = "AssetsPickerViewController/Assets/hi-IN.lproj"; sourceTree = "<group>"; };
+		73172E9D2C91E416005D46E1 /* id.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = id.lproj; path = AssetsPickerViewController/Assets/id.lproj; sourceTree = "<group>"; };
+		73172E9E2C91E416005D46E1 /* ja.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ja.lproj; path = AssetsPickerViewController/Assets/ja.lproj; sourceTree = "<group>"; };
+		73172E9F2C91E416005D46E1 /* ko.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ko.lproj; path = AssetsPickerViewController/Assets/ko.lproj; sourceTree = "<group>"; };
+		73172EA02C91E416005D46E1 /* ru.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ru.lproj; path = AssetsPickerViewController/Assets/ru.lproj; sourceTree = "<group>"; };
+		73172EA12C91E416005D46E1 /* tr.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tr.lproj; path = AssetsPickerViewController/Assets/tr.lproj; sourceTree = "<group>"; };
+		73172EA22C91E416005D46E1 /* zh-Hans.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "zh-Hans.lproj"; path = "AssetsPickerViewController/Assets/zh-Hans.lproj"; sourceTree = "<group>"; };
+		73172EA32C91E416005D46E1 /* zh-Hant.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "zh-Hant.lproj"; path = "AssetsPickerViewController/Assets/zh-Hant.lproj"; sourceTree = "<group>"; };
+		73172EA52C91E416005D46E1 /* AssetsPickerViewController.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = AssetsPickerViewController.modulemap; path = "Calculator Notes/Target Support Files/AssetsPickerViewController/AssetsPickerViewController.modulemap"; sourceTree = "<group>"; };
+		73172EA62C91E416005D46E1 /* AssetsPickerViewController-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AssetsPickerViewController-dummy.m"; path = "Calculator Notes/Target Support Files/AssetsPickerViewController/AssetsPickerViewController-dummy.m"; sourceTree = "<group>"; };
+		73172EA72C91E416005D46E1 /* AssetsPickerViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "AssetsPickerViewController-Info.plist"; path = "Calculator Notes/Target Support Files/AssetsPickerViewController/AssetsPickerViewController-Info.plist"; sourceTree = "<group>"; };
+		73172EA82C91E416005D46E1 /* AssetsPickerViewController-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AssetsPickerViewController-prefix.pch"; path = "Calculator Notes/Target Support Files/AssetsPickerViewController/AssetsPickerViewController-prefix.pch"; sourceTree = "<group>"; };
+		73172EA92C91E416005D46E1 /* AssetsPickerViewController-umbrella.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AssetsPickerViewController-umbrella.h"; path = "Calculator Notes/Target Support Files/AssetsPickerViewController/AssetsPickerViewController-umbrella.h"; sourceTree = "<group>"; };
+		73172EAA2C91E416005D46E1 /* AssetsPickerViewController.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = AssetsPickerViewController.debug.xcconfig; path = "Calculator Notes/Target Support Files/AssetsPickerViewController/AssetsPickerViewController.debug.xcconfig"; sourceTree = "<group>"; };
+		73172EAB2C91E416005D46E1 /* AssetsPickerViewController.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = AssetsPickerViewController.release.xcconfig; path = "Calculator Notes/Target Support Files/AssetsPickerViewController/AssetsPickerViewController.release.xcconfig"; sourceTree = "<group>"; };
+		73172EAC2C91E416005D46E1 /* ResourceBundle-AssetsPickerViewController-AssetsPickerViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ResourceBundle-AssetsPickerViewController-AssetsPickerViewController-Info.plist"; path = "Calculator Notes/Target Support Files/AssetsPickerViewController/ResourceBundle-AssetsPickerViewController-AssetsPickerViewController-Info.plist"; sourceTree = "<group>"; };
+		73172EAF2C91E472005D46E1 /* AVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AVPlayer.swift; path = ImageViewer/Source/Extensions/AVPlayer.swift; sourceTree = "<group>"; };
+		73172EB02C91E472005D46E1 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlurView.swift; path = ImageViewer/Source/BlurView.swift; sourceTree = "<group>"; };
+		73172EB12C91E472005D46E1 /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Bool.swift; path = ImageViewer/Source/Extensions/Bool.swift; sourceTree = "<group>"; };
+		73172EB22C91E472005D46E1 /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CALayer.swift; path = ImageViewer/Source/Extensions/CALayer.swift; sourceTree = "<group>"; };
+		73172EB32C91E472005D46E1 /* CAShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CAShapeLayer.swift; path = ImageViewer/Source/Extensions/CAShapeLayer.swift; sourceTree = "<group>"; };
+		73172EB42C91E472005D46E1 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CGPoint.swift; path = ImageViewer/Source/Extensions/CGPoint.swift; sourceTree = "<group>"; };
+		73172EB52C91E472005D46E1 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CGRect.swift; path = ImageViewer/Source/Extensions/CGRect.swift; sourceTree = "<group>"; };
+		73172EB62C91E472005D46E1 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CGSize.swift; path = ImageViewer/Source/Extensions/CGSize.swift; sourceTree = "<group>"; };
+		73172EB72C91E472005D46E1 /* GalleryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryConfiguration.swift; path = ImageViewer/Source/GalleryConfiguration.swift; sourceTree = "<group>"; };
+		73172EB82C91E472005D46E1 /* GalleryDisplacedViewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryDisplacedViewsDataSource.swift; path = ImageViewer/Source/GalleryDisplacedViewsDataSource.swift; sourceTree = "<group>"; };
+		73172EB92C91E472005D46E1 /* GalleryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryItem.swift; path = ImageViewer/Source/GalleryItem.swift; sourceTree = "<group>"; };
+		73172EBA2C91E472005D46E1 /* GalleryItemsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryItemsDataSource.swift; path = ImageViewer/Source/GalleryItemsDataSource.swift; sourceTree = "<group>"; };
+		73172EBB2C91E472005D46E1 /* GalleryItemsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryItemsDelegate.swift; path = ImageViewer/Source/GalleryItemsDelegate.swift; sourceTree = "<group>"; };
+		73172EBC2C91E472005D46E1 /* GalleryPagingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryPagingDataSource.swift; path = ImageViewer/Source/GalleryPagingDataSource.swift; sourceTree = "<group>"; };
+		73172EBD2C91E472005D46E1 /* GallerySwipeToDismissTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GallerySwipeToDismissTransition.swift; path = ImageViewer/Source/GallerySwipeToDismissTransition.swift; sourceTree = "<group>"; };
+		73172EBE2C91E472005D46E1 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GalleryViewController.swift; path = ImageViewer/Source/GalleryViewController.swift; sourceTree = "<group>"; };
+		73172EBF2C91E472005D46E1 /* ImageFadeInHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageFadeInHandler.swift; path = ImageViewer/Source/ImageFadeInHandler.swift; sourceTree = "<group>"; };
+		73172EC02C91E472005D46E1 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageViewController.swift; path = ImageViewer/Source/ImageViewController.swift; sourceTree = "<group>"; };
+		73172EC12C91E472005D46E1 /* ItemBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemBaseController.swift; path = ImageViewer/Source/ItemBaseController.swift; sourceTree = "<group>"; };
+		73172EC22C91E472005D46E1 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemController.swift; path = ImageViewer/Source/ItemController.swift; sourceTree = "<group>"; };
+		73172EC32C91E472005D46E1 /* ItemControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemControllerDelegate.swift; path = ImageViewer/Source/ItemControllerDelegate.swift; sourceTree = "<group>"; };
+		73172EC42C91E472005D46E1 /* LayoutEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutEnums.swift; path = ImageViewer/Source/LayoutEnums.swift; sourceTree = "<group>"; };
+		73172EC52C91E472005D46E1 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Slider.swift; path = ImageViewer/Source/Slider.swift; sourceTree = "<group>"; };
+		73172EC62C91E472005D46E1 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThumbnailCell.swift; path = "ImageViewer/Source/Thumbnails Controller/ThumbnailCell.swift"; sourceTree = "<group>"; };
+		73172EC72C91E472005D46E1 /* ThumbnailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThumbnailsViewController.swift; path = "ImageViewer/Source/Thumbnails Controller/ThumbnailsViewController.swift"; sourceTree = "<group>"; };
+		73172EC82C91E472005D46E1 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIApplication.swift; path = ImageViewer/Source/Extensions/UIApplication.swift; sourceTree = "<group>"; };
+		73172EC92C91E472005D46E1 /* UIBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIBezierPath.swift; path = ImageViewer/Source/Extensions/UIBezierPath.swift; sourceTree = "<group>"; };
+		73172ECA2C91E472005D46E1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIButton.swift; path = ImageViewer/Source/Extensions/UIButton.swift; sourceTree = "<group>"; };
+		73172ECB2C91E472005D46E1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = ImageViewer/Source/Extensions/UIColor.swift; sourceTree = "<group>"; };
+		73172ECC2C91E472005D46E1 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImageView.swift; path = ImageViewer/Source/Extensions/UIImageView.swift; sourceTree = "<group>"; };
+		73172ECD2C91E472005D46E1 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIScreen.swift; path = ImageViewer/Source/Extensions/UIScreen.swift; sourceTree = "<group>"; };
+		73172ECE2C91E472005D46E1 /* UISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UISlider.swift; path = ImageViewer/Source/Extensions/UISlider.swift; sourceTree = "<group>"; };
+		73172ECF2C91E472005D46E1 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = ImageViewer/Source/Extensions/UIView.swift; sourceTree = "<group>"; };
+		73172ED02C91E472005D46E1 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = ImageViewer/Source/Extensions/UIViewController.swift; sourceTree = "<group>"; };
+		73172ED12C91E472005D46E1 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UtilityFunctions.swift; path = ImageViewer/Source/UtilityFunctions.swift; sourceTree = "<group>"; };
+		73172ED22C91E472005D46E1 /* VideoScrubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoScrubber.swift; path = ImageViewer/Source/VideoScrubber.swift; sourceTree = "<group>"; };
+		73172ED32C91E472005D46E1 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoView.swift; path = ImageViewer/Source/VideoView.swift; sourceTree = "<group>"; };
+		73172ED42C91E472005D46E1 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoViewController.swift; path = ImageViewer/Source/VideoViewController.swift; sourceTree = "<group>"; };
+		73172ED52C91E472005D46E1 /* ImageViewer.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = ImageViewer.modulemap; path = "Calculator Notes/Target Support Files/ImageViewer/ImageViewer.modulemap"; sourceTree = "<group>"; };
+		73172ED62C91E472005D46E1 /* ImageViewer-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ImageViewer-dummy.m"; path = "Calculator Notes/Target Support Files/ImageViewer/ImageViewer-dummy.m"; sourceTree = "<group>"; };
+		73172ED72C91E472005D46E1 /* ImageViewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "ImageViewer-Info.plist"; path = "Calculator Notes/Target Support Files/ImageViewer/ImageViewer-Info.plist"; sourceTree = "<group>"; };
+		73172ED82C91E472005D46E1 /* ImageViewer-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ImageViewer-prefix.pch"; path = "Calculator Notes/Target Support Files/ImageViewer/ImageViewer-prefix.pch"; sourceTree = "<group>"; };
+		73172ED92C91E472005D46E1 /* ImageViewer-umbrella.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ImageViewer-umbrella.h"; path = "Calculator Notes/Target Support Files/ImageViewer/ImageViewer-umbrella.h"; sourceTree = "<group>"; };
+		73172EDA2C91E472005D46E1 /* ImageViewer.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = ImageViewer.debug.xcconfig; path = "Calculator Notes/Target Support Files/ImageViewer/ImageViewer.debug.xcconfig"; sourceTree = "<group>"; };
+		73172EDB2C91E472005D46E1 /* ImageViewer.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = ImageViewer.release.xcconfig; path = "Calculator Notes/Target Support Files/ImageViewer/ImageViewer.release.xcconfig"; sourceTree = "<group>"; };
 		733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Calculator Notes.entitlements"; sourceTree = "<group>"; };
 		7342CA342ABB95DB004FD07C /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
 		7342CA362ABBC0BC004FD07C /* PurchaseBenetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseBenetList.swift; sourceTree = "<group>"; };
@@ -292,6 +487,8 @@
 				D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */,
 				733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
+				73172EDD2C91E472005D46E1 /* ImageViewer */,
+				73172EAE2C91E416005D46E1 /* AssetsPickerViewController */,
 				73B54D6427B09CE000499F66 /* LocalizableString */,
 				C4C079C82698CF8D0020FC69 /* Services */,
 				C4A819EA24A6C0FB005023C6 /* Purchase */,
@@ -376,6 +573,158 @@
 				73741B072A880A5E0067B269 /* ads */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		73172EA42C91E416005D46E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				73172E962C91E416005D46E1 /* ar.lproj */,
+				73172E972C91E416005D46E1 /* de.lproj */,
+				73172E982C91E416005D46E1 /* en.lproj */,
+				73172E992C91E416005D46E1 /* es.lproj */,
+				73172E9A2C91E416005D46E1 /* es-MX.lproj */,
+				73172E9B2C91E416005D46E1 /* fr.lproj */,
+				73172E9C2C91E416005D46E1 /* hi-IN.lproj */,
+				73172E9D2C91E416005D46E1 /* id.lproj */,
+				73172E9E2C91E416005D46E1 /* ja.lproj */,
+				73172E9F2C91E416005D46E1 /* ko.lproj */,
+				73172EA02C91E416005D46E1 /* ru.lproj */,
+				73172EA12C91E416005D46E1 /* tr.lproj */,
+				73172EA22C91E416005D46E1 /* zh-Hans.lproj */,
+				73172EA32C91E416005D46E1 /* zh-Hant.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		73172EAD2C91E416005D46E1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				73172EA52C91E416005D46E1 /* AssetsPickerViewController.modulemap */,
+				73172EA62C91E416005D46E1 /* AssetsPickerViewController-dummy.m */,
+				73172EA72C91E416005D46E1 /* AssetsPickerViewController-Info.plist */,
+				73172EA82C91E416005D46E1 /* AssetsPickerViewController-prefix.pch */,
+				73172EA92C91E416005D46E1 /* AssetsPickerViewController-umbrella.h */,
+				73172EAA2C91E416005D46E1 /* AssetsPickerViewController.debug.xcconfig */,
+				73172EAB2C91E416005D46E1 /* AssetsPickerViewController.release.xcconfig */,
+				73172EAC2C91E416005D46E1 /* ResourceBundle-AssetsPickerViewController-AssetsPickerViewController-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AssetsPickerViewController";
+			sourceTree = "<group>";
+		};
+		73172EAE2C91E416005D46E1 /* AssetsPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				73172E692C91E416005D46E1 /* AssetsAlbumCell.swift */,
+				73172E6A2C91E416005D46E1 /* AssetsAlbumHeaderView.swift */,
+				73172E6B2C91E416005D46E1 /* AssetsAlbumLayout.swift */,
+				73172E6C2C91E416005D46E1 /* AssetsAlbumTitleView.swift */,
+				73172E6D2C91E416005D46E1 /* AssetsAlbumViewController.swift */,
+				73172E6E2C91E416005D46E1 /* AssetsCameraManager.swift */,
+				73172E6F2C91E416005D46E1 /* AssetsCropViewController.swift */,
+				73172E702C91E416005D46E1 /* AssetsEmptyView.swift */,
+				73172E712C91E416005D46E1 /* AssetsFetchService.swift */,
+				73172E722C91E416005D46E1 /* AssetsFooterView.swift */,
+				73172E732C91E416005D46E1 /* AssetsGuideView.swift */,
+				73172E742C91E416005D46E1 /* AssetsManager.swift */,
+				73172E752C91E416005D46E1 /* AssetsManager+Sync.swift */,
+				73172E762C91E416005D46E1 /* AssetsNoPermissionView.swift */,
+				73172E772C91E416005D46E1 /* AssetsPhotoCell.swift */,
+				73172E782C91E416005D46E1 /* AssetsPhotoCellOverlay.swift */,
+				73172E792C91E416005D46E1 /* AssetsPhotoLayout.swift */,
+				73172E7A2C91E416005D46E1 /* AssetsPhotoViewController.swift */,
+				73172E7B2C91E416005D46E1 /* AssetsPhotoViewController+AssetsManager.swift */,
+				73172E7C2C91E416005D46E1 /* AssetsPhotoViewController+Collection.swift */,
+				73172E7D2C91E416005D46E1 /* AssetsPhotoViewController+Delegate.swift */,
+				73172E7E2C91E416005D46E1 /* AssetsPhotoViewController+Model.swift */,
+				73172E7F2C91E416005D46E1 /* AssetsPhotoViewController+Selection.swift */,
+				73172E802C91E416005D46E1 /* AssetsPhotoViewController+Setup.swift */,
+				73172E812C91E416005D46E1 /* AssetsPhotoViewController+UI.swift */,
+				73172E822C91E416005D46E1 /* AssetsPickerConfig.swift */,
+				73172E832C91E416005D46E1 /* AssetsPickerCustomStringConfig.swift */,
+				73172E842C91E416005D46E1 /* AssetsPickerViewController.swift */,
+				73172E852C91E416005D46E1 /* AssetsPreviewController.swift */,
+				73172E862C91E416005D46E1 /* AssetsUtility.swift */,
+				73172E872C91E416005D46E1 /* Bundle+AssetsPickerViewController.swift */,
+				73172E882C91E416005D46E1 /* LogConfig.swift */,
+				73172E892C91E416005D46E1 /* NumberFormatter+AssetsPickerViewController.swift */,
+				73172E8A2C91E416005D46E1 /* PanoramaIconView.swift */,
+				73172E8B2C91E416005D46E1 /* SSCheckMark.swift */,
+				73172E8C2C91E416005D46E1 /* String+AssetsPickerViewController.swift */,
+				73172E8D2C91E416005D46E1 /* SwiftAlert.swift */,
+				73172E8E2C91E416005D46E1 /* TinyLog.swift */,
+				73172E8F2C91E416005D46E1 /* UIColor+ARGB.swift */,
+				73172E902C91E416005D46E1 /* UIColor+AssetsPickerViewController.swift */,
+				73172E912C91E416005D46E1 /* UIFont+AssetsPickerViewController.swift */,
+				73172E922C91E416005D46E1 /* UIScreen+AssetsPickerViewController.swift */,
+				73172E932C91E416005D46E1 /* UIView+Dimmer.swift */,
+				73172E942C91E416005D46E1 /* UIView+Fade.swift */,
+				73172E952C91E416005D46E1 /* UIView+KVO.swift */,
+				73172EA42C91E416005D46E1 /* Resources */,
+				73172EAD2C91E416005D46E1 /* Support Files */,
+			);
+			path = AssetsPickerViewController;
+			sourceTree = "<group>";
+		};
+		73172EDC2C91E472005D46E1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				73172ED52C91E472005D46E1 /* ImageViewer.modulemap */,
+				73172ED62C91E472005D46E1 /* ImageViewer-dummy.m */,
+				73172ED72C91E472005D46E1 /* ImageViewer-Info.plist */,
+				73172ED82C91E472005D46E1 /* ImageViewer-prefix.pch */,
+				73172ED92C91E472005D46E1 /* ImageViewer-umbrella.h */,
+				73172EDA2C91E472005D46E1 /* ImageViewer.debug.xcconfig */,
+				73172EDB2C91E472005D46E1 /* ImageViewer.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ImageViewer";
+			sourceTree = "<group>";
+		};
+		73172EDD2C91E472005D46E1 /* ImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				73172EAF2C91E472005D46E1 /* AVPlayer.swift */,
+				73172EB02C91E472005D46E1 /* BlurView.swift */,
+				73172EB12C91E472005D46E1 /* Bool.swift */,
+				73172EB22C91E472005D46E1 /* CALayer.swift */,
+				73172EB32C91E472005D46E1 /* CAShapeLayer.swift */,
+				73172EB42C91E472005D46E1 /* CGPoint.swift */,
+				73172EB52C91E472005D46E1 /* CGRect.swift */,
+				73172EB62C91E472005D46E1 /* CGSize.swift */,
+				73172EB72C91E472005D46E1 /* GalleryConfiguration.swift */,
+				73172EB82C91E472005D46E1 /* GalleryDisplacedViewsDataSource.swift */,
+				73172EB92C91E472005D46E1 /* GalleryItem.swift */,
+				73172EBA2C91E472005D46E1 /* GalleryItemsDataSource.swift */,
+				73172EBB2C91E472005D46E1 /* GalleryItemsDelegate.swift */,
+				73172EBC2C91E472005D46E1 /* GalleryPagingDataSource.swift */,
+				73172EBD2C91E472005D46E1 /* GallerySwipeToDismissTransition.swift */,
+				73172EBE2C91E472005D46E1 /* GalleryViewController.swift */,
+				73172EBF2C91E472005D46E1 /* ImageFadeInHandler.swift */,
+				73172EC02C91E472005D46E1 /* ImageViewController.swift */,
+				73172EC12C91E472005D46E1 /* ItemBaseController.swift */,
+				73172EC22C91E472005D46E1 /* ItemController.swift */,
+				73172EC32C91E472005D46E1 /* ItemControllerDelegate.swift */,
+				73172EC42C91E472005D46E1 /* LayoutEnums.swift */,
+				73172EC52C91E472005D46E1 /* Slider.swift */,
+				73172EC62C91E472005D46E1 /* ThumbnailCell.swift */,
+				73172EC72C91E472005D46E1 /* ThumbnailsViewController.swift */,
+				73172EC82C91E472005D46E1 /* UIApplication.swift */,
+				73172EC92C91E472005D46E1 /* UIBezierPath.swift */,
+				73172ECA2C91E472005D46E1 /* UIButton.swift */,
+				73172ECB2C91E472005D46E1 /* UIColor.swift */,
+				73172ECC2C91E472005D46E1 /* UIImageView.swift */,
+				73172ECD2C91E472005D46E1 /* UIScreen.swift */,
+				73172ECE2C91E472005D46E1 /* UISlider.swift */,
+				73172ECF2C91E472005D46E1 /* UIView.swift */,
+				73172ED02C91E472005D46E1 /* UIViewController.swift */,
+				73172ED12C91E472005D46E1 /* UtilityFunctions.swift */,
+				73172ED22C91E472005D46E1 /* VideoScrubber.swift */,
+				73172ED32C91E472005D46E1 /* VideoView.swift */,
+				73172ED42C91E472005D46E1 /* VideoViewController.swift */,
+				73172EDC2C91E472005D46E1 /* Support Files */,
+			);
+			path = ImageViewer;
 			sourceTree = "<group>";
 		};
 		73632E062AB4E7C9004AC14A /* Backup */ = {
@@ -778,7 +1127,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/AssetsPickerViewController/AssetsPickerViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/DTPhotoViewerController/DTPhotoViewerController.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework",
@@ -795,7 +1143,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework",
 				"${BUILT_PRODUCTS_DIR}/NYTPhotoViewer/NYTPhotoViewer.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
@@ -814,7 +1161,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AssetsPickerViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTPhotoViewerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAppCheckInterop.framework",
@@ -831,7 +1177,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleSignIn.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageViewer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NYTPhotoViewer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
@@ -881,84 +1226,167 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73172EEB2C91EF9C005D46E1 /* UIApplication.swift in Sources */,
+				73172EE92C91EF9C005D46E1 /* ThumbnailCell.swift in Sources */,
+				73172EE82C91EF9C005D46E1 /* LayoutEnums.swift in Sources */,
 				C467BCAB24A9AABF0039D237 /* VideoCollectionViewController.swift in Sources */,
+				73172F032C91EF9C005D46E1 /* UIView.swift in Sources */,
 				C60907022C18D45A0066D337 /* AuthManager.swift in Sources */,
 				2E4A07B11C42F599007F415F /* ListNotesTableViewCell.swift in Sources */,
 				730438652A315B17001EF25B /* AdsService.swift in Sources */,
+				73172F1D2C91EFAC005D46E1 /* AssetsAlbumHeaderView.swift in Sources */,
 				73A8EFE42C5ABEBB00601079 /* CustomLabelButtonView.swift in Sources */,
+				73172F252C91EFAC005D46E1 /* AssetsPhotoViewController+Setup.swift in Sources */,
+				73172EFC2C91EF9C005D46E1 /* UIBezierPath.swift in Sources */,
+				73172F212C91EFAC005D46E1 /* AssetsEmptyView.swift in Sources */,
+				73172EF22C91EF9C005D46E1 /* UIButton.swift in Sources */,
+				73172EF52C91EF9C005D46E1 /* CALayer.swift in Sources */,
+				73172EE02C91EF9C005D46E1 /* GalleryDisplacedViewsDataSource.swift in Sources */,
+				73172EDE2C91EF9C005D46E1 /* VideoScrubber.swift in Sources */,
+				73172F2F2C91EFAC005D46E1 /* AssetsPhotoViewController+Selection.swift in Sources */,
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
 				737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */,
+				73172EF32C91EF9C005D46E1 /* ItemControllerDelegate.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
+				73172F202C91EFAC005D46E1 /* UIView+KVO.swift in Sources */,
 				73A8EFE02C5ABE7200601079 /* BackupLoginView.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
+				73172EFE2C91EF9C005D46E1 /* CGRect.swift in Sources */,
 				73AF3C302C6515D30011FE35 /* FirebaseVideoService.swift in Sources */,
+				73172F302C91EFAC005D46E1 /* UIScreen+AssetsPickerViewController.swift in Sources */,
 				C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */,
+				73172F292C91EFAC005D46E1 /* AssetsCameraManager.swift in Sources */,
 				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
+				73172F0B2C91EFAC005D46E1 /* PanoramaIconView.swift in Sources */,
+				73172EED2C91EF9C005D46E1 /* VideoViewController.swift in Sources */,
+				73172F062C91EFAC005D46E1 /* AssetsPhotoViewController+AssetsManager.swift in Sources */,
+				73172EF82C91EF9C005D46E1 /* GalleryItemsDataSource.swift in Sources */,
 				73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
+				73172F072C91EFAC005D46E1 /* AssetsPhotoCell.swift in Sources */,
+				73172F112C91EFAC005D46E1 /* AssetsNoPermissionView.swift in Sources */,
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,
+				73172F2D2C91EFAC005D46E1 /* AssetsPhotoCellOverlay.swift in Sources */,
 				738B6AF32AD8C60200EA4B72 /* InsertRecoverEmailViewController.swift in Sources */,
+				73172F182C91EFAC005D46E1 /* AssetsUtility.swift in Sources */,
+				73172EEA2C91EF9C005D46E1 /* ItemController.swift in Sources */,
 				73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */,
 				73862C882AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift in Sources */,
 				73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */,
+				73172EFA2C91EF9C005D46E1 /* GalleryItem.swift in Sources */,
+				73172F002C91EF9C005D46E1 /* Slider.swift in Sources */,
+				73172F1A2C91EFAC005D46E1 /* AssetsFooterView.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */,
 				73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */,
+				73172F1B2C91EFAC005D46E1 /* AssetsPickerConfig.swift in Sources */,
 				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,
 				7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* CoreDataImageService.swift in Sources */,
+				73172F0F2C91EFAC005D46E1 /* TinyLog.swift in Sources */,
+				73172F092C91EFAC005D46E1 /* AssetsPhotoLayout.swift in Sources */,
+				73172EF02C91EF9C005D46E1 /* UIViewController.swift in Sources */,
 				731436442A48D6B000B9842E /* FooterView.swift in Sources */,
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,
 				73B54D6B27B09FDA00499F66 /* UILabel+extensions.swift in Sources */,
 				737530CF2B60CE6A000B23E3 /* UseTermsViewController.swift in Sources */,
 				BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */,
 				730438712A341519001EF25B /* AdsHandler.swift in Sources */,
+				73172F2A2C91EFAC005D46E1 /* AssetsAlbumCell.swift in Sources */,
+				73172F2B2C91EFAC005D46E1 /* AssetsManager+Sync.swift in Sources */,
 				730438632A315B02001EF25B /* FoldersService.swift in Sources */,
 				730438762A3445EF001EF25B /* FlowLayout.swift in Sources */,
+				73172F222C91EFAC005D46E1 /* AssetsPhotoViewController.swift in Sources */,
+				73172EF12C91EF9C005D46E1 /* GalleryPagingDataSource.swift in Sources */,
+				73172EF92C91EF9C005D46E1 /* GalleryItemsDelegate.swift in Sources */,
+				73172F0E2C91EFAC005D46E1 /* NumberFormatter+AssetsPickerViewController.swift in Sources */,
+				73172F232C91EFAC005D46E1 /* AssetsPhotoViewController+Collection.swift in Sources */,
+				73172F192C91EFAC005D46E1 /* SwiftAlert.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
+				73172F152C91EFAC005D46E1 /* UIView+Fade.swift in Sources */,
 				73A8EFE22C5ABE9800601079 /* BackupStatusView.swift in Sources */,
+				73172F2E2C91EFAC005D46E1 /* AssetsPhotoViewController+Delegate.swift in Sources */,
 				738827C82B1509170051BEF4 /* InAppPurchaseManager.swift in Sources */,
 				738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */,
 				73A8EFE62C5ACA3600601079 /* BackupProfileView.swift in Sources */,
 				73B54D6D27B0A89800499F66 /* UIButton+Extension.swift in Sources */,
 				C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */,
 				C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */,
+				73172F272C91EFAC005D46E1 /* AssetsPickerCustomStringConfig.swift in Sources */,
 				7342CA372ABBC0BC004FD07C /* PurchaseBenetList.swift in Sources */,
+				73172F0D2C91EFAC005D46E1 /* AssetsFetchService.swift in Sources */,
 				737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
 				738FB4BF2BADD4C600595F60 /* ChangeNewCalcViewController2.swift in Sources */,
 				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
+				73172EEE2C91EF9C005D46E1 /* ThumbnailsViewController.swift in Sources */,
+				73172EE12C91EF9C005D46E1 /* GallerySwipeToDismissTransition.swift in Sources */,
+				73172F142C91EFAC005D46E1 /* UIView+Dimmer.swift in Sources */,
+				73172F262C91EFAC005D46E1 /* AssetsManager.swift in Sources */,
+				73172F2C2C91EFAC005D46E1 /* AssetsGuideView.swift in Sources */,
+				73172F1F2C91EFAC005D46E1 /* AssetsAlbumLayout.swift in Sources */,
+				73172EF72C91EF9C005D46E1 /* UtilityFunctions.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
+				73172EE32C91EF9C005D46E1 /* CGPoint.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
+				73172EFB2C91EF9C005D46E1 /* GalleryViewController.swift in Sources */,
+				73172F1C2C91EFAC005D46E1 /* UIColor+ARGB.swift in Sources */,
 				736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
+				73172F162C91EFAC005D46E1 /* SSCheckMark.swift in Sources */,
+				73172F132C91EFAC005D46E1 /* String+AssetsPickerViewController.swift in Sources */,
+				73172F102C91EFAC005D46E1 /* AssetsPickerViewController.swift in Sources */,
+				73172EF42C91EF9C005D46E1 /* AVPlayer.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */,
 				D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
+				73172F0C2C91EFAC005D46E1 /* UIFont+AssetsPickerViewController.swift in Sources */,
+				73172F042C91EFAC005D46E1 /* UIColor+AssetsPickerViewController.swift in Sources */,
 				73862C842AAD18BC005D9D25 /* Constants.swift in Sources */,
+				73172EDF2C91EF9C005D46E1 /* BlurView.swift in Sources */,
 				730B2EB92C593FD40016FD9E /* BackupUpdateManager.swift in Sources */,
+				73172EF62C91EF9C005D46E1 /* ImageFadeInHandler.swift in Sources */,
 				738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */,
 				73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */,
 				736BDAD12A979BC100851BEF /* LoadingAlert.swift in Sources */,
+				73172EE42C91EF9C005D46E1 /* GalleryConfiguration.swift in Sources */,
 				7304387A2A34467C001EF25B /* FolderCollectionViewCell.swift in Sources */,
+				73172F172C91EFAC005D46E1 /* AssetsPhotoViewController+Model.swift in Sources */,
+				73172F012C91EF9C005D46E1 /* UIImageView.swift in Sources */,
+				73172EE62C91EF9C005D46E1 /* UIScreen.swift in Sources */,
+				73172F022C91EF9C005D46E1 /* CAShapeLayer.swift in Sources */,
+				73172EE52C91EF9C005D46E1 /* UIColor.swift in Sources */,
 				73A8EFDE2C5AA49800601079 /* BackupHeaderView.swift in Sources */,
+				73172EEF2C91EF9C005D46E1 /* CGSize.swift in Sources */,
 				2E4A07A91C42F40B007F415F /* ListNotesTableViewController.swift in Sources */,
+				73172EFF2C91EF9C005D46E1 /* VideoView.swift in Sources */,
+				73172F082C91EFAC005D46E1 /* AssetsAlbumViewController.swift in Sources */,
 				7342CA352ABB95DB004FD07C /* DiamondView.swift in Sources */,
 				C46AD1012441708400EF0236 /* ModelController.swift in Sources */,
 				73AF3C322C65162A0011FE35 /* Data+Extension.swift in Sources */,
 				737530D32B60E517000B23E3 /* ViewController.swift in Sources */,
 				73862C822AAD1894005D9D25 /* OnboardingViewController.swift in Sources */,
 				C480A50224A770E500094FC8 /* PurchaseViewController.swift in Sources */,
+				73172F0A2C91EFAC005D46E1 /* AssetsPreviewController.swift in Sources */,
 				73D1CD9B2B731212007E97CC /* ChangeNewCalcViewController.swift in Sources */,
+				73172F282C91EFAC005D46E1 /* AssetsCropViewController.swift in Sources */,
 				73B54D6627B09D9800499F66 /* String+Localized.swift in Sources */,
 				C467BCC424A9B1880039D237 /* VideoModelController.swift in Sources */,
+				73172EFD2C91EF9C005D46E1 /* UISlider.swift in Sources */,
 				73AF3C2E2C6515840011FE35 /* FirebaseImageService.swift in Sources */,
+				73172F1E2C91EFAC005D46E1 /* AssetsAlbumTitleView.swift in Sources */,
+				73172F052C91EFAC005D46E1 /* Bundle+AssetsPickerViewController.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
+				73172F122C91EFAC005D46E1 /* LogConfig.swift in Sources */,
 				73B860592AC1FB330023441A /* OnboardingView.swift in Sources */,
+				73172EE22C91EF9C005D46E1 /* ItemBaseController.swift in Sources */,
+				73172EE72C91EF9C005D46E1 /* ImageViewController.swift in Sources */,
+				73172F242C91EFAC005D46E1 /* AssetsPhotoViewController+UI.swift in Sources */,
 				73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */,
+				73172EEC2C91EF9C005D46E1 /* Bool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,7 +1584,7 @@
 				INFOPLIST_FILE = "Calculator Notes/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SG;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1192,7 +1620,7 @@
 				INFOPLIST_FILE = "Calculator Notes/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = SG;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
