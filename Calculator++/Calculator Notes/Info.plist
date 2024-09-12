@@ -12,18 +12,18 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>icon1</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>icon1</string>
-				</array>
-			</dict>
 			<key>Icon2</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Icon2</string>
+				</array>
+			</dict>
+			<key>icon1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>icon1</string>
 				</array>
 			</dict>
 			<key>icon3</key>
@@ -112,13 +112,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>

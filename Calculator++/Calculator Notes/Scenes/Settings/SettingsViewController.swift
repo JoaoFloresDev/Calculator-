@@ -221,7 +221,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc
     func privacyPolicePressed(_ sender: UITapGestureRecognizer? = nil) {
-        let navigation = UINavigationController(rootViewController: ScrollableTextViewController())
+        let navigation = UINavigationController(rootViewController: SettingsViewController2())
         self.present(navigation, animated: true)
     }
     
@@ -338,5 +338,130 @@ extension  SettingsViewController: BackupModalViewControllerDelegate {
     
     func enableBackupToggled(status: Bool) {
         backupIsActivated = status
+    }
+}
+
+
+class SettingsViewController2: UIViewController {
+
+    // MARK: - UI Elements
+    private let premiumButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Premium Version", for: .normal)
+        button.backgroundColor = UIColor(red: 0.0, green: 0.686, blue: 0.91, alpha: 1)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(premiumVersionPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 1
+        return stackView
+    }()
+    
+    private let hideRecoverButtonView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
+    
+    private let backupOptionsView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
+    
+    private let augmentedRealityView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
+    
+    private let browserView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
+    
+    private let appReviewView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
+    
+    private let termsView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
+
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+    }
+
+    // MARK: - Setup View
+    private func setupView() {
+        view.backgroundColor = .systemBackground
+        
+        view.addSubview(premiumButton)
+        view.addSubview(stackView)
+        
+        stackView.addArrangedSubview(hideRecoverButtonView)
+        stackView.addArrangedSubview(backupOptionsView)
+        stackView.addArrangedSubview(augmentedRealityView)
+        stackView.addArrangedSubview(browserView)
+        stackView.addArrangedSubview(appReviewView)
+        stackView.addArrangedSubview(termsView)
+
+        // Setup constraints
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        premiumButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(44)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(premiumButton.snp.top).offset(-16)
+        }
+        
+        hideRecoverButtonView.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+        
+        backupOptionsView.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+        
+        augmentedRealityView.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+        
+        browserView.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+        
+        appReviewView.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+        
+        termsView.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+    }
+
+    // MARK: - Actions
+    @objc private func premiumVersionPressed() {
+        // Handle premium version button tap
     }
 }

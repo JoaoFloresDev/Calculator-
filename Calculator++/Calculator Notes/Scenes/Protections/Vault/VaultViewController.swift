@@ -81,6 +81,7 @@ class VaultViewController: UIViewController {
         if vaultMode != .verify {
             subtitleLabel.text = Text.createPassword.localized()
             faceidImageView.text = Text.cancel.localized()
+            faceidImageView.isHidden = true
         } else {
             subtitleLabel.isHidden = true
             titleLabel.isHidden = true

@@ -290,11 +290,6 @@ class BackupModalViewController: UIViewController {
             return
         }
         
-        var date = Defaults.getString(.lastBackupUpdate)
-        if date.isEmpty {
-            updateCurrentPhotos()
-            Defaults.setBool(.recurrentBackupUpdate, true)
-        }
         self.loadingAlert.startLoading {
             FirebaseBackupService.updateBackup(completion: { _ in
                 DispatchQueue.main.async {
