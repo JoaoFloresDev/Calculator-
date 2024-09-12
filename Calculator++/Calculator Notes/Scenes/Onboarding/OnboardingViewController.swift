@@ -85,13 +85,11 @@ extension OnboardingWelcomeViewController: OnboardingViewDelegate {
     }
     
     func isCurrentDateBeforeAprilFirst2024() -> Bool {
-        // Configura o calendário e as opções de zona horária
         var calendar = Calendar.current
         if let timeZone = TimeZone(identifier: "UTC") {
             calendar.timeZone = timeZone
         }
         
-        // Cria componentes da data para 1º de abril de 2024
         var dateComponents = DateComponents()
         dateComponents.year = 2024
         dateComponents.month = 9
@@ -102,7 +100,6 @@ extension OnboardingWelcomeViewController: OnboardingViewDelegate {
             return false
         }
         
-        // Compara com a data atual
         return Date() < aprilFirst2024
     }
     

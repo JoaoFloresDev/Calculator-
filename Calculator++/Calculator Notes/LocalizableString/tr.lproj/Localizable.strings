@@ -186,3 +186,4 @@ downloadBackup = "Yedeklemeyi indir";
 loginWithGoogle = "Google ile giriş yap";
 signUpWithGoogle = "Google ile kayıt ol";
 browser = "İnternet tarayıcısı";
+createLoginErrorTitle = "Try creating an account";

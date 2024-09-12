@@ -188,3 +188,4 @@ downloadBackup = "बैकअप डाउनलोड करें";
 loginWithGoogle = "Google के साथ लॉगिन करें";
 signUpWithGoogle = "Google के साथ साइन अप करें";
 browser = "इंटरनेट ब्राउज़र";
+createLoginErrorTitle = "Try creating an account";

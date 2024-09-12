@@ -136,7 +136,7 @@ class BackupLoginView: UIView {
                 if (error as? NSError)?.code == -5 {
                     print("User cancelled")
                 } else {
-                    Alerts.showAlert(title: Text.errorTitle.localized(), text: "\(error?.localizedDescription ?? "\(Text.genericLoginError.localized())")\n\n\(Text.createLoginError.localized())", controller: self.controller)
+                    Alerts.showAlert(title: Text.createLoginErrorTitle.localized(), text: "\(error?.localizedDescription ?? "\(Text.genericLoginError.localized())")\n\n\(Text.createLoginError.localized())", controller: self.controller)
                 }
                 return
             }
@@ -144,7 +144,7 @@ class BackupLoginView: UIView {
             if let googleID = result.user.userID, let email = result.user.profile?.email {
                 self.manager.signInWithEmail(withEmail: email, password: googleID) { error in
                     if let error = error {
-                        Alerts.showAlert(title: Text.errorTitle.localized(), text: "\(error.localizedDescription)\n\n\(Text.createLoginError.localized())", controller: self.controller)
+                        Alerts.showAlert(title: Text.createLoginErrorTitle.localized(), text: "\(error.localizedDescription)\n\n\(Text.createLoginError.localized())", controller: self.controller)
                     } else {
                         Defaults.setBool(.recurrentBackupUpdate, true)
                         Alerts.showAlert(title: Text.successLogin.localized(), text: Text.successLoginDescription.localized(), controller: self.controller) {

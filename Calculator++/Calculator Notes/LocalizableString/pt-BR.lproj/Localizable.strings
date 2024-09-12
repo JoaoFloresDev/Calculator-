@@ -192,3 +192,4 @@ loginWithGoogle = "Login With Google";
 signUpWithGoogle = "Sign Up With Google";
 browser = "Navegador de internet";
 
+createLoginErrorTitle = "Tente criar uma conta";

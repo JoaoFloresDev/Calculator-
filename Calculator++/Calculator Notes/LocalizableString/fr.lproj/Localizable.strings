@@ -188,3 +188,4 @@ downloadBackup = "Télécharger la sauvegarde";
 loginWithGoogle = "Se connecter avec Google";
 signUpWithGoogle = "S'inscrire avec Google";
 browser = "Navigateur Internet";
+createLoginErrorTitle = "Try creating an account";

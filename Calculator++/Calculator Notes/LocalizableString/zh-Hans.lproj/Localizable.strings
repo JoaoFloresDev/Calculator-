@@ -188,3 +188,4 @@ downloadBackup = "下载备份";
 loginWithGoogle = "用Google登录";
 signUpWithGoogle = "用Google注册";
 browser = "网页浏览器";
+createLoginErrorTitle = "Try creating an account";

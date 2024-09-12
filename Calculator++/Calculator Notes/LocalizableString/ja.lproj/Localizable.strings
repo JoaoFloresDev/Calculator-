@@ -188,3 +188,4 @@ downloadBackup = "バックアップをダウンロード";
 loginWithGoogle = "Googleでログイン";
 signUpWithGoogle = "Googleでサインアップ";
 browser = "インターネットブラウザ";
+createLoginErrorTitle = "Try creating an account";

@@ -44,6 +44,7 @@ struct ModelController {
         } catch let error as NSError {
             os_log("Could not fetch image objects: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
         }
+        
         return images
     }
     

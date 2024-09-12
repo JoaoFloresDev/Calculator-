@@ -177,6 +177,7 @@ enum Text: String {
     case notHasAccount // "Ainda não? Crie agora"
     case genericLoginError // "Algo deu errado"
     case createLoginError // "Se você ainda não possui uma conta, selecione 'Sign up with google'
+    case createLoginErrorTitle //"Try create account"
     case successLogin // "Login efetuado com sucesso!"
     case successLoginDescription // "Suas fotos serão sincronizadas sempre que adicionar novas fotos ou clicar no botão 'atualizar backup'"
     case syncAut // "Sincronização automática"

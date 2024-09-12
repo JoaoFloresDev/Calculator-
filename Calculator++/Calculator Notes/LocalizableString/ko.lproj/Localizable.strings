@@ -188,3 +188,4 @@ downloadBackup = "백업 다운로드";
 loginWithGoogle = "Google로 로그인";
 signUpWithGoogle = "Google로 가입";
 browser = "인터넷 브라우저";
+createLoginErrorTitle = "Try creating an account";

@@ -188,3 +188,4 @@ downloadBackup = "Unduh cadangan";
 loginWithGoogle = "Masuk dengan Google";
 signUpWithGoogle = "Daftar dengan Google";
 browser = "Peramban internet";
+createLoginErrorTitle = "Try creating an account";

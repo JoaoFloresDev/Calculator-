@@ -35,6 +35,7 @@ extension BackupModalViewController: BackupLoginEvent {
             updateBackup.label.text = Text.pending.localized()
         } else {
             loadingAlert.startLoading()
+            self.updateCurrentPhotos()
             FirebaseBackupService.hasDataInFirebase { hasData, _, items  in
                 self.loadingAlert.stopLoading {
                     if let items = items, !items.isEmpty, hasData {
@@ -44,6 +45,13 @@ extension BackupModalViewController: BackupLoginEvent {
                     }
                 }
             }
+        }
+    }
+    
+    func updateCurrentPhotos() {
+        let modelData = ModelController.listAllPhotos()
+        for data in modelData {
+            ImageCloudInsertionManager.addName(data.name)
         }
     }
     
@@ -279,8 +287,14 @@ class BackupModalViewController: UIViewController {
     @objc func updateBackupTapped() {
         if !isUserLoggedIn() {
             Alerts.showBackupDisabled(controller: self)
+            return
         }
         
+        var date = Defaults.getString(.lastBackupUpdate)
+        if date.isEmpty {
+            updateCurrentPhotos()
+            Defaults.setBool(.recurrentBackupUpdate, true)
+        }
         self.loadingAlert.startLoading {
             FirebaseBackupService.updateBackup(completion: { _ in
                 DispatchQueue.main.async {
@@ -302,7 +316,6 @@ class BackupModalViewController: UIViewController {
         return dateFormatter.string(from: currentDate)
     }
 
-    
     // MARK: - Private Functions
     private func askUserToRestoreBackup(backupItems: [MediaItem]) {
         Alerts.askUserToRestoreBackup(on: self) { restoreBackup in

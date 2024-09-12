@@ -174,3 +174,4 @@ augmentedReality = "Augmented Reality";
 createPasswordNewCalc = "Create a 4-digit password";
 insertCreatedPasswordAgainNewCalc = "Enter the password again to confirm";
 oneWeekToTest = "Test one week for free";
+createLoginErrorTitle = "Try creating an account";

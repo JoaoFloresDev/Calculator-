@@ -188,3 +188,4 @@ downloadBackup = "Скачать резервную копию";
 loginWithGoogle = "Войти через Google";
 signUpWithGoogle = "Зарегистрироваться через Google";
 browser = "Интернет-браузер";
+createLoginErrorTitle = "Try creating an account";

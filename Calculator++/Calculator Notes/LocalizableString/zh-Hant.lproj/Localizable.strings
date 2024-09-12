@@ -188,3 +188,4 @@ downloadBackup = "下載備份";
 loginWithGoogle = "用Google登錄";
 signUpWithGoogle = "用Google註冊";
 browser = "網頁瀏覽器";
+createLoginErrorTitle = "Try creating an account";
