@@ -215,13 +215,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     // MARK: - Backup
     @objc
     func useTermsPressed(_ sender: UITapGestureRecognizer? = nil) {
-        let navigation = UINavigationController(rootViewController: UseTermsViewController())
+        let navigation = UINavigationController(rootViewController: SettingsViewController2())
         self.present(navigation, animated: true)
     }
     
     @objc
     func privacyPolicePressed(_ sender: UITapGestureRecognizer? = nil) {
-        let navigation = UINavigationController(rootViewController: SettingsViewController2())
+        let navigation = UINavigationController(rootViewController: ScrollableTextViewController())
         self.present(navigation, animated: true)
     }
     
@@ -342,126 +342,178 @@ extension  SettingsViewController: BackupModalViewControllerDelegate {
 }
 
 
+import UIKit
+import SnapKit
+
 class SettingsViewController2: UIViewController {
 
-    // MARK: - UI Elements
-    private let premiumButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Premium Version", for: .normal)
-        button.backgroundColor = UIColor(red: 0.0, green: 0.686, blue: 0.91, alpha: 1)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.addTarget(self, action: #selector(premiumVersionPressed), for: .touchUpInside)
-        return button
-    }()
+    // MARK: - Views
     
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 1
-        return stackView
-    }()
-    
-    private let hideRecoverButtonView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
-    
-    private let backupOptionsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
-    
-    private let augmentedRealityView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
-    
-    private let browserView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
-    
-    private let appReviewView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
-    
-    private let termsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemGray5
-        return view
-    }()
+    private let stackView = UIStackView()
+    private let premiumButton = UIButton(type: .system)
+    private let backupOptionsView = UIView()
+    private let augmentedRealityView = UIView()
+    private let browserView = UIView()
+    private let appReviewView = UIView()
+    private let termsView = UIView()
 
+    private let backupLabel = UILabel()
+    private let backupStatusLabel = UILabel()
+    
+    private let augmentedRealityLabel = UILabel()
+    private let browserLabel = UILabel()
+    private let appReviewLabel = UILabel()
+    private let termsLabel = UILabel()
+    
+    private let switchButton = UISwitch()
+    
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-    }
-
-    // MARK: - Setup View
-    private func setupView() {
-        view.backgroundColor = .systemBackground
-        
-        view.addSubview(premiumButton)
-        view.addSubview(stackView)
-        
-        stackView.addArrangedSubview(hideRecoverButtonView)
-        stackView.addArrangedSubview(backupOptionsView)
-        stackView.addArrangedSubview(augmentedRealityView)
-        stackView.addArrangedSubview(browserView)
-        stackView.addArrangedSubview(appReviewView)
-        stackView.addArrangedSubview(termsView)
-
-        // Setup constraints
+        setupViews()
         setupConstraints()
     }
     
+    // MARK: - Setup Views
+    
+    private func setupViews() {
+        view.backgroundColor = .systemBackground
+        
+        // Setup StackView
+        stackView.axis = .vertical
+        stackView.spacing = 1
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        
+        // Setup Premium Button
+        premiumButton.setTitle("Premium Version", for: .normal)
+        premiumButton.backgroundColor = UIColor(red: 0.0, green: 0.686, blue: 0.91, alpha: 1)
+        premiumButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        premiumButton.addTarget(self, action: #selector(premiumVersionPressed), for: .touchUpInside)
+        stackView.addArrangedSubview(premiumButton)
+        
+        // Setup Backup Options View
+        backupOptionsView.backgroundColor = .systemGray5
+        stackView.addArrangedSubview(backupOptionsView)
+        
+        backupLabel.text = "Backup Criptografado"
+        backupLabel.font = UIFont.systemFont(ofSize: 17)
+        backupOptionsView.addSubview(backupLabel)
+        
+        backupStatusLabel.text = "Disabled"
+        backupStatusLabel.font = UIFont.systemFont(ofSize: 17)
+        backupStatusLabel.textColor = .systemGray
+        backupOptionsView.addSubview(backupStatusLabel)
+        
+        // Setup Augmented Reality View
+        augmentedRealityLabel.text = "Augmented Reality"
+        augmentedRealityLabel.font = UIFont.systemFont(ofSize: 17)
+        augmentedRealityView.backgroundColor = .systemGray5
+        augmentedRealityView.addSubview(augmentedRealityLabel)
+        stackView.addArrangedSubview(augmentedRealityView)
+        
+        // Setup Browser View
+        browserLabel.text = "Browser"
+        browserLabel.font = UIFont.systemFont(ofSize: 17)
+        browserView.backgroundColor = .systemGray5
+        browserView.addSubview(browserLabel)
+        stackView.addArrangedSubview(browserView)
+        
+        // Setup App Review View
+        appReviewLabel.text = "App review"
+        appReviewLabel.font = UIFont.systemFont(ofSize: 17)
+        appReviewView.backgroundColor = .systemGray5
+        appReviewView.addSubview(appReviewLabel)
+        stackView.addArrangedSubview(appReviewView)
+        
+        // Setup Terms View
+        termsLabel.text = "Termos de uso"
+        termsLabel.font = UIFont.systemFont(ofSize: 17)
+        termsView.backgroundColor = .systemGray5
+        termsView.addSubview(termsLabel)
+        stackView.addArrangedSubview(termsView)
+        
+        // Setup Switch
+        backupOptionsView.addSubview(switchButton)
+        switchButton.isOn = true
+        switchButton.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
+    }
+    
+    // MARK: - Setup Constraints
+    
     private func setupConstraints() {
-        premiumButton.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(44)
-        }
-        
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.equalTo(view.safeAreaLayoutGuide)
-            make.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(premiumButton.snp.top).offset(-16)
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        hideRecoverButtonView.snp.makeConstraints { make in
-            make.height.equalTo(48)
+        premiumButton.snp.makeConstraints { make in
+            make.height.equalTo(44)
         }
         
         backupOptionsView.snp.makeConstraints { make in
             make.height.equalTo(48)
         }
         
+        backupLabel.snp.makeConstraints { make in
+            make.leading.equalTo(backupOptionsView).offset(16)
+            make.centerY.equalTo(backupOptionsView)
+        }
+        
+        backupStatusLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(backupOptionsView).offset(-16)
+            make.centerY.equalTo(backupOptionsView)
+        }
+        
         augmentedRealityView.snp.makeConstraints { make in
             make.height.equalTo(48)
+        }
+        
+        augmentedRealityLabel.snp.makeConstraints { make in
+            make.leading.equalTo(augmentedRealityView).offset(16)
+            make.centerY.equalTo(augmentedRealityView)
         }
         
         browserView.snp.makeConstraints { make in
             make.height.equalTo(48)
         }
         
+        browserLabel.snp.makeConstraints { make in
+            make.leading.equalTo(browserView).offset(16)
+            make.centerY.equalTo(browserView)
+        }
+        
         appReviewView.snp.makeConstraints { make in
             make.height.equalTo(48)
+        }
+        
+        appReviewLabel.snp.makeConstraints { make in
+            make.leading.equalTo(appReviewView).offset(16)
+            make.centerY.equalTo(appReviewView)
         }
         
         termsView.snp.makeConstraints { make in
             make.height.equalTo(48)
         }
+        
+        termsLabel.snp.makeConstraints { make in
+            make.leading.equalTo(termsView).offset(16)
+            make.centerY.equalTo(termsView)
+        }
+        
+        switchButton.snp.makeConstraints { make in
+            make.trailing.equalTo(backupOptionsView).offset(-16)
+            make.centerY.equalTo(backupOptionsView)
+        }
     }
-
+    
     // MARK: - Actions
+    
     @objc private func premiumVersionPressed() {
-        // Handle premium version button tap
+        // Handle premium version button press
+    }
+    
+    @objc private func switchButtonAction() {
+        // Handle switch value change
     }
 }
