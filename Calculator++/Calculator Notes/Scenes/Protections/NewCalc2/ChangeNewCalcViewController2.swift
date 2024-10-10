@@ -25,6 +25,24 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         return button
     }()
     
+    var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Voltar", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
+    
+    @objc private func backButtonTapped() {
+        if vaultMode == .confirmation {
+            vaultMode = .create
+            runningNumber = ""
+            outputLbl.text = " "
+            instructionsLabel.text = Text.createPasswordNewCalc.localized()
+        }
+    }
+    
     @objc private func faceIDButtonTapped() {
         useFaceID()
     }
@@ -140,14 +158,15 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                 instructionsLabel.text = "\(Text.insertCreatedPasswordAgainNewCalc.localized()) (\(runningNumber))"
                 runningNumber = ""
                 vaultMode = .confirmation
+                backButton.isHidden = false
             case .confirmation:
                 if runningNumber == initialPassword {
                     Defaults.setString(.password, runningNumber)
                     UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc2)
                     super.dismiss(animated: true)
                 } else {
-                    outputLbl.text = "0"
                     runningNumber = ""
+                    outputLbl.text = "0"
                 }
             }
         }
@@ -170,11 +189,19 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         super.viewDidLoad()
         faceIDButton.isHidden = Defaults.getBool(.recoveryStatus) || vaultMode != .verify
         view.addSubview(faceIDButton)
+        view.addSubview(backButton)
+        
         faceIDButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10)
             make.height.equalTo(90)
             make.width.equalTo(120)
+        }
+        
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10)
+            make.height.equalTo(44)
         }
     }
     
