@@ -215,12 +215,12 @@
                         <outlet property="backupStatus" destination="goV-ei-xQg" id="aRg-ae-OJU"/>
                         <outlet property="browser" destination="hbc-md-57V" id="pEf-lY-H3E"/>
                         <outlet property="browserLabel" destination="cvG-Ye-PPs" id="q2H-T1-ZY9"/>
-                        <outlet property="changePassword" destination="cf1-5B-2Fc" id="Wmm-uW-FG1"/>
+                        <outlet property="changePassword" destination="ert-Ym-P1Q" id="IFG-GA-L0i"/>
                         <outlet property="customTabBar" destination="hh2-yq-auE" id="Fgj-8r-Zdu"/>
                         <outlet property="faceIDView" destination="HT7-x9-f8c" id="ED4-RH-aKe"/>
-                        <outlet property="fakePassword" destination="cf1-5B-2Fc" id="xLH-3R-haD"/>
+                        <outlet property="fakePassword" destination="cf1-5B-2Fc" id="qMP-ry-DWY"/>
                         <outlet property="recoverLabel" destination="Dac-Ca-htn" id="Txt-1e-RiB"/>
-                        <outlet property="shareWithOtherCalc" destination="Mlt-4O-R0j" id="HTU-mJ-DC5"/>
+                        <outlet property="shareWithOtherCalc" destination="Mlt-4O-R0j" id="zzf-bB-YfJ"/>
                         <outlet property="stackview" destination="HSl-dr-OjA" id="3xx-sH-o17"/>
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>

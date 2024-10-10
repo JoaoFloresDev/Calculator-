@@ -4,7 +4,8 @@ import SnapKit
 
 class ChangeNewCalcViewController2: BaseCalculatorViewController {
     var vaultMode: VaultMode = .verify
-    
+    private var initialPassword: String?
+
     var faceIDButton: UIButton = {
         let button = UIButton(type: .system)
         let title = "..."
@@ -47,11 +48,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                 if let newValue = evaluate(runningNumber) {
                     runningNumber = String(newValue)
                     outputLbl.text = runningNumber
-                } else {
-                    return
                 }
-            } else {
-                return
             }
         case 15:
             runningNumber += "."
@@ -83,12 +80,11 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         
         var operands = [Double]()
         var operators = [Character]()
-        
         var currentNumber = ""
         var previousChar: Character? = nil
         
         for char in formattedExpression {
-            if char.isNumber || char == "." || (char == "-" && (previousChar == nil || previousChar == "+" || previousChar == "-" || previousChar == "*" || previousChar == "/")) {
+            if char.isNumber || char == "." || (char == "-" && (previousChar == nil || "+-*/".contains(previousChar!))) {
                 currentNumber.append(char)
             } else {
                 if let number = Double(currentNumber) {
@@ -105,80 +101,67 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         }
         
         while let index = operators.firstIndex(where: { $0 == "*" || $0 == "/" }) {
-            guard index < operands.count - 1 else {
-                return nil
-            }
-            
-            let operatorSymbol = operators.remove(at: index)
-            let leftOperand = operands.remove(at: index)
-            let rightOperand = operands.remove(at: index)
-            let result: Double
-            if operatorSymbol == "*" {
-                result = leftOperand * rightOperand
-            } else {
-                result = leftOperand / rightOperand
-            }
+            guard index < operands.count - 1 else { return nil }
+            let op = operators.remove(at: index)
+            let left = operands.remove(at: index)
+            let right = operands.remove(at: index)
+            let result = op == "*" ? left * right : left / right
             operands.insert(result, at: index)
         }
         
         while let index = operators.firstIndex(where: { $0 == "+" || $0 == "-" }) {
-            guard index < operands.count - 1 else {
-                return nil
-            }
-            
-            let operatorSymbol = operators.remove(at: index)
-            let leftOperand = operands.remove(at: index)
-            let rightOperand = operands.remove(at: index)
-            let result: Double
-            if operatorSymbol == "+" {
-                result = leftOperand + rightOperand
-            } else {
-                result = leftOperand - rightOperand
-            }
+            guard index < operands.count - 1 else { return nil }
+            let op = operators.remove(at: index)
+            let left = operands.remove(at: index)
+            let right = operands.remove(at: index)
+            let result = op == "+" ? left + right : left - right
             operands.insert(result, at: index)
         }
         
         let result = operands.first ?? 0.0
-        
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 10
         formatter.minimumFractionDigits = 0
         formatter.usesGroupingSeparator = false
-        
         return formatter.string(from: NSNumber(value: result))
     }
-
     
     func saveKeyIfNeed() {
         if runningNumber.count == 4 {
             switch vaultMode {
             case .verify:
                 if runningNumber == Defaults.getString(.password) {
-                    DispatchQueue.main.async {
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                        self.present(homeViewController, animated: true)
-                    }
+                    presentHomeViewController()
                 }
             case .create:
+                initialPassword = runningNumber
                 outputLbl.text = " "
                 instructionsLabel.text = "\(Text.insertCreatedPasswordAgainNewCalc.localized()) (\(runningNumber))"
                 runningNumber = ""
                 vaultMode = .confirmation
             case .confirmation:
-                Defaults.setString(.password, runningNumber)
-                UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc2)
-                super.dismiss(animated: true)
+                if runningNumber == initialPassword {
+                    Defaults.setString(.password, runningNumber)
+                    UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc2)
+                    super.dismiss(animated: true)
+                } else {
+                    outputLbl.text = "0"
+                    runningNumber = ""
+                }
             }
         }
         
         if runningNumber == Constants.recoverPassword {
-            DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-                self.present(homeViewController, animated: true)
-            }
+            presentHomeViewController()
+        }
+    }
+    
+    private func presentHomeViewController() {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+            self.present(homeViewController, animated: true)
         }
     }
     
@@ -188,7 +171,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         faceIDButton.isHidden = Defaults.getBool(.recoveryStatus) || vaultMode != .verify
         view.addSubview(faceIDButton)
         faceIDButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(0)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10)
             make.height.equalTo(90)
             make.width.equalTo(120)
@@ -198,7 +181,6 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
     func useFaceID() {
         let myContext = LAContext()
         let myLocalizedReasonString = "Biometric Authentication"
-        
         var authError: NSError?
         
         if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
@@ -219,9 +201,9 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
             print(error.localizedDescription)
         }
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         switch vaultMode {
         case .create:
             outputLbl.text = " "
@@ -232,5 +214,3 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         }
     }
 }
-
-

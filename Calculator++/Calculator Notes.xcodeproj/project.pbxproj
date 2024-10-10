@@ -99,6 +99,7 @@
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4CA01532CB80A8B007C4EB9 /* SafariWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */; };
+		C4CA01552CB82593007C4EB9 /* IconContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01542CB82593007C4EB9 /* IconContentView.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
 		C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FB2C18D2D20066D337 /* UIView+Designable.swift */; };
 		C60907022C18D45A0066D337 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60907012C18D45A0066D337 /* AuthManager.swift */; };
@@ -250,6 +251,7 @@
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWrapperViewController.swift; sourceTree = "<group>"; };
+		C4CA01542CB82593007C4EB9 /* IconContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconContentView.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		C60906FB2C18D2D20066D337 /* UIView+Designable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
 		C60907012C18D45A0066D337 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 			children = (
 				73862C8E2AAD2DB9005D9D25 /* SettingsCoordinator.swift */,
 				C48108E324A559AA003E2FA5 /* SettingsViewController.swift */,
+				C4CA01542CB82593007C4EB9 /* IconContentView.swift */,
 				C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */,
 				C480A50724A7757600094FC8 /* Settings.storyboard */,
 			);
@@ -931,6 +934,7 @@
 				737D66A42AB0AB3100806C98 /* RoundedShadowView.swift in Sources */,
 				738218502767ECE500E726FE /* NavigationController+Extensions.swift in Sources */,
 				738FB4BF2BADD4C600595F60 /* ChangeNewCalcViewController2.swift in Sources */,
+				C4CA01552CB82593007C4EB9 /* IconContentView.swift in Sources */,
 				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				C4CA01532CB80A8B007C4EB9 /* SafariWrapperViewController.swift in Sources */,

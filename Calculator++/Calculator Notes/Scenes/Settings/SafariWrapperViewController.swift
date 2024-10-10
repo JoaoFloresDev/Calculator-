@@ -52,8 +52,8 @@ class SafariWrapperViewController: UIViewController, WKNavigationDelegate {
         urlTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             urlTextField.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 8),
-            urlTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            urlTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            urlTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            urlTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             urlTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
         
