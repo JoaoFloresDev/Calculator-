@@ -42,14 +42,10 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var recoverLabel: UILabel!
     @IBOutlet weak var upgradeButton: UIButton!
     @IBOutlet weak var customTabBar: UITabBarItem!
-    @IBOutlet weak var rateApp: UIView!
     @IBOutlet weak var faceIDView: UIView!
     
     @IBOutlet weak var useTerms: UIView!
     @IBOutlet weak var useTermsLabel: UILabel!
-    
-    @IBOutlet weak var augmentedReality: UIView!
-    @IBOutlet weak var augmentedRealityLabel: UILabel!
     
     @IBOutlet weak var browser: UIView!
     @IBOutlet weak var browserLabel: UILabel!
@@ -66,6 +62,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBAction func premiumVersionPressed(_ sender: Any) {
         coordinator.premiumVersionPressed()
     }
+    
+    @IBOutlet weak var changePassword: UIView!
+    
+    @IBOutlet weak var shareWithOtherCalc: UIView!
+    
+    @IBOutlet weak var fakePassword: UIView!
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         DispatchQueue.main.async {
@@ -97,10 +99,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func setupTexts() {
         self.title = Text.settings.localized()
         upgradeButton.setText(.premiumVersion)
-        recoverLabel.setText(.hideRecoverButton)
+//        recoverLabel.setText(.hideRecoverButton)
         useTermsLabel.setText(.termsOfUse)
-        augmentedRealityLabel.setText(.augmentedReality)
-        augmentedReality.isHidden = true
         backupLabel.setText(.backupStatus)
         browserLabel.setText(.browser)
     }
@@ -215,7 +215,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     // MARK: - Backup
     @objc
     func useTermsPressed(_ sender: UITapGestureRecognizer? = nil) {
-        let navigation = UINavigationController(rootViewController: SettingsViewController2())
+        let navigation = UINavigationController(rootViewController: UseTermsViewController())
         self.present(navigation, animated: true)
     }
     
@@ -266,13 +266,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     private func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        rateApp.addGestureRecognizer(tap)
         
         let useTermsPressed = UITapGestureRecognizer(target: self, action: #selector(useTermsPressed(_:)))
         useTerms.addGestureRecognizer(useTermsPressed)
         
         let augmentedRealityPressed = UITapGestureRecognizer(target: self, action: #selector(augmentedRealityPressed(_:)))
-        augmentedReality.addGestureRecognizer(augmentedRealityPressed)
         
         let browserPressed = UITapGestureRecognizer(target: self, action: #selector(browserPressed(_:)))
         browser.addGestureRecognizer(browserPressed)
@@ -300,35 +298,35 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 }
 
-import UIKit
-import SafariServices
-
-class SafariWrapperViewController: UIViewController, SFSafariViewControllerDelegate {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        guard let googleURL = URL(string: "https://www.google.com") else { return }
-        let safariVC = SFSafariViewController(url: googleURL)
-        
-        addChildViewController(safariVC)
-        view.addSubview(safariVC.view)
-        
-        safariVC.view.translatesAutoresizingMaskIntoConstraints = false
-        safariVC.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        safariVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        safariVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        safariVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        safariVC.delegate = self
-    }
-    
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        print("oi2")
-    }
-    
-    func safariViewController(_ controller: SFSafariViewController, activityItemsFor URL: URL, title: String?) -> [UIActivity] {
-        []
-    }
-}
+//import UIKit
+//import SafariServices
+//
+//class SafariWrapperViewController: UIViewController, SFSafariViewControllerDelegate {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        guard let googleURL = URL(string: "https://www.google.com") else { return }
+//        let safariVC = SFSafariViewController(url: googleURL)
+//        
+//        addChildViewController(safariVC)
+//        view.addSubview(safariVC.view)
+//        
+//        safariVC.view.translatesAutoresizingMaskIntoConstraints = false
+//        safariVC.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        safariVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        safariVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        safariVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        safariVC.delegate = self
+//    }
+//    
+//    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+//        print("oi2")
+//    }
+//    
+//    func safariViewController(_ controller: SFSafariViewController, activityItemsFor URL: URL, title: String?) -> [UIActivity] {
+//        []
+//    }
+//}
 
 
 extension  SettingsViewController: BackupModalViewControllerDelegate {
@@ -341,179 +339,179 @@ extension  SettingsViewController: BackupModalViewControllerDelegate {
     }
 }
 
-
-import UIKit
-import SnapKit
-
-class SettingsViewController2: UIViewController {
-
-    // MARK: - Views
-    
-    private let stackView = UIStackView()
-    private let premiumButton = UIButton(type: .system)
-    private let backupOptionsView = UIView()
-    private let augmentedRealityView = UIView()
-    private let browserView = UIView()
-    private let appReviewView = UIView()
-    private let termsView = UIView()
-
-    private let backupLabel = UILabel()
-    private let backupStatusLabel = UILabel()
-    
-    private let augmentedRealityLabel = UILabel()
-    private let browserLabel = UILabel()
-    private let appReviewLabel = UILabel()
-    private let termsLabel = UILabel()
-    
-    private let switchButton = UISwitch()
-    
-    // MARK: - Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViews()
-        setupConstraints()
-    }
-    
-    // MARK: - Setup Views
-    
-    private func setupViews() {
-        view.backgroundColor = .systemBackground
-        
-        // Setup StackView
-        stackView.axis = .vertical
-        stackView.spacing = 1
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stackView)
-        
-        // Setup Premium Button
-        premiumButton.setTitle("Premium Version", for: .normal)
-        premiumButton.backgroundColor = UIColor(red: 0.0, green: 0.686, blue: 0.91, alpha: 1)
-        premiumButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        premiumButton.addTarget(self, action: #selector(premiumVersionPressed), for: .touchUpInside)
-        stackView.addArrangedSubview(premiumButton)
-        
-        // Setup Backup Options View
-        backupOptionsView.backgroundColor = .systemGray5
-        stackView.addArrangedSubview(backupOptionsView)
-        
-        backupLabel.text = "Backup Criptografado"
-        backupLabel.font = UIFont.systemFont(ofSize: 17)
-        backupOptionsView.addSubview(backupLabel)
-        
-        backupStatusLabel.text = "Disabled"
-        backupStatusLabel.font = UIFont.systemFont(ofSize: 17)
-        backupStatusLabel.textColor = .systemGray
-        backupOptionsView.addSubview(backupStatusLabel)
-        
-        // Setup Augmented Reality View
-        augmentedRealityLabel.text = "Augmented Reality"
-        augmentedRealityLabel.font = UIFont.systemFont(ofSize: 17)
-        augmentedRealityView.backgroundColor = .systemGray5
-        augmentedRealityView.addSubview(augmentedRealityLabel)
-        stackView.addArrangedSubview(augmentedRealityView)
-        
-        // Setup Browser View
-        browserLabel.text = "Browser"
-        browserLabel.font = UIFont.systemFont(ofSize: 17)
-        browserView.backgroundColor = .systemGray5
-        browserView.addSubview(browserLabel)
-        stackView.addArrangedSubview(browserView)
-        
-        // Setup App Review View
-        appReviewLabel.text = "App review"
-        appReviewLabel.font = UIFont.systemFont(ofSize: 17)
-        appReviewView.backgroundColor = .systemGray5
-        appReviewView.addSubview(appReviewLabel)
-        stackView.addArrangedSubview(appReviewView)
-        
-        // Setup Terms View
-        termsLabel.text = "Termos de uso"
-        termsLabel.font = UIFont.systemFont(ofSize: 17)
-        termsView.backgroundColor = .systemGray5
-        termsView.addSubview(termsLabel)
-        stackView.addArrangedSubview(termsView)
-        
-        // Setup Switch
-        backupOptionsView.addSubview(switchButton)
-        switchButton.isOn = true
-        switchButton.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
-    }
-    
-    // MARK: - Setup Constraints
-    
-    private func setupConstraints() {
-        stackView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        premiumButton.snp.makeConstraints { make in
-            make.height.equalTo(44)
-        }
-        
-        backupOptionsView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-        }
-        
-        backupLabel.snp.makeConstraints { make in
-            make.leading.equalTo(backupOptionsView).offset(16)
-            make.centerY.equalTo(backupOptionsView)
-        }
-        
-        backupStatusLabel.snp.makeConstraints { make in
-            make.trailing.equalTo(backupOptionsView).offset(-16)
-            make.centerY.equalTo(backupOptionsView)
-        }
-        
-        augmentedRealityView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-        }
-        
-        augmentedRealityLabel.snp.makeConstraints { make in
-            make.leading.equalTo(augmentedRealityView).offset(16)
-            make.centerY.equalTo(augmentedRealityView)
-        }
-        
-        browserView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-        }
-        
-        browserLabel.snp.makeConstraints { make in
-            make.leading.equalTo(browserView).offset(16)
-            make.centerY.equalTo(browserView)
-        }
-        
-        appReviewView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-        }
-        
-        appReviewLabel.snp.makeConstraints { make in
-            make.leading.equalTo(appReviewView).offset(16)
-            make.centerY.equalTo(appReviewView)
-        }
-        
-        termsView.snp.makeConstraints { make in
-            make.height.equalTo(48)
-        }
-        
-        termsLabel.snp.makeConstraints { make in
-            make.leading.equalTo(termsView).offset(16)
-            make.centerY.equalTo(termsView)
-        }
-        
-        switchButton.snp.makeConstraints { make in
-            make.trailing.equalTo(backupOptionsView).offset(-16)
-            make.centerY.equalTo(backupOptionsView)
-        }
-    }
-    
-    // MARK: - Actions
-    
-    @objc private func premiumVersionPressed() {
-        // Handle premium version button press
-    }
-    
-    @objc private func switchButtonAction() {
-        // Handle switch value change
-    }
-}
+//
+//import UIKit
+//import SnapKit
+//
+//class SettingsViewController2: UIViewController {
+//
+//    // MARK: - Views
+//    
+//    private let stackView = UIStackView()
+//    private let premiumButton = UIButton(type: .system)
+//    private let backupOptionsView = UIView()
+//    private let augmentedRealityView = UIView()
+//    private let browserView = UIView()
+//    private let appReviewView = UIView()
+//    private let termsView = UIView()
+//
+//    private let backupLabel = UILabel()
+//    private let backupStatusLabel = UILabel()
+//    
+//    private let augmentedRealityLabel = UILabel()
+//    private let browserLabel = UILabel()
+//    private let appReviewLabel = UILabel()
+//    private let termsLabel = UILabel()
+//    
+//    private let switchButton = UISwitch()
+//    
+//    // MARK: - Lifecycle
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        setupViews()
+//        setupConstraints()
+//    }
+//    
+//    // MARK: - Setup Views
+//    
+//    private func setupViews() {
+//        view.backgroundColor = .systemBackground
+//        
+//        // Setup StackView
+//        stackView.axis = .vertical
+//        stackView.spacing = 1
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(stackView)
+//        
+//        // Setup Premium Button
+//        premiumButton.setTitle("Premium Version", for: .normal)
+//        premiumButton.backgroundColor = UIColor(red: 0.0, green: 0.686, blue: 0.91, alpha: 1)
+//        premiumButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+//        premiumButton.addTarget(self, action: #selector(premiumVersionPressed), for: .touchUpInside)
+//        stackView.addArrangedSubview(premiumButton)
+//        
+//        // Setup Backup Options View
+//        backupOptionsView.backgroundColor = .systemGray5
+//        stackView.addArrangedSubview(backupOptionsView)
+//        
+//        backupLabel.text = "Backup Criptografado"
+//        backupLabel.font = UIFont.systemFont(ofSize: 17)
+//        backupOptionsView.addSubview(backupLabel)
+//        
+//        backupStatusLabel.text = "Disabled"
+//        backupStatusLabel.font = UIFont.systemFont(ofSize: 17)
+//        backupStatusLabel.textColor = .systemGray
+//        backupOptionsView.addSubview(backupStatusLabel)
+//        
+//        // Setup Augmented Reality View
+//        augmentedRealityLabel.text = "Augmented Reality"
+//        augmentedRealityLabel.font = UIFont.systemFont(ofSize: 17)
+//        augmentedRealityView.backgroundColor = .systemGray5
+//        augmentedRealityView.addSubview(augmentedRealityLabel)
+//        stackView.addArrangedSubview(augmentedRealityView)
+//        
+//        // Setup Browser View
+//        browserLabel.text = "Browser"
+//        browserLabel.font = UIFont.systemFont(ofSize: 17)
+//        browserView.backgroundColor = .systemGray5
+//        browserView.addSubview(browserLabel)
+//        stackView.addArrangedSubview(browserView)
+//        
+//        // Setup App Review View
+//        appReviewLabel.text = "App review"
+//        appReviewLabel.font = UIFont.systemFont(ofSize: 17)
+//        appReviewView.backgroundColor = .systemGray5
+//        appReviewView.addSubview(appReviewLabel)
+//        stackView.addArrangedSubview(appReviewView)
+//        
+//        // Setup Terms View
+//        termsLabel.text = "Termos de uso"
+//        termsLabel.font = UIFont.systemFont(ofSize: 17)
+//        termsView.backgroundColor = .systemGray5
+//        termsView.addSubview(termsLabel)
+//        stackView.addArrangedSubview(termsView)
+//        
+//        // Setup Switch
+//        backupOptionsView.addSubview(switchButton)
+//        switchButton.isOn = true
+//        switchButton.addTarget(self, action: #selector(switchButtonAction), for: .valueChanged)
+//    }
+//    
+//    // MARK: - Setup Constraints
+//    
+//    private func setupConstraints() {
+//        stackView.snp.makeConstraints { make in
+//            make.edges.equalTo(view.safeAreaLayoutGuide)
+//        }
+//        
+//        premiumButton.snp.makeConstraints { make in
+//            make.height.equalTo(44)
+//        }
+//        
+//        backupOptionsView.snp.makeConstraints { make in
+//            make.height.equalTo(48)
+//        }
+//        
+//        backupLabel.snp.makeConstraints { make in
+//            make.leading.equalTo(backupOptionsView).offset(16)
+//            make.centerY.equalTo(backupOptionsView)
+//        }
+//        
+//        backupStatusLabel.snp.makeConstraints { make in
+//            make.trailing.equalTo(backupOptionsView).offset(-16)
+//            make.centerY.equalTo(backupOptionsView)
+//        }
+//        
+//        augmentedRealityView.snp.makeConstraints { make in
+//            make.height.equalTo(48)
+//        }
+//        
+//        augmentedRealityLabel.snp.makeConstraints { make in
+//            make.leading.equalTo(augmentedRealityView).offset(16)
+//            make.centerY.equalTo(augmentedRealityView)
+//        }
+//        
+//        browserView.snp.makeConstraints { make in
+//            make.height.equalTo(48)
+//        }
+//        
+//        browserLabel.snp.makeConstraints { make in
+//            make.leading.equalTo(browserView).offset(16)
+//            make.centerY.equalTo(browserView)
+//        }
+//        
+//        appReviewView.snp.makeConstraints { make in
+//            make.height.equalTo(48)
+//        }
+//        
+//        appReviewLabel.snp.makeConstraints { make in
+//            make.leading.equalTo(appReviewView).offset(16)
+//            make.centerY.equalTo(appReviewView)
+//        }
+//        
+//        termsView.snp.makeConstraints { make in
+//            make.height.equalTo(48)
+//        }
+//        
+//        termsLabel.snp.makeConstraints { make in
+//            make.leading.equalTo(termsView).offset(16)
+//            make.centerY.equalTo(termsView)
+//        }
+//        
+//        switchButton.snp.makeConstraints { make in
+//            make.trailing.equalTo(backupOptionsView).offset(-16)
+//            make.centerY.equalTo(backupOptionsView)
+//        }
+//    }
+//    
+//    // MARK: - Actions
+//    
+//    @objc private func premiumVersionPressed() {
+//        // Handle premium version button press
+//    }
+//    
+//    @objc private func switchButtonAction() {
+//        // Handle switch value change
+//    }
+//}
