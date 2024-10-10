@@ -236,6 +236,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @objc
     func browserPressed(_ sender: UITapGestureRecognizer? = nil) {
         let controller = SafariWrapperViewController()
+        controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: true)
     }
     
