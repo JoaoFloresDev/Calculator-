@@ -170,7 +170,9 @@ enum Text: String {
     case augmentedReality // "Realidade Aumentada"
     
     case createPasswordNewCalc // "Crie uma senha de 4 digitos"
+    case createFakePasswordNewCalc // "Crie uma senha de 4 digitos"
     case insertCreatedPasswordAgainNewCalc // "Digite novamente a senha para confirmar"
+    case insertCreatedFakePasswordAgainNewCalc
     case oneWeekToTest // "Teste uma semana grátis"
     
     case hasAccount // ""Já possui uma conta?""

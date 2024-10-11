@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q2d-fs-WKk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q2d-fs-WKk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -826,26 +826,17 @@
                                     <action selector="numberPressed:" destination="53l-fH-LOt" eventType="touchUpInside" id="EYa-r6-vRb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a passcode and confirm with '='" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqB-uV-erN">
-                                <rect key="frame" x="16" y="60" width="338" height="53"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                <color key="textColor" name="Labels"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6L7-qt-Va4"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="3ag-6A-q2n" secondAttribute="trailing" constant="8" id="1GP-r3-qky"/>
-                            <constraint firstItem="FqB-uV-erN" firstAttribute="top" secondItem="6L7-qt-Va4" secondAttribute="top" constant="12" id="49d-sX-Sew"/>
-                            <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="FqB-uV-erN" secondAttribute="trailing" constant="60" id="5it-kQ-p7Y"/>
                             <constraint firstItem="3ag-6A-q2n" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" constant="8" id="9xb-Ln-VdT"/>
-                            <constraint firstItem="FqB-uV-erN" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" constant="16" id="AQe-Si-O19"/>
                             <constraint firstItem="EdA-QS-pPU" firstAttribute="leading" secondItem="6L7-qt-Va4" secondAttribute="leading" id="IoM-vz-Chd"/>
                             <constraint firstItem="6L7-qt-Va4" firstAttribute="trailing" secondItem="EdA-QS-pPU" secondAttribute="trailing" id="P0C-1l-M9d"/>
                             <constraint firstItem="IBq-Hg-VBR" firstAttribute="width" secondItem="9dB-AH-DmI" secondAttribute="width" id="SYm-E6-K1o"/>
                             <constraint firstItem="IBq-Hg-VBR" firstAttribute="centerX" secondItem="9dB-AH-DmI" secondAttribute="centerX" id="akX-AP-sp8"/>
-                            <constraint firstItem="3ag-6A-q2n" firstAttribute="top" secondItem="FqB-uV-erN" secondAttribute="bottom" constant="16" id="cnQ-oy-SZH"/>
+                            <constraint firstItem="3ag-6A-q2n" firstAttribute="top" secondItem="6L7-qt-Va4" secondAttribute="top" constant="81" id="jeb-IJ-a57"/>
                             <constraint firstItem="6L7-qt-Va4" firstAttribute="bottom" secondItem="EdA-QS-pPU" secondAttribute="bottom" id="lMi-cY-RyQ"/>
                             <constraint firstItem="EdA-QS-pPU" firstAttribute="top" secondItem="3ag-6A-q2n" secondAttribute="bottom" constant="16" id="pai-ZJ-6Mv"/>
                             <constraint firstItem="IBq-Hg-VBR" firstAttribute="centerY" secondItem="9dB-AH-DmI" secondAttribute="centerY" id="tHc-aA-ft0"/>
@@ -854,7 +845,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="E5X-0C-Gtr"/>
                     <connections>
-                        <outlet property="instructionsLabel" destination="FqB-uV-erN" id="LdA-pA-hDt"/>
                         <outlet property="outputLbl" destination="3ag-6A-q2n" id="lQm-po-s8T"/>
                     </connections>
                 </viewController>

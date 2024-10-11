@@ -65,6 +65,15 @@ class ChangeNewCalcViewController: BaseCalculatorViewController {
                 Defaults.setString(.password, runningNumber)
                 UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc)
                 super.dismiss(animated: true)
+            case .createFakePass:
+                outputLbl.text = " "
+                instructionsLabel.text = "\(Text.insertCreatedPasswordAgainNewCalc.localized()) (\(runningNumber))"
+                runningNumber = ""
+                vaultMode = .confirmationFakePass
+            case .confirmationFakePass:
+                Defaults.setString(.fakePass, runningNumber)
+                UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc)
+                super.dismiss(animated: true)
             }
         }
         

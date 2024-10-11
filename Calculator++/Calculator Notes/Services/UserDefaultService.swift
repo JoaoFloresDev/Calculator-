@@ -45,6 +45,7 @@ enum IntKey: String {
 
 enum StringKey: String {
     case password = "Key"
+    case fakePass
     case recoverEmail
     case lastBackupUpdate
     

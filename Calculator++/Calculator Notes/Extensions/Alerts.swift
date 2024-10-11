@@ -108,6 +108,16 @@ struct Alerts {
         presentAlert(alert, on: controller)
     }
     
+    static func showSuccesChangePass(controller: UIViewController) {
+        let alert = createAlert(title: "Nova senha: \(Defaults.getString(.password))", message: "Senha Alterada com sucesso" , actions: [createAction(title: Text.ok.localized())])
+        presentAlert(alert, on: controller)
+    }
+    
+    static func showSuccesFakePass(controller: UIViewController) {
+        let alert = createAlert(title: "Senha Falsa: \(Defaults.getString(.password))", message: "Senha false criada com sucesso" , actions: [createAction(title: Text.ok.localized())])
+        presentAlert(alert, on: controller)
+    }
+    
     static func showPasswordError(controller: UIViewController) {
         let alert = createAlert(title: Text.incorrectPasswordTitle.localized(), message: Text.incorrectPasswordMessage.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)

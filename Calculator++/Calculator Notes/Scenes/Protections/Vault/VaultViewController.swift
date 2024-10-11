@@ -16,6 +16,8 @@ enum VaultMode {
     case verify
     case create
     case confirmation
+    case createFakePass
+    case confirmationFakePass
 }
 
 import UIKit

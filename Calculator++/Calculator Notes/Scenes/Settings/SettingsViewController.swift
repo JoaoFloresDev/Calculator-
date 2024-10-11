@@ -28,6 +28,15 @@ import AVKit
 import CloudKit
 import FirebaseAuth
 
+extension SettingsViewController: ChangeNewCalcViewController2Delegate {
+    func fakePassChanged() {
+        Alerts.showSuccesFakePass(controller: self)
+    }
+    
+    func changed() {
+        Alerts.showSuccesChangePass(controller: self)
+    }
+}
 extension SettingsViewController: PurchaseViewControllerDelegate {
     func purchased() {
         backupIsActivated = isUserLoggedIn() && isPremium()
@@ -43,9 +52,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var upgradeButton: UIButton!
     @IBOutlet weak var customTabBar: UITabBarItem!
     @IBOutlet weak var faceIDView: UIView!
-    
-    @IBOutlet weak var useTerms: UIView!
-    @IBOutlet weak var useTermsLabel: UILabel!
     
     @IBOutlet weak var browser: UIView!
     @IBOutlet weak var browserLabel: UILabel!
@@ -97,7 +103,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private func setupTexts() {
         self.title = Text.settings.localized()
         upgradeButton.setText(.premiumVersion)
-        useTermsLabel.setText(.termsOfUse)
         backupLabel.setText(.backupStatus)
         browserLabel.setText(.browser)
     }
@@ -105,12 +110,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     lazy var contentStackView = IconContentView()
     
     // MARK: - Actions
-    @objc
-    func useTermsPressed(_ sender: UITapGestureRecognizer? = nil) {
-        let navigation = UINavigationController(rootViewController: UseTermsViewController())
-        self.present(navigation, animated: true)
-    }
-    
     @objc
     func privacyPolicePressed(_ sender: UITapGestureRecognizer? = nil) {
         let navigation = UINavigationController(rootViewController: ScrollableTextViewController())
@@ -126,21 +125,16 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc
     func changePasswordPressed(_ sender: UITapGestureRecognizer? = nil) {
-//        let controller = ChangeNewCalcViewController2()
-//        controller.modalPresentationStyle = .formSheet
-//        self.present(controller, animated: true)
         let vaultViewController = viewControllerFor(storyboard: "NewCalc2", withIdentifier: "NewCalcChange")
         vaultViewController.modalPresentationStyle = .fullScreen
-//        vaultViewController.transitioningDelegate = slideAndFadeAnimator
+        
         guard let controller = vaultViewController as? ChangeNewCalcViewController2 else {
-//            self.presentNextStep()
             return
         }
         controller.vaultMode = .create
         controller.faceIDButton.isHidden = true
-        self.present(controller, animated: true) {
-//            self.presentNextStep()
-        }
+        controller.delegate = self
+        self.present(controller, animated: true)
     }
     
     private func viewControllerFor(storyboard storyboardName: String, withIdentifier viewControllerID: String) -> UIViewController {
@@ -150,16 +144,21 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc
     func shareWithOtherCalcPressed(_ sender: UITapGestureRecognizer? = nil) {
-//        let controller = ShareWithOtherCalcViewController()
-//        controller.modalPresentationStyle = .formSheet
-//        self.present(controller, animated: true)
+        
     }
     
     @objc
     func fakePasswordPressed(_ sender: UITapGestureRecognizer? = nil) {
-//        let controller = ChangePasswordViewController()
-//        controller.modalPresentationStyle = .formSheet
-//        self.present(controller, animated: true)
+        let vaultViewController = viewControllerFor(storyboard: "NewCalc2", withIdentifier: "NewCalcChange")
+        vaultViewController.modalPresentationStyle = .fullScreen
+        
+        guard let controller = vaultViewController as? ChangeNewCalcViewController2 else {
+            return
+        }
+        controller.vaultMode = .createFakePass
+        controller.faceIDButton.isHidden = true
+        controller.delegate = self
+        self.present(controller, animated: true)
     }
     
     @objc
@@ -188,8 +187,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func setupGestures() {
-        let useTermsPressed = UITapGestureRecognizer(target: self, action: #selector(useTermsPressed(_:)))
-        useTerms.addGestureRecognizer(useTermsPressed)
+//        let useTermsPressed = UITapGestureRecognizer(target: self, action: #selector(useTermsPressed(_:)))
+//        useTerms.addGestureRecognizer(useTermsPressed)
         
         let browserPressed = UITapGestureRecognizer(target: self, action: #selector(browserPressed(_:)))
         browser.addGestureRecognizer(browserPressed)

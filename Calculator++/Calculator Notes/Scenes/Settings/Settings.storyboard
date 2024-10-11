@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="HSl-dr-OjA">
-                                <rect key="frame" x="0.0" y="92" width="414" height="342"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="293"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HT7-x9-f8c">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
@@ -172,23 +172,6 @@
                                             <constraint firstItem="kmD-un-3rb" firstAttribute="centerY" secondItem="Mlt-4O-R0j" secondAttribute="centerY" id="umE-fc-lVD"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lK0-9W-0pg">
-                                        <rect key="frame" x="0.0" y="294" width="414" height="48"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Termos de uso" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVc-pC-6pv">
-                                                <rect key="frame" x="16" y="14" width="112.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                        <constraints>
-                                            <constraint firstItem="yVc-pC-6pv" firstAttribute="centerY" secondItem="lK0-9W-0pg" secondAttribute="centerY" id="QiN-YY-7Pf"/>
-                                            <constraint firstAttribute="height" constant="48" id="fpB-WJ-iku"/>
-                                            <constraint firstItem="yVc-pC-6pv" firstAttribute="leading" secondItem="lK0-9W-0pg" secondAttribute="leading" constant="16" id="mK5-PR-EPg"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -224,8 +207,6 @@
                         <outlet property="stackview" destination="HSl-dr-OjA" id="3xx-sH-o17"/>
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>
-                        <outlet property="useTerms" destination="lK0-9W-0pg" id="uQc-XW-hNc"/>
-                        <outlet property="useTermsLabel" destination="yVc-pC-6pv" id="SdI-ci-OTa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGj-2x-F75" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -236,16 +217,16 @@
     <resources>
         <image name="gear" catalog="system" width="128" height="122"/>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

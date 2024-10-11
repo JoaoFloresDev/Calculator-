@@ -2,7 +2,13 @@ import UIKit
 import LocalAuthentication
 import SnapKit
 
+protocol ChangeNewCalcViewController2Delegate: AnyObject {
+    func changed()
+    func fakePassChanged()
+}
+
 class ChangeNewCalcViewController2: BaseCalculatorViewController {
+    weak var delegate: ChangeNewCalcViewController2Delegate?
     var vaultMode: VaultMode = .verify
     private var initialPassword: String?
 
@@ -25,10 +31,24 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         return button
     }()
     
+    var instructionsLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "Create a passcode and confirm with '='"
+        label.isHidden = false
+        label.alpha = 1
+        label.textColor = .white
+        label.backgroundColor = .clear
+        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        return label
+    }()
+
+    
     var backButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Voltar", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        let backImage = UIImage(systemName: "chevron.backward")
+        button.setImage(backImage, for: .normal)
+        button.tintColor = .white
         button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         button.isHidden = true
         return button
@@ -40,15 +60,13 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
             runningNumber = ""
             outputLbl.text = " "
             instructionsLabel.text = Text.createPasswordNewCalc.localized()
+            backButton.isHidden = true
         }
     }
     
     @objc private func faceIDButtonTapped() {
         useFaceID()
     }
-    
-    // MARK: - IBOutlet
-    @IBOutlet weak var instructionsLabel: UILabel!
     
     // MARK: - IBAction
     @IBAction func numberPressed(_ sender: UIButton) {
@@ -163,6 +181,24 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                 if runningNumber == initialPassword {
                     Defaults.setString(.password, runningNumber)
                     UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc2)
+                    delegate?.changed()
+                    super.dismiss(animated: true)
+                } else {
+                    runningNumber = ""
+                    outputLbl.text = "0"
+                }
+            case .createFakePass: 
+                initialPassword = runningNumber
+                outputLbl.text = " "
+                instructionsLabel.text = "\(Text.insertCreatedFakePasswordAgainNewCalc.localized()) (\(runningNumber))"
+                runningNumber = ""
+                vaultMode = .confirmationFakePass
+                backButton.isHidden = false
+            case .confirmationFakePass:
+                if runningNumber == initialPassword {
+                    Defaults.setString(.fakePass, runningNumber)
+                    UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc2)
+                    delegate?.fakePassChanged()
                     super.dismiss(animated: true)
                 } else {
                     runningNumber = ""
@@ -188,20 +224,29 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         faceIDButton.isHidden = Defaults.getBool(.recoveryStatus) || vaultMode != .verify
+        
         view.addSubview(faceIDButton)
         view.addSubview(backButton)
+        view.addSubview(instructionsLabel)
         
         faceIDButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10)
-            make.height.equalTo(90)
+            make.height.equalTo(44)
             make.width.equalTo(120)
         }
         
-        backButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+        instructionsLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.leading.equalTo(backButton.snp.trailing).offset(0)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10)
-            make.height.equalTo(44)
+            make.height.width.equalTo(60)
+        }
+        
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
+            make.height.width.equalTo(44)
         }
     }
     
@@ -235,6 +280,11 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         case .create:
             outputLbl.text = " "
             instructionsLabel.text = Text.createPasswordNewCalc.localized()
+            
+        case .createFakePass:
+            outputLbl.text = " "
+            instructionsLabel.text = Text.createFakePasswordNewCalc.localized()
+            
         default:
             outputLbl.text = "0"
             instructionsLabel.isHidden = true
