@@ -193,3 +193,16 @@ signUpWithGoogle = "Sign Up With Google";
 browser = "Navegador de internet";
 
 createLoginErrorTitle = "Tente criar uma conta";
+fakepassAlertTitle = "Senha Falsa";
+fakepassAlertText = "Senha falsa criada com sucesso";
+
+loginTocontinueTitle = "Faça o login para continuar";
+loginTocontinueText = "Realize o login para habilitar as funcionalidades de backup";
+
+wifiConnectTitle = "Conecte-se ao wifi";
+wifiConnectText = "Conecte-se ao wifi para prosseguir";
+
+arquives = "Arquivos";
+emptyArquives = "Adicione novos arquivos para começar";
+createFakePasswordNewCalc = "Crie uma senha falsa de 4 dígitos";
+insertCreatedFakePasswordAgainNewCalc = "Digite novamente a senha falsa para confirmar";

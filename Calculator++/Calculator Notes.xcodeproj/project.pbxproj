@@ -95,6 +95,8 @@
 		C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E324A559AA003E2FA5 /* SettingsViewController.swift */; };
 		C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */; };
 		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
+		C49B73BA2CB9D7970097E37E /* FakeHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */; };
+		C49B73BC2CB9D7970097E37E /* FakeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */; };
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
@@ -247,6 +249,8 @@
 		C48108E324A559AA003E2FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
+		C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeFactory.swift; sourceTree = "<group>"; };
+		C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeViewController.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
@@ -660,6 +664,8 @@
 		C4FD6C1D2CB9C570006F27EF /* fakepin */ = {
 			isa = PBXGroup;
 			children = (
+				C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */,
+				C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */,
 			);
 			path = fakepin;
 			sourceTree = "<group>";
@@ -928,6 +934,7 @@
 				737530CF2B60CE6A000B23E3 /* UseTermsViewController.swift in Sources */,
 				BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */,
 				730438712A341519001EF25B /* AdsHandler.swift in Sources */,
+				C49B73BC2CB9D7970097E37E /* FakeHomeViewController.swift in Sources */,
 				730438632A315B02001EF25B /* FoldersService.swift in Sources */,
 				730438762A3445EF001EF25B /* FlowLayout.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
@@ -949,6 +956,7 @@
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
 				736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
+				C49B73BA2CB9D7970097E37E /* FakeHomeFactory.swift in Sources */,
 				73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */,
 				D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,

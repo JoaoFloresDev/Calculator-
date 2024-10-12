@@ -109,12 +109,12 @@ struct Alerts {
     }
     
     static func showSuccesChangePass(controller: UIViewController) {
-        let alert = createAlert(title: "Nova senha: \(Defaults.getString(.password))", message: "Senha Alterada com sucesso" , actions: [createAction(title: Text.ok.localized())])
+        let alert = createAlert(title: "\(Text.changepassAlertTitle.localized()) \(Defaults.getString(.password))", message: Text.changepassAlertText.localized(), actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
     
     static func showSuccesFakePass(controller: UIViewController) {
-        let alert = createAlert(title: "Senha Falsa: \(Defaults.getString(.password))", message: "Senha false criada com sucesso" , actions: [createAction(title: Text.ok.localized())])
+        let alert = createAlert(title: "\(Text.fakepassAlertTitle.localized()) \(Defaults.getString(.fakePass))", message: Text.fakepassAlertText.localized() , actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
     
@@ -159,15 +159,15 @@ struct Alerts {
     }
     
     static func showBackupErrorWifi(controller: UIViewController) {
-        let alert = createAlert(title: "Conecte-se ao wifi",
-                                message: "Conecte-se ao wifi para prosseguir",
+        let alert = createAlert(title: Text.wifiConnectTitle.localized(),
+                                message: Text.wifiConnectText.localized(),
                                 actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }
     
     static func showBackupDisabled(controller: UIViewController) {
-        let alert = createAlert(title: "Faça o login para continuar",
-                                message: "Realize o login para habilitar as funcionalidades de backup",
+        let alert = createAlert(title: Text.loginTocontinueTitle.localized(),
+                                message: Text.loginTocontinueText.localized(),
                                 actions: [createAction(title: Text.ok.localized())])
         presentAlert(alert, on: controller)
     }

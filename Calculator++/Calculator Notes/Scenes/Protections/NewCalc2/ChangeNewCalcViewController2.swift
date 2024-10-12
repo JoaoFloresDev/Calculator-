@@ -50,7 +50,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         button.setImage(backImage, for: .normal)
         button.tintColor = .white
         button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        button.isHidden = true
+//        button.isHidden = true
         return button
     }()
     
@@ -60,7 +60,10 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
             runningNumber = ""
             outputLbl.text = " "
             instructionsLabel.text = Text.createPasswordNewCalc.localized()
-            backButton.isHidden = true
+//            backButton.isHidden = true
+        } 
+        if vaultMode == .create || vaultMode == .createFakePass {
+            self.dismiss(animated: true)
         }
     }
     
@@ -170,6 +173,13 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                 if runningNumber == Defaults.getString(.password) {
                     presentHomeViewController()
                 }
+                if runningNumber == Defaults.getString(.fakePass) {
+                    let controller = FakeHomeFactory.makeScene()
+                    let navigation = UINavigationController(rootViewController: controller)
+                    navigation.modalPresentationStyle = .fullScreen
+                    
+                    self.present(navigation, animated: true)
+                }
             case .create:
                 initialPassword = runningNumber
                 outputLbl.text = " "
@@ -187,7 +197,12 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                     runningNumber = ""
                     outputLbl.text = "0"
                 }
-            case .createFakePass: 
+            case .createFakePass:
+                if runningNumber == Defaults.getString(.password) {
+                    runningNumber = ""
+                    outputLbl.text = "0"
+                    return
+                }
                 initialPassword = runningNumber
                 outputLbl.text = " "
                 instructionsLabel.text = "\(Text.insertCreatedFakePasswordAgainNewCalc.localized()) (\(runningNumber))"
@@ -244,9 +259,9 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         }
         
         backButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
-            make.height.width.equalTo(44)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(15)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(0)
+            make.height.width.equalTo(50)
         }
     }
     
@@ -284,8 +299,9 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         case .createFakePass:
             outputLbl.text = " "
             instructionsLabel.text = Text.createFakePasswordNewCalc.localized()
-            
+
         default:
+            backButton.isHidden = true
             outputLbl.text = "0"
             instructionsLabel.isHidden = true
         }

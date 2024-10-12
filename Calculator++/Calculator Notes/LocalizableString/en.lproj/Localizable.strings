@@ -190,3 +190,16 @@ signUpWithGoogle = "Sign Up With Google";
 browser = "Browser";
 
 createLoginErrorTitle = "Try creating an account";
+fakepassAlertTitle = "Fake Password";
+fakepassAlertText = "Fake password created successfully";
+
+loginTocontinueTitle = "Login to continue";
+loginTocontinueText = "Login to enable backup features";
+
+wifiConnectTitle = "Connect to Wi-Fi";
+wifiConnectText = "Connect to Wi-Fi to proceed";
+
+arquives = "Files";
+emptyArquives = "Add new files to get started";
+createFakePasswordNewCalc = "Create a fake 4-digit password";
+insertCreatedFakePasswordAgainNewCalc = "Enter the fake password again to confirm";

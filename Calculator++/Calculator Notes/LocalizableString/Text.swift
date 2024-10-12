@@ -170,9 +170,8 @@ enum Text: String {
     case augmentedReality // "Realidade Aumentada"
     
     case createPasswordNewCalc // "Crie uma senha de 4 digitos"
-    case createFakePasswordNewCalc // "Crie uma senha de 4 digitos"
+    
     case insertCreatedPasswordAgainNewCalc // "Digite novamente a senha para confirmar"
-    case insertCreatedFakePasswordAgainNewCalc
     case oneWeekToTest // "Teste uma semana grátis"
     
     case hasAccount // ""Já possui uma conta?""
@@ -191,6 +190,25 @@ enum Text: String {
     case signUpWithGoogle // "Sign Up With Google"
     
     case browser // Navegador de internet
+    
+    case changepassAlertTitle // Nova senha:
+    case changepassAlertText // Senha Alterada com sucesso
+    
+    case fakepassAlertTitle // Senha Falsa:
+    case fakepassAlertText // Senha false criada com sucesso
+    
+    case loginTocontinueTitle // Faça o login para continuar
+    case loginTocontinueText // "Realize o login para habilitar as funcionalidades de backup"
+
+    case wifiConnectTitle // "Conecte-se ao wifi"
+    case wifiConnectText // "Conecte-se ao wifi para prosseguir"
+
+    case arquives // "Arquivos"
+    case emptyArquives // "Adicione novos arquivos para começar"
+
+    case createFakePasswordNewCalc // "Crie uma senha false de 4 digitos"
+    
+    case insertCreatedFakePasswordAgainNewCalc // "Digite novamente a senha falsa para confirmar"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
