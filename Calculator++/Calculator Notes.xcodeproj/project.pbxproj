@@ -22,7 +22,7 @@
 		730438712A341519001EF25B /* AdsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438702A341519001EF25B /* AdsHandler.swift */; };
 		730438762A3445EF001EF25B /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438752A3445EF001EF25B /* FlowLayout.swift */; };
 		7304387A2A34467C001EF25B /* FolderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730438792A34467B001EF25B /* FolderCollectionViewCell.swift */; };
-		7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */; };
+		7304387C2A344692001EF25B /* EditLeftBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387B2A344692001EF25B /* EditLeftBarButtonItem.swift */; };
 		7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */; };
 		730B2EB92C593FD40016FD9E /* BackupUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730B2EB82C593FD40016FD9E /* BackupUpdateManager.swift */; };
 		731436442A48D6B000B9842E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731436432A48D6B000B9842E /* FooterView.swift */; };
@@ -144,7 +144,7 @@
 		730438702A341519001EF25B /* AdsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsHandler.swift; sourceTree = "<group>"; };
 		730438752A3445EF001EF25B /* FlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		730438792A34467B001EF25B /* FolderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderCollectionViewCell.swift; sourceTree = "<group>"; };
-		7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLeftBarButtonItemDelegate.swift; sourceTree = "<group>"; };
+		7304387B2A344692001EF25B /* EditLeftBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLeftBarButtonItem.swift; sourceTree = "<group>"; };
 		7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionsRightBarButtonItem.swift; sourceTree = "<group>"; };
 		730B2EB82C593FD40016FD9E /* BackupUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupUpdateManager.swift; sourceTree = "<group>"; };
 		731436432A48D6B000B9842E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
@@ -296,7 +296,6 @@
 		2E4A07921C42F3B0007F415F /* Calculator Notes */ = {
 			isa = PBXGroup;
 			children = (
-				73A1DA1C2B094EBD002B8D17 /* AppIcons */,
 				D703A42A2C2B7B06005320CC /* GoogleService-Info.plist */,
 				733E42EB2A61D5CE000FBEED /* Calculator Notes.entitlements */,
 				2E4A07931C42F3B0007F415F /* AppDelegate.swift */,
@@ -472,18 +471,11 @@
 				731436432A48D6B000B9842E /* FooterView.swift */,
 				C4148D882440F45E00225706 /* CollectionViewCell.swift */,
 				730438792A34467B001EF25B /* FolderCollectionViewCell.swift */,
-				7304387B2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift */,
+				7304387B2A344692001EF25B /* EditLeftBarButtonItem.swift */,
 				7304387D2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift */,
 				73B053D12AA01A0100546566 /* PlaceholderView.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		73A1DA1C2B094EBD002B8D17 /* AppIcons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		73A8EFDC2C5A9B3500601079 /* Views */ = {
@@ -913,7 +905,7 @@
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				73AF3C302C6515D30011FE35 /* FirebaseVideoService.swift in Sources */,
 				C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */,
-				7304387C2A344692001EF25B /* EditLeftBarButtonItemDelegate.swift in Sources */,
+				7304387C2A344692001EF25B /* EditLeftBarButtonItem.swift in Sources */,
 				73C2C50B2A49D84000963BA2 /* BasicCollectionViewController.swift in Sources */,
 				C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */,
 				73B54D6827B09DF100499F66 /* Text.swift in Sources */,

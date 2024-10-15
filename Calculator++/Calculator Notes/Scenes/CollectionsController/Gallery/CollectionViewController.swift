@@ -73,6 +73,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //UserDefaults.standard.bool(forKey: productIdentifier)
+        UserDefaults.standard.set(true, forKey: "Calc.noads.mensal")
         coordinator = CollectionViewCoordinator(self)
         setupData()
         configureNavigationBar()
@@ -200,8 +202,31 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             Alerts.showSelectImagesToShareFirts(controller: self)
             return
         }
-        coordinator?.shareImage(modelData: modelData)
+
+        let alertController = UIAlertController(title: "Escolha o destino", message: nil, preferredStyle: .actionSheet)
+
+        let shareAction = UIAlertAction(title: "Compartilhar", style: .default) { [weak self] _ in
+            self?.coordinator?.shareImage(modelData: self?.modelData ?? [])
+        }
+
+        let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { [weak self] _ in
+            self?.coordinator?.saveImages(modelData: self?.modelData ?? [])
+        }
+
+        let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { [weak self] _ in
+           self?.coordinator?.shareWithCalculator(modelData: self?.modelData ?? [])
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+
+        alertController.addAction(shareAction)
+        alertController.addAction(shareWithCalculatorAction)
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+
+        self.present(alertController, animated: true, completion: nil)
     }
+
     
     private func handleDeleteButton() {
         guard !modelData.isEmpty else {
