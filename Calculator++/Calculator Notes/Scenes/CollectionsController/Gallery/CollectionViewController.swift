@@ -202,19 +202,19 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             Alerts.showSelectImagesToShareFirts(controller: self)
             return
         }
-
+        
         let alertController = UIAlertController(title: "Escolha o destino", message: nil, preferredStyle: .actionSheet)
 
         let shareAction = UIAlertAction(title: "Compartilhar", style: .default) { [weak self] _ in
-            self?.coordinator?.shareImage(modelData: self?.modelData ?? [])
+            self?.coordinator?.shareImage(modelData: self?.modelData.filter { $0.isSelected } ?? [])
         }
 
         let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { [weak self] _ in
-            self?.coordinator?.saveImages(modelData: self?.modelData ?? [])
+            self?.coordinator?.saveImages(modelData: self?.modelData.filter { $0.isSelected } ?? [])
         }
 
         let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { [weak self] _ in
-           self?.coordinator?.shareWithCalculator(modelData: self?.modelData ?? [])
+            self?.coordinator?.shareWithCalculator(modelData: self?.modelData.filter { $0.isSelected } ?? [])
         }
 
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)

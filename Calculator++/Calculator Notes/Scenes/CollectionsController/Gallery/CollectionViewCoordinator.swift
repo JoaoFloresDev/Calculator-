@@ -114,47 +114,53 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     private func selectedImages(from modelData: [Photo]) -> [UIImage] {
         return modelData.filter { $0.isSelected }.map { $0.image }
     }
-
+    
     internal func shareWithCalculator(modelData: [Photo]) {
         guard !modelData.isEmpty else {
             print("Nenhuma foto selecionada para compartilhar com outra calculadora.")
             return
         }
+        
+        guard let viewController = viewController else {
+            return
+        }
 
-        let fakePassword = "1234"  // Senha falsa para compartilhamento
+        var loadingAlert = LoadingAlert(in: viewController)
+        loadingAlert.startLoading()
+        FirebasePhotoSharingService.createSharedFolderWithPhotos(modelData: modelData) { link, key, error in
+            
+            loadingAlert.stopLoading {
+                if let error = error {
+                    print("Erro ao criar pasta compartilhada: \(error.localizedDescription)")
+                    return
+                }
 
-        // Inicia o processo de criação da pasta e upload das fotos
-        FirebasePhotoSharingService.createSharedFolderWithPhotos(modelData: modelData) { link, error in
-            if let error = error {
-                print("Erro ao criar pasta compartilhada: \(error.localizedDescription)")
-                return
+                guard let link = link, let key = key else {
+                    print("Erro: link de compartilhamento não gerado.")
+                    return
+                }
+
+                // Agora que o link foi gerado, vamos criar a mensagem com o link real
+                let message = "Você pode ver todos seus links criados na aba settings\n\nLink: \(link)\nSenha: \(key)"
+
+                // Cria o alerta com o link real e a senha
+                let alertController = UIAlertController(title: "Link secreto criado", message: message, preferredStyle: .alert)
+
+                let copyAction = UIAlertAction(title: "Copiar Link e Senha", style: .default) { _ in
+                    UIPasteboard.general.string = message
+                    print("Link e senha copiados para a área de transferência.")
+                }
+
+                let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+
+                alertController.addAction(copyAction)
+                alertController.addAction(cancelAction)
+
+                self.viewController?.present(alertController, animated: true)
             }
-
-            guard let link = link else {
-                print("Erro: link de compartilhamento não gerado.")
-                return
-            }
-
-            // Agora que o link foi gerado, vamos criar a mensagem com o link real
-            let message = "Você pode ver todos seus links criados na aba settings\n\nLink: \(link)\nSenha: \(fakePassword)"
-
-            // Cria o alerta com o link real e a senha
-            let alertController = UIAlertController(title: "Link secreto criado", message: message, preferredStyle: .alert)
-
-            let copyAction = UIAlertAction(title: "Copiar Link e Senha", style: .default) { _ in
-                UIPasteboard.general.string = message
-                print("Link e senha copiados para a área de transferência.")
-            }
-
-            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-
-            alertController.addAction(copyAction)
-            alertController.addAction(cancelAction)
-
-            // Apresenta o alerta com o link real gerado
-            self.viewController?.present(alertController, animated: true)
         }
     }
+
 
     internal func saveImages(modelData: [Photo]) {
         let selectedPhotos = modelData.filter { $0.isSelected }
@@ -182,9 +188,9 @@ struct FirebasePhotoSharingService {
     private static let storage = Storage.storage()
    
     // MARK: - Public Methods
-    static func createSharedFolderWithPhotos(modelData: [Photo], completion: @escaping (String?, Error?) -> ()) {
+    static func createSharedFolderWithPhotos(modelData: [Photo], completion: @escaping (String?, String?, Error?) -> ()) {
         guard !modelData.isEmpty else {
-            completion(nil, NSError(domain: "No photos to upload", code: 400, userInfo: nil))
+            completion(nil, nil, NSError(domain: "No photos to upload", code: 400, userInfo: nil))
             return
         }
         
@@ -222,17 +228,19 @@ struct FirebasePhotoSharingService {
             if uploadErrors.isEmpty {
                 createDynamicLink(for: folderName, completion: completion)
             } else {
-                completion(nil, uploadErrors.first)
+                completion(nil,nil, uploadErrors.first)
             }
         }
     }
     
     // MARK: - Private Methods
-    private static func createDynamicLink(for folderName: String, completion: @escaping (String?, Error?) -> ()) {
+    private static func createDynamicLink(for folderName: String, completion: @escaping (String?, String?, Error?) -> ()) {
         // Criar um link customizado no formato myapp://shared_photos/folderId
-        let deepLinkURL = "myapp://shared_photos/\(folderName)"
+        let folderId = String(folderName.dropLast(4))
+        let deepLinkURL = "myapp://shared_photos/\(folderId)"
+        let password = String(folderName.suffix(4))
         
         // Retorna o deeplink gerado
-        completion(deepLinkURL, nil)
+        completion(deepLinkURL, password, nil)
     }
 }

@@ -102,6 +102,7 @@
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4CA01532CB80A8B007C4EB9 /* SafariWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */; };
 		C4CA01552CB82593007C4EB9 /* IconContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01542CB82593007C4EB9 /* IconContentView.swift */; };
+		C4D6CAD12CBF3B5D001AD628 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D6CAD02CBF3B5C001AD628 /* PhotoViewController.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
 		C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FB2C18D2D20066D337 /* UIView+Designable.swift */; };
 		C60907022C18D45A0066D337 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60907012C18D45A0066D337 /* AuthManager.swift */; };
@@ -256,6 +257,7 @@
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWrapperViewController.swift; sourceTree = "<group>"; };
 		C4CA01542CB82593007C4EB9 /* IconContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconContentView.swift; sourceTree = "<group>"; };
+		C4D6CAD02CBF3B5C001AD628 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		C60906FB2C18D2D20066D337 /* UIView+Designable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
 		C60907012C18D45A0066D337 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 		73B54D5027B0979B00499F66 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C4D6CACF2CBF3ACF001AD628 /* SharedFolders */,
 				737530D12B60E489000B23E3 /* AR */,
 				C60906F62C18CEB60066D337 /* Auth */,
 				73B860572AC1D5560023441A /* Onboarding */,
@@ -651,6 +654,14 @@
 				73862C832AAD18BC005D9D25 /* Constants.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		C4D6CACF2CBF3ACF001AD628 /* SharedFolders */ = {
+			isa = PBXGroup;
+			children = (
+				C4D6CAD02CBF3B5C001AD628 /* PhotoViewController.swift */,
+			);
+			path = SharedFolders;
 			sourceTree = "<group>";
 		};
 		C4FD6C1D2CB9C570006F27EF /* fakepin */ = {
@@ -972,6 +983,7 @@
 				73AF3C2E2C6515840011FE35 /* FirebaseImageService.swift in Sources */,
 				C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */,
 				C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */,
+				C4D6CAD12CBF3B5D001AD628 /* PhotoViewController.swift in Sources */,
 				848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */,
 				73B860592AC1FB330023441A /* OnboardingView.swift in Sources */,
 				73B053D22AA01A0100546566 /* PlaceholderView.swift in Sources */,
