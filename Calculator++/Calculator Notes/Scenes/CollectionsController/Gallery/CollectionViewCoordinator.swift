@@ -128,7 +128,6 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         var loadingAlert = LoadingAlert(in: viewController)
         loadingAlert.startLoading()
         FirebasePhotoSharingService.createSharedFolderWithPhotos(modelData: modelData) { link, key, error in
-            
             loadingAlert.stopLoading {
                 if let error = error {
                     print("Erro ao criar pasta compartilhada: \(error.localizedDescription)")
@@ -147,9 +146,11 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                 let alertController = UIAlertController(title: "Link secreto criado", message: message, preferredStyle: .alert)
 
                 let copyAction = UIAlertAction(title: "Copiar Link e Senha", style: .default) { _ in
+                    let messageToPast = "1. Baixe o app https://apps.apple.com/us/app/sg-secret-gallery-vault/id1479873340\n2. Clique no link \(link)\n3. Digite a senha \(key)"
                     UIPasteboard.general.string = message
-                    print("Link e senha copiados para a área de transferência.")
+                    self.showCopiedAnimation()
                 }
+
 
                 let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
 
@@ -160,7 +161,40 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
             }
         }
     }
-
+    
+    private func showCopiedAnimation() {
+        guard let viewController = self.viewController else { return }
+        
+        let copiedLabel = UILabel()
+        copiedLabel.text = "Link copiado!"
+        copiedLabel.font = .boldSystemFont(ofSize: 16)
+        copiedLabel.textColor = .white
+        copiedLabel.textAlignment = .center
+        copiedLabel.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        copiedLabel.layer.cornerRadius = 10
+        copiedLabel.clipsToBounds = true
+        
+        viewController.view.addSubview(copiedLabel)
+        
+        copiedLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(viewController.view.safeAreaLayoutGuide.snp.bottom).offset(-50)
+            make.width.equalTo(150)
+            make.height.equalTo(40)
+        }
+        
+        copiedLabel.alpha = 0
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            copiedLabel.alpha = 1
+        }) { _ in
+            UIView.animate(withDuration: 0.3, delay: 1.5, options: .curveEaseOut, animations: {
+                copiedLabel.alpha = 0
+            }) { _ in
+                copiedLabel.removeFromSuperview()
+            }
+        }
+    }
 
     internal func saveImages(modelData: [Photo]) {
         let selectedPhotos = modelData.filter { $0.isSelected }
@@ -173,13 +207,43 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         for photo in selectedPhotos {
             UIImageWriteToSavedPhotosAlbum(photo.image, nil, nil, nil)
         }
-
-        let alertController = UIAlertController(title: "Fotos Salvas", message: "As fotos selecionadas foram salvas na galeria.", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        viewController?.present(alertController, animated: true)
+        showSavedAnimation()
     }
 
+    private func showSavedAnimation() {
+        guard let viewController = self.viewController else { return }
+        
+        let savedLabel = UILabel()
+        savedLabel.text = "Fotos salvas!"
+        savedLabel.font = .boldSystemFont(ofSize: 16)
+        savedLabel.textColor = .white
+        savedLabel.textAlignment = .center
+        savedLabel.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        savedLabel.layer.cornerRadius = 10
+        savedLabel.clipsToBounds = true
+        
+        viewController.view.addSubview(savedLabel)
+        
+        savedLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(viewController.view.safeAreaLayoutGuide.snp.bottom).offset(-50)
+            make.width.equalTo(150)
+            make.height.equalTo(40)
+        }
+        
+        savedLabel.alpha = 0
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            savedLabel.alpha = 1
+        }) { _ in
+            UIView.animate(withDuration: 0.3, delay: 2.0, options: .curveEaseOut, animations: {
+                savedLabel.alpha = 0
+            }) { _ in
+                savedLabel.removeFromSuperview()
+            }
+        }
+    }
 }
 
 struct FirebasePhotoSharingService {
@@ -235,9 +299,9 @@ struct FirebasePhotoSharingService {
     
     // MARK: - Private Methods
     private static func createDynamicLink(for folderName: String, completion: @escaping (String?, String?, Error?) -> ()) {
-        // Criar um link customizado no formato myapp://shared_photos/folderId
+        // Criar um link customizado no formato myapp://photos/folderId
         let folderId = String(folderName.dropLast(4))
-        let deepLinkURL = "myapp://shared_photos/\(folderId)"
+        let deepLinkURL = "secrets://shared_photos/\(folderId)"
         let password = String(folderName.suffix(4))
         
         // Retorna o deeplink gerado

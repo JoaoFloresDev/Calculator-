@@ -28,15 +28,15 @@ class SafariWrapperViewController: UIViewController, WKNavigationDelegate {
         view.backgroundColor = .white
         
         // Configuração do botão de fechar (X)
-        closeButton.setTitle("X", for: .normal)
+        closeButton.setTitle("x", for: .normal)
         closeButton.setTitleColor(.systemBlue, for: .normal)
         closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
         view.addSubview(closeButton)
         
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             closeButton.widthAnchor.constraint(equalToConstant: 40),
             closeButton.heightAnchor.constraint(equalToConstant: 40)
         ])

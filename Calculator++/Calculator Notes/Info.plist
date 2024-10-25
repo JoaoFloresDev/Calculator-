@@ -83,7 +83,7 @@
 			<string>com.yourapp.scheme</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>myapp</string>
+				<string>secrets</string>
 			</array>
 		</dict>
 	</array>

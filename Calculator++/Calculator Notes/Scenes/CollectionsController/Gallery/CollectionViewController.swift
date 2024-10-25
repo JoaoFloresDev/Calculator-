@@ -20,6 +20,26 @@ import MessageUI
 import FirebaseFirestore
 import MapKit
 
+import Foundation
+
+class Counter {
+    
+    private let userDefaultsKey = "counterKey"
+    
+    var count: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: userDefaultsKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: userDefaultsKey)
+        }
+    }
+    
+    func increment() {
+        count += 1
+    }
+}
+
 extension CollectionViewController: BackupModalViewControllerDelegate {
     func backupExecuted() {
         self.modelData = ModelController.listPhotosOf(basePath: self.basePath)
@@ -60,6 +80,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     var isEditMode = false {
         didSet {
+            if isEditMode && couter.count > 3 {
+                SKStoreReviewController.requestReviewInCurrentScene()
+            }
             editLeftBarButtonItem?.setEditing(isEditMode)
         }
     }
@@ -73,8 +96,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UserDefaults.standard.bool(forKey: productIdentifier)
-        UserDefaults.standard.set(true, forKey: "Calc.noads.mensal")
         coordinator = CollectionViewCoordinator(self)
         setupData()
         configureNavigationBar()
@@ -83,7 +104,50 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupPlaceholderView()
         handleAdsSetup()
         Defaults.setBool(.notFirstUse, true)
+        if couter.count == 30 {
+            showAppReviewAlert()
+        }
     }
+
+    func presentWithCustomDissolve(viewController: UIViewController, from presenter: UIViewController, duration: TimeInterval = 1.0) {
+        viewController.modalPresentationStyle = .overFullScreen // Necessário para manter o efeito de dissolver visível
+        viewController.view.alpha = 0
+        
+        presenter.present(viewController, animated: false) {
+            UIView.animate(withDuration: duration, animations: {
+                viewController.view.alpha = 1
+            })
+        }
+    }
+
+    func showAppReviewAlert() {
+        let alertController = UIAlertController(
+            title: "Está gostando do nosso app?",
+            message: "Sua opinião é muito importante para nós! Que tal deixar uma avaliação na App Store? Isso nos ajudará a melhorar ainda mais!",
+            preferredStyle: .alert
+        )
+
+        let rateAction = UIAlertAction(title: "Avaliar Agora", style: .default) { _ in
+            self.openAppStoreForReview()
+        }
+
+        let cancelAction = UIAlertAction(title: "Talvez Depois", style: .default, handler: nil)
+
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(rateAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func openAppStoreForReview() {
+        let appID = "1479873340" // Substitua pelo seu App ID
+        if let url = URL(string: "itms-apps://itunes.apple.com/app/id\(appID)?action=write-review"),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    let couter = Counter()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -92,6 +156,12 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if couter.count > 50 && couter.count % 3 == 0 {
+            let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+            if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
+                presentWithCustomDissolve(viewController: purchaseViewController, from: self, duration: 0.5)
+            }
+        }
         commonViewWillAppear()
         checkPurchase()
     }
@@ -214,7 +284,15 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
 
         let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { [weak self] _ in
-            self?.coordinator?.shareWithCalculator(modelData: self?.modelData.filter { $0.isSelected } ?? [])
+            guard let self = self else { return }
+            var selectedItems = self.modelData.filter { $0.isSelected }
+            let selectedFolders = self.folders.filter { $0.isSelected }
+            for folder in selectedFolders {
+                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
+                selectedItems.append(contentsOf: folderItems)
+            }
+
+            self.coordinator?.shareWithCalculator(modelData: selectedItems)
         }
 
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
@@ -258,7 +336,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
                 UIView.performWithoutAnimation {
                     self.collectionView?.reloadData()
                 }
-                SKStoreReviewController.requestReview()
             }
         }
         isEditMode.toggle()
@@ -540,10 +617,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         }
     }
     
-    func sortPhotosByLocation(photos: [Photo]) -> [Photo] {
-        return photos.sorted { $0.location.localizedCaseInsensitiveCompare($1.location) == .orderedAscending }
-    }
-    
     private func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
         guard asset.mediaType == .image else {
             completion(nil)
@@ -649,5 +722,15 @@ extension CollectionViewController {
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         adsHandler.interstitialDidDismissScreen(delegate: self)
         NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
+    }
+}
+
+extension SKStoreReviewController {
+    public static func requestReviewInCurrentScene() {
+        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+            DispatchQueue.main.async {
+                requestReview(in: scene)
+            }
+        }
     }
 }

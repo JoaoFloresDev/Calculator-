@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class FlowLayout: UICollectionViewFlowLayout {
-    init(screenWidth: CGFloat) {
+    init(screenWidth: CGFloat, sizeRate: CGFloat = 4) {
         super.init()
         sectionInset = UIEdgeInsets(top: 15, left: 20, bottom: 10, right: 20)
-        itemSize = CGSize(width: screenWidth/4, height: screenWidth/4)
+        itemSize = CGSize(width: screenWidth/sizeRate, height: screenWidth/sizeRate)
         minimumInteritemSpacing = 20
         minimumLineSpacing = 20
     }

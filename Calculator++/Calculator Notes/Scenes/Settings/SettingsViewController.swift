@@ -214,7 +214,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         contentStackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(8)
             make.trailing.equalToSuperview().offset(-8)
-            make.top.equalTo(self.stackview.snp.bottom).offset(24)
+            make.top.equalTo(self.stackview.snp.bottom).offset(12)
         }
     }
     

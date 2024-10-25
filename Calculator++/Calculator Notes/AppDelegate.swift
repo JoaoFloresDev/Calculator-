@@ -14,8 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let urlString = url.absoluteString
-        if urlString.hasPrefix("myapp://") {
-            let key = ""
+        if urlString.hasPrefix("secrets://") {
             handleDeepLink(url: url)
             return true
         }
@@ -29,16 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func showPasswordAlert(url: URL) {
-        let alertController = UIAlertController(title: "Senha Necessária", message: "Por favor, insira a senha para acessar as fotos:", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Insira a senha", message: "Digite a senha do link secreto para acessar as fotos:", preferredStyle: .alert)
         
         alertController.addTextField { textField in
             textField.placeholder = "Senha"
             textField.isSecureTextEntry = true
+            textField.autocapitalizationType = .allCharacters
         }
         
         let confirmAction = UIAlertAction(title: "Confirmar", style: .default) { [weak self] _ in
             if let password = alertController.textFields?.first?.text, !password.isEmpty {
-                let folderId = url.lastPathComponent + password
+                let folderId = url.lastPathComponent + password.uppercased()
                 print("Abrindo o app com o folder ID: \(folderId)")
                 self?.loadPhotosAndShowModal(folderId: folderId)
             } else {
@@ -79,11 +79,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             dispatchGroup.notify(queue: .main) {
+                guard !photoURLs.isEmpty else {
+                    self.showAlert(message: "Link ou senha inválidos. Tente novamente.")
+                    return
+                }
                 self.presentPhotoModal(with: photoURLs)
             }
         }
     }
 
+    private func showAlert(message: String) {
+        let alertController = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        
+        if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+            rootViewController.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     func presentPhotoModal(with photoURLs: [URL]) {
         let photoViewController = PhotoViewController(photoURLs: photoURLs)
         if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
@@ -94,6 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupNotifications()
+        Counter().increment()
         WLEmptyState.configure()
         FirebaseApp.configure()
         if shouldInitializeWindow() {

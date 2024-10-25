@@ -39,57 +39,10 @@ class PurchaseViewController: UIViewController {
     lazy var headerView = PurchaseHeaderView()
     lazy var purchaseBenetList = PurchaseBenetList()
     
-//    lazy var monthlyPromotionLabel: UIView = {
-//        let label = UILabel()
-//        label.text = Text.oneWeekToTest.localized()
-//        label.textColor = .white
-//        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-//        let view = UIView()
-//        view.backgroundColor = .systemGreen
-////        view.addSubview(label)
-////        
-////        // Configura constraints usando SnapKit
-////        label.snp.makeConstraints { make in
-////            make.top.equalToSuperview().offset(4)
-////            make.leading.equalToSuperview().offset(6)
-////            make.trailing.equalToSuperview().offset(-6)
-////            make.bottom.equalToSuperview().offset(-4)
-////        }
-//        
-//        view.layer.cornerRadius = 10
-//        view.clipsToBounds = true
-//        
-//        return view
-//    }()
-    
-//    lazy var yearlyPromotionLabel: UIView = {
-//        let label = UILabel()
-//        label.text = Text.oneWeekToTest.localized()
-//        label.textColor = .white
-//        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-//        let view = UIView()
-//        view.backgroundColor = .systemGreen
-////        view.addSubview(label)
-////        
-////        // Configura constraints usando SnapKit
-////        label.snp.makeConstraints { make in
-////            make.top.equalToSuperview().offset(4)
-////            make.leading.equalToSuperview().offset(6)
-////            make.trailing.equalToSuperview().offset(-6)
-////            make.bottom.equalToSuperview().offset(-4)
-////        }
-//        
-//        // Arredonda as bordas da view
-//        view.layer.cornerRadius = 10 // Ajuste este valor conforme necessário para o arredondamento desejado
-//        view.clipsToBounds = true
-//        
-//        return view
-//    }()
-    
     lazy var monthlyButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(red: 0/255.0, green: 175/255.0, blue: 232/255.0, alpha: 1.0)
+        button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.clipsToBounds = true
@@ -102,7 +55,7 @@ class PurchaseViewController: UIViewController {
     lazy var yearlyButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(red: 0/255.0, green: 175/255.0, blue: 232/255.0, alpha: 1.0)
+        button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.clipsToBounds = true

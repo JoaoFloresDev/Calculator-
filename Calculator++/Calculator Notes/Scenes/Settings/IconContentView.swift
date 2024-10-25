@@ -49,7 +49,7 @@ class IconContentView: UIView {
         }
         
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(16)
+            make.top.equalTo(label.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(12)
             make.trailing.equalToSuperview().offset(-12)
             make.bottom.equalToSuperview().offset(-16)
