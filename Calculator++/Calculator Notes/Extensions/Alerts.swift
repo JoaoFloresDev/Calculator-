@@ -3,8 +3,9 @@ import UIKit
 
 struct Alerts {
     
-    private static func createAlert(title: String, message: String?, actions: [UIAlertAction]) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    private static func createAlert(title: String, message: String?, actions: [UIAlertAction], preferredStyle: UIAlertController.Style = .alert) -> UIAlertController {
+        let alertStyle: UIAlertController.Style = (UIDevice.current.userInterfaceIdiom == .pad && preferredStyle == .actionSheet) ? .alert : preferredStyle
+        let alert = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
         for action in actions {
             alert.addAction(action)
         }
@@ -16,6 +17,10 @@ struct Alerts {
     }
     
     private static func presentAlert(_ alert: UIAlertController, on controller: UIViewController) {
+        guard controller.view.window != nil else {
+            print("Controller não está visível e não pode exibir o alerta.")
+            return
+        }
         DispatchQueue.main.async {
             controller.present(alert, animated: true)
         }
@@ -75,6 +80,15 @@ struct Alerts {
         let okAction = createAction(title: Text.delete.localized(), handler: { _ in completion() })
         
         let alert = createAlert(title: Text.deleteConfirmationTitle.localized(), message: nil, actions: [cancelAction, okAction])
+        
+        presentAlert(alert, on: controller)
+    }
+    
+    static func showReviewNow(controller: UIViewController, completion: @escaping () -> Void) {
+        let cancelAction = createAction(title: "Agora não", style: .default, handler: nil)
+        let okAction = createAction(title: "Avaliar", handler: { _ in completion() })
+        
+        let alert = createAlert(title: "Sugestões de melhoria?", message: "Sua opinião é muito importante! nos ajude a melhorar ainda mais", actions: [cancelAction, okAction])
         
         presentAlert(alert, on: controller)
     }

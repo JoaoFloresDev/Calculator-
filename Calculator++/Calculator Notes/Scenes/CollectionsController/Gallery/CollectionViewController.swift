@@ -104,7 +104,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupPlaceholderView()
         handleAdsSetup()
         Defaults.setBool(.notFirstUse, true)
-        if couter.count == 30 {
+        if (couter.count == 30 || couter.count == 45) && !UserDefaults.standard.bool(forKey: "userGoToReview") {
             showAppReviewAlert()
         }
     }
@@ -121,22 +121,23 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
 
     func showAppReviewAlert() {
-        let alertController = UIAlertController(
-            title: "Está gostando do nosso app?",
-            message: "Sua opinião é muito importante para nós! Que tal deixar uma avaliação na App Store? Isso nos ajudará a melhorar ainda mais!",
-            preferredStyle: .alert
-        )
-
-        let rateAction = UIAlertAction(title: "Avaliar Agora", style: .default) { _ in
-            self.openAppStoreForReview()
+//        let alertController = UIAlertController(
+//            title: "Está gostando do nosso app?",
+//            message: "Sua opinião é muito importante para nós! Que tal deixar uma avaliação na App Store? Isso nos ajudará a melhorar ainda mais!",
+//            preferredStyle: .alert
+//        )
+//
+//        let rateAction = UIAlertAction(title: "Avaliar Agora", style: .default) { _ in
+//            self.openAppStoreForReview()
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Talvez Depois", style: .default, handler: nil)
+        Alerts.showReviewNow(controller: self) { [weak self] in
+            UserDefaults.standard.set(true, forKey: "userGoToReview")
+            self?.openAppStoreForReview()
         }
-
-        let cancelAction = UIAlertAction(title: "Talvez Depois", style: .default, handler: nil)
-
         
-        alertController.addAction(cancelAction)
-        alertController.addAction(rateAction)
-        present(alertController, animated: true, completion: nil)
+//        present(alertController, animated: true, completion: nil)
     }
 
     func openAppStoreForReview() {
@@ -156,7 +157,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if couter.count > 50 && couter.count % 3 == 0 {
+        if couter.count > 60 && couter.count % 2 == 0 {
             let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
             if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
                 presentWithCustomDissolve(viewController: purchaseViewController, from: self, duration: 0.5)

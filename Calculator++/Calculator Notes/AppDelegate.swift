@@ -223,7 +223,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let container = NSPersistentContainer(name: "MakeSchoolNotes")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Erro ao carregar persistent store: \(error), \(error.userInfo)")
             }
         })
         return container
@@ -238,7 +238,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try context.save()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("Erro ao salvar contexto: \(nserror), \(nserror.userInfo)")
             }
         }
     }
