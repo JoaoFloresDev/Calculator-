@@ -1,4 +1,3 @@
-
 import FirebaseStorage
 import Firebase
 import Foundation
@@ -63,20 +62,17 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         if !photoArray.isEmpty {
             let activityVC = UIActivityViewController(activityItems: photoArray, applicationActivities: nil)
             
-            activityVC.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+            activityVC.completionWithItemsHandler = { (_, completed, _, error) in
                 if completed {
-                    print("Compartilhamento concluído.")
+                    print(Text.shareCompleteMessage)
                 } else {
-                    print("Compartilhamento cancelado.")
+                    print(Text.shareCancelMessage)
                 }
                 if let shareError = error {
-                    print("Erro durante o compartilhamento: \(shareError.localizedDescription)")
+                    print(Text.shareErrorMessage.localized() + "\(shareError.localizedDescription)")
                 }
             }
-
-            viewController?.present(activityVC, animated: true, completion: {
-                print("aqui")
-            })
+            viewController?.present(activityVC, animated: true)
         }
     }
     
@@ -88,9 +84,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     }
     
     func presentWelcomeController() {
-        guard let viewController = viewController else {
-            return
-        }
+        guard let viewController = viewController else { return }
         
         let controller = UINavigationController(rootViewController: OnboardingWelcomeViewController())
         controller.modalPresentationStyle = .fullScreen
@@ -98,11 +92,6 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     }
     
     // MARK: - Helper Methods
-    
-    private func instantiateViewController(from storyboardName: String?, withIdentifier identifier: String) -> UIViewController {
-        let storyboard = UIStoryboard(name: storyboardName ?? "", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: identifier)
-    }
     
     private func selectTab(atIndex index: Int) {
         guard let tabBarController = viewController?.tabBarController,
@@ -117,20 +106,19 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     
     internal func shareWithCalculator(modelData: [Photo]) {
         guard !modelData.isEmpty else {
-            print("Nenhuma foto selecionada para compartilhar com outra calculadora.")
+            print(Text.noPhotoToShareMessage)
             return
         }
         
-        guard let viewController = viewController else {
-            return
-        }
+        guard let viewController = viewController else { return }
 
         var loadingAlert = LoadingAlert(in: viewController)
         loadingAlert.startLoading()
+        
         FirebasePhotoSharingService.createSharedFolderWithPhotos(modelData: modelData) { link, key, error in
             loadingAlert.stopLoading {
                 if let error = error {
-                    print("Erro ao criar pasta compartilhada: \(error.localizedDescription)")
+                    print(Text.errorCreatingSharedFolder.rawValue + "\(error.localizedDescription)")
                     return
                 }
 
@@ -139,20 +127,16 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                     return
                 }
 
-                // Agora que o link foi gerado, vamos criar a mensagem com o link real
-                let message = "Você pode ver todos seus links criados na aba settings\n\nLink: \(link)\nSenha: \(key)"
+                let message = Text.sharedLinkMessagePrefix.localized() + link + Text.sharedLinkMessageSuffix.localized() + key
+                let alertController = UIAlertController(title: Text.sharedLinkTitle.localized(), message: message, preferredStyle: .alert)
 
-                // Cria o alerta com o link real e a senha
-                let alertController = UIAlertController(title: "Link secreto criado", message: message, preferredStyle: .alert)
-
-                let copyAction = UIAlertAction(title: "Copiar Link e Senha", style: .default) { _ in
-                    let messageToPast = "1. Baixe o app https://apps.apple.com/us/app/sg-secret-gallery-vault/id1479873340\n2. Clique no link \(link)\n3. Digite a senha \(key)"
-                    UIPasteboard.general.string = message
+                let copyAction = UIAlertAction(title: Text.copyLinkButtonTitle.localized(), style: .default) { _ in
+                    let messageToPaste = Text.downloadAppMessage.localized() + link + Text.downloadAppPasswordPrefix.localized() + key
+                    UIPasteboard.general.string = messageToPaste
                     self.showCopiedAnimation()
                 }
 
-
-                let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: Text.cancelButtonTitle.localized(), style: .cancel, handler: nil)
 
                 alertController.addAction(copyAction)
                 alertController.addAction(cancelAction)
@@ -166,7 +150,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         guard let viewController = self.viewController else { return }
         
         let copiedLabel = UILabel()
-        copiedLabel.text = "Link copiado!"
+        copiedLabel.text = Text.copiedMessage.localized()
         copiedLabel.font = .boldSystemFont(ofSize: 16)
         copiedLabel.textColor = .white
         copiedLabel.textAlignment = .center
@@ -200,7 +184,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         let selectedPhotos = modelData.filter { $0.isSelected }
         
         guard !selectedPhotos.isEmpty else {
-            print("Nenhuma foto selecionada para salvar.")
+            print(Text.noPhotoToSaveMessage)
             return
         }
 
@@ -215,7 +199,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         guard let viewController = self.viewController else { return }
         
         let savedLabel = UILabel()
-        savedLabel.text = "Fotos salvas!"
+        savedLabel.text = Text.savedMessage.localized()
         savedLabel.font = .boldSystemFont(ofSize: 16)
         savedLabel.textColor = .white
         savedLabel.textAlignment = .center
@@ -243,68 +227,5 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                 savedLabel.removeFromSuperview()
             }
         }
-    }
-}
-
-struct FirebasePhotoSharingService {
-   
-    // MARK: - Properties
-    private static let storage = Storage.storage()
-   
-    // MARK: - Public Methods
-    static func createSharedFolderWithPhotos(modelData: [Photo], completion: @escaping (String?, String?, Error?) -> ()) {
-        guard !modelData.isEmpty else {
-            completion(nil, nil, NSError(domain: "No photos to upload", code: 400, userInfo: nil))
-            return
-        }
-        
-        // Criar uma pasta única com UUID
-        let folderName = UUID().uuidString
-        let folderRef = storage.reference().child("shared_photos/\(folderName)")
-        
-        let dispatchGroup = DispatchGroup()
-        var uploadErrors: [Error] = []
-        
-        // Fazer o upload de cada imagem para o Firebase
-        for photo in modelData {
-            guard let imageData = UIImageJPEGRepresentation(photo.image, 0.8) else {
-                print("Erro ao converter a imagem para JPEG.")
-                uploadErrors.append(NSError(domain: "Image conversion failed", code: 401, userInfo: nil))
-                continue
-            }
-
-            let imageName = UUID().uuidString + ".jpg"
-            let imageRef = folderRef.child(imageName)
-            
-            dispatchGroup.enter()
-            
-            imageRef.putData(imageData, metadata: nil) { metadata, error in
-                if let error = error {
-                    print("Erro ao fazer upload da imagem: \(error.localizedDescription)")
-                    uploadErrors.append(error)
-                }
-                dispatchGroup.leave()
-            }
-        }
-        
-        // Quando todos os uploads forem concluídos, gerar o deep link
-        dispatchGroup.notify(queue: .main) {
-            if uploadErrors.isEmpty {
-                createDynamicLink(for: folderName, completion: completion)
-            } else {
-                completion(nil,nil, uploadErrors.first)
-            }
-        }
-    }
-    
-    // MARK: - Private Methods
-    private static func createDynamicLink(for folderName: String, completion: @escaping (String?, String?, Error?) -> ()) {
-        // Criar um link customizado no formato myapp://photos/folderId
-        let folderId = String(folderName.dropLast(4))
-        let deepLinkURL = "secrets://shared_photos/\(folderId)"
-        let password = String(folderName.suffix(4))
-        
-        // Retorna o deeplink gerado
-        completion(deepLinkURL, password, nil)
     }
 }

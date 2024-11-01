@@ -3,6 +3,19 @@ import SnapKit
 
 class PhotoViewController: UIViewController {
 
+    // MARK: - Constants
+//    private let closeButtonText = Text.close
+//    private let sharedPhotosTitle = "Shared Photos"
+//    private let savePhotosButtonText = "Salvar fotos"
+//    private let savePhotosErrorTitle = "Erro"
+//    private let savePhotosErrorMessage = "Erro ao baixar a imagem:"
+//    private let processImageErrorMessage = "Erro ao processar a imagem."
+//    private let convertImageErrorMessage = "Erro ao converter a imagem para JPEG."
+//    private let photosSavedTitle = "Fotos salvas"
+//    private let photosSavedMessage = "Todas as fotos foram salvas na calculadora."
+//    private let okActionText = "OK"
+
+    // MARK: - Properties
     private var photoURLs: [URL]
     private var collectionView: UICollectionView!
     private var downloadButton: UIButton!
@@ -24,15 +37,16 @@ class PhotoViewController: UIViewController {
         setupDownloadButton()
     }
 
+    // MARK: - Setup Methods
     private func setupView() {
         view.backgroundColor = .white
-        title = "Shared Photos"
-        navigationController?.navigationBar.prefersLargeTitles = false // Desativar títulos grandes
+        title = Text.sharedPhotosTitle.localized()
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     private func setupCloseButton() {
-        let closeButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(closeViewController))
-        navigationItem.rightBarButtonItem = closeButton // Adiciona o botão de fechar à navigation bar
+        let closeButton = UIBarButtonItem(title: Text.close.localized(), style: .plain, target: self, action: #selector(closeViewController))
+        navigationItem.rightBarButtonItem = closeButton
     }
 
     @objc private func closeViewController() {
@@ -69,7 +83,7 @@ class PhotoViewController: UIViewController {
 
     private func setupDownloadButton() {
         downloadButton = UIButton(type: .system)
-        downloadButton.setTitle("Salvar fotos", for: .normal)
+        downloadButton.setTitle(Text.savePhotosButtonText.localized(), for: .normal)
         downloadButton.backgroundColor = .systemBlue
         downloadButton.tintColor = .white
         downloadButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
@@ -95,7 +109,9 @@ class PhotoViewController: UIViewController {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {
                     DispatchQueue.main.async {
-                        self.showErrorAlert(message: "Erro ao baixar a imagem: \(error.localizedDescription)")
+                        Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: "\(Text.savePhotosErrorMessage.localized()) \(error.localizedDescription)", controller: self) {
+                            // Ação adicional se necessário após a exibição do erro
+                        }
                     }
                     dispatchGroup.leave()
                     return
@@ -103,7 +119,9 @@ class PhotoViewController: UIViewController {
                 
                 guard let data = data, let image = UIImage(data: data) else {
                     DispatchQueue.main.async {
-                        self.showErrorAlert(message: "Erro ao processar a imagem.")
+                        Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: Text.processImageErrorMessage.localized(), controller: self) {
+                            // Ação adicional se necessário após a exibição do erro
+                        }
                     }
                     dispatchGroup.leave()
                     return
@@ -119,25 +137,26 @@ class PhotoViewController: UIViewController {
         dispatchGroup.notify(queue: .main) {
             self.loadingAlert.stopLoading()
             self.dismiss(animated: true) {
-                self.showSuccessAlert()
+                Alerts.showAlert(title: Text.photosSavedTitle.localized(), text: Text.photosSavedMessage.localized(), controller: self)
             }
         }
     }
 
     private func saveImageToLocal(image: UIImage) {
-        guard let data = UIImageJPEGRepresentation(image, 0.8) else {
+        guard let _ = UIImageJPEGRepresentation(image, 0.8) else {
             DispatchQueue.main.async {
-                self.showErrorAlert(message: "Erro ao converter a imagem para JPEG.")
+                Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: Text.convertImageErrorMessage.localized(), controller: self) {
+                    // Ação adicional se necessário após a exibição do erro
+                }
             }
             return
         }
-        let fileName = UUID().uuidString + ".jpg"
         ModelController.saveImageObject(image: image, basePath: "@")
     }
 
     private func showSuccessAlert() {
-        let alertController = UIAlertController(title: "Fotos salvas", message: "Todas as fotos foram salvas na calculadora.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+        let alertController = UIAlertController(title: Text.photosSavedTitle.localized(), message: Text.photosSavedMessage.localized(), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Text.okActionText.localized(), style: .default) { _ in
             self.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(okAction)
@@ -145,8 +164,8 @@ class PhotoViewController: UIViewController {
     }
 
     private func showErrorAlert(message: String) {
-        let alertController = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alertController = UIAlertController(title: Text.savePhotosErrorTitle.localized(), message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Text.okActionText.localized(), style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }
@@ -165,14 +184,14 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(message: "Erro ao carregar a imagem: \(error.localizedDescription)")
+                    self.showErrorAlert(message: "\(Text.savePhotosErrorMessage.localized()) \(error.localizedDescription)")
                 }
                 return
             }
             
             guard let data = data, let image = UIImage(data: data) else {
                 DispatchQueue.main.async {
-                    self.showErrorAlert(message: "Erro ao processar a imagem.")
+                    self.showErrorAlert(message: Text.processImageErrorMessage.localized())
                 }
                 return
             }

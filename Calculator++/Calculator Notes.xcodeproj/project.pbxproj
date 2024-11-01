@@ -99,6 +99,7 @@
 		C49B73BC2CB9D7970097E37E /* FakeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */; };
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
+		C4B183CD2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B183CC2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4CA01532CB80A8B007C4EB9 /* SafariWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */; };
 		C4CA01552CB82593007C4EB9 /* IconContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01542CB82593007C4EB9 /* IconContentView.swift */; };
@@ -254,6 +255,7 @@
 		C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeViewController.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
+		C4B183CC2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePhotoSharingService.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWrapperViewController.swift; sourceTree = "<group>"; };
 		C4CA01542CB82593007C4EB9 /* IconContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconContentView.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				D7B44A932C366030001255FA /* FirebaseBackupService.swift */,
 				73AF3C2D2C6515830011FE35 /* FirebaseImageService.swift */,
 				73AF3C2F2C6515D30011FE35 /* FirebaseVideoService.swift */,
+				C4B183CC2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift */,
 			);
 			path = cloud;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 				2E4A07AF1C42F539007F415F /* Date+convertToString.swift in Sources */,
 				737D66A62AB0AB9F00806C98 /* FaceIDManager.swift in Sources */,
 				C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */,
+				C4B183CD2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift in Sources */,
 				73A8EFE02C5ABE7200601079 /* BackupLoginView.swift in Sources */,
 				C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */,
 				73AF3C302C6515D30011FE35 /* FirebaseVideoService.swift in Sources */,

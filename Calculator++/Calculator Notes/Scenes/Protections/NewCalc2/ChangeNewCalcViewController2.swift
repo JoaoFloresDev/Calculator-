@@ -34,7 +34,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
     var instructionsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Create a passcode and confirm with '='"
+        label.text = Text.createPasscodeAndConfrim.localized() //"Create a passcode and confirm with '='"
         label.isHidden = false
         label.alpha = 1
         label.textColor = .white
@@ -43,27 +43,30 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         return label
     }()
 
-    
     var backButton: UIButton = {
         let button = UIButton(type: .system)
         let backImage = UIImage(systemName: "chevron.backward")
         button.setImage(backImage, for: .normal)
         button.tintColor = .white
         button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-//        button.isHidden = true
+        if !Defaults.getBool(.notFirstUse) {
+            button.isHidden = true
+        }
         return button
     }()
     
     @objc private func backButtonTapped() {
+        if (vaultMode == .create || vaultMode == .createFakePass) {
+            self.dismiss(animated: true)
+        }
         if vaultMode == .confirmation {
             vaultMode = .create
             runningNumber = ""
             outputLbl.text = " "
             instructionsLabel.text = Text.createPasswordNewCalc.localized()
-//            backButton.isHidden = true
-        } 
-        if vaultMode == .create || vaultMode == .createFakePass {
-            self.dismiss(animated: true)
+            if !Defaults.getBool(.notFirstUse) {
+                backButton.isHidden = true
+            }
         }
     }
     
@@ -191,8 +194,9 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                 if runningNumber == initialPassword {
                     Defaults.setString(.password, runningNumber)
                     UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc2)
-                    delegate?.changed()
-                    super.dismiss(animated: true)
+                    super.dismiss(animated: true) {
+                        self.delegate?.changed()
+                    }
                 } else {
                     runningNumber = ""
                     outputLbl.text = "0"
@@ -213,8 +217,9 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                 if runningNumber == initialPassword {
                     Defaults.setString(.fakePass, runningNumber)
                     UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.newCalc2)
-                    delegate?.fakePassChanged()
-                    super.dismiss(animated: true)
+                    super.dismiss(animated: true) {
+                        self.delegate?.fakePassChanged()
+                    }
                 } else {
                     runningNumber = ""
                     outputLbl.text = "0"

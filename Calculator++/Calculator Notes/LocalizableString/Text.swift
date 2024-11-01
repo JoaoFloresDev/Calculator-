@@ -210,6 +210,34 @@ enum Text: String {
     
     case insertCreatedFakePasswordAgainNewCalc // "Digite novamente a senha falsa para confirmar"
     
+    case copiedMessage // "Link copiado!"
+    case savedMessage // "Fotos salvas!"
+    case shareCompleteMessage // "Compartilhamento concluído."
+    case shareCancelMessage // "Compartilhamento cancelado."
+    case shareErrorMessage // "Erro durante o compartilhamento: "
+    case noPhotoToShareMessage // "Nenhuma foto selecionada para compartilhar com outra calculadora."
+    case noPhotoToSaveMessage // "Nenhuma foto selecionada para salvar."
+    case errorCreatingSharedFolder // "Erro ao criar pasta compartilhada: "
+    case sharedLinkTitle // "Link secreto criado"
+    case sharedLinkMessagePrefix // "Você pode ver todos seus links criados na aba settings\n\nLink: "
+    case sharedLinkMessageSuffix // "\nSenha: "
+    case copyLinkButtonTitle // "Copiar Link e Senha"
+    case cancelButtonTitle // "Cancelar"
+    case downloadAppMessage // "1. Baixe o app https://apps.apple.com/us/app/sg-secret-gallery-vault/id1479873340\n2. Clique no link "
+    case downloadAppPasswordPrefix // "\n3. Digite a senha "
+    case createPasscodeAndConfrim //"Create a passcode and confirm with '='"
+    case sharedPhotosTitle
+    
+    case savePhotosButtonText // "Salvar fotos"
+    case savePhotosErrorTitle // "Erro"
+    case savePhotosErrorMessage // "Erro ao baixar a imagem:"
+    case processImageErrorMessage // "Erro ao processar a imagem."
+    case convertImageErrorMessage // "Erro ao converter a imagem para JPEG."
+    case photosSavedTitle //= "Fotos salvas"
+    case photosSavedMessage //= "Todas as fotos foram salvas na calculadora."
+    case okActionText = "OK"
+
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

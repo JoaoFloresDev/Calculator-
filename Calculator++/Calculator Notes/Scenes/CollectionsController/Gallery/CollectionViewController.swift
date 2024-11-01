@@ -277,11 +277,25 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         let alertController = UIAlertController(title: "Escolha o destino", message: nil, preferredStyle: .actionSheet)
 
         let shareAction = UIAlertAction(title: "Compartilhar", style: .default) { [weak self] _ in
-            self?.coordinator?.shareImage(modelData: self?.modelData.filter { $0.isSelected } ?? [])
+            guard let self = self else { return }
+            var selectedItems = self.modelData.filter { $0.isSelected }
+            let selectedFolders = self.folders.filter { $0.isSelected }
+            for folder in selectedFolders {
+                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
+                selectedItems.append(contentsOf: folderItems)
+            }
+            self.coordinator?.shareImage(modelData: selectedItems)
         }
 
         let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { [weak self] _ in
-            self?.coordinator?.saveImages(modelData: self?.modelData.filter { $0.isSelected } ?? [])
+            guard let self = self else { return }
+            var selectedItems = self.modelData.filter { $0.isSelected }
+            let selectedFolders = self.folders.filter { $0.isSelected }
+            for folder in selectedFolders {
+                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
+                selectedItems.append(contentsOf: folderItems)
+            }
+self.coordinator?.saveImages(modelData: selectedItems)
         }
 
         let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { [weak self] _ in
