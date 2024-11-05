@@ -166,22 +166,78 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     func shareImageButtonTapped() {
         var fileURLs = [URL]()
         
-        for video in modelData where video.isSelected == true {
+        // Collect selected video items from modelData
+        let selectedItems = self.modelData.filter { $0.isSelected }
+        
+        // Append the file URLs for selected video items
+        for video in selectedItems {
             if let index = self.modelData.firstIndex(where: { $0.name == video.name }),
                let fileURL = videoPaths[safe: index],
                let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileURL) {
-                
                 fileURLs.append(path)
             }
         }
         
-        if !fileURLs.isEmpty {
-            let activityController = UIActivityViewController(activityItems: fileURLs, applicationActivities: nil)
-            activityController.popoverPresentationController?.sourceView = self.view
-            activityController.popoverPresentationController?.sourceRect = self.view.frame
-            
-            present(activityController, animated: true, completion: nil)
+        // Collect file URLs from selected folders
+        let selectedFolders = self.folders.filter { $0.isSelected }
+        for folder in selectedFolders {
+            let folderItems = VideoModelController.fetchPathVideosObjectsInit(basePath: folder.name)
+            for folderItem in folderItems {
+                if let folderURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(folderItem) {
+                    fileURLs.append(folderURL)
+                }
+            }
         }
+
+        // Share the collected file URLs
+        if fileURLs.isEmpty {
+            return
+        }
+        
+        let alertController = UIAlertController(title: "Escolha o destino", message: nil, preferredStyle: .actionSheet)
+
+        let shareAction = UIAlertAction(title: "Compartilhar", style: .default) { [weak self] _ in
+//            guard let self = self else { return }
+//            var selectedItems = self.modelData.filter { $0.isSelected }
+//            let selectedFolders = self.folders.filter { $0.isSelected }
+//            for folder in selectedFolders {
+//                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
+//                selectedItems.append(contentsOf: folderItems)
+//            }
+            self?.coordinator.shareImage(modelData: fileURLs)
+        }
+
+        let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { [weak self] _ in
+//            guard let self = self else { return }
+//            var selectedItems = self.modelData.filter { $0.isSelected }
+//            let selectedFolders = self.folders.filter { $0.isSelected }
+//            for folder in selectedFolders {
+//                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
+//                selectedItems.append(contentsOf: folderItems)
+//            }
+            self?.coordinator.saveVideos(modelData: fileURLs)
+        }
+
+        let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { [weak self] _ in
+//            guard let self = self else { return }
+//            var selectedItems = self.modelData.filter { $0.isSelected }
+//            let selectedFolders = self.folders.filter { $0.isSelected }
+//            for folder in selectedFolders {
+//                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
+//                selectedItems.append(contentsOf: folderItems)
+//            }
+
+            self?.coordinator.shareWithCalculator(modelData: fileURLs)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+
+        alertController.addAction(shareAction)
+        alertController.addAction(shareWithCalculatorAction)
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func deleteButtonTapped() {

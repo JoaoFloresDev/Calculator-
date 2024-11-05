@@ -57,24 +57,25 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     }
     
     func shareImage(modelData: [Photo]) {
-        let photoArray = selectedImages(from: modelData)
+        guard !modelData.isEmpty else { return }
         
-        if !photoArray.isEmpty {
-            let activityVC = UIActivityViewController(activityItems: photoArray, applicationActivities: nil)
-            
-            activityVC.completionWithItemsHandler = { (_, completed, _, error) in
-                if completed {
-                    print(Text.shareCompleteMessage)
-                } else {
-                    print(Text.shareCancelMessage)
-                }
-                if let shareError = error {
-                    print(Text.shareErrorMessage.localized() + "\(shareError.localizedDescription)")
-                }
+        let activityVC = UIActivityViewController(activityItems: modelData.map { $0.image }, applicationActivities: nil)
+        
+        activityVC.completionWithItemsHandler = { (_, completed, _, error) in
+            if completed {
+                print(Text.shareCompleteMessage)
+            } else {
+                print(Text.shareCancelMessage)
             }
-            viewController?.present(activityVC, animated: true)
+            
+            if let shareError = error {
+                print(Text.shareErrorMessage.localized() + "\(shareError.localizedDescription)")
+            }
         }
+        
+        viewController?.present(activityVC, animated: true)
     }
+
     
     func addPhotoButtonTapped() {
         let picker = AssetsPickerViewController()
@@ -181,7 +182,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     }
 
     internal func saveImages(modelData: [Photo]) {
-        let selectedPhotos = modelData.filter { $0.isSelected }
+        let selectedPhotos = modelData
         
         guard !selectedPhotos.isEmpty else {
             print(Text.noPhotoToSaveMessage)

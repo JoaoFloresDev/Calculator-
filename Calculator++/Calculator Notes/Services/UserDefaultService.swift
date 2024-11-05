@@ -142,3 +142,21 @@ struct FeatureFlags {
     static let iCloudEnabled  = true
 }
 
+
+class Counter {
+    
+    private let userDefaultsKey = "counterKey"
+    
+    var count: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: userDefaultsKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: userDefaultsKey)
+        }
+    }
+    
+    func increment() {
+        count += 1
+    }
+}

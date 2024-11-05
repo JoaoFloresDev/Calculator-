@@ -81,7 +81,6 @@
 		848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */; };
 		BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3244412A4B692C00A782CA /* BasicModels.swift */; };
 		C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4148D882440F45E00225706 /* CollectionViewCell.swift */; };
-		C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4148D892440F45E00225706 /* CollectionViewController.swift */; };
 		C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41F8483249F271F0015F134 /* PasswordViewController.swift */; };
 		C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */; };
 		C467BCAB24A9AABF0039D237 /* VideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */; };
@@ -100,6 +99,7 @@
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4B183CD2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B183CC2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift */; };
+		C4BEBDED2CD8FE2E001B15B4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEBDEC2CD8FE2D001B15B4 /* CollectionViewController.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4CA01532CB80A8B007C4EB9 /* SafariWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */; };
 		C4CA01552CB82593007C4EB9 /* IconContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01542CB82593007C4EB9 /* IconContentView.swift */; };
@@ -237,7 +237,6 @@
 		8CD7FDCE1854C6BD4A61E97A /* Pods-Calculator Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.debug.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		BA3244412A4B692C00A782CA /* BasicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModels.swift; sourceTree = "<group>"; };
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		C4148D892440F45E00225706 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.crashreport; };
 		C41F8483249F271F0015F134 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
 		C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +255,7 @@
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4B183CC2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePhotoSharingService.swift; sourceTree = "<group>"; };
+		C4BEBDEC2CD8FE2D001B15B4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWrapperViewController.swift; sourceTree = "<group>"; };
 		C4CA01542CB82593007C4EB9 /* IconContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconContentView.swift; sourceTree = "<group>"; };
@@ -563,7 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */,
-				C4148D892440F45E00225706 /* CollectionViewController.swift */,
+				C4BEBDEC2CD8FE2D001B15B4 /* CollectionViewController.swift */,
 				C480A50524A7752F00094FC8 /* Gallery.storyboard */,
 			);
 			path = Gallery;
@@ -929,7 +929,6 @@
 				73862C882AAD2CFA005D9D25 /* VideoCollectionCoordinator.swift in Sources */,
 				73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
-				C4148D8B2440F45E00225706 /* CollectionViewController.swift in Sources */,
 				73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */,
 				73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */,
 				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,
@@ -968,6 +967,7 @@
 				D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				73862C842AAD18BC005D9D25 /* Constants.swift in Sources */,
+				C4BEBDED2CD8FE2E001B15B4 /* CollectionViewController.swift in Sources */,
 				730B2EB92C593FD40016FD9E /* BackupUpdateManager.swift in Sources */,
 				738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */,
 				73C2C5072A49D7AE00963BA2 /* TabBarController+Extensions.swift in Sources */,

@@ -3,18 +3,6 @@ import SnapKit
 
 class PhotoViewController: UIViewController {
 
-    // MARK: - Constants
-//    private let closeButtonText = Text.close
-//    private let sharedPhotosTitle = "Shared Photos"
-//    private let savePhotosButtonText = "Salvar fotos"
-//    private let savePhotosErrorTitle = "Erro"
-//    private let savePhotosErrorMessage = "Erro ao baixar a imagem:"
-//    private let processImageErrorMessage = "Erro ao processar a imagem."
-//    private let convertImageErrorMessage = "Erro ao converter a imagem para JPEG."
-//    private let photosSavedTitle = "Fotos salvas"
-//    private let photosSavedMessage = "Todas as fotos foram salvas na calculadora."
-//    private let okActionText = "OK"
-
     // MARK: - Properties
     private var photoURLs: [URL]
     private var collectionView: UICollectionView!

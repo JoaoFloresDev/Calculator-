@@ -22,24 +22,6 @@ import MapKit
 
 import Foundation
 
-class Counter {
-    
-    private let userDefaultsKey = "counterKey"
-    
-    var count: Int {
-        get {
-            return UserDefaults.standard.integer(forKey: userDefaultsKey)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: userDefaultsKey)
-        }
-    }
-    
-    func increment() {
-        count += 1
-    }
-}
-
 extension CollectionViewController: BackupModalViewControllerDelegate {
     func backupExecuted() {
         self.modelData = ModelController.listPhotosOf(basePath: self.basePath)
@@ -80,7 +62,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     var isEditMode = false {
         didSet {
-            if isEditMode && couter.count > 3 {
+            if isEditMode && couter.count > 10 {
                 SKStoreReviewController.requestReviewInCurrentScene()
             }
             editLeftBarButtonItem?.setEditing(isEditMode)
@@ -121,23 +103,11 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
 
     func showAppReviewAlert() {
-//        let alertController = UIAlertController(
-//            title: "Está gostando do nosso app?",
-//            message: "Sua opinião é muito importante para nós! Que tal deixar uma avaliação na App Store? Isso nos ajudará a melhorar ainda mais!",
-//            preferredStyle: .alert
-//        )
-//
-//        let rateAction = UIAlertAction(title: "Avaliar Agora", style: .default) { _ in
-//            self.openAppStoreForReview()
-//        }
-//
-//        let cancelAction = UIAlertAction(title: "Talvez Depois", style: .default, handler: nil)
         Alerts.showReviewNow(controller: self) { [weak self] in
             UserDefaults.standard.set(true, forKey: "userGoToReview")
             self?.openAppStoreForReview()
         }
         
-//        present(alertController, animated: true, completion: nil)
     }
 
     func openAppStoreForReview() {
@@ -268,6 +238,8 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         toggleEditModeAndReloadData()
     }
     
+    // MARK: - Handle Share Image
+
     private func handleShareImageButton() {
         guard !modelData.isEmpty else {
             Alerts.showSelectImagesToShareFirts(controller: self)
@@ -275,51 +247,63 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
         
         let alertController = UIAlertController(title: "Escolha o destino", message: nil, preferredStyle: .actionSheet)
-
+        
         let shareAction = UIAlertAction(title: "Compartilhar", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            var selectedItems = self.modelData.filter { $0.isSelected }
-            let selectedFolders = self.folders.filter { $0.isSelected }
-            for folder in selectedFolders {
-                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
-                selectedItems.append(contentsOf: folderItems)
-            }
-            self.coordinator?.shareImage(modelData: selectedItems)
+            self?.shareSelectedImages()
         }
-
+        
         let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            var selectedItems = self.modelData.filter { $0.isSelected }
-            let selectedFolders = self.folders.filter { $0.isSelected }
-            for folder in selectedFolders {
-                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
-                selectedItems.append(contentsOf: folderItems)
-            }
-self.coordinator?.saveImages(modelData: selectedItems)
+            self?.saveSelectedImages()
         }
-
-        let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            var selectedItems = self.modelData.filter { $0.isSelected }
-            let selectedFolders = self.folders.filter { $0.isSelected }
-            for folder in selectedFolders {
-                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
-                selectedItems.append(contentsOf: folderItems)
-            }
-
-            self.coordinator?.shareWithCalculator(modelData: selectedItems)
+        
+        let shareWithCalculatorAction = UIAlertAction(title: "Compartilhamento secreto", style: .default) { [weak self] _ in
+            self?.shareWithCalculator()
         }
-
+        
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-
+        
         alertController.addAction(shareAction)
         alertController.addAction(shareWithCalculatorAction)
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
-
+        
         self.present(alertController, animated: true, completion: nil)
     }
 
+    // MARK: - Private Actions
+
+    private func shareSelectedImages() {
+        let selectedItems = getSelectedItems()
+        coordinator?.shareImage(modelData: selectedItems)
+    }
+
+    private func saveSelectedImages() {
+        let selectedItems = getSelectedItems()
+        coordinator?.saveImages(modelData: selectedItems)
+    }
+
+    private func shareWithCalculator() {
+        let selectedItems = getSelectedItems()
+        coordinator?.shareWithCalculator(modelData: selectedItems)
+    }
+
+    // MARK: - Helper Methods
+
+    private func getSelectedItems() -> [Photo] {
+        var selectedItems = modelData.filter { $0.isSelected }
+        let selectedFolders = folders.filter { $0.isSelected }
+        
+        for folder in selectedFolders {
+            let folderItems = ModelController.listPhotosOf(basePath: buildFolderPath(for: folder.name))
+            selectedItems.append(contentsOf: folderItems)
+        }
+        
+        return selectedItems
+    }
+
+    private func buildFolderPath(for folderName: String) -> String {
+        return basePath + folderName + Constants.deepSeparatorPath
+    }
     
     private func handleDeleteButton() {
         guard !modelData.isEmpty else {
@@ -498,11 +482,25 @@ self.coordinator?.saveImages(modelData: selectedItems)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell, indexPath.item < modelData.count else {
             return UICollectionViewCell()
         }
+        
         let image = modelData[indexPath.item]
         cell.imageCell.image = image.image
         cell.imageCell.contentMode = .scaleAspectFill
         cell.isSelectedCell = modelData[indexPath.item].isSelected
         cell.applyshadowWithCorner()
+        
+        if modelData[indexPath.item].name == "Loading" {
+            cell.contentView.backgroundColor = .white
+            let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .medium)
+            loadingIndicator.startAnimating()
+            cell.contentView.addSubview(loadingIndicator)
+            loadingIndicator.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+            }
+        } else {
+            cell.contentView.backgroundColor = .clear
+        }
+        
         return cell
     }
     
@@ -606,32 +604,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         }
     }
     
-    func getCurrentDateTimeFormatted() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: Date())
-    }
-    
-    func updateBackupTapped(numberOfNewPhotos: Int) {
-        if isProductPurchased() && isUserLoggedIn() && Defaults.getBool(.recurrentBackupUpdate) {
-            let numberOfPhotos = Defaults.getInt(.numberOfNonSincronizatedPhotos) + numberOfNewPhotos
-            Defaults.setInt(.numberOfNonSincronizatedPhotos, numberOfPhotos)
-            if numberOfPhotos > 3 {
-                updateBackup()
-            }
-        }
-    }
-    
-    private func updateBackup() {
-        DispatchQueue.global().async {
-            FirebaseBackupService.updateBackup { _ in
-                Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
-                Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
-            }
-        }
-    }
-    
     private func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
         guard asset.mediaType == .image else {
             completion(nil)
@@ -661,6 +633,32 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
                 return
             }
             completion(result)
+        }
+    }
+    
+    func getCurrentDateTimeFormatted() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: Date())
+    }
+    
+    func updateBackupTapped(numberOfNewPhotos: Int) {
+        if isProductPurchased() && isUserLoggedIn() && Defaults.getBool(.recurrentBackupUpdate) {
+            let numberOfPhotos = Defaults.getInt(.numberOfNonSincronizatedPhotos) + numberOfNewPhotos
+            Defaults.setInt(.numberOfNonSincronizatedPhotos, numberOfPhotos)
+            if numberOfPhotos > 3 {
+                updateBackup()
+            }
+        }
+    }
+    
+    private func updateBackup() {
+        DispatchQueue.global().async {
+            FirebaseBackupService.updateBackup { _ in
+                Defaults.setString(.lastBackupUpdate, self.getCurrentDateTimeFormatted())
+                Defaults.setInt(.numberOfNonSincronizatedPhotos, 0)
+            }
         }
     }
     
