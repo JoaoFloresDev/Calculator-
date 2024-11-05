@@ -587,8 +587,8 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     }
 
     private func handleAssetSelection(_ assets: [PHAsset]) {
-//        let placeholders = assets.map { _ in Photo(name: "placeholder", image: UIImage(named: "profile")!) }
-//        self.modelData.append(contentsOf: placeholders)
+        let placeholders = assets.map { _ in Photo(name: "placeholder", image: UIImage(named: "profile")!) }
+        self.modelData.append(contentsOf: placeholders)
         
         DispatchQueue.main.async {
             UIView.performWithoutAnimation {
@@ -600,7 +600,12 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 self?.addImage(asset: asset) { photo in
                     guard let photo = photo else {
-//                        self?.modelData.removeLast()
+                        DispatchQueue.main.async {
+                            self?.modelData.removeLast()
+                            UIView.performWithoutAnimation {
+                                self?.collectionView?.reloadData()
+                            }
+                        }
                         return
                     }
                     DispatchQueue.main.async {
@@ -640,11 +645,14 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         let option = PHImageRequestOptions()
         option.isSynchronous = false
         option.isNetworkAccessAllowed = true
+        option.deliveryMode = .highQualityFormat
+        option.resizeMode = .none
         manager.requestImage(for: asset,
-                             targetSize: CGSize(width: 1500, height: 1500),
+                             targetSize: PHImageManagerMaximumSize,
                              contentMode: .aspectFit,
                              options: option) { result, info in
-            guard let info = info, !(info[PHImageResultIsDegradedKey] as? Bool ?? false), let result = result else {
+            guard let result = result, let info = info,
+                  !(info[PHImageResultIsDegradedKey] as? Bool ?? false) else {
                 completion(nil)
                 return
             }
