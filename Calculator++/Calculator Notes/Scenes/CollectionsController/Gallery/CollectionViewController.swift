@@ -585,23 +585,39 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         }
         handleAssetSelection(assets)
     }
+
     private func handleAssetSelection(_ assets: [PHAsset]) {
-        loadingAlert.startLoading {
-            for asset in assets {
-                self.addImage(asset: asset) { photo in
-                    if let photo = photo {
-                        DispatchQueue.main.async {
-                            self.modelData.append(photo)
-                            UIView.performWithoutAnimation {
-                                self.collectionView?.reloadData()
-                            }
+//        let placeholders = assets.map { _ in Photo(name: "placeholder", image: UIImage(named: "profile")!) }
+//        self.modelData.append(contentsOf: placeholders)
+        
+        DispatchQueue.main.async {
+            UIView.performWithoutAnimation {
+                self.collectionView?.reloadData()
+            }
+        }
+        
+        for asset in assets {
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                self?.addImage(asset: asset) { photo in
+                    guard let photo = photo else {
+//                        self?.modelData.removeLast()
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        if let placeholderIndex = self?.modelData.firstIndex(where: { $0.name == "placeholder" }) {
+                            self?.modelData[placeholderIndex] = photo
+                        } else {
+                            self?.modelData.append(photo)
+                        }
+                        UIView.performWithoutAnimation {
+                            self?.collectionView?.reloadData()
                         }
                     }
                 }
             }
-            self.loadingAlert.stopLoading()
-            self.updateBackupTapped(numberOfNewPhotos: assets.count)
         }
+        
+        self.updateBackupTapped(numberOfNewPhotos: assets.count)
     }
     
     private func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
