@@ -47,15 +47,7 @@ extension CollectionViewController: BackupModalViewControllerDelegate {
 
 class CollectionViewController: BasicCollectionViewController, UINavigationControllerDelegate, GADBannerViewDelegate, GADInterstitialDelegate, MFMailComposeViewControllerDelegate, EditLeftBarButtonItemDelegate, AdditionsRightBarButtonItemDelegate {
     // MARK: - Variables
-    var modelData: [Photo] = [] {
-        didSet {
-            if modelData.count == 1 {
-                UIView.performWithoutAnimation {
-                    self.collectionView?.reloadData()
-                }
-            }
-        }
-    }
+    var modelData: [Photo] = []
     var folders: [Folder] = []
     lazy var loadingAlert = LoadingAlert(in: self)
     var coordinator: CollectionViewCoordinatorProtocol?
@@ -489,18 +481,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         cell.isSelectedCell = modelData[indexPath.item].isSelected
         cell.applyshadowWithCorner()
         
-        if modelData[indexPath.item].name == "Loading" {
-            cell.contentView.backgroundColor = .white
-            let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .medium)
-            loadingIndicator.startAnimating()
-            cell.contentView.addSubview(loadingIndicator)
-            loadingIndicator.snp.makeConstraints { make in
-                make.center.equalToSuperview()
-            }
-        } else {
-            cell.contentView.backgroundColor = .clear
-        }
-        
         return cell
     }
     
@@ -574,6 +554,12 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
         return footerView
     }
+    
+    private let imageProcessingQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 3
+        return queue
+    }()
 }
 
 // MARK: - AssetsPickerViewControllerDelegate
@@ -587,42 +573,58 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     }
 
     private func handleAssetSelection(_ assets: [PHAsset]) {
-        let placeholders = assets.map { _ in Photo(name: "placeholder", image: UIImage(named: "profile")!) }
-        self.modelData.append(contentsOf: placeholders)
-        
         DispatchQueue.main.async {
-            UIView.performWithoutAnimation {
-                self.collectionView?.reloadData()
-            }
-        }
-        
-        for asset in assets {
-            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                self?.addImage(asset: asset) { photo in
-                    guard let photo = photo else {
-                        DispatchQueue.main.async {
-                            self?.modelData.removeLast()
-                            UIView.performWithoutAnimation {
-                                self?.collectionView?.reloadData()
+            self.showImportAnimation()
+            
+            // Aguarda um pequeno intervalo para garantir que a animação tenha tempo para começar
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                for asset in assets {
+                    self.addImage(asset: asset) { photo in
+                        if let photo = photo {
+                            DispatchQueue.main.async {
+                                self.modelData.append(photo)
+                                UIView.performWithoutAnimation {
+                                    self.collectionView?.reloadData()
+                                }
                             }
-                        }
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        if let placeholderIndex = self?.modelData.firstIndex(where: { $0.name == "placeholder" }) {
-                            self?.modelData[placeholderIndex] = photo
-                        } else {
-                            self?.modelData.append(photo)
-                        }
-                        UIView.performWithoutAnimation {
-                            self?.collectionView?.reloadData()
                         }
                     }
                 }
+                self.updateBackupTapped(numberOfNewPhotos: assets.count)
             }
         }
+    }
+
+    private func showImportAnimation() {
+        let savedLabel = UILabel()
+        savedLabel.text = "Importando fotos"
+        savedLabel.font = .boldSystemFont(ofSize: 18)
+        savedLabel.textColor = .white
+        savedLabel.textAlignment = .center
+        savedLabel.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        savedLabel.layer.cornerRadius = 10
+        savedLabel.clipsToBounds = true
         
-        self.updateBackupTapped(numberOfNewPhotos: assets.count)
+        view.addSubview(savedLabel)
+        
+        savedLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.width.equalTo(200)
+            make.height.equalTo(40)
+        }
+        
+        savedLabel.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            savedLabel.alpha = 1
+        }) { _ in
+            UIView.animate(withDuration: 0.3, delay: 2.0, options: .curveEaseOut, animations: {
+                savedLabel.alpha = 0
+            }) { _ in
+                savedLabel.removeFromSuperview()
+            }
+        }
     }
     
     private func addImage(asset: PHAsset, completion: @escaping (Photo?) -> Void) {
@@ -645,14 +647,11 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         let option = PHImageRequestOptions()
         option.isSynchronous = false
         option.isNetworkAccessAllowed = true
-        option.deliveryMode = .highQualityFormat
-        option.resizeMode = .none
         manager.requestImage(for: asset,
-                             targetSize: PHImageManagerMaximumSize,
+                             targetSize: CGSize(width: 1500, height: 1500),
                              contentMode: .aspectFit,
                              options: option) { result, info in
-            guard let result = result, let info = info,
-                  !(info[PHImageResultIsDegradedKey] as? Bool ?? false) else {
+            guard let info = info, !(info[PHImageResultIsDegradedKey] as? Bool ?? false), let result = result else {
                 completion(nil)
                 return
             }
@@ -769,5 +768,61 @@ extension SKStoreReviewController {
                 requestReview(in: scene)
             }
         }
+    }
+}
+
+class ProgressBarController: UIViewController {
+    private var progressView = UIProgressView(progressViewStyle: .default)
+    private var titleLabel = UILabel()
+    private var progressLabel = UILabel()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+    }
+
+    private func setupViews() {
+        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+
+        titleLabel.text = "Processando Fotos"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.textColor = .white
+        titleLabel.textAlignment = .center
+
+        progressLabel.font = UIFont.systemFont(ofSize: 16)
+        progressLabel.textColor = .white
+        progressLabel.textAlignment = .center
+
+        progressView.progressTintColor = .systemBlue
+        progressView.trackTintColor = .white
+        progressView.layer.cornerRadius = 8
+        progressView.clipsToBounds = true
+
+        view.addSubview(titleLabel)
+        view.addSubview(progressView)
+        view.addSubview(progressLabel)
+
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        progressLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+            progressView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            progressView.heightAnchor.constraint(equalToConstant: 20),
+
+            progressLabel.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 10),
+            progressLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+
+    func updateProgress(current: Int, total: Int) {
+        let progress = Float(current) / Float(total)
+        progressView.setProgress(progress, animated: true)
+        progressLabel.text = "\(current) / \(total) Fotos Processadas"
     }
 }

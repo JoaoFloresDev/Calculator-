@@ -212,8 +212,8 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         
         savedLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(viewController.view.safeAreaLayoutGuide.snp.bottom).offset(-50)
-            make.width.equalTo(150)
+            make.top.equalTo(viewController.view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.width.equalTo(200)
             make.height.equalTo(40)
         }
         
