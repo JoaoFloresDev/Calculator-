@@ -113,36 +113,36 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         
         guard let viewController = viewController else { return }
 
-        var loadingAlert = LoadingAlert(in: viewController)
-        loadingAlert.startLoading()
-        
-        FirebasePhotoSharingService.createSharedFolderWithPhotos(modelData: modelData) { link, key, error in
-            loadingAlert.stopLoading {
-                if let error = error {
-                    print(Text.errorCreatingSharedFolder.rawValue + "\(error.localizedDescription)")
-                    return
+        let loadingAlert = LoadingAlert(in: viewController)
+        loadingAlert.startLoading {
+            FirebasePhotoSharingService.createSharedFolderWithPhotos(modelData: modelData) { link, key, error in
+                loadingAlert.stopLoading {
+                    if let error = error {
+                        print(Text.errorCreatingSharedFolder.rawValue + "\(error.localizedDescription)")
+                        return
+                    }
+
+                    guard let link = link, let key = key else {
+                        print("Erro: link de compartilhamento não gerado.")
+                        return
+                    }
+
+                    let message = Text.sharedLinkMessagePrefix.localized() + link + Text.sharedLinkMessageSuffix.localized() + key
+                    let alertController = UIAlertController(title: Text.sharedLinkTitle.localized(), message: message, preferredStyle: .alert)
+
+                    let copyAction = UIAlertAction(title: Text.copyLinkButtonTitle.localized(), style: .default) { _ in
+                        let messageToPaste = Text.downloadAppMessage.localized() + " " + link + " " + Text.downloadAppPasswordPrefix.localized() + " " + key
+                        UIPasteboard.general.string = messageToPaste
+                        self.showCopiedAnimation()
+                    }
+
+                    let cancelAction = UIAlertAction(title: Text.cancelButtonTitle.localized(), style: .cancel, handler: nil)
+
+                    alertController.addAction(copyAction)
+                    alertController.addAction(cancelAction)
+
+                    self.viewController?.present(alertController, animated: true)
                 }
-
-                guard let link = link, let key = key else {
-                    print("Erro: link de compartilhamento não gerado.")
-                    return
-                }
-
-                let message = Text.sharedLinkMessagePrefix.localized() + link + Text.sharedLinkMessageSuffix.localized() + key
-                let alertController = UIAlertController(title: Text.sharedLinkTitle.localized(), message: message, preferredStyle: .alert)
-
-                let copyAction = UIAlertAction(title: Text.copyLinkButtonTitle.localized(), style: .default) { _ in
-                    let messageToPaste = Text.downloadAppMessage.localized() + link + Text.downloadAppPasswordPrefix.localized() + key
-                    UIPasteboard.general.string = messageToPaste
-                    self.showCopiedAnimation()
-                }
-
-                let cancelAction = UIAlertAction(title: Text.cancelButtonTitle.localized(), style: .cancel, handler: nil)
-
-                alertController.addAction(copyAction)
-                alertController.addAction(cancelAction)
-
-                self.viewController?.present(alertController, animated: true)
             }
         }
     }

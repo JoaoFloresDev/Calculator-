@@ -575,8 +575,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
     private func handleAssetSelection(_ assets: [PHAsset]) {
         DispatchQueue.main.async {
             self.showImportAnimation()
-            
-            // Aguarda um pequeno intervalo para garantir que a animação tenha tempo para começar
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 for asset in assets {
                     self.addImage(asset: asset) { photo in

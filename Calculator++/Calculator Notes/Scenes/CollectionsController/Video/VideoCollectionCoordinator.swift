@@ -40,29 +40,32 @@ class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
     }
     
     func saveVideos(modelData: [URL]) {
-        let fileManager = FileManager.default
-        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            print("Unable to access the documents directory.")
+        // Certifique-se de que os URLs sejam válidos e existam
+        let validURLs = modelData.filter { FileManager.default.fileExists(atPath: $0.path) }
+        
+        guard !validURLs.isEmpty else {
+            print("Nenhum vídeo válido para salvar.")
             return
         }
-
-        for videoURL in modelData {
-            let destinationURL = documentsDirectory.appendingPathComponent(videoURL.lastPathComponent)
-            
-            do {
-                // Remove o arquivo de destino se já existir
-                if fileManager.fileExists(atPath: destinationURL.path) {
-                    try fileManager.removeItem(at: destinationURL)
-                }
-                // Copia o vídeo para o diretório de documentos
-                try fileManager.copyItem(at: videoURL, to: destinationURL)
-                print("Video saved to: \(destinationURL.path)")
-            } catch {
-                print("Error saving video from \(videoURL) to \(destinationURL): \(error.localizedDescription)")
-            }
+        
+        // Salvar vídeos na galeria do dispositivo
+        for fileURL in validURLs {
+            UISaveVideoAtPathToSavedPhotosAlbum(fileURL.path, self, #selector(video(_:didFinishSavingWithError:contextInfo:)), nil)
         }
     }
 
+    // Callback para verificar sucesso ou erro ao salvar os vídeos
+    @objc private func video(_ videoPath: String, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // Log ou uma mensagem de erro
+            print("Erro ao salvar o vídeo: \(error.localizedDescription)")
+        } else {
+            // Vídeo salvo com sucesso
+            print("Vídeo salvo com sucesso na galeria!")
+//            showSavedAnimation()
+        }
+    }
+    
     internal func shareWithCalculator(modelData: [URL]) {
         guard !modelData.isEmpty else {
 //            print(Text.noVideoToShareMessage)

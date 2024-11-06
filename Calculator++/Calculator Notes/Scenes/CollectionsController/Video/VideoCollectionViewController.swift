@@ -164,70 +164,116 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     }
     
     func shareImageButtonTapped() {
-        var fileURLs = [URL]()
-        
-        // Collect selected video items from modelData
-        let selectedItems = self.modelData.filter { $0.isSelected }
-        
-        // Append the file URLs for selected video items
-        for video in selectedItems {
-            if let index = self.modelData.firstIndex(where: { $0.name == video.name }),
-               let fileURL = videoPaths[safe: index],
-               let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileURL) {
-                fileURLs.append(path)
-            }
-        }
-        
-        // Collect file URLs from selected folders
-        let selectedFolders = self.folders.filter { $0.isSelected }
-        for folder in selectedFolders {
-            let folderItems = VideoModelController.fetchPathVideosObjectsInit(basePath: folder.name)
-            for folderItem in folderItems {
-                if let folderURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(folderItem) {
-                    fileURLs.append(folderURL)
-                }
-            }
-        }
-
-        // Share the collected file URLs
-        if fileURLs.isEmpty {
-            return
-        }
-        
         let alertController = UIAlertController(title: "Escolha o destino", message: nil, preferredStyle: .actionSheet)
 
-        let shareAction = UIAlertAction(title: "Compartilhar", style: .default) { [weak self] _ in
-//            guard let self = self else { return }
-//            var selectedItems = self.modelData.filter { $0.isSelected }
-//            let selectedFolders = self.folders.filter { $0.isSelected }
-//            for folder in selectedFolders {
-//                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
-//                selectedItems.append(contentsOf: folderItems)
-//            }
-            self?.coordinator.shareImage(modelData: fileURLs)
+        let shareAction = UIAlertAction(title: "Compartilhar", style: .default) {_ in
+            var fileURLs = [URL]()
+            
+            let selectedItems = self.modelData.filter { $0.isSelected }
+            
+            for video in selectedItems {
+                if let index = self.modelData.firstIndex(where: { $0.name == video.name }),
+                   let fileURL = self.videoPaths[safe: index],
+                   let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileURL) {
+                    fileURLs.append(path)
+                }
+            }
+            
+            let selectedFolders = self.folders.filter { $0.isSelected }
+            for folder in selectedFolders {
+                let folderItems = VideoModelController.fetchPathVideosObjectsInit(basePath: folder.name)
+                for folderItem in folderItems {
+                    if let folderURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(folderItem) {
+                        fileURLs.append(folderURL)
+                    }
+                }
+            }
+
+            if fileURLs.isEmpty {
+                return
+            }
+            self.coordinator.shareImage(modelData: fileURLs)
         }
 
-        let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { [weak self] _ in
-//            guard let self = self else { return }
-//            var selectedItems = self.modelData.filter { $0.isSelected }
-//            let selectedFolders = self.folders.filter { $0.isSelected }
-//            for folder in selectedFolders {
-//                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
-//                selectedItems.append(contentsOf: folderItems)
-//            }
-            self?.coordinator.saveVideos(modelData: fileURLs)
+        let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { _ in
+            var fileURLs = [URL]()
+            
+            let selectedItems = self.modelData.filter { $0.isSelected }
+            
+            for video in selectedItems {
+                if let index = self.modelData.firstIndex(where: { $0.name == video.name }),
+                   let videoPath = self.videoPaths[safe: index] {
+                    if let documentDirectoryURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+                        let fullPath = documentDirectoryURL.appendingPathComponent(videoPath)
+                        
+                        // Verificar se o arquivo realmente existe
+                        if FileManager.default.fileExists(atPath: fullPath.path) {
+                            fileURLs.append(fullPath)
+                        } else {
+                            print("Erro: arquivo não encontrado em \(fullPath.path)")
+                        }
+                    } else {
+                        print("Erro: não foi possível obter a URL do diretório de documentos.")
+                    }
+                }
+            }
+            
+            let selectedFolders = self.folders.filter { $0.isSelected }
+            for folder in selectedFolders {
+                let folderItems = VideoModelController.fetchPathVideosObjectsInit(basePath: folder.name)
+                for folderItem in folderItems {
+                    if let documentDirectoryURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+                        let folderURL = documentDirectoryURL.appendingPathComponent(folderItem)
+                        
+                        // Verificar se o arquivo realmente existe
+                        if FileManager.default.fileExists(atPath: folderURL.path) {
+                            fileURLs.append(folderURL)
+                        } else {
+                            print("Erro: arquivo não encontrado em \(folderURL.path)")
+                        }
+                    } else {
+                        print("Erro: não foi possível obter a URL do diretório de documentos para a pasta.")
+                    }
+                }
+            }
+
+            // Validar se existem URLs de vídeos válidas
+            guard !fileURLs.isEmpty else {
+                print("Nenhum vídeo válido encontrado para salvar.")
+                return
+            }
+            
+            // Chamar a função para salvar os vídeos
+            self.coordinator.saveVideos(modelData: fileURLs)
         }
 
-        let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { [weak self] _ in
-//            guard let self = self else { return }
-//            var selectedItems = self.modelData.filter { $0.isSelected }
-//            let selectedFolders = self.folders.filter { $0.isSelected }
-//            for folder in selectedFolders {
-//                let folderItems = ModelController.listPhotosOf(basePath: folder.name)
-//                selectedItems.append(contentsOf: folderItems)
-//            }
 
-            self?.coordinator.shareWithCalculator(modelData: fileURLs)
+        let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { _ in
+            var fileURLs = [URL]()
+            
+            let selectedItems = self.modelData.filter { $0.isSelected }
+                for video in selectedItems {
+                    if let index = self.modelData.firstIndex(where: { $0.name == video.name }),
+                       let fileURL = self.videoPaths[safe: index],
+                       let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(fileURL) {
+                        fileURLs.append(path)
+                    }
+                }
+            
+            let selectedFolders = self.folders.filter { $0.isSelected }
+                for folder in selectedFolders {
+                    let folderItems = VideoModelController.fetchPathVideosObjectsInit(basePath: folder.name)
+                    for folderItem in folderItems {
+                        if let folderURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(folderItem) {
+                            fileURLs.append(folderURL)
+                        }
+                    }
+                }
+
+            if fileURLs.isEmpty {
+                return
+            }
+            self.coordinator.shareWithCalculator(modelData: fileURLs)
         }
 
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
