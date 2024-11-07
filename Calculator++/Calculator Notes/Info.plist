@@ -107,6 +107,8 @@
 	<string>We will use authentication to show you the password for the app </string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Gallery access will be used to save images and videos within the app</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Necessário para salvar vídeos na galeria de fotos.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen.storyboard</string>
 	<key>UIMainStoryboardFile</key>

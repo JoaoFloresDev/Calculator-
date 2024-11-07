@@ -99,10 +99,12 @@
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
 		C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */; };
 		C4B183CD2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B183CC2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift */; };
+		C4B75EF52CDC000D005BEBD4 /* SharedFolderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B75EF42CDC000D005BEBD4 /* SharedFolderSettings.swift */; };
 		C4BEBDED2CD8FE2E001B15B4 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEBDEC2CD8FE2D001B15B4 /* CollectionViewController.swift */; };
 		C4C079CB2698CFBC0020FC69 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */; };
 		C4CA01532CB80A8B007C4EB9 /* SafariWrapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */; };
 		C4CA01552CB82593007C4EB9 /* IconContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CA01542CB82593007C4EB9 /* IconContentView.swift */; };
+		C4D5123B2CDD013800238037 /* SecretLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D5123A2CDD013800238037 /* SecretLinkCell.swift */; };
 		C4D6CAD12CBF3B5D001AD628 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D6CAD02CBF3B5C001AD628 /* PhotoViewController.swift */; };
 		C4FFA33B243E898E008A41FA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */; };
 		C60906FC2C18D2D20066D337 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60906FB2C18D2D20066D337 /* UIView+Designable.swift */; };
@@ -255,10 +257,12 @@
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
 		C4B183CC2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePhotoSharingService.swift; sourceTree = "<group>"; };
+		C4B75EF42CDC000D005BEBD4 /* SharedFolderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFolderSettings.swift; sourceTree = "<group>"; };
 		C4BEBDEC2CD8FE2D001B15B4 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C4C079CA2698CFBC0020FC69 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		C4CA01522CB80A8A007C4EB9 /* SafariWrapperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWrapperViewController.swift; sourceTree = "<group>"; };
 		C4CA01542CB82593007C4EB9 /* IconContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconContentView.swift; sourceTree = "<group>"; };
+		C4D5123A2CDD013800238037 /* SecretLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretLinkCell.swift; sourceTree = "<group>"; };
 		C4D6CAD02CBF3B5C001AD628 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		C4FFA33A243E898E008A41FA /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		C60906FB2C18D2D20066D337 /* UIView+Designable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
@@ -667,10 +671,20 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		C4D512392CDD009800238037 /* SharedFolderSettings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SharedFolderSettings;
+			sourceTree = "<group>";
+		};
 		C4D6CACF2CBF3ACF001AD628 /* SharedFolders */ = {
 			isa = PBXGroup;
 			children = (
 				C4D6CAD02CBF3B5C001AD628 /* PhotoViewController.swift */,
+				C4D512392CDD009800238037 /* SharedFolderSettings */,
+				C4B75EF42CDC000D005BEBD4 /* SharedFolderSettings.swift */,
+				C4D5123A2CDD013800238037 /* SecretLinkCell.swift */,
 			);
 			path = SharedFolders;
 			sourceTree = "<group>";
@@ -933,6 +947,8 @@
 				73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */,
 				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,
 				7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */,
+				C4B75EF52CDC000D005BEBD4 /* SharedFolderSettings.swift in Sources */,
+				C4D5123B2CDD013800238037 /* SecretLinkCell.swift in Sources */,
 				C46AD0FF24416D8E00EF0236 /* CoreDataImageService.swift in Sources */,
 				731436442A48D6B000B9842E /* FooterView.swift in Sources */,
 				07795D651F06ADCC0018466E /* CoreDataHelper.swift in Sources */,

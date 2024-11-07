@@ -84,7 +84,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
 
     func presentWithCustomDissolve(viewController: UIViewController, from presenter: UIViewController, duration: TimeInterval = 1.0) {
-        viewController.modalPresentationStyle = .overFullScreen // Necessário para manter o efeito de dissolver visível
+//        viewController.modalPresentationStyle = .
         viewController.view.alpha = 0
         
         presenter.present(viewController, animated: false) {
@@ -119,12 +119,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if couter.count > 60 && couter.count % 2 == 0 {
-            let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-            if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
-                presentWithCustomDissolve(viewController: purchaseViewController, from: self, duration: 0.5)
-            }
-        }
         commonViewWillAppear()
         checkPurchase()
     }

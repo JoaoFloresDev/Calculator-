@@ -144,7 +144,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc
     func shareWithOtherCalcPressed(_ sender: UITapGestureRecognizer? = nil) {
-        
+        let controller = SharedFolderSettings()
+        let navigationController = UINavigationController(rootViewController: controller)
+        self.present(navigationController, animated: true)
     }
     
     @objc

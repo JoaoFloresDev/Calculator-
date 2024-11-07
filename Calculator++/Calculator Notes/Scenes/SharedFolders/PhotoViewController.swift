@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import AVKit
 
 class PhotoViewController: UIViewController {
 
@@ -8,6 +9,8 @@ class PhotoViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var downloadButton: UIButton!
 
+    lazy var loadingAlert = LoadingAlert(in: self)  // Usando o loadingAlert personalizado
+    
     init(photoURLs: [URL]) {
         self.photoURLs = photoURLs
         super.init(nibName: nil, bundle: nil)
@@ -42,24 +45,16 @@ class PhotoViewController: UIViewController {
     }
 
     private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-
+        let screenWidth = self.view.frame.size.width - 100
+        let layout = FlowLayout(screenWidth: screenWidth)
         let spacing: CGFloat = 10
         let itemWidth = (view.bounds.width - (4 * spacing)) / 3
-        
-        layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-        layout.minimumInteritemSpacing = spacing
-        layout.minimumLineSpacing = spacing
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
 
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
-        let screenWidth = self.view.frame.size.width - 100
-        let flowLayout = FlowLayout(screenWidth: screenWidth, sizeRate: 3)
-        collectionView.collectionViewLayout = flowLayout
         view.addSubview(collectionView)
 
         collectionView.snp.makeConstraints { make in
@@ -80,83 +75,69 @@ class PhotoViewController: UIViewController {
         view.addSubview(downloadButton)
         
         downloadButton.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(20)
-            make.height.equalTo(50)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(60)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
         }
     }
 
-    lazy var loadingAlert = LoadingAlert(in: self)
-    
+    // MARK: - Download Logic
     @objc private func downloadAllPhotos() {
-        loadingAlert.startLoading()
-        let dispatchGroup = DispatchGroup()
-        
-        for url in photoURLs {
-            dispatchGroup.enter()
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    DispatchQueue.main.async {
-                        Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: "\(Text.savePhotosErrorMessage.localized()) \(error.localizedDescription)", controller: self) {
-                            // Ação adicional se necessário após a exibição do erro
+        loadingAlert.startLoading {
+            let dispatchGroup = DispatchGroup()
+            
+            for url in self.photoURLs {
+                dispatchGroup.enter()
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: "\(Text.savePhotosErrorMessage.localized()) \(error.localizedDescription)", controller: self, completion: {})
                         }
+                        dispatchGroup.leave()
+                        return
                     }
-                    dispatchGroup.leave()
-                    return
-                }
-                
-                guard let data = data, let image = UIImage(data: data) else {
-                    DispatchQueue.main.async {
-                        Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: Text.processImageErrorMessage.localized(), controller: self) {
-                            // Ação adicional se necessário após a exibição do erro
+                    
+                    guard let data = data else {
+                        DispatchQueue.main.async {
+                            Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: Text.processImageErrorMessage.localized(), controller: self, completion: {})
                         }
+                        dispatchGroup.leave()
+                        return
                     }
+
+                    if url.pathExtension == "mov" || url.pathExtension == "mp4" {
+                        self.saveVideoToLocal(data: data, url: url)
+                    } else if let image = UIImage(data: data) {
+                        self.saveImageToLocal(image: image)
+                    }
+                    
                     dispatchGroup.leave()
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self.saveImageToLocal(image: image)
-                    dispatchGroup.leave()
-                }
-            }.resume()
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            self.loadingAlert.stopLoading()
-            self.dismiss(animated: true) {
+                }.resume()
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                self.loadingAlert.stopLoading()  // Para o loadingAlert após concluir o download e salvamento
                 Alerts.showAlert(title: Text.photosSavedTitle.localized(), text: Text.photosSavedMessage.localized(), controller: self)
             }
         }
     }
 
     private func saveImageToLocal(image: UIImage) {
-        guard let _ = UIImageJPEGRepresentation(image, 0.8) else {
-            DispatchQueue.main.async {
-                Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: Text.convertImageErrorMessage.localized(), controller: self) {
-                    // Ação adicional se necessário após a exibição do erro
-                }
-            }
-            return
-        }
         ModelController.saveImageObject(image: image, basePath: "@")
     }
-
-    private func showSuccessAlert() {
-        let alertController = UIAlertController(title: Text.photosSavedTitle.localized(), message: Text.photosSavedMessage.localized(), preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Text.okActionText.localized(), style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
+    
+    private func saveVideoToLocal(data: Data, url: URL) {
+        guard let thumbnailImage = getThumbnailImage(forUrl: url) else {
+            return
         }
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
+        
+        let (videoName, imageName) = VideoModelController.saveVideoObject(image: thumbnailImage, video: data, basePath: "@")
+        
+        if videoName == nil || imageName == nil {
+            Alerts.showError(title: Text.savePhotosErrorTitle.localized(), text: Text.saveVideoErrorMessage.localized(), controller: self, completion: {})
+        }
     }
 
-    private func showErrorAlert(message: String) {
-        let alertController = UIAlertController(title: Text.savePhotosErrorTitle.localized(), message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Text.okActionText.localized(), style: .default, handler: nil)
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
@@ -168,62 +149,100 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         let url = photoURLs[indexPath.item]
+
+        cell.startLoading()
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    self.showErrorAlert(message: "\(Text.savePhotosErrorMessage.localized()) \(error.localizedDescription)")
+        if url.pathExtension == "mov" || url.pathExtension == "mp4" {
+            DispatchQueue.global().async {
+                if let thumbnail = self.getThumbnailImage(forUrl: url) {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = thumbnail
+                        cell.stopLoading()
+                    }
                 }
-                return
             }
-            
-            guard let data = data, let image = UIImage(data: data) else {
-                DispatchQueue.main.async {
-                    self.showErrorAlert(message: Text.processImageErrorMessage.localized())
+        } else {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.imageView.image = image
+                        cell.stopLoading()
+                    }
                 }
-                return
-            }
-            
-            DispatchQueue.main.async {
-                cell.imageView.image = image
-            }
-        }.resume()
-        
+            }.resume()
+        }
+
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let url = photoURLs[indexPath.item]
+        if url.pathExtension == "mov" || url.pathExtension == "mp4" {
+            let player = AVPlayer(url: url)
+            let playerController = AVPlayerViewController()
+            playerController.player = player
+            present(playerController, animated: true) {
+                player.play()
+            }
+        }
+    }
+
+    private func getThumbnailImage(forUrl url: URL) -> UIImage? {
+        let asset = AVAsset(url: url)
+        let assetImageGenerator = AVAssetImageGenerator(asset: asset)
+        assetImageGenerator.appliesPreferredTrackTransform = true
+        let time = CMTime(seconds: 1, preferredTimescale: 60)
+        do {
+            let cgImage = try assetImageGenerator.copyCGImage(at: time, actualTime: nil)
+            return UIImage(cgImage: cgImage)
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
 }
 
 // MARK: - PhotoCell
 class PhotoCell: UICollectionViewCell {
-    var imageView: UIImageView!
+    
+    let imageView = UIImageView()
+    private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .medium)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupImageView()
-        setupShadow()
-    }
-    
-    private func setupImageView() {
-        imageView = UIImageView(frame: contentView.bounds)
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
         contentView.addSubview(imageView)
+        contentView.addSubview(activityIndicator)
         
+        imageView.backgroundColor = .white
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        setupShadow()  // Configuração da sombra
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func startLoading() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoading() {
+        activityIndicator.stopAnimating()
     }
     
     private func setupShadow() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.25
-        layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowRadius = 4
+        layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.masksToBounds = false
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

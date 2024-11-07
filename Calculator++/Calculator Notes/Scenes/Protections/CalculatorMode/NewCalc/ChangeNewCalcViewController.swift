@@ -54,6 +54,7 @@ class ChangeNewCalcViewController: BaseCalculatorViewController {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
                         self.present(homeViewController, animated: true)
+                        
                     }
                 }
             case .create:

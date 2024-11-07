@@ -1,3 +1,4 @@
+import Photos
 import FirebaseStorage
 import Firebase
 import Foundation
@@ -38,9 +39,8 @@ class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
         
         viewController.present(activityController, animated: true, completion: nil)
     }
-    
+
     func saveVideos(modelData: [URL]) {
-        // Certifique-se de que os URLs sejam válidos e existam
         let validURLs = modelData.filter { FileManager.default.fileExists(atPath: $0.path) }
         
         guard !validURLs.isEmpty else {
@@ -48,24 +48,31 @@ class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
             return
         }
         
-        // Salvar vídeos na galeria do dispositivo
-        for fileURL in validURLs {
-            UISaveVideoAtPathToSavedPhotosAlbum(fileURL.path, self, #selector(video(_:didFinishSavingWithError:contextInfo:)), nil)
+        PHPhotoLibrary.requestAuthorization { status in
+            guard status == .authorized else {
+                print("Permissão para acessar a galeria foi negada.")
+                return
+            }
+            
+            for fileURL in validURLs {
+                self.saveVideoToPhotoLibrary(fileURL: fileURL)
+            }
         }
     }
 
-    // Callback para verificar sucesso ou erro ao salvar os vídeos
-    @objc private func video(_ videoPath: String, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            // Log ou uma mensagem de erro
-            print("Erro ao salvar o vídeo: \(error.localizedDescription)")
-        } else {
-            // Vídeo salvo com sucesso
-            print("Vídeo salvo com sucesso na galeria!")
-//            showSavedAnimation()
+    private func saveVideoToPhotoLibrary(fileURL: URL) {
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileURL)
+        }) { success, error in
+            if let error = error {
+                print("Erro ao salvar o vídeo: \(error.localizedDescription)")
+            } else if success {
+                print("Vídeo salvo com sucesso na galeria!")
+            }
         }
     }
-    
+
+
     internal func shareWithCalculator(modelData: [URL]) {
         guard !modelData.isEmpty else {
 //            print(Text.noVideoToShareMessage)
@@ -94,7 +101,7 @@ class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
                 let alertController = UIAlertController(title: Text.sharedLinkTitle.localized(), message: message, preferredStyle: .alert)
 
                 let copyAction = UIAlertAction(title: Text.copyLinkButtonTitle.localized(), style: .default) { _ in
-                    let messageToPaste = Text.downloadAppMessage.localized() + link + Text.downloadAppPasswordPrefix.localized() + key
+                    let messageToPaste = Text.downloadAppMessage.localized() + " " + link + " " + Text.downloadAppPasswordPrefix.localized() + " " + key
                     UIPasteboard.general.string = messageToPaste
                     self.showCopiedAnimation()
                 }
@@ -182,7 +189,7 @@ class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
         indexPath: IndexPath
     ) {
         guard let viewController = viewController else { return }
-        
+
         guard let videoURL = videoPaths[safe: indexPath.item],
               let path = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(videoURL) else {
             DispatchQueue.main.async {
@@ -191,7 +198,7 @@ class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
             }
             return
         }
-        
+
         let player = AVPlayer(url: path)
         let playerController = AVPlayerViewController()
         playerController.player = player

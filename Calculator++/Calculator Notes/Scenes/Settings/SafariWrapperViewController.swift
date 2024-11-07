@@ -25,7 +25,7 @@ class SafariWrapperViewController: UIViewController, WKNavigationDelegate {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .lightGray
         
         // Configuração do botão de fechar (X)
         closeButton.setTitle("x", for: .normal)

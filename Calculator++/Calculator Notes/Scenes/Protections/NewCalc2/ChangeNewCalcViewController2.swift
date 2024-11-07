@@ -236,10 +236,28 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-            self.present(homeViewController, animated: true)
+            self.present(homeViewController, animated: true) {
+                let couter = Counter()
+                if couter.count > 60 && couter.count % 2 == 0 {
+                    let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+                    if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
+                        self.presentWithCustomDissolve(viewController: purchaseViewController, from: homeViewController, duration: 0.5)
+                    }
+                }
+            }
         }
     }
     
+    
+    func presentWithCustomDissolve(viewController: UIViewController, from presenter: UIViewController, duration: TimeInterval = 1.0) {
+        viewController.view.alpha = 0
+        
+        presenter.present(viewController, animated: false) {
+            UIView.animate(withDuration: duration, animations: {
+                viewController.view.alpha = 1
+            })
+        }
+    }
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

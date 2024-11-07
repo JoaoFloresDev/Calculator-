@@ -68,6 +68,8 @@ enum StringArrayKey: String {
     case videoToUpload
     case videoToDelete
     
+    case secretLinks
+    
     func set(_ value: [String]) {
         userDefaults.set(value, forKey: rawValue)
     }
@@ -160,3 +162,4 @@ class Counter {
         count += 1
     }
 }
+

@@ -142,6 +142,13 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                     alertController.addAction(cancelAction)
 
                     self.viewController?.present(alertController, animated: true)
+                    if var secretLinks = Defaults.getStringArray(.secretLinks) {
+                        secretLinks.append("\(link)@@\(key)")
+                        Defaults.setStringArray(.secretLinks, secretLinks)
+                    } else {
+                        Defaults.setStringArray(.secretLinks, ["\(link)@@\(key)"])
+                    }
+            
                 }
             }
         }

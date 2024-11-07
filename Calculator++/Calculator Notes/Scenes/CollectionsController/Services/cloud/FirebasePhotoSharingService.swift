@@ -66,16 +66,16 @@ struct FirebasePhotoSharingService {
         // Retorna o deeplink gerado
         completion(deepLinkURL, password, nil)
     }
-    
+
     static func createSharedFolderWithVideos(modelData: [URL], completion: @escaping (String?, String?, Error?) -> ()) {
         guard !modelData.isEmpty else {
             completion(nil, nil, NSError(domain: "No videos to upload", code: 400, userInfo: nil))
             return
         }
         
-        // Criar uma pasta única com UUID
+        // Criar uma pasta única com UUID, semelhante à `createSharedFolderWithPhotos`
         let folderName = UUID().uuidString
-        let folderRef = storage.reference().child("shared_videos/\(folderName)")
+        let folderRef = storage.reference().child("shared_photos/\(folderName)")
         
         let dispatchGroup = DispatchGroup()
         var uploadErrors: [Error] = []
@@ -87,7 +87,7 @@ struct FirebasePhotoSharingService {
             
             dispatchGroup.enter()
             
-            // Fazer upload do vídeo
+            // Realizar o upload do vídeo
             videoRef.putFile(from: videoURL, metadata: nil) { metadata, error in
                 if let error = error {
                     print("Erro ao fazer upload do vídeo: \(error.localizedDescription)")
@@ -106,15 +106,4 @@ struct FirebasePhotoSharingService {
             }
         }
     }
-    
-//    // MARK: - Private Methods
-//    private static func createDynamicLink(for folderName: String, completion: @escaping (String?, String?, Error?) -> ()) {
-//        // Criar um link customizado no formato myapp://videos/folderId
-//        let folderId = String(folderName.dropLast(4))
-//        let deepLinkURL = "secrets://shared_videos/\(folderId)"
-//        let password = String(folderName.suffix(4))
-//        
-//        // Retorna o deeplink gerado
-//        completion(deepLinkURL, password, nil)
-//    }
 }

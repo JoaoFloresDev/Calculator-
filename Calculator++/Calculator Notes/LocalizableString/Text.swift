@@ -236,6 +236,7 @@ enum Text: String {
     case photosSavedTitle //= "Fotos salvas"
     case photosSavedMessage //= "Todas as fotos foram salvas na calculadora."
     case okActionText = "OK"
+    case saveVideoErrorMessage
 
     
     func localized() -> String {

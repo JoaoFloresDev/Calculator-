@@ -151,7 +151,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Defaults.setBool(.recoveryStatus, true)
             return UINavigationController(rootViewController: OnboardingWelcomeViewController())
         }
-
+        // remover isso antes de publicar!!!
+        return viewControllerFor(storyboard: "Main", withIdentifier: "Home")
+        
         switch userDefaultService.getTypeProtection() {
         case .calculator:
             return viewControllerFor(storyboard: "CalculatorMode", withIdentifier: "CalcMode")
