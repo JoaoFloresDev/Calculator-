@@ -478,10 +478,23 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         if let thumbImage = photo.thumbImage {
             cell.imageCell.image = thumbImage
         } else {
+            // Adiciona o indicador de carregamento apenas no caso de a miniatura ainda não estar disponível
+            let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .medium)
+            loadingIndicator.color = .lightGray
+            loadingIndicator.startAnimating()
+            cell.contentView.addSubview(loadingIndicator)
+            loadingIndicator.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+            }
+            
+            // Redimensiona a imagem em background
             DispatchQueue.global(qos: .userInteractive).async {
                 let resizedImage = photo.image.resizedTo150x150()
                 self.modelData[indexPath.item].thumbImage = resizedImage
                 DispatchQueue.main.async {
+                    loadingIndicator.stopAnimating()
+                    loadingIndicator.removeFromSuperview()
+                    
                     if collectionView.indexPath(for: cell) == indexPath {
                         cell.imageCell.image = resizedImage
                     }
@@ -625,9 +638,9 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         savedLabel.alpha = 0
         
         UIView.animate(withDuration: 0.5, animations: {
-            savedLabel.alpha = 1
+            savedLabel.alpha = 0.8
         }) { _ in
-            UIView.animate(withDuration: 0.3, delay: 1.5, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseOut, animations: {
                 savedLabel.alpha = 0
             }) { _ in
                 savedLabel.removeFromSuperview()
@@ -740,7 +753,7 @@ extension CollectionViewController {
     }
     
     private func setupData() {
-        modelData = ModelController.listPhotosOf(basePath: basePath)
+        self.modelData = ModelController.listPhotosOf(basePath: self.basePath)
         commonViewDidLoad()
         setupNavigationItems(delegate: self)
         setupFolders()

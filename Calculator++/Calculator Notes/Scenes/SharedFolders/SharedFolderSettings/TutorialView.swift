@@ -16,7 +16,7 @@ class TutorialView: UIView {
         let titleLabel = UILabel()
         titleLabel.text = "Compartilhe fotos e vídeos com segurança"
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         titleLabel.textAlignment = .center
         
         let descriptionLabel = UILabel()
@@ -29,7 +29,7 @@ class TutorialView: UIView {
         
         let howToLabel = UILabel()
         howToLabel.text = "Como usar?"
-        howToLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        howToLabel.font = UIFont.boldSystemFont(ofSize: 20)
         howToLabel.textAlignment = .center
         
         let stepsLabel = UILabel()

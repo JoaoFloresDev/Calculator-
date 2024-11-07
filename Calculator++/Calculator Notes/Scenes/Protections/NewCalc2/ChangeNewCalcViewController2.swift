@@ -234,9 +234,24 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
     
     private func presentHomeViewController() {
         DispatchQueue.main.async {
+            
+            // Adiciona o indicador de carregamento
+            let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .large)
+            loadingIndicator.center = self.view.center
+            loadingIndicator.startAnimating()
+            self.view.addSubview(loadingIndicator)
+            
+            // Carrega o HomeViewController
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+            
+            // Apresenta o HomeViewController
             self.present(homeViewController, animated: true) {
+                // Remove o indicador de carregamento após o present
+                loadingIndicator.stopAnimating()
+                loadingIndicator.removeFromSuperview()
+                
+                // Verifica a condição e apresenta a tela de Purchase se necessário
                 let couter = Counter()
                 if couter.count > 60 && couter.count % 2 == 0 {
                     let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
@@ -247,6 +262,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
             }
         }
     }
+
     
     
     func presentWithCustomDissolve(viewController: UIViewController, from presenter: UIViewController, duration: TimeInterval = 1.0) {

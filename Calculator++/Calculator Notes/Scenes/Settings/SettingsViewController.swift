@@ -189,6 +189,28 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         switchButton.isOn = !Defaults.getBool(.recoveryStatus)
         setupTexts()
         setupViewStyles()
+        setupNewTag()
+    }
+    
+    private func setupNewTag() {
+        // Cria a tag "Novo"
+        let newTagLabel = UILabel()
+        newTagLabel.text = "Novo"
+        newTagLabel.textColor = .white
+        newTagLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        newTagLabel.backgroundColor = .systemBlue
+        newTagLabel.textAlignment = .center
+        newTagLabel.layer.cornerRadius = 10
+        newTagLabel.clipsToBounds = true
+
+        // Adiciona a tag à view e configura o layout ao lado de sugestionsLabel
+        sugestionsView.addSubview(newTagLabel)
+        newTagLabel.snp.makeConstraints { make in
+            make.leading.equalTo(sugestionsLabel.snp.trailing).offset(8)
+            make.centerY.equalTo(sugestionsLabel)
+            make.width.equalTo(40)
+            make.height.equalTo(20)
+        }
     }
     
     private func setupGestures() {
