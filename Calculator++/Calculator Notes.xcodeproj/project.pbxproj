@@ -94,6 +94,7 @@
 		C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E324A559AA003E2FA5 /* SettingsViewController.swift */; };
 		C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */; };
 		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
+		C48DC9D32CDD1BA9008C9E16 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DC9D22CDD1BA9008C9E16 /* TutorialView.swift */; };
 		C49B73BA2CB9D7970097E37E /* FakeHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */; };
 		C49B73BC2CB9D7970097E37E /* FakeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */; };
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
@@ -252,6 +253,7 @@
 		C48108E324A559AA003E2FA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
+		C48DC9D22CDD1BA9008C9E16 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeFactory.swift; sourceTree = "<group>"; };
 		C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeViewController.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
@@ -674,6 +676,9 @@
 		C4D512392CDD009800238037 /* SharedFolderSettings */ = {
 			isa = PBXGroup;
 			children = (
+				C4B75EF42CDC000D005BEBD4 /* SharedFolderSettings.swift */,
+				C4D5123A2CDD013800238037 /* SecretLinkCell.swift */,
+				C48DC9D22CDD1BA9008C9E16 /* TutorialView.swift */,
 			);
 			path = SharedFolderSettings;
 			sourceTree = "<group>";
@@ -683,8 +688,6 @@
 			children = (
 				C4D6CAD02CBF3B5C001AD628 /* PhotoViewController.swift */,
 				C4D512392CDD009800238037 /* SharedFolderSettings */,
-				C4B75EF42CDC000D005BEBD4 /* SharedFolderSettings.swift */,
-				C4D5123A2CDD013800238037 /* SecretLinkCell.swift */,
 			);
 			path = SharedFolders;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				D7B44A942C366030001255FA /* FirebaseBackupService.swift in Sources */,
 				2E4A07941C42F3B0007F415F /* AppDelegate.swift in Sources */,
 				73862C842AAD18BC005D9D25 /* Constants.swift in Sources */,
+				C48DC9D32CDD1BA9008C9E16 /* TutorialView.swift in Sources */,
 				C4BEBDED2CD8FE2E001B15B4 /* CollectionViewController.swift in Sources */,
 				730B2EB92C593FD40016FD9E /* BackupUpdateManager.swift in Sources */,
 				738B6AEF2AD8C54C00EA4B72 /* ScrollableTextViewController.swift in Sources */,

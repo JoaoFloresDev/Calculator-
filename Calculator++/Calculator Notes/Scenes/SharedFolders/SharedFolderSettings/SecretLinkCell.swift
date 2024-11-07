@@ -79,8 +79,8 @@ class SecretLinkCell: UIView {
         buttonStackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(passwordLabel.snp.bottom)
-            make.bottom.equalToSuperview().offset(-10)
-            make.height.equalTo(60)
+            make.bottom.equalToSuperview()
+            make.height.equalTo(50)
         }
     }
     
@@ -119,6 +119,5 @@ class SecretLinkCell: UIView {
     
     @objc private func trashButtonTapped() {
         delegate?.removeCell(withTitle: "\(link)@@\(key)")
-        removeFromSuperview()
     }
 }
