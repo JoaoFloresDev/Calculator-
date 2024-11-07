@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="HSl-dr-OjA">
-                                <rect key="frame" x="0.0" y="92" width="414" height="293"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="342"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HT7-x9-f8c">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
@@ -170,6 +170,23 @@
                                             <constraint firstItem="kmD-un-3rb" firstAttribute="leading" secondItem="Mlt-4O-R0j" secondAttribute="leading" constant="16" id="FRb-Ls-k7c"/>
                                             <constraint firstAttribute="height" constant="48" id="fUW-Yp-Bjz"/>
                                             <constraint firstItem="kmD-un-3rb" firstAttribute="centerY" secondItem="Mlt-4O-R0j" secondAttribute="centerY" id="umE-fc-lVD"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyM-wP-oWW">
+                                        <rect key="frame" x="0.0" y="294" width="414" height="48"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sugestões de melhoria" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwk-HB-3mA">
+                                                <rect key="frame" x="16" y="14" width="174" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <constraints>
+                                            <constraint firstItem="dwk-HB-3mA" firstAttribute="centerY" secondItem="VyM-wP-oWW" secondAttribute="centerY" id="9Cz-21-3jQ"/>
+                                            <constraint firstItem="dwk-HB-3mA" firstAttribute="leading" secondItem="VyM-wP-oWW" secondAttribute="leading" constant="16" id="LhR-2b-utr"/>
+                                            <constraint firstAttribute="height" constant="48" id="wVa-Rk-MLI"/>
                                         </constraints>
                                     </view>
                                 </subviews>

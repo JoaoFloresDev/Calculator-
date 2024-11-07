@@ -4,6 +4,7 @@ import SnapKit
 protocol SecretLinkCellDelegate: AnyObject {
     func removeCell(withTitle title: String)
     func showDetails(withTitle title: String)
+    func copyLink()
 }
 
 class SecretLinkCell: UIView {
@@ -111,6 +112,7 @@ class SecretLinkCell: UIView {
     
     @objc private func copyButtonTapped() {
         UIPasteboard.general.string = "Link: \(link)\nSenha: \(key)"
+        delegate?.copyLink()
     }
     
     @objc private func eyeButtonTapped() {

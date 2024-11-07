@@ -233,10 +233,15 @@ enum Text: String {
     case savePhotosErrorMessage // "Erro ao baixar a imagem:"
     case processImageErrorMessage // "Erro ao processar a imagem."
     case convertImageErrorMessage // "Erro ao converter a imagem para JPEG."
-    case photosSavedTitle //= "Fotos salvas"
-    case photosSavedMessage //= "Todas as fotos foram salvas na calculadora."
-    case okActionText = "OK"
+    case photosSavedTitle ////"Fotos salvas"
+    case photosSavedMessage ////"Todas as fotos foram salvas na calculadora."
+    case okActionText //"OK"
     case saveVideoErrorMessage
+    case limitMessage //"Você atingiu o limite de 5 links. Exclua um link para criar novos."
+    case deleteLinkConfirmationTitle //"Excluir Link"
+    case deleteConfirmationMessage //"Tem certeza de que deseja excluir este link?"
+    case deleteConfirmationCancel //"Cancelar"
+    case deleteConfirmationDelete //"Excluir"
 
     
     func localized() -> String {

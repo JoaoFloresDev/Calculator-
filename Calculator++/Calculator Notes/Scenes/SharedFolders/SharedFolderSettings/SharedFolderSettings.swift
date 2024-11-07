@@ -2,6 +2,10 @@ import UIKit
 import FirebaseStorage
 import SnapKit
 
+import UIKit
+import FirebaseStorage
+import SnapKit
+
 class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -59,7 +63,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
-        limitMessageLabel.text = "Você atingiu o limite de 5 links. Exclua um link para criar novos."
+        limitMessageLabel.text = Text.limitMessage.localized()
         limitMessageLabel.numberOfLines = 0
         limitMessageLabel.font = UIFont.systemFont(ofSize: 14)
         limitMessageLabel.textColor = .red
@@ -76,7 +80,6 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     }
     
     private func setupStackViewCells() {
-        
         stackView.addArrangedSubview(limitMessageLabel)
         for title in cellTitles {
             let cellView = SecretLinkCell(title: title)
@@ -101,13 +104,13 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     
     func removeCell(withTitle title: String) {
         let alertController = UIAlertController(
-            title: "Excluir Link",
-            message: "Tem certeza de que deseja excluir este link?",
+            title: Text.deleteLinkConfirmationTitle.localized(),
+            message: Text.deleteConfirmationMessage.localized(),
             preferredStyle: .alert
         )
         
-        alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Excluir", style: .destructive) { [weak self] _ in
+        alertController.addAction(UIAlertAction(title: Text.deleteConfirmationCancel.localized(), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: Text.deleteConfirmationDelete.localized(), style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             var updatedCellTitles = Defaults.getStringArray(.secretLinks) ?? []
             
@@ -132,35 +135,76 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
         loadPhotosAndShowModal(folderId: folderId)
     }
     
+    lazy var loadingAlert = LoadingAlert(in: self)
+    
     func loadPhotosAndShowModal(folderId: String) {
         let folderRef = Storage.storage().reference().child("shared_photos/\(folderId)")
         
-        folderRef.listAll { result, error in
-            if let error = error {
-                print("Erro ao listar fotos: \(error.localizedDescription)")
-                return
-            }
-            
-            var photoURLs: [URL] = []
-            let dispatchGroup = DispatchGroup()
-            
-            result?.items.forEach { item in
-                dispatchGroup.enter()
-                item.downloadURL { url, error in
-                    if let url = url {
-                        photoURLs.append(url)
-                    }
-                    dispatchGroup.leave()
-                }
-            }
-            
-            dispatchGroup.notify(queue: .main) {
-                guard !photoURLs.isEmpty else {
+        loadingAlert.startLoading {
+            folderRef.listAll { result, error in
+                if let error = error {
+                    print("Erro ao listar fotos: \(error.localizedDescription)")
                     return
                 }
-                let photoViewController = PhotoViewController(photoURLs: photoURLs)
-                let navigationController = UINavigationController(rootViewController: photoViewController)
-                self.present(navigationController, animated: true)
+                
+                var photoURLs: [URL] = []
+                let dispatchGroup = DispatchGroup()
+                
+                result?.items.forEach { item in
+                    dispatchGroup.enter()
+                    item.downloadURL { url, error in
+                        if let url = url {
+                            photoURLs.append(url)
+                        }
+                        dispatchGroup.leave()
+                    }
+                }
+                dispatchGroup.notify(queue: .main) {
+                    self.loadingAlert.stopLoading {
+                        guard !photoURLs.isEmpty else {
+                            return
+                        }
+                        let photoViewController = PhotoViewController(photoURLs: photoURLs)
+                        let navigationController = UINavigationController(rootViewController: photoViewController)
+                        self.present(navigationController, animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    func copyLink() {
+        showSavedAnimation()
+    }
+    
+    private func showSavedAnimation() {
+        let savedLabel = UILabel()
+        savedLabel.text = "Link copiado"
+        savedLabel.font = .boldSystemFont(ofSize: 16)
+        savedLabel.textColor = .white
+        savedLabel.textAlignment = .center
+        savedLabel.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        savedLabel.layer.cornerRadius = 10
+        savedLabel.clipsToBounds = true
+        
+        view.addSubview(savedLabel)
+        
+        savedLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            make.width.equalTo(200)
+            make.height.equalTo(40)
+        }
+        
+        savedLabel.alpha = 0
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            savedLabel.alpha = 1
+        }) { _ in
+            UIView.animate(withDuration: 0.3, delay: 2.0, options: .curveEaseOut, animations: {
+                savedLabel.alpha = 0
+            }) { _ in
+                savedLabel.removeFromSuperview()
             }
         }
     }

@@ -35,10 +35,12 @@ class TutorialView: UIView {
         let stepsLabel = UILabel()
         stepsLabel.text = """
         1. Selecione as fotos na sua galeria.
+        
         2. Toque em compartilhar e escolha 'Compartilhar com senha'.
+        
         3. Envie o link e a senha para quem deseja compartilhar.
         """
-        stepsLabel.font = UIFont.systemFont(ofSize: 16)
+        stepsLabel.font = UIFont.systemFont(ofSize: 18)
         stepsLabel.textAlignment = .left
         stepsLabel.numberOfLines = 0
         

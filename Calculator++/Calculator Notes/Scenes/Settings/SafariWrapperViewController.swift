@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SnapKit
 
 class SafariWrapperViewController: UIViewController, WKNavigationDelegate {
     
@@ -26,37 +27,41 @@ class SafariWrapperViewController: UIViewController, WKNavigationDelegate {
     
     private func setupUI() {
         view.backgroundColor = .lightGray
-        
-        // Configuração do botão de fechar (X)
+
         closeButton.setTitle("x", for: .normal)
         closeButton.setTitleColor(.systemBlue, for: .normal)
+        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
-        view.addSubview(closeButton)
         
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            closeButton.widthAnchor.constraint(equalToConstant: 40),
-            closeButton.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        // Configuração da barra de URL
         urlTextField.borderStyle = .roundedRect
         urlTextField.placeholder = "Digite a URL"
         urlTextField.autocapitalizationType = .none
         urlTextField.returnKeyType = .go
         urlTextField.delegate = self
-        view.addSubview(urlTextField)
+
+        // Stack para alinhar closeButton e urlTextField
+        let horizontalStack = UIStackView(arrangedSubviews: [closeButton, urlTextField])
+        horizontalStack.axis = .horizontal
+        horizontalStack.spacing = 8
+        horizontalStack.alignment = .center
         
-        urlTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            urlTextField.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 8),
-            urlTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            urlTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            urlTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
+        view.addSubview(horizontalStack)
         
+        // Configurando layout com SnapKit
+        horizontalStack.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
+            make.leading.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+        }
+        
+        closeButton.snp.makeConstraints { make in
+            make.width.height.equalTo(40)
+        }
+        
+        urlTextField.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
+
         // Configuração dos botões de navegação
         let stackView = UIStackView(arrangedSubviews: [backButton, forwardButton])
         stackView.axis = .horizontal
@@ -69,14 +74,14 @@ class SafariWrapperViewController: UIViewController, WKNavigationDelegate {
         forwardButton.setTitle("▶️", for: .normal)
         forwardButton.addTarget(self, action: #selector(goForward), for: .touchUpInside)
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            stackView.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.height.equalTo(50)
+        }
     }
+
+
     
     private func setupWebView() {
         webView = WKWebView()

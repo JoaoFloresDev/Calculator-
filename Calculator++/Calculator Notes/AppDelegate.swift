@@ -59,31 +59,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func loadPhotosAndShowModal(folderId: String) {
         let folderRef = Storage.storage().reference().child("shared_photos/\(folderId)")
         
-        folderRef.listAll { result, error in
-            if let error = error {
-                print("Erro ao listar fotos: \(error.localizedDescription)")
-                return
-            }
-            
-            var photoURLs: [URL] = []
-            let dispatchGroup = DispatchGroup()
-            
-            result?.items.forEach { item in
-                dispatchGroup.enter()
-                item.downloadURL { url, error in
-                    if let url = url {
-                        photoURLs.append(url)
+        if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+            var loadingAlert = LoadingAlert(in: rootViewController)
+            loadingAlert.startLoading {
+                folderRef.listAll { result, error in
+                    if let error = error {
+                        print("Erro ao listar fotos: \(error.localizedDescription)")
+                        return
                     }
-                    dispatchGroup.leave()
+                    
+                    var photoURLs: [URL] = []
+                    let dispatchGroup = DispatchGroup()
+                    
+                    result?.items.forEach { item in
+                        dispatchGroup.enter()
+                        item.downloadURL { url, error in
+                            if let url = url {
+                                photoURLs.append(url)
+                            }
+                            dispatchGroup.leave()
+                        }
+                    }
+                    
+                    dispatchGroup.notify(queue: .main) {
+                        guard !photoURLs.isEmpty else {
+                            self.showAlert(message: "Link ou senha inválidos. Tente novamente.")
+                            return
+                        }
+                        loadingAlert.stopLoading {
+                            self.presentPhotoModal(with: photoURLs)
+                        }
+                    }
                 }
-            }
-            
-            dispatchGroup.notify(queue: .main) {
-                guard !photoURLs.isEmpty else {
-                    self.showAlert(message: "Link ou senha inválidos. Tente novamente.")
-                    return
-                }
-                self.presentPhotoModal(with: photoURLs)
             }
         }
     }
@@ -151,8 +158,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Defaults.setBool(.recoveryStatus, true)
             return UINavigationController(rootViewController: OnboardingWelcomeViewController())
         }
-        // remover isso antes de publicar!!!
-        return viewControllerFor(storyboard: "Main", withIdentifier: "Home")
         
         switch userDefaultService.getTypeProtection() {
         case .calculator:
