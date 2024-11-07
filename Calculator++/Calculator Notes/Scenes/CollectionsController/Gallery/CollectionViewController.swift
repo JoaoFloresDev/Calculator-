@@ -84,7 +84,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
 
     func presentWithCustomDissolve(viewController: UIViewController, from presenter: UIViewController, duration: TimeInterval = 1.0) {
-//        viewController.modalPresentationStyle = .
         viewController.view.alpha = 0
         
         presenter.present(viewController, animated: false) {
@@ -469,11 +468,26 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             return UICollectionViewCell()
         }
         
-        let image = modelData[indexPath.item]
-        cell.imageCell.image = image.image
+        let photo = modelData[indexPath.item]
+        
+        cell.imageCell.image = nil
         cell.imageCell.contentMode = .scaleAspectFill
-        cell.isSelectedCell = modelData[indexPath.item].isSelected
+        cell.isSelectedCell = photo.isSelected
         cell.applyshadowWithCorner()
+        
+        if let thumbImage = photo.thumbImage {
+            cell.imageCell.image = thumbImage
+        } else {
+            DispatchQueue.global(qos: .userInteractive).async {
+                let resizedImage = photo.image.resizedTo150x150()
+                self.modelData[indexPath.item].thumbImage = resizedImage
+                DispatchQueue.main.async {
+                    if collectionView.indexPath(for: cell) == indexPath {
+                        cell.imageCell.image = resizedImage
+                    }
+                }
+            }
+        }
         
         return cell
     }
@@ -563,13 +577,15 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             print("Erro: collectionView não está inicializado.")
             return
         }
-        handleAssetSelection(assets)
+        for _ in 0..<20 {
+            handleAssetSelection(assets)
+        }
     }
 
     private func handleAssetSelection(_ assets: [PHAsset]) {
         DispatchQueue.main.async {
             self.showImportAnimation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.1) {
                 for asset in assets {
                     self.addImage(asset: asset) { photo in
                         if let photo = photo {
@@ -611,7 +627,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         UIView.animate(withDuration: 0.5, animations: {
             savedLabel.alpha = 1
         }) { _ in
-            UIView.animate(withDuration: 0.3, delay: 2.0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.3, delay: 1.5, options: .curveEaseOut, animations: {
                 savedLabel.alpha = 0
             }) { _ in
                 savedLabel.removeFromSuperview()

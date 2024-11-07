@@ -64,6 +64,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var shareWithOtherCalc: UIView!
     @IBOutlet weak var fakePassword: UIView!
     
+    @IBOutlet weak var sugestionsView: UIView!
+    @IBOutlet weak var sugestionsLabel: UILabel!
+    
     // MARK: - IBAction
     @IBAction func switchButtonAction(_ sender: UISwitch) {
         Defaults.setBool(.recoveryStatus, !sender.isOn)
@@ -206,6 +209,16 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         
         let fakePasswordPressed = UITapGestureRecognizer(target: self, action: #selector(fakePasswordPressed(_:)))
         fakePassword.addGestureRecognizer(fakePasswordPressed)
+        
+        let sugestionsPressed = UITapGestureRecognizer(target: self, action: #selector(sugestionsPressed(_:)))
+        sugestionsView.addGestureRecognizer(sugestionsPressed)
+    }
+    
+    @objc func sugestionsPressed(_ sender: UITapGestureRecognizer? = nil) {
+        let controller = UIViewController()
+        controller.view.backgroundColor = .yellow
+        let navigation = UINavigationController(rootViewController: controller)
+        self.present(navigation, animated: true)
     }
     
     private func setupViewStyles() {

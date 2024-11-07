@@ -222,6 +222,8 @@
                         <outlet property="recoverLabel" destination="Dac-Ca-htn" id="Txt-1e-RiB"/>
                         <outlet property="shareWithOtherCalc" destination="Mlt-4O-R0j" id="zzf-bB-YfJ"/>
                         <outlet property="stackview" destination="HSl-dr-OjA" id="3xx-sH-o17"/>
+                        <outlet property="sugestionsLabel" destination="dwk-HB-3mA" id="i0U-sn-AlJ"/>
+                        <outlet property="sugestionsView" destination="VyM-wP-oWW" id="d43-L3-5Ap"/>
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>
                     </connections>

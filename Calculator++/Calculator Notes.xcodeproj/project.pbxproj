@@ -94,6 +94,7 @@
 		C48108E724A5753B003E2FA5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */; };
 		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
 		C48DC9D32CDD1BA9008C9E16 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DC9D22CDD1BA9008C9E16 /* TutorialView.swift */; };
+		C491CCC42CDD41C00042C65F /* Sugestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C491CCC32CDD41C00042C65F /* Sugestions.swift */; };
 		C49B73BA2CB9D7970097E37E /* FakeHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */; };
 		C49B73BC2CB9D7970097E37E /* FakeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */; };
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
@@ -252,6 +253,7 @@
 		C48108E624A5753B003E2FA5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
 		C48DC9D22CDD1BA9008C9E16 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		C491CCC32CDD41C00042C65F /* Sugestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sugestions.swift; sourceTree = "<group>"; };
 		C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeFactory.swift; sourceTree = "<group>"; };
 		C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeViewController.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 		73B54D5027B0979B00499F66 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C491CCC22CDD41AC0042C65F /* Sugestions */,
 				C4D6CACF2CBF3ACF001AD628 /* SharedFolders */,
 				C60906F62C18CEB60066D337 /* Auth */,
 				73B860572AC1D5560023441A /* Onboarding */,
@@ -642,6 +645,14 @@
 				BA3244412A4B692C00A782CA /* BasicModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C491CCC22CDD41AC0042C65F /* Sugestions */ = {
+			isa = PBXGroup;
+			children = (
+				C491CCC32CDD41C00042C65F /* Sugestions.swift */,
+			);
+			path = Sugestions;
 			sourceTree = "<group>";
 		};
 		C4A819EA24A6C0FB005023C6 /* Purchase */ = {
@@ -953,6 +964,7 @@
 				730438762A3445EF001EF25B /* FlowLayout.swift in Sources */,
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
 				73A8EFE22C5ABE9800601079 /* BackupStatusView.swift in Sources */,
+				C491CCC42CDD41C00042C65F /* Sugestions.swift in Sources */,
 				738827C82B1509170051BEF4 /* InAppPurchaseManager.swift in Sources */,
 				738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */,
 				73A8EFE62C5ACA3600601079 /* BackupProfileView.swift in Sources */,

@@ -16,26 +16,17 @@ struct Folder {
 struct Photo {
     var name: String
     var image: UIImage
+    var thumbImage: UIImage?
     var isSelected: Bool = false
-    var location: String = String()
 }
 
-extension UIImage
-{
-    func scale(newWidth: CGFloat) -> UIImage
-    {
-        guard self.size.width != newWidth else{return self}
-        
-        let scaleFactor = newWidth / self.size.width
-        
-        let newHeight = self.size.height * scaleFactor
-        let newSize = CGSize(width: newWidth, height: newHeight)
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, true, 0.0)
-        self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        
-        let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-        return newImage ?? self
+extension UIImage {
+    func resizedTo150x150() -> UIImage {
+        let targetSize = CGSize(width: 150, height: 150)
+        UIGraphicsBeginImageContextWithOptions(targetSize, true, 0)
+        self.draw(in: CGRect(origin: .zero, size: targetSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizedImage ?? self
     }
 }
