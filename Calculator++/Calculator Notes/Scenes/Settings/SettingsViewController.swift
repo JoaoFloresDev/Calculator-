@@ -61,8 +61,13 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var backupLabel: UILabel!
     
     @IBOutlet weak var changePassword: UIView!
-    @IBOutlet weak var shareWithOtherCalc: UIView!
+    @IBOutlet weak var changePassworldLabel: UILabel!
+    
+    @IBOutlet weak var fakepasswordLabel: UILabel!
     @IBOutlet weak var fakePassword: UIView!
+    
+    @IBOutlet weak var shareWithOtherCalc: UIView!
+    @IBOutlet weak var shareWithOtherCalcLabel: UILabel!
     
     @IBOutlet weak var sugestionsView: UIView!
     @IBOutlet weak var sugestionsLabel: UILabel!
@@ -190,33 +195,42 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         setupTexts()
         setupViewStyles()
         setupNewTag()
+        
+        changePassworldLabel.text = Text.changePassword.localized()
+        fakepasswordLabel.text = Text.addFakePassword.localized()
+        shareWithOtherCalcLabel.text = Text.secretSharing.localized()
+        sugestionsLabel.text = Text.improvementSuggestions.localized()
     }
     
     private func setupNewTag() {
-        // Cria a tag "Novo"
         let newTagLabel = UILabel()
-        newTagLabel.text = "Novo"
+        newTagLabel.text = Text.newTag.localized()
         newTagLabel.textColor = .white
-        newTagLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        newTagLabel.backgroundColor = .systemBlue
+        newTagLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         newTagLabel.textAlignment = .center
-        newTagLabel.layer.cornerRadius = 10
         newTagLabel.clipsToBounds = true
 
-        // Adiciona a tag à view e configura o layout ao lado de sugestionsLabel
-        sugestionsView.addSubview(newTagLabel)
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .systemBlue
+        backgroundView.layer.cornerRadius = 10
+        backgroundView.clipsToBounds = true
+        
+        backgroundView.addSubview(newTagLabel)
+        shareWithOtherCalc.addSubview(backgroundView)
+        
+        // Constraints para a newTagLabel dentro do backgroundView
         newTagLabel.snp.makeConstraints { make in
-            make.leading.equalTo(sugestionsLabel.snp.trailing).offset(8)
-            make.centerY.equalTo(sugestionsLabel)
-            make.width.equalTo(40)
-            make.height.equalTo(20)
+            make.edges.equalToSuperview().inset(6)
+        }
+        
+        // Constraints para o backgroundView em relação ao shareWithOtherCalcLabel
+        backgroundView.snp.makeConstraints { make in
+            make.leading.equalTo(shareWithOtherCalcLabel.snp.trailing).offset(8)
+            make.centerY.equalTo(shareWithOtherCalcLabel)
         }
     }
     
     private func setupGestures() {
-//        let useTermsPressed = UITapGestureRecognizer(target: self, action: #selector(useTermsPressed(_:)))
-//        useTerms.addGestureRecognizer(useTermsPressed)
-        
         let browserPressed = UITapGestureRecognizer(target: self, action: #selector(browserPressed(_:)))
         browser.addGestureRecognizer(browserPressed)
         
@@ -237,8 +251,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func sugestionsPressed(_ sender: UITapGestureRecognizer? = nil) {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .yellow
+        let controller = SuggestionsViewController()
         let navigation = UINavigationController(rootViewController: controller)
         self.present(navigation, animated: true)
     }

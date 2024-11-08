@@ -243,6 +243,52 @@ enum Text: String {
     case deleteConfirmationCancel //"Cancelar"
     case deleteConfirmationDelete //"Excluir"
 
+    case deleteErrorTitle
+    case deleteErrorMessage
+    case folderDeletedTitle
+    case folderDeletedMessage
+
+    case headerMessage // "Agradecemos por compartilhar suas ideias conosco"
+    case emailContact // "Email para Contato (opcional)"
+    case writeYourMessage // "Deixe sua Mensagem"
+    case emailPlaceholder // "Seu email (opcional)"
+    case feedbackPlaceholder // "Queremos ouvir suas ideias, sugestões e feedbacks!"
+    case submitButtonTitle // "Enviar Feedback"
+    case emptyMessageAlertTitle // "Mensagem em branco"
+    case emptyMessageAlertMessage // "Por favor, preencha o campo e tente novamente"
+    case errorAlertTitle // "Erro!"
+    case errorAlertMessage // "Tente mais tarde"
+    case thankYouAlertTitle // "Muito Obrigado!"
+    case thankYouAlertMessage // "Sua opinião é muito importante para nós. Sua mensagem foi enviada com sucesso!"
+    case suggestionsFeedbackTitle // "Sugestões e Feedback"
+    case linkCopied // "Link copiado"
+    case secureSharing // "Compartilhamento Seguro"
+    case activeLinks // "Links ativos"
+    case networkError // "Erro de rede"
+    case linkPrefix // "link: "
+    case keyPrefix // "key: "
+    case linkText // "Link: "
+    case keyText // "Senha: "
+
+    case tutorialTitle // "Compartilhe fotos e vídeos com segurança"
+    case tutorialDescription // "Agora você pode criar links compartilháveis com fotos e vídeos de maneira segura. Quem receber o link poderá importar as fotos diretamente no app."
+    case tutorialHowTo // "Como usar?"
+    case tutorialSteps // "1. Selecione as fotos na sua galeria.\n\n2. Toque em compartilhar e escolha 'Criar link seguro'.\n\n3. Envie o link e a senha para quem deseja compartilhar."
+    case importingPhotos // "Importando fotos"
+    case limitReachedTitle // "Limite Atingido"
+    case limitReachedMessage // "Você alcançou o limite de links criados. Por favor, acesse 'Link Seguro' nas configurações e desative um link existente para liberar espaço."
+    case chooseDestination // "Escolha o destino"
+    case share // "Compartilhar"
+    case saveToGallery // "Salvar na galeria"
+    case shareWithOtherCalculator // "Compartilhar com outra calculadora"
+    case enterURL // "Digite a URL"
+    case newTag // "Novo"
+    case addFakePassword // "Adicionar senha falsa"
+    case secretSharing // "Compartilhamento secreto"
+    case improvementSuggestions // "Sugestões de melhoria"
+    case biometricAuthentication // "Biometric Authentication"
+    case changePassword // "Alterar senha"
+
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
@@ -250,29 +296,5 @@ enum Text: String {
                                  bundle: .main,
                                  value: self.rawValue,
                                  comment: self.rawValue)
-    }
-}
-
-enum Img: String {
-    case diselectedIndicator
-    case selectedIndicator
-    case keyEmpty
-    case keyCurrent
-    case placeholderVideo
-    case placeholderNotes
-    case keyFill
-    case folder
-    case leftarrow
-    case emptyGalleryIcon
-    case emptyVideoIcon
-    case premiumIcon
-    case emptyNotesIcon
-    case iconMrk
-    case noads
-    case videosupport
-    case unlimited
-    
-    func name() -> String {
-        self.rawValue
     }
 }

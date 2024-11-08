@@ -107,3 +107,98 @@ struct FirebasePhotoSharingService {
         }
     }
 }
+
+extension FirebasePhotoSharingService {
+    static func deleteSharedFolderWithPhotos(folderId: String, completion: @escaping (Error?) -> ()) {
+        let folderRef = storage.reference().child("shared_photos/\(folderId)")
+        
+        // Listar todos os arquivos na pasta
+        folderRef.listAll { (result, error) in
+            if let error = error {
+                print("Erro ao listar arquivos na pasta: \(error.localizedDescription)")
+                completion(error)
+                return
+            }
+            
+            guard let items = result?.items else {
+                completion(NSError(domain: "No items to delete", code: 404, userInfo: nil))
+                return
+            }
+            
+            let dispatchGroup = DispatchGroup()
+            var deletionErrors: [Error] = []
+            
+            for item in items {
+                dispatchGroup.enter()
+                item.delete { error in
+                    if let error = error {
+                        print("Erro ao deletar arquivo: \(error.localizedDescription)")
+                        deletionErrors.append(error)
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                // Se houver erros de deleção, retorna o primeiro erro; caso contrário, retorna sucesso
+                if deletionErrors.isEmpty {
+                    completion(nil) // Itens deletados com sucesso
+                } else {
+                    completion(deletionErrors.first)
+                }
+            }
+        }
+    }
+}
+extension FirebasePhotoSharingService {
+    // MARK: - Public Method for Uploading Text File
+    static func uploadTextFile(mail: String? = nil, message: String, completion: @escaping (String?, Error?) -> ()) {
+        let folderName = UUID().uuidString
+        let maxPrefixLength = 15
+        let prefix = String(message.prefix(maxPrefixLength)).replacingOccurrences(of: " ", with: "_")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yy"
+        let dateString = dateFormatter.string(from: Date())
+        let uniqueID = UUID().uuidString
+        let fileName = "\(prefix)___\(dateString)___\(uniqueID).txt"
+        
+        // Criar uma referência para o arquivo .txt no Firebase Storage
+        let fileRef = storage.reference().child("shared_texts/opinions/\(fileName)")
+        
+        let fullText = message + "\n\nemail: \(mail ?? "unknow")"
+        guard let fileData = fullText.data(using: .utf8) else {
+            completion(nil, NSError(domain: "Text conversion failed", code: 500, userInfo: nil))
+            return
+        }
+        
+        // Realizar o upload do arquivo .txt para o Firebase Storage
+        fileRef.putData(fileData, metadata: nil) { metadata, error in
+            if let error = error {
+                print("Erro ao fazer upload do arquivo de texto: \(error.localizedDescription)")
+                completion(nil, error)
+            } else {
+                // Obter a URL de download do arquivo para retornar no completion
+                fileRef.downloadURL { url, error in
+                    if let error = error {
+                        print("Erro ao obter a URL de download: \(error.localizedDescription)")
+                        completion(nil, error)
+                    } else {
+                        // Retorna a URL do arquivo txt armazenado
+                        completion(url?.absoluteString, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func generateFileName(from message: String) -> String {
+        let maxPrefixLength = 20
+        let prefix = String(message.prefix(maxPrefixLength)).replacingOccurrences(of: " ", with: "_")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
+        let dateString = dateFormatter.string(from: Date())
+        let uniqueID = UUID().uuidString
+        let fileName = "\(prefix)_\(dateString)_\(uniqueID).txt"
+        return fileName
+    }
+}

@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseStorage
 import SnapKit
 
 protocol SecretLinkCellDelegate: AnyObject {
@@ -16,6 +17,8 @@ class SecretLinkCell: UIView {
     private let eyeButton = UIButton(type: .system)
     private let trashButton = UIButton(type: .system)
     private let copyButton = UIButton(type: .system)
+    private let statusLabel = UILabel()  // Label para mostrar o status do link
+    private let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .medium)
     
     private var link: String
     private var key: String
@@ -25,6 +28,38 @@ class SecretLinkCell: UIView {
         self.key = title.components(separatedBy: "@@").count > 1 ? title.components(separatedBy: "@@")[1] : "N/A"
         super.init(frame: .zero)
         setupView()
+        
+        // Exibir o loading
+        loadingIndicator.startAnimating()
+        self.alpha = 0.5
+        let folderId = title
+            .replacingOccurrences(of: "secrets://shared_photos/", with: "")
+            .replacingOccurrences(of: "@@", with: "")
+        let folderRef = Storage.storage().reference().child("shared_photos/\(folderId)")
+        
+        // Verifica a disponibilidade do link
+        folderRef.listAll { result, error in
+            self.alpha = 1
+            self.loadingIndicator.stopAnimating()
+            if let error = error {
+                let nsError = error as NSError
+                if nsError.domain == NSURLErrorDomain {
+                    self.statusLabel.text = Text.networkError.localized()
+                    self.statusLabel.isHidden = false
+                } else {
+                    // Remover do Defaults e animar remoção da célula
+                    self.removeLinkFromDefaults(title: title)
+                    self.animateRemoval()
+                }
+                return
+            }
+            
+            if result?.items.isEmpty == true {
+                // Remover do Defaults e animar remoção da célula
+                self.removeLinkFromDefaults(title: title)
+                self.animateRemoval()
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -43,18 +78,26 @@ class SecretLinkCell: UIView {
         let boldAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: 16)]
         let normalAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16)]
         
-        let attributedText = NSMutableAttributedString(string: "link: ", attributes: boldAttributes)
+        let attributedText = NSMutableAttributedString(string: Text.linkPrefix.localized(), attributes: boldAttributes)
         attributedText.append(NSAttributedString(string: link, attributes: normalAttributes))
         titleLabel.numberOfLines = 0
         titleLabel.attributedText = attributedText
         addSubview(titleLabel)
-        
-        // Configurar senha com estilo
-        let passwordAttributedText = NSMutableAttributedString(string: "key: ", attributes: boldAttributes)
+        let passwordAttributedText = NSMutableAttributedString(string: Text.keyPrefix.localized(), attributes: boldAttributes)
         passwordAttributedText.append(NSAttributedString(string: key, attributes: normalAttributes))
         passwordLabel.numberOfLines = 0
         passwordLabel.attributedText = passwordAttributedText
         addSubview(passwordLabel)
+        
+        // Configurar label de status
+        statusLabel.isHidden = true
+        statusLabel.textColor = .black
+        statusLabel.font = UIFont.systemFont(ofSize: 20)
+        statusLabel.textAlignment = .center
+        addSubview(statusLabel)
+        
+        // Configurar indicador de loading
+        addSubview(loadingIndicator)
         
         // Configurar botões
         setupButtons()
@@ -79,9 +122,18 @@ class SecretLinkCell: UIView {
         
         buttonStackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
-            make.top.equalTo(passwordLabel.snp.bottom)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(passwordLabel.snp.bottom).offset(8)
             make.height.equalTo(50)
+        }
+        
+        statusLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(buttonStackView.snp.bottom).offset(8)
+            make.bottom.equalToSuperview().offset(-10)
+        }
+        
+        loadingIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
     
@@ -111,7 +163,7 @@ class SecretLinkCell: UIView {
     }
     
     @objc private func copyButtonTapped() {
-        UIPasteboard.general.string = "Link: \(link)\nSenha: \(key)"
+        UIPasteboard.general.string = "\(Text.linkText.localized())\(link)\n\(Text.keyText.localized())\(key)"
         delegate?.copyLink()
     }
     
@@ -121,5 +173,23 @@ class SecretLinkCell: UIView {
     
     @objc private func trashButtonTapped() {
         delegate?.removeCell(withTitle: "\(link)@@\(key)")
+    }
+    
+    // Função para remover o link do Defaults
+    private func removeLinkFromDefaults(title: String) {
+        var updatedCellTitles = Defaults.getStringArray(.secretLinks) ?? []
+        if let index = updatedCellTitles.firstIndex(of: title) {
+            updatedCellTitles.remove(at: index)
+            Defaults.setStringArray(.secretLinks, updatedCellTitles)
+        }
+    }
+    
+    // Função para animar a remoção da célula
+    private func animateRemoval() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.alpha = 0
+        }) { _ in
+            self.removeFromSuperview()
+        }
     }
 }

@@ -34,7 +34,7 @@ class SafariWrapperViewController: UIViewController, WKNavigationDelegate {
         closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
         
         urlTextField.borderStyle = .roundedRect
-        urlTextField.placeholder = "Digite a URL"
+        urlTextField.placeholder = Text.enterURL.localized()
         urlTextField.autocapitalizationType = .none
         urlTextField.returnKeyType = .go
         urlTextField.delegate = self

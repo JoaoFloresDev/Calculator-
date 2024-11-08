@@ -65,6 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 folderRef.listAll { result, error in
                     if let error = error {
                         print("Erro ao listar fotos: \(error.localizedDescription)")
+                        loadingAlert.stopLoading {
+                            self.showAlert(message: "Link ou senha inválidos. Tente novamente.")
+                        }
                         return
                     }
                     
@@ -83,11 +86,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     dispatchGroup.notify(queue: .main) {
                         guard !photoURLs.isEmpty else {
-                            self.showAlert(message: "Link ou senha inválidos. Tente novamente.")
+                            loadingAlert.stopLoading {
+                                self.showAlert(message: "Link ou senha inválidos. Tente novamente.")
+                            }
                             return
                         }
                         loadingAlert.stopLoading {
-                            self.presentPhotoModal(with: photoURLs)
+                            self.presentPhotoModal(with: photoURLs, fileID: folderId)
                         }
                     }
                 }
@@ -105,8 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func presentPhotoModal(with photoURLs: [URL]) {
-        let photoViewController = PhotoViewController(photoURLs: photoURLs)
+    func presentPhotoModal(with photoURLs: [URL], fileID: String) {
+        let photoViewController = PhotoViewController(photoURLs: photoURLs, fileID: fileID)
         if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
             let navigationController = UINavigationController(rootViewController: photoViewController)
             rootViewController.present(navigationController, animated: true, completion: nil)

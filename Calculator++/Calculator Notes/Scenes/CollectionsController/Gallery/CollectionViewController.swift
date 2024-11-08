@@ -231,21 +231,25 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             return
         }
         
-        let alertController = UIAlertController(title: "Escolha o destino", message: nil, preferredStyle: .actionSheet)
-        
-        let shareAction = UIAlertAction(title: "Compartilhar", style: .default) { [weak self] _ in
+        let alertController = UIAlertController(
+            title: Text.chooseDestination.localized(),
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+             
+        let shareAction = UIAlertAction(title: Text.share.localized(), style: .default) { [weak self] _ in
             self?.shareSelectedImages()
         }
-        
-        let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { [weak self] _ in
+             
+        let saveAction = UIAlertAction(title: Text.saveToGallery.localized(), style: .default) { [weak self] _ in
             self?.saveSelectedImages()
         }
-        
-        let shareWithCalculatorAction = UIAlertAction(title: "Compartilhamento secreto", style: .default) { [weak self] _ in
+             
+        let shareWithCalculatorAction = UIAlertAction(title: Text.secureSharing.localized(), style: .default) { [weak self] _ in
             self?.shareWithCalculator()
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+             
+        let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .cancel, handler: nil)
         
         alertController.addAction(shareAction)
         alertController.addAction(shareWithCalculatorAction)
@@ -269,6 +273,14 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
 
     private func shareWithCalculator() {
         let selectedItems = getSelectedItems()
+        let createdLinks: [String] = Defaults.getStringArray(.secretLinks) ?? []
+        if createdLinks.count >= 5 {
+            Alerts.showAlert(
+                title: Text.limitReachedTitle.localized(),
+                text: Text.limitReachedMessage.localized(),
+                controller: self
+            )
+        }
         coordinator?.shareWithCalculator(modelData: selectedItems)
     }
 
@@ -471,6 +483,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         let photo = modelData[indexPath.item]
         
         cell.imageCell.image = nil
+        cell.backgroundColor = .clear
         cell.imageCell.contentMode = .scaleAspectFill
         cell.isSelectedCell = photo.isSelected
         cell.applyshadowWithCorner()
@@ -478,7 +491,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         if let thumbImage = photo.thumbImage {
             cell.imageCell.image = thumbImage
         } else {
-            // Adiciona o indicador de carregamento apenas no caso de a miniatura ainda não estar disponível
             let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .medium)
             loadingIndicator.color = .lightGray
             loadingIndicator.startAnimating()
@@ -501,7 +513,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
                 }
             }
         }
-        
         return cell
     }
     
@@ -618,7 +629,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
 
     private func showImportAnimation() {
         let savedLabel = UILabel()
-        savedLabel.text = "Importando fotos"
+        savedLabel.text = Text.importingPhotos.localized()
         savedLabel.font = .boldSystemFont(ofSize: 18)
         savedLabel.textColor = .white
         savedLabel.textAlignment = .center
@@ -657,7 +668,6 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             if let image = image, let photo = ModelController.saveImageObject(image: image, basePath: self.basePath) {
                 completion(photo)
             } else {
-                print("Erro ao salvar a imagem.")
                 completion(nil)
             }
         }
@@ -789,61 +799,5 @@ extension SKStoreReviewController {
                 requestReview(in: scene)
             }
         }
-    }
-}
-
-class ProgressBarController: UIViewController {
-    private var progressView = UIProgressView(progressViewStyle: .default)
-    private var titleLabel = UILabel()
-    private var progressLabel = UILabel()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViews()
-    }
-
-    private func setupViews() {
-        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
-
-        titleLabel.text = "Processando Fotos"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        titleLabel.textColor = .white
-        titleLabel.textAlignment = .center
-
-        progressLabel.font = UIFont.systemFont(ofSize: 16)
-        progressLabel.textColor = .white
-        progressLabel.textAlignment = .center
-
-        progressView.progressTintColor = .systemBlue
-        progressView.trackTintColor = .white
-        progressView.layer.cornerRadius = 8
-        progressView.clipsToBounds = true
-
-        view.addSubview(titleLabel)
-        view.addSubview(progressView)
-        view.addSubview(progressLabel)
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressLabel.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
-            progressView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            progressView.heightAnchor.constraint(equalToConstant: 20),
-
-            progressLabel.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 10),
-            progressLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-    }
-
-    func updateProgress(current: Int, total: Int) {
-        let progress = Float(current) / Float(total)
-        progressView.setProgress(progress, animated: true)
-        progressLabel.text = "\(current) / \(total) Fotos Processadas"
     }
 }

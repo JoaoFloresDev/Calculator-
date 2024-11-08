@@ -158,8 +158,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mlt-4O-R0j">
                                         <rect key="frame" x="0.0" y="245" width="414" height="48"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compartilhamentos com senha" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmD-un-3rb">
-                                                <rect key="frame" x="16" y="14" width="237.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link Seguro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmD-un-3rb">
+                                                <rect key="frame" x="16" y="14" width="90.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -216,13 +216,16 @@
                         <outlet property="browser" destination="hbc-md-57V" id="pEf-lY-H3E"/>
                         <outlet property="browserLabel" destination="cvG-Ye-PPs" id="q2H-T1-ZY9"/>
                         <outlet property="changePassword" destination="ert-Ym-P1Q" id="IFG-GA-L0i"/>
+                        <outlet property="changePassworldLabel" destination="a9d-kN-wwz" id="d0Z-IO-2Hw"/>
                         <outlet property="customTabBar" destination="hh2-yq-auE" id="Fgj-8r-Zdu"/>
                         <outlet property="faceIDView" destination="HT7-x9-f8c" id="ED4-RH-aKe"/>
                         <outlet property="fakePassword" destination="cf1-5B-2Fc" id="qMP-ry-DWY"/>
+                        <outlet property="fakepasswordLabel" destination="TUz-od-SqZ" id="KkY-ia-djn"/>
                         <outlet property="recoverLabel" destination="Dac-Ca-htn" id="Txt-1e-RiB"/>
                         <outlet property="shareWithOtherCalc" destination="Mlt-4O-R0j" id="zzf-bB-YfJ"/>
+                        <outlet property="shareWithOtherCalcLabel" destination="kmD-un-3rb" id="Qmo-wk-DtK"/>
                         <outlet property="stackview" destination="HSl-dr-OjA" id="3xx-sH-o17"/>
-                        <outlet property="sugestionsLabel" destination="dwk-HB-3mA" id="i0U-sn-AlJ"/>
+                        <outlet property="sugestionsLabel" destination="dwk-HB-3mA" id="EKF-xY-FLm"/>
                         <outlet property="sugestionsView" destination="VyM-wP-oWW" id="d43-L3-5Ap"/>
                         <outlet property="switchButton" destination="BVG-9x-eof" id="0DT-sK-RdQ"/>
                         <outlet property="upgradeButton" destination="J0I-lb-M7L" id="8rQ-4k-LCB"/>

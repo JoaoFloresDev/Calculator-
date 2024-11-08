@@ -123,7 +123,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                     }
 
                     guard let link = link, let key = key else {
-                        print("Erro: link de compartilhamento não gerado.")
+                        Alerts.showGenericError(controller: viewController)
                         return
                     }
 

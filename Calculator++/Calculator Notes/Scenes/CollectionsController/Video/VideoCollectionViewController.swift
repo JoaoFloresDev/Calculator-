@@ -164,9 +164,13 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
     }
     
     func shareImageButtonTapped() {
-        let alertController = UIAlertController(title: "Escolha o destino", message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(
+            title: Text.chooseDestination.localized(),
+            message: nil,
+            preferredStyle: .actionSheet
+        )
 
-        let shareAction = UIAlertAction(title: "Compartilhar", style: .default) {_ in
+        let shareAction = UIAlertAction(title: Text.share.localized(), style: .default) { _ in
             var fileURLs = [URL]()
             
             let selectedItems = self.modelData.filter { $0.isSelected }
@@ -195,7 +199,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
             self.coordinator.shareImage(modelData: fileURLs)
         }
 
-        let saveAction = UIAlertAction(title: "Salvar na galeria", style: .default) { _ in
+        let saveAction = UIAlertAction(title: Text.saveToGallery.localized(), style: .default) { _ in
             var fileURLs = [URL]()
             
             let selectedItems = self.modelData.filter { $0.isSelected }
@@ -248,7 +252,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
         }
 
 
-        let shareWithCalculatorAction = UIAlertAction(title: "Compartilhar com outra calculadora", style: .default) { _ in
+        let shareWithCalculatorAction = UIAlertAction(title: Text.shareWithOtherCalculator.localized(), style: .default) { _ in
             var fileURLs = [URL]()
             
             let selectedItems = self.modelData.filter { $0.isSelected }
@@ -276,7 +280,7 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
             self.coordinator.shareWithCalculator(modelData: fileURLs)
         }
 
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: Text.cancel.localized(), style: .cancel, handler: nil)
 
         alertController.addAction(shareAction)
         alertController.addAction(shareWithCalculatorAction)

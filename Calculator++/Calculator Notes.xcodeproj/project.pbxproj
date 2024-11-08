@@ -80,6 +80,7 @@
 		848490D31D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848490D11D68F5610043C60B /* MakeSchoolNotes.xcdatamodeld */; };
 		BA3244422A4B692C00A782CA /* BasicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3244412A4B692C00A782CA /* BasicModels.swift */; };
 		C4148D8A2440F45E00225706 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4148D882440F45E00225706 /* CollectionViewCell.swift */; };
+		C41CA9A62CDECED700E56D72 /* Img.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41CA9A52CDECED700E56D72 /* Img.swift */; };
 		C41F8484249F271F0015F134 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41F8483249F271F0015F134 /* PasswordViewController.swift */; };
 		C4507E0824A7C1FF00960972 /* VideoPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */; };
 		C467BCAB24A9AABF0039D237 /* VideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */; };
@@ -239,6 +240,7 @@
 		8CD7FDCE1854C6BD4A61E97A /* Pods-Calculator Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator Notes.debug.xcconfig"; path = "Target Support Files/Pods-Calculator Notes/Pods-Calculator Notes.debug.xcconfig"; sourceTree = "<group>"; };
 		BA3244412A4B692C00A782CA /* BasicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModels.swift; sourceTree = "<group>"; };
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		C41CA9A52CDECED700E56D72 /* Img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Img.swift; sourceTree = "<group>"; };
 		C41F8483249F271F0015F134 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
 		C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 			children = (
 				73B54D5F27B09A1B00499F66 /* Localizable.strings */,
 				73B54D6727B09DF100499F66 /* Text.swift */,
+				C41CA9A52CDECED700E56D72 /* Img.swift */,
 			);
 			path = LocalizableString;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				C48108E424A559AA003E2FA5 /* SettingsViewController.swift in Sources */,
 				73A8EFE22C5ABE9800601079 /* BackupStatusView.swift in Sources */,
 				C491CCC42CDD41C00042C65F /* Sugestions.swift in Sources */,
+				C41CA9A62CDECED700E56D72 /* Img.swift in Sources */,
 				738827C82B1509170051BEF4 /* InAppPurchaseManager.swift in Sources */,
 				738B6AF12AD8C57800EA4B72 /* OnboardingAddPhotosViewController.swift in Sources */,
 				73A8EFE62C5ACA3600601079 /* BackupProfileView.swift in Sources */,

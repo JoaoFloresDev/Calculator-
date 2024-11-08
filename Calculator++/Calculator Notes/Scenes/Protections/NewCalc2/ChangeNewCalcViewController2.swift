@@ -14,18 +14,16 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
 
     var faceIDButton: UIButton = {
         let button = UIButton(type: .system)
-        let title = "..."
+        let iconImage = UIImage(systemName: "shield")
+        button.setImage(iconImage, for: .normal)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
         
-        let attributedTitle = NSAttributedString(string: title, attributes: [
-            .foregroundColor: UIColor.systemBlue,
-            .paragraphStyle: paragraphStyle
-        ])
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
         button.contentHorizontalAlignment = .right
         button.contentVerticalAlignment = .center
+        button.tintColor = .systemBlue
+        button.semanticContentAttribute = .forceRightToLeft
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
         
         button.addTarget(self, action: #selector(faceIDButtonTapped), for: .touchUpInside)
         return button
@@ -306,7 +304,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
     
     func useFaceID() {
         let myContext = LAContext()
-        let myLocalizedReasonString = "Biometric Authentication"
+        let myLocalizedReasonString = Text.biometricAuthentication.localized()
         var authError: NSError?
         
         if myContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {

@@ -8,11 +8,14 @@ class PhotoViewController: UIViewController {
     private var photoURLs: [URL]
     private var collectionView: UICollectionView!
     private var downloadButton: UIButton!
-
+    private let hideDeleteButton: Bool
     lazy var loadingAlert = LoadingAlert(in: self)  // Usando o loadingAlert personalizado
+    let fileID: String
     
-    init(photoURLs: [URL]) {
+    init(photoURLs: [URL], fileID: String, hideDeleteButton: Bool = false) {
         self.photoURLs = photoURLs
+        self.fileID = fileID
+        self.hideDeleteButton = hideDeleteButton
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -24,6 +27,7 @@ class PhotoViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupCloseButton()
+        setupDeleteButton()  // Configura o botão de exclusão
         setupCollectionView()
         setupDownloadButton()
     }
@@ -37,12 +41,73 @@ class PhotoViewController: UIViewController {
 
     private func setupCloseButton() {
         let closeButton = UIBarButtonItem(title: Text.close.localized(), style: .plain, target: self, action: #selector(closeViewController))
-        navigationItem.rightBarButtonItem = closeButton
+        navigationItem.leftBarButtonItem = closeButton
+    }
+
+    private func setupDeleteButton() {
+        let deleteButton = UIButton(type: .system)
+        let deleteImage = UIImage(systemName: "trash")?.withRenderingMode(.alwaysTemplate)
+        
+        deleteButton.setImage(deleteImage, for: .normal)
+        deleteButton.tintColor = .systemRed
+        deleteButton.imageView?.contentMode = .scaleAspectFit
+        deleteButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        deleteButton.addTarget(self, action: #selector(confirmDelete), for: .touchUpInside)
+
+        deleteButton.isHidden = hideDeleteButton
+        
+        let barButtonItem = UIBarButtonItem(customView: deleteButton)
+        navigationItem.rightBarButtonItem = barButtonItem
     }
 
     @objc private func closeViewController() {
         self.dismiss(animated: true, completion: nil)
     }
+
+    @objc private func confirmDelete() {
+        let alert = UIAlertController(
+            title: Text.deleteConfirmationTitle.localized(),
+            message: Text.deleteConfirmationMessage.localized(),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: Text.deleteConfirmationCancel.localized(), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Text.deleteConfirmationDelete.localized(), style: .destructive) { _ in
+            self.deleteSharedFolder()
+        })
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func deleteSharedFolder() {
+        loadingAlert.startLoading {
+            FirebasePhotoSharingService.deleteSharedFolderWithPhotos(folderId: self.fileID) { error in
+                self.loadingAlert.stopLoading {
+                    if let error = error {
+                        if (error as NSError).domain == "FIRStorageErrorDomain" && (error as NSError).code == -13021 {
+                            Alerts.showError(title: Text.deleteErrorTitle.localized(), text: Text.deleteErrorMessage.localized(), controller: self, completion: {})
+                        } else {
+                            Alerts.showError(title: Text.deleteErrorTitle.localized(), text: Text.deleteErrorMessage.localized(), controller: self, completion: {
+                                self.dismiss(animated: true)
+                            })
+                        }
+                    } else {
+                        Alerts.showAlert(title: Text.folderDeletedTitle.localized(), text: Text.folderDeletedMessage.localized(), controller: self) {
+                            self.removeLinkFromDefaults()
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private func removeLinkFromDefaults() {
+        var updatedCellTitles = Defaults.getStringArray(.secretLinks) ?? []
+        if let index = updatedCellTitles.firstIndex(of: self.fileID) {
+            updatedCellTitles.remove(at: index)
+            Defaults.setStringArray(.secretLinks, updatedCellTitles)
+        }
+    }
+
 
     private func setupCollectionView() {
         let screenWidth = self.view.frame.size.width - 100
@@ -138,6 +203,19 @@ class PhotoViewController: UIViewController {
         }
     }
 
+    private func getThumbnailImage(forUrl url: URL) -> UIImage? {
+        let asset = AVAsset(url: url)
+        let assetImageGenerator = AVAssetImageGenerator(asset: asset)
+        assetImageGenerator.appliesPreferredTrackTransform = true
+        let time = CMTime(seconds: 1, preferredTimescale: 60)
+        do {
+            let cgImage = try assetImageGenerator.copyCGImage(at: time, actualTime: nil)
+            return UIImage(cgImage: cgImage)
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
@@ -184,20 +262,6 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
             present(playerController, animated: true) {
                 player.play()
             }
-        }
-    }
-
-    private func getThumbnailImage(forUrl url: URL) -> UIImage? {
-        let asset = AVAsset(url: url)
-        let assetImageGenerator = AVAssetImageGenerator(asset: asset)
-        assetImageGenerator.appliesPreferredTrackTransform = true
-        let time = CMTime(seconds: 1, preferredTimescale: 60)
-        do {
-            let cgImage = try assetImageGenerator.copyCGImage(at: time, actualTime: nil)
-            return UIImage(cgImage: cgImage)
-        } catch {
-            print(error.localizedDescription)
-            return nil
         }
     }
 }

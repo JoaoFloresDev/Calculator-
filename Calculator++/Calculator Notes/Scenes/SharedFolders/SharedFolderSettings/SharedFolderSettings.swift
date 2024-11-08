@@ -2,10 +2,6 @@ import UIKit
 import FirebaseStorage
 import SnapKit
 
-import UIKit
-import FirebaseStorage
-import SnapKit
-
 class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -24,19 +20,25 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     }
     
     private func setupNavigationBar() {
-        title = "Links ativos"
+        title = cellTitles.isEmpty ? Text.secureSharing.localized() : Text.activeLinks.localized()
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Fechar",
-            style: .plain,
+            barButtonSystemItem: .close,
             target: self,
             action: #selector(closePressed)
         )
         
-        navigationController?.navigationBar.barTintColor = .lightGray
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemGray6
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
         navigationController?.navigationBar.tintColor = .systemBlue
     }
-    
+
     private func setupUI() {
         view.backgroundColor = .white
         
@@ -54,7 +56,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
         
         // Adicionando views na ordem desejada
         contentView.addSubview(tutorialView)
-        contentView.addSubview(limitMessageLabel) // Colocando limitMessageLabel acima da stackView
+        contentView.addSubview(limitMessageLabel)
         contentView.addSubview(stackView)
         
         tutorialView.isHidden = true
@@ -73,9 +75,9 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
         stackView.axis = .vertical
         stackView.spacing = 12
         stackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(16)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().offset(-20) // Para ajustar o conteúdo da scrollView
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     
@@ -101,7 +103,6 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     }
     
     // MARK: - SecretLinkCellDelegate
-    
     func removeCell(withTitle title: String) {
         let alertController = UIAlertController(
             title: Text.deleteLinkConfirmationTitle.localized(),
@@ -112,16 +113,35 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
         alertController.addAction(UIAlertAction(title: Text.deleteConfirmationCancel.localized(), style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: Text.deleteConfirmationDelete.localized(), style: .destructive) { [weak self] _ in
             guard let self = self else { return }
-            var updatedCellTitles = Defaults.getStringArray(.secretLinks) ?? []
             
-            if let index = updatedCellTitles.firstIndex(of: title) {
-                updatedCellTitles.remove(at: index)
-                Defaults.setStringArray(.secretLinks, updatedCellTitles)
-                
-                self.cellTitles = updatedCellTitles
-                self.stackView.arrangedSubviews[index].removeFromSuperview()
-                self.showTutorialIfNeeded()
-                self.updateLimitMessageVisibility()
+            let folderId = title
+                .replacingOccurrences(of: "secrets://shared_photos/", with: "")
+                .replacingOccurrences(of: "@@", with: "")
+            
+            self.loadingAlert.startLoading {
+                FirebasePhotoSharingService.deleteSharedFolderWithPhotos(folderId: folderId) { error in
+                    if let error = error {
+                        self.loadingAlert.stopLoading {
+                            Alerts.showGenericError(controller: self)
+                        }
+                        return
+                    }
+                    
+                    self.loadingAlert.stopLoading {
+                        var updatedCellTitles = Defaults.getStringArray(.secretLinks) ?? []
+                        
+                        if let index = updatedCellTitles.firstIndex(of: title) {
+                            updatedCellTitles.remove(at: index)
+                            Defaults.setStringArray(.secretLinks, updatedCellTitles)
+                            self.cellTitles = updatedCellTitles
+                            
+                            self.stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+                            self.setupStackViewCells()
+                            self.showTutorialIfNeeded()
+                            self.updateLimitMessageVisibility()
+                        }
+                    }
+                }
             }
         })
         
@@ -143,7 +163,8 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
         loadingAlert.startLoading {
             folderRef.listAll { result, error in
                 if let error = error {
-                    print("Erro ao listar fotos: \(error.localizedDescription)")
+                    self.loadingAlert.stopLoading()
+                    Alerts.showGenericError(controller: self)
                     return
                 }
                 
@@ -164,7 +185,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
                         guard !photoURLs.isEmpty else {
                             return
                         }
-                        let photoViewController = PhotoViewController(photoURLs: photoURLs)
+                        let photoViewController = PhotoViewController(photoURLs: photoURLs, fileID: folderId, hideDeleteButton: true)
                         let navigationController = UINavigationController(rootViewController: photoViewController)
                         self.present(navigationController, animated: true)
                     }
@@ -179,7 +200,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     
     private func showSavedAnimation() {
         let savedLabel = UILabel()
-        savedLabel.text = "Link copiado"
+        savedLabel.text = Text.linkCopied.localized()
         savedLabel.font = .boldSystemFont(ofSize: 16)
         savedLabel.textColor = .white
         savedLabel.textAlignment = .center
