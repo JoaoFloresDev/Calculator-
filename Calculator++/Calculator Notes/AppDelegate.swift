@@ -1,3 +1,4 @@
+import AssetsPickerViewController
 import UIKit
 import CoreData
 import GoogleMobileAds
@@ -231,6 +232,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                currentViewController is ChangeCalculatorViewController ||
                currentViewController is VaultViewController ||
                currentViewController is ChangeNewCalcViewController2
+        currentViewController is AssetsPickerViewController
     }
     
     // MARK: - Core Data Stack

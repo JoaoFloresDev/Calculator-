@@ -22,10 +22,14 @@ struct Photo {
 
 extension UIImage {
     func resizedTo150x150() -> UIImage {
-        let size = CGSize(width: 150, height: 150)
-        let renderer = UIGraphicsImageRenderer(size: size)
-                return renderer.image { _ in
-                    self.draw(in: CGRect(origin: .zero, size: size))
-                }
+        let minDimension: CGFloat = 150
+        let aspectRatio = max(minDimension / self.size.width, minDimension / self.size.height)
+        
+        let newSize = CGSize(width: self.size.width * aspectRatio, height: self.size.height * aspectRatio)
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+        
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
+        }
     }
 }
