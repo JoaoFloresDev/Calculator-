@@ -48,16 +48,17 @@ class PurchaseHeaderView: UIView {
         
         // Configuração do Title
         title.textAlignment = .center
-        title.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        title.font = UIFont(name: "SFProDisplay-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24, weight: .bold)
+
         
         // Configuração do Subtitle
         subtitle.textAlignment = .center
-        subtitle.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        subtitle.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 
         price.textAlignment = .center
         price.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 
-        title.text = "SG PRO"
+        title.text = "Premium"
         subtitle.text = Text.callToActionPurchase.localized()
         price.isHidden = true
         

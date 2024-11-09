@@ -79,7 +79,7 @@ emptyNotesSubtitle = "Adicione anotações clicando no botão +";
 
 seeMore = "Ver Mais";
 backupSettings = "Configurações de Backup";
-backupStatus = "Backup Seguro";
+backupStatus = "Backup em nuvem";
 seeMyBackup = "Ver Meu Backup";
 updateBackup = "Atualizar Backup";
 faceIDReason = "Autenticação necessária para acessar a galeria";
@@ -136,7 +136,7 @@ changeIconTitle = "Alterar Ícone";
 unlimitedStorage = "Armazenamento Ilimitado";
 noAds = "Sem Anúncios";
 videoSuport = "Suporte para Vídeos";
-callToActionPurchase = "Conheça Nossos Recursos Premium";
+callToActionPurchase = "Mais segurança e tranquilidade";
 
 selectImagesToShare = "Selecione as Imagens para Compartilhar";
 selectImagesToDelete = "Selecione as Imagens para Excluir";

@@ -134,7 +134,7 @@ class SuggestionsViewController: UIViewController {
     private func setupConstraints() {
         headerLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(24)
         }
         
         emailLabel.snp.makeConstraints { make in
