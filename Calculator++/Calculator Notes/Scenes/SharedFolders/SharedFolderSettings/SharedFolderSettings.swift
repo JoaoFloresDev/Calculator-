@@ -72,7 +72,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
         
         limitMessageLabel.text = Text.limitMessage.localized()
         limitMessageLabel.numberOfLines = 0
-        limitMessageLabel.font = UIFont.systemFont(ofSize: 14)
+        limitMessageLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         limitMessageLabel.textColor = .red
         limitMessageLabel.textAlignment = .center
         limitMessageLabel.isHidden = true

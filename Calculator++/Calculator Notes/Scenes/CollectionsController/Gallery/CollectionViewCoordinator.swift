@@ -98,7 +98,7 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
             .album: options,
             .moment: options
         ]
-        
+        pickerConfig.assetIsShowCameraButton = false
         pickerConfig.albumIsShowHiddenAlbum = true
         
         let picker = AssetsPickerViewController()

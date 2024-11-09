@@ -94,7 +94,7 @@ insertPassword = "Digite sua senha e confirme com OK";
 backupEnabled = "Ativado";
 backupDisabled = "Desativado";
 
-backupNavigationSubtitle = "Clique em 'restaurar backup' no menu anterior para importar as fotos";
+backupNavigationSubtitle = "As fotos são sincronizadas com as fotos adicionadas toda vez que o aplicativo é aberto e há conexão Wi-Fi. Seu backup é seguro e a única forma de visualizar as fotos é dentro do aplicativo";
 continueText = "Continuar";
 
 // Onboarding
