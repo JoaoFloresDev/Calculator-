@@ -24,7 +24,7 @@ class FlowLayout: UICollectionViewFlowLayout {
     
     override var collectionViewContentSize: CGSize {
         var contentSize = super.collectionViewContentSize
-        let lastSectionFooterHeight: CGFloat = 70
+        let lastSectionFooterHeight: CGFloat = 110
 
         if collectionView?.numberOfSections ?? 0 > 0 {
             contentSize.height += lastSectionFooterHeight

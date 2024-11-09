@@ -241,6 +241,73 @@
 		BA3244412A4B692C00A782CA /* BasicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModels.swift; sourceTree = "<group>"; };
 		C4148D882440F45E00225706 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C41CA9A52CDECED700E56D72 /* Img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Img.swift; sourceTree = "<group>"; };
+		C41CA9A72CDF229000E56D72 /* AssetsAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumCell.swift; path = AssetsPickerViewController/Classes/Album/View/AssetsAlbumCell.swift; sourceTree = "<group>"; };
+		C41CA9A82CDF229000E56D72 /* AssetsAlbumHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumHeaderView.swift; path = AssetsPickerViewController/Classes/Album/View/AssetsAlbumHeaderView.swift; sourceTree = "<group>"; };
+		C41CA9A92CDF229000E56D72 /* AssetsAlbumLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumLayout.swift; path = AssetsPickerViewController/Classes/Album/View/AssetsAlbumLayout.swift; sourceTree = "<group>"; };
+		C41CA9AA2CDF229100E56D72 /* AssetsAlbumTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumTitleView.swift; path = AssetsPickerViewController/Classes/Album/View/AssetsAlbumTitleView.swift; sourceTree = "<group>"; };
+		C41CA9AB2CDF229100E56D72 /* AssetsAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsAlbumViewController.swift; path = AssetsPickerViewController/Classes/Album/Controller/AssetsAlbumViewController.swift; sourceTree = "<group>"; };
+		C41CA9AC2CDF229100E56D72 /* AssetsCameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsCameraManager.swift; path = AssetsPickerViewController/Classes/Picker/AssetsCameraManager.swift; sourceTree = "<group>"; };
+		C41CA9AD2CDF229100E56D72 /* AssetsCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsCropViewController.swift; path = AssetsPickerViewController/Classes/Crop/Controller/AssetsCropViewController.swift; sourceTree = "<group>"; };
+		C41CA9AE2CDF229100E56D72 /* AssetsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsEmptyView.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsEmptyView.swift; sourceTree = "<group>"; };
+		C41CA9AF2CDF229100E56D72 /* AssetsFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsFetchService.swift; path = AssetsPickerViewController/Classes/Common/AssetsFetchService.swift; sourceTree = "<group>"; };
+		C41CA9B02CDF229100E56D72 /* AssetsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsFooterView.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsFooterView.swift; sourceTree = "<group>"; };
+		C41CA9B12CDF229100E56D72 /* AssetsGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsGuideView.swift; path = AssetsPickerViewController/Classes/Picker/View/AssetsGuideView.swift; sourceTree = "<group>"; };
+		C41CA9B22CDF229100E56D72 /* AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsManager.swift; path = AssetsPickerViewController/Classes/Assets/AssetsManager.swift; sourceTree = "<group>"; };
+		C41CA9B32CDF229100E56D72 /* AssetsManager+Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsManager+Sync.swift"; path = "AssetsPickerViewController/Classes/Assets/AssetsManager+Sync.swift"; sourceTree = "<group>"; };
+		C41CA9B42CDF229100E56D72 /* AssetsNoPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsNoPermissionView.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsNoPermissionView.swift; sourceTree = "<group>"; };
+		C41CA9B52CDF229100E56D72 /* AssetsPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPhotoCell.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsPhotoCell.swift; sourceTree = "<group>"; };
+		C41CA9B62CDF229100E56D72 /* AssetsPhotoCellOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPhotoCellOverlay.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsPhotoCellOverlay.swift; sourceTree = "<group>"; };
+		C41CA9B72CDF229100E56D72 /* AssetsPhotoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPhotoLayout.swift; path = AssetsPickerViewController/Classes/Photo/View/AssetsPhotoLayout.swift; sourceTree = "<group>"; };
+		C41CA9B82CDF229100E56D72 /* AssetsPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPhotoViewController.swift; path = AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController.swift; sourceTree = "<group>"; };
+		C41CA9B92CDF229100E56D72 /* AssetsPhotoViewController+AssetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+AssetsManager.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+AssetsManager.swift"; sourceTree = "<group>"; };
+		C41CA9BA2CDF229100E56D72 /* AssetsPhotoViewController+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Collection.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Collection.swift"; sourceTree = "<group>"; };
+		C41CA9BB2CDF229100E56D72 /* AssetsPhotoViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Delegate.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Delegate.swift"; sourceTree = "<group>"; };
+		C41CA9BC2CDF229100E56D72 /* AssetsPhotoViewController+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Model.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Model.swift"; sourceTree = "<group>"; };
+		C41CA9BD2CDF229100E56D72 /* AssetsPhotoViewController+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Selection.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Selection.swift"; sourceTree = "<group>"; };
+		C41CA9BE2CDF229100E56D72 /* AssetsPhotoViewController+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+Setup.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+Setup.swift"; sourceTree = "<group>"; };
+		C41CA9BF2CDF229100E56D72 /* AssetsPhotoViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AssetsPhotoViewController+UI.swift"; path = "AssetsPickerViewController/Classes/Photo/Controller/AssetsPhotoViewController+UI.swift"; sourceTree = "<group>"; };
+		C41CA9C02CDF229100E56D72 /* AssetsPickerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPickerConfig.swift; path = AssetsPickerViewController/Classes/Picker/AssetsPickerConfig.swift; sourceTree = "<group>"; };
+		C41CA9C12CDF229100E56D72 /* AssetsPickerCustomStringConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPickerCustomStringConfig.swift; path = AssetsPickerViewController/Classes/Picker/AssetsPickerCustomStringConfig.swift; sourceTree = "<group>"; };
+		C41CA9C22CDF229100E56D72 /* AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPickerViewController.swift; path = AssetsPickerViewController/Classes/Picker/Controller/AssetsPickerViewController.swift; sourceTree = "<group>"; };
+		C41CA9C32CDF229100E56D72 /* AssetsPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsPreviewController.swift; path = AssetsPickerViewController/Classes/Photo/Controller/AssetsPreviewController.swift; sourceTree = "<group>"; };
+		C41CA9C42CDF229100E56D72 /* AssetsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssetsUtility.swift; path = AssetsPickerViewController/Classes/Assets/AssetsUtility.swift; sourceTree = "<group>"; };
+		C41CA9C52CDF229100E56D72 /* Bundle+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bundle+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/Bundle+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		C41CA9C62CDF229100E56D72 /* LogConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogConfig.swift; path = AssetsPickerViewController/Classes/Picker/LogConfig.swift; sourceTree = "<group>"; };
+		C41CA9C72CDF229100E56D72 /* NumberFormatter+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NumberFormatter+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/NumberFormatter+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		C41CA9C82CDF229100E56D72 /* PanoramaIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanoramaIconView.swift; path = AssetsPickerViewController/Classes/Photo/View/PanoramaIconView.swift; sourceTree = "<group>"; };
+		C41CA9C92CDF229100E56D72 /* SSCheckMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SSCheckMark.swift; path = AssetsPickerViewController/Classes/Picker/View/SSCheckMark.swift; sourceTree = "<group>"; };
+		C41CA9CA2CDF229100E56D72 /* String+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/String+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		C41CA9CB2CDF229100E56D72 /* SwiftAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftAlert.swift; path = AssetsPickerViewController/Classes/Common/SwiftAlert.swift; sourceTree = "<group>"; };
+		C41CA9CC2CDF229100E56D72 /* TinyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TinyLog.swift; path = AssetsPickerViewController/Classes/Library/TinyLog/TinyLog.swift; sourceTree = "<group>"; };
+		C41CA9CD2CDF229100E56D72 /* UIColor+ARGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+ARGB.swift"; path = "AssetsPickerViewController/Classes/Library/Extensions/UIColor+ARGB.swift"; sourceTree = "<group>"; };
+		C41CA9CE2CDF229100E56D72 /* UIColor+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/UIColor+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		C41CA9CF2CDF229100E56D72 /* UIFont+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIFont+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/UIFont+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		C41CA9D02CDF229100E56D72 /* UIScreen+AssetsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIScreen+AssetsPickerViewController.swift"; path = "AssetsPickerViewController/Classes/Utility/UIScreen+AssetsPickerViewController.swift"; sourceTree = "<group>"; };
+		C41CA9D12CDF229100E56D72 /* UIView+Dimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Dimmer.swift"; path = "AssetsPickerViewController/Classes/Library/Extensions/UIView+Dimmer.swift"; sourceTree = "<group>"; };
+		C41CA9D22CDF229100E56D72 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Fade.swift"; path = "AssetsPickerViewController/Classes/Library/Extensions/UIView+Fade.swift"; sourceTree = "<group>"; };
+		C41CA9D32CDF229100E56D72 /* UIView+KVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+KVO.swift"; path = "AssetsPickerViewController/Classes/Library/Extensions/UIView+KVO.swift"; sourceTree = "<group>"; };
+		C41CA9D42CDF229100E56D72 /* ar.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ar.lproj; path = AssetsPickerViewController/Assets/ar.lproj; sourceTree = "<group>"; };
+		C41CA9D52CDF229100E56D72 /* de.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = de.lproj; path = AssetsPickerViewController/Assets/de.lproj; sourceTree = "<group>"; };
+		C41CA9D62CDF229100E56D72 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en.lproj; path = AssetsPickerViewController/Assets/en.lproj; sourceTree = "<group>"; };
+		C41CA9D72CDF229100E56D72 /* es.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = es.lproj; path = AssetsPickerViewController/Assets/es.lproj; sourceTree = "<group>"; };
+		C41CA9D82CDF229100E56D72 /* es-MX.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "es-MX.lproj"; path = "AssetsPickerViewController/Assets/es-MX.lproj"; sourceTree = "<group>"; };
+		C41CA9D92CDF229100E56D72 /* fr.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fr.lproj; path = AssetsPickerViewController/Assets/fr.lproj; sourceTree = "<group>"; };
+		C41CA9DA2CDF229100E56D72 /* hi-IN.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "hi-IN.lproj"; path = "AssetsPickerViewController/Assets/hi-IN.lproj"; sourceTree = "<group>"; };
+		C41CA9DB2CDF229100E56D72 /* id.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = id.lproj; path = AssetsPickerViewController/Assets/id.lproj; sourceTree = "<group>"; };
+		C41CA9DC2CDF229100E56D72 /* ja.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ja.lproj; path = AssetsPickerViewController/Assets/ja.lproj; sourceTree = "<group>"; };
+		C41CA9DD2CDF229100E56D72 /* ko.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ko.lproj; path = AssetsPickerViewController/Assets/ko.lproj; sourceTree = "<group>"; };
+		C41CA9DE2CDF229100E56D72 /* ru.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ru.lproj; path = AssetsPickerViewController/Assets/ru.lproj; sourceTree = "<group>"; };
+		C41CA9DF2CDF229100E56D72 /* tr.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tr.lproj; path = AssetsPickerViewController/Assets/tr.lproj; sourceTree = "<group>"; };
+		C41CA9E02CDF229100E56D72 /* zh-Hans.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "zh-Hans.lproj"; path = "AssetsPickerViewController/Assets/zh-Hans.lproj"; sourceTree = "<group>"; };
+		C41CA9E12CDF229100E56D72 /* zh-Hant.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "zh-Hant.lproj"; path = "AssetsPickerViewController/Assets/zh-Hant.lproj"; sourceTree = "<group>"; };
+		C41CA9E32CDF229100E56D72 /* AssetsPickerViewController.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = AssetsPickerViewController.modulemap; sourceTree = "<group>"; };
+		C41CA9E42CDF229100E56D72 /* AssetsPickerViewController-dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AssetsPickerViewController-dummy.m"; sourceTree = "<group>"; };
+		C41CA9E52CDF229100E56D72 /* AssetsPickerViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AssetsPickerViewController-Info.plist"; sourceTree = "<group>"; };
+		C41CA9E62CDF229100E56D72 /* AssetsPickerViewController-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AssetsPickerViewController-prefix.pch"; sourceTree = "<group>"; };
+		C41CA9E72CDF229100E56D72 /* AssetsPickerViewController-umbrella.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AssetsPickerViewController-umbrella.h"; sourceTree = "<group>"; };
+		C41CA9E82CDF229100E56D72 /* AssetsPickerViewController.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AssetsPickerViewController.debug.xcconfig; sourceTree = "<group>"; };
+		C41CA9E92CDF229100E56D72 /* AssetsPickerViewController.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AssetsPickerViewController.release.xcconfig; sourceTree = "<group>"; };
+		C41CA9EA2CDF229100E56D72 /* ResourceBundle-AssetsPickerViewController-AssetsPickerViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ResourceBundle-AssetsPickerViewController-AssetsPickerViewController-Info.plist"; sourceTree = "<group>"; };
 		C41F8483249F271F0015F134 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		C4507E0724A7C1FF00960972 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
 		C467BCA924A9A08E0039D237 /* VideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +357,7 @@
 		2E4A07871C42F3B0007F415F = {
 			isa = PBXGroup;
 			children = (
+				C41CA9EC2CDF229100E56D72 /* AssetsPickerViewController */,
 				2E4A07921C42F3B0007F415F /* Calculator Notes */,
 				2E4A07911C42F3B0007F415F /* Products */,
 				5FB3F66AA083A2925A79BEE2 /* Pods */,
@@ -648,6 +716,97 @@
 				BA3244412A4B692C00A782CA /* BasicModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C41CA9E22CDF229100E56D72 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C41CA9D42CDF229100E56D72 /* ar.lproj */,
+				C41CA9D52CDF229100E56D72 /* de.lproj */,
+				C41CA9D62CDF229100E56D72 /* en.lproj */,
+				C41CA9D72CDF229100E56D72 /* es.lproj */,
+				C41CA9D82CDF229100E56D72 /* es-MX.lproj */,
+				C41CA9D92CDF229100E56D72 /* fr.lproj */,
+				C41CA9DA2CDF229100E56D72 /* hi-IN.lproj */,
+				C41CA9DB2CDF229100E56D72 /* id.lproj */,
+				C41CA9DC2CDF229100E56D72 /* ja.lproj */,
+				C41CA9DD2CDF229100E56D72 /* ko.lproj */,
+				C41CA9DE2CDF229100E56D72 /* ru.lproj */,
+				C41CA9DF2CDF229100E56D72 /* tr.lproj */,
+				C41CA9E02CDF229100E56D72 /* zh-Hans.lproj */,
+				C41CA9E12CDF229100E56D72 /* zh-Hant.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C41CA9EB2CDF229100E56D72 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C41CA9E32CDF229100E56D72 /* AssetsPickerViewController.modulemap */,
+				C41CA9E42CDF229100E56D72 /* AssetsPickerViewController-dummy.m */,
+				C41CA9E52CDF229100E56D72 /* AssetsPickerViewController-Info.plist */,
+				C41CA9E62CDF229100E56D72 /* AssetsPickerViewController-prefix.pch */,
+				C41CA9E72CDF229100E56D72 /* AssetsPickerViewController-umbrella.h */,
+				C41CA9E82CDF229100E56D72 /* AssetsPickerViewController.debug.xcconfig */,
+				C41CA9E92CDF229100E56D72 /* AssetsPickerViewController.release.xcconfig */,
+				C41CA9EA2CDF229100E56D72 /* ResourceBundle-AssetsPickerViewController-AssetsPickerViewController-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Pods/Target Support Files/AssetsPickerViewController";
+			sourceTree = "<group>";
+		};
+		C41CA9EC2CDF229100E56D72 /* AssetsPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C41CA9A72CDF229000E56D72 /* AssetsAlbumCell.swift */,
+				C41CA9A82CDF229000E56D72 /* AssetsAlbumHeaderView.swift */,
+				C41CA9A92CDF229000E56D72 /* AssetsAlbumLayout.swift */,
+				C41CA9AA2CDF229100E56D72 /* AssetsAlbumTitleView.swift */,
+				C41CA9AB2CDF229100E56D72 /* AssetsAlbumViewController.swift */,
+				C41CA9AC2CDF229100E56D72 /* AssetsCameraManager.swift */,
+				C41CA9AD2CDF229100E56D72 /* AssetsCropViewController.swift */,
+				C41CA9AE2CDF229100E56D72 /* AssetsEmptyView.swift */,
+				C41CA9AF2CDF229100E56D72 /* AssetsFetchService.swift */,
+				C41CA9B02CDF229100E56D72 /* AssetsFooterView.swift */,
+				C41CA9B12CDF229100E56D72 /* AssetsGuideView.swift */,
+				C41CA9B22CDF229100E56D72 /* AssetsManager.swift */,
+				C41CA9B32CDF229100E56D72 /* AssetsManager+Sync.swift */,
+				C41CA9B42CDF229100E56D72 /* AssetsNoPermissionView.swift */,
+				C41CA9B52CDF229100E56D72 /* AssetsPhotoCell.swift */,
+				C41CA9B62CDF229100E56D72 /* AssetsPhotoCellOverlay.swift */,
+				C41CA9B72CDF229100E56D72 /* AssetsPhotoLayout.swift */,
+				C41CA9B82CDF229100E56D72 /* AssetsPhotoViewController.swift */,
+				C41CA9B92CDF229100E56D72 /* AssetsPhotoViewController+AssetsManager.swift */,
+				C41CA9BA2CDF229100E56D72 /* AssetsPhotoViewController+Collection.swift */,
+				C41CA9BB2CDF229100E56D72 /* AssetsPhotoViewController+Delegate.swift */,
+				C41CA9BC2CDF229100E56D72 /* AssetsPhotoViewController+Model.swift */,
+				C41CA9BD2CDF229100E56D72 /* AssetsPhotoViewController+Selection.swift */,
+				C41CA9BE2CDF229100E56D72 /* AssetsPhotoViewController+Setup.swift */,
+				C41CA9BF2CDF229100E56D72 /* AssetsPhotoViewController+UI.swift */,
+				C41CA9C02CDF229100E56D72 /* AssetsPickerConfig.swift */,
+				C41CA9C12CDF229100E56D72 /* AssetsPickerCustomStringConfig.swift */,
+				C41CA9C22CDF229100E56D72 /* AssetsPickerViewController.swift */,
+				C41CA9C32CDF229100E56D72 /* AssetsPreviewController.swift */,
+				C41CA9C42CDF229100E56D72 /* AssetsUtility.swift */,
+				C41CA9C52CDF229100E56D72 /* Bundle+AssetsPickerViewController.swift */,
+				C41CA9C62CDF229100E56D72 /* LogConfig.swift */,
+				C41CA9C72CDF229100E56D72 /* NumberFormatter+AssetsPickerViewController.swift */,
+				C41CA9C82CDF229100E56D72 /* PanoramaIconView.swift */,
+				C41CA9C92CDF229100E56D72 /* SSCheckMark.swift */,
+				C41CA9CA2CDF229100E56D72 /* String+AssetsPickerViewController.swift */,
+				C41CA9CB2CDF229100E56D72 /* SwiftAlert.swift */,
+				C41CA9CC2CDF229100E56D72 /* TinyLog.swift */,
+				C41CA9CD2CDF229100E56D72 /* UIColor+ARGB.swift */,
+				C41CA9CE2CDF229100E56D72 /* UIColor+AssetsPickerViewController.swift */,
+				C41CA9CF2CDF229100E56D72 /* UIFont+AssetsPickerViewController.swift */,
+				C41CA9D02CDF229100E56D72 /* UIScreen+AssetsPickerViewController.swift */,
+				C41CA9D12CDF229100E56D72 /* UIView+Dimmer.swift */,
+				C41CA9D22CDF229100E56D72 /* UIView+Fade.swift */,
+				C41CA9D32CDF229100E56D72 /* UIView+KVO.swift */,
+				C41CA9E22CDF229100E56D72 /* Resources */,
+				C41CA9EB2CDF229100E56D72 /* Support Files */,
+			);
+			path = AssetsPickerViewController;
 			sourceTree = "<group>";
 		};
 		C491CCC22CDD41AC0042C65F /* Sugestions */ = {

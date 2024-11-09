@@ -305,7 +305,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     private func handleDeleteButton() {
         var selectedItems = modelData.filter { $0.isSelected }
         let selectedFolders = folders.filter { $0.isSelected }
-        guard !selectedItems.isEmpty && !selectedFolders.isEmpty else {
+        guard !selectedItems.isEmpty || !selectedFolders.isEmpty else {
             Alerts.showSelectImagesToDeleteFirts(controller: self)
             return
         }
