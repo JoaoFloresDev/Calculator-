@@ -24,36 +24,6 @@ import SnapKit
 class BackupLoginView: UIView {
     let manager = AuthManager()
     
-    lazy var loginTitle: UILabel = {
-        let label = UILabel()
-        label.text = Text.hasAccount.localized()//"Já possui uma conta?"
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .darkGray
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        
-        return label
-    }()
-    
-    lazy var loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(Text.loginWithGoogle.localized(), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .systemGray6
-        
-        let googleLogo = UIImage(named: "google_logo")
-        button.setImage(googleLogo, for: .normal)
-        
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        
-        button.layer.cornerRadius = 25
-        button.layer.masksToBounds = true
-        
-        button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
-        return button
-    }()
-
     lazy var createAccountTitle: UILabel = {
         let label = UILabel()
         label.text = Text.notHasAccount.localized()
@@ -61,7 +31,6 @@ class BackupLoginView: UIView {
         label.textColor = .darkGray
         label.numberOfLines = 0
         label.textAlignment = .center
-        
         return label
     }()
     
@@ -83,9 +52,39 @@ class BackupLoginView: UIView {
         button.addTarget(self, action: #selector(createAccountTapped), for: .touchUpInside)
         return button
     }()
-
+    
+    lazy var loginTitle: UILabel = {
+        let label = UILabel()
+        label.text = Text.hasAccount.localized() // "Já possui uma conta?"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .darkGray
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
+    lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Text.loginWithGoogle.localized(), for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .systemGray6
+        
+        let googleLogo = UIImage(named: "google_logo")
+        button.setImage(googleLogo, for: .normal)
+        
+        button.imageView?.contentMode = .scaleAspectFit
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        
+        button.layer.cornerRadius = 25
+        button.layer.masksToBounds = true
+        
+        button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+        return button
+    }()
+    
     let controller: BackupModalViewController
     let delegate: BackupLoginEvent?
+    
     init(controller: BackupModalViewController, delegate: BackupLoginEvent?) {
         self.controller = controller
         self.delegate = delegate
@@ -99,30 +98,30 @@ class BackupLoginView: UIView {
     }
     
     private func setupViews() {
-        addSubview(loginTitle)
-        addSubview(loginButton)
         addSubview(createAccountTitle)
         addSubview(createAccountButton)
+        addSubview(loginTitle)
+        addSubview(loginButton)
     }
     
     private func setupConstraints() {
-        loginTitle.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
-        
-        loginButton.snp.makeConstraints { make in
-            make.top.equalTo(loginTitle.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(50)
-        }
-        
         createAccountTitle.snp.makeConstraints { make in
-            make.top.equalTo(loginButton.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
         createAccountButton.snp.makeConstraints { make in
             make.top.equalTo(createAccountTitle.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+        }
+        
+        loginTitle.snp.makeConstraints { make in
+            make.top.equalTo(createAccountButton.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(loginTitle.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(50)
             make.bottom.equalToSuperview().inset(16)
@@ -187,5 +186,4 @@ class BackupLoginView: UIView {
             NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
         }
     }
-    
 }

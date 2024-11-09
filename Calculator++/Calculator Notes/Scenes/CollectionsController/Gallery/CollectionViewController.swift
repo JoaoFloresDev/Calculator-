@@ -601,9 +601,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
             print("Erro: collectionView não está inicializado.")
             return
         }
-        for _ in 0..<20 {
-            handleAssetSelection(assets)
-        }
+        handleAssetSelection(assets)
     }
 
     private func handleAssetSelection(_ assets: [PHAsset]) {

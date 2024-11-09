@@ -41,14 +41,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let confirmAction = UIAlertAction(title: Text.confirm.localized(), style: .default) { [weak self] _ in
             if let password = alertController.textFields?.first?.text, !password.isEmpty {
-                let folderId = url.lastPathComponent + password.uppercased()
+                let folderId = url.lastPathComponent + password
                 self?.loadPhotosAndShowModal(folderId: folderId)
             } else {
                 print("Senha não fornecida.")
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: Text.cancelButtonTitle.localized(), style: .cancel, handler: nil)
+
         
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
