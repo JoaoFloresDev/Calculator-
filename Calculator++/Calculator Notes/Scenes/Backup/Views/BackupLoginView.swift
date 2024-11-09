@@ -55,7 +55,7 @@ class BackupLoginView: UIView {
     
     lazy var loginTitle: UILabel = {
         let label = UILabel()
-        label.text = Text.hasAccount.localized() // "Já possui uma conta?"
+        label.text = Text.hasAccount.localized()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         label.numberOfLines = 0

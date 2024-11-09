@@ -38,6 +38,7 @@ class EditLeftBarButtonItem: UIBarButtonItem {
         
         let stackItems = createStackItems(basePath: basePath, buttons: [backButton, selectImagesButton, shareImageButton, deleteButton])
         let stackView = createStackView(arrangedSubviews: stackItems)
+        stackView.spacing = 12
         let customView = createCustomView(with: stackView)
         setupButtonStates(deleteButton: deleteButton, shareImageButton: shareImageButton)
         self.customView = customView
@@ -55,7 +56,8 @@ class EditLeftBarButtonItem: UIBarButtonItem {
         let selectImagesButton = UIButton()
         selectImagesButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         selectImagesButton.addTarget(self, action: #selector(selectImagesButtonTapped), for: .touchUpInside)
-        selectImagesButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        selectImagesButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        selectImagesButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         return selectImagesButton
     }
 
@@ -63,7 +65,8 @@ class EditLeftBarButtonItem: UIBarButtonItem {
         let shareImageButton = UIButton()
         shareImageButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         shareImageButton.addTarget(self, action: #selector(shareImageButtonTapped), for: .touchUpInside)
-        shareImageButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        shareImageButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        shareImageButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         return shareImageButton
     }
 
@@ -72,7 +75,8 @@ class EditLeftBarButtonItem: UIBarButtonItem {
         let image = UIImage(systemName: "trash")
         deleteButton.setImage(image, for: .normal)
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
-        deleteButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        deleteButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        deleteButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         return deleteButton
     }
 

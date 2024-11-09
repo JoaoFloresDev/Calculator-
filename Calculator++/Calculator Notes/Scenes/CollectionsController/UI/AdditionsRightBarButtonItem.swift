@@ -37,40 +37,44 @@ class AdditionsRightBarButtonItem: UIBarButtonItem {
     private func createAddPhotoButton() -> UIButton {
         let addPhotoButton = UIButton()
         addPhotoButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        addPhotoButton.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
         addPhotoButton.addTarget(self, action: #selector(addPhotoButtonTapped), for: .touchUpInside)
-        addPhotoButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+//        addPhotoButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
         return addPhotoButton
     }
-    
-    func isUserLoggedIn() -> Bool {
-        return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
-    }
-    
+
     private func createcloudButton() -> UIButton {
         let cloudButton = UIButton()
         if let cloudImage = UIImage(systemName: "exclamationmark.icloud")?.withRenderingMode(.alwaysTemplate) {
             cloudButton.setImage(cloudImage, for: .normal)
         }
         cloudButton.tintColor = .systemGray
-        
+        cloudButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+
         if isUserLoggedIn() {
             if let cloudImage = UIImage(systemName: "icloud.fill")?.withRenderingMode(.alwaysTemplate) {
                 cloudButton.setImage(cloudImage, for: .normal)
             }
             cloudButton.tintColor = .systemBlue
         }
-        
+
         cloudButton.addTarget(self, action: #selector(cloudButtonTapped), for: .touchUpInside)
-        cloudButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        cloudButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         return cloudButton
     }
 
     private func createAddFolderButton() -> UIButton {
         let addFolderButton = UIButton()
         addFolderButton.setImage(UIImage(systemName: "folder.badge.plus"), for: .normal)
+        addFolderButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         addFolderButton.addTarget(self, action: #selector(addFolderButtonTapped), for: .touchUpInside)
-        addFolderButton.contentEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        addFolderButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         return addFolderButton
+    }
+
+    
+    func isUserLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil && Auth.auth().currentUser?.email != nil
     }
 
     private func createStackItems(buttons: [UIButton]) -> [UIView] {

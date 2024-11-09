@@ -297,7 +297,12 @@ enum Text: String {
     case enterPasswordMessage // "Digite a senha do link secreto para acessar as fotos:"
     case passwordPlaceholder // "Senha"
     case invalidLinkOrPasswordMessage // "Link ou senha inválidos. Tente novamente."
+    case noVideoToSaveTitle // "Nenhum vídeo encontrado"
+    case noVideoToSaveMessage // "Nenhum vídeo válido foi selecionado para salvar na galeria."
+    case noVideoToShareTitle // "Nenhum vídeo encontrado"
+    case noVideoToShareMessage // "Nenhum vídeo válido foi selecionado para compartilhar."
 
+    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

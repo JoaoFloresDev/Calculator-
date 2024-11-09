@@ -57,7 +57,16 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     }
     
     func shareImage(modelData: [Photo]) {
-        guard !modelData.isEmpty else { return }
+        guard !modelData.isEmpty else {
+            if let viewController = viewController {
+                Alerts.showAlert(
+                    title: Text.errorTitle.localized(),
+                    text: Text.noPhotoToShareMessage.localized(),
+                    controller: viewController
+                )
+            }
+                return
+            }
         
         let activityVC = UIActivityViewController(activityItems: modelData.map { $0.image }, applicationActivities: nil)
         
@@ -106,19 +115,27 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     }
     
     internal func shareWithCalculator(modelData: [Photo]) {
+        guard let viewController = viewController else { return }
+
         guard !modelData.isEmpty else {
-            print(Text.noPhotoToShareMessage)
+                Alerts.showAlert(
+                    title: Text.errorTitle.localized(),
+                    text: Text.noPhotoToShareMessage.localized(),
+                    controller: viewController
+                )
             return
         }
         
-        guard let viewController = viewController else { return }
-
         let loadingAlert = LoadingAlert(in: viewController)
         loadingAlert.startLoading {
             FirebasePhotoSharingService.createSharedFolderWithPhotos(modelData: modelData) { link, key, error in
                 loadingAlert.stopLoading {
                     if let error = error {
-                        print(Text.errorCreatingSharedFolder.rawValue + "\(error.localizedDescription)")
+                        Alerts.showAlert(
+                                        title: Text.errorTitle.localized(),
+                                        text: Text.errorCreatingSharedFolder.localized() + "\(error.localizedDescription)",
+                                        controller: viewController
+                                    )
                         return
                     }
 
@@ -226,7 +243,16 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         let selectedPhotos = modelData
         
         guard !selectedPhotos.isEmpty else {
-            print(Text.noPhotoToSaveMessage)
+            guard !selectedPhotos.isEmpty else {
+                if let viewController = viewController {
+                    Alerts.showAlert(
+                        title: Text.errorTitle.localized(),
+                        text: Text.noPhotoToSaveMessage.localized(),
+                        controller: viewController
+                    )
+                }
+                    return
+                }
             return
         }
 

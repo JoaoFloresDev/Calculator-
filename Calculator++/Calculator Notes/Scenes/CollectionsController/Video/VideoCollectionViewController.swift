@@ -194,8 +194,13 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
             }
 
             if fileURLs.isEmpty {
-                return
-            }
+                    Alerts.showAlert(
+                        title: Text.noVideoToShareTitle.localized(),
+                        text: Text.noVideoToShareMessage.localized(),
+                        controller: self
+                    )
+                    return
+                }
             self.coordinator.shareImage(modelData: fileURLs)
         }
 
@@ -240,14 +245,15 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
                     }
                 }
             }
-
-            // Validar se existem URLs de vídeos válidas
-            guard !fileURLs.isEmpty else {
-                print("Nenhum vídeo válido encontrado para salvar.")
-                return
-            }
             
-            // Chamar a função para salvar os vídeos
+            guard !fileURLs.isEmpty else {
+                    Alerts.showAlert(
+                        title: Text.noVideoToSaveTitle.localized(),
+                        text: Text.noVideoToSaveMessage.localized(),
+                        controller: self
+                    )
+                    return
+                }
             self.coordinator.saveVideos(modelData: fileURLs)
         }
 
@@ -275,6 +281,11 @@ extension VideoCollectionViewController: EditLeftBarButtonItemDelegate {
                 }
 
             if fileURLs.isEmpty {
+                Alerts.showAlert(
+                            title: Text.noVideoToShareTitle.localized(),
+                            text: Text.noVideoToShareMessage.localized(),
+                            controller: self
+                        )
                 return
             }
             self.coordinator.shareWithCalculator(modelData: fileURLs)
