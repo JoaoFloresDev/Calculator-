@@ -196,6 +196,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         setupViewStyles()
         setupNewTag()
         
+        recoverLabel.text = Text.hideRecoverButton.localized()
         changePassworldLabel.text = Text.changePassword.localized()
         fakepasswordLabel.text = Text.addFakePassword.localized()
         shareWithOtherCalcLabel.text = Text.secretSharing.localized()

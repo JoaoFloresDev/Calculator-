@@ -13,7 +13,7 @@ import SceneKit
 import simd
 import Photos
 import StoreKit
-import Foundatifon
+import Foundation
 import AVFoundation
 import AVKit
 import MessageUI
