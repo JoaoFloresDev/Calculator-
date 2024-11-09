@@ -13,7 +13,7 @@ import SceneKit
 import simd
 import Photos
 import StoreKit
-import Foundation
+import Foundatifon
 import AVFoundation
 import AVKit
 import MessageUI
@@ -303,7 +303,9 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     }
     
     private func handleDeleteButton() {
-        guard !modelData.isEmpty else {
+        var selectedItems = modelData.filter { $0.isSelected }
+        let selectedFolders = folders.filter { $0.isSelected }
+        guard !selectedItems.isEmpty && !selectedFolders.isEmpty else {
             Alerts.showSelectImagesToDeleteFirts(controller: self)
             return
         }

@@ -188,6 +188,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
                 dispatchGroup.notify(queue: .main) {
                     self.loadingAlert.stopLoading {
                         guard !photoURLs.isEmpty else {
+                            Alerts.showGenericError(controller: self)
                             return
                         }
                         let photoViewController = PhotoViewController(photoURLs: photoURLs, fileID: folderId, hideDeleteButton: true)
