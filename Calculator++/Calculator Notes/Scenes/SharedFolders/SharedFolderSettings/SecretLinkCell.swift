@@ -6,6 +6,7 @@ protocol SecretLinkCellDelegate: AnyObject {
     func removeCell(withTitle title: String)
     func showDetails(withTitle title: String)
     func copyLink()
+    func updatedCell()
 }
 
 class SecretLinkCell: UIView {
@@ -50,14 +51,15 @@ class SecretLinkCell: UIView {
                     // Remover do Defaults e animar remoção da célula
                     self.removeLinkFromDefaults(title: title)
                     self.animateRemoval()
+                    self.delegate?.updatedCell()
                 }
                 return
             }
             
             if result?.items.isEmpty == true {
-                // Remover do Defaults e animar remoção da célula
                 self.removeLinkFromDefaults(title: title)
                 self.animateRemoval()
+                self.delegate?.updatedCell()
             }
         }
     }
@@ -163,7 +165,13 @@ class SecretLinkCell: UIView {
     }
     
     @objc private func copyButtonTapped() {
-        UIPasteboard.general.string = "\(Text.linkText.localized())\(link)\n\(Text.keyText.localized())\(key)"
+        let appPath = "https://apps.apple.com/sa/app/sg-secret-gallery-vault/id1479873340"
+        UIPasteboard.general.string = """
+        \(Text.sharedContentIntro.localized())
+        \(Text.sharedContentStep1.localized())\(appPath)
+        \(Text.sharedContentStep2.localized())\(link)
+        \(Text.sharedContentStep3.localized())\(key)
+        """
         delegate?.copyLink()
     }
     

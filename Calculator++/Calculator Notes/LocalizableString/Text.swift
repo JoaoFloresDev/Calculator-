@@ -288,8 +288,16 @@ enum Text: String {
     case improvementSuggestions // "Sugestões de melhoria"
     case biometricAuthentication // "Biometric Authentication"
     case changePassword // "Alterar senha"
+    case sendLinkAndPassword // "Enviar link e senha"
+    case sharedContentIntro // "Aqui está o link para acessar o conteúdo que compartilhei com você:"
+    case sharedContentStep1 // "1. Baixe o app: "
+    case sharedContentStep2 // "2. Abra o link: "
+    case sharedContentStep3 // "3. Digite a senha para desbloquear: "
+    case enterPasswordTitle // "Insira a senha"
+    case enterPasswordMessage // "Digite a senha do link secreto para acessar as fotos:"
+    case passwordPlaceholder // "Senha"
+    case invalidLinkOrPasswordMessage // "Link ou senha inválidos. Tente novamente."
 
-    
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

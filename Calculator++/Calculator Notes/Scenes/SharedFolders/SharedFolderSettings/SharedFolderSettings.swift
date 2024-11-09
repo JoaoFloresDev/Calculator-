@@ -10,6 +10,11 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     private let limitMessageLabel = UILabel()
     private var cellTitles: [String] = Defaults.getStringArray(.secretLinks) ?? []
     
+    func updatedCell() {
+        self.showTutorialIfNeeded()
+        self.updateLimitMessageVisibility()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()

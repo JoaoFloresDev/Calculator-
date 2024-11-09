@@ -18,7 +18,10 @@ struct FirebasePhotoSharingService {
         }
         
         // Criar uma pasta única com UUID
-        let folderName = UUID().uuidString
+        var folderName = UUID().uuidString
+        let range = folderName.index(folderName.endIndex, offsetBy: -4)..<folderName.endIndex
+        let lastFour = folderName[range].lowercased()
+        folderName.replaceSubrange(range, with: lastFour)
         let folderRef = storage.reference().child("shared_photos/\(folderName)")
         
         let dispatchGroup = DispatchGroup()
@@ -72,9 +75,11 @@ struct FirebasePhotoSharingService {
             completion(nil, nil, NSError(domain: "No videos to upload", code: 400, userInfo: nil))
             return
         }
-        
-        // Criar uma pasta única com UUID, semelhante à `createSharedFolderWithPhotos`
-        let folderName = UUID().uuidString
+        var folderName = UUID().uuidString
+        let range = folderName.index(folderName.endIndex, offsetBy: -4)..<folderName.endIndex
+        let lastFour = folderName[range].lowercased()
+        folderName.replaceSubrange(range, with: lastFour)
+
         let folderRef = storage.reference().child("shared_photos/\(folderName)")
         
         let dispatchGroup = DispatchGroup()
@@ -153,7 +158,6 @@ extension FirebasePhotoSharingService {
 extension FirebasePhotoSharingService {
     // MARK: - Public Method for Uploading Text File
     static func uploadTextFile(mail: String? = nil, message: String, completion: @escaping (String?, Error?) -> ()) {
-        let folderName = UUID().uuidString
         let maxPrefixLength = 15
         let prefix = String(message.prefix(maxPrefixLength)).replacingOccurrences(of: " ", with: "_")
         let dateFormatter = DateFormatter()

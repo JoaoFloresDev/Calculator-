@@ -51,7 +51,7 @@ class SuggestionsViewController: UIViewController {
         textView.textColor = .lightGray
         textView.isScrollEnabled = true
         textView.backgroundColor = .white
-        textView.setPadding(left: 10)
+        textView.setPadding()
         return textView
     }()
 
@@ -272,7 +272,7 @@ extension UITextField {
 }
 
 extension UITextView {
-    func setPadding(top: CGFloat = 0, left: CGFloat, bottom: CGFloat = 0, right: CGFloat = 0) {
+    func setPadding(top: CGFloat = 10, left: CGFloat = 10, bottom: CGFloat = 10, right: CGFloat = 10) {
         self.textContainerInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
     }
 }

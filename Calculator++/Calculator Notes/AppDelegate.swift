@@ -28,18 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func showPasswordAlert(url: URL) {
-        let alertController = UIAlertController(title: "Insira a senha", message: "Digite a senha do link secreto para acessar as fotos:", preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: Text.enterPasswordTitle.localized(),
+            message: Text.enterPasswordMessage.localized(),
+            preferredStyle: .alert
+        )
         
         alertController.addTextField { textField in
-            textField.placeholder = "Senha"
+            textField.placeholder = Text.passwordPlaceholder.localized()
             textField.isSecureTextEntry = true
-            textField.autocapitalizationType = .allCharacters
         }
         
-        let confirmAction = UIAlertAction(title: "Confirmar", style: .default) { [weak self] _ in
+        let confirmAction = UIAlertAction(title: Text.confirm.localized(), style: .default) { [weak self] _ in
             if let password = alertController.textFields?.first?.text, !password.isEmpty {
                 let folderId = url.lastPathComponent + password.uppercased()
-                print("Abrindo o app com o folder ID: \(folderId)")
                 self?.loadPhotosAndShowModal(folderId: folderId)
             } else {
                 print("Senha não fornecida.")
@@ -66,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let error = error {
                         print("Erro ao listar fotos: \(error.localizedDescription)")
                         loadingAlert.stopLoading {
-                            self.showAlert(message: "Link ou senha inválidos. Tente novamente.")
+                            self.showAlert(message: Text.invalidLinkOrPasswordMessage.localized())
                         }
                         return
                     }
@@ -87,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     dispatchGroup.notify(queue: .main) {
                         guard !photoURLs.isEmpty else {
                             loadingAlert.stopLoading {
-                                self.showAlert(message: "Link ou senha inválidos. Tente novamente.")
+                                self.showAlert(message: Text.invalidLinkOrPasswordMessage.localized())
                             }
                             return
                         }
@@ -101,8 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func showAlert(message: String) {
-        let alertController = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alertController = UIAlertController(title: Text.savePhotosErrorTitle.localized(), message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Text.okActionText.localized(), style: .default, handler: nil)
         alertController.addAction(okAction)
         
         if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
@@ -226,7 +228,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                currentViewController is ChangePasswordViewController ||
                currentViewController is CalculatorViewController ||
                currentViewController is ChangeCalculatorViewController ||
-               currentViewController is VaultViewController
+               currentViewController is VaultViewController ||
+               currentViewController is ChangeNewCalcViewController2
     }
     
     // MARK: - Core Data Stack

@@ -74,7 +74,7 @@ class IconContentView: UIView {
         view.addSubview(imageView)
         
         view.snp.makeConstraints { make in
-            make.width.height.equalTo(80)
+            make.width.height.equalTo(68)
         }
         
         imageView.snp.makeConstraints { make in

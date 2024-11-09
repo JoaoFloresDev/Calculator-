@@ -1,55 +1,35 @@
-/*
-  Localizable.strings
-  Calculator Notes
-
-  Criado por Joao Victor Flores da Costa em 06/02/22.
-  Copyright © 2022 MakeSchool. Todos os direitos reservados.
-*/
-
-// Versão Premium
 premiumVersion = "Versão Premium";
 noProtection = "Sem proteção";
-hideRecoverButton = "Ocultar Botão Face ID";
+hideRecoverButton = "Mostrar Botão Face ID";
 chooseProtectionMode = "Escolha o modo de proteção";
 
-// Configurações e Outros
 settings = "Configurações";
 gallery = "Galeria";
 video = "Vídeo";
 notes = "Notas";
 
-instructionFirstStepCalc = "Crie uma senha e clique no botão '='";
+instructionFirstStepCalc = "Crie uma senha e clique no botão '=' para confirmar";
 instructionSecondStepCalc = "Senha: *****. Repita a senha e confirme com '='";
 
 instructionFirstStepBank = "Crie uma senha e clique em 'OK'";
 instructionSecondStepBank = "Senha: *****. Repita a senha e confirme com 'OK'";
 
-bankModeHasBeenActivated = "Modo cofre ativado";
-calcModeHasBeenActivated = "Modo calculadora ativado";
+bankModeHasBeenActivated = "Modo Cofre Ativado";
+calcModeHasBeenActivated = "Modo Calculadora Ativado";
 
 welcomeInstructionBank = "Digite sua senha";
 
 done = "Pronto";
 edit = "Editar";
 
-premiumToolTitle = "Recurso premium";
-premiumToolMessage = "O suporte para vídeo é apenas oferecido para usuários premium. Veja os upgrades na seção Configurações";
+premiumToolTitle = "Recurso Premium";
+premiumToolMessage = "O suporte para vídeo é exclusivo para usuários Premium. Veja as opções de upgrade nas Configurações";
+premiumTooliCloudMessage = "O recurso de backup está disponível apenas para usuários Premium. Mais detalhes nas Configurações";
 
 save = "Salvar";
 cancel = "Cancelar";
-ok = "Confirmar";
+ok = "OK";
 see = "Ver";
-
-// Mensagens de Erro
-errorTitle = "Erro Inesperado";
-errorMessage = "Tente novamente mais tarde";
-deleteFiles = "Excluir Arquivo?";
-
-incorrectPassword = "Senha Incorreta";
-tryAgain = "Tentar Novamente";
-
-// Compra
-products = "Produtos Disponíveis";
 loading = "Carregando...";
 close = "Fechar";
 restore = "Restaurar";
@@ -59,60 +39,53 @@ buy = "Comprar";
 folderTitle = "Nome da Pasta";
 createActionTitle = "Criar";
 cancelTitle = "Cancelar";
-inputPlaceholder = "Insira o Nome da Nova Pasta";
+inputPlaceholder = "Digite o nome da nova pasta";
 folderNameAlreadyUsedTitle = "Nome de Pasta Já Utilizado";
-folderNameAlreadyUsedText = "Escolha um Nome Diferente para a Pasta";
+folderNameAlreadyUsedText = "Escolha um nome diferente para a pasta";
 deleteConfirmationTitle = "Excluir Arquivos?";
 
 // Mostrar Tudo
-hideAllVideos = "Ocultar Todos os Vídeos Salvos";
-showAllVideos = "Mostrar Todos os Vídeos Salvos";
-hideAllPhotos = "Ocultar Todas as Fotos Salvas";
-showAllPhotos = "Mostrar Todas as Fotos Salvas";
-wouldLikeSetProtection = "Deseja Adicionar Proteção à Sua Galeria?";
+hideAllVideos = "Ocultar Todos os Vídeos";
+showAllVideos = "Mostrar Todos os Vídeos";
+hideAllPhotos = "Ocultar Todas as Fotos";
+showAllPhotos = "Mostrar Todas as Fotos";
+wouldLikeSetProtection = "Deseja adicionar proteção à sua galeria?";
 
 // Backup
 askToRestoreBackupTitle = "Restaurar Backup";
 askToRestoreBackupMessage = "Deseja restaurar seu último backup?";
-backupSuccessTitle = "Backup Realizado com Sucesso";
+backupSuccessTitle = "Backup Restaurado com Sucesso";
 backupSuccessMessage = "Seu backup foi restaurado com sucesso";
 backupErrorTitle = "Erro ao Efetuar Backup";
 backupErrorMessage = "Nenhum dado encontrado para backup";
 incorrectPasswordTitle = "Senha Incorreta";
 incorrectPasswordMessage = "A senha fornecida não é válida. Tente novamente.";
 insertPasswordTitle = "Digite sua Senha";
-insertPasswordMessage = "Digite a senha anteriormente usada para abrir o aplicativo";
-yes = "Sim";
-no = "Não";
+insertPasswordMessage = "Digite a senha configurada anteriormente para acessar o aplicativo";
 enableiCloudTitle = "Ação Necessária";
-enableiCloudSubtitle = "\n1. Clique em iCloud\n\n2. Localize o aplicativo SG na lista\n\n3. Ative o iCloud";
+enableiCloudSubtitle = "\n1. Acesse o iCloud nas configurações\n2. Encontre o aplicativo SG na lista\n3. Ative o iCloud";
 enableiCloudAction = "Ir para Configurações";
-premiumTooliCloudMessage = "O recurso de backup é exclusivo para usuários Premium. Detalhes do produto serão apresentados";
 
-// Deletar e Backup
-delete = "Excluir";
-backupNavigationTitle = "Meu Backup";
+// Vídeos e Galeria
+emptyVideosTitle = "Sem Vídeos";
+emptyVideosSubtitle = "Adicione vídeos clicando no botão +";
+premiumVideosSubtitle = "Suporte para vídeos é um recurso Premium";
 
-emptyVideosTitle = "Sem vídeos";
-emptyVideosSubtitle = "Adicione seus vídeos clicando no botão +";
-premiumVideosSubtitle = "O suporte para vídeo é um recurso premium";
+emptyGalleryTitle = "Sem Fotos";
+emptyGallerySubtitle = "Adicione fotos clicando no botão +";
 
-emptyGalleryTitle = "Sem fotos";
-emptyGallerySubtitle = "Adicione suas fotos clicando no botão +";
+emptyNotesTitle = "Sem Anotações";
+emptyNotesSubtitle = "Adicione anotações clicando no botão +";
 
-emptyNotesTitle = "Sem anotações";
-emptyNotesSubtitle = "Adicione suas anotações clicando no botão +";
-
-seeMore = "Ver mais";
+seeMore = "Ver Mais";
 backupSettings = "Configurações de Backup";
 backupStatus = "Backup Seguro";
-seeMyBackup = "Ver meu backup";
-restoreBackup = "Restaurar backup";
-updateBackup = "Atualizar backup";
-faceIDReason = "Vamos usar a autenticação para mostrar abrir sua galeria";
-myBackupItems = "Meus itens no Backup";
+seeMyBackup = "Ver Meu Backup";
+updateBackup = "Atualizar Backup";
+faceIDReason = "Autenticação necessária para acessar a galeria";
+myBackupItems = "Meus Itens no Backup";
 backupNavigationTitle = "Meu Backup";
-vaultMode = "Modo cofre";
+vaultMode = "Modo Cofre";
 recover = "Recuperar";
 
 createPassword = "Crie uma senha e confirme com OK";
@@ -121,88 +94,175 @@ insertPassword = "Digite sua senha e confirme com OK";
 backupEnabled = "Ativado";
 backupDisabled = "Desativado";
 
-backupNavigationSubtitle = "As fotos são sincronizadas com as fotos adicionadas toda vez que o aplicativo é aberto e há conexão Wi-Fi. Seu backup é seguro e a única forma de visualizar as fotos é dentro do aplicativo";
-
-myBackupNavigationSubtitle = "Clique em  'recuperar backup' no menu de anterior para importar as fotos para sua galeria";
+backupNavigationSubtitle = "Clique em 'restaurar backup' no menu anterior para importar as fotos";
 continueText = "Continuar";
 
-welcomeOnboarding_title = "Bem-vindo ao Calculadora Secreta";
+// Onboarding
+welcomeOnboarding_title = "Bem-vindo ao Secret Gallery";
 welcomeOnboarding_subtitle = "Proteja suas fotos e vídeos com segurança";
 welcomeOnboarding_startButtonTitle = "Começar";
-welcomeOnboarding_skipButtonTitle = "Ao clicar em ”Começar”, você concorda com a politica de privacidade e os termos de uso";
+welcomeOnboarding_skipButtonTitle = "Ao clicar em 'Começar', você concorda com nossa Política de Privacidade e Termos de Uso";
 
-createCodeOnboarding_title = "Crie um código de acesso";
-createCodeOnboarding_subtitle = "Crie uma senha para acessar suas fotos guardadas";
+createCodeOnboarding_title = "Crie um Código de Acesso";
+createCodeOnboarding_subtitle = "Defina uma senha para proteger suas fotos guardadas";
 createCodeOnboarding_startButtonTitle = "Continuar";
 createCodeOnboarding_skipButtonTitle = "Agora não";
 
-addPhotosOnboarding_title = "Adicione suas fotos";
-addPhotosOnboarding_subtitle = "Adicione as fotos que deseja guardar de forma segura";
+addPhotosOnboarding_title = "Adicione Suas Fotos";
+addPhotosOnboarding_subtitle = "Escolha as fotos que deseja guardar com segurança";
 addPhotosOnboarding_startButtonTitle = "Continuar";
 addPhotosOnboarding_skipButtonTitle = "Agora não";
 
-emailErrorTitle = "E-mail inválido";
-emailErrorDescription = "Confira o e-mail adicionado e tente novamente";
-insertEmailTitle = "Digite o e-mail que será utilizado para recuperação:";
-insertEmailDescription = "Digite seu e-mail";
-insertEmailButtonText = "Confirmar E-mail";
+// Recuperação de Email
+emailErrorTitle = "Email Inválido";
+emailErrorDescription = "Verifique o email digitado e tente novamente";
+insertEmailTitle = "Digite o email para recuperação:";
+insertEmailDescription = "Digite seu email";
+insertEmailButtonText = "Confirmar Email";
 
-emailPopupTitle = "Enviar email com senha de recuperação?";
-emailmessage = "Enviaremos um email com a senha de recuperação para você";
+emailPopupTitle = "Enviar email de recuperação?";
+emailmessage = "Enviaremos um email com instruções para recuperação de senha";
 emailCancelButtonTitle = "Não";
 emailOkButtonTitle = "Sim";
-emailNotRegisteredTitle = "Você não cadastrou email para recuperação";
-emailNotRegisteredMessage = "Não encontramos email pré cadastrado para a conta";
-successEmailTitle = "Sucesso no envio do email";
-successEmailMessage = "Confira sua caixa do email, dentro de 48h você receberá um email com a senha de recuperação";
-errorEmailTitle = "Erro ao enviar email";
-errorEmailMessage = "Tivemos problemas para enviar o email, confira a conexão com a internet e tente novamente";
+emailNotRegisteredTitle = "Nenhum Email Cadastrado";
+emailNotRegisteredMessage = "Não encontramos um email pré-cadastrado para sua conta";
+successEmailTitle = "Email Enviado com Sucesso";
+successEmailMessage = "Verifique sua caixa de entrada. Em até 48 horas você receberá um email com as instruções para recuperação de senha.";
+errorEmailTitle = "Erro ao Enviar Email";
+errorEmailMessage = "Não foi possível enviar o email. Verifique sua conexão com a internet e tente novamente.";
 remindMyPasscode = "Esqueceu sua senha?";
-selectNewIcon = "Selecione o icone desejado";
-changeIconTitle = "Alterar icone";
-unlimitedStorage = "Armazenamento ilimitado";
-noAds = "Sem anúncios";
-videoSuport = "Suporte para vídeos";
-callToActionPurchase = "Conheça nossa experiência premium";
+selectNewIcon = "Selecione um Ícone";
+changeIconTitle = "Alterar Ícone";
+unlimitedStorage = "Armazenamento Ilimitado";
+noAds = "Sem Anúncios";
+videoSuport = "Suporte para Vídeos";
+callToActionPurchase = "Conheça Nossos Recursos Premium";
 
-selectImagesToShare = "Selecione as imagens que deseja compartilhar";
-selectImagesToDelete = "Selecione as imagens que deseja deletar";
+selectImagesToShare = "Selecione as Imagens para Compartilhar";
+selectImagesToDelete = "Selecione as Imagens para Excluir";
 
 monthlySubscription = "Assinatura Mensal - ";
 yearlySubscription = "Assinatura Anual - ";
-termsOfUse = "Termos de uso";
-privacyPolicy = "Politica de privacidade";
+termsOfUse = "Termos de Uso";
+privacyPolicy = "Política de Privacidade";
 augmentedReality = "Realidade Aumentada";
 
-createPasswordNewCalc = "Crie uma senha de 4 digitos";
+// Calculadora e Autenticação
+createPasswordNewCalc = "Crie uma senha de 4 dígitos";
 insertCreatedPasswordAgainNewCalc = "Digite novamente a senha para confirmar";
-oneWeekToTest = "Teste uma semana grátis";
-
+oneWeekToTest = "Teste uma Semana Grátis";
 hasAccount = "Já possui uma conta?";
-notHasAccount = "Ainda não? Crie agora";
-genericLoginError = "Algo deu errado";
-createLoginError = "Se você ainda não possui uma conta, selecione 'Sign up with google'";
+notHasAccount = "Novo aqui? Crie uma conta";
+genericLoginError = "Ocorreu um erro";
+createLoginError = "Caso não tenha uma conta, selecione 'Cadastrar com Google'";
 successLogin = "Login efetuado com sucesso!";
-successLoginDescription = "Suas fotos serão sincronizadas sempre que adicionar novas fotos ou clicar no botão 'atualizar backup'";
-syncAut = "Sincronização automática";
+successLoginDescription = "As fotos serão sincronizadas ao serem adicionadas ou ao clicar em 'atualizar backup'";
+syncAut = "Sincronização Automática";
 logout = "Logout";
 pending = "Pendente";
-downloadBackup = "Baixar backup";
-loginWithGoogle = "Login With Google";
-signUpWithGoogle = "Sign Up With Google";
-browser = "Navegador de internet";
+downloadBackup = "Baixar Backup";
+loginWithGoogle = "Login com Google";
+signUpWithGoogle = "Cadastrar com Google";
+browser = "Navegador";
 
-createLoginErrorTitle = "Tente criar uma conta";
+createLoginErrorTitle = "Tente Criar uma Conta";
 fakepassAlertTitle = "Senha Falsa";
 fakepassAlertText = "Senha falsa criada com sucesso";
 
-loginTocontinueTitle = "Faça o login para continuar";
-loginTocontinueText = "Realize o login para habilitar as funcionalidades de backup";
+loginTocontinueTitle = "Login Necessário";
+loginTocontinueText = "Faça login para habilitar as funcionalidades de backup";
 
-wifiConnectTitle = "Conecte-se ao wifi";
-wifiConnectText = "Conecte-se ao wifi para prosseguir";
+wifiConnectTitle = "Conecte-se ao Wi-Fi";
+wifiConnectText = "Conecte-se ao Wi-Fi para continuar";
 
 arquives = "Arquivos";
 emptyArquives = "Adicione novos arquivos para começar";
 createFakePasswordNewCalc = "Crie uma senha falsa de 4 dígitos";
 insertCreatedFakePasswordAgainNewCalc = "Digite novamente a senha falsa para confirmar";
+
+// Compartilhamento e Alertas
+copiedMessage = "Link Copiado!";
+savedMessage = "Fotos Salvas!";
+shareCompleteMessage = "Compartilhamento Concluído.";
+shareCancelMessage = "Compartilhamento Cancelado.";
+shareErrorMessage = "Erro durante o compartilhamento: ";
+noPhotoToShareMessage = "Nenhuma foto selecionada para compartilhar com outra calculadora.";
+noPhotoToSaveMessage = "Nenhuma foto selecionada para salvar.";
+errorCreatingSharedFolder = "Erro ao criar pasta compartilhada: ";
+sharedLinkTitle = "Link Secreto Criado";
+sharedLinkMessagePrefix = "Veja todos os links criados nas configurações\n\nLink: ";
+sharedLinkMessageSuffix = "\nSenha: ";
+copyLinkButtonTitle = "Copiar Link e Senha";
+cancelButtonTitle = "Cancelar";
+downloadAppMessage = "1. Baixe o aplicativo https://apps.apple.com/us/app/sg-secret-gallery-vault/id1479873340\n2. Clique no link ";
+downloadAppPasswordPrefix = "\n3. Digite a senha ";
+createPasscodeAndConfrim = "Crie uma senha e confirme com '='";
+sharedPhotosTitle = "Fotos Compartilhadas";
+
+savePhotosButtonText = "Salvar Fotos";
+savePhotosErrorTitle = "Erro";
+savePhotosErrorMessage = "Erro ao salvar imagem:";
+processImageErrorMessage = "Erro ao processar a imagem.";
+convertImageErrorMessage = "Erro ao converter imagem para JPEG.";
+photosSavedTitle = "Fotos Salvas";
+photosSavedMessage = "Todas as fotos foram salvas na calculadora.";
+okActionText = "OK";
+saveVideoErrorMessage = "Erro ao salvar vídeo";
+limitMessage = "Limite de 5 links atingido. Exclua um para criar novos.";
+deleteLinkConfirmationTitle = "Excluir Link";
+deleteConfirmationMessage = "Tem certeza de que deseja excluir este link?";
+deleteConfirmationCancel = "Cancelar";
+deleteConfirmationDelete = "Excluir";
+
+deleteErrorTitle = "Erro ao Excluir";
+deleteErrorMessage = "Erro ao excluir item";
+folderDeletedTitle = "Pasta Excluída";
+folderDeletedMessage = "Pasta excluída com sucesso";
+
+headerMessage = "Agradecemos por compartilhar suas ideias conosco";
+emailContact = "Email para Contato (opcional)";
+writeYourMessage = "Deixe Sua Mensagem";
+emailPlaceholder = "Seu email (opcional)";
+feedbackPlaceholder = "Queremos ouvir suas ideias, sugestões e feedbacks!";
+submitButtonTitle = "Enviar Feedback";
+emptyMessageAlertTitle = "Mensagem Vazia";
+emptyMessageAlertMessage = "Por favor, preencha o campo de mensagem e tente novamente";
+errorAlertTitle = "Erro!";
+errorAlertMessage = "Tente novamente mais tarde";
+thankYouAlertTitle = "Muito Obrigado!";
+thankYouAlertMessage = "Sua opinião é muito importante para nós. Sua mensagem foi enviada com sucesso!";
+suggestionsFeedbackTitle = "Sugestões e Feedback";
+linkCopied = "Link Copiado";
+secureSharing = "Compartilhamento Seguro";
+activeLinks = "Links Ativos";
+networkError = "Erro de Rede";
+linkPrefix = "link: ";
+keyPrefix = "senha: ";
+linkText = "Link: ";
+keyText = "Senha: ";
+
+// Tutorial
+tutorialTitle = "Compartilhe Fotos e Vídeos com Segurança";
+tutorialDescription = "Agora você pode criar links compartilháveis para fotos e vídeos com segurança. O destinatário poderá importar as fotos diretamente para o app.";
+tutorialHowTo = "Como Usar?";
+tutorialSteps = "1. Selecione fotos na sua galeria.\n\n2. Toque em compartilhar e escolha 'Criar link seguro'.\n\n3. Envie o link e a senha para quem deseja compartilhar.";
+importingPhotos = "Importando fotos";
+limitReachedTitle = "Limite Atingido";
+limitReachedMessage = "Você atingiu o limite de links criados. Acesse 'Link Seguro' nas configurações para remover um link e liberar espaço.";
+chooseDestination = "Escolha o Destino";
+share = "Compartilhar";
+saveToGallery = "Salvar na Galeria";
+shareWithOtherCalculator = "Compartilhar com outra calculadora";
+enterURL = "Digite a URL";
+newTag = "Novo";
+addFakePassword = "Adicionar Senha Falsa";
+secretSharing = "Compartilhamento Secreto";
+improvementSuggestions = "Sugestões de Melhoria";
+biometricAuthentication = "Autenticação Biométrica";
+changePassword = "Alterar Senha";
+sendLinkAndPassword = "Enviar Link e Senha";
+// Compartilhamento de Conteúdo
+sharedContentIntro = "Aqui está o link para acessar o conteúdo que compartilhei com você:";
+sharedContentStep1 = "1. Baixe o app: ";
+sharedContentStep2 = "2. Abra o link: ";
+sharedContentStep3 = "3. Digite a senha para desbloquear: ";

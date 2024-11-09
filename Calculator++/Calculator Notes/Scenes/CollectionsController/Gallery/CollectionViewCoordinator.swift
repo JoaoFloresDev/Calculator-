@@ -131,14 +131,48 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                     let alertController = UIAlertController(title: Text.sharedLinkTitle.localized(), message: message, preferredStyle: .alert)
 
                     let copyAction = UIAlertAction(title: Text.copyLinkButtonTitle.localized(), style: .default) { _ in
-                        let messageToPaste = Text.downloadAppMessage.localized() + " " + link + " " + Text.downloadAppPasswordPrefix.localized() + " " + key
+                        let appPath = "https://apps.apple.com/sa/app/sg-secret-gallery-vault/id1479873340"
+                        let messageToPaste = """
+                        \(Text.sharedContentIntro.localized())
+                        \(Text.sharedContentStep1.localized())\(appPath)
+                        \(Text.sharedContentStep2.localized())\(link)
+                        \(Text.sharedContentStep3.localized())\(key)
+                        """
                         UIPasteboard.general.string = messageToPaste
                         self.showCopiedAnimation()
                     }
-
+                    
+                    let shareAction = UIAlertAction(title: Text.sendLinkAndPassword.localized(), style: .default) { _ in
+                        guard !modelData.isEmpty else { return }
+                        let appPath = "https://apps.apple.com/sa/app/sg-secret-gallery-vault/id1479873340"
+                        let messageToPaste = """
+                        \(Text.sharedContentIntro.localized())
+                        \(Text.sharedContentStep1.localized())\(appPath)
+                        \(Text.sharedContentStep2.localized())\(link)
+                        \(Text.sharedContentStep3.localized())\(key)
+                        """
+                        
+                        let activityVC = UIActivityViewController(activityItems: [messageToPaste], applicationActivities: nil)
+                        
+                        activityVC.completionWithItemsHandler = { (_, completed, _, error) in
+                            if completed {
+                                print(Text.shareCompleteMessage)
+                            } else {
+                                print(Text.shareCancelMessage)
+                            }
+                            
+                            if let shareError = error {
+                                print(Text.shareErrorMessage.localized() + "\(shareError.localizedDescription)")
+                            }
+                        }
+                        
+                        viewController.present(activityVC, animated: true)
+                    }
+            
                     let cancelAction = UIAlertAction(title: Text.cancelButtonTitle.localized(), style: .cancel, handler: nil)
 
                     alertController.addAction(copyAction)
+                    alertController.addAction(shareAction)
                     alertController.addAction(cancelAction)
 
                     self.viewController?.present(alertController, animated: true)
