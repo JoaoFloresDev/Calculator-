@@ -124,7 +124,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupNotifications()
-        Counter().increment()
         WLEmptyState.configure()
         FirebaseApp.configure()
         if shouldInitializeWindow() {

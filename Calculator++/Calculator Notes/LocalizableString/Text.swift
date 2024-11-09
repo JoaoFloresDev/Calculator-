@@ -301,6 +301,9 @@ enum Text: String {
     case noVideoToSaveMessage // "Nenhum vídeo válido foi selecionado para salvar na galeria."
     case noVideoToShareTitle // "Nenhum vídeo encontrado"
     case noVideoToShareMessage // "Nenhum vídeo válido foi selecionado para compartilhar."
+    case review // "Avaliar"
+    case sugestions // "Sugestões de melhoria?"
+    case sugestionsDescription // "Sua opinião é muito importante! nos ajude a melhorar ainda mais"
     
     func localized() -> String {
         return NSLocalizedString(self.rawValue,

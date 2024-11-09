@@ -146,7 +146,6 @@ struct FeatureFlags {
 
 
 class Counter {
-    
     private let userDefaultsKey = "counterKey"
     
     var count: Int {

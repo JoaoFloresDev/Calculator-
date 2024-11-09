@@ -34,7 +34,7 @@ struct Alerts {
     
     // Errors
     static func showAlert(title: String, text: String, controller: UIViewController, completion: (() -> Void)? = nil) {
-        let alert = createAlert(title: title, message: text, actions: [createAction(title: "OK", handler: { _ in completion?() })])
+        let alert = createAlert(title: title, message: text, actions: [createAction(title: Text.ok.localized(), handler: { _ in completion?() })])
         presentAlert(alert, on: controller)
     }
     
@@ -84,11 +84,11 @@ struct Alerts {
         presentAlert(alert, on: controller)
     }
     
-    static func showReviewNow(controller: UIViewController, completion: @escaping () -> Void) {
-        let cancelAction = createAction(title: "Agora não", style: .default, handler: nil)
-        let okAction = createAction(title: "Avaliar", handler: { _ in completion() })
+    static func showReviewNow(controller: UIViewController, completion: @escaping (Bool) -> Void) {
+        let cancelAction = createAction(title: Text.addPhotosOnboarding_skipButtonTitle.localized(), style: .default, handler: { _ in completion(false) })
+        let okAction = createAction(title: Text.review.localized(), handler: { _ in completion(true) })
         
-        let alert = createAlert(title: "Sugestões de melhoria?", message: "Sua opinião é muito importante! nos ajude a melhorar ainda mais", actions: [cancelAction, okAction])
+        let alert = createAlert(title: Text.sugestions.localized(), message: Text.sugestionsDescription.localized(), actions: [cancelAction, okAction])
         
         presentAlert(alert, on: controller)
     }

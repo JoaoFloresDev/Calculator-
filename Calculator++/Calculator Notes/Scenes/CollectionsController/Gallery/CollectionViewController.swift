@@ -54,9 +54,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     var isEditMode = false {
         didSet {
-            if isEditMode && couter.count > 10 {
-                SKStoreReviewController.requestReviewInCurrentScene()
-            }
             editLeftBarButtonItem?.setEditing(isEditMode)
         }
     }
@@ -78,9 +75,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         setupPlaceholderView()
         handleAdsSetup()
         Defaults.setBool(.notFirstUse, true)
-        if (couter.count == 30 || couter.count == 45) && !UserDefaults.standard.bool(forKey: "userGoToReview") {
-            showAppReviewAlert()
-        }
     }
 
     func presentWithCustomDissolve(viewController: UIViewController, from presenter: UIViewController, duration: TimeInterval = 1.0) {
@@ -92,24 +86,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
             })
         }
     }
-
-    func showAppReviewAlert() {
-        Alerts.showReviewNow(controller: self) { [weak self] in
-            UserDefaults.standard.set(true, forKey: "userGoToReview")
-            self?.openAppStoreForReview()
-        }
-        
-    }
-
-    func openAppStoreForReview() {
-        let appID = "1479873340" // Substitua pelo seu App ID
-        if let url = URL(string: "itms-apps://itunes.apple.com/app/id\(appID)?action=write-review"),
-           UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
-    }
-    
-    let couter = Counter()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -793,11 +769,15 @@ extension CollectionViewController {
 }
 
 extension SKStoreReviewController {
-    public static func requestReviewInCurrentScene() {
+    public static func requestReviewInCurrentScene(completion: @escaping () -> Void) {
         if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
             DispatchQueue.main.async {
                 requestReview(in: scene)
+                completion()
             }
+        } else {
+            // Caso a scene não esteja disponível, você pode chamar a completion imediatamente
+            completion()
         }
     }
 }
