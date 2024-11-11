@@ -19,12 +19,11 @@ class AdsHandler {
     }
     
     func interstitialDidDismissScreen(delegate: GADInterstitialDelegate) {
-        let adsService = AdsService()
-        interstitial = adsService.createAndLoadInterstitial(delegate: delegate)
     }
     
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
-        guard Defaults.getInt(.launchCounter) > 5,
+        let couter = Counter()
+        guard couter.count % 4 == 0 && couter.count > 24,
               !Defaults.getBool(.monthlyPurchased), !Defaults.getBool(.yearlyPurchased) else {
             return
         }

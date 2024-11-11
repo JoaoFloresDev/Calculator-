@@ -142,6 +142,19 @@ struct UserDefaultService {
 
 struct FeatureFlags {
     static let iCloudEnabled  = true
+    static func secureMode() -> Bool {
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        dateComponents.year = 2024
+        dateComponents.month = 11
+        dateComponents.day = 30
+        if let limitDate = Calendar.current.date(from: dateComponents) {
+            return currentDate > limitDate
+        }
+        
+        return false
+    }
+
 }
 
 

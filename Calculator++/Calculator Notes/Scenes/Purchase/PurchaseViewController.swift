@@ -46,7 +46,7 @@ class PurchaseViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.clipsToBounds = true
-        button.setTitle("Loading...", for: .normal)
+        button.setTitle(Text.loading.localized(), for: .normal)
         
         button.addTarget(self, action: #selector(didTapMonthlyButton), for: .touchUpInside)
         return button
@@ -59,7 +59,7 @@ class PurchaseViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.clipsToBounds = true
-        button.setTitle("Loading...", for: .normal)
+        button.setTitle(Text.loading.localized(), for: .normal)
         
         button.addTarget(self, action: #selector(didTabYearlyButton), for: .touchUpInside)
         return button

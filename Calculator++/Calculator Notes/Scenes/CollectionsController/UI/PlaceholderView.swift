@@ -102,7 +102,7 @@ class PlaceholderView: UIView {
         stackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-30)
-            make.width.equalTo(300)
+            make.width.equalTo(280)
         }
         
         // Configura as constraints da imageView

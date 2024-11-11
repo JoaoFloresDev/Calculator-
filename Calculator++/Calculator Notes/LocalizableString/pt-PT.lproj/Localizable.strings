@@ -49,7 +49,7 @@ tryAgain = "Try Again";
 
 // Purchase
 products = "Available Products";
-loading = "Loading...";
+loading = "Carregando...";
 close = "Close";
 restore = "Restore";
 buy = "Buy";

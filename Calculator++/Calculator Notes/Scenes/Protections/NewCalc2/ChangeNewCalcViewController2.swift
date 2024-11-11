@@ -239,18 +239,19 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
             self.view.addSubview(loadingIndicator)
             let couter = Counter()
             couter.increment()
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard =
+            UIStoryboard(name: "Main", bundle: nil)
             let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
             self.present(homeViewController, animated: true) {
                 loadingIndicator.stopAnimating()
                 loadingIndicator.removeFromSuperview()
-                if couter.count > 2 && !UserDefaults.standard.bool(forKey: "userGoToFastReview") {
+                if couter.count > 8 && !UserDefaults.standard.bool(forKey: "userGoToFastReview") {
                     SKStoreReviewController.requestReviewInCurrentScene {
                         UserDefaults.standard.set(true, forKey: "userGoToFastReview")
                     }
                     return
                 }
-                if couter.count > 4 && !UserDefaults.standard.bool(forKey: "userGoToReview") {
+                else if couter.count > 16 && !UserDefaults.standard.bool(forKey: "userGoToReview") {
                     Alerts.showReviewNow(controller: homeViewController) { showReview in
                         UserDefaults.standard.set(true, forKey: "userGoToReview")
                         if showReview {
@@ -263,7 +264,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                     }
                     return
                 }
-                if couter.count > 8 {
+                else if couter.count % 4 != 0 && couter.count > 24 {
                     let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
                     if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
                         self.presentWithCustomDissolve(viewController: purchaseViewController, from: homeViewController, duration: 0.5)

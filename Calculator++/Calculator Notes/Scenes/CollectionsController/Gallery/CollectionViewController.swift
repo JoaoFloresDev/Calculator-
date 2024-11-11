@@ -776,7 +776,6 @@ extension SKStoreReviewController {
                 completion()
             }
         } else {
-            // Caso a scene não esteja disponível, você pode chamar a completion imediatamente
             completion()
         }
     }
