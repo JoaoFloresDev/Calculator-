@@ -193,7 +193,7 @@ sharedLinkMessagePrefix = "View all your created links in settings\n\nLink: ";
 sharedLinkMessageSuffix = "\nPassword: ";
 copyLinkButtonTitle = "Copy Link and Password";
 cancelButtonTitle = "Cancel";
-downloadAppMessage = "1. Download the app https://apps.apple.com/us/app/sg-secret-gallery-vault/id1479873340\n2. Click the link ";
+downloadAppMessage = "1. Click the link ";
 downloadAppPasswordPrefix = "\n3. Enter the password ";
 createPasscodeAndConfrim = "Create a passcode and confirm with '='";
 sharedPhotosTitle = "Shared Photos";

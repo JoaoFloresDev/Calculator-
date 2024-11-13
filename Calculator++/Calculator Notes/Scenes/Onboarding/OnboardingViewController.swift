@@ -61,7 +61,7 @@ extension OnboardingWelcomeViewController: OnboardingViewDelegate {
     func apresentarVaultViewController() {
         slideAndFadeAnimator = SlideAndFadePresentAnimator()
         
-        if isCurrentDateBeforeAprilFirst2024() {
+        if FeatureFlags.simpleMode() {
             let vaultViewController = VaultViewController(mode: .create)
             vaultViewController.modalPresentationStyle = .fullScreen
             vaultViewController.transitioningDelegate = slideAndFadeAnimator

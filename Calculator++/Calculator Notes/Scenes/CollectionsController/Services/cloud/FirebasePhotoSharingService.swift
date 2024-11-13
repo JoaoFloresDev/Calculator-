@@ -61,9 +61,8 @@ struct FirebasePhotoSharingService {
     
     // MARK: - Private Methods
     private static func createDynamicLink(for folderName: String, completion: @escaping (String?, String?, Error?) -> ()) {
-        // Criar um link customizado no formato myapp://photos/folderId
         let folderId = String(folderName.dropLast(4))
-        let deepLinkURL = "secrets://shared_photos/\(folderId)"
+        let deepLinkURL = "https://joaofloresdev.github.io/secrets?\(folderId)"
         let password = String(folderName.suffix(4))
         
         // Retorna o deeplink gerado

@@ -201,6 +201,9 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         fakepasswordLabel.text = Text.addFakePassword.localized()
         shareWithOtherCalcLabel.text = Text.secretSharing.localized()
         sugestionsLabel.text = Text.improvementSuggestions.localized()
+        
+        fakePassword.isHidden = FeatureFlags.simpleMode()
+        changePassword.isHidden = FeatureFlags.simpleMode()
     }
     
     private func setupNewTag() {

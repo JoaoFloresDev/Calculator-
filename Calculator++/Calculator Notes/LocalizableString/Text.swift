@@ -223,7 +223,7 @@ enum Text: String {
     case sharedLinkMessageSuffix // "\nSenha: "
     case copyLinkButtonTitle // "Copiar Link e Senha"
     case cancelButtonTitle // "Cancelar"
-    case downloadAppMessage // "1. Baixe o app https://apps.apple.com/us/app/sg-secret-gallery-vault/id1479873340\n2. Clique no link "
+    case downloadAppMessage // "2. Clique no link "
     case downloadAppPasswordPrefix // "\n3. Digite a senha "
     case createPasscodeAndConfrim //"Create a passcode and confirm with '='"
     case sharedPhotosTitle

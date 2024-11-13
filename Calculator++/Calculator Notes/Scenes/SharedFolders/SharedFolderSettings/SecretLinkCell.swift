@@ -34,7 +34,7 @@ class SecretLinkCell: UIView {
         loadingIndicator.startAnimating()
         self.alpha = 0.5
         let folderId = title
-            .replacingOccurrences(of: "secrets://shared_photos/", with: "")
+            .replacingOccurrences(of: "https://joaofloresdev.github.io/secrets?", with: "")
             .replacingOccurrences(of: "@@", with: "")
         let folderRef = Storage.storage().reference().child("shared_photos/\(folderId)")
         
@@ -168,7 +168,6 @@ class SecretLinkCell: UIView {
         let appPath = "https://apps.apple.com/sa/app/sg-secret-gallery-vault/id1479873340"
         UIPasteboard.general.string = """
         \(Text.sharedContentIntro.localized())
-        \(Text.sharedContentStep1.localized())\(appPath)
         \(Text.sharedContentStep2.localized())\(link)
         \(Text.sharedContentStep3.localized())\(key)
         """

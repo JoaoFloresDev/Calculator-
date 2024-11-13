@@ -181,8 +181,10 @@ class PhotoViewController: UIViewController {
             }
             
             dispatchGroup.notify(queue: .main) {
-                self.loadingAlert.stopLoading()  // Para o loadingAlert após concluir o download e salvamento
-                Alerts.showAlert(title: Text.photosSavedTitle.localized(), text: Text.photosSavedMessage.localized(), controller: self)
+                self.loadingAlert.stopLoading()
+                Alerts.showAlert(title: Text.photosSavedTitle.localized(), text: Text.photosSavedMessage.localized(), controller: self) {
+                    self.dismiss(animated: true)
+                }
             }
         }
     }

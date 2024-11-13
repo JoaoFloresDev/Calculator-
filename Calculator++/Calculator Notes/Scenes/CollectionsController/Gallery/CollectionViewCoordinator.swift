@@ -32,7 +32,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
     func presentChangePasswordCalcMode() {
         let vault = VaultViewController(mode: .create)
         vault.modalPresentationStyle = .fullScreen
-        viewController?.present(vault, animated: true)
+        DispatchQueue.main.async {
+            self.viewController?.present(vault, animated: true)
+        }
     }
     
     func presentImageGallery(for photoIndex: Int) {
@@ -50,7 +52,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         }
         controller.basePath = basePath + folders[indexPath.row].name + Constants.deepSeparatorPath
         controller.navigationTitle = folders[indexPath.row].name.components(separatedBy: Constants.deepSeparatorPath).last
-        viewController?.navigationController?.pushViewController(controller, animated: true)
+        DispatchQueue.main.async {
+            self.viewController?.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     func navigateToSettingsTab() {
@@ -82,8 +86,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                 print(Text.shareErrorMessage.localized() + "\(shareError.localizedDescription)")
             }
         }
-        
-        viewController?.present(activityVC, animated: true)
+        DispatchQueue.main.async {
+            self.viewController?.present(activityVC, animated: true)
+        }
     }
 
     
@@ -104,7 +109,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         let picker = AssetsPickerViewController()
         picker.pickerConfig = pickerConfig
         picker.pickerDelegate = viewController
-        viewController?.present(picker, animated: true)
+        DispatchQueue.main.async {
+            self.viewController?.present(picker, animated: true)
+        }
     }
     
     func presentWelcomeController() {
@@ -112,7 +119,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         
         let controller = UINavigationController(rootViewController: OnboardingWelcomeViewController())
         controller.modalPresentationStyle = .fullScreen
-        viewController.present(controller, animated: false)
+        DispatchQueue.main.async {
+            viewController.present(controller, animated: false)
+        }
     }
     
     // MARK: - Helper Methods
@@ -165,7 +174,6 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                         let appPath = "https://apps.apple.com/sa/app/sg-secret-gallery-vault/id1479873340"
                         let messageToPaste = """
                         \(Text.sharedContentIntro.localized())
-                        \(Text.sharedContentStep1.localized())\(appPath)
                         \(Text.sharedContentStep2.localized())\(link)
                         \(Text.sharedContentStep3.localized())\(key)
                         """
@@ -178,7 +186,6 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                         let appPath = "https://apps.apple.com/sa/app/sg-secret-gallery-vault/id1479873340"
                         let messageToPaste = """
                         \(Text.sharedContentIntro.localized())
-                        \(Text.sharedContentStep1.localized())\(appPath)
                         \(Text.sharedContentStep2.localized())\(link)
                         \(Text.sharedContentStep3.localized())\(key)
                         """
@@ -196,8 +203,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                                 print(Text.shareErrorMessage.localized() + "\(shareError.localizedDescription)")
                             }
                         }
-                        
-                        viewController.present(activityVC, animated: true)
+                        DispatchQueue.main.async {
+                            viewController.present(activityVC, animated: true)
+                        }
                     }
             
                     let cancelAction = UIAlertAction(title: Text.cancelButtonTitle.localized(), style: .cancel, handler: nil)
@@ -205,8 +213,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
                     alertController.addAction(copyAction)
                     alertController.addAction(shareAction)
                     alertController.addAction(cancelAction)
-
-                    self.viewController?.present(alertController, animated: true)
+                    DispatchQueue.main.async {
+                        self.viewController?.present(alertController, animated: true)
+                    }
                     if var secretLinks = Defaults.getStringArray(.secretLinks) {
                         secretLinks.append("\(link)@@\(key)")
                         Defaults.setStringArray(.secretLinks, secretLinks)
@@ -299,14 +308,15 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         }
         
         savedLabel.alpha = 0
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            savedLabel.alpha = 1
-        }) { _ in
-            UIView.animate(withDuration: 0.3, delay: 2.0, options: .curveEaseOut, animations: {
-                savedLabel.alpha = 0
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, animations: {
+                savedLabel.alpha = 1
             }) { _ in
-                savedLabel.removeFromSuperview()
+                UIView.animate(withDuration: 0.3, delay: 2.0, options: .curveEaseOut, animations: {
+                    savedLabel.alpha = 0
+                }) { _ in
+                    savedLabel.removeFromSuperview()
+                }
             }
         }
     }

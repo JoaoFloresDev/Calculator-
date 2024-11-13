@@ -8,7 +8,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     private let stackView = UIStackView()
     private let tutorialView = TutorialView()
     private let limitMessageLabel = UILabel()
-    private var cellTitles: [String] = Defaults.getStringArray(.secretLinks) ?? []
+    private var cellTitles: [String] = Defaults.getStringArray(.secretLinks)?.reversed() ?? []
     
     func updatedCell() {
         self.showTutorialIfNeeded()
@@ -120,7 +120,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
             guard let self = self else { return }
             
             let folderId = title
-                .replacingOccurrences(of: "secrets://shared_photos/", with: "")
+                .replacingOccurrences(of: "https://joaofloresdev.github.io/secrets?", with: "")
                 .replacingOccurrences(of: "@@", with: "")
             
             self.loadingAlert.startLoading {
@@ -155,7 +155,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     
     func showDetails(withTitle title: String) {
         let folderId = title
-            .replacingOccurrences(of: "secrets://shared_photos/", with: "")
+            .replacingOccurrences(of: "https://joaofloresdev.github.io/secrets?", with: "")
             .replacingOccurrences(of: "@@", with: "")
         loadPhotosAndShowModal(folderId: folderId)
     }
