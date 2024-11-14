@@ -304,7 +304,7 @@ enum Text: String {
     case review // "Avaliar"
     case sugestions // "Sugestões de melhoria?"
     case sugestionsDescription // "Sua opinião é muito importante! nos ajude a melhorar ainda mais"
-    
+    case insertpass // "Digite a senha"
     func localized() -> String {
         return NSLocalizedString(self.rawValue,
                                  tableName: "Localizable",

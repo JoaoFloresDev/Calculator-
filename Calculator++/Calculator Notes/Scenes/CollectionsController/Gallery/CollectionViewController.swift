@@ -89,7 +89,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presentPurchaseIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,32 +112,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         return RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
                RazeFaceProducts.store.isProductPurchased("calcanual") ||
                RazeFaceProducts.store.isProductPurchased("NoAds.Calc")
-    }
-
-    private func saveTodayDate() {
-        let now = Date()
-        UserDefaults.standard.set(now, forKey: "LastSavedDate")
-    }
-
-    private func check30DaysPassed() -> Bool {
-        if let lastSavedDate = UserDefaults.standard.object(forKey: "LastSavedDate") as? Date {
-            let dayDifference = Calendar.current.dateComponents([.day], from: lastSavedDate, to: Date()).day ?? 0
-            if dayDifference >= 30 {
-                saveTodayDate()
-                return true
-            }
-            return false
-        }
-        saveTodayDate()
-        return false
-    }
-    
-    private func presentPurchaseIfNeeded() {
-        if check30DaysPassed() {
-            let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-            let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase")
-            self.present(purchaseViewController, animated: true)
-        }
     }
     
     private func setupPlaceholderView() {
@@ -624,10 +597,10 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         
         savedLabel.alpha = 0
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             savedLabel.alpha = 0.8
         }) { _ in
-            UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.6, delay: 1.5, options: .curveEaseOut, animations: {
                 savedLabel.alpha = 0
             }) { _ in
                 savedLabel.removeFromSuperview()

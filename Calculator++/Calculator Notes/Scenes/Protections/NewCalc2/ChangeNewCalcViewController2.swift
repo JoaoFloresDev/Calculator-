@@ -175,7 +175,7 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                 if runningNumber == Defaults.getString(.password) {
                     presentHomeViewController()
                 }
-                if runningNumber == Defaults.getString(.fakePass) {
+                else if runningNumber == Defaults.getString(.fakePass) {
                     let controller = FakeHomeFactory.makeScene()
                     let navigation = UINavigationController(rootViewController: controller)
                     navigation.modalPresentationStyle = .fullScreen
@@ -264,12 +264,18 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                     }
                     return
                 }
-                else if couter.count % 4 != 0 && couter.count > 24 {
-                    let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-                    if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
-                        self.presentWithCustomDissolve(viewController: purchaseViewController, from: homeViewController, duration: 0.5)
+                else if couter.count % 4 != 0 && couter.count > 30 {
+                    if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+                        RazeFaceProducts.store.isProductPurchased("calcanual") ||
+                        RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
+                        return
+                    } else {
+                        let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+                        if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
+                            self.presentWithCustomDissolve(viewController: purchaseViewController, from: homeViewController, duration: 0.5)
+                        }
+                        return
                     }
-                    return
                 }
             }
         }

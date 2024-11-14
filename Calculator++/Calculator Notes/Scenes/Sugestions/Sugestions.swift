@@ -202,9 +202,7 @@ class SuggestionsViewController: UIViewController {
                             message: Text.errorAlertMessage.localized(),
                             preferredStyle: .alert
                         )
-                        confirmationAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                            self.dismiss(animated: true, completion: nil)
-                        }))
+                        confirmationAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
                         self.present(confirmationAlert, animated: true, completion: nil)
                     } else {
                         let confirmationAlert = UIAlertController(

@@ -23,7 +23,7 @@ class AdsHandler {
     
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
         let couter = Counter()
-        guard couter.count % 4 == 0 && couter.count > 24,
+        guard couter.count % 4 == 0 && couter.count > 30,
               !Defaults.getBool(.monthlyPurchased), !Defaults.getBool(.yearlyPurchased) else {
             return
         }

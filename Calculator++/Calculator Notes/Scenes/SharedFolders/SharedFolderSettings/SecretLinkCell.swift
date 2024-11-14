@@ -34,7 +34,7 @@ class SecretLinkCell: UIView {
         loadingIndicator.startAnimating()
         self.alpha = 0.5
         let folderId = title
-            .replacingOccurrences(of: "https://joaofloresdev.github.io/secrets?", with: "")
+            .replacingOccurrences(of: "https://gambitstudiotech.com/secrets?", with: "")
             .replacingOccurrences(of: "@@", with: "")
         let folderRef = Storage.storage().reference().child("shared_photos/\(folderId)")
         

@@ -120,7 +120,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
             guard let self = self else { return }
             
             let folderId = title
-                .replacingOccurrences(of: "https://joaofloresdev.github.io/secrets?", with: "")
+                .replacingOccurrences(of: "https://gambitstudiotech.com/secrets?", with: "")
                 .replacingOccurrences(of: "@@", with: "")
             
             self.loadingAlert.startLoading {
@@ -155,7 +155,7 @@ class SharedFolderSettings: UIViewController, SecretLinkCellDelegate {
     
     func showDetails(withTitle title: String) {
         let folderId = title
-            .replacingOccurrences(of: "https://joaofloresdev.github.io/secrets?", with: "")
+            .replacingOccurrences(of: "https://gambitstudiotech.com/secrets?", with: "")
             .replacingOccurrences(of: "@@", with: "")
         loadPhotosAndShowModal(folderId: folderId)
     }

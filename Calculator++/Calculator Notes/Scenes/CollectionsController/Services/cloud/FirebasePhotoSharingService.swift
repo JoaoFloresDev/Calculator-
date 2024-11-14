@@ -62,7 +62,7 @@ struct FirebasePhotoSharingService {
     // MARK: - Private Methods
     private static func createDynamicLink(for folderName: String, completion: @escaping (String?, String?, Error?) -> ()) {
         let folderId = String(folderName.dropLast(4))
-        let deepLinkURL = "https://joaofloresdev.github.io/secrets?\(folderId)"
+        let deepLinkURL = "https://gambitstudiotech.com/secrets?\(folderId)"
         let password = String(folderName.suffix(4))
         
         // Retorna o deeplink gerado
@@ -180,16 +180,7 @@ extension FirebasePhotoSharingService {
                 print("Erro ao fazer upload do arquivo de texto: \(error.localizedDescription)")
                 completion(nil, error)
             } else {
-                // Obter a URL de download do arquivo para retornar no completion
-                fileRef.downloadURL { url, error in
-                    if let error = error {
-                        print("Erro ao obter a URL de download: \(error.localizedDescription)")
-                        completion(nil, error)
-                    } else {
-                        // Retorna a URL do arquivo txt armazenado
-                        completion(url?.absoluteString, nil)
-                    }
-                }
+                completion("sucesso!", nil)
             }
         }
     }

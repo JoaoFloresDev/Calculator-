@@ -56,7 +56,7 @@ class PasswordAlertViewController: UIViewController {
         messageLabel.numberOfLines = 0
         alertContainer.addSubview(messageLabel)
         
-        passwordTextField.placeholder = "Digite a senha"
+        passwordTextField.placeholder = Text.insertpass.localized()
         passwordTextField.isSecureTextEntry = true
         passwordTextField.borderStyle = .roundedRect
         alertContainer.addSubview(passwordTextField)
@@ -67,7 +67,7 @@ class PasswordAlertViewController: UIViewController {
         errorLabel.isHidden = true
         alertContainer.addSubview(errorLabel)
         
-        confirmButton.setTitle("OK", for: .normal)
+        confirmButton.setTitle(Text.continueText.localized(), for: .normal)
         confirmButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         confirmButton.backgroundColor = .systemBlue
         confirmButton.layer.cornerRadius = 8
