@@ -1,11 +1,3 @@
-/*
-  Localizable.strings
-  Calculator Notes
-
-  बनाया गया द्वारा Joao Victor Flores da Costa पर 06/02/22 को।
-  कॉपीराइट © 2022 MakeSchool। सभी अधिकार सुरक्षित हैं।
-*/
-
 // प्रीमियम संस्करण
 premiumVersion = "प्रीमियम संस्करण";
 noProtection = "कोई सुरक्षा नहीं";
@@ -18,174 +10,182 @@ gallery = "गैलरी";
 video = "वीडियो";
 notes = "नोट्स";
 
-instructionFirstStepCalc = "एक पासवर्ड बनाएं और '=' बटन पर क्लिक करें";
-instructionSecondStepCalc = "पासवर्ड: *****। पासवर्ड को दोबारा दर्ज करें और '=' के साथ पुष्टि करें";
+instructionFirstStepCalc = "एक पासकोड बनाएं और '=' बटन दबाएं";
+instructionSecondStepCalc = "पासकोड: *****। पासकोड को पुनः दर्ज करें और '=' से पुष्टि करें";
 
-instructionFirstStepBank = "एक पासवर्ड बनाएं और 'एंटर' पर क्लिक करें";
-instructionSecondStepBank = "पासवर्ड: *****। पासवर्ड को दोबारा दर्ज करें और 'एंटर' के साथ पुष्टि करें";
+instructionFirstStepBank = "एक पासकोड बनाएं और 'OK' दबाएं";
+instructionSecondStepBank = "पासकोड: *****। पासकोड को पुनः दर्ज करें और 'OK' से पुष्टि करें";
 
-bankModeHasBeenActivated = "बैंक मोड सक्रिय किया गया है";
-calcModeHasBeenActivated = "कैलकुलेटर मोड सक्रिय किया गया है";
+bankModeHasBeenActivated = "तिजोरी मोड सक्रिय हो गया है";
+calcModeHasBeenActivated = "कैलकुलेटर मोड सक्रिय हो गया है";
 
-welcomeInstructionBank = "अपना पासवर्ड दर्ज करें";
+welcomeInstructionBank = "अपना पासकोड दर्ज करें";
 
-done = "किया";
-edit = "संपादन";
+done = "समाप्त";
+edit = "संपादित करें";
 
-premiumToolTitle = "प्रीमियम टूल";
-premiumToolMessage = "वीडियो का समर्थन केवल प्रीमियम उपयोगकर्ताओं के लिए है। सेटिंग्स सेक्शन में अपग्रेड देखें";
+premiumToolTitle = "प्रीमियम सुविधा";
+premiumToolMessage = "वीडियो समर्थन केवल प्रीमियम उपयोगकर्ताओं के लिए उपलब्ध है। अपग्रेड विकल्प सेटिंग्स में देखें";
 
 save = "सहेजें";
 cancel = "रद्द करें";
-ok = "पुष्टि";
+ok = "ठीक";
 see = "देखें";
 
 // त्रुटि संदेश
 errorTitle = "अप्रत्याशित त्रुटि";
-errorMessage = "कृपया बाद में पुन: प्रयास करें";
-deleteFiles = "फ़ाइल हटाएं?";
+errorMessage = "कृपया बाद में पुनः प्रयास करें";
+deleteFiles = "फाइल हटाएं?";
 
-incorrectPassword = "गलत पासवर्ड";
-tryAgain = "फिर से प्रयास करें";
+incorrectPassword = "गलत पासकोड";
+tryAgain = "पुनः प्रयास करें";
 
-// खरीददारी
+// खरीद
 products = "उपलब्ध उत्पाद";
 loading = "लोड हो रहा है...";
 close = "बंद करें";
 restore = "पुनर्स्थापित करें";
 buy = "खरीदें";
 
-// फ़ोल्डर
-folderTitle = "फ़ोल्डर का नाम";
+// फोल्डर
+folderTitle = "फोल्डर का नाम";
 createActionTitle = "बनाएं";
 cancelTitle = "रद्द करें";
-inputPlaceholder = "नए फ़ोल्डर का नाम दर्ज करें";
-folderNameAlreadyUsedTitle = "फ़ोल्डर का नाम पहले से ही उपयोग किया गया है";
-folderNameAlreadyUsedText = "कृपया फ़ोल्डर का अलग नाम चुनें";
-deleteConfirmationTitle = "फ़ाइलें हटाएं?";
+inputPlaceholder = "नया फोल्डर का नाम दर्ज करें";
+folderNameAlreadyUsedTitle = "फोल्डर नाम पहले से ही उपयोग में है";
+folderNameAlreadyUsedText = "फोल्डर के लिए एक अलग नाम चुनें";
+deleteConfirmationTitle = "फाइल हटाएं?";
 
-// सब कुछ दिखाएँ
-hideAllVideos = "सभी सहेजे गए वीडियो छिपाएँ";
-showAllVideos = "सभी सहेजे गए वीडियो दिखाएँ";
-hideAllPhotos = "सभी सहेजी गई फ़ोटो छिपाएँ";
-showAllPhotos = "सभी सहेजी गई फ़ोटो दिखाएँ";
-wouldLikeSetProtection = "क्या आप अपनी गैलरी को सुरक्षित करना चाहेंगे?";
+// सब कुछ दिखाएं
+hideAllVideos = "सभी सहेजे गए वीडियो छिपाएं";
+showAllVideos = "सभी सहेजे गए वीडियो दिखाएं";
+hideAllPhotos = "सभी सहेजी गई तस्वीरें छिपाएं";
+showAllPhotos = "सभी सहेजी गई तस्वीरें दिखाएं";
+wouldLikeSetProtection = "क्या आप अपनी गैलरी में सुरक्षा जोड़ना चाहेंगे?";
 
 // बैकअप
-askToRestoreBackupTitle = "बैकअप को पुनर्स्थापित करें";
-askToRestoreBackupMessage = "क्या आप अपने आखिरी बैकअप को पुनर्स्थापित करना चाहेंगे?";
-backupSuccessTitle = "बैकअप सफलतापूर्वक किया गया";
+askToRestoreBackupTitle = "बैकअप पुनर्स्थापित करें";
+askToRestoreBackupMessage = "क्या आप अपना पिछला बैकअप पुनर्स्थापित करना चाहते हैं?";
+backupSuccessTitle = "बैकअप सफल रहा";
 backupSuccessMessage = "आपका बैकअप सफलतापूर्वक पुनर्स्थापित किया गया है";
-backupErrorTitle = "बैकअप करते समय त्रुटि";
-backupErrorMessage = "कोई डेटा बैकअप के लिए नहीं मिला";
-incorrectPasswordTitle = "गलत पासवर्ड";
-incorrectPasswordMessage = "दिए गए पासवर्ड वैध नहीं है। कृपया पुन: प्रयास करें।";
-insertPasswordTitle = "अपना पासवर्ड दर्ज करें";
-insertPasswordMessage = "अपने ऐप को खोलने के लिए पूर्व में उपयोग किए गए पासवर्ड को दर्ज करें";
+backupErrorTitle = "बैकअप त्रुटि";
+backupErrorMessage = "बैकअप के लिए कोई डेटा नहीं मिला";
+incorrectPasswordTitle = "गलत पासकोड";
+incorrectPasswordMessage = "दिया गया पासकोड मान्य नहीं है। कृपया पुनः प्रयास करें।";
+insertPasswordTitle = "अपना पासकोड दर्ज करें";
+insertPasswordMessage = "ऐप को खोलने के लिए पहले से इस्तेमाल किया गया पासकोड दर्ज करें";
 yes = "हाँ";
 no = "नहीं";
-enableiCloudTitle = "क्रिया की आवश्यकता है";
-enableiCloudSubtitle = "\n1. iCloud पर क्लिक करें\n\n2. ऐप SG को सूची में खोजें\n\n3. iCloud को सक्रिय करें";
-enableiCloudAction = "सेटिंग्स पर जाएँ";
-premiumTooliCloudMessage = "बैकअप की सुविधा केवल प्रीमियम उपयोगकर्ताओं के लिए है। उत्पाद विवरण सेक्शन में प्रदर्शित होंगे";
+enableiCloudTitle = "कार्य आवश्यक है";
+enableiCloudSubtitle = "\n1. iCloud खोलें\n\n2. सूची में SG ऐप खोजें\n\n3. iCloud सक्रिय करें";
+enableiCloudAction = "सेटिंग्स पर जाएं";
+premiumTooliCloudMessage = "बैकअप सुविधा केवल प्रीमियम उपयोगकर्ताओं के लिए है। उत्पाद के विवरण उपलब्ध होंगे";
 
-// हटाएँ और बैकअप
-delete = "हटाएँ";
+// हटाएं और बैकअप
+delete = "हटाएं";
 backupNavigationTitle = "मेरा बैकअप";
 
 emptyVideosTitle = "कोई वीडियो नहीं";
-emptyVideosSubtitle = "बटन + पर क्लिक करके अपने वीडियो जोड़ें";
-premiumVideosSubtitle = "वीडियो समर्थन प्रीमियम सुविधा है";
+emptyVideosSubtitle = "+ बटन पर टैप करके वीडियो जोड़ें";
+premiumVideosSubtitle = "वीडियो समर्थन एक प्रीमियम सुविधा है";
 
 emptyGalleryTitle = "कोई तस्वीरें नहीं";
-emptyGallerySubtitle = "बटन + पर क्लिक करके अपने तस्वीरें जोड़ें";
+emptyGallerySubtitle = "+ बटन पर टैप करके तस्वीरें जोड़ें";
 
-emptyNotesTitle = "कोई नोट नहीं";
-emptyNotesSubtitle = "बटन + पर क्लिक करके अपने नोट जोड़ें";
+emptyNotesTitle = "कोई नोट्स नहीं";
+emptyNotesSubtitle = "+ बटन पर टैप करके नोट्स जोड़ें";
 
-seeMore = "और देखें";
+seeMore = "अधिक देखें";
 backupSettings = "बैकअप सेटिंग्स";
 backupStatus = "सुरक्षित बैकअप";
 seeMyBackup = "मेरा बैकअप देखें";
 restoreBackup = "बैकअप पुनर्स्थापित करें";
 updateBackup = "बैकअप अपडेट करें";
-faceIDReason = "हम आपके गैलरी को दिखाने के लिए प्रमाणीकरण का उपयोग करेंगे";
-myBackupItems = "मेरे बैकअप आइटम";
+faceIDReason = "गैलरी खोलने के लिए प्रमाणीकरण आवश्यक है";
+myBackupItems = "मेरे बैकअप में आइटम";
 backupNavigationTitle = "मेरा बैकअप";
-vaultMode = "खजाना मोड";
+vaultMode = "तिजोरी मोड";
 recover = "पुनर्प्राप्त करें";
 
-createPassword = "एक पासवर्ड बनाएं और 'एंटर' के साथ पुष्टि करें";
-insertCreatedPasswordAgain = "पासवर्ड को फिर से दर्ज करें";
-insertPassword = "अपना पासवर्ड दर्ज करें और 'एंटर' के साथ पुष्टि करें";
-backupEnabled = "सक्रिय किया गया है";
-backupDisabled = "अक्षम किया गया है";
+// पासकोड बनाना और पुष्टि करना
+createPassword = "एक पासकोड बनाएं और OK से पुष्टि करें";
+insertCreatedPasswordAgain = "पासकोड पुनः दर्ज करें";
+insertPassword = "अपना पासकोड दर्ज करें और OK से पुष्टि करें";
+backupEnabled = "सक्रिय";
+backupDisabled = "अक्षम";
 
-backupNavigationSubtitle = "तस्वीरें हर बार जब एप्लिकेशन खुलता है और Wi-Fi कनेक्शन है, तो जोड़ी जाती हैं। आपकी बैकअप सुरक्षित है और तस्वीरें केवल एप्लिकेशन के अंदर देखने के लिए हैं";
+backupNavigationSubtitle = "प्रत्येक बार ऐप खोलने और Wi-Fi कनेक्शन होने पर तस्वीरें सिंक हो जाती हैं। आपका बैकअप सुरक्षित है और तस्वीरें केवल ऐप के अंदर ही देखी जा सकती हैं";
 
-myBackupNavigationSubtitle = "पिछले मेनू में 'बैकअप पुनर्प्राप्त करें' पर क्लिक करके तस्वीरें अपनी गैलरी में आयातित करने के लिए।";
+myBackupNavigationSubtitle = "अपनी गैलरी में तस्वीरें आयात करने के लिए पिछले मेनू में 'बैकअप पुनर्स्थापित करें' पर क्लिक करें";
 continueText = "जारी रखें";
 
-welcomeOnboarding_title = "सीक्रेट गैलरी में आपका स्वागत है";
-welcomeOnboarding_subtitle = "अपनी फ़ोटो और वीडियो को सुरक्षित रखें";
+// ऑनबोर्डिंग
+welcomeOnboarding_title = "Secret Gallery में आपका स्वागत है";
+welcomeOnboarding_subtitle = "सुरक्षित रूप से अपनी तस्वीरें और वीडियो संरक्षित करें";
 welcomeOnboarding_startButtonTitle = "शुरू करें";
-welcomeOnboarding_skipButtonTitle = "शुरू पर क्लिक करके, आप गोपनीयता नीति और उपयोग की शर्तों से सहमत होते हैं";
- 
-createCodeOnboarding_title = "कोड एक्सेस बनाएं";
-createCodeOnboarding_subtitle = "अपने संचित तस्वीरों तक पहुंचने के लिए एक पासवर्ड बनाएं";
+welcomeOnboarding_skipButtonTitle = "'शुरू करें' पर क्लिक करके, आप हमारी गोपनीयता नीति और उपयोग की शर्तों से सहमत होते हैं";
+
+createCodeOnboarding_title = "एक एक्सेस कोड बनाएं";
+createCodeOnboarding_subtitle = "सहेजी गई तस्वीरों तक पहुँचने के लिए एक पासकोड बनाएं";
 createCodeOnboarding_startButtonTitle = "जारी रखें";
 createCodeOnboarding_skipButtonTitle = "अभी नहीं";
- 
-addPhotosOnboarding_title = "अपनी फ़ोटो जोड़ें";
-addPhotosOnboarding_subtitle = "अपनी सुरक्षित तरीके से रखने की फ़ोटोज़ जोड़ें";
+
+addPhotosOnboarding_title = "अपनी तस्वीरें जोड़ें";
+addPhotosOnboarding_subtitle = "उन तस्वीरों का चयन करें जिन्हें आप सुरक्षित रखना चाहते हैं";
 addPhotosOnboarding_startButtonTitle = "जारी रखें";
 addPhotosOnboarding_skipButtonTitle = "अभी नहीं";
 
+// ईमेल पुनर्प्राप्ति
 emailErrorTitle = "अमान्य ईमेल";
-emailErrorDescription = "आपने दर्ज किए गए ईमेल पते की जाँच करें और पुनः प्रयास करें";
-insertEmailTitle = "पुनर्प्राप्ति के लिए उपयोग किए जाने वाले ईमेल का पता दर्ज करें:";
-insertEmailDescription = "अपना ईमेल पता दर्ज करें";
+emailErrorDescription = "डाले गए ईमेल की जाँच करें और पुनः प्रयास करें";
+insertEmailTitle = "पुनर्प्राप्ति के लिए ईमेल दर्ज करें:";
+insertEmailDescription = "अपना ईमेल दर्ज करें";
 insertEmailButtonText = "ईमेल की पुष्टि करें";
 
-emailPopupTitle = "पासवर्ड पुनर्प्राप्ति के साथ ईमेल भेजें?";
-emailmessage = "हम आपको पासवर्ड पुनर्प्राप्ति के साथ ईमेल भेजेंगे";
+emailPopupTitle = "क्या आप पासवर्ड पुनर्प्राप्ति ईमेल भेजना चाहते हैं?";
+emailmessage = "हम पासवर्ड पुनर्प्राप्ति के निर्देशों के साथ एक ईमेल भेजेंगे";
 emailCancelButtonTitle = "नहीं";
-emailOkButtonTitle = "हां";
-emailNotRegisteredTitle = "आपने पुनर्प्राप्ति के लिए ईमेल दर्ज नहीं किया है";
-emailNotRegisteredMessage = "हमने इस खाते के लिए पूर्व में दर्ज किए गए ईमेल पते का पता नहीं लगा सके";
-successEmailTitle = "ईमेल भेजा गया";
-successEmailMessage = "कृपया अपने इनबॉक्स की जाँच करें। आपको 48 घंटे के भीतर पासवर्ड पुनर्प्राप्ति के मार्गदर्शन के साथ ईमेल मिलेगा";
+emailOkButtonTitle = "हाँ";
+emailNotRegisteredTitle = "पंजीकृत ईमेल नहीं मिला";
+emailNotRegisteredMessage = "हम आपके खाते के लिए पूर्व-पंजीकृत ईमेल नहीं पा सके";
+successEmailTitle = "ईमेल सफलतापूर्वक भेजा गया";
+successEmailMessage = "कृपया अपने ईमेल इनबॉक्स की जाँच करें। आपको 48 घंटों के भीतर पासवर्ड पुनर्प्राप्ति के निर्देशों के साथ एक ईमेल प्राप्त होगा।";
 errorEmailTitle = "ईमेल भेजने में त्रुटि";
-errorEmailMessage = "हमें ईमेल भेजने में समस्या आई। कृपया अपना इंटरनेट कनेक्शन जाँचें और पुनः प्रयास करें";
-remindMyPasscode = "क्या आपने अपना पासवर्ड भूल गए हैं?";
-selectNewIcon = "जिस आइकन को चुनना चाहते हैं, उसे चुनें";
+errorEmailMessage = "ईमेल भेजने में समस्या आई है। कृपया अपने इंटरनेट कनेक्शन की जाँच करें और पुनः प्रयास करें।";
+remindMyPasscode = "क्या आप पासकोड भूल गए हैं?";
+selectNewIcon = "वांछित आइकन चुनें";
 changeIconTitle = "आइकन बदलें";
 unlimitedStorage = "असीमित संग्रहण";
-noAds = "विज्ञापन नहीं";
-videoSuport = "वीडियो सहायता";
-callToActionPurchase = "हमारे प्रीमियम अनुभव को जानें";
+noAds = "कोई विज्ञापन नहीं";
+videoSuport = "वीडियो समर्थन";
+callToActionPurchase = "हमारा प्रीमियम अनुभव प्राप्त करें";
+
 selectImagesToShare = "साझा करने के लिए चित्र चुनें";
 selectImagesToDelete = "हटाने के लिए चित्र चुनें";
+
 monthlySubscription = "मासिक सदस्यता - ";
 yearlySubscription = "वार्षिक सदस्यता - ";
 termsOfUse = "उपयोग की शर्तें";
 privacyPolicy = "गोपनीयता नीति";
-augmentedReality = "वृद्धित वास्तविकता";
-createPasswordNewCalc = "4 अंकों का पासवर्ड बनाएँ";
-insertCreatedPasswordAgainNewCalc = "पुष्टि के लिए फिर से बनाया गया पासवर्ड दर्ज करें";
-oneWeekToTest = "एक सप्ताह मुफ्त परीक्षण करें";
+augmentedReality = "संवर्धित वास्तविकता";
+
+// पासकोड बनाना
+createPasswordNewCalc = "4-अंकीय पासकोड बनाएं";
+insertCreatedPasswordAgainNewCalc = "पुष्टि के लिए पासकोड पुनः दर्ज करें";
+oneWeekToTest = "एक सप्ताह मुफ्त परीक्षण";
 
 hasAccount = "क्या आपके पास पहले से एक खाता है?";
-notHasAccount = "अभी तक नहीं? अभी बनाएं";
+notHasAccount = "क्या अभी तक नहीं? नया खाता बनाएँ";
 genericLoginError = "कुछ गलत हो गया";
-createLoginError = "यदि आपके पास अभी तक खाता नहीं है, तो 'Google के साथ साइन अप करें' चुनें";
+createLoginError = "यदि आपके पास खाता नहीं है, तो 'Google से साइन अप करें' चुनें";
 successLogin = "लॉगिन सफल!";
-successLoginDescription = "नई तस्वीरें जोड़ने पर या 'बैकअप अपडेट करें' बटन पर क्लिक करने पर आपकी तस्वीरें सिंक हो जाएंगी";
+successLoginDescription = "जब भी नई तस्वीरें जोड़ी जाती हैं या 'बैकअप अपडेट करें' दबाया जाता है, आपकी तस्वीरें सिंक हो जाएंगी";
 syncAut = "स्वचालित सिंक";
-logout = "लॉग आउट";
-pending = "लंबित";
+logout = "लॉगआउट";
+pending = "प्रतीक्षारत";
 downloadBackup = "बैकअप डाउनलोड करें";
 loginWithGoogle = "Google के साथ लॉगिन करें";
 signUpWithGoogle = "Google के साथ साइन अप करें";
 browser = "इंटरनेट ब्राउज़र";
-createLoginErrorTitle = "Try creating an account";
+
+createLoginErrorTitle = "एक खाता बनाने का प्रयास करें";

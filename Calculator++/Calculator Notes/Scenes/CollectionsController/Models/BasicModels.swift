@@ -22,7 +22,7 @@ struct Photo {
 
 extension UIImage {
     func resizedTo150x150() -> UIImage {
-        let minDimension: CGFloat = 150
+        let minDimension: CGFloat = 100
         let aspectRatio = max(minDimension / self.size.width, minDimension / self.size.height)
         
         let newSize = CGSize(width: self.size.width * aspectRatio, height: self.size.height * aspectRatio)

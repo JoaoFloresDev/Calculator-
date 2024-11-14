@@ -426,6 +426,12 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         return cell
     }
     
+    private let imageProcessingQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 6
+        return queue
+    }()
+    
     private func photoCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell, indexPath.item < modelData.count else {
             return UICollectionViewCell()
@@ -442,6 +448,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         if let thumbImage = photo.thumbImage {
             cell.imageCell.image = thumbImage
         } else {
+            // Adiciona um indicador de carregamento
             let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .medium)
             loadingIndicator.color = .lightGray
             loadingIndicator.startAnimating()
@@ -450,20 +457,24 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
                 make.center.equalToSuperview()
             }
             
-            // Redimensiona a imagem em background
-            DispatchQueue.global(qos: .userInteractive).async {
+            // Processa a imagem em segundo plano usando `imageProcessingQueue`
+            imageProcessingQueue.addOperation {
                 let resizedImage = photo.image.resizedTo150x150()
                 self.modelData[indexPath.item].thumbImage = resizedImage
-                DispatchQueue.main.async {
+                
+                // Atualiza a interface na main thread
+                OperationQueue.main.addOperation {
                     loadingIndicator.stopAnimating()
                     loadingIndicator.removeFromSuperview()
                     
+                    // Verifica se a célula ainda está visível na posição correta
                     if collectionView.indexPath(for: cell) == indexPath {
                         cell.imageCell.image = resizedImage
                     }
                 }
             }
         }
+        
         return cell
     }
     
@@ -537,12 +548,6 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
         }
         return footerView
     }
-    
-    private let imageProcessingQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 3
-        return queue
-    }()
 }
 
 // MARK: - AssetsPickerViewControllerDelegate

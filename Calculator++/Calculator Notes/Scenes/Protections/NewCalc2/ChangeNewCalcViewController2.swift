@@ -233,53 +233,78 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
     
     private func presentHomeViewController() {
         DispatchQueue.main.async {
+            // Crie o loading indicator e configure sua aparência
             let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .large)
-            loadingIndicator.center = self.view.center
+            loadingIndicator.color = .white
             loadingIndicator.startAnimating()
+            
+            // Adicione o indicador de carregamento à `view`
             self.view.addSubview(loadingIndicator)
-            let couter = Counter()
-            couter.increment()
-            let storyboard =
-            UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
-            self.present(homeViewController, animated: true) {
-                loadingIndicator.stopAnimating()
-                loadingIndicator.removeFromSuperview()
-                if couter.count > 8 && !UserDefaults.standard.bool(forKey: "userGoToFastReview") {
-                    SKStoreReviewController.requestReviewInCurrentScene {
-                        UserDefaults.standard.set(true, forKey: "userGoToFastReview")
-                    }
-                    return
-                }
-                else if couter.count > 16 && !UserDefaults.standard.bool(forKey: "userGoToReview") {
-                    Alerts.showReviewNow(controller: homeViewController) { showReview in
-                        UserDefaults.standard.set(true, forKey: "userGoToReview")
-                        if showReview {
-                            let appID = "1479873340"
-                            if let url = URL(string: "itms-apps://itunes.apple.com/app/id\(appID)?action=write-review"),
-                               UIApplication.shared.canOpenURL(url) {
-                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                            }
-                        }
-                    }
-                    return
-                }
-                else if couter.count % 4 != 0 && couter.count > 30 {
-                    if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
-                        RazeFaceProducts.store.isProductPurchased("calcanual") ||
-                        RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
-                        return
-                    } else {
-                        let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
-                        if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
-                            self.presentWithCustomDissolve(viewController: purchaseViewController, from: homeViewController, duration: 0.5)
-                        }
-                        return
-                    }
+            
+            // Centralize o indicador de carregamento
+            loadingIndicator.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+            }
+            
+            // Atualize o layout imediatamente para garantir que o `loadingIndicator` seja renderizado
+            self.view.layoutIfNeeded()
+            
+            // Adicione um pequeno atraso para que o `loadingIndicator` tenha tempo de aparecer
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeViewController = storyboard.instantiateViewController(withIdentifier: "Home")
+                
+                self.present(homeViewController, animated: true) {
+                    // Remova o `loadingIndicator` após a apresentação da próxima tela
+                    loadingIndicator.stopAnimating()
+                    loadingIndicator.removeFromSuperview()
+                    
+                    // Lógica para revisão ou apresentação da tela de compra
+                    self.requestReviewOrPresentPurchaseIfNeeded(from: homeViewController)
                 }
             }
         }
     }
+
+
+    // Função auxiliar para lógica de revisão ou compra
+    private func requestReviewOrPresentPurchaseIfNeeded(from homeViewController: UIViewController) {
+        let counter = Counter()
+        counter.increment()
+        
+        if counter.count > 8 && !UserDefaults.standard.bool(forKey: "userGoToFastReview") {
+            SKStoreReviewController.requestReviewInCurrentScene {
+                UserDefaults.standard.set(true, forKey: "userGoToFastReview")
+            }
+        } else if counter.count > 16 && !UserDefaults.standard.bool(forKey: "userGoToReview") {
+            Alerts.showReviewNow(controller: homeViewController) { showReview in
+                UserDefaults.standard.set(true, forKey: "userGoToReview")
+                if showReview {
+                    let appID = "1479873340"
+                    if let url = URL(string: "itms-apps://itunes.apple.com/app/id\(appID)?action=write-review"),
+                       UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            }
+        } else if counter.count % 4 != 0 && counter.count > 30 {
+            presentPurchaseIfNeeded(from: homeViewController)
+        }
+    }
+
+    private func presentPurchaseIfNeeded(from homeViewController: UIViewController) {
+        if RazeFaceProducts.store.isProductPurchased("Calc.noads.mensal") ||
+           RazeFaceProducts.store.isProductPurchased("calcanual") ||
+           RazeFaceProducts.store.isProductPurchased("NoAds.Calc") {
+            return
+        } else {
+            let storyboard = UIStoryboard(name: "Purchase", bundle: nil)
+            if let purchaseViewController = storyboard.instantiateViewController(withIdentifier: "Purchase") as? UIViewController {
+                self.presentWithCustomDissolve(viewController: purchaseViewController, from: homeViewController, duration: 0.5)
+            }
+        }
+    }
+
     
     func presentWithCustomDissolve(viewController: UIViewController, from presenter: UIViewController, duration: TimeInterval = 1.0) {
         viewController.view.alpha = 0

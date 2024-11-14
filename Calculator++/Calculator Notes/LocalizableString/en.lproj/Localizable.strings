@@ -1,33 +1,31 @@
-// Premium Version
 premiumVersion = "Premium Version";
 noProtection = "No Protection";
 hideRecoverButton = "Show Face ID Button";
 chooseProtectionMode = "Choose Protection Mode";
 
-// Settings and General
 settings = "Settings";
 gallery = "Gallery";
 video = "Video";
 notes = "Notes";
 
-instructionFirstStepCalc = "Create a password and click '=' to confirm";
+instructionFirstStepCalc = "Create a password and click the '=' button to confirm";
 instructionSecondStepCalc = "Password: *****. Repeat the password and confirm with '='";
 
 instructionFirstStepBank = "Create a password and click 'OK'";
 instructionSecondStepBank = "Password: *****. Repeat the password and confirm with 'OK'";
 
 bankModeHasBeenActivated = "Vault Mode Activated";
+calcModeHasBeenActivated = "Calculator Mode Activated";
+
 welcomeInstructionBank = "Enter your password";
 
 done = "Done";
 edit = "Edit";
 
-// Premium Tool
 premiumToolTitle = "Premium Feature";
-premiumToolMessage = "Video support is exclusive to premium users. Visit Settings for upgrade options";
-premiumTooliCloudMessage = "Backup feature is available only for Premium users. More details available in Settings";
+premiumToolMessage = "Video support is exclusive to Premium users. Check upgrade options in Settings";
+premiumTooliCloudMessage = "Backup feature is only available for Premium users. More details in Settings";
 
-// General Actions
 save = "Save";
 cancel = "Cancel";
 ok = "OK";
@@ -41,8 +39,8 @@ buy = "Buy";
 folderTitle = "Folder Name";
 createActionTitle = "Create";
 cancelTitle = "Cancel";
-inputPlaceholder = "Enter new folder name";
-folderNameAlreadyUsedTitle = "Folder Name Taken";
+inputPlaceholder = "Enter the new folder name";
+folderNameAlreadyUsedTitle = "Folder Name Already Used";
 folderNameAlreadyUsedText = "Choose a different name for the folder";
 deleteConfirmationTitle = "Delete Files?";
 
@@ -55,63 +53,63 @@ wouldLikeSetProtection = "Would you like to add protection to your gallery?";
 
 // Backup
 askToRestoreBackupTitle = "Restore Backup";
-askToRestoreBackupMessage = "Do you want to restore your last backup?";
-backupSuccessTitle = "Backup Successful";
-backupSuccessMessage = "Your backup has been restored successfully";
+askToRestoreBackupMessage = "Would you like to restore your latest backup?";
+backupSuccessTitle = "Backup Restored Successfully";
+backupSuccessMessage = "Your backup has been successfully restored";
 backupErrorTitle = "Backup Error";
 backupErrorMessage = "No data found for backup";
 incorrectPasswordTitle = "Incorrect Password";
-incorrectPasswordMessage = "The password provided is not correct. Try again.";
-insertPasswordTitle = "Enter Password";
-insertPasswordMessage = "Enter the password previously set to access the app";
-enableiCloudTitle = "iCloud Required";
-enableiCloudSubtitle = "1. Open iCloud in settings\n2. Find SG in the app list\n3. Enable iCloud";
+incorrectPasswordMessage = "The provided password is not valid. Please try again.";
+insertPasswordTitle = "Enter Your Password";
+insertPasswordMessage = "Enter the previously configured password to access the app";
+enableiCloudTitle = "Action Required";
+enableiCloudSubtitle = "\n1. Go to iCloud in settings\n2. Find the SG app in the list\n3. Enable iCloud";
 enableiCloudAction = "Go to Settings";
 
-// Video and Gallery
+// Videos and Gallery
 emptyVideosTitle = "No Videos";
-emptyVideosSubtitle = "Add your videos by clicking the + button";
-premiumVideosSubtitle = "Video support is a premium feature";
+emptyVideosSubtitle = "Add videos by clicking the + button";
+premiumVideosSubtitle = "Video support is a Premium feature";
 
 emptyGalleryTitle = "No Photos";
-emptyGallerySubtitle = "Add your photos by clicking the + button";
+emptyGallerySubtitle = "Add photos by clicking the + button";
 
 emptyNotesTitle = "No Notes";
-emptyNotesSubtitle = "Add your notes by clicking the + button";
+emptyNotesSubtitle = "Add notes by clicking the + button";
 
 seeMore = "See More";
 backupSettings = "Backup Settings";
-backupStatus = "Encrypted Backup";
+backupStatus = "Cloud Backup";
 seeMyBackup = "View My Backup";
 updateBackup = "Update Backup";
 faceIDReason = "Authentication required to access gallery";
-myBackupItems = "My Backup Items";
+myBackupItems = "My Items in Backup";
 backupNavigationTitle = "My Backup";
 vaultMode = "Vault Mode";
 recover = "Recover";
 
 createPassword = "Create a password and confirm with OK";
-insertCreatedPasswordAgain = "Enter password again";
+insertCreatedPasswordAgain = "Enter the password again";
 insertPassword = "Enter your password and confirm with OK";
 backupEnabled = "Enabled";
 backupDisabled = "Disabled";
 
-backupNavigationSubtitle = "Click 'restore backup' in the previous menu to import photos";
+backupNavigationSubtitle = "Photos are synchronized each time the app is opened with Wi-Fi connection. Your backup is secure, and the only way to view photos is within the app";
 continueText = "Continue";
 
 // Onboarding
 welcomeOnboarding_title = "Welcome to Secret Gallery";
-welcomeOnboarding_subtitle = "Protect your photos and videos securely";
-welcomeOnboarding_startButtonTitle = "Get Started";
-welcomeOnboarding_skipButtonTitle = "By clicking 'Get Started', you agree to our Privacy Policy and Terms of Use";
+welcomeOnboarding_subtitle = "Securely protect your photos and videos";
+welcomeOnboarding_startButtonTitle = "Start";
+welcomeOnboarding_skipButtonTitle = "By clicking 'Start', you agree to our Privacy Policy and Terms of Use";
 
 createCodeOnboarding_title = "Create an Access Code";
-createCodeOnboarding_subtitle = "Set a password to protect your saved photos";
+createCodeOnboarding_subtitle = "Set a password to protect your stored photos";
 createCodeOnboarding_startButtonTitle = "Continue";
 createCodeOnboarding_skipButtonTitle = "Not now";
 
 addPhotosOnboarding_title = "Add Your Photos";
-addPhotosOnboarding_subtitle = "Choose photos to securely store";
+addPhotosOnboarding_subtitle = "Choose the photos you want to store securely";
 addPhotosOnboarding_startButtonTitle = "Continue";
 addPhotosOnboarding_skipButtonTitle = "Not now";
 
@@ -122,92 +120,95 @@ insertEmailTitle = "Enter the recovery email:";
 insertEmailDescription = "Enter your email";
 insertEmailButtonText = "Confirm Email";
 
-emailPopupTitle = "Send Recovery Email?";
-emailmessage = "An email with recovery instructions will be sent to you";
+emailPopupTitle = "Send recovery email?";
+emailmessage = "We will send an email with password recovery instructions";
 emailCancelButtonTitle = "No";
 emailOkButtonTitle = "Yes";
-emailNotRegisteredTitle = "No Recovery Email Registered";
-emailNotRegisteredMessage = "No pre-registered email found for your account";
+emailNotRegisteredTitle = "No Registered Email";
+emailNotRegisteredMessage = "No pre-registered email was found for your account";
 successEmailTitle = "Email Sent Successfully";
-successEmailMessage = "Check your inbox. You'll receive a recovery email within 48 hours.";
-errorEmailTitle = "Email Sending Error";
-errorEmailMessage = "Unable to send email. Check your internet connection and try again.";
+successEmailMessage = "Check your inbox. Within 48 hours, you will receive an email with password recovery instructions.";
+errorEmailTitle = "Error Sending Email";
+errorEmailMessage = "Failed to send the email. Check your internet connection and try again.";
 remindMyPasscode = "Forgot your password?";
-selectNewIcon = "Select an icon";
+selectNewIcon = "Select an Icon";
 changeIconTitle = "Change Icon";
 unlimitedStorage = "Unlimited Storage";
 noAds = "No Ads";
 videoSuport = "Video Support";
-callToActionPurchase = "Explore Premium Features";
-selectImagesToShare = "Select images to share";
-selectImagesToDelete = "Select images to delete";
+callToActionPurchase = "More security and peace of mind";
+
+selectImagesToShare = "Select Images to Share";
+selectImagesToDelete = "Select Images to Delete";
+
 monthlySubscription = "Monthly Subscription - ";
-yearlySubscription = "Annual Subscription - ";
+yearlySubscription = "Yearly Subscription - ";
 termsOfUse = "Terms of Use";
 privacyPolicy = "Privacy Policy";
 augmentedReality = "Augmented Reality";
 
 // Calculator and Authentication
 createPasswordNewCalc = "Create a 4-digit password";
-insertCreatedPasswordAgainNewCalc = "Re-enter the password to confirm";
-oneWeekToTest = "One week free trial";
+insertCreatedPasswordAgainNewCalc = "Enter the password again to confirm";
+oneWeekToTest = "Try One Week Free";
 hasAccount = "Already have an account?";
-notHasAccount = "New here? Create an account";
+notHasAccount = "Create an account";
 genericLoginError = "An error occurred";
 createLoginError = "If you don’t have an account, select 'Sign up with Google'";
 successLogin = "Login successful!";
-successLoginDescription = "Photos will sync when added or 'update backup' is pressed";
+successLoginDescription = "Photos will be synchronized when added or by clicking 'update backup'";
 syncAut = "Automatic Sync";
 logout = "Logout";
 pending = "Pending";
 downloadBackup = "Download Backup";
 loginWithGoogle = "Login with Google";
-signUpWithGoogle = "Sign Up with Google";
+signUpWithGoogle = "Sign up with Google";
 browser = "Browser";
-createLoginErrorTitle = "Try creating an account";
+
+createLoginErrorTitle = "Try to Create an Account";
 fakepassAlertTitle = "Fake Password";
 fakepassAlertText = "Fake password created successfully";
 
 loginTocontinueTitle = "Login Required";
-loginTocontinueText = "Login to enable backup features";
+loginTocontinueText = "Please log in to enable backup features";
 
 wifiConnectTitle = "Connect to Wi-Fi";
 wifiConnectText = "Connect to Wi-Fi to continue";
 
 arquives = "Files";
-emptyArquives = "Add files to get started";
+emptyArquives = "Add new files to start";
 createFakePasswordNewCalc = "Create a fake 4-digit password";
-insertCreatedFakePasswordAgainNewCalc = "Re-enter the fake password";
+insertCreatedFakePasswordAgainNewCalc = "Enter the fake password again to confirm";
 
 // Sharing and Alerts
-copiedMessage = "Link copied!";
-savedMessage = "Photos saved!";
-shareCompleteMessage = "Sharing complete.";
-shareCancelMessage = "Sharing canceled.";
+copiedMessage = "Link Copied!";
+savedMessage = "Photos Saved!";
+shareCompleteMessage = "Share Completed.";
+shareCancelMessage = "Share Canceled.";
 shareErrorMessage = "Error during sharing: ";
 noPhotoToShareMessage = "No photo selected to share with another calculator.";
 noPhotoToSaveMessage = "No photo selected to save.";
 errorCreatingSharedFolder = "Error creating shared folder: ";
 sharedLinkTitle = "Secret Link Created";
-sharedLinkMessagePrefix = "View all your created links in settings\n\nLink: ";
+sharedLinkMessagePrefix = "See all created links in settings\n\nLink: ";
 sharedLinkMessageSuffix = "\nPassword: ";
 copyLinkButtonTitle = "Copy Link and Password";
 cancelButtonTitle = "Cancel";
-downloadAppMessage = "1. Click the link ";
+downloadAppMessage = "1. Download the app https:=apps.apple.com/us/app/sg-secret-gallery-vault/id1479873340\n2. Click the link ";
 downloadAppPasswordPrefix = "\n3. Enter the password ";
-createPasscodeAndConfrim = "Create a passcode and confirm with '='";
+createPasscodeAndConfrim = "Create a password and confirm with '='";
 sharedPhotosTitle = "Shared Photos";
 
 savePhotosButtonText = "Save Photos";
 savePhotosErrorTitle = "Error";
 savePhotosErrorMessage = "Error saving image:";
-processImageErrorMessage = "Error processing the image.";
+processImageErrorMessage = "Error processing image.";
 convertImageErrorMessage = "Error converting image to JPEG.";
 photosSavedTitle = "Photos Saved";
-photosSavedMessage = "All photos saved in calculator.";
+photosSavedMessage = "All photos have been saved to the calculator.";
 okActionText = "OK";
 saveVideoErrorMessage = "Error saving video";
-limitMessage = "Limit of 5 links reached. Delete one to create new.";
+limitMessage = "Link limit of 5 reached. Delete one to create new ones.";
 deleteLinkConfirmationTitle = "Delete Link";
 deleteConfirmationMessage = "Are you sure you want to delete this link?";
 deleteConfirmationCancel = "Cancel";
@@ -222,32 +223,32 @@ headerMessage = "Thank you for sharing your ideas with us";
 emailContact = "Contact Email (optional)";
 writeYourMessage = "Leave Your Message";
 emailPlaceholder = "Your email (optional)";
-feedbackPlaceholder = "We'd love to hear your ideas, suggestions, and feedback!";
-submitButtonTitle = "Send Feedback";
+feedbackPlaceholder = "We want to hear your ideas, suggestions, and feedback!";
+submitButtonTitle = "Submit Feedback";
 emptyMessageAlertTitle = "Empty Message";
-emptyMessageAlertMessage = "Please fill out the message field and try again";
+emptyMessageAlertMessage = "Please fill in the message field and try again";
 errorAlertTitle = "Error!";
 errorAlertMessage = "Try again later";
 thankYouAlertTitle = "Thank You!";
-thankYouAlertMessage = "Your feedback has been successfully sent!";
+thankYouAlertMessage = "Your opinion is very important to us. Your message has been successfully sent!";
 suggestionsFeedbackTitle = "Suggestions and Feedback";
-linkCopied = "Link copied";
+linkCopied = "Link Copied";
 secureSharing = "Secure Sharing";
 activeLinks = "Active Links";
 networkError = "Network Error";
 linkPrefix = "link: ";
-keyPrefix = "key: ";
+keyPrefix = "password: ";
 linkText = "Link: ";
 keyText = "Password: ";
 
 // Tutorial
 tutorialTitle = "Securely Share Photos and Videos";
-tutorialDescription = "You can now create shareable links for photos and videos securely. The recipient can import the photos directly into the app.";
+tutorialDescription = "You can now create shareable links for photos and videos securely. The recipient can import photos directly into the app.";
 tutorialHowTo = "How to Use?";
-tutorialSteps = "1. Select photos in your gallery.\n\n2. Tap share and choose 'Create secure link'.\n\n3. Send the link and password to your recipient.";
+tutorialSteps = "1. Select photos in your gallery.\n\n2. Tap share and choose 'Secure Sharing'.\n\n3. Send the link and password to the person you want to share with.";
 importingPhotos = "Importing photos";
 limitReachedTitle = "Limit Reached";
-limitReachedMessage = "You have reached the limit of created links. Go to 'Secure Link' in settings to remove an existing link and free up space.";
+limitReachedMessage = "You have reached the link creation limit. Access 'Secure Link' in settings to remove a link and free up space.";
 chooseDestination = "Choose Destination";
 share = "Share";
 saveToGallery = "Save to Gallery";
@@ -255,13 +256,28 @@ shareWithOtherCalculator = "Share with another calculator";
 enterURL = "Enter URL";
 newTag = "New";
 addFakePassword = "Add Fake Password";
-secretSharing = "Secret Sharing";
+secretSharing = "Secure Sharing";
 improvementSuggestions = "Improvement Suggestions";
 biometricAuthentication = "Biometric Authentication";
 changePassword = "Change Password";
 sendLinkAndPassword = "Send Link and Password";
-// Compartilhamento de Conteúdo
+// Content Sharing
 sharedContentIntro = "Here is the link to access the content I shared with you:";
-sharedContentStep1 = "1. Download the app: ";
-sharedContentStep2 = "2. Open the link: ";
+sharedContentStep2 = "1. Open the link: ";
 sharedContentStep3 = "3. Enter the password to unlock: ";
+changepassAlertTitle = "New password:";
+changepassAlertText = "Password changed successfully";
+fakepassAlertTitle = "Fake Password:";
+enterPasswordTitle = "Enter Password";
+enterPasswordMessage = "Enter the password for the secret link to access the photos:";
+passwordPlaceholder = "Password";
+invalidLinkOrPasswordMessage = "Invalid link or password. Please try again.";
+noVideoToSaveTitle = "No video found";
+noVideoToSaveMessage = "No valid video selected to save to the gallery.";
+noVideoToShareTitle = "No video found";
+noVideoToShareMessage = "No valid video selected to share.";
+review = "Review";
+sugestions = "Improvement Suggestions?";
+sugestionsDescription = "Your feedback is very important! Help us improve even more";
+insertpass = "Enter password";
+errorTitle = "Error";

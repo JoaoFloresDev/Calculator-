@@ -1,11 +1,3 @@
-/*
-  Localizable.strings
-  Calculator Notes
-
-  Dibuat oleh Joao Victor Flores da Costa pada 06/02/22.
-  Hak Cipta © 2022 MakeSchool. Semua hak dilindungi.
-*/
-
 // Versi Premium
 premiumVersion = "Versi Premium";
 noProtection = "Tanpa Perlindungan";
@@ -18,22 +10,22 @@ gallery = "Galeri";
 video = "Video";
 notes = "Catatan";
 
-instructionFirstStepCalc = "Buat kata sandi dan klik tombol '='";
-instructionSecondStepCalc = "Kata Sandi: *****. Ulangi kata sandi dan konfirmasi dengan '='";
+instructionFirstStepCalc = "Buat kode sandi dan tekan tombol '='";
+instructionSecondStepCalc = "Kode sandi: *****. Masukkan kembali kode sandi dan konfirmasi dengan '='";
 
-instructionFirstStepBank = "Buat kata sandi dan klik 'enter'";
-instructionSecondStepBank = "Kata Sandi: *****. Ulangi kata sandi dan konfirmasi dengan 'Enter'";
+instructionFirstStepBank = "Buat kode sandi dan tekan 'OK'";
+instructionSecondStepBank = "Kode sandi: *****. Masukkan kembali kode sandi dan konfirmasi dengan 'OK'";
 
-bankModeHasBeenActivated = "Mode Bank telah diaktifkan";
-calcModeHasBeenActivated = "Mode Kalkulator telah diaktifkan";
+bankModeHasBeenActivated = "Mode Brankas Diaktifkan";
+calcModeHasBeenActivated = "Mode Kalkulator Diaktifkan";
 
-welcomeInstructionBank = "Masukkan kata sandi Anda";
+welcomeInstructionBank = "Masukkan kode sandi Anda";
 
 done = "Selesai";
 edit = "Edit";
 
 premiumToolTitle = "Fitur Premium";
-premiumToolMessage = "Dukungan untuk video hanya tersedia untuk pengguna premium. Lihat opsi upgrade di bagian Pengaturan";
+premiumToolMessage = "Dukungan video hanya tersedia untuk pengguna Premium. Lihat opsi upgrade di Pengaturan";
 
 save = "Simpan";
 cancel = "Batal";
@@ -41,11 +33,11 @@ ok = "OK";
 see = "Lihat";
 
 // Pesan Kesalahan
-errorTitle = "Kesalahan Tak Terduga";
+errorTitle = "Kesalahan Tidak Terduga";
 errorMessage = "Coba lagi nanti";
 deleteFiles = "Hapus File?";
 
-incorrectPassword = "Kata Sandi Salah";
+incorrectPassword = "Kode Sandi Salah";
 tryAgain = "Coba Lagi";
 
 // Pembelian
@@ -61,131 +53,139 @@ createActionTitle = "Buat";
 cancelTitle = "Batal";
 inputPlaceholder = "Masukkan Nama Folder Baru";
 folderNameAlreadyUsedTitle = "Nama Folder Sudah Digunakan";
-folderNameAlreadyUsedText = "Pilih Nama Folder yang Berbeda";
+folderNameAlreadyUsedText = "Pilih Nama Lain untuk Folder";
 deleteConfirmationTitle = "Hapus File?";
 
 // Tampilkan Semua
-hideAllVideos = "Sembunyikan Semua Video yang Tersimpan";
-showAllVideos = "Tampilkan Semua Video yang Tersimpan";
-hideAllPhotos = "Sembunyikan Semua Foto yang Tersimpan";
-showAllPhotos = "Tampilkan Semua Foto yang Tersimpan";
+hideAllVideos = "Sembunyikan Semua Video Tersimpan";
+showAllVideos = "Tampilkan Semua Video Tersimpan";
+hideAllPhotos = "Sembunyikan Semua Foto Tersimpan";
+showAllPhotos = "Tampilkan Semua Foto Tersimpan";
 wouldLikeSetProtection = "Ingin Menambahkan Perlindungan ke Galeri Anda?";
 
-// Cadangan (Backup)
+// Cadangan
 askToRestoreBackupTitle = "Pulihkan Cadangan";
 askToRestoreBackupMessage = "Ingin memulihkan cadangan terakhir Anda?";
-backupSuccessTitle = "Cadangan Berhasil Dilakukan";
-backupSuccessMessage = "Cadangan Anda berhasil dipulihkan dengan sukses";
+backupSuccessTitle = "Cadangan Berhasil";
+backupSuccessMessage = "Cadangan Anda telah berhasil dipulihkan";
 backupErrorTitle = "Kesalahan Cadangan";
-backupErrorMessage = "Tidak ada data yang ditemukan untuk cadangan";
-incorrectPasswordTitle = "Kata Sandi Salah";
-incorrectPasswordMessage = "Kata sandi yang diberikan tidak valid. Coba lagi.";
-insertPasswordTitle = "Masukkan Kata Sandi Anda";
-insertPasswordMessage = "Masukkan kata sandi yang sebelumnya digunakan untuk membuka aplikasi";
+backupErrorMessage = "Data tidak ditemukan untuk cadangan";
+incorrectPasswordTitle = "Kode Sandi Salah";
+incorrectPasswordMessage = "Kode sandi yang diberikan tidak valid. Silakan coba lagi.";
+insertPasswordTitle = "Masukkan Kode Sandi Anda";
+insertPasswordMessage = "Masukkan kode sandi yang telah digunakan sebelumnya untuk membuka aplikasi";
 yes = "Ya";
 no = "Tidak";
 enableiCloudTitle = "Tindakan Diperlukan";
-enableiCloudSubtitle = "\n1. Klik iCloud\n\n2. Temukan aplikasi SG dalam daftar\n\n3. Aktifkan iCloud";
+enableiCloudSubtitle = "\n1. Buka iCloud\n\n2. Temukan aplikasi SG di daftar\n\n3. Aktifkan iCloud";
 enableiCloudAction = "Pergi ke Pengaturan";
-premiumTooliCloudMessage = "Fitur cadangan eksklusif untuk pengguna premium. Detail produk akan ditampilkan";
+premiumTooliCloudMessage = "Fitur cadangan hanya tersedia untuk pengguna Premium. Detail produk akan disediakan";
 
 // Hapus dan Cadangan
 delete = "Hapus";
 backupNavigationTitle = "Cadangan Saya";
 
-emptyVideosTitle = "Tidak ada Video";
-emptyVideosSubtitle = "Tambahkan video Anda dengan mengklik tombol +";
-premiumVideosSubtitle = "Dukungan untuk video adalah fitur premium";
+emptyVideosTitle = "Tidak Ada Video";
+emptyVideosSubtitle = "Tambahkan video dengan mengetuk tombol +";
+premiumVideosSubtitle = "Dukungan video adalah fitur Premium";
 
-emptyGalleryTitle = "Tidak ada Foto";
-emptyGallerySubtitle = "Tambahkan foto Anda dengan mengklik tombol +";
+emptyGalleryTitle = "Tidak Ada Foto";
+emptyGallerySubtitle = "Tambahkan foto dengan mengetuk tombol +";
 
-emptyNotesTitle = "Tidak ada Catatan";
-emptyNotesSubtitle = "Tambahkan catatan Anda dengan mengklik tombol +";
+emptyNotesTitle = "Tidak Ada Catatan";
+emptyNotesSubtitle = "Tambahkan catatan dengan mengetuk tombol +";
 
-seeMore = "Lihat lebih banyak";
+seeMore = "Lihat Lainnya";
 backupSettings = "Pengaturan Cadangan";
 backupStatus = "Cadangan Aman";
-seeMyBackup = "Lihat cadangan saya";
-restoreBackup = "Pulihkan cadangan";
-updateBackup = "Perbarui cadangan";
-faceIDReason = "Kami akan menggunakan autentikasi untuk membuka galeri Anda";
-myBackupItems = "Item Cadangan Saya";
+seeMyBackup = "Lihat Cadangan Saya";
+restoreBackup = "Pulihkan Cadangan";
+updateBackup = "Perbarui Cadangan";
+faceIDReason = "Autentikasi diperlukan untuk membuka galeri Anda";
+myBackupItems = "Item dalam Cadangan Saya";
 backupNavigationTitle = "Cadangan Saya";
 vaultMode = "Mode Brankas";
 recover = "Pulihkan";
 
-createPassword = "Buat kata sandi dan konfirmasi dengan OK";
-insertCreatedPasswordAgain = "Masukkan kata sandi lagi";
-insertPassword = "Masukkan kata sandi Anda dan konfirmasi dengan OK";
+// Membuat dan Mengonfirmasi Kode Sandi
+createPassword = "Buat kode sandi dan konfirmasi dengan OK";
+insertCreatedPasswordAgain = "Masukkan kembali kode sandi";
+insertPassword = "Masukkan kode sandi Anda dan konfirmasi dengan OK";
 backupEnabled = "Diaktifkan";
-backupDisabled = "Nonaktif";
+backupDisabled = "Dinonaktifkan";
 
-backupNavigationSubtitle = "Foto disinkronkan dengan foto yang ditambahkan setiap kali aplikasi dibuka dan ada koneksi Wi-Fi. Cadangan Anda aman dan satu-satunya cara untuk melihat foto adalah dalam aplikasi.";
+backupNavigationSubtitle = "Foto disinkronkan setiap kali aplikasi dibuka dan ada koneksi Wi-Fi. Cadangan Anda aman dan hanya dapat dilihat di dalam aplikasi";
 
-myBackupNavigationSubtitle = "Klik 'Pulihkan cadangan' pada menu sebelumnya untuk mengimpor foto ke galeri Anda";
+myBackupNavigationSubtitle = "Klik 'Pulihkan Cadangan' di menu sebelumnya untuk mengimpor foto ke galeri Anda";
 continueText = "Lanjutkan";
 
-welcomeOnboarding_title = "Selamat datang di Secret Gallery";
-welcomeOnboarding_subtitle = "Lindungi foto dan video Anda secara aman";
+// Onboarding
+welcomeOnboarding_title = "Selamat Datang di Secret Gallery";
+welcomeOnboarding_subtitle = "Lindungi foto dan video Anda dengan aman";
 welcomeOnboarding_startButtonTitle = "Mulai";
-welcomeOnboarding_skipButtonTitle = "Dengan mengklik 'Mulai', Anda menyetujui kebijakan privasi dan syarat penggunaan";
+welcomeOnboarding_skipButtonTitle = "Dengan mengklik 'Mulai', Anda menyetujui Kebijakan Privasi dan Ketentuan Penggunaan kami";
 
 createCodeOnboarding_title = "Buat Kode Akses";
-createCodeOnboarding_subtitle = "Buat kata sandi untuk mengakses foto yang disimpan Anda";
+createCodeOnboarding_subtitle = "Buat kode sandi untuk mengakses foto yang disimpan";
 createCodeOnboarding_startButtonTitle = "Lanjutkan";
-createCodeOnboarding_skipButtonTitle = "Sekarang tidak";
+createCodeOnboarding_skipButtonTitle = "Tidak Sekarang";
 
 addPhotosOnboarding_title = "Tambahkan Foto Anda";
-addPhotosOnboarding_subtitle = "Tambahkan foto yang ingin Anda simpan dengan aman";
+addPhotosOnboarding_subtitle = "Pilih foto yang ingin Anda simpan dengan aman";
 addPhotosOnboarding_startButtonTitle = "Lanjutkan";
-addPhotosOnboarding_skipButtonTitle = "Sekarang tidak";
+addPhotosOnboarding_skipButtonTitle = "Tidak Sekarang";
 
+// Pemulihan Email
 emailErrorTitle = "Email Tidak Valid";
-emailErrorDescription = "Periksa alamat email yang Anda masukkan dan coba lagi";
-insertEmailTitle = "Masukkan alamat email yang akan digunakan untuk pemulihan:";
-insertEmailDescription = "Masukkan alamat email Anda";
+emailErrorDescription = "Periksa kembali email yang dimasukkan dan coba lagi";
+insertEmailTitle = "Masukkan email untuk pemulihan:";
+insertEmailDescription = "Masukkan email Anda";
 insertEmailButtonText = "Konfirmasi Email";
 
-emailPopupTitle = "Kirim email dengan kata sandi pemulihan?";
-emailmessage = "Kami akan mengirimkan email dengan kata sandi pemulihan kepada Anda";
+emailPopupTitle = "Kirim email pemulihan?";
+emailmessage = "Kami akan mengirimkan email dengan instruksi untuk pemulihan kode sandi";
 emailCancelButtonTitle = "Tidak";
 emailOkButtonTitle = "Ya";
-emailNotRegisteredTitle = "Anda belum mendaftarkan email untuk pemulihan";
-emailNotRegisteredMessage = "Kami tidak menemukan alamat email yang terdaftar sebelumnya untuk akun ini";
-successEmailTitle = "Email Terkirim";
-successEmailMessage = "Silakan cek kotak masuk Anda. Anda akan menerima email dengan petunjuk pemulihan kata sandi dalam 48 jam";
+emailNotRegisteredTitle = "Email Tidak Terdaftar";
+emailNotRegisteredMessage = "Kami tidak menemukan email yang terdaftar sebelumnya untuk akun Anda";
+successEmailTitle = "Email Berhasil Dikirim";
+successEmailMessage = "Periksa kotak masuk Anda. Anda akan menerima email dengan instruksi pemulihan kode sandi dalam waktu 48 jam.";
 errorEmailTitle = "Kesalahan Pengiriman Email";
-errorEmailMessage = "Kami mengalami masalah saat mengirim email. Periksa koneksi internet Anda dan coba lagi";
-remindMyPasscode = "Lupa kata sandi?";
-selectNewIcon = "Pilih ikon yang diinginkan";
-changeIconTitle = "Ubah ikon";
-unlimitedStorage = "Penyimpanan tak terbatas";
-noAds = "Tanpa iklan";
-videoSuport = "Dukungan video";
-callToActionPurchase = "Temukan pengalaman premium kami";
-selectImagesToShare = "Pilih gambar yang ingin Anda bagikan";
-selectImagesToDelete = "Pilih gambar yang ingin Anda hapus";
-monthlySubscription = "Berlangganan Bulanan - ";
-yearlySubscription = "Berlangganan Tahunan - ";
+errorEmailMessage = "Tidak dapat mengirim email. Periksa koneksi internet Anda dan coba lagi.";
+remindMyPasscode = "Lupa Kode Sandi?";
+selectNewIcon = "Pilih Ikon Baru";
+changeIconTitle = "Ubah Ikon";
+unlimitedStorage = "Penyimpanan Tidak Terbatas";
+noAds = "Tanpa Iklan";
+videoSuport = "Dukungan Video";
+callToActionPurchase = "Temukan pengalaman Premium kami";
+
+selectImagesToShare = "Pilih Gambar untuk Dibagikan";
+selectImagesToDelete = "Pilih Gambar untuk Dihapus";
+
+monthlySubscription = "Langganan Bulanan - ";
+yearlySubscription = "Langganan Tahunan - ";
 termsOfUse = "Syarat Penggunaan";
 privacyPolicy = "Kebijakan Privasi";
 augmentedReality = "Realitas Tertambah";
-createPasswordNewCalc = "Buat sandi 4 digit";
-insertCreatedPasswordAgainNewCalc = "Masukkan kembali sandi yang dibuat untuk konfirmasi";
-oneWeekToTest = "Coba gratis satu minggu";
+
+// Membuat Kode Sandi
+createPasswordNewCalc = "Buat kode sandi 4 digit";
+insertCreatedPasswordAgainNewCalc = "Masukkan kembali kode sandi untuk konfirmasi";
+oneWeekToTest = "Uji Coba Gratis Satu Minggu";
 
 hasAccount = "Sudah punya akun?";
-notHasAccount = "Belum punya? Buat sekarang";
+notHasAccount = "Belum punya akun? Buat akun baru";
 genericLoginError = "Terjadi kesalahan";
-createLoginError = "Jika Anda belum punya akun, pilih 'Daftar dengan Google'";
+createLoginError = "Jika Anda belum memiliki akun, pilih 'Daftar dengan Google'";
 successLogin = "Login berhasil!";
-successLoginDescription = "Foto Anda akan disinkronkan setiap kali Anda menambahkan foto baru atau mengklik tombol 'perbarui cadangan'";
-syncAut = "Sinkronisasi otomatis";
+successLoginDescription = "Foto Anda akan disinkronkan setiap kali ditambahkan atau tombol 'Perbarui Cadangan' ditekan";
+syncAut = "Sinkronisasi Otomatis";
 logout = "Keluar";
 pending = "Tertunda";
-downloadBackup = "Unduh cadangan";
+downloadBackup = "Unduh Cadangan";
 loginWithGoogle = "Masuk dengan Google";
 signUpWithGoogle = "Daftar dengan Google";
-browser = "Peramban internet";
-createLoginErrorTitle = "Try creating an account";
+browser = "Peramban Internet";
+
+createLoginErrorTitle = "Coba buat akun";

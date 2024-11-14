@@ -1,3 +1,4 @@
+import Network
 import FirebaseStorage
 import Firebase
 import Foundation
@@ -17,6 +18,17 @@ struct FirebasePhotoSharingService {
             return
         }
         
+        // Monitora a conectividade da rede
+        let monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { path in
+            if path.status == .unsatisfied {
+                completion(nil, nil, NSError(domain: "No internet connection", code: 503, userInfo: [NSLocalizedDescriptionKey: "Internet connection is required"]))
+                monitor.cancel() // Cancela o monitoramento após detectar a falta de conexão
+            }
+        }
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+
         // Criar uma pasta única com UUID
         var folderName = UUID().uuidString
         let range = folderName.index(folderName.endIndex, offsetBy: -4)..<folderName.endIndex
@@ -26,8 +38,7 @@ struct FirebasePhotoSharingService {
         
         let dispatchGroup = DispatchGroup()
         var uploadErrors: [Error] = []
-        
-        // Fazer o upload de cada imagem para o Firebase
+
         for photo in modelData {
             guard let imageData = UIImageJPEGRepresentation(photo.image, 0.8) else {
                 print("Erro ao converter a imagem para JPEG.")
@@ -39,7 +50,7 @@ struct FirebasePhotoSharingService {
             let imageRef = folderRef.child(imageName)
             
             dispatchGroup.enter()
-            
+
             imageRef.putData(imageData, metadata: nil) { metadata, error in
                 if let error = error {
                     print("Erro ao fazer upload da imagem: \(error.localizedDescription)")
@@ -48,16 +59,18 @@ struct FirebasePhotoSharingService {
                 dispatchGroup.leave()
             }
         }
-        
+
         // Quando todos os uploads forem concluídos, gerar o deep link
         dispatchGroup.notify(queue: .main) {
+            monitor.cancel() // Cancela o monitoramento de rede após concluir os uploads
             if uploadErrors.isEmpty {
                 createDynamicLink(for: folderName, completion: completion)
             } else {
-                completion(nil,nil, uploadErrors.first)
+                completion(nil, nil, uploadErrors.first)
             }
         }
     }
+
     
     // MARK: - Private Methods
     private static func createDynamicLink(for folderName: String, completion: @escaping (String?, String?, Error?) -> ()) {

@@ -1,11 +1,3 @@
-/*
-  Localizable.strings
-  Calculator Notes
-
-  2022年2月6日にJoao Victor Flores da Costaによって作成。
-  著作権 © 2022 MakeSchool。全著作権所有。
-*/
-
 // プレミアムバージョン
 premiumVersion = "プレミアムバージョン";
 noProtection = "保護なし";
@@ -16,24 +8,24 @@ chooseProtectionMode = "保護モードを選択";
 settings = "設定";
 gallery = "ギャラリー";
 video = "ビデオ";
-notes = "ノート";
+notes = "メモ";
 
-instructionFirstStepCalc = "パスワードを作成し、'='ボタンをクリックします。";
-instructionSecondStepCalc = "パスワード: *****。パスワードを再度入力し、'='で確認します。";
+instructionFirstStepCalc = "パスコードを作成し、 '=' ボタンを押してください";
+instructionSecondStepCalc = "パスコード：*****。パスコードを再入力し、'='で確認";
 
-instructionFirstStepBank = "パスワードを作成し、'Enter'をクリックします。";
-instructionSecondStepBank = "パスワード: *****。パスワードを再度入力し、'Enter'で確認します。";
+instructionFirstStepBank = "パスコードを作成し、'OK'を押してください";
+instructionSecondStepBank = "パスコード：*****。パスコードを再入力し、'OK'で確認";
 
-bankModeHasBeenActivated = "バンクモードがアクティブ化されました。";
-calcModeHasBeenActivated = "電卓モードがアクティブ化されました。";
+bankModeHasBeenActivated = "金庫モードが有効になりました";
+calcModeHasBeenActivated = "計算機モードが有効になりました";
 
-welcomeInstructionBank = "パスワードを入力してください";
+welcomeInstructionBank = "パスコードを入力してください";
 
 done = "完了";
 edit = "編集";
 
 premiumToolTitle = "プレミアム機能";
-premiumToolMessage = "ビデオサポートはプレミアムユーザーのみ対応しています。設定セクションでアップグレードオプションをご確認ください。";
+premiumToolMessage = "ビデオサポートはプレミアムユーザーのみが利用可能です。設定でアップグレードオプションをご確認ください";
 
 save = "保存";
 cancel = "キャンセル";
@@ -42,10 +34,10 @@ see = "表示";
 
 // エラーメッセージ
 errorTitle = "予期しないエラー";
-errorMessage = "後で再試行してください。";
+errorMessage = "後でもう一度試してください";
 deleteFiles = "ファイルを削除しますか？";
 
-incorrectPassword = "パスワードが正しくありません";
+incorrectPassword = "パスコードが間違っています";
 tryAgain = "再試行";
 
 // 購入
@@ -55,137 +47,145 @@ close = "閉じる";
 restore = "復元";
 buy = "購入";
 
-// フォルダ
-folderTitle = "フォルダ名";
+// フォルダー
+folderTitle = "フォルダー名";
 createActionTitle = "作成";
 cancelTitle = "キャンセル";
-inputPlaceholder = "新しいフォルダ名を入力してください";
-folderNameAlreadyUsedTitle = "既に使用されているフォルダ名";
-folderNameAlreadyUsedText = "異なるフォルダ名を選択してください";
+inputPlaceholder = "新しいフォルダー名を入力";
+folderNameAlreadyUsedTitle = "既に使用されているフォルダー名";
+folderNameAlreadyUsedText = "異なる名前を選択してください";
 deleteConfirmationTitle = "ファイルを削除しますか？";
 
-// すべて表示
-hideAllVideos = "すべての保存済みビデオを非表示";
-showAllVideos = "すべての保存済みビデオを表示";
-hideAllPhotos = "すべての保存済み写真を非表示";
-showAllPhotos = "すべての保存済み写真を表示";
+// 全て表示
+hideAllVideos = "保存されたすべてのビデオを非表示";
+showAllVideos = "保存されたすべてのビデオを表示";
+hideAllPhotos = "保存されたすべての写真を非表示";
+showAllPhotos = "保存されたすべての写真を表示";
 wouldLikeSetProtection = "ギャラリーに保護を追加しますか？";
 
 // バックアップ
-askToRestoreBackupTitle = "バックアップを復元";
+askToRestoreBackupTitle = "バックアップの復元";
 askToRestoreBackupMessage = "最新のバックアップを復元しますか？";
-backupSuccessTitle = "バックアップが成功しました";
+backupSuccessTitle = "バックアップ成功";
 backupSuccessMessage = "バックアップが正常に復元されました";
 backupErrorTitle = "バックアップエラー";
-backupErrorMessage = "バックアップ用のデータが見つかりませんでした";
-incorrectPasswordTitle = "パスワードが正しくありません";
-incorrectPasswordMessage = "提供されたパスワードは無効です。もう一度お試しください。";
-insertPasswordTitle = "パスワードを入力してください";
-insertPasswordMessage = "アプリを開くために以前に使用したパスワードを入力してください";
+backupErrorMessage = "バックアップするデータが見つかりません";
+incorrectPasswordTitle = "パスコードが間違っています";
+incorrectPasswordMessage = "入力されたパスコードが無効です。もう一度お試しください。";
+insertPasswordTitle = "パスコードを入力してください";
+insertPasswordMessage = "以前に設定したパスコードを入力してアプリにアクセスしてください";
 yes = "はい";
 no = "いいえ";
-enableiCloudTitle = "必要なアクション";
-enableiCloudSubtitle = "\n1. iCloudをクリックします\n\n2. SG アプリをリストから見つけます\n\n3. iCloudを有効にします";
+enableiCloudTitle = "アクションが必要です";
+enableiCloudSubtitle = "\n1. iCloudを開く\n\n2. リストでSGアプリを探す\n\n3. iCloudを有効にする";
 enableiCloudAction = "設定に移動";
-premiumTooliCloudMessage = "バックアップ機能はプレミアムユーザー専用です。製品の詳細は表示されます";
+premiumTooliCloudMessage = "バックアップ機能はプレミアムユーザー専用です。製品の詳細情報が表示されます";
 
 // 削除とバックアップ
 delete = "削除";
 backupNavigationTitle = "マイバックアップ";
 
 emptyVideosTitle = "ビデオなし";
-emptyVideosSubtitle = "ボタン+をクリックしてビデオを追加してください";
+emptyVideosSubtitle = "+ボタンを押してビデオを追加";
 premiumVideosSubtitle = "ビデオサポートはプレミアム機能です";
 
 emptyGalleryTitle = "写真なし";
-emptyGallerySubtitle = "ボタン+をクリックして写真を追加してください";
+emptyGallerySubtitle = "+ボタンを押して写真を追加";
 
 emptyNotesTitle = "メモなし";
-emptyNotesSubtitle = "ボタン+をクリックしてメモを追加してください";
+emptyNotesSubtitle = "+ボタンを押してメモを追加";
 
 seeMore = "もっと見る";
 backupSettings = "バックアップ設定";
 backupStatus = "セキュアバックアップ";
-seeMyBackup = "マイバックアップを表示";
-restoreBackup = "バックアップを復元";
-updateBackup = "バックアップを更新";
-faceIDReason = "ギャラリーを開くために認証を使用します。";
-myBackupItems = "マイバックアップアイテム";
+seeMyBackup = "マイバックアップ";
+restoreBackup = "バックアップの復元";
+updateBackup = "バックアップの更新";
+faceIDReason = "ギャラリーへのアクセスに認証を使用します";
+myBackupItems = "バックアップ内のアイテム";
 backupNavigationTitle = "マイバックアップ";
-vaultMode = "セーフモード";
-recover = "回復";
+vaultMode = "金庫モード";
+recover = "復元";
 
-createPassword = "パスワードを作成し、Enterキーで確認してください";
-insertCreatedPasswordAgain = "パスワードを再度入力してください";
-insertPassword = "パスワードを入力し、Enterキーで確認してください";
+// パスコードの作成と確認
+createPassword = "パスコードを作成し、OKで確認";
+insertCreatedPasswordAgain = "パスコードを再入力";
+insertPassword = "パスコードを入力し、OKで確認";
 backupEnabled = "有効";
 backupDisabled = "無効";
 
-backupNavigationSubtitle = "Wi-Fi接続が可能な場合、アプリを開くたびに追加した写真が同期されます。バックアップは安全で、写真を表示する唯一の方法はアプリ内です。";
+backupNavigationSubtitle = "アプリが開かれるたびにWi-Fi接続があれば写真が同期されます。バックアップは安全に保護されており、写真はアプリ内でのみ表示できます";
 
-myBackupNavigationSubtitle = "前のメニューで 'バックアップを復元' をクリックして写真をギャラリーにインポートします。";
+myBackupNavigationSubtitle = "前のメニューで「バックアップの復元」をクリックして写真をギャラリーにインポート";
 continueText = "続行";
 
+// オンボーディング
 welcomeOnboarding_title = "Secret Galleryへようこそ";
-welcomeOnboarding_subtitle = "写真とビデオを安全に保護します";
+welcomeOnboarding_subtitle = "写真とビデオを安全に保護";
 welcomeOnboarding_startButtonTitle = "開始";
 welcomeOnboarding_skipButtonTitle = "「開始」をクリックすると、プライバシーポリシーと利用規約に同意したことになります";
 
 createCodeOnboarding_title = "アクセスコードを作成";
-createCodeOnboarding_subtitle = "保存したい写真にアクセスするためのパスワードを作成してください";
+createCodeOnboarding_subtitle = "保存された写真にアクセスするためのパスコードを設定";
 createCodeOnboarding_startButtonTitle = "続行";
 createCodeOnboarding_skipButtonTitle = "今はスキップ";
 
 addPhotosOnboarding_title = "写真を追加";
-addPhotosOnboarding_subtitle = "安全に保存したい写真を追加してください";
+addPhotosOnboarding_subtitle = "保護したい写真を選択";
 addPhotosOnboarding_startButtonTitle = "続行";
 addPhotosOnboarding_skipButtonTitle = "今はスキップ";
 
-emailErrorTitle = "無効なメールアドレス";
-emailErrorDescription = "入力したメールアドレスを確認し、もう一度試してください";
-insertEmailTitle = "復旧に使用するメールアドレスを入力してください:";
-insertEmailDescription = "メールアドレスを入力してください";
-insertEmailButtonText = "メールアドレスを確認";
+// メールによる復元
+emailErrorTitle = "無効なメール";
+emailErrorDescription = "入力したメールアドレスを確認し、再度お試しください";
+insertEmailTitle = "復元に使用するメールアドレスを入力してください:";
+insertEmailDescription = "メールアドレスを入力";
+insertEmailButtonText = "メール確認";
 
-emailPopupTitle = "パスワードの復旧用メールを送信しますか？";
-emailmessage = "パスワードの復旧用メールを送信します";
+emailPopupTitle = "パスワード復元のメールを送信しますか？";
+emailmessage = "パスワード復元手順が記載されたメールを送信します";
 emailCancelButtonTitle = "いいえ";
 emailOkButtonTitle = "はい";
-emailNotRegisteredTitle = "復旧用のメールアドレスが登録されていません";
-emailNotRegisteredMessage = "アカウントに事前に登録されたメールアドレスが見つかりませんでした";
-successEmailTitle = "メールの送信に成功しました";
-successEmailMessage = "メールボックスをご確認ください。パスワードの復旧手順を含むメールが48時間以内に届きます";
-errorEmailTitle = "メールの送信エラー";
-errorEmailMessage = "メールの送信に問題が発生しました。インターネット接続を確認し、もう一度試してください";
+emailNotRegisteredTitle = "復元用のメールが登録されていません";
+emailNotRegisteredMessage = "アカウントに事前登録されたメールアドレスが見つかりませんでした";
+successEmailTitle = "メールが正常に送信されました";
+successEmailMessage = "メールボックスを確認してください。48時間以内にパスワード復元の手順が記載されたメールをお受け取りいただけます。";
+errorEmailTitle = "メール送信エラー";
+errorEmailMessage = "メールの送信に問題が発生しました。インターネット接続を確認し、再度お試しください。";
 remindMyPasscode = "パスワードを忘れましたか？";
-selectNewIcon = "希望のアイコンを選択してください";
-changeIconTitle = "アイコンを変更する";
+selectNewIcon = "希望のアイコンを選択";
+changeIconTitle = "アイコンを変更";
 unlimitedStorage = "無制限のストレージ";
 noAds = "広告なし";
 videoSuport = "ビデオサポート";
-callToActionPurchase = "私たちのプレミアム体験を知ってください";
-selectImagesToShare = "共有する画像を選択してください";
-selectImagesToDelete = "削除する画像を選択してください";
+callToActionPurchase = "プレミアム体験をお試しください";
+
+selectImagesToShare = "共有する画像を選択";
+selectImagesToDelete = "削除する画像を選択";
+
 monthlySubscription = "月額サブスクリプション - ";
 yearlySubscription = "年間サブスクリプション - ";
 termsOfUse = "利用規約";
 privacyPolicy = "プライバシーポリシー";
 augmentedReality = "拡張現実";
-createPasswordNewCalc = "4桁のパスワードを作成してください";
-insertCreatedPasswordAgainNewCalc = "確認のため、もう一度パスワードを入力してください";
-oneWeekToTest = "無料で1週間お試しください";
 
-hasAccount = "すでにアカウントをお持ちですか？";
-notHasAccount = "まだですか？ 今すぐ作成";
+// パスコードの生成
+createPasswordNewCalc = "4桁のパスコードを作成";
+insertCreatedPasswordAgainNewCalc = "パスコードを再入力して確認";
+oneWeekToTest = "1週間無料体験";
+
+hasAccount = "既にアカウントをお持ちですか？";
+notHasAccount = "アカウントがありませんか？今すぐ作成";
 genericLoginError = "問題が発生しました";
-createLoginError = "まだアカウントをお持ちでない場合は、「Googleでサインアップ」を選択してください";
-successLogin = "ログインに成功しました！";
-successLoginDescription = "新しい写真を追加するたび、または「バックアップを更新」ボタンをクリックするたびに、写真が同期されます";
+createLoginError = "アカウントがない場合は「Googleで登録」を選択してください";
+successLogin = "ログイン成功!";
+successLoginDescription = "新しい写真が追加されるか「バックアップの更新」を押すと写真が同期されます";
 syncAut = "自動同期";
 logout = "ログアウト";
 pending = "保留中";
 downloadBackup = "バックアップをダウンロード";
 loginWithGoogle = "Googleでログイン";
-signUpWithGoogle = "Googleでサインアップ";
+signUpWithGoogle = "Googleで登録";
 browser = "インターネットブラウザ";
-createLoginErrorTitle = "Try creating an account";
+
+createLoginErrorTitle = "アカウントを作成してみてください";

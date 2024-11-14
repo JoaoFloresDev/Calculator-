@@ -1,0 +1,191 @@
+// Versione Premium
+premiumVersion = "Versione Premium";
+noProtection = "Nessuna protezione";
+hideRecoverButton = "Nascondi pulsante Face ID";
+chooseProtectionMode = "Scegli la modalità di protezione";
+
+// Impostazioni e Altro
+settings = "Impostazioni";
+gallery = "Galleria";
+video = "Video";
+notes = "Note";
+
+instructionFirstStepCalc = "Crea una password e premi il pulsante '='";
+instructionSecondStepCalc = "Password: *****. Ripeti la password e conferma con '='";
+
+instructionFirstStepBank = "Crea una password e premi 'OK'";
+instructionSecondStepBank = "Password: *****. Ripeti la password e conferma con 'OK'";
+
+bankModeHasBeenActivated = "Modalità cassaforte attivata";
+calcModeHasBeenActivated = "Modalità calcolatrice attivata";
+
+welcomeInstructionBank = "Inserisci la tua password";
+
+done = "Fatto";
+edit = "Modifica";
+
+premiumToolTitle = "Funzione Premium";
+premiumToolMessage = "Il supporto video è disponibile solo per gli utenti Premium. Vedi le opzioni di upgrade nelle Impostazioni";
+
+save = "Salva";
+cancel = "Annulla";
+ok = "OK";
+see = "Vedi";
+
+// Messaggi di Errore
+errorTitle = "Errore inatteso";
+errorMessage = "Riprova più tardi";
+deleteFiles = "Eliminare il file?";
+
+incorrectPassword = "Password errata";
+tryAgain = "Riprova";
+
+// Acquisti
+products = "Prodotti disponibili";
+loading = "Caricamento in corso...";
+close = "Chiudi";
+restore = "Ripristina";
+buy = "Acquista";
+
+// Cartelle
+folderTitle = "Nome della cartella";
+createActionTitle = "Crea";
+cancelTitle = "Annulla";
+inputPlaceholder = "Inserisci il nome della nuova cartella";
+folderNameAlreadyUsedTitle = "Nome della cartella già usato";
+folderNameAlreadyUsedText = "Scegli un nome diverso per la cartella";
+deleteConfirmationTitle = "Eliminare i file?";
+
+// Mostra Tutto
+hideAllVideos = "Nascondi tutti i video salvati";
+showAllVideos = "Mostra tutti i video salvati";
+hideAllPhotos = "Nascondi tutte le foto salvate";
+showAllPhotos = "Mostra tutte le foto salvate";
+wouldLikeSetProtection = "Vuoi aggiungere protezione alla tua galleria?";
+
+// Backup
+askToRestoreBackupTitle = "Ripristina backup";
+askToRestoreBackupMessage = "Vuoi ripristinare l'ultimo backup?";
+backupSuccessTitle = "Backup ripristinato con successo";
+backupSuccessMessage = "Il tuo backup è stato ripristinato con successo";
+backupErrorTitle = "Errore nel backup";
+backupErrorMessage = "Nessun dato trovato per il backup";
+incorrectPasswordTitle = "Password errata";
+incorrectPasswordMessage = "La password inserita non è valida. Riprova.";
+insertPasswordTitle = "Inserisci la tua password";
+insertPasswordMessage = "Inserisci la password usata precedentemente per accedere all'app";
+yes = "Sì";
+no = "No";
+enableiCloudTitle = "Azione richiesta";
+enableiCloudSubtitle = "\n1. Vai su iCloud\n\n2. Trova l'app SG nell'elenco\n\n3. Attiva iCloud";
+enableiCloudAction = "Vai alle Impostazioni";
+premiumTooliCloudMessage = "La funzione di backup è disponibile solo per utenti Premium. Dettagli del prodotto saranno presentati";
+
+// Eliminare e Backup
+delete = "Elimina";
+backupNavigationTitle = "Il Mio Backup";
+
+emptyVideosTitle = "Nessun video";
+emptyVideosSubtitle = "Aggiungi video premendo il tasto +";
+premiumVideosSubtitle = "Il supporto video è una funzione Premium";
+
+emptyGalleryTitle = "Nessuna foto";
+emptyGallerySubtitle = "Aggiungi foto premendo il tasto +";
+
+emptyNotesTitle = "Nessuna nota";
+emptyNotesSubtitle = "Aggiungi note premendo il tasto +";
+
+seeMore = "Mostra altro";
+backupSettings = "Impostazioni Backup";
+backupStatus = "Backup sicuro";
+seeMyBackup = "Vedi il mio backup";
+restoreBackup = "Ripristina backup";
+updateBackup = "Aggiorna backup";
+faceIDReason = "Usa l'autenticazione per aprire la galleria";
+myBackupItems = "I miei elementi nel backup";
+backupNavigationTitle = "Il Mio Backup";
+vaultMode = "Modalità cassaforte";
+recover = "Recupera";
+
+// Crea password e conferma
+createPassword = "Crea una password e conferma con OK";
+insertCreatedPasswordAgain = "Reinserisci la password";
+insertPassword = "Inserisci la password e conferma con OK";
+backupEnabled = "Attivato";
+backupDisabled = "Disattivato";
+
+backupNavigationSubtitle = "Le foto vengono sincronizzate ogni volta che l'app viene aperta e c'è una connessione Wi-Fi. Il tuo backup è sicuro e le foto possono essere visualizzate solo nell'app";
+
+myBackupNavigationSubtitle = "Clicca su 'ripristina backup' nel menu precedente per importare le foto nella tua galleria";
+continueText = "Continua";
+
+// Onboarding
+welcomeOnboarding_title = "Benvenuto in Secret Gallery";
+welcomeOnboarding_subtitle = "Proteggi le tue foto e video in modo sicuro";
+welcomeOnboarding_startButtonTitle = "Inizia";
+welcomeOnboarding_skipButtonTitle = "Cliccando su 'Inizia' accetti la nostra Informativa sulla Privacy e i Termini di Servizio";
+
+createCodeOnboarding_title = "Crea un Codice di Accesso";
+createCodeOnboarding_subtitle = "Crea una password per accedere alle tue foto salvate";
+createCodeOnboarding_startButtonTitle = "Continua";
+createCodeOnboarding_skipButtonTitle = "Non ora";
+
+addPhotosOnboarding_title = "Aggiungi le tue foto";
+addPhotosOnboarding_subtitle = "Scegli le foto che desideri conservare in sicurezza";
+addPhotosOnboarding_startButtonTitle = "Continua";
+addPhotosOnboarding_skipButtonTitle = "Non ora";
+
+// Recupero Email
+emailErrorTitle = "Email non valida";
+emailErrorDescription = "Controlla l'email inserita e riprova";
+insertEmailTitle = "Inserisci l'email per il recupero:";
+insertEmailDescription = "Inserisci la tua email";
+insertEmailButtonText = "Conferma Email";
+
+emailPopupTitle = "Inviare email di recupero?";
+emailmessage = "Invieremo un'email con le istruzioni per il recupero della password";
+emailCancelButtonTitle = "No";
+emailOkButtonTitle = "Sì";
+emailNotRegisteredTitle = "Email non registrata";
+emailNotRegisteredMessage = "Non abbiamo trovato un'email precedentemente registrata per il tuo account";
+successEmailTitle = "Email inviata con successo";
+successEmailMessage = "Controlla la tua casella di posta. Riceverai un'email con le istruzioni per il recupero della password entro 48 ore.";
+errorEmailTitle = "Errore nell'invio dell'email";
+errorEmailMessage = "Non è stato possibile inviare l'email. Controlla la tua connessione a internet e riprova.";
+remindMyPasscode = "Hai dimenticato la password?";
+selectNewIcon = "Seleziona l'icona desiderata";
+changeIconTitle = "Cambia Icona";
+unlimitedStorage = "Spazio illimitato";
+noAds = "Senza pubblicità";
+videoSuport = "Supporto per video";
+callToActionPurchase = "Scopri la nostra esperienza Premium";
+
+selectImagesToShare = "Seleziona le immagini da condividere";
+selectImagesToDelete = "Seleziona le immagini da eliminare";
+
+monthlySubscription = "Abbonamento Mensile - ";
+yearlySubscription = "Abbonamento Annuale - ";
+termsOfUse = "Termini di Utilizzo";
+privacyPolicy = "Informativa sulla Privacy";
+augmentedReality = "Realtà Aumentata";
+
+// Crea una password
+createPasswordNewCalc = "Crea una password di 4 cifre";
+insertCreatedPasswordAgainNewCalc = "Reinserisci la password per confermare";
+oneWeekToTest = "Prova una settimana gratuita";
+
+hasAccount = "Hai già un account?";
+notHasAccount = "Non ancora? Creane uno ora";
+genericLoginError = "Qualcosa è andato storto";
+createLoginError = "Se non hai un account, seleziona 'Registrati con Google'";
+successLogin = "Accesso effettuato con successo!";
+successLoginDescription = "Le tue foto saranno sincronizzate ogni volta che aggiungi nuove foto o fai clic su 'aggiorna backup'";
+syncAut = "Sincronizzazione automatica";
+logout = "Esci";
+pending = "In sospeso";
+downloadBackup = "Scarica backup";
+loginWithGoogle = "Accedi con Google";
+signUpWithGoogle = "Registrati con Google";
+browser = "Browser web";
+
+createLoginErrorTitle = "Prova a creare un account";

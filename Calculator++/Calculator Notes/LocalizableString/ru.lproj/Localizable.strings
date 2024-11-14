@@ -1,18 +1,10 @@
-/*
-  Localizable.strings
-  Calculator Notes
-
-  Создано Joao Victor Flores da Costa 06/02/22.
-  Авторское право © 2022 MakeSchool. Все права защищены.
-*/
-
-// Премиум-версия
-premiumVersion = "Премиум-версия";
+// Версия Premium
+premiumVersion = "Премиум версия";
 noProtection = "Без защиты";
 hideRecoverButton = "Скрыть кнопку Face ID";
 chooseProtectionMode = "Выберите режим защиты";
 
-// Настройки и др.
+// Настройки и прочее
 settings = "Настройки";
 gallery = "Галерея";
 video = "Видео";
@@ -21,10 +13,10 @@ notes = "Заметки";
 instructionFirstStepCalc = "Создайте пароль и нажмите кнопку '='";
 instructionSecondStepCalc = "Пароль: *****. Повторите пароль и подтвердите с помощью '='";
 
-instructionFirstStepBank = "Создайте пароль и нажмите 'Enter'";
-instructionSecondStepBank = "Пароль: *****. Повторите пароль и подтвердите с помощью 'Enter'";
+instructionFirstStepBank = "Создайте пароль и нажмите 'OK'";
+instructionSecondStepBank = "Пароль: *****. Повторите пароль и подтвердите с помощью 'OK'";
 
-bankModeHasBeenActivated = "Режим банка активирован";
+bankModeHasBeenActivated = "Режим сейфа активирован";
 calcModeHasBeenActivated = "Режим калькулятора активирован";
 
 welcomeInstructionBank = "Введите ваш пароль";
@@ -32,21 +24,21 @@ welcomeInstructionBank = "Введите ваш пароль";
 done = "Готово";
 edit = "Редактировать";
 
-premiumToolTitle = "Премиум-функция";
-premiumToolMessage = "Поддержка видео доступна только для пользователей Премиум. Подробности в разделе Настройки";
+premiumToolTitle = "Премиум функция";
+premiumToolMessage = "Поддержка видео доступна только для премиум-пользователей. Ознакомьтесь с возможностями обновления в разделе Настройки";
 
 save = "Сохранить";
-cancel = "Отменить";
-ok = "ОК";
-see = "Показать";
+cancel = "Отмена";
+ok = "Подтвердить";
+see = "Смотреть";
 
-// Сообщения об ошибке
+// Сообщения об ошибках
 errorTitle = "Неожиданная ошибка";
-errorMessage = "Повторите попытку позже";
+errorMessage = "Попробуйте позже";
 deleteFiles = "Удалить файл?";
 
-incorrectPassword = "Неверный пароль";
-tryAgain = "Попробуйте снова";
+incorrectPassword = "Неправильный пароль";
+tryAgain = "Попробовать снова";
 
 // Покупка
 products = "Доступные продукты";
@@ -58,134 +50,141 @@ buy = "Купить";
 // Папки
 folderTitle = "Название папки";
 createActionTitle = "Создать";
-cancelTitle = "Отменить";
-inputPlaceholder = "Введите имя новой папки";
-folderNameAlreadyUsedTitle = "Имя папки уже используется";
-folderNameAlreadyUsedText = "Выберите другое имя для папки";
+cancelTitle = "Отмена";
+inputPlaceholder = "Введите название новой папки";
+folderNameAlreadyUsedTitle = "Название папки уже используется";
+folderNameAlreadyUsedText = "Выберите другое название для папки";
 deleteConfirmationTitle = "Удалить файлы?";
 
 // Показать все
 hideAllVideos = "Скрыть все сохраненные видео";
 showAllVideos = "Показать все сохраненные видео";
-hideAllPhotos = "Скрыть все сохраненные фотографии";
-showAllPhotos = "Показать все сохраненные фотографии";
-wouldLikeSetProtection = "Хотите добавить защиту к своей галерее?";
+hideAllPhotos = "Скрыть все сохраненные фото";
+showAllPhotos = "Показать все сохраненные фото";
+wouldLikeSetProtection = "Хотите добавить защиту для вашей галереи?";
 
-// Резервное копирование (Backup)
+// Резервное копирование
 askToRestoreBackupTitle = "Восстановить резервную копию";
 askToRestoreBackupMessage = "Хотите восстановить последнюю резервную копию?";
-backupSuccessTitle = "Резервное копирование выполнено успешно";
-backupSuccessMessage = "Ваша резервная копия успешно восстановлена";
-backupErrorTitle = "Ошибка при создании резервной копии";
+backupSuccessTitle = "Резервная копия успешно создана";
+backupSuccessMessage = "Ваша резервная копия была успешно восстановлена";
+backupErrorTitle = "Ошибка резервного копирования";
 backupErrorMessage = "Данные для резервного копирования не найдены";
-incorrectPasswordTitle = "Неверный пароль";
-incorrectPasswordMessage = "Предоставленный пароль недействителен. Попробуйте еще раз.";
+incorrectPasswordTitle = "Неправильный пароль";
+incorrectPasswordMessage = "Предоставленный пароль неверен. Попробуйте снова.";
 insertPasswordTitle = "Введите ваш пароль";
-insertPasswordMessage = "Введите предыдущий пароль, используемый для открытия приложения";
+insertPasswordMessage = "Введите ранее установленный пароль для доступа к приложению";
 yes = "Да";
 no = "Нет";
-enableiCloudTitle = "Необходимое действие";
-enableiCloudSubtitle = "\n1. Нажмите iCloud\n\n2. Найдите приложение SG в списке\n\n3. Включите iCloud";
+enableiCloudTitle = "Требуется действие";
+enableiCloudSubtitle = "\n1. Перейдите в iCloud\n\n2. Найдите приложение SG в списке\n\n3. Включите iCloud";
 enableiCloudAction = "Перейти к настройкам";
-premiumTooliCloudMessage = "Резервное копирование доступно только для пользователей Премиум. Подробности о продукте будут представлены";
+premiumTooliCloudMessage = "Функция резервного копирования доступна только для премиум-пользователей. Подробности о продукте будут предоставлены";
 
-// Удаление и Резервное копирование
+// Удаление и резервное копирование
 delete = "Удалить";
 backupNavigationTitle = "Моя резервная копия";
 
 emptyVideosTitle = "Нет видео";
-emptyVideosSubtitle = "Добавьте видео, нажав кнопку +";
-premiumVideosSubtitle = "Поддержка видео - это функция Премиум";
+emptyVideosSubtitle = "Добавьте видео, нажав на кнопку +";
+premiumVideosSubtitle = "Поддержка видео — это премиум-функция";
 
-emptyGalleryTitle = "Нет фотографий";
-emptyGallerySubtitle = "Добавьте фотографии, нажав кнопку +";
+emptyGalleryTitle = "Нет фото";
+emptyGallerySubtitle = "Добавьте фото, нажав на кнопку +";
 
 emptyNotesTitle = "Нет заметок";
-emptyNotesSubtitle = "Добавьте заметки, нажав кнопку +";
+emptyNotesSubtitle = "Добавьте заметки, нажав на кнопку +";
 
-seeMore = "Показать больше";
+seeMore = "Смотреть больше";
 backupSettings = "Настройки резервного копирования";
 backupStatus = "Безопасное резервное копирование";
-seeMyBackup = "Посмотреть мою резервную копию";
+seeMyBackup = "Моя резервная копия";
 restoreBackup = "Восстановить резервную копию";
 updateBackup = "Обновить резервную копию";
 faceIDReason = "Мы используем аутентификацию для открытия вашей галереи";
 myBackupItems = "Мои элементы в резервной копии";
 backupNavigationTitle = "Моя резервная копия";
-vaultMode = "Режим хранилища";
+vaultMode = "Режим сейфа";
 recover = "Восстановить";
 
-createPassword = "Создайте пароль и подтвердите клавишей 'OK'";
-insertCreatedPasswordAgain = "Введите пароль еще раз";
-insertPassword = "Введите свой пароль и подтвердите клавишей 'OK'";
+createPassword = "Создайте пароль и подтвердите его с помощью OK";
+insertCreatedPasswordAgain = "Введите пароль снова";
+insertPassword = "Введите ваш пароль и подтвердите с помощью OK";
 backupEnabled = "Включено";
 backupDisabled = "Отключено";
 
-backupNavigationSubtitle = "Фотографии синхронизируются с добавленными фотографиями каждый раз при открытии приложения и наличии Wi-Fi. Ваша резервная копия безопасна, и единственный способ просмотра фотографий - это внутри приложения.";
+backupNavigationSubtitle = "Фотографии синхронизируются при каждом запуске приложения при наличии Wi-Fi. Ваша резервная копия защищена, и фотографии можно просматривать только внутри приложения";
 
-myBackupNavigationSubtitle = "Нажмите 'Восстановить резервную копию' в предыдущем меню, чтобы импортировать фотографии в свою галерею.";
+myBackupNavigationSubtitle = "Нажмите 'восстановить резервную копию' в предыдущем меню, чтобы импортировать фотографии в галерею";
 continueText = "Продолжить";
 
+// Введение в приложение
 welcomeOnboarding_title = "Добро пожаловать в Secret Gallery";
-welcomeOnboarding_subtitle = "Защитите ваши фотографии и видео надежно";
+welcomeOnboarding_subtitle = "Защитите ваши фото и видео";
 welcomeOnboarding_startButtonTitle = "Начать";
-welcomeOnboarding_skipButtonTitle = "Нажимая 'Начать', вы соглашаетесь с политикой конфиденциальности и условиями использования";
+welcomeOnboarding_skipButtonTitle = "Нажимая «Начать», вы соглашаетесь с политикой конфиденциальности и условиями использования";
 
 createCodeOnboarding_title = "Создайте код доступа";
-createCodeOnboarding_subtitle = "Создайте пароль для доступа к сохраненным фотографиям";
+createCodeOnboarding_subtitle = "Создайте пароль для защиты ваших фотографий";
 createCodeOnboarding_startButtonTitle = "Продолжить";
-createCodeOnboarding_skipButtonTitle = "Сейчас нет";
+createCodeOnboarding_skipButtonTitle = "Не сейчас";
 
-addPhotosOnboarding_title = "Добавьте свои фотографии";
-addPhotosOnboarding_subtitle = "Добавьте фотографии, которые вы хотите сохранить в безопасности";
+addPhotosOnboarding_title = "Добавьте ваши фотографии";
+addPhotosOnboarding_subtitle = "Выберите фотографии, которые хотите защитить";
 addPhotosOnboarding_startButtonTitle = "Продолжить";
-addPhotosOnboarding_skipButtonTitle = "Сейчас нет";
+addPhotosOnboarding_skipButtonTitle = "Не сейчас";
 
+// Восстановление по электронной почте
 emailErrorTitle = "Неверный адрес электронной почты";
-emailErrorDescription = "Проверьте введенный адрес электронной почты и попробуйте снова";
+emailErrorDescription = "Проверьте введённый адрес электронной почты и попробуйте снова";
 insertEmailTitle = "Введите адрес электронной почты для восстановления:";
-insertEmailDescription = "Введите адрес своей электронной почты";
+insertEmailDescription = "Введите ваш адрес электронной почты";
 insertEmailButtonText = "Подтвердить адрес электронной почты";
 
-emailPopupTitle = "Отправить письмо с восстановлением пароля?";
+emailPopupTitle = "Отправить письмо для восстановления пароля?";
 emailmessage = "Мы отправим письмо с инструкциями по восстановлению пароля";
 emailCancelButtonTitle = "Нет";
 emailOkButtonTitle = "Да";
-emailNotRegisteredTitle = "Вы не зарегистрировали адрес электронной почты для восстановления";
-emailNotRegisteredMessage = "Мы не нашли предварительно зарегистрированный адрес электронной почты для вашей учетной записи";
+emailNotRegisteredTitle = "Электронная почта для восстановления не зарегистрирована";
+emailNotRegisteredMessage = "Мы не нашли зарегистрированный адрес электронной почты для вашей учетной записи";
 successEmailTitle = "Письмо успешно отправлено";
-successEmailMessage = "Пожалуйста, проверьте свой почтовый ящик. Вы получите письмо с инструкциями по восстановлению пароля в течение 48 часов.";
-errorEmailTitle = "Ошибка отправки письма";
-errorEmailMessage = "У нас возникли проблемы с отправкой письма. Проверьте ваше интернет-соединение и повторите попытку.";
-remindMyPasscode = "Забыли пароль?";
-selectNewIcon = "Выберите желаемую иконку";
-changeIconTitle = "Изменить иконку";
-unlimitedStorage = "Неограниченное хранение";
+successEmailMessage = "Пожалуйста, проверьте вашу почту. В течение 48 часов вы получите письмо с инструкциями по восстановлению пароля.";
+errorEmailTitle = "Ошибка при отправке письма";
+errorEmailMessage = "Возникли проблемы с отправкой письма. Проверьте ваше интернет-соединение и попробуйте снова.";
+remindMyPasscode = "Забыли ваш пароль?";
+selectNewIcon = "Выберите желаемый значок";
+changeIconTitle = "Сменить значок";
+unlimitedStorage = "Неограниченное хранилище";
 noAds = "Без рекламы";
 videoSuport = "Поддержка видео";
-callToActionPurchase = "Откройте для себя наш премиум-опыт";
-selectImagesToShare = "Выберите изображения, которые вы хотите поделиться";
-selectImagesToDelete = "Выберите изображения, которые вы хотите удалить";
-monthlySubscription = "Ежемесячная Подписка - ";
-yearlySubscription = "Ежегодная Подписка - ";
-termsOfUse = "Условия Использования";
-privacyPolicy = "Политика Конфиденциальности";
-augmentedReality = "Дополненная Реальность";
-createPasswordNewCalc = "Создайте четырехзначный пароль";
-insertCreatedPasswordAgainNewCalc = "Введите пароль еще раз для подтверждения";
-oneWeekToTest = "Тестировать одну неделю бесплатно";
+callToActionPurchase = "Оцените наш премиум-опыт";
 
-hasAccount = "У вас уже есть аккаунт?";
-notHasAccount = "Еще нет? Создайте сейчас";
-genericLoginError = "Что-то пошло не так";
-createLoginError = "Если у вас еще нет аккаунта, выберите 'Зарегистрироваться через Google'";
-successLogin = "Вход выполнен успешно!";
-successLoginDescription = "Ваши фотографии будут синхронизированы каждый раз, когда вы добавляете новые фотографии или нажимаете кнопку 'обновить резервную копию'";
+selectImagesToShare = "Выберите изображения для совместного использования";
+selectImagesToDelete = "Выберите изображения для удаления";
+
+monthlySubscription = "Месячная подписка - ";
+yearlySubscription = "Годовая подписка - ";
+termsOfUse = "Условия использования";
+privacyPolicy = "Политика конфиденциальности";
+augmentedReality = "Дополненная реальность";
+
+// Коды доступа
+createPasswordNewCalc = "Создайте 4-значный пароль";
+insertCreatedPasswordAgainNewCalc = "Введите пароль снова для подтверждения";
+oneWeekToTest = "Попробуйте неделю бесплатно";
+
+hasAccount = "Уже есть аккаунт?";
+notHasAccount = "Нет аккаунта? Создайте сейчас";
+genericLoginError = "Произошла ошибка";
+createLoginError = "Если у вас нет аккаунта, выберите 'Зарегистрироваться с помощью Google'";
+successLogin = "Успешный вход!";
+successLoginDescription = "Ваши фотографии синхронизируются при добавлении новых или нажатии 'обновить резервную копию'";
 syncAut = "Автоматическая синхронизация";
 logout = "Выйти";
 pending = "В ожидании";
-downloadBackup = "Скачать резервную копию";
-loginWithGoogle = "Войти через Google";
-signUpWithGoogle = "Зарегистрироваться через Google";
+downloadBackup = "Загрузить резервную копию";
+loginWithGoogle = "Войти с Google";
+signUpWithGoogle = "Зарегистрироваться с Google";
 browser = "Интернет-браузер";
-createLoginErrorTitle = "Try creating an account";
+
+createLoginErrorTitle = "Попробуйте создать учетную запись";

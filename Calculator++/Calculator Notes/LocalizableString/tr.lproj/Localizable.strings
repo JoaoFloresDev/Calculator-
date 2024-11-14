@@ -1,55 +1,35 @@
-/*
-  Localizable.strings
-  Calculator Notes
-
-  Oluşturan: Joao Victor Flores da Costa, 06/02/22.
-  Telif Hakkı © 2022 MakeSchool. Tüm hakları saklıdır.
-*/
-
-// Premium Sürüm
 premiumVersion = "Premium Sürüm";
 noProtection = "Koruma Yok";
-hideRecoverButton = "Yüz Kimliği Düğmesini Gizle";
-chooseProtectionMode = "Koruma Modunu Seçin";
+hideRecoverButton = "Face ID Düğmesini Göster";
+chooseProtectionMode = "Koruma Modunu Seç";
 
-// Ayarlar ve Diğerleri
 settings = "Ayarlar";
 gallery = "Galeri";
 video = "Video";
 notes = "Notlar";
 
-instructionFirstStepCalc = "Bir şifre oluşturun ve '=' düğmesine tıklayın";
-instructionSecondStepCalc = "Şifre: *****. Şifreyi tekrarlayın ve '=' ile onaylayın";
+instructionFirstStepCalc = "Bir şifre oluşturun ve onaylamak için '=' düğmesine tıklayın";
+instructionSecondStepCalc = "Şifre: *****. Şifreyi tekrar edin ve '=' ile onaylayın";
 
-instructionFirstStepBank = "Bir şifre oluşturun ve 'enter' tuşuna basın";
-instructionSecondStepBank = "Şifre: *****. Şifreyi tekrarlayın ve 'Enter' ile onaylayın";
+instructionFirstStepBank = "Bir şifre oluşturun ve 'OK' tuşuna basın";
+instructionSecondStepBank = "Şifre: *****. Şifreyi tekrar edin ve 'OK' ile onaylayın";
 
-bankModeHasBeenActivated = "Kasa Modu etkinleştirildi";
-calcModeHasBeenActivated = "Hesap Makinesi Modu etkinleştirildi";
+bankModeHasBeenActivated = "Kasa Modu Etkinleştirildi";
+calcModeHasBeenActivated = "Hesap Makinesi Modu Etkinleştirildi";
 
 welcomeInstructionBank = "Şifrenizi girin";
 
-done = "Tamamlandı";
+done = "Tamam";
 edit = "Düzenle";
 
 premiumToolTitle = "Premium Özellik";
-premiumToolMessage = "Video desteği sadece premium kullanıcılara sunulur. Ayarlar bölümünde güncellemelere bakın";
+premiumToolMessage = "Video desteği yalnızca Premium kullanıcılar içindir. Yükseltme seçeneklerini Ayarlar'da görebilirsiniz";
+premiumTooliCloudMessage = "Yedekleme özelliği yalnızca Premium kullanıcılar için kullanılabilir. Daha fazla bilgi Ayarlar'da";
 
 save = "Kaydet";
 cancel = "İptal";
-ok = "Onayla";
+ok = "OK";
 see = "Gör";
-
-// Hata Mesajları
-errorTitle = "Beklenmeyen Hata";
-errorMessage = "Lütfen daha sonra tekrar deneyin";
-deleteFiles = "Dosyayı Sil?";
-
-incorrectPassword = "Yanlış Şifre";
-tryAgain = "Tekrar Deneyin";
-
-// Satın Alma
-products = "Kullanılabilir Ürünler";
 loading = "Yükleniyor...";
 close = "Kapat";
 restore = "Geri Yükle";
@@ -59,131 +39,245 @@ buy = "Satın Al";
 folderTitle = "Klasör Adı";
 createActionTitle = "Oluştur";
 cancelTitle = "İptal";
-inputPlaceholder = "Yeni Klasörün Adını Girin";
-folderNameAlreadyUsedTitle = "Klasör Adı Zaten Kullanıldı";
+inputPlaceholder = "Yeni klasör adı girin";
+folderNameAlreadyUsedTitle = "Klasör Adı Zaten Kullanılıyor";
 folderNameAlreadyUsedText = "Klasör için farklı bir ad seçin";
 deleteConfirmationTitle = "Dosyaları Sil?";
 
 // Tümünü Göster
-hideAllVideos = "Tüm Kaydedilen Videoları Gizle";
-showAllVideos = "Tüm Kaydedilen Videoları Göster";
-hideAllPhotos = "Tüm Kaydedilen Fotoğrafları Gizle";
-showAllPhotos = "Tüm Kaydedilen Fotoğrafları Göster";
-wouldLikeSetProtection = "Galerinize Koruma Eklemek İster Misiniz?";
+hideAllVideos = "Tüm Videoları Gizle";
+showAllVideos = "Tüm Videoları Göster";
+hideAllPhotos = "Tüm Fotoğrafları Gizle";
+showAllPhotos = "Tüm Fotoğrafları Göster";
+wouldLikeSetProtection = "Galerinize koruma eklemek ister misiniz?";
 
 // Yedekleme
 askToRestoreBackupTitle = "Yedeği Geri Yükle";
 askToRestoreBackupMessage = "Son yedeğinizi geri yüklemek istiyor musunuz?";
-backupSuccessTitle = "Yedekleme Başarılı";
+backupSuccessTitle = "Yedekleme Başarıyla Geri Yüklendi";
 backupSuccessMessage = "Yedeğiniz başarıyla geri yüklendi";
 backupErrorTitle = "Yedekleme Hatası";
 backupErrorMessage = "Yedekleme için veri bulunamadı";
 incorrectPasswordTitle = "Yanlış Şifre";
-incorrectPasswordMessage = "Sağlanan şifre geçerli değil. Lütfen yeniden deneyin.";
+incorrectPasswordMessage = "Girilen şifre geçerli değil. Lütfen tekrar deneyin.";
 insertPasswordTitle = "Şifrenizi Girin";
-insertPasswordMessage = "Uygulamayı açmak için daha önce kullanılan şifreyi girin";
-yes = "Evet";
-no = "Hayır";
-enableiCloudTitle = "Gerekli Eylem";
-enableiCloudSubtitle = "\n1. iCloud'a tıklayın\n\n2. SG uygulamasını listede bulun\n\n3. iCloud'ü etkinleştirin";
+insertPasswordMessage = "Uygulamaya erişmek için daha önce belirlenen şifreyi girin";
+enableiCloudTitle = "Gerekli İşlem";
+enableiCloudSubtitle = "\n1. Ayarlarda iCloud'a gidin\n2. SG uygulamasını listede bulun\n3. iCloud'u etkinleştirin";
 enableiCloudAction = "Ayarlar'a Git";
-premiumTooliCloudMessage = "Yedekleme özelliği yalnızca Premium kullanıcılarına özeldir. Ürün ayrıntıları sunulacaktır";
 
-// Sil ve Yedekleme
-delete = "Sil";
-backupNavigationTitle = "Benim Yedeklemem";
+// Videolar ve Galeri
+emptyVideosTitle = "Video Yok";
+emptyVideosSubtitle = "+ düğmesine tıklayarak video ekleyin";
+premiumVideosSubtitle = "Video desteği bir Premium özelliktir";
 
-emptyVideosTitle = "Videolar Yok";
-emptyVideosSubtitle = "Artı düğmesine tıklayarak videolarınızı ekleyin";
-premiumVideosSubtitle = "Video desteği premium bir özelliktir";
+emptyGalleryTitle = "Fotoğraf Yok";
+emptyGallerySubtitle = "+ düğmesine tıklayarak fotoğraf ekleyin";
 
-emptyGalleryTitle = "Fotoğraflar Yok";
-emptyGallerySubtitle = "Artı düğmesine tıklayarak fotoğraflarınızı ekleyin";
+emptyNotesTitle = "Not Yok";
+emptyNotesSubtitle = "+ düğmesine tıklayarak not ekleyin";
 
-emptyNotesTitle = "Notlar Yok";
-emptyNotesSubtitle = "Artı düğmesine tıklayarak notlarınızı ekleyin";
-
-seeMore = "Daha Fazla Görüntüle";
+seeMore = "Daha Fazla Gör";
 backupSettings = "Yedekleme Ayarları";
-backupStatus = "Güvenli Yedekleme";
-seeMyBackup = "Yedeklememi Görüntüle";
-restoreBackup = "Yedeklemeyi Geri Yükle";
+backupStatus = "Bulut Yedekleme";
+seeMyBackup = "Yedeğimi Gör";
 updateBackup = "Yedeklemeyi Güncelle";
-faceIDReason = "Galerinizi açmak için kimlik doğrulama kullanacağız";
-myBackupItems = "Yedeğimdeki Öğeler";
-backupNavigationTitle = "Benim Yedeklemem";
+faceIDReason = "Galeriyi açmak için kimlik doğrulama gerekli";
+myBackupItems = "Yedekteki Öğelerim";
+backupNavigationTitle = "Yedeğim";
 vaultMode = "Kasa Modu";
 recover = "Kurtar";
 
-createPassword = "Bir şifre oluşturun ve 'OK' tuşuna basarak onaylayın";
+createPassword = "Bir şifre oluşturun ve OK ile onaylayın";
 insertCreatedPasswordAgain = "Şifreyi tekrar girin";
-insertPassword = "Şifrenizi girin ve 'OK' tuşuna basarak onaylayın";
+insertPassword = "Şifrenizi girin ve OK ile onaylayın";
 backupEnabled = "Etkin";
 backupDisabled = "Devre Dışı";
-backupNavigationSubtitle = "Fotoğraflar, uygulama açıldığında ve Wi-Fi bağlantısı olduğunda eklenen fotoğraflarla senkronize edilir. Yedeğiniz güvende ve fotoğrafları görüntülemenin tek yolu uygulama içindedir";
-myBackupNavigationSubtitle = "Önceki menüdeki 'Yedeğimi Geri Yükle'ye tıklayarak fotoğrafları galerinize içe aktarmak için 'Yedeğimi Geri Yükle'ye tıklayın";
+
+backupNavigationSubtitle = "Fotoğraflar, uygulama her açıldığında Wi-Fi bağlantısı ile senkronize edilir. Yedeğiniz güvendedir ve fotoğrafları yalnızca uygulama içinde görüntüleyebilirsiniz";
 continueText = "Devam Et";
 
+// Karşılama Ekranı
 welcomeOnboarding_title = "Secret Gallery'e Hoş Geldiniz";
 welcomeOnboarding_subtitle = "Fotoğraflarınızı ve videolarınızı güvenli bir şekilde koruyun";
-welcomeOnboarding_startButtonTitle = "Başla";
-welcomeOnboarding_skipButtonTitle = "'Başla'ya tıkladığınızda, gizlilik politikasını ve kullanım koşullarını kabul etmiş olursunuz";
+welcomeOnboarding_startButtonTitle = "Başlayın";
+welcomeOnboarding_skipButtonTitle = "'Başlayın' seçeneğine tıklayarak Gizlilik Politikamızı ve Kullanım Şartlarımızı kabul ediyorsunuz";
 
-createCodeOnboarding_title = "Erişim Kodu Oluşturun";
-createCodeOnboarding_subtitle = "Saklanan fotoğraflara erişmek için bir şifre oluşturun";
+createCodeOnboarding_title = "Bir Erişim Kodu Oluşturun";
+createCodeOnboarding_subtitle = "Saklanan fotoğraflarınızı korumak için bir şifre belirleyin";
 createCodeOnboarding_startButtonTitle = "Devam Et";
-createCodeOnboarding_skipButtonTitle = "Şimdi Değil";
+createCodeOnboarding_skipButtonTitle = "Şimdi değil";
 
 addPhotosOnboarding_title = "Fotoğraflarınızı Ekleyin";
-addPhotosOnboarding_subtitle = "Güvenli bir şekilde saklamak istediğiniz fotoğrafları ekleyin";
+addPhotosOnboarding_subtitle = "Güvenli bir şekilde saklamak istediğiniz fotoğrafları seçin";
 addPhotosOnboarding_startButtonTitle = "Devam Et";
-addPhotosOnboarding_skipButtonTitle = "Şimdi Değil";
+addPhotosOnboarding_skipButtonTitle = "Şimdi değil";
 
+// E-posta Kurtarma
 emailErrorTitle = "Geçersiz E-posta";
-emailErrorDescription = "Eklediğiniz e-postayı kontrol edin ve tekrar deneyin";
-insertEmailTitle = "Kurtarma için kullanılacak e-postayı girin:";
-insertEmailDescription = "E-posta adresinizi girin";
-insertEmailButtonText = "E-postayı Onayla";
+emailErrorDescription = "Girilen e-postayı kontrol edin ve tekrar deneyin";
+insertEmailTitle = "Kurtarma için e-posta girin:";
+insertEmailDescription = "E-postanızı girin";
+insertEmailButtonText = "E-postayı Onaylayın";
 
-emailPopupTitle = "Şifre Kurtarma E-postası Gönderilsin mi?";
-emailmessage = "Şifre kurtarma e-postası göndereceğiz";
+emailPopupTitle = "Kurtarma e-postası gönderilsin mi?";
+emailmessage = "Şifre kurtarma talimatlarını içeren bir e-posta göndereceğiz";
 emailCancelButtonTitle = "Hayır";
 emailOkButtonTitle = "Evet";
-emailNotRegisteredTitle = "Kurtarma için bir e-posta kaydetmediniz";
-emailNotRegisteredMessage = "Hesabınıza önceden kaydedilmiş bir e-posta bulunamadı";
-successEmailTitle = "E-posta Gönderme Başarılı";
-successEmailMessage = "Lütfen e-posta kutunuzu kontrol edin. Şifre kurtarma talimatlarını içeren bir e-posta 48 saat içinde alacaksınız.";
+emailNotRegisteredTitle = "Kayıtlı E-posta Bulunamadı";
+emailNotRegisteredMessage = "Hesabınız için önceden kayıtlı bir e-posta bulunamadı";
+successEmailTitle = "E-posta Başarıyla Gönderildi";
+successEmailMessage = "Gelen kutunuzu kontrol edin. 48 saat içinde şifre kurtarma talimatlarını içeren bir e-posta alacaksınız.";
 errorEmailTitle = "E-posta Gönderme Hatası";
-errorEmailMessage = "E-posta gönderme konusunda sorun yaşadık. İnternet bağlantınızı kontrol edip tekrar deneyin.";
+errorEmailMessage = "E-posta gönderilemedi. İnternet bağlantınızı kontrol edin ve tekrar deneyin.";
 remindMyPasscode = "Şifrenizi mi unuttunuz?";
-selectNewIcon = "İstenilen simgeyi seçin";
-changeIconTitle = "Simgeyi değiştir";
-unlimitedStorage = "Sınırsız depolama";
-noAds = "Reklamsız";
-videoSuport = "Video desteği";
-callToActionPurchase = "Premium deneyimimizi keşfedin";
-selectImagesToShare = "Paylaşmak istediğiniz resimleri seçin";
-selectImagesToDelete = "Silmek istediğiniz resimleri seçin";
+selectNewIcon = "Bir Simge Seçin";
+changeIconTitle = "Simgeleri Değiştir";
+unlimitedStorage = "Sınırsız Depolama";
+noAds = "Reklam Yok";
+videoSuport = "Video Desteği";
+callToActionPurchase = "Daha fazla güvenlik ve rahatlık";
+
+selectImagesToShare = "Paylaşılacak Görselleri Seçin";
+selectImagesToDelete = "Silinecek Görselleri Seçin";
+
 monthlySubscription = "Aylık Abonelik - ";
 yearlySubscription = "Yıllık Abonelik - ";
-termsOfUse = "Kullanım Koşulları";
+termsOfUse = "Kullanım Şartları";
 privacyPolicy = "Gizlilik Politikası";
 augmentedReality = "Artırılmış Gerçeklik";
-createPasswordNewCalc = "4 haneli bir şifre oluşturun";
-insertCreatedPasswordAgainNewCalc = "Onaylamak için şifreyi tekrar girin";
-oneWeekToTest = "Bir hafta ücretsiz deneyin";
 
-hasAccount = "Zaten bir hesabınız var mı?";
-notHasAccount = "Henüz yok mu? Şimdi oluştur";
-genericLoginError = "Bir şeyler yanlış gitti";
-createLoginError = "Henüz bir hesabınız yoksa, 'Google ile kayıt ol' seçeneğini seçin";
-successLogin = "Başarıyla giriş yapıldı!";
-successLoginDescription = "Yeni fotoğraflar eklediğinizde veya 'yedeklemeyi güncelle' düğmesine tıkladığınızda fotoğraflarınız senkronize edilecektir";
-syncAut = "Otomatik senkronizasyon";
-logout = "Çıkış yap";
+// Hesap Makinesi ve Kimlik Doğrulama
+createPasswordNewCalc = "4 haneli bir şifre oluşturun";
+insertCreatedPasswordAgainNewCalc = "Şifreyi tekrar girin ve onaylayın";
+oneWeekToTest = "Bir Hafta Ücretsiz Deneyin";
+hasAccount = "Hesabınız var mı?";
+notHasAccount = "Bir hesap oluşturun";
+genericLoginError = "Bir hata oluştu";
+createLoginError = "Hesabınız yoksa 'Google ile Kaydol' seçeneğini seçin";
+successLogin = "Başarıyla giriş yaptınız!";
+successLoginDescription = "Fotoğraflar, eklendiklerinde veya 'yedeklemeyi güncelle' tuşuna basıldığında senkronize edilir";
+syncAut = "Otomatik Senkronizasyon";
+logout = "Çıkış Yap";
 pending = "Beklemede";
-downloadBackup = "Yedeklemeyi indir";
-loginWithGoogle = "Google ile giriş yap";
-signUpWithGoogle = "Google ile kayıt ol";
-browser = "İnternet tarayıcısı";
-createLoginErrorTitle = "Try creating an account";
+downloadBackup = "Yedeği İndir";
+loginWithGoogle = "Google ile Giriş Yap";
+signUpWithGoogle = "Google ile Kaydol";
+browser = "Tarayıcı";
+
+createLoginErrorTitle = "Bir Hesap Oluşturmayı Deneyin";
+fakepassAlertTitle = "Sahte Şifre";
+fakepassAlertText = "Sahte şifre başarıyla oluşturuldu";
+
+loginTocontinueTitle = "Giriş Gerekli";
+loginTocontinueText = "Yedekleme özelliklerini etkinleştirmek için giriş yapın";
+
+wifiConnectTitle = "Wi-Fi'ye Bağlanın";
+wifiConnectText = "Devam etmek için Wi-Fi'ye bağlanın";
+
+arquives = "Dosyalar";
+emptyArquives = "Başlamak için yeni dosyalar ekleyin";
+createFakePasswordNewCalc = "4 haneli sahte bir şifre oluşturun";
+insertCreatedFakePasswordAgainNewCalc = "Sahte şifreyi tekrar girin";
+
+// Paylaşım ve Uyarılar
+copiedMessage = "Bağlantı Kopyalandı!";
+savedMessage = "Fotoğraflar Kaydedildi!";
+shareCompleteMessage = "Paylaşım Tamamlandı.";
+shareCancelMessage = "Paylaşım İptal Edildi.";
+shareErrorMessage = "Paylaşım sırasında hata: ";
+noPhotoToShareMessage = "Paylaşılacak fotoğraf seçilmedi.";
+noPhotoToSaveMessage = "Kaydedilecek fotoğraf seçilmedi.";
+errorCreatingSharedFolder = "Paylaşılan klasör oluşturulurken hata: ";
+sharedLinkTitle = "Gizli Bağlantı Oluşturuldu";
+sharedLinkMessagePrefix = "Ayarlar'da oluşturulan tüm bağlantıları gör\n\nBağlantı: ";
+sharedLinkMessageSuffix = "\nŞifre: ";
+copyLinkButtonTitle = "Bağlantı ve Şifreyi Kopyala";
+cancelButtonTitle = "İptal";
+downloadAppMessage = "1. Uygulamayı indir https:=apps.apple.com/us/app/sg-secret-gallery-vault/id1479873340\n2. Bağlantıya tıklayın ";
+downloadAppPasswordPrefix = "\n3. Şifreyi girin ";
+createPasscodeAndConfrim = "Bir şifre oluşturun ve '=' ile onaylayın";
+sharedPhotosTitle = "Paylaşılan Fotoğraflar";
+
+savePhotosButtonText = "Fotoğrafları Kaydet";
+savePhotosErrorTitle = "Hata";
+savePhotosErrorMessage = "Görüntü kaydedilirken hata:";
+processImageErrorMessage = "Görüntü işlenirken hata.";
+convertImageErrorMessage = "JPEG'e dönüştürme hatası.";
+photosSavedTitle = "Fotoğraflar Kaydedildi";
+photosSavedMessage = "Tüm fotoğraflar hesap makinesine kaydedildi.";
+okActionText = "OK";
+saveVideoErrorMessage = "Video kaydedilirken hata";
+limitMessage = "5 bağlantı sınırına ulaşıldı. Yeni oluşturmak için birini silin.";
+deleteLinkConfirmationTitle = "Bağlantıyı Sil";
+deleteConfirmationMessage = "Bu bağlantıyı silmek istediğinizden emin misiniz?";
+deleteConfirmationCancel = "İptal";
+deleteConfirmationDelete = "Sil";
+
+deleteErrorTitle = "Silme Hatası";
+deleteErrorMessage = "Öğe silinirken hata";
+folderDeletedTitle = "Klasör Silindi";
+folderDeletedMessage = "Klasör başarıyla silindi";
+
+headerMessage = "Fikirlerinizi bizimle paylaştığınız için teşekkür ederiz";
+emailContact = "İletişim E-postası (isteğe bağlı)";
+writeYourMessage = "Mesajınızı Bırakın";
+emailPlaceholder = "E-postanız (isteğe bağlı)";
+feedbackPlaceholder = "Fikirlerinizi, önerilerinizi ve geri bildirimlerinizi duymak istiyoruz!";
+submitButtonTitle = "Geri Bildirim Gönder";
+emptyMessageAlertTitle = "Boş Mesaj";
+emptyMessageAlertMessage = "Lütfen mesaj alanını doldurun ve tekrar deneyin";
+errorAlertTitle = "Hata!";
+errorAlertMessage = "Daha sonra tekrar deneyin";
+thankYouAlertTitle = "Çok Teşekkürler!";
+thankYouAlertMessage = "Görüşleriniz bizim için çok önemli. Mesajınız başarıyla gönderildi!";
+suggestionsFeedbackTitle = "Öneriler ve Geri Bildirim";
+linkCopied = "Bağlantı Kopyalandı";
+secureSharing = "Güvenli Paylaşım";
+activeLinks = "Aktif Bağlantılar";
+networkError = "Ağ Hatası";
+linkPrefix = "bağlantı: ";
+keyPrefix = "şifre: ";
+linkText = "Bağlantı: ";
+keyText = "Şifre: ";
+
+// Eğitim
+tutorialTitle = "Fotoğraf ve Videoları Güvenle Paylaşın";
+tutorialDescription = "Artık fotoğraf ve videolar için paylaşılabilir güvenli bağlantılar oluşturabilirsiniz. Alıcı fotoğrafları doğrudan uygulamaya aktarabilir.";
+tutorialHowTo = "Nasıl Kullanılır?";
+tutorialSteps = "1. Galerinizde fotoğrafları seçin.\n\n2. Paylaş'a dokunun ve 'Güvenli Paylaşım'ı seçin.\n\n3. Bağlantıyı ve şifreyi paylaşmak istediğiniz kişiye gönderin.";
+importingPhotos = "Fotoğraflar içe aktarılıyor";
+limitReachedTitle = "Sınıra Ulaşıldı";
+limitReachedMessage = "Bağlantı oluşturma sınırına ulaştınız. Ayarlarda 'Güvenli Bağlantı'ya gidin, bir bağlantıyı silin ve yer açın.";
+chooseDestination = "Hedefi Seçin";
+share = "Paylaş";
+saveToGallery = "Galeriye Kaydet";
+shareWithOtherCalculator = "Başka bir hesap makinesi ile paylaş";
+enterURL = "URL girin";
+newTag = "Yeni";
+addFakePassword = "Sahte Şifre Ekle";
+secretSharing = "Gizli Paylaşım";
+improvementSuggestions = "İyileştirme Önerileri";
+biometricAuthentication = "Biyometrik Kimlik Doğrulama";
+changePassword = "Şifreyi Değiştir";
+sendLinkAndPassword = "Bağlantı ve Şifre Gönder";
+// İçerik Paylaşımı
+sharedContentIntro = "Seninle paylaştığım içeriğe erişmek için bağlantı burada:";
+sharedContentStep2 = "1. Bağlantıyı açın: ";
+sharedContentStep3 = "3. Şifreyi girerek kilidi açın: ";
+changepassAlertTitle = "Yeni şifre:";
+changepassAlertText = "Şifre başarıyla değiştirildi";
+fakepassAlertTitle = "Sahte Şifre:";
+enterPasswordTitle = "Şifreyi Girin";
+enterPasswordMessage = "Fotoğraflara erişmek için gizli bağlantı şifresini girin:";
+passwordPlaceholder = "Şifre";
+invalidLinkOrPasswordMessage = "Geçersiz bağlantı veya şifre. Tekrar deneyin.";
+noVideoToSaveTitle = "Video bulunamadı";
+noVideoToSaveMessage = "Galeride kaydedilecek geçerli video seçilmedi.";
+noVideoToShareTitle = "Video bulunamadı";
+noVideoToShareMessage = "Paylaşılacak geçerli video seçilmedi.";
+review = "İnceleme";
+sugestions = "Geliştirme Önerileri?";
+sugestionsDescription = "Geri bildiriminiz çok önemli! Bize yardımcı olun";
+insertpass = "Şifreyi girin";
+errorTitle = "Hata";

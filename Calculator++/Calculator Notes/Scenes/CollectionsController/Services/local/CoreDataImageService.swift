@@ -5,8 +5,6 @@ import CoreData
 struct CoreDataImageService {
     static let fileManager = FileManager.default
     static let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let imageCache = NSCache<NSString, UIImage>()
-    private static let cacheQueue = DispatchQueue(label: "com.example.CoreDataImageService.cacheQueue", attributes: .concurrent)
     
     // MARK: - Save Image
     
@@ -26,10 +24,6 @@ struct CoreDataImageService {
         do {
             try imageData.write(to: filePath, options: .atomic)
             
-            cacheQueue.async(flags: .barrier) {
-                imageCache.setObject(image, forKey: path as NSString)
-            }
-            
             print("\(path) was saved.")
             return path
         } catch let error {
@@ -41,10 +35,6 @@ struct CoreDataImageService {
     // MARK: - Fetch Image
     
     static func fetchImage(imageName: String) -> UIImage? {
-        if let cachedImage = cacheQueue.sync(execute: { imageCache.object(forKey: imageName as NSString) }) {
-            return cachedImage
-        }
-        
         let filePath = documentsPath.appendingPathComponent(imageName).path
         guard fileManager.fileExists(atPath: filePath) else {
             print("Error: Image does not exist at path: \(filePath)")
@@ -55,10 +45,6 @@ struct CoreDataImageService {
               let image = UIImage(data: imageData) else {
             print("Error: Could not load image from path: \(filePath)")
             return nil
-        }
-        
-        cacheQueue.async(flags: .barrier) {
-            imageCache.setObject(image, forKey: imageName as NSString)
         }
         
         print("Loaded image from path:", filePath)
@@ -76,10 +62,6 @@ struct CoreDataImageService {
         
         do {
             try fileManager.removeItem(at: filePath)
-            
-            cacheQueue.async(flags: .barrier) {
-                imageCache.removeObject(forKey: imageName as NSString)
-            }
             
             print("\(imageName) was deleted.")
             return .success(())

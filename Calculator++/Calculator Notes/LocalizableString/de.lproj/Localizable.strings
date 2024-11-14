@@ -1,31 +1,23 @@
-/*
-  Localizable.strings
-  Calculator Notes
-
-  Erstellt von Joao Victor Flores da Costa am 06/02/22.
-  Copyright © 2022 MakeSchool. Alle Rechte vorbehalten.
-*/
-
 // Premium-Version
 premiumVersion = "Premium-Version";
 noProtection = "Kein Schutz";
-hideRecoverButton = "Face ID-Button ausblenden";
+hideRecoverButton = "Face-ID-Button ausblenden";
 chooseProtectionMode = "Schutzmodus auswählen";
 
-// Einstellungen und mehr
+// Einstellungen und Weitere
 settings = "Einstellungen";
 gallery = "Galerie";
 video = "Video";
 notes = "Notizen";
 
-instructionFirstStepCalc = "Erstellen Sie ein Passwort und klicken Sie auf die '='-Taste";
-instructionSecondStepCalc = "Passwort: *****. Wiederholen Sie das Passwort und bestätigen Sie mit '='";
+instructionFirstStepCalc = "Erstellen Sie ein Passwort und drücken Sie die '='-Taste";
+instructionSecondStepCalc = "Passwort: *****. Geben Sie das Passwort erneut ein und bestätigen Sie mit '='";
 
-instructionFirstStepBank = "Erstellen Sie ein Passwort und drücken Sie 'Enter'";
-instructionSecondStepBank = "Passwort: *****. Wiederholen Sie das Passwort und bestätigen Sie mit 'Enter'";
+instructionFirstStepBank = "Erstellen Sie ein Passwort und drücken Sie 'OK'";
+instructionSecondStepBank = "Passwort: *****. Geben Sie das Passwort erneut ein und bestätigen Sie mit 'OK'";
 
-bankModeHasBeenActivated = "Tresor-Modus aktiviert";
-calcModeHasBeenActivated = "Rechner-Modus aktiviert";
+bankModeHasBeenActivated = "Tresormodus aktiviert";
+calcModeHasBeenActivated = "Taschenrechnermodus aktiviert";
 
 welcomeInstructionBank = "Geben Sie Ihr Passwort ein";
 
@@ -33,24 +25,24 @@ done = "Fertig";
 edit = "Bearbeiten";
 
 premiumToolTitle = "Premium-Funktion";
-premiumToolMessage = "Die Video-Unterstützung wird nur für Premium-Benutzer angeboten. Sehen Sie sich Upgrades im Abschnitt Einstellungen an.";
+premiumToolMessage = "Videounterstützung ist nur für Premium-Nutzer verfügbar. Weitere Upgrade-Optionen finden Sie in den Einstellungen";
 
 save = "Speichern";
 cancel = "Abbrechen";
-ok = "Bestätigen";
+ok = "OK";
 see = "Ansehen";
 
 // Fehlermeldungen
 errorTitle = "Unerwarteter Fehler";
-errorMessage = "Versuchen Sie es später erneut";
+errorMessage = "Bitte versuchen Sie es später noch einmal";
 deleteFiles = "Datei löschen?";
 
 incorrectPassword = "Falsches Passwort";
-tryAgain = "Erneut versuchen";
+tryAgain = "Noch einmal versuchen";
 
-// Einkäufe
+// Kauf
 products = "Verfügbare Produkte";
-loading = "Laden...";
+loading = "Lädt...";
 close = "Schließen";
 restore = "Wiederherstellen";
 buy = "Kaufen";
@@ -61,10 +53,10 @@ createActionTitle = "Erstellen";
 cancelTitle = "Abbrechen";
 inputPlaceholder = "Geben Sie den Namen des neuen Ordners ein";
 folderNameAlreadyUsedTitle = "Ordnername bereits vergeben";
-folderNameAlreadyUsedText = "Wählen Sie einen anderen Namen für den Ordner aus";
+folderNameAlreadyUsedText = "Wählen Sie einen anderen Namen für den Ordner";
 deleteConfirmationTitle = "Dateien löschen?";
 
-// Alle anzeigen
+// Alle Anzeigen
 hideAllVideos = "Alle gespeicherten Videos ausblenden";
 showAllVideos = "Alle gespeicherten Videos anzeigen";
 hideAllPhotos = "Alle gespeicherten Fotos ausblenden";
@@ -74,113 +66,120 @@ wouldLikeSetProtection = "Möchten Sie Ihrer Galerie Schutz hinzufügen?";
 // Backup
 askToRestoreBackupTitle = "Backup wiederherstellen";
 askToRestoreBackupMessage = "Möchten Sie Ihr letztes Backup wiederherstellen?";
-backupSuccessTitle = "Backup erfolgreich durchgeführt";
+backupSuccessTitle = "Backup erfolgreich";
 backupSuccessMessage = "Ihr Backup wurde erfolgreich wiederhergestellt";
-backupErrorTitle = "Fehler beim Backup";
+backupErrorTitle = "Backup-Fehler";
 backupErrorMessage = "Keine Daten für das Backup gefunden";
 incorrectPasswordTitle = "Falsches Passwort";
-incorrectPasswordMessage = "Das eingegebene Passwort ist ungültig. Bitte erneut versuchen.";
+incorrectPasswordMessage = "Das angegebene Passwort ist ungültig. Bitte versuchen Sie es erneut.";
 insertPasswordTitle = "Geben Sie Ihr Passwort ein";
 insertPasswordMessage = "Geben Sie das zuvor verwendete Passwort ein, um die App zu öffnen";
 yes = "Ja";
 no = "Nein";
-enableiCloudTitle = "Erforderliche Aktion";
-enableiCloudSubtitle = "\n1. Klicken Sie auf iCloud\n\n2. Suchen Sie die App SG in der Liste\n\n3. Aktivieren Sie iCloud";
+enableiCloudTitle = "Aktion erforderlich";
+enableiCloudSubtitle = "\n1. Öffnen Sie iCloud\n\n2. Finden Sie die SG-App in der Liste\n\n3. Aktivieren Sie iCloud";
 enableiCloudAction = "Zu den Einstellungen gehen";
-premiumTooliCloudMessage = "Die Backup-Funktion ist exklusiv für Premium-Benutzer. Produktdetails werden im Abschnitt Produkte angezeigt";
+premiumTooliCloudMessage = "Die Backup-Funktion ist nur für Premium-Nutzer verfügbar. Produktdetails werden angezeigt";
 
 // Löschen und Backup
 delete = "Löschen";
 backupNavigationTitle = "Mein Backup";
 
 emptyVideosTitle = "Keine Videos";
-emptyVideosSubtitle = "Fügen Sie Ihre Videos hinzu, indem Sie auf die Schaltfläche + klicken";
+emptyVideosSubtitle = "Fügen Sie Videos hinzu, indem Sie auf das + drücken";
 premiumVideosSubtitle = "Die Videounterstützung ist eine Premium-Funktion";
 
 emptyGalleryTitle = "Keine Fotos";
-emptyGallerySubtitle = "Fügen Sie Ihre Fotos hinzu, indem Sie auf die Schaltfläche + klicken";
+emptyGallerySubtitle = "Fügen Sie Fotos hinzu, indem Sie auf das + drücken";
 
 emptyNotesTitle = "Keine Notizen";
-emptyNotesSubtitle = "Fügen Sie Ihre Notizen hinzu, indem Sie auf die Schaltfläche + klicken";
+emptyNotesSubtitle = "Fügen Sie Notizen hinzu, indem Sie auf das + drücken";
 
-seeMore = "Mehr anzeigen";
+seeMore = "Mehr ansehen";
 backupSettings = "Backup-Einstellungen";
 backupStatus = "Sicheres Backup";
-seeMyBackup = "Mein Backup anzeigen";
+seeMyBackup = "Mein Backup ansehen";
 restoreBackup = "Backup wiederherstellen";
 updateBackup = "Backup aktualisieren";
-faceIDReason = "Wir verwenden die Authentifizierung, um Ihre Galerie zu öffnen";
+faceIDReason = "Authentifizierung erforderlich, um die Galerie zu öffnen";
 myBackupItems = "Meine Backup-Elemente";
 backupNavigationTitle = "Mein Backup";
-vaultMode = "Tresor-Modus";
+vaultMode = "Tresormodus";
 recover = "Wiederherstellen";
 
+// Passwort erstellen und bestätigen
 createPassword = "Erstellen Sie ein Passwort und bestätigen Sie mit OK";
 insertCreatedPasswordAgain = "Geben Sie das Passwort erneut ein";
 insertPassword = "Geben Sie Ihr Passwort ein und bestätigen Sie mit OK";
 backupEnabled = "Aktiviert";
 backupDisabled = "Deaktiviert";
 
-backupNavigationSubtitle = "Fotos werden jedes Mal synchronisiert, wenn die App geöffnet ist und eine WLAN-Verbindung besteht. Ihr Backup ist sicher, und Fotos können nur innerhalb der App angezeigt werden";
+backupNavigationSubtitle = "Fotos werden jedes Mal synchronisiert, wenn die App geöffnet wird und eine WLAN-Verbindung besteht. Ihr Backup ist sicher und die Fotos können nur innerhalb der App angezeigt werden";
 
 myBackupNavigationSubtitle = "Klicken Sie im vorherigen Menü auf 'Backup wiederherstellen', um Fotos in Ihre Galerie zu importieren";
 continueText = "Weiter";
 
-welcomeOnboarding_title = "Willkommen bei der Secret Gallery";
+// Onboarding
+welcomeOnboarding_title = "Willkommen bei Secret Gallery";
 welcomeOnboarding_subtitle = "Schützen Sie Ihre Fotos und Videos sicher";
-welcomeOnboarding_startButtonTitle = "Loslegen";
-welcomeOnboarding_skipButtonTitle = "Durch Klicken auf 'Loslegen' stimmen Sie der Datenschutzrichtlinie und den Nutzungsbedingungen zu";
+welcomeOnboarding_startButtonTitle = "Starten";
+welcomeOnboarding_skipButtonTitle = "Mit einem Klick auf 'Starten' stimmen Sie unserer Datenschutzerklärung und unseren Nutzungsbedingungen zu";
 
 createCodeOnboarding_title = "Erstellen Sie einen Zugangscode";
-createCodeOnboarding_subtitle = "Erstellen Sie ein Passwort, um auf Ihre gespeicherten Fotos zugreifen zu können";
+createCodeOnboarding_subtitle = "Erstellen Sie ein Passwort, um auf Ihre gespeicherten Fotos zuzugreifen";
 createCodeOnboarding_startButtonTitle = "Weiter";
 createCodeOnboarding_skipButtonTitle = "Jetzt nicht";
 
-addPhotosOnboarding_title = "Fügen Sie Ihre Fotos hinzu";
-addPhotosOnboarding_subtitle = "Fügen Sie die Fotos sicher hinzu, die Sie aufbewahren möchten";
+addPhotosOnboarding_title = "Fotos hinzufügen";
+addPhotosOnboarding_subtitle = "Wählen Sie die Fotos aus, die Sie sicher aufbewahren möchten";
 addPhotosOnboarding_startButtonTitle = "Weiter";
 addPhotosOnboarding_skipButtonTitle = "Jetzt nicht";
 
+// E-Mail-Wiederherstellung
 emailErrorTitle = "Ungültige E-Mail";
-emailErrorDescription = "Bitte überprüfen Sie die eingegebene E-Mail-Adresse und versuchen Sie es erneut";
-insertEmailTitle = "Geben Sie die E-Mail-Adresse für die Wiederherstellung ein:";
+emailErrorDescription = "Überprüfen Sie die eingegebene E-Mail und versuchen Sie es erneut";
+insertEmailTitle = "Geben Sie die E-Mail für die Wiederherstellung ein:";
 insertEmailDescription = "Geben Sie Ihre E-Mail-Adresse ein";
 insertEmailButtonText = "E-Mail bestätigen";
 
-emailPopupTitle = "E-Mail mit Wiederherstellungspasswort senden?";
-emailmessage = "Wir werden Ihnen eine E-Mail mit dem Wiederherstellungspasswort senden";
+emailPopupTitle = "Wiederherstellungs-E-Mail senden?";
+emailmessage = "Wir senden eine E-Mail mit Anweisungen zur Passwortwiederherstellung";
 emailCancelButtonTitle = "Nein";
 emailOkButtonTitle = "Ja";
-emailNotRegisteredTitle = "Sie haben keine E-Mail für die Wiederherstellung hinterlegt";
-emailNotRegisteredMessage = "Wir haben keine zuvor registrierte E-Mail-Adresse für dieses Konto gefunden";
+emailNotRegisteredTitle = "E-Mail nicht registriert";
+emailNotRegisteredMessage = "Wir konnten keine zuvor registrierte E-Mail für Ihr Konto finden";
 successEmailTitle = "E-Mail erfolgreich gesendet";
-successEmailMessage = "Bitte überprüfen Sie Ihren Posteingang. Sie erhalten innerhalb von 48 Stunden eine E-Mail mit Anweisungen zur Wiederherstellung des Passworts";
-errorEmailTitle = "Fehler beim Senden der E-Mail";
-errorEmailMessage = "Wir hatten Probleme beim Senden der E-Mail. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut";
+successEmailMessage = "Überprüfen Sie bitte Ihren Posteingang. Sie erhalten innerhalb von 48 Stunden eine E-Mail mit Anweisungen zur Passwortwiederherstellung.";
+errorEmailTitle = "Fehler beim E-Mail-Versand";
+errorEmailMessage = "E-Mail konnte nicht gesendet werden. Überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.";
 remindMyPasscode = "Passwort vergessen?";
-selectNewIcon = "Wählen Sie das gewünschte Symbol aus";
-changeIconTitle = "Icon ändern";
+selectNewIcon = "Wählen Sie ein neues Symbol";
+changeIconTitle = "Symbol ändern";
 unlimitedStorage = "Unbegrenzter Speicher";
 noAds = "Keine Werbung";
 videoSuport = "Video-Unterstützung";
-callToActionPurchase = "Entdecken Sie unsere Premium-Erfahrung";
-selectImagesToShare = "Wählen Sie die Bilder aus, die Sie teilen möchten";
-selectImagesToDelete = "Wählen Sie die Bilder aus, die Sie löschen möchten";
+callToActionPurchase = "Entdecken Sie unser Premium-Erlebnis";
+
+selectImagesToShare = "Bilder zum Teilen auswählen";
+selectImagesToDelete = "Bilder zum Löschen auswählen";
+
 monthlySubscription = "Monatliches Abonnement - ";
-yearlySubscription = "Jährliches Abonnement - ";
+yearlySubscription = "Jahresabonnement - ";
 termsOfUse = "Nutzungsbedingungen";
-privacyPolicy = "Datenschutzrichtlinie";
+privacyPolicy = "Datenschutzerklärung";
 augmentedReality = "Erweiterte Realität";
-createPasswordNewCalc = "Erstelle ein 4-stelliges Passwort";
-insertCreatedPasswordAgainNewCalc = "Gib das erstellte Passwort zur Bestätigung erneut ein";
-oneWeekToTest = "Teste eine Woche kostenlos";
+
+// Passworterstellung
+createPasswordNewCalc = "Erstellen Sie ein 4-stelliges Passwort";
+insertCreatedPasswordAgainNewCalc = "Geben Sie das Passwort erneut zur Bestätigung ein";
+oneWeekToTest = "Testen Sie eine Woche kostenlos";
 
 hasAccount = "Haben Sie bereits ein Konto?";
-notHasAccount = "Noch nicht? Jetzt erstellen";
-genericLoginError = "Etwas ist schief gelaufen";
-createLoginError = "Wenn Sie noch kein Konto haben, wählen Sie 'Mit Google anmelden'";
-successLogin = "Erfolgreich eingeloggt!";
-successLoginDescription = "Ihre Fotos werden synchronisiert, wenn Sie neue Fotos hinzufügen oder auf die Schaltfläche 'Backup aktualisieren' klicken";
+notHasAccount = "Noch kein Konto? Jetzt erstellen";
+genericLoginError = "Ein Fehler ist aufgetreten";
+createLoginError = "Falls Sie noch kein Konto haben, wählen Sie 'Mit Google registrieren'";
+successLogin = "Anmeldung erfolgreich!";
+successLoginDescription = "Ihre Fotos werden jedes Mal synchronisiert, wenn neue Fotos hinzugefügt werden oder auf 'Backup aktualisieren' geklickt wird";
 syncAut = "Automatische Synchronisierung";
 logout = "Abmelden";
 pending = "Ausstehend";
@@ -188,4 +187,5 @@ downloadBackup = "Backup herunterladen";
 loginWithGoogle = "Mit Google anmelden";
 signUpWithGoogle = "Mit Google registrieren";
 browser = "Internet-Browser";
-createLoginErrorTitle = "Try creating an account";
+
+createLoginErrorTitle = "Versuchen Sie, ein Konto zu erstellen";

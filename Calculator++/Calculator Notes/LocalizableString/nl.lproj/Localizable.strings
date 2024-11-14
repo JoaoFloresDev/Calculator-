@@ -1,0 +1,190 @@
+// Premiumversie
+premiumVersion = "Premiumversie";
+noProtection = "Geen bescherming";
+hideRecoverButton = "Verberg Face ID-knop";
+chooseProtectionMode = "Kies de beschermingsmodus";
+
+// Instellingen en Overig
+settings = "Instellingen";
+gallery = "Galerij";
+video = "Video";
+notes = "Notities";
+
+instructionFirstStepCalc = "Maak een wachtwoord aan en druk op '='";
+instructionSecondStepCalc = "Wachtwoord: *****. Herhaal het wachtwoord en bevestig met '='";
+
+instructionFirstStepBank = "Maak een wachtwoord aan en druk op 'OK'";
+instructionSecondStepBank = "Wachtwoord: *****. Herhaal het wachtwoord en bevestig met 'OK'";
+
+bankModeHasBeenActivated = "Kluismodus geactiveerd";
+calcModeHasBeenActivated = "Rekenmachinemodus geactiveerd";
+
+welcomeInstructionBank = "Voer uw wachtwoord in";
+
+done = "Klaar";
+edit = "Bewerken";
+
+premiumToolTitle = "Premiumfunctie";
+premiumToolMessage = "Video-ondersteuning is alleen beschikbaar voor Premium-gebruikers. Zie de upgrade-opties in Instellingen";
+
+save = "Opslaan";
+cancel = "Annuleren";
+ok = "OK";
+see = "Bekijken";
+
+// Foutmeldingen
+errorTitle = "Onverwachte fout";
+errorMessage = "Probeer het later opnieuw";
+deleteFiles = "Bestand verwijderen?";
+
+incorrectPassword = "Onjuist wachtwoord";
+tryAgain = "Opnieuw proberen";
+
+// Aankoop
+products = "Beschikbare producten";
+loading = "Laden...";
+close = "Sluiten";
+restore = "Herstellen";
+buy = "Kopen";
+
+// Mappen
+folderTitle = "Mapnaam";
+createActionTitle = "Aanmaken";
+cancelTitle = "Annuleren";
+inputPlaceholder = "Voer de naam van de nieuwe map in";
+folderNameAlreadyUsedTitle = "Mapnaam is al in gebruik";
+folderNameAlreadyUsedText = "Kies een andere naam voor de map";
+deleteConfirmationTitle = "Bestanden verwijderen?";
+
+// Toon alles
+hideAllVideos = "Verberg alle opgeslagen video’s";
+showAllVideos = "Toon alle opgeslagen video’s";
+hideAllPhotos = "Verberg alle opgeslagen foto’s";
+showAllPhotos = "Toon alle opgeslagen foto’s";
+wouldLikeSetProtection = "Wilt u bescherming toevoegen aan uw galerij?";
+
+// Back-up
+askToRestoreBackupTitle = "Back-up herstellen";
+askToRestoreBackupMessage = "Wilt u uw laatste back-up herstellen?";
+backupSuccessTitle = "Back-up succesvol hersteld";
+backupSuccessMessage = "Uw back-up is succesvol hersteld";
+backupErrorTitle = "Back-up fout";
+backupErrorMessage = "Geen gegevens gevonden voor back-up";
+incorrectPasswordTitle = "Onjuist wachtwoord";
+incorrectPasswordMessage = "Het ingevoerde wachtwoord is ongeldig. Probeer het opnieuw.";
+insertPasswordTitle = "Voer uw wachtwoord in";
+insertPasswordMessage = "Voer het eerder gebruikte wachtwoord in om toegang te krijgen tot de app";
+yes = "Ja";
+no = "Nee";
+enableiCloudTitle = "Actie vereist";
+enableiCloudSubtitle = "\n1. Ga naar iCloud\n\n2. Zoek de SG-app in de lijst\n\n3. Schakel iCloud in";
+enableiCloudAction = "Ga naar Instellingen";
+premiumTooliCloudMessage = "De back-upfunctie is exclusief voor Premium-gebruikers. Productdetails worden weergegeven";
+
+// Verwijderen en Back-up
+delete = "Verwijderen";
+backupNavigationTitle = "Mijn back-up";
+
+emptyVideosTitle = "Geen video's";
+emptyVideosSubtitle = "Voeg video's toe door op de + knop te drukken";
+premiumVideosSubtitle = "Video-ondersteuning is een Premium-functie";
+
+emptyGalleryTitle = "Geen foto's";
+emptyGallerySubtitle = "Voeg foto’s toe door op de + knop te drukken";
+
+emptyNotesTitle = "Geen notities";
+emptyNotesSubtitle = "Voeg notities toe door op de + knop te drukken";
+
+seeMore = "Meer bekijken";
+backupSettings = "Back-up instellingen";
+backupStatus = "Veilige back-up";
+seeMyBackup = "Bekijk mijn back-up";
+restoreBackup = "Back-up herstellen";
+updateBackup = "Back-up bijwerken";
+faceIDReason = "Authenticatie vereist om de galerij te openen";
+myBackupItems = "Mijn items in de back-up";
+vaultMode = "Kluismodus";
+recover = "Herstellen";
+
+// Maak wachtwoord aan en bevestig
+createPassword = "Maak een wachtwoord aan en bevestig met OK";
+insertCreatedPasswordAgain = "Voer het wachtwoord opnieuw in";
+insertPassword = "Voer uw wachtwoord in en bevestig met OK";
+backupEnabled = "Ingeschakeld";
+backupDisabled = "Uitgeschakeld";
+
+backupNavigationSubtitle = "Foto's worden gesynchroniseerd telkens wanneer de app wordt geopend en er een Wi-Fi-verbinding is. Uw back-up is veilig en foto's kunnen alleen in de app worden bekeken";
+
+myBackupNavigationSubtitle = "Klik op 'herstel back-up' in het vorige menu om de foto's naar uw galerij te importeren";
+continueText = "Doorgaan";
+
+// Onboarding
+welcomeOnboarding_title = "Welkom bij Secret Gallery";
+welcomeOnboarding_subtitle = "Bescherm uw foto's en video's veilig";
+welcomeOnboarding_startButtonTitle = "Beginnen";
+welcomeOnboarding_skipButtonTitle = "Door op 'Beginnen' te klikken, gaat u akkoord met ons Privacybeleid en onze Gebruiksvoorwaarden";
+
+createCodeOnboarding_title = "Maak een toegangscode";
+createCodeOnboarding_subtitle = "Maak een wachtwoord om toegang te krijgen tot uw opgeslagen foto's";
+createCodeOnboarding_startButtonTitle = "Doorgaan";
+createCodeOnboarding_skipButtonTitle = "Nu niet";
+
+addPhotosOnboarding_title = "Voeg uw foto’s toe";
+addPhotosOnboarding_subtitle = "Kies de foto's die u veilig wilt bewaren";
+addPhotosOnboarding_startButtonTitle = "Doorgaan";
+addPhotosOnboarding_skipButtonTitle = "Nu niet";
+
+// E-mailherstel
+emailErrorTitle = "Ongeldig e-mailadres";
+emailErrorDescription = "Controleer het ingevoerde e-mailadres en probeer het opnieuw";
+insertEmailTitle = "Voer het e-mailadres in voor herstel:";
+insertEmailDescription = "Voer uw e-mailadres in";
+insertEmailButtonText = "E-mail bevestigen";
+
+emailPopupTitle = "Herstel e-mail verzenden?";
+emailmessage = "We sturen een e-mail met instructies voor het herstellen van het wachtwoord";
+emailCancelButtonTitle = "Nee";
+emailOkButtonTitle = "Ja";
+emailNotRegisteredTitle = "Geen e-mail geregistreerd";
+emailNotRegisteredMessage = "Er is geen eerder geregistreerd e-mailadres gevonden voor uw account";
+successEmailTitle = "E-mail succesvol verzonden";
+successEmailMessage = "Controleer uw inbox. U ontvangt binnen 48 uur een e-mail met de herstelinstructies.";
+errorEmailTitle = "Fout bij het verzenden van de e-mail";
+errorEmailMessage = "De e-mail kon niet worden verzonden. Controleer uw internetverbinding en probeer het opnieuw.";
+remindMyPasscode = "Wachtwoord vergeten?";
+selectNewIcon = "Selecteer het gewenste pictogram";
+changeIconTitle = "Pictogram wijzigen";
+unlimitedStorage = "Onbeperkte opslag";
+noAds = "Geen advertenties";
+videoSuport = "Video-ondersteuning";
+callToActionPurchase = "Ontdek onze Premium-ervaring";
+
+selectImagesToShare = "Selecteer de afbeeldingen om te delen";
+selectImagesToDelete = "Selecteer de afbeeldingen om te verwijderen";
+
+monthlySubscription = "Maandabonnement - ";
+yearlySubscription = "Jaarabonnement - ";
+termsOfUse = "Gebruiksvoorwaarden";
+privacyPolicy = "Privacybeleid";
+augmentedReality = "Augmented Reality";
+
+// Maak een wachtwoord aan
+createPasswordNewCalc = "Maak een 4-cijferig wachtwoord";
+insertCreatedPasswordAgainNewCalc = "Voer het wachtwoord opnieuw in om te bevestigen";
+oneWeekToTest = "Probeer een week gratis";
+
+hasAccount = "Heeft u al een account?";
+notHasAccount = "Nog niet? Maak er nu een aan";
+genericLoginError = "Er is iets misgegaan";
+createLoginError = "Als u nog geen account heeft, selecteer 'Aanmelden met Google'";
+successLogin = "Inloggen succesvol!";
+successLoginDescription = "Uw foto's worden gesynchroniseerd telkens wanneer u nieuwe foto's toevoegt of op 'back-up bijwerken' klikt";
+syncAut = "Automatische synchronisatie";
+logout = "Uitloggen";
+pending = "In behandeling";
+downloadBackup = "Back-up downloaden";
+loginWithGoogle = "Inloggen met Google";
+signUpWithGoogle = "Aanmelden met Google";
+browser = "Internetbrowser";
+
+createLoginErrorTitle = "Probeer een account aan te maken";

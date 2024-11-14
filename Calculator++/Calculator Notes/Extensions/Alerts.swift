@@ -102,13 +102,13 @@ struct Alerts {
     
     // First use
     static func showSetProtectionAsk(controller: UIViewController, completion: @escaping (Bool) -> Void) {
-        let alert = createAlert(title: Text.wouldLikeSetProtection.localized(), message: nil, actions: [createAction(title: Text.no.localized(), handler: { _ in completion(false) }), createAction(title: Text.yes.localized(), handler: { _ in completion(true) })])
+        let alert = createAlert(title: Text.wouldLikeSetProtection.localized(), message: nil, actions: [createAction(title: Text.createCodeOnboarding_skipButtonTitle.localized(), handler: { _ in completion(false) }), createAction(title: Text.emailOkButtonTitle.localized(), handler: { _ in completion(true) })])
         presentAlert(alert, on: controller)
     }
     
     // Backup
     static func askUserToRestoreBackup(on viewController: UIViewController, completion: @escaping (Bool) -> Void) {
-        let alert = createAlert(title: Text.askToRestoreBackupTitle.localized(), message: Text.askToRestoreBackupMessage.localized(), actions: [createAction(title: Text.no.localized(), handler: { _ in completion(false) }), createAction(title: Text.yes.localized(), handler: { _ in completion(true) })])
+        let alert = createAlert(title: Text.askToRestoreBackupTitle.localized(), message: Text.askToRestoreBackupMessage.localized(), actions: [createAction(title: Text.createCodeOnboarding_skipButtonTitle.localized(), handler: { _ in completion(false) }), createAction(title: Text.emailOkButtonTitle.localized(), handler: { _ in completion(true) })])
         presentAlert(alert, on: viewController)
     }
     

@@ -1,54 +1,46 @@
-/*
-  Localizable.strings
-  Calculator Notes
-
-  Créé par Joao Victor Flores da Costa le 06/02/22.
-  Copyright © 2022 MakeSchool. Tous droits réservés.
-*/
-
 // Version Premium
 premiumVersion = "Version Premium";
 noProtection = "Aucune protection";
 hideRecoverButton = "Masquer le bouton Face ID";
 chooseProtectionMode = "Choisissez le mode de protection";
 
-// Paramètres et autres
+// Paramètres et Autres
 settings = "Paramètres";
 gallery = "Galerie";
 video = "Vidéo";
 notes = "Notes";
 
 instructionFirstStepCalc = "Créez un mot de passe et appuyez sur le bouton '='";
-instructionSecondStepCalc = "Mot de passe : *****. Répétez le mot de passe et confirmez avec '='";
+instructionSecondStepCalc = "Mot de passe : *****. Saisissez le mot de passe à nouveau et confirmez avec '='";
 
-instructionFirstStepBank = "Créez un mot de passe et appuyez sur 'Entrée'";
-instructionSecondStepBank = "Mot de passe : *****. Répétez le mot de passe et confirmez avec 'Entrée'";
+instructionFirstStepBank = "Créez un mot de passe et appuyez sur 'OK'";
+instructionSecondStepBank = "Mot de passe : *****. Saisissez le mot de passe à nouveau et confirmez avec 'OK'";
 
 bankModeHasBeenActivated = "Mode coffre activé";
 calcModeHasBeenActivated = "Mode calculatrice activé";
 
-welcomeInstructionBank = "Saisissez votre mot de passe";
+welcomeInstructionBank = "Entrez votre mot de passe";
 
 done = "Terminé";
 edit = "Modifier";
 
-premiumToolTitle = "Fonction premium";
-premiumToolMessage = "La prise en charge de la vidéo est uniquement proposée aux utilisateurs premium. Consultez les mises à niveau dans la section Paramètres.";
+premiumToolTitle = "Fonction Premium";
+premiumToolMessage = "Le support vidéo est réservé aux utilisateurs Premium. Voir les options de mise à niveau dans les Paramètres";
 
 save = "Enregistrer";
 cancel = "Annuler";
-ok = "Confirmer";
+ok = "OK";
 see = "Voir";
 
 // Messages d'erreur
 errorTitle = "Erreur inattendue";
-errorMessage = "Réessayez plus tard";
-deleteFiles = "Supprimer le fichier ?";
+errorMessage = "Veuillez réessayer plus tard";
+deleteFiles = "Supprimer le fichier?";
 
 incorrectPassword = "Mot de passe incorrect";
 tryAgain = "Réessayez";
 
-// Achats
+// Achat
 products = "Produits disponibles";
 loading = "Chargement...";
 close = "Fermer";
@@ -61,10 +53,10 @@ createActionTitle = "Créer";
 cancelTitle = "Annuler";
 inputPlaceholder = "Entrez le nom du nouveau dossier";
 folderNameAlreadyUsedTitle = "Nom de dossier déjà utilisé";
-folderNameAlreadyUsedText = "Choisissez un nom différent pour le dossier";
+folderNameAlreadyUsedText = "Choisissez un autre nom pour le dossier";
 deleteConfirmationTitle = "Supprimer les fichiers ?";
 
-// Afficher tout
+// Tout afficher
 hideAllVideos = "Masquer toutes les vidéos enregistrées";
 showAllVideos = "Afficher toutes les vidéos enregistrées";
 hideAllPhotos = "Masquer toutes les photos enregistrées";
@@ -81,27 +73,27 @@ backupErrorMessage = "Aucune donnée trouvée pour la sauvegarde";
 incorrectPasswordTitle = "Mot de passe incorrect";
 incorrectPasswordMessage = "Le mot de passe fourni n'est pas valide. Veuillez réessayer.";
 insertPasswordTitle = "Entrez votre mot de passe";
-insertPasswordMessage = "Entrez le mot de passe précédemment utilisé pour ouvrir l'application";
+insertPasswordMessage = "Entrez le mot de passe utilisé précédemment pour ouvrir l'application";
 yes = "Oui";
 no = "Non";
 enableiCloudTitle = "Action requise";
-enableiCloudSubtitle = "\n1. Cliquez sur iCloud\n\n2. Recherchez l'application SG dans la liste\n\n3. Activez iCloud";
+enableiCloudSubtitle = "\n1. Ouvrez iCloud\n\n2. Recherchez l'application SG dans la liste\n\n3. Activez iCloud";
 enableiCloudAction = "Aller aux paramètres";
-premiumTooliCloudMessage = "La fonction de sauvegarde est réservée aux utilisateurs premium. Les détails du produit sont affichés dans la section Produits";
+premiumTooliCloudMessage = "La fonctionnalité de sauvegarde est réservée aux utilisateurs Premium. Les détails du produit seront affichés";
 
-// Supprimer et sauvegarder
+// Supprimer et sauvegarde
 delete = "Supprimer";
 backupNavigationTitle = "Ma sauvegarde";
 
-emptyVideosTitle = "Pas de vidéos";
-emptyVideosSubtitle = "Ajoutez vos vidéos en cliquant sur le bouton +";
-premiumVideosSubtitle = "La prise en charge de la vidéo est une fonction premium";
+emptyVideosTitle = "Aucune vidéo";
+emptyVideosSubtitle = "Ajoutez des vidéos en cliquant sur le bouton +";
+premiumVideosSubtitle = "Le support vidéo est une fonctionnalité Premium";
 
-emptyGalleryTitle = "Pas de photos";
-emptyGallerySubtitle = "Ajoutez vos photos en cliquant sur le bouton +";
+emptyGalleryTitle = "Aucune photo";
+emptyGallerySubtitle = "Ajoutez des photos en cliquant sur le bouton +";
 
-emptyNotesTitle = "Pas de notes";
-emptyNotesSubtitle = "Ajoutez vos notes en cliquant sur le bouton +";
+emptyNotesTitle = "Aucune note";
+emptyNotesSubtitle = "Ajoutez des notes en cliquant sur le bouton +";
 
 seeMore = "Voir plus";
 backupSettings = "Paramètres de sauvegarde";
@@ -109,83 +101,91 @@ backupStatus = "Sauvegarde sécurisée";
 seeMyBackup = "Voir ma sauvegarde";
 restoreBackup = "Restaurer la sauvegarde";
 updateBackup = "Mettre à jour la sauvegarde";
-faceIDReason = "Nous utilisons l'authentification pour ouvrir votre galerie";
-myBackupItems = "Mes éléments de sauvegarde";
+faceIDReason = "Authentification requise pour ouvrir la galerie";
+myBackupItems = "Mes éléments dans la sauvegarde";
 backupNavigationTitle = "Ma sauvegarde";
-vaultMode = "Mode coffre-fort";
+vaultMode = "Mode coffre";
 recover = "Récupérer";
 
-createPassword = "Créez un mot de passe et confirmez avec Entrée";
-insertCreatedPasswordAgain = "Entrez à nouveau le mot de passe";
-insertPassword = "Entrez votre mot de passe et confirmez avec Entrée";
+// Créer et confirmer le mot de passe
+createPassword = "Créez un mot de passe et confirmez avec OK";
+insertCreatedPasswordAgain = "Saisissez le mot de passe à nouveau";
+insertPassword = "Entrez votre mot de passe et confirmez avec OK";
 backupEnabled = "Activé";
 backupDisabled = "Désactivé";
 
-backupNavigationSubtitle = "Les photos sont synchronisées chaque fois que l'application est ouverte et qu'une connexion Wi-Fi est disponible. Votre sauvegarde est sécurisée, et les photos ne peuvent être consultées que dans l'application";
+backupNavigationSubtitle = "Les photos sont synchronisées à chaque ouverture de l'application et lorsqu'une connexion Wi-Fi est disponible. Votre sauvegarde est sécurisée, et les photos ne peuvent être visualisées que dans l'application";
 
 myBackupNavigationSubtitle = "Cliquez sur 'Restaurer la sauvegarde' dans le menu précédent pour importer les photos dans votre galerie";
 continueText = "Continuer";
 
+// Onboarding
 welcomeOnboarding_title = "Bienvenue dans Secret Gallery";
 welcomeOnboarding_subtitle = "Protégez vos photos et vidéos en toute sécurité";
 welcomeOnboarding_startButtonTitle = "Commencer";
-welcomeOnboarding_skipButtonTitle = "En cliquant sur 'Commencer', vous acceptez la politique de confidentialité et les conditions d'utilisation";
+welcomeOnboarding_skipButtonTitle = "En cliquant sur 'Commencer', vous acceptez notre Politique de confidentialité et nos Conditions d'utilisation";
 
 createCodeOnboarding_title = "Créez un code d'accès";
-createCodeOnboarding_subtitle = "Créez un mot de passe pour accéder à vos photos sauvegardées";
+createCodeOnboarding_subtitle = "Créez un mot de passe pour accéder à vos photos enregistrées";
 createCodeOnboarding_startButtonTitle = "Continuer";
 createCodeOnboarding_skipButtonTitle = "Pas maintenant";
 
 addPhotosOnboarding_title = "Ajoutez vos photos";
-addPhotosOnboarding_subtitle = "Ajoutez les photos que vous souhaitez conserver en toute sécurité";
+addPhotosOnboarding_subtitle = "Sélectionnez les photos que vous souhaitez garder en sécurité";
 addPhotosOnboarding_startButtonTitle = "Continuer";
 addPhotosOnboarding_skipButtonTitle = "Pas maintenant";
 
-emailErrorTitle = "Adresse e-mail invalide";
-emailErrorDescription = "Veuillez vérifier l'adresse e-mail saisie et réessayer";
-insertEmailTitle = "Entrez l'adresse e-mail qui sera utilisée pour la récupération :";
-insertEmailDescription = "Entrez votre adresse e-mail";
-insertEmailButtonText = "Confirmer l'adresse e-mail";
+// Récupération d'email
+emailErrorTitle = "Email invalide";
+emailErrorDescription = "Vérifiez l'email saisi et réessayez";
+insertEmailTitle = "Entrez l'email à utiliser pour la récupération:";
+insertEmailDescription = "Entrez votre email";
+insertEmailButtonText = "Confirmer l'email";
 
-emailPopupTitle = "Envoyer un e-mail avec le mot de passe de récupération ?";
-emailmessage = "Nous vous enverrons un e-mail avec le mot de passe de récupération";
+emailPopupTitle = "Envoyer un email de récupération ?";
+emailmessage = "Nous enverrons un email avec les instructions de récupération du mot de passe";
 emailCancelButtonTitle = "Non";
 emailOkButtonTitle = "Oui";
-emailNotRegisteredTitle = "Vous n'avez pas enregistré d'adresse e-mail pour la récupération";
-emailNotRegisteredMessage = "Nous n'avons pas trouvé d'adresse e-mail précédemment enregistrée pour ce compte";
-successEmailTitle = "E-mail envoyé avec succès";
-successEmailMessage = "Veuillez vérifier votre boîte de réception. Vous recevrez un e-mail avec des instructions pour la récupération du mot de passe dans les 48 heures";
-errorEmailTitle = "Erreur lors de l'envoi de l'e-mail";
-errorEmailMessage = "Nous avons rencontré des problèmes lors de l'envoi de l'e-mail. Vérifiez votre connexion Internet et réessayez";
+emailNotRegisteredTitle = "Email non enregistré";
+emailNotRegisteredMessage = "Aucun email préenregistré trouvé pour votre compte";
+successEmailTitle = "Email envoyé avec succès";
+successEmailMessage = "Veuillez vérifier votre boîte de réception. Vous recevrez un email avec des instructions de récupération du mot de passe sous 48 heures.";
+errorEmailTitle = "Erreur d'envoi de l'email";
+errorEmailMessage = "Impossible d'envoyer l'email. Vérifiez votre connexion Internet et réessayez.";
 remindMyPasscode = "Mot de passe oublié ?";
 selectNewIcon = "Sélectionnez l'icône souhaitée";
-changeIconTitle = "Changer d'icône";
+changeIconTitle = "Changer l'icône";
 unlimitedStorage = "Stockage illimité";
-noAds = "Pas de publicités";
+noAds = "Sans publicité";
 videoSuport = "Support vidéo";
-callToActionPurchase = "Découvrez notre expérience premium";
-selectImagesToShare = "Sélectionnez les images que vous souhaitez partager";
-selectImagesToDelete = "Sélectionnez les images que vous souhaitez supprimer";
-monthlySubscription = "Abonnement Mensuel - ";
-yearlySubscription = "Abonnement Annuel - ";
-termsOfUse = "Conditions d'Utilisation";
-privacyPolicy = "Politique de Confidentialité";
-augmentedReality = "Réalité Augmentée";
+callToActionPurchase = "Découvrez notre expérience Premium";
+
+selectImagesToShare = "Sélectionnez les images à partager";
+selectImagesToDelete = "Sélectionnez les images à supprimer";
+
+monthlySubscription = "Abonnement mensuel - ";
+yearlySubscription = "Abonnement annuel - ";
+termsOfUse = "Conditions d'utilisation";
+privacyPolicy = "Politique de confidentialité";
+augmentedReality = "Réalité augmentée";
+
+// Créer un mot de passe
 createPasswordNewCalc = "Créez un mot de passe de 4 chiffres";
-insertCreatedPasswordAgainNewCalc = "Saisissez de nouveau le mot de passe créé pour confirmer";
-oneWeekToTest = "Testez une semaine gratuitement";
+insertCreatedPasswordAgainNewCalc = "Entrez le mot de passe à nouveau pour confirmer";
+oneWeekToTest = "Essayez une semaine gratuite";
 
 hasAccount = "Vous avez déjà un compte ?";
 notHasAccount = "Pas encore ? Créez-en un maintenant";
-genericLoginError = "Quelque chose a mal tourné";
-createLoginError = "Si vous n'avez pas encore de compte, sélectionnez 'S'inscrire avec Google'";
-successLogin = "Connexion réussie !";
-successLoginDescription = "Vos photos seront synchronisées chaque fois que vous ajouterez de nouvelles photos ou cliquerez sur le bouton 'mettre à jour la sauvegarde'";
+genericLoginError = "Une erreur s'est produite";
+createLoginError = "Si vous n'avez pas de compte, sélectionnez 'S'inscrire avec Google'";
+successLogin = "Connexion réussie!";
+successLoginDescription = "Vos photos seront synchronisées à chaque ajout de nouvelle photo ou en cliquant sur 'Mettre à jour la sauvegarde'";
 syncAut = "Synchronisation automatique";
 logout = "Déconnexion";
 pending = "En attente";
 downloadBackup = "Télécharger la sauvegarde";
 loginWithGoogle = "Se connecter avec Google";
 signUpWithGoogle = "S'inscrire avec Google";
-browser = "Navigateur Internet";
-createLoginErrorTitle = "Try creating an account";
+browser = "Navigateur internet";
+
+createLoginErrorTitle = "Essayez de créer un compte";
