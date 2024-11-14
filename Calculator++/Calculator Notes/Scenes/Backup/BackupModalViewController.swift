@@ -326,12 +326,16 @@ class BackupModalViewController: UIViewController {
             FirebaseBackupService.restoreBackup(items: backupItems) { success, _ in
                 self.loadingAlert.stopLoading {
                     if success {
-                        Alerts.showBackupSuccess(controller: self)
-                        self.delegate?.backupExecuted()
-                        self.imagesRootController?.viewDidLoad()
-                        self.videosRootController?.viewDidLoad()
+                        DispatchQueue.main.async {
+                            Alerts.showBackupSuccess(controller: self)
+                            self.delegate?.backupExecuted()
+                            self.imagesRootController?.viewDidLoad()
+                            self.videosRootController?.viewDidLoad()
+                        }
                     } else {
-                        Alerts.showBackupError(controller: self)
+                        DispatchQueue.main.async {
+                            Alerts.showBackupError(controller: self)
+                        }
                     }
                 }
             }

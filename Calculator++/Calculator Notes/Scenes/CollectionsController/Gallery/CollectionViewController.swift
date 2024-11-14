@@ -605,7 +605,7 @@ extension CollectionViewController: AssetsPickerViewControllerDelegate {
         UIView.animate(withDuration: 0.6, animations: {
             savedLabel.alpha = 0.8
         }) { _ in
-            UIView.animate(withDuration: 0.6, delay: 1.5, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.6, delay: 2, options: .curveEaseOut, animations: {
                 savedLabel.alpha = 0
             }) { _ in
                 savedLabel.removeFromSuperview()

@@ -147,7 +147,7 @@ struct FeatureFlags {
         var dateComponents = DateComponents()
         dateComponents.year = 2024
         dateComponents.month = 11
-        dateComponents.day = 1
+        dateComponents.day = 30
         if let limitDate = Calendar.current.date(from: dateComponents) {
             return currentDate < limitDate
         }

@@ -40,17 +40,34 @@ struct FirebaseBackupService {
         fetchFirebaseMediaItems(completion: completion)
     }
    
+    private static let imageProcessingQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 4
+        return queue
+    }()
+   
+    // MARK: - Public Methods
+   
     static func restoreBackup(items: [MediaItem]?, completion: @escaping (Bool, Error?) -> Void) {
         guard let items = items else {
             completion(false, nil)
             return
         }
-         
+
+        let dispatchGroup = DispatchGroup()
+
         for item in items {
-            processMediaItem(item)
+            dispatchGroup.enter()
+            imageProcessingQueue.addOperation {
+                processMediaItem(item) {
+                    dispatchGroup.leave()
+                }
+            }
         }
-         
-        completion(true, nil)
+        
+        dispatchGroup.notify(queue: .main) {
+            completion(true, nil)
+        }
     }
    
     // MARK: - Private Helpers
@@ -133,22 +150,40 @@ struct FirebaseBackupService {
         }
     }
 
-    private static func processMediaItem(_ item: MediaItem) {
+    private static func processMediaItem(_ item: MediaItem, completion: @escaping () -> Void) {
         switch item {
         case .image(let name, let image):
-            ModelController.saveImageObject(image: image, path: name)
-            handleFolderCreation(path: name, type: .image)
-           
-        case .video(let name, let data):
-            getThumbnailImageFromVideoData(videoData: data) { thumbImage in
-                _ = VideoModelController.saveVideoObject(image: thumbImage ?? UIImage(), video: data)
+            imageProcessingQueue.addOperation {
+                autoreleasepool {
+                    // Usa o contexto de segundo plano para salvar a imagem
+                    _ = ModelController.saveImageObject(image: image, path: name)
+                    
+                    // Atualiza o UI e finaliza
+                    DispatchQueue.main.async {
+                        handleFolderCreation(path: name, type: .image)
+                        completion()
+                    }
+                }
             }
-
-            if name.filter({ $0 == "@" }).count > 1 {
-                handleFolderCreation(path: name, type: .video)
+            
+        case .video(let name, let data):
+            imageProcessingQueue.addOperation {
+                autoreleasepool {
+                    getThumbnailImageFromVideoData(videoData: data) { thumbImage in
+                        _ = VideoModelController.saveVideoObject(image: thumbImage ?? UIImage(), video: data)
+                        
+                        DispatchQueue.main.async {
+                            if name.filter({ $0 == "@" }).count > 1 {
+                                handleFolderCreation(path: name, type: .video)
+                            }
+                            completion()
+                        }
+                    }
+                }
             }
         }
     }
+
 
     static func getThumbnailImageFromVideoData(videoData: Data, completion: @escaping (UIImage?) -> Void) {
         guard let tempURL = saveTempFile(videoData: videoData) else {

@@ -154,27 +154,32 @@ struct ModelController {
     
     @discardableResult
     static func saveImageObject(image: UIImage, path: String) -> Photo? {
-        guard let managedContext = managedContext else {
-            os_log("Managed context is nil.", log: OSLog(subsystem: subsystem, category: category), type: .error)
-            return nil
-        }
+        // Contexto de segundo plano para operações do Core Data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        let backgroundContext = appDelegate.persistentContainer.newBackgroundContext()
         
-        guard let imageName = CoreDataImageService.saveImage(image: image, path: path),
-              let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: managedContext) else {
-            os_log("Could not create entity description or save image.", log: OSLog(subsystem: subsystem, category: category), type: .error)
-            return nil
+        // Salva a imagem no contexto de segundo plano
+        backgroundContext.performAndWait {
+            guard let imageName = CoreDataImageService.saveImage(image: image, path: path),
+                  let coreDataEntity = NSEntityDescription.entity(forEntityName: entityName, in: backgroundContext) else {
+                os_log("Erro ao criar entidade ou salvar imagem.", log: OSLog(subsystem: subsystem, category: category), type: .error)
+                return
+            }
+            
+            let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: backgroundContext) as? StoredImage
+            newImageEntity?.imageName = imageName
+            
+            do {
+                try backgroundContext.save()
+                DispatchQueue.main.async {
+                    os_log("%@ foi salvo com sucesso.", log: OSLog(subsystem: subsystem, category: category), type: .info, imageName)
+                }
+            } catch let error as NSError {
+                DispatchQueue.main.async {
+                    os_log("Não foi possível salvar a imagem: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
+                }
+            }
         }
-        
-        let newImageEntity = NSManagedObject(entity: coreDataEntity, insertInto: managedContext) as? StoredImage
-        newImageEntity?.imageName = imageName
-        
-        do {
-            try managedContext.save()
-            os_log("%@ was saved in new object.", log: OSLog(subsystem: subsystem, category: category), type: .info, imageName)
-            return Photo(name: imageName, image: image)
-        } catch let error as NSError {
-            os_log("Could not save new image object: %@", log: OSLog(subsystem: subsystem, category: category), type: .error, error.localizedDescription)
-        }
-        return nil
+        return Photo(name: path, image: image)
     }
 }
