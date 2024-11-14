@@ -96,6 +96,7 @@
 		C48108E924A57552003E2FA5 /* ChangeCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */; };
 		C48DC9D32CDD1BA9008C9E16 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48DC9D22CDD1BA9008C9E16 /* TutorialView.swift */; };
 		C491CCC42CDD41C00042C65F /* Sugestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C491CCC32CDD41C00042C65F /* Sugestions.swift */; };
+		C496FC8F2CE584D3004B7C26 /* PasswordAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C496FC8E2CE584D3004B7C26 /* PasswordAlertViewController.swift */; };
 		C49B73BA2CB9D7970097E37E /* FakeHomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */; };
 		C49B73BC2CB9D7970097E37E /* FakeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */; };
 		C4A819F124A6C113005023C6 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A819EC24A6C111005023C6 /* IAPHelper.swift */; };
@@ -323,6 +324,7 @@
 		C48108E824A57552003E2FA5 /* ChangeCalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCalculatorViewController.swift; sourceTree = "<group>"; };
 		C48DC9D22CDD1BA9008C9E16 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		C491CCC32CDD41C00042C65F /* Sugestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sugestions.swift; sourceTree = "<group>"; };
+		C496FC8E2CE584D3004B7C26 /* PasswordAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAlertViewController.swift; sourceTree = "<group>"; };
 		C49B73B42CB9D7970097E37E /* FakeHomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeFactory.swift; sourceTree = "<group>"; };
 		C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeViewController.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
@@ -848,6 +850,7 @@
 		C4D6CACF2CBF3ACF001AD628 /* SharedFolders */ = {
 			isa = PBXGroup;
 			children = (
+				C496FC8E2CE584D3004B7C26 /* PasswordAlertViewController.swift */,
 				C4D6CAD02CBF3B5C001AD628 /* PhotoViewController.swift */,
 				C4D512392CDD009800238037 /* SharedFolderSettings */,
 			);
@@ -1142,6 +1145,7 @@
 				73862C8F2AAD2DBA005D9D25 /* SettingsCoordinator.swift in Sources */,
 				73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */,
 				C4CA01532CB80A8B007C4EB9 /* SafariWrapperViewController.swift in Sources */,
+				C496FC8F2CE584D3004B7C26 /* PasswordAlertViewController.swift in Sources */,
 				73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */,
 				736BDAD32A979D7200851BEF /* BackupModalViewController.swift in Sources */,
 				C4A819F424A6C113005023C6 /* RazeFaceProducts.swift in Sources */,
