@@ -151,32 +151,32 @@ struct FirebaseBackupService {
     }
 
     private static func processMediaItem(_ item: MediaItem, completion: @escaping () -> Void) {
-        switch item {
-        case .image(let name, let image):
-            imageProcessingQueue.addOperation {
-                autoreleasepool {
-                    // Usa o contexto de segundo plano para salvar a imagem
-                    _ = ModelController.saveImageObject(image: image, path: name)
-                    
-                    // Atualiza o UI e finaliza
-                    DispatchQueue.main.async {
-                        handleFolderCreation(path: name, type: .image)
-                        completion()
-                    }
-                }
-            }
-            
-        case .video(let name, let data):
-            imageProcessingQueue.addOperation {
-                autoreleasepool {
-                    getThumbnailImageFromVideoData(videoData: data) { thumbImage in
-                        _ = VideoModelController.saveVideoObject(image: thumbImage ?? UIImage(), video: data)
+        DispatchQueue.main.async {
+            switch item {
+            case .image(let name, let image):
+                imageProcessingQueue.addOperation {
+                    autoreleasepool {
+                        _ = ModelController.saveImageObject(image: image, path: name)
                         
                         DispatchQueue.main.async {
-                            if name.filter({ $0 == "@" }).count > 1 {
-                                handleFolderCreation(path: name, type: .video)
-                            }
+                            handleFolderCreation(path: name, type: .image)
                             completion()
+                        }
+                    }
+                }
+                
+            case .video(let name, let data):
+                imageProcessingQueue.addOperation {
+                    autoreleasepool {
+                        getThumbnailImageFromVideoData(videoData: data) { thumbImage in
+                            _ = VideoModelController.saveVideoObject(image: thumbImage ?? UIImage(), video: data)
+                            
+                            DispatchQueue.main.async {
+                                if name.filter({ $0 == "@" }).count > 1 {
+                                    handleFolderCreation(path: name, type: .video)
+                                }
+                                completion()
+                            }
                         }
                     }
                 }

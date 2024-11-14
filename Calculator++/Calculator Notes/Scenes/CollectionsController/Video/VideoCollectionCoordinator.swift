@@ -211,8 +211,9 @@ class VideoCollectionCoordinator: VideoCollectionCoordinatorProtocol {
     
     func presentPickerController() {
         guard let viewController = viewController else { return }
-        
+        NotificationCenter.default.post(name: NSNotification.Name("alertWillBePresented"), object: nil)
         PHPhotoLibrary.requestAuthorization { status in
+            NotificationCenter.default.post(name: NSNotification.Name("alertHasBeenDismissed"), object: nil)
             switch status {
             case .authorized:
                 DispatchQueue.main.async {

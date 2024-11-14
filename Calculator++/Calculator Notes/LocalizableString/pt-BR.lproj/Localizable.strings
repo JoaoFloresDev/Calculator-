@@ -281,3 +281,4 @@ sugestions = "Sugestões de melhoria?";
 sugestionsDescription = "Sua opinião é muito importante! nos ajude a melhorar ainda mais";
 insertpass = "Digite a senha";
 errorTitle = "Erro";
+tryAgain = "Tente novamente";

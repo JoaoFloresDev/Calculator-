@@ -188,3 +188,4 @@ signUpWithGoogle = "Зарегистрироваться с Google";
 browser = "Интернет-браузер";
 
 createLoginErrorTitle = "Попробуйте создать учетную запись";
+tryAgain = "Попробовать снова";

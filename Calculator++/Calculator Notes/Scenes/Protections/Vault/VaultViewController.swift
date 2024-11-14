@@ -295,7 +295,7 @@ class VaultViewController: UIViewController {
                 UserDefaultService().setTypeProtection(protectionMode: ProtectionMode.vault)
                 super.dismiss(animated: true)
             } else {
-                let alert = UIAlertController(title: Text.incorrectPassword.localized(),
+                let alert = UIAlertController(title: Text.incorrectPasswordTitle.localized(),
                                               message: Text.tryAgain.localized(),
                                               preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: Text.ok.localized(), style: .default))
@@ -312,7 +312,7 @@ class VaultViewController: UIViewController {
                     self.present(homeViewController, animated: true)
                 }
             } else {
-                let alert = UIAlertController(title: Text.incorrectPassword.localized(),
+                let alert = UIAlertController(title: Text.incorrectPasswordTitle.localized(),
                                               message: Text.tryAgain.localized(),
                                               preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: Text.ok.localized(), style: .default))

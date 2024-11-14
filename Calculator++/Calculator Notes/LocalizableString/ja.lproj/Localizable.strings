@@ -189,3 +189,4 @@ signUpWithGoogle = "Googleで登録";
 browser = "インターネットブラウザ";
 
 createLoginErrorTitle = "アカウントを作成してみてください";
+tryAgain = "再試行してください";

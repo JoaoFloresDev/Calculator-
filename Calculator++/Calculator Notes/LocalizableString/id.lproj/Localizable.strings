@@ -189,3 +189,4 @@ signUpWithGoogle = "Daftar dengan Google";
 browser = "Peramban Internet";
 
 createLoginErrorTitle = "Coba buat akun";
+tryAgain = "Coba lagi";

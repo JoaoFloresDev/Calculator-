@@ -272,11 +272,11 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
         let counter = Counter()
         counter.increment()
         
-        if counter.count > 8 && !UserDefaults.standard.bool(forKey: "userGoToFastReview") {
+        if counter.count > 6 && !UserDefaults.standard.bool(forKey: "userGoToFastReview") {
             SKStoreReviewController.requestReviewInCurrentScene {
                 UserDefaults.standard.set(true, forKey: "userGoToFastReview")
             }
-        } else if counter.count > 16 && !UserDefaults.standard.bool(forKey: "userGoToReview") {
+        } else if counter.count > 12 && !UserDefaults.standard.bool(forKey: "userGoToReview") {
             Alerts.showReviewNow(controller: homeViewController) { showReview in
                 UserDefaults.standard.set(true, forKey: "userGoToReview")
                 if showReview {

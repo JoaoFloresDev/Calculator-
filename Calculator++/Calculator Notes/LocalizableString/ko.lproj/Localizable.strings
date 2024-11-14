@@ -189,3 +189,4 @@ signUpWithGoogle = "Google로 가입";
 browser = "인터넷 브라우저";
 
 createLoginErrorTitle = "계정을 만들어보세요";
+tryAgain = "다시 시도하세요";

@@ -149,7 +149,7 @@ class PasswordViewController: UIViewController {
             self.present(homeViewController, animated: true)
         }
         else {
-            let alert = UIAlertController(title: Text.incorrectPassword.localized(),
+            let alert = UIAlertController(title: Text.incorrectPasswordTitle.localized(),
                                           message: Text.tryAgain.localized(),
                                           preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in

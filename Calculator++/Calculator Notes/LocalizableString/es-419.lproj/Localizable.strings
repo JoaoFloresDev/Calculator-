@@ -281,3 +281,4 @@ sugestions = "¿Sugerencias de Mejora?";
 sugestionsDescription = "¡Tu opinión es muy importante! Ayúdanos a mejorar aún más";
 insertpass = "Introduce la contraseña";
 errorTitle = "Error";
+tryAgain = "Intentar de nuevo";

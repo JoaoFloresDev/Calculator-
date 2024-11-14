@@ -189,3 +189,4 @@ signUpWithGoogle = "Google के साथ साइन अप करें";
 browser = "इंटरनेट ब्राउज़र";
 
 createLoginErrorTitle = "एक खाता बनाने का प्रयास करें";
+tryAgain = "फिर से प्रयास करें";

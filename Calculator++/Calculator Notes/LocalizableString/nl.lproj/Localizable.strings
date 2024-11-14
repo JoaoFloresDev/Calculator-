@@ -188,3 +188,4 @@ signUpWithGoogle = "Aanmelden met Google";
 browser = "Internetbrowser";
 
 createLoginErrorTitle = "Probeer een account aan te maken";
+tryAgain = "Probeer opnieuw";

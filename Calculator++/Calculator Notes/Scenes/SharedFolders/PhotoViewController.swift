@@ -237,6 +237,7 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
                 if let thumbnail = self.getThumbnailImage(forUrl: url) {
                     DispatchQueue.main.async {
                         cell.imageView.image = thumbnail
+                        cell.imageView.contentMode = .scaleAspectFill
                         cell.stopLoading()
                     }
                 }

@@ -67,7 +67,6 @@
 		73B54D6F27B0AC7A00499F66 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D6E27B0AC7A00499F66 /* Alerts.swift */; };
 		73B54D7127B0AE1100499F66 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */; };
 		73B860592AC1FB330023441A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B860582AC1FB330023441A /* OnboardingView.swift */; };
-		73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BD064D2B0B229200205E4B /* VaultViewControllerNew.swift */; };
 		73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */; };
 		73C2C5032A49CF8900963BA2 /* BaseCalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5022A49CF8900963BA2 /* BaseCalculatorViewController.swift */; };
 		73C2C5052A49D79B00963BA2 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C2C5042A49D79B00963BA2 /* UIView+extension.swift */; };
@@ -204,7 +203,6 @@
 		73B54D7027B0AE1100499F66 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		73B54D7227B0BE2600499F66 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73B860582AC1FB330023441A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		73BD064D2B0B229200205E4B /* VaultViewControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultViewControllerNew.swift; sourceTree = "<group>"; };
 		73C036092A992E0A004660F4 /* CollectionViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCoordinator.swift; sourceTree = "<group>"; };
 		73C2C5022A49CF8900963BA2 /* BaseCalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCalculatorViewController.swift; sourceTree = "<group>"; };
 		73C2C5042A49D79B00963BA2 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
@@ -325,6 +323,9 @@
 		C49B73B62CB9D7970097E37E /* FakeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHomeViewController.swift; sourceTree = "<group>"; };
 		C4A819EC24A6C111005023C6 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		C4A819EF24A6C113005023C6 /* RazeFaceProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RazeFaceProducts.swift; sourceTree = "<group>"; };
+		C4AED0AE2CE6468700EE1A09 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C4AED0AF2CE6468E00EE1A09 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C4AED0B02CE6469100EE1A09 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C4B183CC2CCFCD2F00BE0272 /* FirebasePhotoSharingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePhotoSharingService.swift; sourceTree = "<group>"; };
 		C4B5071C2CE5AB900037829F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4B5071D2CE5ABB60037829F /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -512,7 +513,6 @@
 			isa = PBXGroup;
 			children = (
 				73862C852AAD19CA005D9D25 /* VaultViewController.swift */,
-				73BD064D2B0B229200205E4B /* VaultViewControllerNew.swift */,
 				737D66A52AB0AB9F00806C98 /* FaceIDManager.swift */,
 				737D66A32AB0AB3100806C98 /* RoundedShadowView.swift */,
 			);
@@ -1109,7 +1109,6 @@
 				73862C862AAD19CA005D9D25 /* VaultViewController.swift in Sources */,
 				2E4A07AB1C42F497007F415F /* DisplayNoteViewController.swift in Sources */,
 				73C0360A2A992E0A004660F4 /* CollectionViewCoordinator.swift in Sources */,
-				73BD064E2B0B229200205E4B /* VaultViewControllerNew.swift in Sources */,
 				7342CA392ABBC0DA004FD07C /* PurchaseHeaderView.swift in Sources */,
 				7304387E2A3446A4001EF25B /* AdditionsRightBarButtonItem.swift in Sources */,
 				C4B75EF52CDC000D005BEBD4 /* SharedFolderSettings.swift in Sources */,
@@ -1214,6 +1213,9 @@
 				73CB3AE72C61AF6F00743FF6 /* fr */,
 				73CB3AE82C61AF7400743FF6 /* es */,
 				73CB3AEC2C61B00E00743FF6 /* pt-PT */,
+				C4AED0AE2CE6468700EE1A09 /* ru */,
+				C4AED0AF2CE6468E00EE1A09 /* it */,
+				C4AED0B02CE6469100EE1A09 /* nl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

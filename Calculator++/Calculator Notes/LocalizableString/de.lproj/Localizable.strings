@@ -189,3 +189,4 @@ signUpWithGoogle = "Mit Google registrieren";
 browser = "Internet-Browser";
 
 createLoginErrorTitle = "Versuchen Sie, ein Konto zu erstellen";
+tryAgain = "Erneut versuchen";
