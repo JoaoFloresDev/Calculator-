@@ -246,7 +246,8 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data, let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        cell.imageView.image = image
+                        cell.imageView.image = image.resizedTo150x150()
+                        cell.imageView.contentMode = .scaleAspectFill
                         cell.stopLoading()
                     }
                 }
@@ -256,6 +257,14 @@ extension PhotoViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return cell
     }
 
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let spacing: CGFloat = 10
+            let numberOfItemsPerRow: CGFloat = 3
+            let totalSpacing = (numberOfItemsPerRow + 1) * spacing
+            let width = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
+            return CGSize(width: width, height: width) // Célula quadrada
+        }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let url = photoURLs[indexPath.item]
         if url.pathExtension == "mov" || url.pathExtension == "mp4" {
@@ -281,16 +290,18 @@ class PhotoCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(activityIndicator)
         
-        imageView.backgroundColor = .white
+        imageView.contentMode = .scaleAspectFill // Ajusta para preencher sem distorcer
+        imageView.clipsToBounds = true // Garante que a imagem não vaze para fora
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+            make.width.equalTo(imageView.snp.height) // Garante proporção quadrada
         }
         
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
         
-        setupShadow()  // Configuração da sombra
+        setupShadow()
     }
     
     required init?(coder: NSCoder) {
