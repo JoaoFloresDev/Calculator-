@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - App Life Cycle
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         let urlString = url.absoluteString
         if urlString.hasPrefix("secrets://") {
             handleDeepLink(url: url)
@@ -36,26 +36,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ) { [weak self] photoURLs in
             self?.presentPhotoModal(with: photoURLs, fileID: url.lastPathComponent)
         }
-        
+
         alert.modalPresentationStyle = .overFullScreen
         alert.modalTransitionStyle = .crossDissolve
-        
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let rootViewController = scene.windows.first(where: { $0.isKeyWindow })?.rootViewController {
+
+        if let rootViewController = getRootViewController() {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                alert.modalPresentationStyle = .popover
+                if let popover = alert.popoverPresentationController {
+                    popover.sourceView = rootViewController.view
+                    popover.sourceRect = CGRect(
+                        x: rootViewController.view.bounds.midX,
+                        y: rootViewController.view.bounds.midY,
+                        width: 0,
+                        height: 0
+                    )
+                    popover.permittedArrowDirections = []
+                }
+            }
             rootViewController.present(alert, animated: true, completion: nil)
         }
     }
 
     private func presentErrorAlert(_ rootViewController: UIViewController, message: String) {
         let alertController = UIAlertController(title: Text.errorTitle.localized(), message: message, preferredStyle: .alert)
-        
         let okAction = UIAlertAction(title: Text.okActionText.localized(), style: .default) { _ in
             alertController.dismiss(animated: true, completion: nil)
         }
-        
         alertController.addAction(okAction)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // Atraso pequeno para evitar conflitos
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             rootViewController.present(alertController, animated: true, completion: nil)
         }
     }
@@ -65,14 +75,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let okAction = UIAlertAction(title: Text.okActionText.localized(), style: .default, handler: nil)
         alertController.addAction(okAction)
         
-        if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+        if let rootViewController = getRootViewController() {
             rootViewController.present(alertController, animated: true, completion: nil)
         }
     }
     
     func presentPhotoModal(with photoURLs: [URL], fileID: String) {
         let photoViewController = PhotoViewController(photoURLs: photoURLs, fileID: fileID)
-        if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+        if let rootViewController = getRootViewController() {
             let navigationController = UINavigationController(rootViewController: photoViewController)
             rootViewController.present(navigationController, animated: true, completion: nil)
         }
@@ -172,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Utility Functions
     
     private func isShieldViewController() -> Bool {
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let rootViewController = getRootViewController() else {
             return false
         }
         
@@ -186,8 +196,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                currentViewController is CalculatorViewController ||
                currentViewController is ChangeCalculatorViewController ||
                currentViewController is VaultViewController ||
-               currentViewController is ChangeNewCalcViewController2
-        currentViewController is AssetsPickerViewController
+               currentViewController is ChangeNewCalcViewController2 ||
+               currentViewController is AssetsPickerViewController
+    }
+    
+    private func getRootViewController() -> UIViewController? {
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            return scene.windows.first(where: { $0.isKeyWindow })?.rootViewController
+        }
+        return nil
     }
     
     // MARK: - Core Data Stack

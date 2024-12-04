@@ -57,7 +57,7 @@ open class AssetsManager: NSObject {
     internal(set) open var fetchResult: PHFetchResult<PHAsset>?
     
     fileprivate(set) open var defaultAlbum: PHAssetCollection?
-    fileprivate(set) open var cameraRollAlbum: PHAssetCollection!
+//    fileprivate(set) open var cameraRollAlbum: PHAssetCollection!
     fileprivate(set) open var selectedAlbum: PHAssetCollection?
     
     fileprivate(set) var isFetchedAlbums: Bool = false
@@ -259,8 +259,13 @@ extension AssetsManager {
         let options = PHImageRequestOptions()
         options.isNetworkAccessAllowed = true
         options.resizeMode = .exact
+        guard let fetchResult = fetchResult else {
+            loge("fetchResult is nil. Returning default image or handling gracefully.")
+            completion(nil, true) // Ou outra lógica para lidar com ausência de fetchResult
+            return PHImageRequestID()
+        }
         return imageManager.requestImage(
-            for: fetchResult!.object(at: index),
+            for: fetchResult.object(at: index),
             targetSize: size,
             contentMode: .aspectFill,
             options: options,

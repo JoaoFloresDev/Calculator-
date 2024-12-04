@@ -87,7 +87,7 @@ class PurchaseHeaderView: UIView {
     private func createSpacer(height: CGFloat) -> UIView {
         let spacer = UIView()
         spacer.snp.makeConstraints { make in
-            make.height.equalTo(height)
+            make.height.equalTo(height).priority(780)
         }
         return spacer
     }

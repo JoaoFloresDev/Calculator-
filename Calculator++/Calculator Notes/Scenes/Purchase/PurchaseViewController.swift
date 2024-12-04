@@ -104,7 +104,7 @@ class PurchaseViewController: UIViewController {
         view.addSubview(purchaseBenetList)
         purchaseBenetList.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(headerView.snp.bottom).offset(190)
+            make.top.equalTo(headerView.snp.bottom).offset(200)
             make.width.equalTo(240)
         }
         
@@ -116,25 +116,14 @@ class PurchaseViewController: UIViewController {
             make.top.equalTo(purchaseBenetList.snp.bottom).offset(16)
         }
         
-//        view.addSubview(monthlyPromotionLabel)
-//        monthlyPromotionLabel.snp.makeConstraints { make in
-//            make.bottom.equalTo(monthlyButton.snp.bottom).offset(20)
-//            make.trailing.equalTo(monthlyButton.snp.trailing).offset(-8)
-//        }
-        
         view.addSubview(yearlyButton)
         yearlyButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
             make.height.equalTo(48)
-            make.top.equalTo(monthlyButton.snp.bottom).offset(40)
+            make.top.equalTo(monthlyButton.snp.bottom).offset(24)
+            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).inset(8)
         }
-        
-//        view.addSubview(yearlyPromotionLabel)
-//        yearlyPromotionLabel.snp.makeConstraints { make in
-//            make.bottom.equalTo(yearlyButton.snp.bottom).offset(20)
-//            make.trailing.equalTo(yearlyButton.snp.trailing).offset(-8)
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

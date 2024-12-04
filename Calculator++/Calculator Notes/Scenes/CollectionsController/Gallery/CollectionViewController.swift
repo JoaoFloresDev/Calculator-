@@ -428,7 +428,7 @@ class CollectionViewController: BasicCollectionViewController, UINavigationContr
     
     private let imageProcessingQueue: OperationQueue = {
         let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 6
+        queue.maxConcurrentOperationCount = 8
         return queue
     }()
     
