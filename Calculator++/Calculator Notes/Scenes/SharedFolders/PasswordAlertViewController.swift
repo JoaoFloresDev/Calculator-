@@ -15,6 +15,12 @@ class PasswordAlertViewController: UIViewController {
     private var loadingAlert: LoadingAlert?
     private let confirmAction: ([URL]) -> Void
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        alertContainer.layer.shadowPath = UIBezierPath(roundedRect: alertContainer.bounds, cornerRadius: alertContainer.layer.cornerRadius).cgPath
+    }
+
+    
     init(title: String, message: String, url: URL, confirmAction: @escaping ([URL]) -> Void) {
         self.url = url
         self.confirmAction = confirmAction
@@ -136,7 +142,9 @@ class PasswordAlertViewController: UIViewController {
     }
     
     @objc private func cancelTapped() {
-        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     private func loadPhotos(folderId: String) {

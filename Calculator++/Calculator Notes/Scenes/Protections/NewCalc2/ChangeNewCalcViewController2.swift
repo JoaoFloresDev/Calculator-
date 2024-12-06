@@ -67,6 +67,12 @@ class ChangeNewCalcViewController2: BaseCalculatorViewController {
                 backButton.isHidden = true
             }
         }
+        if vaultMode == .confirmationFakePass {
+            vaultMode = .createFakePass
+            runningNumber = ""
+            outputLbl.text = " "
+            instructionsLabel.text = Text.createFakePasswordNewCalc.localized()
+        }
     }
     
     @objc private func faceIDButtonTapped() {

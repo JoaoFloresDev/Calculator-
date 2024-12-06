@@ -190,3 +190,4 @@ browser = "Browser web";
 
 createLoginErrorTitle = "Prova a creare un account";
 tryAgain = "Riprova";
+delete = "Elimina";

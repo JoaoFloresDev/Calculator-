@@ -189,3 +189,4 @@ browser = "Internetbrowser";
 
 createLoginErrorTitle = "Probeer een account aan te maken";
 tryAgain = "Probeer opnieuw";
+delete = "Verwijderen";

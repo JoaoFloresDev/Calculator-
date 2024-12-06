@@ -282,3 +282,4 @@ sugestionsDescription = "¡Tu opinión es muy importante! Ayúdanos a mejorar a�
 insertpass = "Introduce la contraseña";
 errorTitle = "Error";
 tryAgain = "Intentar de nuevo";
+delete = "Eliminar";

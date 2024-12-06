@@ -282,3 +282,4 @@ sugestionsDescription = "Geri bildiriminiz çok önemli! Bize yardımcı olun";
 insertpass = "Şifreyi girin";
 errorTitle = "Hata";
 tryAgain = "Tekrar dene";
+delete = "Dosyaları";

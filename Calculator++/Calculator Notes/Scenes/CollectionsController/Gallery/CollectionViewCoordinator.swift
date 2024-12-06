@@ -91,21 +91,9 @@ class CollectionViewCoordinator: CollectionViewCoordinatorProtocol {
         }
     }
 
-    
     func addPhotoButtonTapped() {
         let pickerConfig = AssetsPickerConfig()
-        
-        // Configura assetFetchOptions para mostrar apenas imagens
-        let options = PHFetchOptions()
-        options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-        pickerConfig.assetFetchOptions = [
-            .smartAlbum: options,
-            .album: options,
-            .moment: options
-        ]
-        pickerConfig.assetIsShowCameraButton = false
         pickerConfig.albumIsShowHiddenAlbum = true
-        
         let picker = AssetsPickerViewController()
         picker.pickerConfig = pickerConfig
         picker.pickerDelegate = viewController

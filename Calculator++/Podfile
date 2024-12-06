@@ -6,7 +6,7 @@ target 'Calculator Notes' do
   use_frameworks!
 
   # Pods for Calculator Notes
-  pod 'AssetsPickerViewController'
+  pod 'AssetsPickerViewController', '2.9.7'
   pod 'DTPhotoViewerController'
   pod 'ImageViewer'
   pod 'NYTPhotoViewer'
